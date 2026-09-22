@@ -29,37 +29,37 @@ jobs:
 
           root = Path("artifact-staging")
           out_root = Path("artifacts/jars")
-          manifest = []
+          manifest_path = root / "manifest.tsv"
+          if not manifest_path.exists():
+              raise SystemExit("Missing artifact-staging/manifest.tsv")
 
-          for d in sorted(p for p in root.iterdir() if p.is_dir()):
-              target_file = d / "target.txt"
-              sha_file = d / "sha256.txt"
-              if not target_file.exists() or not sha_file.exists():
+          rebuilt = []
+          for line in manifest_path.read_text(encoding="utf-8").splitlines():
+              if not line.strip() or line.startswith("#"):
                   continue
-              target = target_file.read_text(encoding="utf-8").strip()
-              expected = sha_file.read_text(encoding="utf-8").strip().lower()
+              directory, module, target, expected = line.split("\t")
+              d = root / directory
               parts = sorted(d.glob("part_*.b64"))
               if not parts:
-                  raise SystemExit(f"No chunks for {d}")
+                  raise SystemExit(f"No chunks for {directory}")
               data = b"".join(base64.b64decode(p.read_text(encoding="utf-8")) for p in parts)
               actual = hashlib.sha256(data).hexdigest()
-              if actual != expected:
+              if actual != expected.lower():
                   raise SystemExit(f"SHA mismatch for {target}: {actual} != {expected}")
-              module = d.name.split("__", 1)[0]
               dest = out_root / module / target
               dest.parent.mkdir(parents=True, exist_ok=True)
               dest.write_bytes(data)
-              manifest.append((module, target, len(data), actual))
+              rebuilt.append((module, target, len(data), actual))
               shutil.rmtree(d)
 
-          ready = root / ".ready"
-          if ready.exists():
-              ready.unlink()
+          for p in (root / ".ready", manifest_path):
+              if p.exists():
+                  p.unlink()
           if root.exists() and not any(root.iterdir()):
               root.rmdir()
 
           print("Rebuilt:")
-          for row in manifest:
+          for row in rebuilt:
               print(*row)
           PY
 
