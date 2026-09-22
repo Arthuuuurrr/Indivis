@@ -69,7 +69,7 @@ Pour `elemental_wizards_rpg:unique_staff_1` :
 - [ ] pendant outline : pas de chemin glint problématique ;
 - [ ] hors outline : glint normal restauré.
 
-## HUD / icônes — Spell Engine RC9
+## HUD / icônes — Spell Engine RC10 (hérité de RC9)
 
 - [ ] spellbar à la même hauteur que la hotbar vanilla (`y=-11`) ;
 - [ ] aucun chevauchement avec cœurs/armure ;
@@ -81,6 +81,21 @@ Pour `elemental_wizards_rpg:unique_staff_1` :
 - [ ] technique clic droit de la hache (« Coupe profonde ») affiche l’icône CapSkills ;
 - [ ] tester au moins une technique de masse, lance, épée et arme à deux mains ;
 - [ ] un sort non mappé conserve son icône/fallback upstream.
+
+## Spell Engine RC10 — canalisations / durées
+
+- [ ] AOE CHANNEL sans cible (ex. Fire Storm / Whirlwind / chants de barde) : effets actifs et fin après une seule durée ;
+- [ ] maintenir la touche après la fin d'un CHANNEL ne redémarre pas un nouveau cycle ;
+- [ ] relâcher puis appuyer à nouveau démarre un nouveau CHANNEL normalement ;
+- [ ] AIM required CHANNEL avec cible valide (Wind Updraft / Vicious Mockery) : cast fini ;
+- [ ] AIM required CHANNEL sans cible : comportement d'échec attendu, jamais de boucle infinie ;
+- [ ] AIM optional CHANNEL (Arcane Missile / Penance) : cast fini ;
+- [ ] BEAM CHANNEL (Arcane Beam / Hydro Beam / Holy Beam) : cast fini ;
+- [ ] relâchement anticipé avec holdToCastChannelled=true annule toujours correctement ;
+- [ ] STANDARD inchangé ;
+- [ ] CHARGE inchangé ;
+- [ ] aucun cast anormalement long avec bonus/malus Hazenn de cast/cooldown ;
+- [ ] client et serveur chargent tous deux Spell Engine RC10.
 
 ## Spell Power RC8 — régression ClassFormat
 
