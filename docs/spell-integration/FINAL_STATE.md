@@ -5,7 +5,7 @@
 | Composant | Version de référence | SHA-256 |
 |---|---|---|
 | Haute Capitale RPG | `0.3.0+1.21.11.b2.HC.TEST3.RC2` | `65824c4c54c96825a3ffdc2e8c441c690d9f4a466622efd62b33ff8c6d7548e4` |
-| Spell Engine | `1.10.5.001+1.21.11-HC-TEST3-RC9-HUD-ICON-SYNC` *(candidat runtime)* | `618823d07ce96ca637e91dca512bfab2ec74eff9a5e06faea7a7f68edd9e2acd` |
+| Spell Engine | `1.10.5.001+1.21.11-HC-TEST3-RC10-CAST-SAFETY` *(candidat runtime)* | `f9d18114d91d9b6f200b2552c4193289b45d1400bd6480d1b4332053b06d2047` |
 | Spell Power | `1.6.1.001+1.21.11-HC-HAZENN-PRECISE-TEST3-RC8-CLASSFORMAT-FIX` *(candidat runtime)* | `4f9527b9aa6b7b34531edaed25d3d5c0e6e182a816169b41d80a207ea3589fa8` |
 | Hazennstuff | `1.0.0-b4+hc.spellcompat1` | `88beb1a43a5d3f4a2ee5f4391937cf2dc0a67e6d8a587f2cbc6203e85846a748` |
 | AzureLibArmor | `3.1.4-HC-TEST3-RC1` | `12a93c7fba4a58cff6f9608c537cfb0acde996123a079ceceb23a23fa03ef1b8` |
@@ -37,7 +37,9 @@
 - Holy Shock / Holy Beam et autres sorts mixtes non modifiés ;
 - comportement des casters mob/NPC conservé ;
 - HUD RC9 : hauteur vanilla restaurée (`y=-11`) et décalage gauche à `x=-185`; seuls les anciens défauts exacts `(-170,-34)` et `(-170,-11)` sont migrés ;
-- spellbar RC9 : 216 sorts mappés utilisent exactement l’icône déclarée par leur ability CapSkills RC2F ; les sorts non mappés conservent le fallback upstream ;
+- spellbar RC9/RC10 : 216 sorts mappés utilisent exactement l’icône déclarée par leur ability CapSkills RC2F ; les sorts non mappés conservent le fallback upstream ;
+- RC10 : un CHANNEL ne redémarre plus automatiquement tant que la même pression de touche reste maintenue ; un nouveau cycle exige un relâchement puis une nouvelle pression ;
+- RC10 : les durées affectées par Haste sont protégées contre les valeurs non finies/non positives et respectent le plancher normalisé Spell Power de `0.1` ;
 - vitesse d’incantation Hazenn séparée de la Haste ;
 - dégâts d’invocation Hazenn pris en charge pour les entités invoquées.
 
@@ -110,6 +112,6 @@ Le patch TEST3 RC1 conserve les correctifs antérieurs et ajoute la protection d
 
 ## Statut
 
-**Statique :** chaîne auditée et consolidée. Spell Power RC8 corrige le `ClassFormatError` de RC7 et reste à revalider en jeu. Spell Engine RC9 corrige le placement HUD et synchronise les icônes avec CapSkills ; validation runtime requise (#80).
+**Statique :** chaîne auditée et consolidée. Spell Power RC8 corrige le `ClassFormatError` de RC7 et reste à revalider en jeu. Spell Engine RC10 conserve le HUD/icon sync de RC9 et ajoute la sécurité des canalisations/durées de cast ; validation runtime requise (#80, #83).
 
 **Runtime :** les scénarios de [RUNTIME_MATRIX.md](RUNTIME_MATRIX.md) restent la référence avant de considérer l’ensemble STABLE.
