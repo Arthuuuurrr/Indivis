@@ -5,7 +5,7 @@ Documentation principale : [../../docs/spell-integration/README.md](../../docs/s
 ## Composants patchés
 
 - Haute Capitale RPG RC2 ;
-- Spell Engine RC9 HUD-ICON-SYNC ;
+- Spell Engine RC10 CAST-SAFETY (inclut RC9 HUD-ICON-SYNC) ;
 - Spell Power RC8 ClassFormat Fix ;
 - Hazennstuff HC-SPELLCOMPAT1 ;
 - AzureLibArmor TEST3 RC1 ;
