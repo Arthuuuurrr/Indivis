@@ -1,0 +1,105 @@
+# Validation statique consolidée
+
+Date de consolidation : 22 septembre 2026.
+
+## CapSkills RC2F
+
+Derniers invariants vérifiés :
+
+- JSON valides : 549 ;
+- skills Puffish : 338 ;
+- définitions Puffish : 338 ;
+- définition manquante : 0 ;
+- endpoint de connexion cassé : 0 ;
+- composantes du graphe : 321 et 17 ;
+- branche métiers de 17 nœuds volontairement séparée ;
+- aucun besoin de reconnecter cette branche à `doctrine_root`.
+
+Audit complet antérieur de RC2D avant restauration de l’arbre :
+
+- 338 skills / 338 définitions ;
+- 349 connexions ;
+- 0 endpoint cassé ;
+- 0 doublon de paire non dirigée ;
+- 265 définitions d’abilities ;
+- 221 abilities visibles ;
+- ordre visible 1..221 continu et unique ;
+- 247 rewards, 247 uniques ;
+- 0 reward cassée ;
+- 0 ability visible sans reward ;
+- 44 abilities techniques Arsenal ;
+- 26 techniques Arsenal récompensées statiquement ;
+- 18 items Arsenal dynamiques non récompensés ;
+- 0 spell mappé manquant dans l’univers de sources audité ;
+- 0 mismatch ACTIVE/PASSIVE.
+
+RC2F restaure uniquement le sous-arbre Puffish depuis l’état sain RC2B afin d’éliminer le risque introduit par RC2D.
+
+## Arsenal
+
+- 44 associations exactes item/passif ;
+- 32 passifs uniques ;
+- les 18 items dynamiques ont été validés contre les choices natifs et les requirements CapSkills ;
+- 36 paires native-choice → ability CapSkills → compatibilité arme : PASS ;
+- dual wield identique : déduplication prévue côté Spell Engine.
+
+## Haute Capitale RPG RC2
+
+Harness ciblé Avatar :
+
+- staff normal non affecté : PASS ;
+- Avatar sans choix bloque Water : PASS ;
+- Avatar Terra autorise Stone Spear : PASS ;
+- Avatar Terra bloque Air Cutter : PASS ;
+- Avatar Terra bloque une invocation sans rapport : PASS.
+
+## Spell Engine
+
+Invariants vérifiés au fil des RC :
+
+- ACTIVE : déduplication canonique, dernière occurrence conservée ;
+- PASSIVE : déduplication seulement pour `arsenal:*` ;
+- heal AIM pur : joueur derrière mob accepté ;
+- cible mob rejetée comme candidat pour un joueur ;
+- caster mob/NPC : comportement upstream conservé ;
+- sorts mixtes HEAL+DAMAGE inchangés ;
+- raycast/blocage par mur upstream conservé ;
+- migration HUD uniquement ancien défaut `BOTTOM, y=-11` ;
+- valeur custom `y != -11` inchangée.
+
+## Hazenn / Spell Power / Spell Engine
+
+Validation de la chaîne finale :
+
+- intégrité ZIP/JAR : PASS ;
+- entrées dupliquées : 0 ;
+- Air ← Lightning : PASS ;
+- Earth !← Nature : PASS ;
+- Arcane !← Ender : PASS ;
+- global Spell Power non appliqué aux écoles physiques : PASS ;
+- `CASTING_MOVESPEED` exclu de la Haste : PASS ;
+- +10 % Spell Resist → facteur 0,90 sur dégâts résistables : PASS ;
+- dégâts non résistables/physiques inchangés : PASS ;
+- +15 % Casting Movement → ×1,15 : PASS ;
+- +15 % Summon Damage mêlée → ×1,15 : PASS ;
+- +15 % Summon Damage sur Spell Power de l’invocation → ×1,15 : PASS.
+
+## Witcher TEST3 RC1
+
+- JAR valide ;
+- entrées dupliquées : 0 ;
+- `footwork.png` = copie byte-identique de `fast_attack.png` ;
+- 73 spell JSON dans le mod ;
+- 53 abilities HC mappées ;
+- 0 spell ID manquant ;
+- 0 mismatch de type ;
+- 0 reward cassée ;
+- tous les nœuds de la voie Sorceleur atteignables.
+
+## Azure TEST3 RC1
+
+Patch structurel vérifié ; test runtime obligatoire sur une armure Azure enchantée ciblée par l’outline.
+
+## Limite
+
+Tous ces résultats sont **statiques** tant qu’un scénario n’est pas explicitement marqué runtime dans la matrice de test.
