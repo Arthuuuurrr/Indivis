@@ -15,7 +15,7 @@ La source de vérité est désormais séparée en deux notions :
 | capitale_skills_items | 1.7.18 | binaire hashé | #53 |
 | capitale_creatures_bundle | **1.2.16** | source complète encore à importer | #61, #72 |
 | Spell Engine HC | TEST3 RC7 | binaire hashé | #53 |
-| Spell Power HC | **TEST3 RC8 CLASSFORMAT FIX** | binaire hashé | #70 |
+| Spell Power HC | **serveur RC6 / client RC8 CLASSFORMAT FIX** | RC8 candidat hashé | #70 |
 | Haute Capitale RPG | TEST3 RC2 | binaire hashé | #53 |
 | Hazennstuff HC | SPELLCOMPAT1 | binaire hashé | #53 |
 | Arsenal HC | PRIMARY ORDER1 | binaire hashé | #5, #53 |
