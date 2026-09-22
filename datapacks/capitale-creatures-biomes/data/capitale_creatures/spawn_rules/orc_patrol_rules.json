@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "controller_version": "1.2.14",
+  "config": {
+    "enabled": true,
+    "interval_ticks": 900,
+    "chance_per_check": 0.2,
+    "cooldown_ticks": 7200,
+    "search_min_radius": 28,
+    "search_max_radius": 44,
+    "candidate_attempts": 20,
+    "group_spread": 5,
+    "nearby_orc_cap": 16,
+    "count_radius": 96,
+    "exclude_biomes": [
+      "capitale:donjon"
+    ],
+    "additional_counted_orcs": [
+      "autonomous_orc_mobs:orc_champion",
+      "autonomous_orc_mobs:female_orc_elite"
+    ]
+  },
+  "composition": [
+    {
+      "entity": "autonomous_orc_mobs:orc_archer",
+      "count": 2
+    },
+    {
+      "entity": "autonomous_orc_mobs:orc_warrior",
+      "count": 3
+    },
+    {
+      "entity": "autonomous_orc_mobs:female_orc_warrior",
+      "count": 2
+    },
+    {
+      "entity": "autonomous_orc_mobs:orc_warlock",
+      "count": 1
+    }
+  ],
+  "notes": [
+    "One random Overworld player is considered per check, so event frequency does not scale linearly with player count.",
+    "The event checks every 45 seconds with 20% chance after cooldown; default successful patrol spacing averages about 9-10 minutes in eligible conditions.",
+    "The event searches loaded surface positions only and rejects water.",
+    "capitale:donjon is excluded from patrol events because that biome has its own natural orc population.",
+    "Nearby patrol cap is 16 combat orcs within 96 blocks, allowing up to roughly two patrol groups to coexist without runaway accumulation.",
+    "1.2.14 clears Autonomous Orc Mobs persistence on patrol members so patrols can despawn naturally when players leave."
+  ]
+}

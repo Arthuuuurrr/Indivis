@@ -1,0 +1,7 @@
+{
+  "replace": true,
+  "values": [
+    "#capitale_creatures:plains",
+    "#capitale_creatures:savanna_variants"
+  ]
+}

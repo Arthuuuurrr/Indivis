@@ -1,0 +1,12 @@
+CapSkills BETA 0.10.19 RC2F — PUFFISH TREE HARD RESTORE
+
+Runtime symptom addressed: skill tree displayed completely empty with RC2D.
+
+Construction:
+- Base outside Puffish tree: RC2C audit-fixed datapack.
+- Entire data/capskills/puffish_skills directory restored byte-for-byte from RC2B.
+- RC2D changes to invocation_focus and five summon abilities are discarded.
+- Avatar Staff authority is enforced in haute-capitale-rpg TEST3 RC2 (HcAvatarStaffGate), so no Puffish/datapack mutation is required for it.
+- Arsenal dynamic authorization remains present outside the Puffish tree and is preserved.
+
+This version deliberately avoids changing any Puffish tree JSON relative to RC2B.

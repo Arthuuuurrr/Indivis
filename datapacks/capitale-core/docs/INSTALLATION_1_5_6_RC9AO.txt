@@ -1,0 +1,13 @@
+Installation capitale_core 1.5.6-RC9AO
+
+1. Remplacer l'ancien datapack capitale_core par cette version.
+2. Vérifier que pack.mcmeta et data/ sont directement à la racine du ZIP/dossier installé.
+3. Ne garder qu'une seule version de capitale_core active.
+4. Redémarrer le serveur ou exécuter /reload.
+5. Vérifier avec /datapack list.
+
+Tests conseillés :
+- mode Adventure + épée/outils : frapper fire et soul_fire ;
+- mode Adventure + staff/wand RPG Series : frapper fire et soul_fire ;
+- mode Adventure + main vide : viser une flamme et clic gauche ;
+- vérifier qu'un item ayant déjà minecraft:can_break conserve son composant d'origine.
