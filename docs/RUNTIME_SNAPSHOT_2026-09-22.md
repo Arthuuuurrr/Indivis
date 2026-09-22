@@ -8,8 +8,9 @@ Cette page n'est pas une roadmap. Elle sert uniquement d'inventaire de ce qui es
 |---|---|---|---|
 | Haute Capitale Quests | b3 | b2 | aligner le client sur b3 puis tester |
 | Haute Capitale Pirates | b4 | b2 | aligner le client sur b4 puis tester |
+| Spell Power | RC6 CLASSFORMAT FIX | RC8 CLASSFORMAT FIX | déployer RC8 côté serveur puis valider #70 |
 
-Le reste des modules Haute Capitale les plus sensibles visibles sur les captures est aligné : Nexus alpha1.1, HUD 1.3.2, skills-items 1.7.18, creatures-bundle 1.2.16, dialogue b7, RPG RC2, Spell Engine RC7, Spell Power RC8, Hazennstuff SPELLCOMPAT1, Arsenal PRIMARY ORDER1, AzureLibArmor RC1, Witcher Footwork RC1, Heraldry 0.1.7 et MMO Music Zones 1.2.7.
+Le reste des modules Haute Capitale les plus sensibles visibles sur les captures est aligné : Nexus alpha1.1, HUD 1.3.2, skills-items 1.7.18, creatures-bundle 1.2.16, dialogue b7, RPG RC2, Spell Engine RC7, Hazennstuff SPELLCOMPAT1, Arsenal PRIMARY ORDER1, AzureLibArmor RC1, Witcher Footwork RC1, Heraldry 0.1.7 et MMO Music Zones 1.2.7.
 
 ## Point de nettoyage serveur
 
