@@ -22,6 +22,7 @@ Cette matrice doit être exécutée avec les mêmes versions côté client et se
 
 ## Spellbar / containers
 
+- [x] Mage de feu observé sans sort en double sur le test du 22/09/2026 ; la matrice multi-catégories reste ouverte.
 - [ ] Fireball : une entrée, un cast ;
 - [ ] pas de doublon après changement d’arme ;
 - [ ] main hand → ability mise à jour immédiatement ;
@@ -68,11 +69,18 @@ Pour `elemental_wizards_rpg:unique_staff_1` :
 - [ ] pendant outline : pas de chemin glint problématique ;
 - [ ] hors outline : glint normal restauré.
 
-## HUD
+## HUD / icônes — Spell Engine RC9
 
-- [ ] config historique `BOTTOM, y=-11` migre à -34 ;
-- [ ] valeur custom autre que -11 inchangée ;
-- [ ] migration persistée dans `hud_config.json`.
+- [ ] spellbar à la même hauteur que la hotbar vanilla (`y=-11`) ;
+- [ ] aucun chevauchement avec cœurs/armure ;
+- [ ] décalage de 15 px vers la gauche suffisant (`x=-185`) ;
+- [ ] ancien défaut HC `(-170,-34)` migre vers `(-185,-11)` ;
+- [ ] ancien défaut upstream `(-170,-11)` migre vers `(-185,-11)` ;
+- [ ] position custom différente des anciens défauts inchangée ;
+- [ ] migration persistée dans `hud_config.json` ;
+- [ ] technique clic droit de la hache (« Coupe profonde ») affiche l’icône CapSkills ;
+- [ ] tester au moins une technique de masse, lance, épée et arme à deux mains ;
+- [ ] un sort non mappé conserve son icône/fallback upstream.
 
 ## Spell Power RC8 — régression ClassFormat
 
