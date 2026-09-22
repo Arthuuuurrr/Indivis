@@ -48,7 +48,7 @@ Ajoute :
 - déplace la spellbar de 15 px vers la gauche : `x=-185` ;
 - migration ciblée uniquement sur les anciens défauts exacts.
 
-### RC9 HUD-ICON-SYNC — candidat actuel
+### RC9 HUD-ICON-SYNC
 
 Conserve RC7/RC8 et ajoute :
 
@@ -60,6 +60,20 @@ Conserve RC7/RC8 et ajoute :
 - map de référence embarquée : `assets/spell_engine/hc_spell_icon_map.json` ;
 - ASM `CheckClassAdapter` : PASS sur les quatre classes HUD/icônes modifiées ;
 - validation runtime requise (#80).
+
+### RC10 CAST SAFETY — candidat actuel
+
+Conserve intégralement RC9 et ajoute deux protections globales :
+
+- CHANNEL : une seule séquence finie par pression physique ; lorsque le process serveur est terminé, le maintien de la même touche ne relance plus automatiquement le CHANNEL ;
+- le restart CHANNEL utilise l’état `START_released`, alors que CASTING non-CHANNEL conserve le chemin upstream `STOP_released` ;
+- `SpellParameters.hasteAffectedValue(base, haste)` protège désormais les valeurs Haste non finies/non positives ;
+- les valeurs Haste positives sous `0.1` sont ramenées au plancher normalisé de Spell Power (HASTE default 100, min 10, max 1000) ;
+- résultat de division non fini → durée neutre ;
+- audit des 221 abilities visibles : 0 erreur ;
+- audit de l’univers complet de 319 ressources de sorts : 0 erreur ;
+- 33 CHANNEL au total, et aucun CHANNEL caché supplémentaire hors arbre ;
+- validation runtime requise (#83).
 
 ## Spell Power
 
