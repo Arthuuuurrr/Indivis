@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "spell_engine",
+  "version": "1.10.5.1+1.21.11-HC-TEST3-RC7",
+  "name": "Spell Engine",
+  "description": "HC RC7: Hazenn cast movement and summon-damage compatibility.",
+  "environment": "*",
+  "entrypoints": {
+    "client": ["net.spell_engine.fabric.client.FabricClientMod"],
+    "main": ["net.spell_engine.fabric.FabricMod"]
+  },
+  "mixins": ["spell_engine.mixins.json", "spell_engine-fabric.mixins.json"],
+  "depends": {
+    "minecraft": ">=1.21.11",
+    "fabricloader": ">=0.19.3",
+    "fabric-api": "*",
+    "java": ">=21",
+    "cloth-config": ">=21.11.153",
+    "player_animation_library": "*",
+    "spell_power": ">=1.6.1.001+1.21.11",
+    "haute_capitale_rpg": "*"
+  }
+}
