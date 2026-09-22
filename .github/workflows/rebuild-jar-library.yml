@@ -42,7 +42,8 @@ jobs:
               parts = sorted(d.glob("part_*.b64"))
               if not parts:
                   raise SystemExit(f"No chunks for {directory}")
-              data = b"".join(base64.b64decode(p.read_text(encoding="utf-8")) for p in parts)
+              encoded = "".join(p.read_text(encoding="utf-8").strip() for p in parts)
+              data = base64.b64decode(encoded)
               actual = hashlib.sha256(data).hexdigest()
               if actual != expected.lower():
                   raise SystemExit(f"SHA mismatch for {target}: {actual} != {expected}")
