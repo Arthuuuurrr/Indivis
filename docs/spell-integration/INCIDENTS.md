@@ -157,3 +157,46 @@ Au lieu de patcher un sort isolé, Spell Engine utilise la texture déclarée pa
 - 5 abilities sans texture explicite conservent le fallback upstream.
 
 Issue de validation runtime : #80.
+
+
+## 8. CHANNEL qui semble infini / sort qui ne se termine pas
+
+### Symptôme
+
+Plusieurs sorts pouvaient rester en canalisation de façon apparemment indéfinie, y compris :
+- des sorts AIM avec cible valide ;
+- des AOE qui ne nécessitent aucune cible AIM.
+
+### Audit des données
+
+L'audit n'a trouvé aucun problème structurel dans les définitions :
+
+- 221 abilities visibles auditées ;
+- 319 ressources de sorts auditées au total ;
+- 33 CHANNEL dans les deux périmètres : aucun CHANNEL caché supplémentaire ;
+- aucune durée CHANNEL <= 0 ;
+- aucun nombre de ticks CHANNEL invalide ;
+- aucun AREA/NONE/CASTER avec `aim.required=true` ;
+- erreurs : 0.
+
+### Cause 1 — auto-restart de CHANNEL
+
+Après un démarrage, `SpellHotbar` debounce le use-case START jusqu'au relâchement physique de la touche.
+
+RC9 utilisait néanmoins l'état STOP pour autoriser le restart du bloc CASTING/CHANNEL lorsqu'un process était terminé. Un CHANNEL pouvait donc finir correctement côté serveur puis être immédiatement recréé tant que la touche restait maintenue.
+
+### Cause 2 — division de durée non protégée
+
+`SpellParameters.hasteAffectedValue` faisait `base / haste` sans garde.
+
+Une valeur non finie/non positive pouvait produire une durée invalide ; une valeur positive sous le minimum normal de Spell Power pouvait produire une durée extrêmement longue.
+
+### Correction RC10
+
+- CHANNEL : restart uniquement sur `START_released` ;
+- CASTING non-CHANNEL : comportement upstream conservé ;
+- Haste invalide/non positive : fallback neutre ;
+- Haste sous 0.1 : clamp au minimum normalisé Spell Power ;
+- résultat non fini : fallback neutre.
+
+Issue de suivi runtime : #83.

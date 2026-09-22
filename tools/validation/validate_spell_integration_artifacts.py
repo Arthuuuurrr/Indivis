@@ -19,7 +19,7 @@ from pathlib import Path
 EXPECTED = {
     "haute-capitale-rpg-0.3.0+1.21.11.b2.HC.TEST3.RC2.jar":
         "65824c4c54c96825a3ffdc2e8c441c690d9f4a466622efd62b33ff8c6d7548e4",
-    "spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC9-HUD-ICON-SYNC.jar":
+    "spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC10-CAST-SAFETY.jar":
         "ecd2065e849a32d6626f9a4f760aae6edda15972ad300305c427b12527eb283c",
     "spell_power-fabric-1.6.1.001+1.21.11-HC-HAZENN-PRECISE-TEST3-RC8-CLASSFORMAT-FIX.jar":
         "a9646fd981b9ebff92efe675603fbe9e29515ada4575683bad6d4d7c318835d9",
@@ -42,7 +42,7 @@ REQUIRED_ENTRIES = {
         "net/hautecapitale/rpg/ability/HcAvatarStaffGate.class",
         "net/hautecapitale/rpg/ability/AbilityResolver.class",
     },
-    "spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC9-HUD-ICON-SYNC.jar": {
+    "spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC10-CAST-SAFETY.jar": {
         "net/spell_engine/config/HcHudMigration.class",
         "net/spell_engine/hc/HcHazennCastingMovementBridge.class",
         "net/spell_engine/hc/HcHazennSummonDamageBridge.class",
@@ -51,6 +51,8 @@ REQUIRED_ENTRIES = {
         "net/spell_engine/mixin/entity/HcHazennSummonDamageMixin.class",
         "net/spell_engine/client/util/HcSpellIconFallback.class",
         "assets/spell_engine/hc_spell_icon_map.json",
+        "net/spell_engine/client/casting/ClientCastController.class",
+        "net/spell_engine/internals/SpellParameters.class",
     },
     "spell_power-fabric-1.6.1.001+1.21.11-HC-HAZENN-PRECISE-TEST3-RC8-CLASSFORMAT-FIX.jar": {
         "net/spell_power/hc/HcHazennResistanceBridge.class",
