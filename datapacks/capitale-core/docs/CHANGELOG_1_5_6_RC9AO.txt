@@ -1,0 +1,18 @@
+capitale_core 1.5.6-RC9AO
+Minecraft Java 1.21.11
+
+Base : 1.5.6-RC9AN + ACCESS RANK SPAM FIX.
+
+Modifications RC9AO :
+- extinction de minecraft:fire et minecraft:soul_fire en mode Aventure avec les armes/outils ;
+- compatibilité objets durables moddés ;
+- compatibilité explicite RPG Series : damage_staff et damage_wand ;
+- tag extensible #capitale:adventure_fire_extinguishers pour ajouter d'autres familles d'items ;
+- préservation d'un minecraft:can_break déjà présent sur un objet (aucun écrasement) ;
+- suppression de l'ancien loot function minecraft:toggle_tooltips, retiré des versions modernes ;
+- extinction à main nue par clic gauche via détecteur interaction éphémère + raycast serveur ;
+- le détecteur main nue n'existe que lorsqu'un joueur Aventure à main vide vise fire/soul_fire ;
+- raycast bloqué par les blocs hors #minecraft:replaceable afin d'éviter l'extinction à travers les murs ;
+- nettoyage de la racine du ZIP : les anciennes notes texte ont été déplacées dans docs/history/root_notes/.
+
+Note : un item qui possède déjà son propre minecraft:can_break n'est pas modifié, afin de ne pas supprimer ses permissions de casse existantes.
