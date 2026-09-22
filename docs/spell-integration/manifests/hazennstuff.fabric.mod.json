@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "hazennstuff",
+  "version": "1.0.0-b4+hc.spellcompat1",
+  "name": "Hazen N Stuff (Fabric, equipment port)",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["net.hazen.hazennstuff.HazenNStuff"],
+    "client": ["net.hazen.hazennstuff.client.HazenNStuffClient"]
+  },
+  "mixins": ["hazennstuff.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*",
+    "geckolib": "*"
+  }
+}
