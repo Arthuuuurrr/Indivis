@@ -9,7 +9,7 @@ Cette matrice doit être exécutée avec les mêmes versions côté client et se
 - [ ] aucune ancienne RC du même mod n’est présente en doublon ;
 - [ ] le log charge Arsenal côté client **et** serveur ;
 - [ ] le log charge `capitale_skills_items` côté serveur ;
-- [ ] Spell Power affiché = RC7, jamais RC6.
+- [ ] Spell Power affiché = RC8, jamais RC6/RC7.
 
 ## CapSkills
 
@@ -73,6 +73,14 @@ Pour `elemental_wizards_rpg:unique_staff_1` :
 - [ ] config historique `BOTTOM, y=-11` migre à -34 ;
 - [ ] valeur custom autre que -11 inchangée ;
 - [ ] migration persistée dans `hud_config.json`.
+
+## Spell Power RC8 — régression ClassFormat
+
+- [ ] serveur démarre avec RC8 ;
+- [ ] dégâts sur un mob déclenchent SpellResistance sans ClassFormatError ;
+- [ ] dégâts sur un joueur déclenchent SpellResistance sans ClassFormatError ;
+- [ ] laisser tourner avec des mobs chargés sans crash de tick ;
+- [ ] latest.log ne contient ni `ClassFormatError` ni `HcHazennSpellResistanceMixin` ;
 
 ## Hazenn
 
