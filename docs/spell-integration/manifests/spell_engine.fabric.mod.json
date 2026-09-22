@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "spell_engine",
-  "version": "1.10.5.1+1.21.11-HC-TEST3-RC9-HUD-ICON-SYNC",
+  "version": "1.10.5.1+1.21.11-HC-TEST3-RC10-CAST-SAFETY",
   "name": "Spell Engine",
-  "description": "HC TEST3 RC9: spellbar aligned with vanilla hotbar, shifted left, CapSkills icon sync, plus Hazenn compatibility.",
+  "description": "HC TEST3 RC10: RC9 HUD/icon fixes plus finite CHANNEL cycle per key press and cast-duration/Haste safety; includes Hazenn compatibility.",
   "environment": "*",
   "entrypoints": {
     "client": [
