@@ -126,3 +126,34 @@ La JVM rejette donc le format de classe lorsque la méthode est réellement vér
 - ancien mixin RC6 : absent.
 
 Issue de suivi : #70.
+
+
+## 7. Spellbar trop haute et icônes de techniques d'armes manquantes
+
+### Symptôme HUD
+
+Après les correctifs TEST3, la spellbar était remontée dans la zone cœurs/armure.
+
+Cause : une ancienne migration HC avait changé le défaut upstream `y=-11` en `y=-34`.
+
+### Correction RC9
+
+- retour à `y=-11`, hauteur d'origine alignée sur la hotbar vanilla ;
+- déplacement horizontal à `x=-185`, soit 15 px vers la gauche ;
+- migration uniquement des anciens défauts exacts `(-170,-34)` et `(-170,-11)` ;
+- aucun écrasement d'une position personnalisée.
+
+### Symptôme icônes
+
+Une technique d'arme au clic droit observée sur une hache (« Coupe profonde ») affichait le damier de texture manquante. D'autres techniques pouvaient être touchées lorsque l'ID du sort ne correspondait pas au chemin réel de l'icône.
+
+### Correction RC9
+
+Au lieu de patcher un sort isolé, Spell Engine utilise la texture déclarée par CapSkills RC2F :
+
+- 221 abilities avec spell auditées ;
+- 216 mappings spell → texture explicites ;
+- 0 conflit ;
+- 5 abilities sans texture explicite conservent le fallback upstream.
+
+Issue de validation runtime : #80.
