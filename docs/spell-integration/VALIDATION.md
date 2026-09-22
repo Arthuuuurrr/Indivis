@@ -103,3 +103,24 @@ Patch structurel vérifié ; test runtime obligatoire sur une armure Azure encha
 ## Limite
 
 Tous ces résultats sont **statiques** tant qu’un scénario n’est pas explicitement marqué runtime dans la matrice de test.
+
+
+## Spell Power RC8 — ClassFormat Fix
+
+Incident déclencheur : `ClassFormatError: Illegal local variable table length 210` dans `SpellResistance.resist(...)`.
+
+Validation du candidat RC8 :
+
+- SHA-256 : `4f9527b9aa6b7b34531edaed25d3d5c0e6e182a816169b41d80a207ea3589fa8` ;
+- intégrité JAR : PASS ;
+- manifeste Fabric byte-identique à RC7 : PASS ;
+- `SpellResistance.class` réécrite sans métadonnées debug locales invalides ;
+- `HcHazennResistanceBridge.apply(...)` toujours présent : PASS ;
+- `HcHazennSpellResistanceMixin` absent de la classe et du mixin config : PASS ;
+- ASM `CheckClassAdapter` :
+  - SpellResistance : PASS ;
+  - SpellSchool : PASS ;
+  - HcHazennResistanceBridge : PASS ;
+  - HcHazennSpellPowerBridge : PASS.
+
+Statut : **correctif structurel validé statiquement, validation Minecraft runtime requise (#70).**
