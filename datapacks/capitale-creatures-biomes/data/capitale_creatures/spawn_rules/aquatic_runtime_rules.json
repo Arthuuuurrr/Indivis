@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "minecraft": "1.21.11",
+  "status": "ACTIVE — interpreted directly by capitale_creatures_bundle 1.2.9",
+  "config": {
+    "enabled": true,
+    "interval_ticks": 80,
+    "max_nearby_per_player": 12,
+    "count_radius": 128,
+    "search_min_radius": 32,
+    "search_max_radius": 96,
+    "candidate_attempts": 24,
+    "success_log_limit": 12,
+    "failure_log_limit": 12
+  },
+  "rules": [
+    {
+      "name": "dawn_aegirocassis_all_oceans",
+      "entities": [
+        "dino_mounts_ai:dawn_aegirocassis_green_hostile",
+        "dino_mounts_ai:dawn_aegirocassis_red_hostile",
+        "dino_mounts_ai:dawn_aegirocassis_spotted_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:ocean_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "WATER_CREATURE",
+        "IN_WATER"
+      ],
+      "remove_existing_spawn_entries_first": false,
+      "minimum_water_depth": 5,
+      "runtime_population": true
+    },
+    {
+      "name": "dawn_dunkleosteus_oceans",
+      "entities": [
+        "dino_mounts_ai:dawn_dunkleosteus_female_hostile",
+        "dino_mounts_ai:dawn_dunkleosteus_male_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:ocean_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "WATER_CREATURE",
+        "IN_WATER"
+      ],
+      "remove_existing_spawn_entries_first": false,
+      "minimum_water_depth": 5,
+      "runtime_population": true
+    },
+    {
+      "name": "mystic_mosasaurus_deep_oceans_only",
+      "entities": [
+        "dino_mounts_ai:mystic_mosasaurus_couleur_1_hostile",
+        "dino_mounts_ai:mystic_mosasaurus_couleur_2_hostile",
+        "dino_mounts_ai:mystic_mosasaurus_couleur_3_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:deep_ocean_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "WATER_CREATURE",
+        "IN_WATER",
+        "deep ocean only"
+      ],
+      "remove_existing_spawn_entries_first": false,
+      "note": "Colours 1-3 only; colour 4 hard-blacklisted. 1.2.7 natural aquatic table, no periodic spawn bridge.",
+      "minimum_water_depth": 8,
+      "runtime_population": true
+    },
+    {
+      "name": "piranha_rivers_oceans",
+      "entities": [
+        "cubeanimals:piranha"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:rivers_and_oceans"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true,
+      "minimum_water_depth": 3,
+      "runtime_population": true
+    },
+    {
+      "name": "chaos_corpsefish_water",
+      "entities": [
+        "chaos_mmo_ai:corpsefish"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:ocean_variants",
+        "#capitale_creatures:river_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "WATER_CREATURE",
+        "IN_WATER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "minimum_water_depth": 3,
+      "runtime_population": true
+    },
+    {
+      "name": "chaos_gluttonfish_abyss",
+      "entities": [
+        "chaos_mmo_ai:gluttonfish"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:deep_ocean_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "WATER_CREATURE",
+        "IN_WATER",
+        "deep ocean only",
+        "very rare"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "minimum_water_depth": 8,
+      "runtime_population": true
+    }
+  ]
+}
