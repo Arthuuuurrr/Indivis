@@ -1,0 +1,13 @@
+{
+  "pack": {
+    "description": "Haute Capitale Creatures — biome spawning BETA 0.12 (24 dungeon orcs + reinforced patrols)",
+    "min_format": [
+      94,
+      1
+    ],
+    "max_format": [
+      94,
+      1
+    ]
+  }
+}
