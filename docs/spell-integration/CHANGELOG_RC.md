@@ -35,12 +35,31 @@ Travail successif sur :
 
 Référence consolidée avant extension Hazenn.
 
-### RC7 — référence finale
+### RC7
 
 Ajoute :
 
 - `CASTING_MOVESPEED` Hazenn appliqué au mouvement pendant cast ;
 - `SUMMON_DAMAGE` Hazenn sur les invocations.
+
+### RC8 HUD ALIGN — intermédiaire
+
+- restaure la hauteur vanilla de la spellbar : `y=-11` au lieu du mauvais défaut HC `y=-34` ;
+- déplace la spellbar de 15 px vers la gauche : `x=-185` ;
+- migration ciblée uniquement sur les anciens défauts exacts.
+
+### RC9 HUD-ICON-SYNC — candidat actuel
+
+Conserve RC7/RC8 et ajoute :
+
+- synchronisation spell → icône avec CapSkills RC2F ;
+- 216 mappings explicites ;
+- 0 conflit de mapping ;
+- fallback upstream conservé pour les sorts non mappés ;
+- `SpellRender.iconTexture` délègue à `HcSpellIconFallback` ;
+- map de référence embarquée : `assets/spell_engine/hc_spell_icon_map.json` ;
+- ASM `CheckClassAdapter` : PASS sur les quatre classes HUD/icônes modifiées ;
+- validation runtime requise (#80).
 
 ## Spell Power
 

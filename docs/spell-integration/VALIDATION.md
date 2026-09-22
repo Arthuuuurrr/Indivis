@@ -124,3 +124,46 @@ Validation du candidat RC8 :
   - HcHazennSpellPowerBridge : PASS.
 
 Statut : **correctif structurel validé statiquement, validation Minecraft runtime requise (#70).**
+
+
+## Spell Engine RC9 — HUD + Icon Sync
+
+Candidat : `spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC9-HUD-ICON-SYNC.jar`
+
+SHA-256 : `618823d07ce96ca637e91dca512bfab2ec74eff9a5e06faea7a7f68edd9e2acd`.
+
+### HUD
+
+- défaut upstream/original : `x=-170, y=-11` ;
+- mauvais défaut HC précédent : `x=-170, y=-34` ;
+- défaut RC9 : `x=-185, y=-11` ;
+- hauteur vanilla restaurée ;
+- décalage horizontal : 15 px vers la gauche ;
+- migrations exactes uniquement :
+  - `BOTTOM + (-170,-34) → (-185,-11)` ;
+  - `BOTTOM + (-170,-11) → (-185,-11)` ;
+- positions personnalisées préservées.
+
+### Icônes
+
+- 221 abilities RC2F possèdent un spell ;
+- 216 possèdent une texture explicite réutilisable ;
+- conflits spell → texture : 0 ;
+- 216 mappings embarqués ;
+- pour un sort mappé, la spellbar utilise exactement la texture CapSkills ;
+- pour un sort non mappé, fallback upstream : `namespace:textures/spell/<path>.png`.
+
+Harness :
+
+- `wizards:fireball → wizards:textures/spell/fireball.png` : PASS ;
+- `witcher_rpg:rend_boost_a → witcher_rpg:textures/spell/strong_attack.png` : PASS ;
+- `foo:bar → foo:textures/spell/bar.png` : PASS.
+
+ASM `CheckClassAdapter` :
+
+- SpellRender : PASS ;
+- HcSpellIconFallback : PASS ;
+- HudConfig : PASS ;
+- HcHudMigration : PASS.
+
+Statut : **validation statique PASS ; validation Minecraft runtime requise (#80).**

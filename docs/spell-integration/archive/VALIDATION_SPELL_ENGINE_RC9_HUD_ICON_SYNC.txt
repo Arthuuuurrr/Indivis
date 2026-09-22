@@ -1,0 +1,51 @@
+HAUTE CAPITALE — SPELL ENGINE TEST3 RC9 HUD + ICON SYNC
+Date: 2026-09-22
+
+Base:
+- Spell Engine TEST3 RC7 HAZENN FULLCOMPAT
+- RC8 HUD ALIGN intermediate patch
+
+HUD correction:
+- upstream/original default: x=-170, y=-11
+- bad HC previous default: x=-170, y=-34
+- RC9 default: x=-185, y=-11
+- therefore: original vanilla-hotbar height restored, 15 px shift left
+- migration changes only exact old defaults:
+  * BOTTOM + (-170,-34) -> (-185,-11)
+  * BOTTOM + (-170,-11) -> (-185,-11)
+- custom positions are preserved.
+
+Spell icon correction:
+- SpellRender.iconTexture now delegates to HcSpellIconFallback.
+- 216 spell -> icon mappings are generated directly from CapSkills 0.10.19 RC2F definitions/rewards.
+- For mapped spells, the spellbar uses the exact texture declared by the CapSkills node.
+- For unmapped spells, upstream behavior remains namespace:textures/spell/<spell_path>.png.
+- Mapping conflicts: 0.
+- Five HC abilities have no texture-icon mapping in RC2F and therefore retain upstream behavior:
+  * capitale:provocation
+  * four Witcher school-technique passives
+
+Validation:
+- JAR ZIP integrity: PASS
+- duplicate ZIP entries: 0
+- mapping entries: 216
+- ASM CheckClassAdapter:
+  * SpellRender: PASS
+  * HcSpellIconFallback: PASS
+  * HudConfig: PASS
+  * HcHudMigration: PASS
+- harness:
+  * wizards:fireball -> wizards:textures/spell/fireball.png
+  * witcher_rpg:rend_boost_a -> witcher_rpg:textures/spell/strong_attack.png (CapSkills icon)
+  * unknown foo:bar -> foo:textures/spell/bar.png (upstream fallback)
+
+Runtime tests still required:
+- fire mage spellbar remains deduplicated;
+- spellbar aligns with vanilla hotbar and no longer overlaps armor/hearts;
+- right-click axe technique displays its CapSkills icon;
+- test representative melee weapon techniques (axe, mace, spear, sword, two-hand weapon);
+- verify user-custom HUD position is not overwritten.
+
+SHA-256:
+618823d07ce96ca637e91dca512bfab2ec74eff9a5e06faea7a7f68edd9e2acd
+spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC9-HUD-ICON-SYNC.jar

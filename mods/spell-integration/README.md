@@ -5,8 +5,8 @@ Documentation principale : [../../docs/spell-integration/README.md](../../docs/s
 ## Composants patchés
 
 - Haute Capitale RPG RC2 ;
-- Spell Engine RC7 ;
-- Spell Power RC7 Direct Resist ;
+- Spell Engine RC9 HUD-ICON-SYNC ;
+- Spell Power RC8 ClassFormat Fix ;
 - Hazennstuff HC-SPELLCOMPAT1 ;
 - AzureLibArmor TEST3 RC1 ;
 - Witcher RPG TEST3 RC1.
