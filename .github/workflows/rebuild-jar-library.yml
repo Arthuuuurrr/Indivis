@@ -18,6 +18,7 @@ jobs:
         with:
           ref: artifacts/jar-library
           fetch-depth: 0
+          lfs: true
 
       - name: Rebuild JARs from temporary chunks
         shell: bash
@@ -61,16 +62,31 @@ jobs:
               print(*row)
           PY
 
-      - name: Commit reconstructed binaries
+      - name: Store JARs with Git LFS and commit
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
+
+          git lfs install --local
+          git lfs track "*.jar"
+          git add .gitattributes
+
+          # Convert already-tracked JARs to LFS pointers as well.
+          if [ -d artifacts/jars ]; then
+            while IFS= read -r -d '' f; do
+              git rm --cached --ignore-unmatch -- "$f" >/dev/null 2>&1 || true
+              git add -- "$f"
+            done < <(find artifacts/jars -type f -name '*.jar' -print0)
+          fi
+
+          git add -A artifact-staging 2>/dev/null || true
+
           if git diff --cached --quiet; then
             echo "Nothing to commit."
             exit 0
           fi
-          git commit -m "artifacts: reconstruct JAR library"
+
+          git commit -m "artifacts: archive JAR library with Git LFS"
           git push origin HEAD:artifacts/jar-library
