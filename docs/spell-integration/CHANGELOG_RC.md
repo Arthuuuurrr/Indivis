@@ -69,10 +69,22 @@ Extension :
 **Rejetée en runtime** : crash au PREPARE Mixin lié à
 `HcHazennSpellResistanceMixin`.
 
-### RC7 Direct Resist — référence finale
+### RC7 Direct Resist — rejetée au runtime
 
 - retire le mixin RC6 ;
-- appelle directement le bridge de résistance depuis `SpellResistance.resist(...)`.
+- appelle directement le bridge de résistance depuis `SpellResistance.resist(...)` ;
+- **rejetée** après crash runtime : `ClassFormatError: Illegal local variable table length 210`.
+
+Cause : la méthode a été étendue de 210 à 219 octets sans réécriture correcte de la `LocalVariableTable`.
+
+### RC8 ClassFormat Fix — candidat actuel
+
+- conserve la logique RC7 et le bridge Hazenn ;
+- réécrit uniquement `SpellResistance.class` via ASM avec `SKIP_DEBUG` ;
+- supprime les tables debug invalides de cette classe ;
+- aucun retour du mixin RC6 ;
+- `CheckClassAdapter` : PASS ;
+- validation Minecraft runtime encore requise.
 
 ## Hazennstuff
 
