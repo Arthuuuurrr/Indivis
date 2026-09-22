@@ -6,11 +6,13 @@ Ce dépôt sert de source de vérité pour le développement : code source, data
 
 ## Organisation
 
-- `mods/` : sources des mods développés ou maintenus pour le projet.
+- `mods/` : sources ou références source des mods développés/maintenus pour le projet.
 - `datapacks/` : datapacks du serveur.
 - `docs/` : architecture, spécifications, tests et suivi.
+- `artifacts/` : politique et suivi des artefacts compilés.
 - `tools/` : scripts et outils de développement.
 - `.github/` : modèles d'issues et de pull requests.
+- `server-manifest.yml` : versions et SHA-256 de référence du modpack/datapacks.
 
 ## Règle principale
 
@@ -29,20 +31,23 @@ Voir [CONTRIBUTING.md](CONTRIBUTING.md) et [docs/WORKFLOW.md](docs/WORKFLOW.md).
 
 ## Suivi du projet
 
-- [Roadmap](ROADMAP.md)
+- [Roadmap stratégique](ROADMAP.md)
+- [Roadmap d'exécution](docs/EXECUTION_ROADMAP.md)
+- [Registre des modules](docs/MODULES.md)
+- [Manifest serveur](server-manifest.yml)
 - [Priorités et statuts](docs/STATUS.md)
 - [Bug reports des testeurs](docs/TESTER_REPORTS.md)
 - [Historique des éléments résolus](docs/RESOLVED.md)
 
 ## Convention rapide des branches
 
-- `fix/<sujet>` : bug
-- `feat/<sujet>` : fonctionnalité
-- `refactor/<sujet>` : refactor
+- `fix/<issue>-<sujet>` : bug
+- `feat/<issue>-<sujet>` : fonctionnalité
+- `refactor/<issue>-<sujet>` : refactor
 - `docs/<sujet>` : documentation
 - `chore/<sujet>` : maintenance
 
-Exemples : `fix/enchanted-armor-heal-crash`, `feat/per-player-loot`.
+Exemples : `fix/55-capskills-tree`, `feat/52-safe-city-biomes`.
 
 ## Convention des commits
 
@@ -58,4 +63,4 @@ Exemples :
 
 ## Versions binaires
 
-Le dépôt doit contenir en priorité les **sources** et les fichiers nécessaires au build. Les JAR distribuables doivent idéalement être publiés via les Releases/artefacts plutôt que servir de source de vérité.
+Le dépôt contient en priorité les **sources** et les fichiers nécessaires au build. Les JAR distribuables sont identifiés par SHA-256 dans `server-manifest.yml` et devront à terme être produits/attachés par GitHub Actions et Releases, plutôt que devenir la source de vérité.
