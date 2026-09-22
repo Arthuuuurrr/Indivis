@@ -1,0 +1,78 @@
+name: Rebuild JAR library
+
+on:
+  push:
+    branches:
+      - artifacts/jar-library
+    paths:
+      - 'artifact-staging/.ready'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: artifacts/jar-library
+          fetch-depth: 0
+
+      - name: Rebuild JARs from temporary chunks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, shutil
+
+          root = Path("artifact-staging")
+          out_root = Path("artifacts/jars")
+          manifest = []
+
+          for d in sorted(p for p in root.iterdir() if p.is_dir()):
+              target_file = d / "target.txt"
+              sha_file = d / "sha256.txt"
+              if not target_file.exists() or not sha_file.exists():
+                  continue
+              target = target_file.read_text(encoding="utf-8").strip()
+              expected = sha_file.read_text(encoding="utf-8").strip().lower()
+              parts = sorted(d.glob("part_*.b64"))
+              if not parts:
+                  raise SystemExit(f"No chunks for {d}")
+              data = b"".join(base64.b64decode(p.read_text(encoding="utf-8")) for p in parts)
+              actual = hashlib.sha256(data).hexdigest()
+              if actual != expected:
+                  raise SystemExit(f"SHA mismatch for {target}: {actual} != {expected}")
+              module = d.name.split("__", 1)[0]
+              dest = out_root / module / target
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              dest.write_bytes(data)
+              manifest.append((module, target, len(data), actual))
+              shutil.rmtree(d)
+
+          ready = root / ".ready"
+          if ready.exists():
+              ready.unlink()
+          if root.exists() and not any(root.iterdir()):
+              root.rmdir()
+
+          print("Rebuilt:")
+          for row in manifest:
+              print(*row)
+          PY
+
+      - name: Commit reconstructed binaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A artifacts/jars artifact-staging || true
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git commit -m "artifacts: reconstruct JAR library"
+          git push origin HEAD:artifacts/jar-library
