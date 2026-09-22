@@ -1,0 +1,31 @@
+VALIDATION — Witcher RPG / Sorceleur — TEST3 RC1
+Date: 2026-09-22
+
+JAR de référence HC: witcher-class-mod-fabric-3.1.0-1.21.11-mmo+1.21.11-HC-FR-NATIF1.jar
+JAR audité: witcher-class-mod-fabric-3.1.0-1.21.11-mmo-HC-FOOTWORK-TEST3-RC1.jar
+
+Diff du JAR:
+- AJOUTÉ: assets/witcher_rpg/textures/mob_effect/footwork.png
+- MODIFIÉ: fabric.mod.json
+- SUPPRIMÉ: 0
+- footwork.png = copie byte-identique de textures/spell/fast_attack.png
+- dimensions des deux textures: 16x16 RGBA
+- ZIP valide; entrées dupliquées: 0
+
+Intégration CapSkills actuelle:
+- 73 définitions de sorts Witcher dans le JAR
+- 53 abilities Haute Capitale correspondantes, toutes pointant vers un sort existant
+- 20 définitions laissées hors arbre: bonus intrinsèques d'armes/armures/trinkets/glyphes ou helpers internes
+- 0 mismatch de type ability (active/passive/modifier)
+- 53 rewards Witcher uniques et 0 reward vers une ability absente
+- les 53 abilities exigent exactement les 19 épées déclarées dans #witcher_rpg:witcher_swords, main hand
+- les 52 overrides Spell JSON ne modifient rien d'autre que secondary_archetype=ANY (31 fichiers); 21 sont byte-sémantiquement identiques au JAR
+
+Graphe Sorceleur:
+- tous les 77 nœuds Sorceleur sont atteignables depuis doctrine_root
+- chemin mêlée: Fondamentaux -> Escrime -> Maîtrise de l'épée de Sorceleur
+- chemin Signes: Fondamentaux -> Signes fondamentaux -> Maîtrise des Signes
+- Aard/Igni/Quen/Yrden/Axii: Signes fondamentaux -> sort de base -> maîtrise spécifique
+- aucune référence de connexion Sorceleur cassée
+
+Statut: aucun nouveau défaut statique trouvé; RC1 conservé pour test runtime.
