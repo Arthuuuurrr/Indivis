@@ -72,6 +72,10 @@ def main() -> int:
                     continue
                 data = reward.get("data", {})
                 for ability in data.get("abilities", []):
+                    # Arsenal hc/* abilities are hidden technical authorization nodes,
+                    # not visible CapSkills abilities. RC9 intentionally excludes them.
+                    if ability.startswith("arsenal:hc/"):
+                        continue
                     spell = ability_to_spell.get(ability)
                     if not spell:
                         continue
