@@ -167,3 +167,81 @@ ASM `CheckClassAdapter` :
 - HcHudMigration : PASS.
 
 Statut : **validation statique PASS ; validation Minecraft runtime requise (#80).**
+
+
+## Spell Engine RC10 — Cast Safety
+
+Candidat : `spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC10-CAST-SAFETY.jar`
+
+SHA-256 : `f9d18114d91d9b6f200b2552c4193289b45d1400bd6480d1b4332053b06d2047`.
+
+### Audit des définitions visibles
+
+- 221 abilities visibles avec spell ;
+- 170 actives ;
+- 51 passives/modifiers ;
+- STANDARD : 123 ;
+- CHARGE : 14 ;
+- CHANNEL : 33 ;
+- cibles AIM : 65 ;
+- AREA : 36 ;
+- BEAM : 3 ;
+- CASTER : 50 ;
+- NONE : 16 ;
+- `aim.required=true` : 17 ;
+- AREA/NONE/CASTER ne nécessitant pas AIM : 102 ;
+- erreurs : **0**.
+
+### Audit de l'univers complet
+
+14 JAR sources + overrides CapSkills :
+
+- 319 ressources de sorts uniques ;
+- 191 actives ;
+- 128 passives/modifiers ;
+- STANDARD : 144 ;
+- CHARGE : 14 ;
+- CHANNEL : 33 ;
+- erreurs : **0**.
+
+Il n'existe donc aucun CHANNEL supplémentaire caché hors des 33 déjà exposés par l'univers visible actuel.
+
+### Correction CHANNEL
+
+`SpellHotbar` fournit à `ClientCastController.keyHeld` les états `STOP_released` et `START_released`.
+
+RC9 autorisait le restart du bloc CASTING/CHANNEL avec `STOP_released`. Après la fin serveur d'un CHANNEL, maintenir la touche pouvait donc démarrer immédiatement un nouveau process.
+
+RC10 :
+- CHANNEL → restart uniquement avec `START_released` ;
+- START reste debounced jusqu'au relâchement physique de la touche ;
+- CASTING non-CHANNEL → comportement upstream inchangé ;
+- annulation anticipée via `holdToCastChannelled` inchangée.
+
+### Sécurité Haste
+
+L'ancien code faisait directement `base / haste`.
+
+RC10 :
+- Haste NaN/Infinity → durée neutre ;
+- Haste <= 0 → durée neutre ;
+- 0 < Haste < 0.1 → clamp 0.1 ;
+- résultat non fini → durée neutre.
+
+Le plancher 0.1 correspond à la mécanique HASTE de Spell Power : default 100, min 10, max 1000.
+
+### Validation structurelle
+
+- JAR : PASS ;
+- doublons ZIP : 0 ;
+- RC9 → RC10 : exactement 3 entrées changées :
+  - `fabric.mod.json` ;
+  - `ClientCastController.class` ;
+  - `SpellParameters.class` ;
+- ASM `CheckClassAdapter` : PASS sur toutes les classes Spell Engine HC modifiées ;
+- harness Haste : PASS ;
+- vérification sémantique du bytecode CHANNEL : PASS ;
+- audit 221 abilities : PASS ;
+- audit 319 ressources : PASS.
+
+Statut : **validation statique PASS ; validation Minecraft runtime requise (#83).**
