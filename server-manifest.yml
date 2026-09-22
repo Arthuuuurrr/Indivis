@@ -42,8 +42,9 @@ deployed:
       artifact: "spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC7-HAZENN-FULLCOMPAT.jar"
       sha256: "ecd2065e849a32d6626f9a4f760aae6edda15972ad300305c427b12527eb283c"
     spell_power:
-      artifact: "spell_power-fabric-1.6.1.001+1.21.11-HC-HAZENN-PRECISE-TEST3-RC8-CLASSFORMAT-FIX.jar"
-      sha256: "4f9527b9aa6b7b34531edaed25d3d5c0e6e182a816169b41d80a207ea3589fa8"
+      artifact: "spell_power-fabric-1.6.1.001+1.21.11-HC-HAZENN-PRECISE-TEST3-RC6-CLASSFORMAT-FIX.jar"
+      size_bytes: 230643
+      sha256: null
       validation_issue: 70
     hazennstuff:
       artifact: "hazennstuff-fabric-1.21.11-1.0.0-b4-HC-SPELLCOMPAT1.jar"
@@ -70,6 +71,10 @@ deployed:
       haute_capitale_pirates:
         client: "haute-capitale-pirates-0.1.0.b2.jar"
         server: "haute-capitale-pirates-0.1.0.b4.jar"
+      spell_power:
+        client: "spell_power-fabric-1.6.1.001+1.21.11-HC-HAZENN-PRECISE-TEST3-RC8-CLASSFORMAT-FIX.jar"
+        client_sha256: "4f9527b9aa6b7b34531edaed25d3d5c0e6e182a816169b41d80a207ea3589fa8"
+        server: "spell_power-fabric-1.6.1.001+1.21.11-HC-HAZENN-PRECISE-TEST3-RC6-CLASSFORMAT-FIX.jar"
 
   datapacks:
     capitale_skills:
@@ -113,6 +118,7 @@ source_reference:
 
 warnings:
   - "Server and client custom mod versions must be aligned before release."
+  - "Spell Power is visibly mismatched: server RC6 CLASSFORMAT FIX, client RC8 CLASSFORMAT FIX. Do not close #70 until the server runs RC8 and passes runtime validation."
   - "PlayerAnimationLibFabric 1.1.10 and 1.1.7 are both visible in the server mods directory; stale duplicate must be checked/removed."
   - "Do not treat BETA 0.12 creatures datapack as deployed: screenshot shows BETA 0.10 on server."
   - "A missing sha256 means the exact binary is visible in screenshots but not available as bytes in the accessible Library."
