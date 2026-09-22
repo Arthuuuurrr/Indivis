@@ -85,3 +85,44 @@ Les trois incidents ci-dessus montrent pourquoi :
 - la liste exacte des mods chargés client/serveur doit être vérifiée avant toute correction ;
 - une RC remplacée doit être retirée des deux côtés ;
 - les tests d’intégration doivent être conservés dans le dépôt.
+
+
+## 6. Crash Spell Power RC7 pendant un tick d'entité
+
+### Symptôme
+
+Serveur démarré correctement, puis crash pendant le tick d'un `capitale_entities:goblin` :
+
+`java.lang.ClassFormatError: Illegal local variable table length 210 in method SpellResistance.resist(...)`.
+
+Le gobelin n'est pas la cause : il a simplement déclenché un chemin de dégâts/résistance qui a chargé cette méthode.
+
+### Cause
+
+RC7 avait ajouté l'appel au bridge Hazenn à la fin de `SpellResistance.resist(...)`.
+
+- taille bytecode originale : 210 octets ;
+- taille RC7 : 219 octets ;
+- les entrées de `LocalVariableTable` provenant de la classe originale se terminaient encore à l'offset 210 ;
+- dans RC7, cet offset tombe au milieu de l'instruction `dstore` ajoutée à l'offset 209.
+
+La JVM rejette donc le format de classe lorsque la méthode est réellement vérifiée/utilisée.
+
+### Correction RC8
+
+- conservation du bytecode fonctionnel RC7 ;
+- réécriture de `SpellResistance.class` via ASM `ClassReader -> ClassWriter` avec `SKIP_DEBUG` ;
+- suppression de la `LocalVariableTable` et des métadonnées debug invalides de cette classe uniquement ;
+- bridge `HcHazennResistanceBridge.apply(...)` conservé ;
+- ancien mixin RC6 toujours absent ;
+- manifeste Fabric byte-identique à RC7.
+
+### Validation statique RC8
+
+- archive ZIP/JAR : PASS ;
+- `CheckClassAdapter` sur SpellResistance, SpellSchool et les deux bridges Hazenn : PASS ;
+- `LocalVariableTable` finale de SpellResistance : absente ;
+- appel au bridge de résistance : présent ;
+- ancien mixin RC6 : absent.
+
+Issue de suivi : #70.
