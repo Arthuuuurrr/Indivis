@@ -2,65 +2,55 @@
 
 Dépôt de travail du serveur Minecraft **L'Indivis / Haute Capitale**.
 
-Ce dépôt sert de source de vérité pour le développement : code source, datapacks, documentation, roadmap, bugs, branches de travail et historique des changements.
+## Pilotage du travail
+
+Le pilotage quotidien ne se fait plus depuis un fichier roadmap. Les **Issues GitHub** sont la file de travail réelle, avec priorité, domaine, statut de validation et assignee.
+
+- [P1 — priorité maximale](https://github.com/Arthuuuurrr/Indivis/issues?q=is%3Aissue+is%3Aopen+label%3A%22Priorit%C3%A9+maximale+-P1%22)
+- [P2 — priorité secondaire](https://github.com/Arthuuuurrr/Indivis/issues?q=is%3Aissue+is%3Aopen+label%3A%22Probl%C3%A8me+prioritaire+secondaire+-P2%22)
+- [P3 — à régler](https://github.com/Arthuuuurrr/Indivis/issues?q=is%3Aissue+is%3Aopen+label%3A%22A+r%C3%A9gler+-P3%22)
+- [À tester / valider](https://github.com/Arthuuuurrr/Indivis/issues?q=is%3Aissue+is%3Aopen+label%3A%22A+tester+%2F+Valider%22)
+- [Toutes les issues ouvertes](https://github.com/Arthuuuurrr/Indivis/issues?q=is%3Aissue+is%3Aopen)
+
+`ROADMAP.md` et `docs/EXECUTION_ROADMAP.md` restent des documents d'orientation, pas des listes de tâches à maintenir manuellement.
 
 ## Organisation
 
-- `mods/` : sources ou références source des mods développés/maintenus pour le projet.
-- `datapacks/` : datapacks du serveur.
-- `docs/` : architecture, spécifications, tests et suivi.
-- `artifacts/` : politique et suivi des artefacts compilés.
-- `tools/` : scripts et outils de développement.
-- `.github/` : modèles d'issues et de pull requests.
-- `server-manifest.yml` : versions et SHA-256 de référence du modpack/datapacks.
+- `mods/` : sources ou références source des mods développés/maintenus.
+- `datapacks/` : datapacks développés pour le serveur.
+- `docs/` : architecture, inventaires, spécifications et tests.
+- `artifacts/` : politique des artefacts compilés.
+- `.github/` : templates d'issues/PR.
+- `server-manifest.yml` : état déployé + sources de référence.
+- `docs/RUNTIME_SNAPSHOT_2026-09-22.md` : inventaire du serveur/client constaté sur captures.
 
-## Règle principale
+## Workflow
 
-`main` doit rester **stable et validée**. On évite les modifications directes sur `main`.
+1. issue priorisée ;
+2. assignee ;
+3. branche dédiée ;
+4. développement ;
+5. Pull Request ;
+6. test/validation ;
+7. merge ;
+8. déploiement.
 
-Workflow :
-
-1. créer ou sélectionner une issue ;
-2. créer une branche courte dédiée ;
-3. développer et tester ;
-4. ouvrir une Pull Request ;
-5. corriger si nécessaire ;
-6. fusionner dans `main` après validation.
-
-Voir [CONTRIBUTING.md](CONTRIBUTING.md) et [docs/WORKFLOW.md](docs/WORKFLOW.md).
-
-## Suivi du projet
-
-- [Roadmap stratégique](ROADMAP.md)
-- [Roadmap d'exécution](docs/EXECUTION_ROADMAP.md)
-- [Registre des modules](docs/MODULES.md)
-- [Manifest serveur](server-manifest.yml)
-- [Priorités et statuts](docs/STATUS.md)
-- [Bug reports des testeurs](docs/TESTER_REPORTS.md)
-- [Historique des éléments résolus](docs/RESOLVED.md)
+`main` doit rester stable et validée.
 
 ## Convention rapide des branches
 
-- `fix/<issue>-<sujet>` : bug
-- `feat/<issue>-<sujet>` : fonctionnalité
-- `refactor/<issue>-<sujet>` : refactor
-- `docs/<sujet>` : documentation
-- `chore/<sujet>` : maintenance
-
-Exemples : `fix/55-capskills-tree`, `feat/52-safe-city-biomes`.
+- `fix/<issue>-<sujet>`
+- `feat/<issue>-<sujet>`
+- `refactor/<issue>-<sujet>`
+- `docs/<sujet>`
+- `chore/<sujet>`
 
 ## Convention des commits
 
-Format recommandé :
-
 `type(scope): description`
 
-Exemples :
+Exemple : `fix(skills): prevent spell reset on reconnect`.
 
-- `fix(skills): prevent spell reset on reconnect`
-- `feat(core): add per-player chest loot`
-- `docs(roadmap): update beta priorities`
+## Binaries
 
-## Versions binaires
-
-Le dépôt contient en priorité les **sources** et les fichiers nécessaires au build. Les JAR distribuables sont identifiés par SHA-256 dans `server-manifest.yml` et devront à terme être produits/attachés par GitHub Actions et Releases, plutôt que devenir la source de vérité.
+Les JAR ne remplacent pas les sources. Quand les bytes exacts sont disponibles, leur SHA-256 est enregistré dans le manifest. Quand ils ne sont visibles que sur une capture, le manifest le signale explicitement.
