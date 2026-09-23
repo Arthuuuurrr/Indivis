@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "capitale_armor_balance",
+  "version": "0.1.1+1.21.11-armor40-x2-formula",
+  "name": "Haute Capitale — Armor Balance",
+  "description": "ARMOR40 pass 1: doubles additive ARMOR points on non-vanilla armor-slot items and remaps vanilla armor mitigation to a proportional 0..40 scale; toughness, max health and other attributes remain unchanged.",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "fr.hautecapitale.armorbalance.CapitaleArmorBalance"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "fabric-api": "*",
+    "minecraft": "~1.21.11",
+    "java": ">=21"
+  },
+  "mixins": [
+    "capitale_armor_balance.mixins.json"
+  ]
+}
