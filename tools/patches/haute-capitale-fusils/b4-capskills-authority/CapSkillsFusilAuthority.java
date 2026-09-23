@@ -21,8 +21,6 @@ public final class CapSkillsFusilAuthority {
         return entity.method_5752().contains(USE_TAG);
     }
 
-
-
     public static boolean canUseSkill(class_1309 entity, String skillId) {
         if (!canFire(entity)) return false;
         if (!(entity instanceof class_1657)) return true;
