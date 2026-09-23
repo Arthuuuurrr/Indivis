@@ -244,12 +244,12 @@ jobs:
               echo "Terminé"
             elif grep -qiE '(^|,)(status:blocked|blocked)(,|$)' <<<"$labels" || grep -qi '\[BLOCKED\]' <<<"$title"; then
               echo "Bloqué"
-            elif grep -qiE '(^|,)A tester / Valider(,|$)' <<<"$labels" || grep -qi '\[VERIFY\]' <<<"$title"; then
-              echo "Validation en jeu"
             elif grep -qiE '(^|,)(status:in-progress|wip)(,|$)' <<<"$labels" || grep -qi '\[WIP\]' <<<"$title"; then
               echo "En cours"
             elif grep -qiE '(^|,)(status:todo|todo)(,|$)' <<<"$labels" || grep -qi '\[TODO\]' <<<"$title"; then
               echo "À faire"
+            elif grep -qi '\[VERIFY\]' <<<"$title" || grep -qiE '(^|,)A tester / Valider(,|$)' <<<"$labels"; then
+              echo "Validation en jeu"
             elif grep -qiE '(^|,)(status:backlog|triage)(,|$)' <<<"$labels" || grep -qi '\[TRIAGE\]' <<<"$title"; then
               echo "Backlog"
             else
