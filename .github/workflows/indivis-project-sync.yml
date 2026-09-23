@@ -43,6 +43,8 @@ jobs:
           PROJECT_OWNER="${BASH_REMATCH[1]}"
           PROJECT_NUMBER="${BASH_REMATCH[2]}"
           PROJECT_ROOT="users/${PROJECT_OWNER}/projectsV2/${PROJECT_NUMBER}"
+          REPO_OWNER="${GITHUB_REPOSITORY%%/*}"
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
 
           project_api() {
             GH_TOKEN="${PROJECT_TOKEN}" gh api \
@@ -291,10 +293,42 @@ jobs:
 
             if [[ -z "$item_id" || "$item_id" == "null" ]]; then
               echo "Adding issue #${number} to Project"
-              add_response="$(jq -nc --argjson id "$issue_id" '{type:"Issue",id:$id}' | \
-                project_api --method POST "${PROJECT_ROOT}/items" --input -)"
-              item_id="$(jq -r '.value.id' <<<"$add_response")"
-              PROJECT_ITEMS_JSON="$(jq --argjson item "$(jq -c '.value' <<<"$add_response")" '. + [$item]' <<<"${PROJECT_ITEMS_JSON}")"
+
+              if ! add_response="$(jq -nc --argjson id "$issue_id" '{type:"Issue",id:$id}' | \
+                project_api --method POST "${PROJECT_ROOT}/items" --input - 2>&1)"; then
+                first_add_error="$add_response"
+                echo "Add by internal issue ID failed; trying repository coordinates."
+
+                if ! add_response="$(jq -nc \
+                  --arg owner "${REPO_OWNER}" \
+                  --arg repo "${REPO_NAME}" \
+                  --argjson number "$number" \
+                  '{type:"Issue",owner:$owner,repo:$repo,number:$number}' | \
+                  project_api --method POST "${PROJECT_ROOT}/items" --input - 2>&1)"; then
+
+                  if ! GH_TOKEN="${PROJECT_TOKEN}" gh api "repos/${GITHUB_REPOSITORY}/issues/${number}" >/dev/null 2>&1; then
+                    echo "::error::INDIVIS_PROJECT_TOKEN can manage the Project but cannot read the private repository. Edit the classic PAT and enable the repo scope, then update the INDIVIS_PROJECT_TOKEN secret."
+                  else
+                    echo "::error::GitHub rejected issue #${number} while adding it to the Project."
+                    echo "First attempt: $first_add_error"
+                    echo "Fallback attempt: $add_response"
+                  fi
+                  return 1
+                fi
+              fi
+
+              item_id="$(jq -r '.value.id // empty' <<<"$add_response")"
+              if [[ -z "$item_id" ]]; then
+                PROJECT_ITEMS_JSON="$(project_api "${PROJECT_ROOT}/items?per_page=100")"
+                item_id="$(jq -r --argjson issue_id "$issue_id" '.[] | select(.content.id == $issue_id) | .id' <<<"${PROJECT_ITEMS_JSON}" | head -n1)"
+              else
+                PROJECT_ITEMS_JSON="$(jq --argjson item "$(jq -c '.value' <<<"$add_response")" '. + [$item]' <<<"${PROJECT_ITEMS_JSON}")"
+              fi
+
+              if [[ -z "$item_id" || "$item_id" == "null" ]]; then
+                echo "::error::Issue #${number} was not returned as a Project item after insertion."
+                return 1
+              fi
             fi
 
             advancement="$(status_for_issue "$title" "$state" "$labels")"
