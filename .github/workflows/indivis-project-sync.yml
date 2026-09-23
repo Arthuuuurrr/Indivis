@@ -261,19 +261,24 @@ jobs:
             local title="$1"
             local labels="$2"
 
-            if grep -qiE '(^|,)Priorité maximale -P1(,|$)' <<<"$labels"; then echo "P0 Critique"; return 0; fi
-            if grep -qiE '(^|,)Problème prioritaire secondaire -P2(,|$)' <<<"$labels"; then echo "P1 Haute"; return 0; fi
-            if grep -qiE '(^|,)A régler -P3(,|$)' <<<"$labels"; then echo "P2 Normale"; return 0; fi
-            if grep -qiE '(^|,)A traiter -P4(,|$)' <<<"$labels"; then echo "P3 Basse"; return 0; fi
+            if grep -qiE '(^|[^[:alnum:]])P0([^[:alnum:]]|$)' <<<"$title"; then
+              echo "P0 Critique"
+              return 0
+            fi
 
-            # Legacy fallback for older issue titles not yet relabelled.
-            for n in 0 1 2 3 4; do
+            if grep -qiE '(^|,)Priorité maximale -P1(,|$)' <<<"$labels"; then echo "P1 Haute"; return 0; fi
+            if grep -qiE '(^|,)Problème prioritaire secondaire -P2(,|$)' <<<"$labels"; then echo "P2 Normale"; return 0; fi
+            if grep -qiE '(^|,)A régler -P3(,|$)' <<<"$labels"; then echo "P3 Basse"; return 0; fi
+            if grep -qiE '(^|,)A traiter -P4(,|$)' <<<"$labels"; then echo "P4 Long terme"; return 0; fi
+
+            # Legacy fallback for old titles not yet relabelled.
+            for n in 1 2 3 4; do
               if grep -qiE "(^|[^[:alnum:]])P${n}([^[:alnum:]]|$)" <<<"$title"; then
                 case "$n" in
-                  0|1) echo "P0 Critique" ;;
-                  2) echo "P1 Haute" ;;
-                  3) echo "P2 Normale" ;;
-                  4) echo "P3 Basse" ;;
+                  1) echo "P1 Haute" ;;
+                  2) echo "P2 Normale" ;;
+                  3) echo "P3 Basse" ;;
+                  4) echo "P4 Long terme" ;;
                 esac
                 return 0
               fi
@@ -366,6 +371,42 @@ jobs:
               44) echo 66 ;;
               *) echo 999 ;;
             esac
+          }
+
+          planning_for_issue() {
+            local phase="$1"
+            local work_order="$2"
+            local base offset duration version
+
+            case "$phase" in
+              "0 — Validation technique")
+                base="2026-09-23"; offset=$(( (work_order - 1) * 2 )); duration=5; version="Bêta fermée — stabilisation"
+                ;;
+              "1 — Progression / combat")
+                base="2026-10-05"; offset=$(( (work_order - 13) * 2 )); duration=7; version="Bêta fermée — socle gameplay"
+                ;;
+              "2 — Monde / biomes")
+                base="2026-10-26"; offset=$(( (work_order - 28) * 3 )); duration=8; version="Bêta fermée — monde"
+                ;;
+              "3 — Quêtes / narration")
+                base="2026-11-16"; offset=$(( (work_order - 35) * 3 )); duration=8; version="Bêta fermée — contenu narratif"
+                ;;
+              "4 — Donjons / boss")
+                base="2026-12-07"; offset=$(( (work_order - 46) * 3 )); duration=8; version="Bêta fermée — donjons"
+                ;;
+              "5 — Contenu bêta")
+                base="2027-01-04"; offset=$(( (work_order - 55) * 4 )); duration=10; version="Bêta fermée — contenu secondaire"
+                ;;
+              *)
+                printf '||'
+                return 0
+                ;;
+            esac
+
+            local start target
+            start="$(date -d "$base +$offset days" +%F)"
+            target="$(date -d "$start +$duration days" +%F)"
+            printf '%s|%s|%s' "$start" "$target" "$version"
           }
 
           category_for_issue() {
@@ -463,6 +504,9 @@ jobs:
           CATEGORIE_FIELD_NODE_ID="$(gql_field_id "Catégorie")"
           PHASE_FIELD_NODE_ID="$(gql_field_id "Phase")"
           ORDRE_FIELD_NODE_ID="$(gql_field_id "Ordre de travail")"
+          START_DATE_FIELD_NODE_ID="$(gql_field_id "Start date")"
+          TARGET_DATE_FIELD_NODE_ID="$(gql_field_id "Target date")"
+          VERSION_FIELD_NODE_ID="$(gql_field_id "Version cible")"
 
           project_graphql_retry() {
             local attempt=1
@@ -488,6 +532,7 @@ jobs:
             local number="${url##*/}"
             local issue_json issue_node_id title state labels item_node_id add_json
             local advancement priority category phase work_order advancement_option priority_option category_option phase_option
+            local planning start_date target_date target_version
 
             issue_json="$(repo_api "repos/${GITHUB_REPOSITORY}/issues/${number}")"
 
@@ -527,6 +572,8 @@ jobs:
             category="$(category_for_issue "$title")"
             phase="$(phase_for_issue "$number")"
             work_order="$(order_for_issue "$number")"
+            planning="$(planning_for_issue "$phase" "$work_order")"
+            IFS='|' read -r start_date target_date target_version <<<"$planning"
 
             advancement_option="$(gql_option_id "Avancement" "$advancement")"
             priority_option="$(gql_option_id "Priorité" "$priority")"
@@ -538,6 +585,7 @@ jobs:
               return 1
             fi
 
+            if [[ -n "$start_date" && -n "$target_date" && -n "$target_version" ]]; then
             project_graphql_retry \
               -f query='
                 mutation(
@@ -552,7 +600,13 @@ jobs:
                   $phaseField:ID!,
                   $phaseOption:String!,
                   $orderField:ID!,
-                  $workOrder:Float!
+                  $workOrder:Float!,
+                  $startDateField:ID!,
+                  $startDate:Date!,
+                  $targetDateField:ID!,
+                  $targetDate:Date!,
+                  $versionField:ID!,
+                  $targetVersion:String!
                 ) {
                   advancement:updateProjectV2ItemFieldValue(input:{
                     projectId:$project,
@@ -588,6 +642,68 @@ jobs:
                     fieldId:$orderField,
                     value:{number:$workOrder}
                   }) { projectV2Item { id } }
+
+                  startDate:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$startDateField,
+                    value:{date:$startDate}
+                  }) { projectV2Item { id } }
+
+                  targetDate:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$targetDateField,
+                    value:{date:$targetDate}
+                  }) { projectV2Item { id } }
+
+                  targetVersion:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$versionField,
+                    value:{text:$targetVersion}
+                  }) { projectV2Item { id } }
+                }' \
+              -f project="${PROJECT_NODE_ID}" \
+              -f item="$item_node_id" \
+              -f advancementField="${AVANCEMENT_FIELD_NODE_ID}" \
+              -f advancementOption="$advancement_option" \
+              -f priorityField="${PRIORITE_FIELD_NODE_ID}" \
+              -f priorityOption="$priority_option" \
+              -f categoryField="${CATEGORIE_FIELD_NODE_ID}" \
+              -f categoryOption="$category_option" \
+              -f phaseField="${PHASE_FIELD_NODE_ID}" \
+              -f phaseOption="$phase_option" \
+              -f orderField="${ORDRE_FIELD_NODE_ID}" \
+              -F workOrder="$work_order" \
+              -f startDateField="${START_DATE_FIELD_NODE_ID}" \
+              -f startDate="$start_date" \
+              -f targetDateField="${TARGET_DATE_FIELD_NODE_ID}" \
+              -f targetDate="$target_date" \
+              -f versionField="${VERSION_FIELD_NODE_ID}" \
+              -f targetVersion="$target_version" >/dev/null
+            else
+            project_graphql_retry \
+              -f query='
+                mutation(
+                  $project:ID!,
+                  $item:ID!,
+                  $advancementField:ID!,
+                  $advancementOption:String!,
+                  $priorityField:ID!,
+                  $priorityOption:String!,
+                  $categoryField:ID!,
+                  $categoryOption:String!,
+                  $phaseField:ID!,
+                  $phaseOption:String!,
+                  $orderField:ID!,
+                  $workOrder:Float!
+                ) {
+                  advancement:updateProjectV2ItemFieldValue(input:{projectId:$project,itemId:$item,fieldId:$advancementField,value:{singleSelectOptionId:$advancementOption}}) { projectV2Item { id } }
+                  priority:updateProjectV2ItemFieldValue(input:{projectId:$project,itemId:$item,fieldId:$priorityField,value:{singleSelectOptionId:$priorityOption}}) { projectV2Item { id } }
+                  category:updateProjectV2ItemFieldValue(input:{projectId:$project,itemId:$item,fieldId:$categoryField,value:{singleSelectOptionId:$categoryOption}}) { projectV2Item { id } }
+                  phase:updateProjectV2ItemFieldValue(input:{projectId:$project,itemId:$item,fieldId:$phaseField,value:{singleSelectOptionId:$phaseOption}}) { projectV2Item { id } }
+                  order:updateProjectV2ItemFieldValue(input:{projectId:$project,itemId:$item,fieldId:$orderField,value:{number:$workOrder}}) { projectV2Item { id } }
                 }' \
               -f project="${PROJECT_NODE_ID}" \
               -f item="$item_node_id" \
@@ -601,8 +717,9 @@ jobs:
               -f phaseOption="$phase_option" \
               -f orderField="${ORDRE_FIELD_NODE_ID}" \
               -F workOrder="$work_order" >/dev/null
+            fi
 
-            echo "#${number}: $advancement | $priority | $category | $phase | ordre $work_order"
+            echo "#${number}: $advancement | $priority | $category | $phase | ordre $work_order | $start_date -> $target_date | $target_version"
           }
 
           if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" || "${GITHUB_EVENT_NAME}" == "push" ]]; then
