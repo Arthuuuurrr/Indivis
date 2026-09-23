@@ -1,8 +1,0 @@
-{
-  "replace": true,
-  "values": [
-    "#capitale_creatures:jungle_variants",
-    "minecraft:swamp",
-    "minecraft:mangrove_swamp"
-  ]
-}

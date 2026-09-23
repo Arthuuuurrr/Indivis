@@ -1,4 +1,0 @@
-execute unless entity @e[type=marker,tag=cap_zone_protection,distance=..16,sort=nearest,limit=1] run tellraw @s {"text":"[Zones protégées] Aucune zone trouvée dans un rayon de 16 blocs.","color":"red"}
-execute if entity @e[type=marker,tag=cap_zone_protection,distance=..16,sort=nearest,limit=1] run tellraw @s [{"text":"[Zones protégées] Zone proche — rayon ","color":"gold"},{"score":{"name":"@e[type=marker,tag=cap_zone_protection,distance=..16,sort=nearest,limit=1]","objective":"CAP_ZONE_RADIUS"},"color":"white"},{"text":" blocs.","color":"white"}]
-execute if entity @e[type=marker,tag=cap_zone_protection,tag=cap_zone_active,distance=..16,sort=nearest,limit=1] run tellraw @s {"text":"État : active.","color":"green"}
-execute if entity @e[type=marker,tag=cap_zone_protection,tag=!cap_zone_active,distance=..16,sort=nearest,limit=1] run tellraw @s {"text":"État : inactive.","color":"yellow"}

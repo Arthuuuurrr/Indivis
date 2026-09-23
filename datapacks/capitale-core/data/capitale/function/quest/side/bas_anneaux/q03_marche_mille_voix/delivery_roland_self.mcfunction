@@ -1,7 +1,0 @@
-scoreboard players add @s QUEST_SIDE_BA_Q03 0
-scoreboard players add @s QUEST_SIDE_BA_Q01 0
-execute unless score @s QUEST_SIDE_BA_Q03 matches 40 run tellraw @s {"text":"[Quête] Cette livraison finale n’est pas attendue maintenant.","color":"red"}
-execute if score @s QUEST_SIDE_BA_Q03 matches 40 unless score @s QUEST_SIDE_BA_Q01 matches 102 run tellraw @s {"text":"[Quête] Cette livraison n’est destinée à Roland que si Mira a été dénoncée dans le Quartier des Oubliés.","color":"red"}
-execute if score @s QUEST_SIDE_BA_Q03 matches 40 if score @s QUEST_SIDE_BA_Q01 matches 102 unless entity @e[type=marker,tag=anchor_side_ba_q03_roland,limit=1] run tellraw @s {"text":"[Setup] Anchor Q03 Roland absent. Place-le sur Roland.","color":"red"}
-execute at @s if score @s QUEST_SIDE_BA_Q03 matches 40 if score @s QUEST_SIDE_BA_Q01 matches 102 if entity @e[type=marker,tag=anchor_side_ba_q03_roland,limit=1] unless entity @e[type=marker,tag=anchor_side_ba_q03_roland,distance=..8,limit=1] run tellraw @s {"text":"[Quête] Vous devez être auprès de Roland pour cette livraison. Le point Q03 Roland est probablement mal placé.","color":"red"}
-execute at @s if score @s QUEST_SIDE_BA_Q03 matches 40 if score @s QUEST_SIDE_BA_Q01 matches 102 if entity @e[type=marker,tag=anchor_side_ba_q03_roland,distance=..8,limit=1] run function capitale:quest/side/bas_anneaux/q03_marche_mille_voix/delivery_roland_apply_self

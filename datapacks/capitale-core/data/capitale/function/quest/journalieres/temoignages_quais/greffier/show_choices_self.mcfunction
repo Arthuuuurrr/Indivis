@@ -1,3 +1,0 @@
-
-scoreboard players enable @s QuestChoix
-tellraw @s [{"text":"[Choix] ","color":"gray"},{"text":"[Je vais les interroger.]","color":"green","click_event":{"action":"run_command","command":"/trigger QuestChoix set 250"},"hover_event":{"action":"show_text","value":"Accepter la collecte de témoignages."}},{"text":"   ","color":"gray"},{"text":"[Pourquoi trois témoins ?]","color":"aqua","click_event":{"action":"run_command","command":"/trigger QuestChoix set 251"},"hover_event":{"action":"show_text","value":"Demander des précisions."}},{"text":"   ","color":"gray"},{"text":"[Pas aujourd’hui.]","color":"red","click_event":{"action":"run_command","command":"/trigger QuestChoix set 252"},"hover_event":{"action":"show_text","value":"Décliner."}}]

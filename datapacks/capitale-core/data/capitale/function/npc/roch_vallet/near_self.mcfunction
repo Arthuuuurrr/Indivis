@@ -1,1 +1,0 @@
-function capitale:quest/au_seuil_des_profondeurs/roch/near_offer_self

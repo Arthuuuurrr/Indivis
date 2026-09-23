@@ -1,7 +1,0 @@
-# Initialisation autoritaire du nouveau Tourbillon isolé.
-scoreboard players add @s CAPSK_LAME_TOURB_CD 0
-execute unless entity @s[tag=capskills.lame.tourbillon.r1] run title @s actionbar {"text":"Tourbillon impérial non débloqué.","color":"red"}
-execute if entity @s[tag=capskills.lame.tourbillon.r1] if entity @s[tag=capskills_0115.tourbillon.channeling] run title @s actionbar {"text":"Tourbillon : canalisation déjà en cours.","color":"red"}
-execute if entity @s[tag=capskills.lame.tourbillon.r1] if entity @s[tag=capskills_0115.tourbillon.spinning] run title @s actionbar {"text":"Tourbillon déjà actif.","color":"red"}
-execute if entity @s[tag=capskills.lame.tourbillon.r1] unless entity @s[tag=capskills_0115.tourbillon.channeling] unless entity @s[tag=capskills_0115.tourbillon.spinning] if score @s CAPSK_LAME_TOURB_CD matches 1.. run title @s actionbar [{"text":"Tourbillon en recharge : ","color":"red"},{"score":{"name":"@s","objective":"CAPSK_LAME_TOURB_CD"},"color":"red"},{"text":" s","color":"red"}]
-execute if entity @s[tag=capskills.lame.tourbillon.r1] unless entity @s[tag=capskills.dual_wield.active] unless items entity @s weapon.offhand #capskills_0132:dual_wield_one_handed unless entity @s[tag=capskills_0115.tourbillon.channeling] unless entity @s[tag=capskills_0115.tourbillon.spinning] if score @s CAPSK_LAME_TOURB_CD matches 0 run function capskills_0115:tourbillon/begin_self

@@ -1,1 +1,0 @@
-function capitale:quest/une_adresse_dans_les_profondeurs/aubergiste/interact_self

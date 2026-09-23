@@ -1,1 +1,0 @@
-function capitale:quest/side/bas_anneaux/q02_marteau_elias/interact_self

@@ -1,1 +1,0 @@
-function capitale:npc/altheon_brumeforge/near_npc

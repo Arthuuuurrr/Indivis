@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#capitale:weapon/bows",
-    "#capitale:weapon/crossbows",
-    "#capitale:weapon/firearms"
-  ]
-}

@@ -1,1 +1,0 @@
-function capitale:npc/geraud_rivet/interact_self

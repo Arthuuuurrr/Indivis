@@ -1,5 +1,0 @@
-scoreboard players add @s QUEST_SIDE_BA_Q02 0
-execute unless score @s QUEST_SIDE_BA_Q02 matches 20 run tellraw @s {"text":"[Quête] Cette caisse n’est pas attendue maintenant.","color":"red"}
-execute if score @s QUEST_SIDE_BA_Q02 matches 20 unless entity @e[type=marker,tag=anchor_side_ba_q02_caisse,limit=1] run tellraw @s {"text":"[Setup] Anchor Q02 caisse absent. Place-le avec /function capitale:quest/side/bas_anneaux/setup/menu_self.","color":"red"}
-execute at @s if score @s QUEST_SIDE_BA_Q02 matches 20 if entity @e[type=marker,tag=anchor_side_ba_q02_caisse,limit=1] unless entity @e[type=marker,tag=anchor_side_ba_q02_caisse,distance=..8,limit=1] run tellraw @s {"text":"[Quête] Vous devez être au point de caisse de la forge. Utilise la visualisation si le point semble mal placé.","color":"red"}
-execute at @s if score @s QUEST_SIDE_BA_Q02 matches 20 if entity @e[type=marker,tag=anchor_side_ba_q02_caisse,distance=..8,limit=1] run function capitale:quest/side/bas_anneaux/q02_marteau_elias/step_caisse_apply_self

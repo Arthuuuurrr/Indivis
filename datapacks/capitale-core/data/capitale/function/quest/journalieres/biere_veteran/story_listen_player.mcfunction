@@ -1,1 +1,0 @@
-function capitale:quest/journalieres/biere_veteran/story_listen_self

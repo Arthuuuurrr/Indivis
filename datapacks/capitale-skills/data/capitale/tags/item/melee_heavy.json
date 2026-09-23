@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#rpg_series:weapon_type/claymore",
-    "#rpg_series:weapon_type/hammer",
-    "#rpg_series:weapon_type/double_axe",
-    "#rpg_series:weapon_type/mace"
-  ]
-}

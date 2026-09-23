@@ -1,2 +1,0 @@
-function capitale:player/ensure_runtime_self
-function capitale:crime/assault/gardeprofondeurs_self

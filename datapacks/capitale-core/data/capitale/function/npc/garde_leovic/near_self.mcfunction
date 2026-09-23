@@ -1,1 +1,0 @@
-function capitale:quest/le_registre_du_port/leovic/near_offer_self

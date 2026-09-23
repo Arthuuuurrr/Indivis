@@ -1,6 +1,0 @@
-tellraw @s [{"text":"[Prologue Near Distance]","color":"gold","bold":true}]
-tellraw @s [{"text":"Si EasyNPC exécute le Near Distance comme joueur : utilisez npc/<pnj>/near_self.","color":"gray"}]
-tellraw @s [{"text":"Si EasyNPC exécute le Near Distance comme PNJ : utilisez npc/<pnj>/near_npc.","color":"gray"}]
-tellraw @s [{"text":"Aurèle PNJ : function capitale:npc/aurele/near_npc","color":"yellow"}]
-tellraw @s [{"text":"Léovic PNJ : function capitale:npc/leovic/near_npc","color":"yellow"}]
-tellraw @s [{"text":"Roch PNJ : function capitale:npc/roch/near_npc","color":"yellow"}]

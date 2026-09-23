@@ -1,6 +1,0 @@
-execute positioned as @e[tag=npc_roch_vallet,limit=1] if entity @a[scores={QUEST_PROFONDEURS=20},distance=..24] if entity @s[tag=escort_crate_h_resolved] if entity @e[type=marker,tag=wp_roch_profondeurs_i,limit=1] run tag @s add escort_moving
-execute positioned as @e[tag=npc_roch_vallet,limit=1] if entity @a[scores={QUEST_PROFONDEURS=20},distance=..24] if entity @s[tag=escort_crate_h_resolved] if entity @e[type=marker,tag=wp_roch_profondeurs_i,limit=1] run scoreboard players set @s NPC_PATROL_STATE 8
-execute positioned as @e[tag=npc_roch_vallet,limit=1] if entity @a[scores={QUEST_PROFONDEURS=20},distance=..24] unless entity @s[tag=escort_crate_h_done] as @a[scores={QUEST_PROFONDEURS=20},distance=..24,sort=nearest,limit=1] run function capitale:quest/au_seuil_des_profondeurs/roch/open_crate_choices_self
-execute positioned as @e[tag=npc_roch_vallet,limit=1] if entity @a[scores={QUEST_PROFONDEURS=20},distance=..24] unless entity @s[tag=escort_crate_h_done] run tag @s add escort_crate_h_done
-execute positioned as @e[tag=npc_roch_vallet,limit=1] unless entity @a[scores={QUEST_PROFONDEURS=20},distance=..24] run function capitale:quest/au_seuil_des_profondeurs/escort_roch/wait_if_far_self
-scoreboard players set @s NPC_PATROL_CD 40

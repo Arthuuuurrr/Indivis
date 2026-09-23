@@ -1,1 +1,0 @@
-function capskills:reward/quest_xp_minor_self

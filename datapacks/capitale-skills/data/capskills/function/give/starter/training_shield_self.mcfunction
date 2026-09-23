@@ -1,2 +1,0 @@
-give @s minecraft:shield[minecraft:custom_name={text:"Bouclier d'entraînement",color:"gray",italic:false},minecraft:lore=[{text:"Bouclier simple remis avec la première discipline de Rempart.",color:"gray",italic:false},{text:"Le Rempart reçoit un outil défensif, pas une arme.",color:"gray",italic:false},{text:"Objet de départ : utile si les quêtes journalières n'ont pas encore donné d'équipement.",color:"dark_gray",italic:false}]] 1
-tellraw @s [{"text":"[CapSkills] ","color":"gold"},{"text":"Bouclier d'entraînement reçu.","color":"gray"}]

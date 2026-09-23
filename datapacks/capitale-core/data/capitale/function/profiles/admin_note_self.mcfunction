@@ -1,2 +1,0 @@
-tellraw @s {"text":"Profils joueurs : socle RP/fonctions ajouté. Le changement complet inventaire/playerdata devra venir d’un mod serveur.","color":"gray"}
-tellraw @s [{"text":"[","color":"dark_gray"},{"text":"Menu joueur profils","color":"aqua","click_event":{"action":"run_command","command":"/trigger InfoRP set 20"}},{"text":"] ","color":"dark_gray"},{"text":"[","color":"dark_gray"},{"text":"Hooks mod","color":"yellow","click_event":{"action":"run_command","command":"/function capitale:profiles/mod_hooks_self"}},{"text":"]","color":"dark_gray"}]

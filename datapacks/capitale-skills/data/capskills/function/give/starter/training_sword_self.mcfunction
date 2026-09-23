@@ -1,2 +1,0 @@
-give @s minecraft:wooden_sword[minecraft:custom_name={text:"Épée d'entraînement",color:"gray",italic:false},minecraft:lore=[{text:"Arme simple remise avec un premier apprentissage martial.",color:"gray",italic:false},{text:"Objet de départ : utile si les quêtes journalières n'ont pas encore donné d'équipement.",color:"dark_gray",italic:false}]] 1
-tellraw @s [{"text":"[CapSkills] ","color":"gold"},{"text":"Épée d'entraînement reçue.","color":"gray"}]

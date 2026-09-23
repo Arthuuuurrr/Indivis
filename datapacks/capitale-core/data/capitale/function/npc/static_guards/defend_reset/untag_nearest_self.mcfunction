@@ -1,4 +1,0 @@
-# Admin joueur : retire le tag/ancre du PNJ EasyNPC resettable le plus proche dans un rayon de 5 blocs.
-execute unless entity @e[type=#capitale:static_guard_npc_candidates,distance=..5,tag=cap_static_guard_resettable,sort=nearest,limit=1] run tellraw @s {"text":"[Capitale] Aucun PNJ EasyNPC resettable trouvé dans un rayon de 5 blocs.","color":"red"}
-execute as @e[type=#capitale:static_guard_npc_candidates,distance=..5,tag=cap_static_guard_resettable,sort=nearest,limit=1] at @s run function capitale:npc/static_guards/defend_reset/untag_candidate_self
-execute unless entity @e[type=#capitale:static_guard_npc_candidates,distance=..5,tag=cap_static_guard_resettable,sort=nearest,limit=1] run tellraw @s {"text":"[Capitale] Le PNJ resettable le plus proche a été détaché et son ancre supprimée.","color":"yellow"}

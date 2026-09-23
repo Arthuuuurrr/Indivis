@@ -1,1 +1,0 @@
-function capitale:quest/side/bas_anneaux/q03_marche_mille_voix/interact_self

@@ -1,1 +1,0 @@
-function capitale:crime/arrest/start_gardeprofondeurs_self

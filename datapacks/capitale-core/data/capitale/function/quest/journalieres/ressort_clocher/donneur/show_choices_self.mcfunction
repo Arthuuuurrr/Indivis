@@ -1,3 +1,0 @@
-
-scoreboard players enable @s QuestChoix
-tellraw @s [{"text":"[Choix] ","color":"gray"},{"text":"[Je m’en charge.]","color":"green","click_event":{"action":"run_command","command":"/trigger QuestChoix set 240"},"hover_event":{"action":"show_text","value":"Accepter la livraison urgente."}},{"text":"   ","color":"gray"},{"text":"[Pourquoi est-ce si pressé ?]","color":"aqua","click_event":{"action":"run_command","command":"/trigger QuestChoix set 241"},"hover_event":{"action":"show_text","value":"Demander des précisions."}},{"text":"   ","color":"gray"},{"text":"[Une autre fois.]","color":"red","click_event":{"action":"run_command","command":"/trigger QuestChoix set 242"},"hover_event":{"action":"show_text","value":"Refuser cette course."}}]

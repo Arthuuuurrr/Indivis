@@ -1,7 +1,0 @@
-Haute Capitale CapSkills 0.10.19 RC2B — Arsenal dynamic authorization
-- Base: RC2A Arsenal safe fix.
-- Conserve le retrait de unique_staff_heal_2 et unique_staff_heal_sw de wizard_arcane_focus.
-- Retire les 10 autorisations cachées des bâtons Arsenal du noeud gratuit voie_magie.
-- Retire les 8 autorisations cachées des super-armes multi-choix de leur choix arbitraire précédent.
-- Ces 18 objets sont désormais autorisés dynamiquement par Spell Engine RC4 selon le sort effectivement lié à l'ItemStack et disponible via CapSkills.
-- Les 26 objets Arsenal à relation statique restent inchangés et conservent leur autorisation cachée source-specific.

@@ -1,1 +1,0 @@
-function capitale:quest/spawn_dirigeable_couronne/capitaine_large/interact_self

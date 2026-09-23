@@ -1,6 +1,0 @@
-CapSkills BETA 0.9.148
-
-- Ajoute CAPREV_FIRED et deux tags temporaires fired_main/fired_off.
-- Le marqueur n'est posé que lorsqu'une cartouche est réellement consommée.
-- Les callbacks pendant le cooldown, le rechargement ou à vide ne déclenchent plus d'animation serveur.
-- Le JAR 1.7.13 lit la main réellement sélectionnée pour alterner les animations.

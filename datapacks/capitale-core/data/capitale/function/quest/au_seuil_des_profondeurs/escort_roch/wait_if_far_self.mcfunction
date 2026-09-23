@@ -1,1 +1,0 @@
-execute positioned as @e[tag=npc_roch_vallet,limit=1] unless entity @a[scores={QUEST_PROFONDEURS=20},distance=..24] as @a[scores={QUEST_PROFONDEURS=20},sort=nearest,limit=1] if score @s CAP_ESCORT_WAIT_CD matches 0 run function capitale:quest/au_seuil_des_profondeurs/escort_roch/wait_message_self

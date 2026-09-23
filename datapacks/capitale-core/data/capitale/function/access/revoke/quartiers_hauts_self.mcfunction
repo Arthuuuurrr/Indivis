@@ -1,2 +1,0 @@
-function capitale:access/revoke/quartiers_hauts_nord_self
-function capitale:access/revoke/quartiers_hauts_sud_self

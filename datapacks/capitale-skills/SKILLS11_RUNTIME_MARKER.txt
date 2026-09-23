@@ -1,9 +1,0 @@
-CapSkills BETA 0.9.134
-Le fichier data/capskills/puffish_skills/categories/doctrine/skills.json est exactement skills (11).json.
-Positions de contrôle :
-- lame_fente_imperiale_1 = -60,-180
-- lame_duelliste_2 = -60,-210
-- lame_appui_mobile_1 = -60,-240
-- lame_tourbillon_imperial_1 = -30,-270
-- lame_sentence_execution_2 = 30,-300
-Commande en jeu : /function capskills:debug/version_self

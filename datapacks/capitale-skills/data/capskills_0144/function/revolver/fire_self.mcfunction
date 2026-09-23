@@ -1,1 +1,0 @@
-function capskills:revolver/fire_input_self

@@ -1,6 +1,0 @@
-scoreboard players add @s QUEST_SIDE_BA_Q01 0
-execute unless score @s QUEST_SIDE_BA_Q01 matches 30 run tellraw @s {"text":"[Quête] Ce choix n’est plus disponible.","color":"red"}
-execute at @s if score @s QUEST_SIDE_BA_Q01 matches 30 unless entity @e[tag=npc_mira_q01,distance=..6,limit=1] unless entity @e[type=marker,tag=wp_mira_q01_cache,distance=..6,limit=1] unless entity @e[type=marker,tag=wp_mira_q01_home,distance=..6,limit=1] run tellraw @s {"text":"[Quête] Vous devez être auprès de Mira pour faire ce choix.","color":"red"}
-execute at @s if score @s QUEST_SIDE_BA_Q01 matches 30 if entity @e[tag=npc_mira_q01,distance=..6,limit=1] run function capitale:quest/side/bas_anneaux/q01_quartier_oublies/choice_denounce_mira_apply_self
-execute at @s if score @s QUEST_SIDE_BA_Q01 matches 30 unless entity @e[tag=npc_mira_q01,distance=..6,limit=1] if entity @e[type=marker,tag=wp_mira_q01_cache,distance=..6,limit=1] run function capitale:quest/side/bas_anneaux/q01_quartier_oublies/choice_denounce_mira_apply_self
-execute at @s if score @s QUEST_SIDE_BA_Q01 matches 30 unless entity @e[tag=npc_mira_q01,distance=..6,limit=1] unless entity @e[type=marker,tag=wp_mira_q01_cache,distance=..6,limit=1] if entity @e[type=marker,tag=wp_mira_q01_home,distance=..6,limit=1] run function capitale:quest/side/bas_anneaux/q01_quartier_oublies/choice_denounce_mira_apply_self

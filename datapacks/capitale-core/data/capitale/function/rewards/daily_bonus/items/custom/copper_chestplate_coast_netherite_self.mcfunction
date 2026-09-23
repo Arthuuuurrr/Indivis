@@ -1,2 +1,0 @@
-give @s copper_chestplate[trim={pattern:'minecraft:coast',material:'minecraft:netherite'},custom_name=[{text:'Cuirasse de cuivre des portails',italic:false,color:'blue'}],lore=[[{text:'Pièce de service renforcée, portée par ceux qui travaillent près des accès gardés.',italic:false,color:'gray'}]]] 1
-tellraw @s [{"text":"[Bonus équipement]","color":"gold"},{"text":" : Cuirasse de cuivre des portails.","color":"white"}]

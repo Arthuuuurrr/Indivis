@@ -1,1 +1,0 @@
-function capitale:quest/side/bas_anneaux/q01_quartier_oublies/talk_merchant_self

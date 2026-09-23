@@ -1,8 +1,0 @@
-CapSkills BETA 0.10.18e — Craft Separate Root
-
-Base: 0.10.18d User Layout Rev2
-
-- Suppression de la connexion doctrine_root <-> voie_metiers.
-- voie_metiers devient un second root indépendant (root=true).
-- exclusive_root reste false : Combat et Artisanat peuvent coexister.
-- Aucun autre placement, définition ou connexion modifié.

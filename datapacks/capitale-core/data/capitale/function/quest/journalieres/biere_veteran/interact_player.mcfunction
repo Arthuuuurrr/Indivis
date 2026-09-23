@@ -1,3 +1,0 @@
-function capitale:player/ensure_runtime_self
-function capitale:quest/journalieres/cooldown/sync_self
-function capitale:quest/journalieres/biere_veteran/interact_self
