@@ -270,6 +270,37 @@ jobs:
 
           PROJECT_ITEMS_JSON="$(project_api "${PROJECT_ROOT}/items?per_page=100")"
 
+          # Temporary safe diagnostic: only IDs/types/numbers, never secrets or bodies.
+          echo "Project items response type: $(jq -r 'type' <<<"${PROJECT_ITEMS_JSON}")"
+          jq -c '
+            if type == "array" then
+              .[:5] | map({
+                item_id: .id,
+                content_type: .content_type,
+                content_id: .content.id,
+                content_node_id: .content.node_id,
+                title: .content.title,
+                number: .content.number,
+                repository_url: .content.repository_url,
+                html_url: .content.html_url
+              })
+            else
+              {
+                keys: (keys),
+                items_preview: ((.items // .values // [])[:5] | map({
+                  item_id: .id,
+                  content_type: .content_type,
+                  content_id: .content.id,
+                  content_node_id: .content.node_id,
+                  title: .content.title,
+                  number: .content.number,
+                  repository_url: .content.repository_url,
+                  html_url: .content.html_url
+                }))
+              }
+            end
+          ' <<<"${PROJECT_ITEMS_JSON}"
+
           sync_issue() {
             local url="$1"
             local number="${url##*/}"
