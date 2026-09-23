@@ -100,7 +100,7 @@ RC12 part de RC11 mais restaure les chemins validés :
 - validation Minecraft runtime requise avant STABLE.
 
 
-### RC13 AXE-ICON-FALLBACK — candidat runtime actuel
+### RC13 AXE-ICON-FALLBACK — supersédée (mauvais chemin de rendu)
 
 Hotfix strictement visuel construit sur RC12 :
 
@@ -110,6 +110,21 @@ Hotfix strictement visuel construit sur RC12 :
 - 968 classes : **0 classe modifiée** par rapport à RC12 ;
 - aucun JSON de sort, cooldown, cast-time, impact, input ou placement HUD modifié ;
 - ZIP valide, 0 doublon ; validation runtime visuelle ciblée requise.
+
+
+### RC14 ITEM-USE-SPELL-ICON — candidat runtime actuel
+
+Le screenshot runtime a permis d'identifier le vrai chemin du damier de la hache :
+
+- le slot avec l'icône de souris est le slot séparé `vanilla use/right-click` de `SpellHotbar` ;
+- ce slot porte `spell = null` et `itemStack = arme tenue` ;
+- RC13 corrigeait donc le resolver des icônes de sorts normaux, qui n'était jamais appelé ici ;
+- RC14 modifie uniquement le branchement d'icône de ce slot dans `HudRenderHelper` ;
+- si l'item possède un `SpellContainer` valide et utilisable, le premier spell du container fournit l'icône ;
+- pour les haches Berserker, ce spell est `more_rpg_classes:decapitate` ;
+- en absence de spell utilisable, le rendu ItemStack historique reste le fallback ;
+- aucun cast, cooldown, impact, input ni placement HUD n'est modifié ;
+- validation statique/bytecode : PASS ; validation visuelle runtime requise (#80).
 
 
 ## Spell Power
