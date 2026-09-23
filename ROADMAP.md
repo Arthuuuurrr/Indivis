@@ -1,5 +1,24 @@
 # Roadmap Indivis
 
+> **Source de vérité : [GitHub Project interactif Indivis](https://github.com/users/Arthuuuurrr/projects/1)**
+>
+> Ce fichier n'est plus la roadmap de pilotage. Il sert uniquement de documentation d'accompagnement.
+> Le Project GitHub contient les vues **Priorités**, **Kanban** et **Roadmap**, ainsi que les champs
+> `Avancement`, `Priorité`, `Phase`, `Ordre de travail`, `Start date`, `Target date` et `Version cible`.
+> Les dates de la vue Roadmap sont des **fenêtres de planification indicatives**, modifiables directement
+> dans GitHub, et non des échéances contractuelles.
+
+## Conventions de priorité
+
+Le Project réutilise les labels existants du dépôt :
+
+- `Priorité maximale -P1`
+- `Problème prioritaire secondaire -P2`
+- `A régler -P3`
+- `A traiter -P4`
+
+Le niveau `P0 Critique` du champ Project est réservé aux tickets explicitement marqués `P0` dans leur titre.
+
 La roadmap est désormais séparée en deux niveaux :
 
 - **[Roadmap d'exécution](docs/EXECUTION_ROADMAP.md)** : ordre concret des tâches, dépendances, phases et critères de sortie.
