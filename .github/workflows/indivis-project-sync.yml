@@ -2,6 +2,8 @@ name: Indivis Project Sync
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
   push:
     paths:
       - ".github/workflows/indivis-project-sync.yml"
@@ -402,6 +404,7 @@ jobs:
                   projectV2(number:$number) {
                     id
                     items(first:100) {
+                      totalCount
                       nodes {
                         id
                         content {
@@ -440,6 +443,39 @@ jobs:
             -f login="${PROJECT_OWNER}" -F number="${PROJECT_NUMBER}")"
 
           PROJECT_NODE_ID="$(jq -r '.data.user.projectV2.id' <<<"${PROJECT_GQL_JSON}")"
+          PROJECT_VISIBLE_COUNT="$(jq -r '.data.user.projectV2.items.totalCount' <<<"${PROJECT_GQL_JSON}")"
+
+          # GitHub Projects can temporarily accept item mutations while its forward
+          # index/UI still reports zero items. Detect that state from issue #83's
+          # reverse projectItems association and avoid creating duplicate ghost items.
+          HEALTH_JSON="$(project_graphql_retry \
+            -f query='
+              query {
+                repository(owner:"Arthuuuurrr", name:"Indivis") {
+                  issue(number:83) {
+                    projectItems(first:20, includeArchived:true) {
+                      nodes {
+                        id
+                        isArchived
+                        project { id }
+                      }
+                    }
+                  }
+                }
+              }')"
+
+          HEALTH_REVERSE_COUNT="$(jq -r --arg project "${PROJECT_NODE_ID}" '
+            [.data.repository.issue.projectItems.nodes[]
+             | select(.project.id == $project and .isArchived == false)]
+            | length
+          ' <<<"${HEALTH_JSON}")"
+
+          echo "Project health: forward=${PROJECT_VISIBLE_COUNT}, reverse(#83)=${HEALTH_REVERSE_COUNT}"
+
+          if [[ "${PROJECT_VISIBLE_COUNT}" == "0" && "${HEALTH_REVERSE_COUNT}" != "0" ]]; then
+            echo "::notice::GitHub Projects index is stale: issue links exist but the Project forward index/UI reports zero items. Sync deferred automatically."
+            exit 0
+          fi
 
           gql_field_id() {
             local name="$1"
@@ -508,32 +544,11 @@ jobs:
             state="$(jq -r '.state' <<<"$issue_json")"
             labels="$(jq -r '[.labels[].name] | join(",")' <<<"$issue_json")"
 
-            # Resolve Project membership from the issue side. This remains reliable
-            # when GitHub Projects' forward item index/search is stale.
-            item_lookup="$(project_graphql_retry \
-              -f query='
-                query($owner:String!, $repo:String!, $number:Int!) {
-                  repository(owner:$owner, name:$repo) {
-                    issue(number:$number) {
-                      projectItems(first:20, includeArchived:true) {
-                        nodes {
-                          id
-                          isArchived
-                          project { id }
-                        }
-                      }
-                    }
-                  }
-                }' \
-              -f owner="${REPO_OWNER}" \
-              -f repo="${REPO_NAME}" \
-              -F number="$number")"
-
-            item_node_id="$(jq -r --arg project "${PROJECT_NODE_ID}" '
-              .data.repository.issue.projectItems.nodes[]
-              | select(.project.id == $project and .isArchived == false)
+            item_node_id="$(jq -r --arg content_id "$issue_node_id" '
+              .data.user.projectV2.items.nodes[]
+              | select(.content.id == $content_id)
               | .id
-            ' <<<"$item_lookup" | head -n1)"
+            ' <<<"${PROJECT_GQL_JSON}" | head -n1)"
 
             if [[ -z "$item_node_id" || "$item_node_id" == "null" ]]; then
               echo "Adding issue #${number} to Project"
@@ -548,7 +563,7 @@ jobs:
                 -f content="$issue_node_id")"
               item_node_id="$(jq -r '.data.addProjectV2ItemById.item.id' <<<"$add_json")"
             else
-              echo "Issue #${number} already linked to Project"
+              echo "Issue #${number} already in Project"
             fi
 
             advancement="$(status_for_issue "$title" "$state" "$labels")"
@@ -634,7 +649,7 @@ jobs:
             echo "#${number}: $advancement | $priority | $category | $phase | ordre $work_order"
           }
 
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" || "${GITHUB_EVENT_NAME}" == "push" ]]; then
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" || "${GITHUB_EVENT_NAME}" == "push" || "${GITHUB_EVENT_NAME}" == "schedule" ]]; then
             create_views_if_needed
 
             mapfile -t ISSUE_URLS < <(
