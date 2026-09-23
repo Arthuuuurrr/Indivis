@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "spell_engine",
-  "version": "1.10.5.1+1.21.11-HC-TEST3-RC10-CAST-SAFETY",
+  "version": "1.10.5.1+1.21.11-HC-TEST3-RC12-HUD-IMPACT-RESTORE",
   "name": "Spell Engine",
-  "description": "HC TEST3 RC10: RC9 HUD/icon fixes plus finite CHANNEL cycle per key press and cast-duration/Haste safety; includes Hazenn compatibility.",
+  "description": "HC TEST3 RC12: validated hotbar-aligned spellbar (-185,-11), RC9 SpellImpacts restore, RC11 contextual cast/cooldown timing retained.",
   "environment": "*",
   "entrypoints": {
     "client": [
