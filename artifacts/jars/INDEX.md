@@ -27,10 +27,12 @@ Les binaires sont stockés avec **Git LFS**. Git conserve un pointeur contenant 
 - NexusCharacters — `0.8.0-alpha1.1 LEGACY-SKIN-COMPAT`
 - Spell Engine — `TEST3-RC7 HAZENN-FULLCOMPAT`
 - Witcher Class — `FOOTWORK TEST3-RC1`
+- capitale_currency — `BETA 1.0 hotfix5`
+- capitale_weapons_standalone — `0.5.0 gameplay-stats`
 
 ## Versions serveur identifiées mais JAR exact pas encore archivé
 
-- Spell Power — **serveur : RC6-CLASSFORMAT-FIX**
+- Spell Power — **serveur : RC6-CLASSFORMAT-FIX** — le binaire exact déployé n'est pas encore archivé ; un candidat de 231892 octets a été retiré car il ne correspondait pas aux 230643 octets consignés pour la version serveur.
 - capitale_creatures_bundle — **1.2.16**
 - capitale_heraldry — **0.1.7**
 - MMO Music Zones — **1.2.7 indivis-dungeon-biome-FULL**
@@ -42,8 +44,6 @@ Les binaires sont stockés avec **Git LFS**. Git conserve un pointeur contenant 
 - haute-capitale-orcs — **b9**
 - haute-capitale-spawns — **b6**
 - hc-necromancer — **b3**
-- capitale_currency — **hotfix5**
-- capitale_weapons_standalone — **0.5.0**
 - capitale_entities — **0.3.0-alpha.1**
 
 Ces modules seront ajoutés uniquement quand le **binaire correspondant exactement à la version serveur** sera disponible.
