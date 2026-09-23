@@ -1,0 +1,50 @@
+HAUTE CAPITALE — ISSUE #18 TERRA STAFF AUDIT
+Date: 2026-09-23
+
+Conclusion
+----------
+No new code patch is justified by the current sources. The historical failure is
+already covered by the TEST3 RC2+ ability resolver / Avatar Staff gate.
+
+Current CapSkills tags
+----------------------
+capitale:weapon/terra_staff contains:
+- elemental_wizards_rpg:staff_terra
+- elemental_wizards_rpg:staff_netherite_terra
+- optional elemental_wizards_rpg:staff_ruby_terra
+- optional elemental_wizards_rpg:staff_aether
+
+capitale:elemental_earth_focus additionally contains the Earth wands and
+staff_elemental.
+
+Ability mapping
+---------------
+- terra_stone_spear -> capitale:weapon/terra_staff
+  + explicit allowed item elemental_wizards_rpg:unique_staff_1
+- terra_drip_circle / earthquake / impale / shattering_stone / stone_flesh
+  -> capitale:elemental_earth_focus
+- terra_stone_throw -> capitale:weapon/terra_wand
+- terra_earth_golem -> invocation focus
+
+Haute Capitale RPG
+------------------
+AbilityDefinition.WeaponRequirement.matches(ItemStack) evaluates actual item tags.
+AbilityResolver.weaponMatches applies WeaponRequirement plus HcAvatarStaffGate.
+HcAvatarStaffGate special-cases elemental_wizards_rpg:unique_staff_1 and accepts
+only spells present in its native selected SpellContainer.
+
+Existing static validation
+--------------------------
+- normal staff unaffected: PASS
+- Avatar Terra allows Stone Spear: PASS
+- Avatar Terra blocks Air Cutter: PASS
+- unrelated summon blocked: PASS
+
+Focused runtime validation before closure
+-----------------------------------------
+1. staff_terra + Stone Spear
+2. staff_netherite_terra + Stone Spear
+3. Avatar staff configured Terra + Stone Spear
+4. negative control: non-Terra spell must remain refused
+
+Status: STATIC PASS / runtime VERIFY. Issue must remain open.
