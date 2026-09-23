@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#capskills:weapon/twohand_heavy",
+    "#rogues:double_axes",
+    "#paladins:claymores",
+    "#paladins:great_hammers",
+    "#berserker_rpg:berserker_axes"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "spell": "rogues:slice_and_dice",
+  "ability_categories": [
+    "capitale:branch/lame",
+    "capitale:class/ombre",
+    "capitale:source/rogues",
+    "capitale:type/active",
+    "capitale:school/physical_melee",
+    "capitale:role/active",
+    "capitale:role/melee",
+    "capitale:role/status_effect",
+    "capitale:order/000012"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/assassin_precise"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

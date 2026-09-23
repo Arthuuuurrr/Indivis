@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "spell": "paladins:battle_banner",
+  "ability_categories": [
+    "capitale:branch/support",
+    "capitale:class/paladin_protection",
+    "capitale:source/paladins",
+    "capitale:type/active",
+    "capitale:school/healing",
+    "capitale:role/active",
+    "capitale:role/buff",
+    "capitale:role/status_effect",
+    "capitale:order/000181"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/paladin_devotion"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

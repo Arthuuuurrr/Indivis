@@ -1,0 +1,19 @@
+GUIDE — Mira Q01 path/markers — RC9o
+
+Markers utilisés :
+- wp_mira_q01_home : position initiale près de l’étal.
+- wp_mira_q01_bump : point où Mira bouscule visuellement le joueur.
+- wp_mira_q01_ruelle : entrée/virage de la ruelle.
+- wp_mira_q01_cache : point caché où elle s’arrête brièvement.
+
+Pose rapide :
+/function capitale:npc/mira/path/q01/admin/menu_self
+Puis cliquer Set HOME / BUMP / RUELLE / CACHE aux positions voulues.
+
+Fonctions EasyNPC recommandées sur Mira :
+- Interaction joueur : function capitale:npc/mira/interact_self
+- Action PNJ de scène, executeAsUser=false si disponible : function capitale:npc/mira/path/q01/start_npc
+- Étapes de route : function capitale:npc/mira/path/q01/dispatch_npc ou next_0/next_1/next_2/next_3 selon le système EasyNPC utilisé.
+- Retour manuel/secours : function capitale:npc/mira/path/q01/return_home_npc
+
+Note : la progression de quête ne dépend pas du succès de la route. Le marchand peut reprendre l’étape si Mira est temporairement absente.

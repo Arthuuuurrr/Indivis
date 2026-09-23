@@ -1,0 +1,19 @@
+CapSkills BETA 0.9.141 — Sentence II : I-frames et griffes
+
+Base : datapack 0.9.140 + JAR 1.7.6.
+JAR requis : capitale_skills_items 1.7.7-iframes-claw-dagger-equivalence.
+
+Cadence :
+- préparation conservée à 2 ticks ;
+- intervalle entre impacts : 3 -> 10 ticks ;
+- cinq impacts : dernier vers le tick 44, fin au tick 48 ;
+- groupe dague/rapière/griffe : sixième impact vers le tick 54, fin au tick 58 ;
+- aucune remise à zéro de l’invulnérabilité de la cible.
+
+Armes :
+- griffes classées au même niveau que dagues et rapières ;
+- toute paire composée uniquement de dagues, rapières et/ou griffes reçoit la variante maximale ;
+- six frappes et seuil d’exécution de 40 % ;
+- une arme du groupe + une autre arme de finesse conserve la variante intermédiaire à 35 %.
+
+Dash, dégâts unitaires et recharge de 20 secondes inchangés.

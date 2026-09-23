@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "spell": "wizards:fireball",
+  "ability_categories": ["capitale:magic", "capitale:fire"],
+  "weapon_requirements": {
+    "allowed_tags": ["capitale:fire_staffs"]
+  },
+  "requires_skill": true
+}

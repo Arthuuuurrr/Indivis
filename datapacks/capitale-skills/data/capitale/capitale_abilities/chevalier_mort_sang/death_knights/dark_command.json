@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "spell": "death_knights:dark_command",
+  "ability_categories": [
+    "capitale:branch/rempart",
+    "capitale:class/chevalier_mort_sang",
+    "capitale:source/death_knights",
+    "capitale:type/active",
+    "capitale:school/blood",
+    "capitale:role/active",
+    "capitale:role/fire",
+    "capitale:role/targeted",
+    "capitale:order/000164"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/dk_all"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

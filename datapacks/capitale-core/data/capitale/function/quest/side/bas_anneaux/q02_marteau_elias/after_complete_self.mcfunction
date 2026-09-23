@@ -1,0 +1,1 @@
+tellraw @s [{"text":"[Elias Ferbois]","color":"aqua"},{"text":" : Tu as déjà mis la main à la forge. Quand les maîtres de compétences auront fini de s’accorder, on parlera d’apprentissage sérieux.","color":"white"}]

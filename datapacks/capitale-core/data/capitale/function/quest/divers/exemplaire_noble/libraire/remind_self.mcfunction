@@ -1,0 +1,8 @@
+scoreboard players set @s CAP_FLAG 0
+execute store result score @s CAP_FLAG run clear @s minecraft:written_book[minecraft:custom_model_data={strings:['quest_libraire_exemplaire_noble']}] 0
+execute if score @s CAP_FLAG matches 1.. run function capitale:dialogue/sound/parole_quete_self
+execute if score @s CAP_FLAG matches 1.. run tellraw @s [{"text":"[Libraire agréé]","color":"yellow"},{"text":" : L’exemplaire doit parvenir à Dame Yselle de Verceuil, dans le quartier haut nord. Revenez après la remise, pas avant.","color":"white"}]
+execute unless score @s CAP_FLAG matches 1.. run function capitale:dialogue/sound/parole_quete_self
+execute unless score @s CAP_FLAG matches 1.. run tellraw @s [{"text":"[Libraire agréé]","color":"yellow"},{"text":" : Vous n’avez plus l’exemplaire ? Voilà qui confirme que les livres ont besoin d’un comptoir plus que d’un sac. Prenez-en un autre, et cette fois gardez-le près de vous.","color":"white"}]
+execute unless score @s CAP_FLAG matches 1.. run give @s written_book[written_book_content={pages:[[[{"text":"Exemplaire scellé","color":"dark_purple"},"\n\n",{"text":"À remettre intact au destinataire désigné par le libraire agréé. Toute ouverture non sollicitée serait d’un goût discutable.","color":"black"}]]],title:"Book Title",author:"Librairie agréée de la Capitale",generation:2},minecraft:custom_model_data={strings:['quest_libraire_exemplaire_noble']},custom_name=[{"text":"Exemplaire scellé à remettre","italic":false,"color":"light_purple"}],lore=[[{"text":"Commission du libraire agréé","italic":false,"color":"gray"}],[{"text":"Destiné au quartier noble nord","italic":false,"color":"dark_gray"}]]] 1
+scoreboard players set @s CAP_FLAG 0

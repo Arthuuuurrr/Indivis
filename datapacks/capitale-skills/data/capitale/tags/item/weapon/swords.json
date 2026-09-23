@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#capskills:weapon/sword_classic",
+    "#rpg_series:weapon_type/sword",
+    {
+      "id": "arsenal:unique_longsword_sw",
+      "required": false
+    }
+  ]
+}

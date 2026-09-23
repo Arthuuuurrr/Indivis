@@ -1,0 +1,2 @@
+scoreboard players enable @s QuestChoix
+tellraw @s [{"text":"[Choix] ","color":"gray"},{"text":"[Je vous aide.]","color":"green","click_event":{"action":"run_command","command":"/trigger QuestChoix set 140"}},{"text":" ","color":"gray"},{"text":"[Qu'est-ce que ce Vent Noir ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set 141"}},{"text":" ","color":"gray"},{"text":"[Pas maintenant.]","color":"red","click_event":{"action":"run_command","command":"/trigger QuestChoix set 142"}}]

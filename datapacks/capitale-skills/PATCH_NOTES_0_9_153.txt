@@ -1,0 +1,9 @@
+CapSkills BETA 0.9.153 — hotfix démarrage
+
+- Aucune mécanique de gameplay modifiée par rapport à 0.9.152.
+- JAR attendu : 1.7.16-startup-hook-cleanup.
+- Le JAR retire deux entrypoints legacy qui échouaient sous Fabric Loader 0.19.3 :
+  * CapSkillsCombatHooks (UseItemCallback / ServerTickEvents réflexifs obsolètes)
+  * CapSkillsBetterCombatReadOnlyBridge côté serveur (debug read-only, client-only)
+- CapSkillsServerEntrypoint127 conserve uniquement le bootstrap de HardTaunt ; son ancien AttackEntityCallback redondant a été supprimé.
+- Les callbacks modernes AttackEntity/Ranged/Shadow/Tourbillon/Revolver restent inchangés.

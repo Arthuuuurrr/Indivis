@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "spell": "wizards:fire_storm",
+  "ability_categories": [
+    "capitale:branch/magie",
+    "capitale:class/mage_feu",
+    "capitale:source/wizards",
+    "capitale:type/active",
+    "capitale:school/fire",
+    "capitale:role/active",
+    "capitale:role/aoe",
+    "capitale:role/channel",
+    "capitale:order/000185"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:wizard_fire_focus"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

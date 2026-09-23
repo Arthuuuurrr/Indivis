@@ -1,0 +1,12 @@
+Haute Capitale CapSkills 0.10.19 RC2C — audit consistency fix
+
+Base : 0.10.19 RC2B Arsenal Dynamic Auth.
+
+Corrections :
+- aligne pack.mcmeta sur RC2C ;
+- aligne le titre de catégorie Puffish sur RC2C ;
+- corrige le marqueur runtime capskills_newtree, auparavant incohérent (storage 0.10.18m / message 0.10.18o) ;
+- met à jour capskills:debug/version_self vers 0.10.19 RC2C et le JAR réellement attendu 1.7.18-event-access-fix.
+
+Aucun coût, reward, ordre, position ou mapping de capacité n'est modifié par cette passe.
+Les correctifs Arsenal dynamiques de RC2B sont conservés à l'identique.

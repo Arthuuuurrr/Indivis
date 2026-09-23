@@ -1,0 +1,1 @@
+tellraw @s [{"text":"CapSkills BETA 0.9.148","color":"aqua"},{"text":" — revolver : animations alternées et synchronisées sur les tirs réels","color":"gray"},{"text":" | JAR attendu : 1.7.13-revolver-shot-synced-hand-animation","color":"yellow"}]

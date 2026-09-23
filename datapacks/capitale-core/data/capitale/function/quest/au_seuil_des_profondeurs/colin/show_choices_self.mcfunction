@@ -1,0 +1,2 @@
+scoreboard players enable @s QuestChoix
+tellraw @s [{"text":"[Choix] ","color":"gray"},{"text":"[Conduisez-moi à l’auberge.]","color":"green","click_event":{"action":"run_command","command":"/trigger QuestChoix set 60"},"hover_event":{"action":"show_text","value":"Suivre Colin jusqu’à l’auberge des Profondeurs."}},{"text":"   ","color":"gray"},{"text":"[Je regarderai les alentours d’abord.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set 61"},"hover_event":{"action":"show_text","value":"Reporter l’accompagnement sans le perdre."}}]

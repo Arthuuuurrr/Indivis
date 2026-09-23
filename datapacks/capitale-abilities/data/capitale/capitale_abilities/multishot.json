@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "spell": "archers:barrage",
+  "ability_categories": ["capitale:ranged"],
+  "weapon_requirements": {
+    "allowed_tags": ["capitale:bows"]
+  },
+  "requires_skill": true
+}

@@ -1,0 +1,8 @@
+{
+  "function": "minecraft:set_custom_data",
+  "tag": {
+    "capskills_revolver": {
+      "ammo": 1
+    }
+  }
+}

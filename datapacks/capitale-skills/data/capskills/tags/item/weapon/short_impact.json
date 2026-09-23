@@ -1,0 +1,53 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "capitale_weapons_standalone:diamond_censer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_cleric_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_censer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_cleric_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_censer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_cleric_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:mace1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_censer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_cleric_mace",
+      "required": false
+    }
+  ]
+}

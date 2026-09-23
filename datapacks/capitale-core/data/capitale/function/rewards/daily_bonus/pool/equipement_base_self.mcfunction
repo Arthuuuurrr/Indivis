@@ -1,0 +1,11 @@
+execute store result score @s CAP_REWARD_SUBROLL run random value 1..10
+execute if score @s CAP_REWARD_SUBROLL matches 1 run function capitale:rewards/daily_bonus/items/gear/capuche_cuir_service_self
+execute if score @s CAP_REWARD_SUBROLL matches 2 run function capitale:rewards/daily_bonus/items/gear/plastron_cuir_service_self
+execute if score @s CAP_REWARD_SUBROLL matches 3 run function capitale:rewards/daily_bonus/items/gear/braies_cuir_service_self
+execute if score @s CAP_REWARD_SUBROLL matches 4 run function capitale:rewards/daily_bonus/items/gear/bottes_cuir_service_self
+execute if score @s CAP_REWARD_SUBROLL matches 5 run function capitale:rewards/daily_bonus/items/custom/copper_chestplate_coast_netherite_self
+execute if score @s CAP_REWARD_SUBROLL matches 6 run function capitale:rewards/daily_bonus/items/custom/chainmail_leggings_eye_copper_self
+execute if score @s CAP_REWARD_SUBROLL matches 7 run function capitale:rewards/daily_bonus/items/custom/copper_leggings_tide_netherite_self
+execute if score @s CAP_REWARD_SUBROLL matches 8 run function capitale:rewards/daily_bonus/items/gear/iron_leggings_coast_self
+execute if score @s CAP_REWARD_SUBROLL matches 9 run function capitale:rewards/daily_bonus/items/custom/copper_helmet_raiser_netherite_self
+execute if score @s CAP_REWARD_SUBROLL matches 10 run function capitale:rewards/daily_bonus/items/custom/copper_boots_snout_netherite_self

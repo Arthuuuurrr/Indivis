@@ -1,0 +1,13 @@
+CapSkills BETA 0.9.140 — Rapière équivalente à la dague pour Sentence
+
+Base : datapack 0.9.139 + JAR 1.7.5.
+JAR requis : capitale_skills_items 1.7.6-rapiere-dagger-equivalence.
+
+Règle unique :
+- la rapière est classée exactement comme une dague pour Sentence croisée I et II ;
+- dague + dague, rapière + rapière, dague + rapière et rapière + dague déclenchent toutes la variante maximale ;
+- variante maximale : six frappes, seuil d'exécution 40 %, finisher dual_handed_stab ;
+- aucune nouvelle famille ou sous-catégorie n'est créée ;
+- rapière/dague + une autre arme de finesse conserve la variante intermédiaire à 35 %.
+
+Le burst assassin, le dash ciblé, les dégâts et la recharge de 20 secondes de la 0.9.139 sont conservés.

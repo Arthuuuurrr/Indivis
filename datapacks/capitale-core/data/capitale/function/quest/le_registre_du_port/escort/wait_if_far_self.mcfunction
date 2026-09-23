@@ -1,0 +1,3 @@
+
+execute positioned as @e[tag=npc_leovic_registre_port,limit=1] unless entity @a[scores={QUEST_GARDEPORT=20},distance=..24] unless entity @a[scores={QUEST_GARDEPORT=50},distance=..24] as @a[scores={QUEST_GARDEPORT=20},sort=nearest,limit=1] if score @s CAP_ESCORT_WAIT_CD matches 0 run function capitale:quest/le_registre_du_port/escort/wait_message_self
+execute positioned as @e[tag=npc_leovic_registre_port,limit=1] unless entity @a[scores={QUEST_GARDEPORT=20},distance=..24] unless entity @a[scores={QUEST_GARDEPORT=50},distance=..24] as @a[scores={QUEST_GARDEPORT=50},sort=nearest,limit=1] if score @s CAP_ESCORT_WAIT_CD matches 0 run function capitale:quest/le_registre_du_port/escort/wait_message_self

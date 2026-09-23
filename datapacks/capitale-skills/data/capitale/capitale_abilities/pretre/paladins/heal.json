@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "spell": "paladins:heal",
+  "ability_categories": [
+    "capitale:branch/secours",
+    "capitale:class/pretre",
+    "capitale:source/paladins",
+    "capitale:type/active",
+    "capitale:school/healing",
+    "capitale:role/active",
+    "capitale:role/heal",
+    "capitale:role/targeted",
+    "capitale:order/000032"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/priest_wand"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

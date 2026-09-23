@@ -1,0 +1,5 @@
+execute if score @s CAP_BANQUE_SCEAU matches 1.. run function capitale:quest/journalieres/banque/banquier/fail_seal_broken_self
+execute if score @s QUEST_DAILY_BANQUE matches 10 if score @s CAP_BANQUE_SCEAU matches 0 store result score @s CAP_FLAG run clear @s minecraft:paper[minecraft:custom_model_data={strings:['documents_banque_scelles']}] 0
+execute if score @s QUEST_DAILY_BANQUE matches 10 if score @s CAP_BANQUE_SCEAU matches 0 if score @s CAP_FLAG matches 1.. if score @s CAP_BANQUE_TIMER matches 1.. run function capitale:quest/journalieres/banque/banquier/complete_on_time_self
+execute if score @s QUEST_DAILY_BANQUE matches 10 if score @s CAP_BANQUE_SCEAU matches 0 if score @s CAP_FLAG matches 1.. if score @s CAP_BANQUE_TIMER matches 0 run function capitale:quest/journalieres/banque/banquier/complete_late_self
+execute if score @s QUEST_DAILY_BANQUE matches 10 if score @s CAP_BANQUE_SCEAU matches 0 if score @s CAP_FLAG matches 0 run function capitale:quest/journalieres/banque/banquier/missing_documents_self

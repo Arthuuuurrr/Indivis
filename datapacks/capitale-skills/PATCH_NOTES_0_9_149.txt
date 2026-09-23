@@ -1,0 +1,7 @@
+CapSkills BETA 0.9.149 / JAR 1.7.14
+
+- Ajoute une animation personnalisée de recul de revolver.
+- Seul le bras qui tire est animé.
+- Le mode alterné gauche/droite ne s’active que lorsque les deux mains tiennent un revolver.
+- Revolver + toute autre arme : animation simple de la main du revolver.
+- Tir, hitscan, dégâts, munitions, portée et cooldown inchangés.

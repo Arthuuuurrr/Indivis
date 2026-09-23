@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "capitale_skills_items:item/relais_rempart"
+  }
+}

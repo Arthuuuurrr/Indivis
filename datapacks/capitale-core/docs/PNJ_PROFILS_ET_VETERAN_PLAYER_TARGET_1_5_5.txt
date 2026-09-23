@@ -1,0 +1,41 @@
+CAPITALE CORE 1.5.5 — PNJ profils + ciblage joueur vétéran
+
+1) PNJ registre des personnages
+
+Fonction principale à configurer sur un PNJ greffier / bureau des arrivées :
+  function capitale:profiles/registrar_interact_self
+
+Réglage EasyNPC :
+  - Action type : COMMAND
+  - executeAsUser : true
+  - permissionLevel : 2 si nécessaire
+
+Le bouton interne [Consulter le registre] lance :
+  /trigger InfoRP set 20
+
+Ce menu ne change pas encore réellement de profil. Il prépare le futur mod capitale_profiles.
+
+Hooks mod déjà disponibles :
+  function capitale:profiles/before_save_self
+  function capitale:profiles/after_load_self
+
+2) Vétéran de la Garde du Cœur — quête bière
+
+Fonction recommandée pour l’interaction du PNJ :
+  function capitale:quest/journalieres/biere_veteran/interact_player
+
+Réglage EasyNPC impératif :
+  - COMMAND
+  - executeAsUser : true
+  - NE PAS utiliser @a
+  - NE PAS utiliser execute as @a
+  - NE PAS configurer l’action comme message global / broadcast
+
+La fonction appelée par le PNJ doit viser uniquement le joueur qui interagit.
+Si plusieurs joueurs entendent le texte ou le son à grande distance, le problème vient presque sûrement de la configuration EasyNPC et non de la fonction : les textes du vétéran utilisent tellraw @s.
+
+3) Ancienne fonction toujours valide
+
+  function capitale:quest/journalieres/biere_veteran/interact_self
+
+Elle reste disponible pour compatibilité. La variante interact_player ajoute ensure_runtime + sync cooldown avant l’entrée existante.

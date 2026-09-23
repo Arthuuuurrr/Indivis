@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#capitale:weapon/dk_onehand",
+    "#capitale:weapon/dk_twohand"
+  ]
+}

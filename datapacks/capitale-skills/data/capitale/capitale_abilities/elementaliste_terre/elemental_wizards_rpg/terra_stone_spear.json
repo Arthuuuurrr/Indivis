@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "spell": "elemental_wizards_rpg:terra_stone_spear",
+  "ability_categories": [
+    "capitale:branch/magie",
+    "capitale:class/elementaliste_terre",
+    "capitale:source/elemental_wizards_rpg",
+    "capitale:type/active",
+    "capitale:school/earth",
+    "capitale:role/active",
+    "capitale:role/damage",
+    "capitale:role/projectile",
+    "capitale:role/aoe",
+    "capitale:role/debuff",
+    "capitale:order/000007"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/terra_staff"
+    ],
+    "allowed_items": [
+      "elemental_wizards_rpg:unique_staff_1"
+    ],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

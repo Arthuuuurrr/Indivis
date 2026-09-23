@@ -1,0 +1,2 @@
+
+give @s minecraft:paper[minecraft:custom_model_data={strings:['acte_dette_falsifie']},minecraft:custom_name=[{"text":"Acte de dette falsifié","italic":false,"color":"gold"}],minecraft:lore=[[{"text":"Un acte dont les montants semblent avoir été réécrits après signature.","italic":false,"color":"gray"}],[{"text":"Document lié à la quête « L’Acte de dette falsifié ».","italic":false,"color":"dark_gray"}]]] 1

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "spell": "bards_rpg:armys_paeon",
+  "ability_categories": [
+    "capitale:branch/support",
+    "capitale:class/barde",
+    "capitale:source/bards_rpg",
+    "capitale:type/active",
+    "capitale:school/arcane",
+    "capitale:role/active",
+    "capitale:role/status_effect",
+    "capitale:order/000086"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "bards_rpg:lutes"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

@@ -1,0 +1,18 @@
+Capitale Core 1.5.6 RC7 — correction passage négocié / avertissements d’accès
+
+Problème corrigé :
+- Le passage temporaire obtenu par négociation fonctionnait globalement, mais les contrôles d’accès pouvaient continuer ou reprendre avec un compteur CAP_ACCESS_WARN déjà avancé.
+- Résultat possible : criminalité ajoutée sans nouvelle séquence claire d’avertissements, surtout si le joueur restait dans la zone ou repassait près du garde à l’expiration du passage.
+
+Correction :
+- Les blocs CAP_PASS_ZONE + CAP_PASS_TIMER sont désormais évalués avant le refus de crime modéré CAP_CRIME 30..49, mais après l’arrestation CAP_CRIME 50...
+- Tant que le passage temporaire correspondant à la zone est actif, le garde considère le passage comme traité et remet CAP_ACCESS_WARN à 0.
+- CAP_ACCESS_CD est aussi remis à 40 pour éviter la reprise immédiate d’une séquence d’avertissements pendant le passage.
+
+Ce qui n’a PAS été changé :
+- Le timer CAP_PASS_TIMER historique est conservé.
+- Pas de nouvel objectif CAP_PASS_END.
+- Les accès permanents, le laissez-passer judiciaire, les arrestations CAP_CRIME 50.., les quêtes, la monnaie et les gardes statiques Defend Self ne sont pas modifiés.
+
+Fonctions patchées :
+- 54 fonctions d’évaluation passive d’accès : access/static/*_eval_self et access/patrol/*_eval_self.

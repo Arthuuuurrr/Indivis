@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "spell": "more_rpg_classes:puncture",
+  "ability_categories": [
+    "capitale:branch/support",
+    "capitale:class/barde",
+    "capitale:source/more_rpg_classes",
+    "capitale:type/active",
+    "capitale:school/physical_melee",
+    "capitale:role/active",
+    "capitale:role/damage",
+    "capitale:role/mobility",
+    "capitale:order/000028"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/bard_rapiers"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

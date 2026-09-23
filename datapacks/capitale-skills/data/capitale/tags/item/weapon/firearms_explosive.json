@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "haute_capitale_fusils:tromblon",
+      "required": false
+    },
+    {
+      "id": "haute_capitale_fusils:canon_main",
+      "required": false
+    }
+  ]
+}

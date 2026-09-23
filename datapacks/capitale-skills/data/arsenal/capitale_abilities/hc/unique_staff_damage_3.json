@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "spell": "arsenal:flame_cloud_spell",
+  "ability_categories": [
+    "capitale:source/arsenal",
+    "capitale:type/passive",
+    "capitale:internal/authorization"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [],
+    "allowed_items": ["arsenal:unique_staff_damage_3"],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

@@ -1,0 +1,15 @@
+INSTALLATION RC9an - capitale_core
+
+Cas dossier décompressé NitroServ :
+1. Ouvrir /minecraft/world/datapacks/capitale_core/
+2. Vérifier que ce dossier contient directement pack.mcmeta et data/
+   Chemin valide : /datapacks/capitale_core/pack.mcmeta
+   Chemin valide : /datapacks/capitale_core/data/capitale/function/...
+3. Si tu utilises le zip complet, vide l'ancien dossier capitale_core puis extrais le contenu de ce zip dedans.
+4. Ne laisse pas un zip core supplémentaire à côté si le dossier capitale_core est déjà utilisé.
+5. Redémarre le serveur, puis /datapack list.
+
+Cas patch metadata seulement :
+- Dépose/remplace uniquement pack.mcmeta à la racine de /datapacks/capitale_core/.
+
+Ce correctif ne modifie pas les fonctions de quêtes. Il corrige uniquement le format metadata 1.21.11.

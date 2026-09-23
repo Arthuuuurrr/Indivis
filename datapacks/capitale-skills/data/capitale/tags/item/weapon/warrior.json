@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#capitale:weapon/swords",
+    "#capitale:weapon/axes",
+    "#capitale:weapon/impact",
+    "#capitale:weapon/polearms",
+    "#capitale:weapon/heavy"
+  ]
+}

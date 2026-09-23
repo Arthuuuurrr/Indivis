@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "spell": "more_rpg_classes:decapitate",
+  "ability_categories": [
+    "capitale:branch/lame",
+    "capitale:class/berserker",
+    "capitale:source/more_rpg_classes",
+    "capitale:type/active",
+    "capitale:school/rage_melee",
+    "capitale:role/active",
+    "capitale:role/damage",
+    "capitale:role/control",
+    "capitale:order/000025"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "berserker_rpg:berserker_axes"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

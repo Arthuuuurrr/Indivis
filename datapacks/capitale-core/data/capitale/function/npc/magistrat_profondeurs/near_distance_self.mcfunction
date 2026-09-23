@@ -1,0 +1,1 @@
+function capitale:npc/magistrat_profondeurs/near_self

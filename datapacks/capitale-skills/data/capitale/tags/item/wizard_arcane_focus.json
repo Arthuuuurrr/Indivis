@@ -1,0 +1,47 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "arsenal:unique_staff_damage_1",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_staff_damage_2",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_staff_damage_3",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_staff_damage_5",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_staff_damage_6",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_staff_damage_sw",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_staff_heal_1",
+      "required": false
+    },
+    {
+      "id": "wizards:aether_wizard_staff",
+      "required": false
+    },
+    "wizards:staff_arcane",
+    {
+      "id": "wizards:staff_crystal_arcane",
+      "required": false
+    },
+    "wizards:staff_netherite_arcane",
+    "wizards:staff_wizard",
+    "wizards:wand_arcane",
+    "wizards:wand_netherite_arcane",
+    "wizards:wand_novice"
+  ]
+}

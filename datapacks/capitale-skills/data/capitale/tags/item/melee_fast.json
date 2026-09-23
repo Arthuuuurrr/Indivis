@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#rpg_series:weapon_type/sword",
+    "#rpg_series:weapon_type/dagger",
+    "#rpg_series:weapon_type/sickle"
+  ]
+}

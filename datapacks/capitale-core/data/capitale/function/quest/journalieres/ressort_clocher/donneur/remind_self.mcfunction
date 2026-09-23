@@ -1,0 +1,9 @@
+function capitale:dialogue/random/roll_2_self
+execute if score @s QUEST_DAILY_RESSORT_CLOCHER matches 20 if score @s CAP_DLG_RNG matches 1 run function capitale:dialogue/sound/parole_quete_self
+execute if score @s QUEST_DAILY_RESSORT_CLOCHER matches 20 if score @s CAP_DLG_RNG matches 1 run tellraw @s [{"text":"[Commis des Messageries]","color":"yellow"},{"text":" : Le ressort doit d’abord atteindre le Quartier des Vieilles Mécaniques. Suivez le clocher, pas les bavardages.","color":"white"}]
+execute if score @s QUEST_DAILY_RESSORT_CLOCHER matches 20 if score @s CAP_DLG_RNG matches 2 run function capitale:dialogue/sound/parole_quete_self
+execute if score @s QUEST_DAILY_RESSORT_CLOCHER matches 20 if score @s CAP_DLG_RNG matches 2 run tellraw @s [{"text":"[Commis des Messageries]","color":"yellow"},{"text":" : Ne vous écartez pas trop : la pièce est petite, mais le retard, lui, s’entend jusqu’au clocher.","color":"white"}]
+execute if score @s QUEST_DAILY_RESSORT_CLOCHER matches 30 if score @s CAP_DLG_RNG matches 1 run function capitale:dialogue/sound/parole_quete_self
+execute if score @s QUEST_DAILY_RESSORT_CLOCHER matches 30 if score @s CAP_DLG_RNG matches 1 run tellraw @s [{"text":"[Commis des Messageries]","color":"yellow"},{"text":" : Vous êtes déjà dans le bon secteur. Trouvez l’Horlogère du Clocher et remettez-lui la pièce.","color":"white"}]
+execute if score @s QUEST_DAILY_RESSORT_CLOCHER matches 30 if score @s CAP_DLG_RNG matches 2 run function capitale:dialogue/sound/parole_quete_self
+execute if score @s QUEST_DAILY_RESSORT_CLOCHER matches 30 if score @s CAP_DLG_RNG matches 2 run tellraw @s [{"text":"[Commis des Messageries]","color":"yellow"},{"text":" : Le quartier est bon. Il ne vous manque plus que l’Horlogère, et il paraît qu’elle n’aime guère chercher ses livreurs.","color":"white"}]

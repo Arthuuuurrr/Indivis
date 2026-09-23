@@ -1,0 +1,41 @@
+CAPITALE CORE 1.5.6 RC4 — Gardes statiques : tagging/ancrage simple
+
+Objectif
+- Éviter de renseigner manuellement la position de chaque PNJ statique.
+- Permettre un ancrage rapide depuis le menu admin, en se plaçant près du PNJ.
+
+Menu admin
+/function capitale:admin/static_guards/menu_self
+
+Méthode recommandée
+1. Place-toi à moins de 5 blocs du garde statique non-accès.
+2. Clique [Voir PNJ proche] pour vérifier la cible.
+3. Clique [Tag + ancrer PNJ proche].
+4. Répète pour les PNJ concernés.
+5. Si tu déplaces plusieurs PNJ déjà tagués, utilise [Recréer ancres des tagués chargés].
+
+Commandes directes
+/function capitale:npc/static_guards/defend_reset/tag_nearest_self
+/function capitale:npc/static_guards/defend_reset/show_nearest_self
+/function capitale:npc/static_guards/defend_reset/untag_nearest_self
+/function capitale:npc/static_guards/defend_reset/setup_loaded_tagged
+/function capitale:npc/static_guards/defend_reset/reset_all
+
+Important
+- Le tag/ancrage ne suffit pas à déclencher le retour après combat.
+- Le PNJ doit aussi avoir, dans EasyNPC, l'action On Hurt suivante :
+  executeAsUser=false
+  function capitale:npc/static_guards/defend_reset/on_hurt_npc_self
+- L'action joueur pénale reste séparée :
+  executeAsUser=true
+  function capitale:npc/<famille>/static_port/on_hurt_self
+
+Candidats ciblés
+- Le système cible les entités EasyNPC humanoid/humanoid_slim via le tag d'entity type :
+  #capitale:static_guard_npc_candidates
+- Les entrées sont optionnelles pour éviter un crash si une variante n'existe pas.
+
+Performance
+- Pas de scan global permanent.
+- Le tick de retour ne s'active que si au moins un PNJ porte cap_static_guard_active.
+- Le tagging est une action admin ponctuelle.

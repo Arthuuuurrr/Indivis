@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "haute_capitale_fusils:tromblon",
+      "required": false
+    }
+  ]
+}

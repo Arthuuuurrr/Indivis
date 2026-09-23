@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "spell": "rpg_series:whirlwind",
+  "ability_categories": ["capitale:melee", "capitale:area"],
+  "weapon_requirements": {
+    "allowed_tags": ["capitale:swords", "capitale:axes"],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "spell": "paladins:immolation",
+  "ability_categories": [
+    "capitale:branch/rempart",
+    "capitale:class/paladin_retribution",
+    "capitale:source/paladins",
+    "capitale:type/active",
+    "capitale:school/healing",
+    "capitale:role/active",
+    "capitale:role/aoe",
+    "capitale:role/damage",
+    "capitale:role/fire",
+    "capitale:role/heal",
+    "capitale:role/support",
+    "capitale:order/000180"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/paladin_rempart"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

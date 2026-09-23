@@ -1,0 +1,121 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:wooden_sword",
+      "required": true
+    },
+    {
+      "id": "minecraft:stone_sword",
+      "required": true
+    },
+    {
+      "id": "minecraft:iron_sword",
+      "required": true
+    },
+    {
+      "id": "minecraft:golden_sword",
+      "required": true
+    },
+    {
+      "id": "minecraft:diamond_sword",
+      "required": true
+    },
+    {
+      "id": "minecraft:netherite_sword",
+      "required": true
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_knight_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_short_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:gold_knight_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_short_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_knight_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_short_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_short_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword2",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword3",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword4",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword5",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword6",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword7",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword8",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword2",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword3",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword4",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword5",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword6",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword7",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword8",
+      "required": false
+    }
+  ]
+}

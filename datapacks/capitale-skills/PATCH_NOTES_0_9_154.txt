@@ -1,0 +1,9 @@
+CapSkills BETA 0.9.154 — hotfix bridge central des items
+
+- Gameplay identique à 0.9.153 / 0.9.152.
+- JAR attendu : 1.7.17-player-command-source-function-bridge-fix.
+- Cause corrigée : le pont Java sérialisait le nom du personnage dans une commande `execute as <nom> at <nom> ...`.
+- Les noms personnalisés contenant espaces/couleurs (ex. personnage Nexus) rendaient alors la commande Brigadier invalide.
+- Le JAR 1.7.17 exécute désormais `function <id>` directement depuis le ServerCommandSource réel du joueur.
+- Ce correctif couvre le pont commun utilisé par magie, secours, alchimie, chaman, rempart, ombre/shadowstep et le revolver.
+- Aucun nom/UUID n'est injecté dans la chaîne de commande.

@@ -1,0 +1,11 @@
+CapSkills BETA 0.9.152 — Armes à feu II et optimisation prudente
+
+- Ajout de Maîtrise des armes à feu II à (210,-240), reliée au rang I.
+- Rechargement revolver : simple 31 ticks, double 43 ticks au rang II.
+- Double revolver immobile : dispersion réduite ; mesure Motion uniquement au départ du tir.
+- Aucun suivi permanent de posture.
+- Synchronisation Puffish rendue événementielle via CAPSK_SYNC_DIRTY.
+- Synchronisation complète au changement de skill, à l’arrivée/migration et audit de sécurité toutes les 30 s.
+- Les sorts utilisent un contrôle léger ensure_current au lieu d’une reconstruction complète à chaque activation.
+- Login, mineur, forge et agriculture regroupés toutes les 5 s.
+- Les cooldowns et mécaniques de combat restent aux cadences précédentes.

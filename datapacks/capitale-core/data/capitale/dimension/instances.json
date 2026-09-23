@@ -1,0 +1,17 @@
+{
+  "type": "capitale:instances_overworld_cycle",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "capitale:instances_vide",
+      "layers": [
+        {
+          "block": "minecraft:air",
+          "height": 384
+        }
+      ],
+      "features": false,
+      "structure_overrides": []
+    }
+  }
+}

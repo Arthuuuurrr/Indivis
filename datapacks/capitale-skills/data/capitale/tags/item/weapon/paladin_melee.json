@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "#paladins:melee_weapons",
+    {
+      "id": "capitale_weapons_standalone:diamond_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_paladin_greatsword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_paladin_greatsword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_paladin_greatsword",
+      "required": false
+    }
+  ]
+}

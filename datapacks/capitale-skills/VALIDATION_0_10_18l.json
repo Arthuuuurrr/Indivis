@@ -1,0 +1,27 @@
+{
+  "skills": 338,
+  "definitions": 338,
+  "normal_connections": 343,
+  "exclusive_connections": 6,
+  "roots": [
+    "doctrine_root",
+    "voie_metiers"
+  ],
+  "reachable": 338,
+  "unreachable": [],
+  "collisions": [],
+  "missing_endpoints": [],
+  "missing_ability_files": [],
+  "json_files_parsed": 505,
+  "new_nodes": [
+    "ability_elementaliste_eau_elemental_wizards_rpg_aqua_splash",
+    "ability_elementaliste_terre_elemental_wizards_rpg_terra_stone_throw",
+    "ability_elementaliste_air_elemental_wizards_rpg_wind_gust",
+    "ability_pretre_paladins_holy_shock",
+    "ability_pretre_paladins_heal",
+    "ability_barde_more_rpg_classes_puncture",
+    "ability_berserker_more_rpg_classes_decapitate",
+    "ability_maitre_force_more_rpg_classes_burstcrack",
+    "ability_sorceleur_defensive_witcher_mechanics"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#capitale:weapon/greatswords",
+    "#capitale:weapon/double_axes",
+    "#capitale:weapon/great_hammers"
+  ]
+}

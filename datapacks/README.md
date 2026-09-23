@@ -1,17 +1,20 @@
 # Datapacks
 
-Ce dossier contient les datapacks du serveur.
+Les datapacks sont conservés sous forme **décompressée et éditable** quand leurs octets exacts sont disponibles.
 
-## État actuel
+## Importés intégralement
 
-- `capitale-creatures-biomes/` — **BETA 0.12, import complet** ;
-- `capitale-core/` — 1.5.6-RC9AO, import partiel (metadata/docs), expansion complète à faire ;
-- `capitale-skills/` — 0.10.19 RC2F, import partiel (metadata/notes), expansion complète à faire.
+- `capitale-core/` — **1.5.6-RC9AO**, version serveur exacte.
+- `capitale-skills/` — **0.10.19-RC2F TREE HARD RESTORE**, version serveur exacte.
+- `capitale-abilities/` — archive serveur `capitale_abilities.zip`, version exacte disponible.
+- `capitale-creatures-biomes/` — **BETA 0.12**, source plus récente non confirmée déployée.
+- `deployed/capitale-creatures-biomes/` — **BETA 0.10**, snapshot exact constaté sur le serveur.
 
-Les archives source de référence et leurs SHA-256 sont enregistrés dans [server-manifest.yml](../server-manifest.yml).
+## Identifiés sur le serveur mais octets exacts encore absents
 
-Chaque datapack doit préciser :
-- version Minecraft cible ;
-- dépendances éventuelles ;
-- commandes/tests utiles ;
-- changelog ou issues correspondantes.
+- `orc_camp` — dossier serveur.
+- `arthur_datapack_1_0` — dossier serveur.
+- `hc_quetes-0.1.0.b8.zip`.
+- `quete_josue.zip`.
+
+Les noms/version déployés restent consignés dans `server-manifest.yml`.

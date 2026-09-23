@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "elemental_wizards_rpg:staff_wind",
+    "elemental_wizards_rpg:staff_netherite_wind",
+    {
+      "id": "elemental_wizards_rpg:staff_aeternium_wind",
+      "required": false
+    },
+    {
+      "id": "elemental_wizards_rpg:staff_aether",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+VALIDATION 0.10.18c
+JSON parsed: 487
+Skills: 326
+Definitions: 326
+Connections: 335
+Reachable from doctrine_root: 326/326
+Structural free branch labels: 45
+Disabled future passives left unlabelled as branch-only: 18
+Exact coordinate collisions: 0
+Errors: 0
+Warnings: 0

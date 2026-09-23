@@ -1,0 +1,2 @@
+scoreboard players enable @s QuestChoix
+tellraw @s [{"text":"[Choix] ","color":"gray"},{"text":"[Louer une chambre — 20 Martins d’Or.]","color":"green","click_event":{"action":"run_command","command":"/trigger QuestChoix set 80"},"hover_event":{"action":"show_text","value":"Payer la chambre requise pour la démarche de résidence."}},{"text":"   ","color":"gray"},{"text":"[Je vais attendre.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set 81"},"hover_event":{"action":"show_text","value":"Reporter la location."}}]

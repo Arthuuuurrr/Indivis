@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#capitale:melee_fast",
+    "#capitale:melee_polearm",
+    "#capitale:melee_heavy"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "spell": "archers_expansion:frozen_pact",
+  "ability_categories": [
+    "capitale:branch/trait",
+    "capitale:class/tireur_arctic",
+    "capitale:source/archers_expansion",
+    "capitale:type/active",
+    "capitale:school/frost_ranged",
+    "capitale:role/active",
+    "capitale:role/aoe",
+    "capitale:role/control",
+    "capitale:role/status_effect",
+    "capitale:order/000048"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/bows"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

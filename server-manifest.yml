@@ -110,12 +110,12 @@ source_reference:
     version: "1.5.6-RC9AO"
     source_archive: "capitale_core_1_5_6_RC9AO.zip"
     sha256: "e5b06cd7ae0b9356782c30e3813a3170605a4ec20276edf0789c54331905b521"
-    git_import: "partial"
+    git_import: "complete"
   capitale_skills:
     version: "0.10.19-RC2F"
     source_archive: "capitale_skills_BETA_0_10_19_RC2F_TREE_HARD_RESTORE.zip"
     sha256: "109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4"
-    git_import: "partial"
+    git_import: "complete"
   capitale_creatures_biomes:
     version: "BETA-0.12"
     source_archive: "capitale_creatures_biomes_BETA_0_12.zip"

@@ -1,0 +1,850 @@
+{
+  "schema_version": 1,
+  "minecraft": "1.21.11",
+  "status": "ACTIVE — 1.2.12 terrestrial/HMobs/dungeon-orc natural tables + aquatic runtime bridge",
+  "interpretation": {
+    "dino_natural_variant": "For Dino Mounts families, natural wild populations use the matching *_hostile entity. Non-hostile variants remain outside natural spawning and can stay reserved for shops/taming.",
+    "weights": "Weights and group sizes are read directly from spawn_profiles_active.json by bundle 1.2.5. The datapack is authoritative.",
+    "night_only": "Barn owl biome placement is active; its pre-existing CubeAnimals spawn-placement predicate is preserved. Strict night-only gating will require a dedicated predicate patch if the original predicate does not enforce darkness.",
+    "vanilla_policy": "All natural Overworld spawn lists are cleared in POST_PROCESSING, then explicit Haute Capitale fauna is re-added in the SAME phase, after the clear.",
+    "marine_policy": "Strict swimming fauna is handled by aquatic_runtime_rules.json with an independent datapack-driven aquatic population bridge. Thornshell remains amphibious bottom-walker and shark remains natural WATER_CREATURE.",
+    "hmobs_policy": "HMobs is bundled in 1.2.12; its original natural weights/groups are reproduced in the authoritative datapack because the Haute Capitale controller clears/rebuilds Overworld spawn lists.",
+    "orc_policy": "General Overworld orcs remain event-only through orc_patrol_rules.json. Natural orc populations are restricted to #capitale_creatures:orc_dungeon (capitale:donjon) and use MONSTER + ON_GROUND placement."
+  },
+  "rules": [
+    {
+      "name": "mystic_raptor_colors_2_3_jungle",
+      "entities": [
+        "dino_mounts_ai:mystic_raptor_couleur_2_hostile",
+        "dino_mounts_ai:mystic_raptor_couleur_3_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false,
+      "note": "Natural wild spawn uses _hostile variant; non-hostile variants remain reserved for acquisition/taming."
+    },
+    {
+      "name": "mystic_raptor_colors_1_4_dry",
+      "entities": [
+        "dino_mounts_ai:mystic_raptor_couleur_1_hostile",
+        "dino_mounts_ai:mystic_raptor_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:desert_and_badlands"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false,
+      "note": "Natural wild spawn uses _hostile variant."
+    },
+    {
+      "name": "dawn_ceratosaurus_desert",
+      "entities": [
+        "dino_mounts_ai:dawn_ceratosaurus_female_hostile",
+        "dino_mounts_ai:dawn_ceratosaurus_male_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:desert"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "dawn_diabloceratops_jungle",
+      "entities": [
+        "dino_mounts_ai:dawn_diabloceratops_female_hostile",
+        "dino_mounts_ai:dawn_diabloceratops_male_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "dawn_triceratops_desert",
+      "entities": [
+        "dino_mounts_ai:dawn_triceratops_female_hostile",
+        "dino_mounts_ai:dawn_triceratops_male_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:desert"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "dawn_tyrannosaurus_badlands",
+      "entities": [
+        "dino_mounts_ai:dawn_tyrannosaurus_female_hostile",
+        "dino_mounts_ai:dawn_tyrannosaurus_male_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:badlands_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "dawn_torvosaurus_jungle",
+      "entities": [
+        "dino_mounts_ai:dawn_torvosaurus_female_hostile",
+        "dino_mounts_ai:dawn_torvosaurus_male_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "mystic_ankylosaurus_colors_1_2_4_jungle_dry",
+      "entities": [
+        "dino_mounts_ai:mystic_ankylosaurus_couleur_1_hostile",
+        "dino_mounts_ai:mystic_ankylosaurus_couleur_2_hostile",
+        "dino_mounts_ai:mystic_ankylosaurus_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants",
+        "#capitale_creatures:desert_and_badlands"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false,
+      "note": "Color 3 deliberately excluded because it is reported bugged."
+    },
+    {
+      "name": "mystic_bison_plains_savannas",
+      "entities": [
+        "dino_mounts_ai:mystic_bison_couleur_1_hostile",
+        "dino_mounts_ai:mystic_bison_couleur_2_hostile",
+        "dino_mounts_ai:mystic_bison_couleur_3_hostile",
+        "dino_mounts_ai:mystic_bison_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:plains_and_savannas"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "mystic_brontosaurus_jungle_dry",
+      "entities": [
+        "dino_mounts_ai:mystic_brontosaurus_couleur_1_hostile",
+        "dino_mounts_ai:mystic_brontosaurus_couleur_2_hostile",
+        "dino_mounts_ai:mystic_brontosaurus_couleur_3_hostile",
+        "dino_mounts_ai:mystic_brontosaurus_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants",
+        "#capitale_creatures:desert_and_badlands"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "mystic_direwolf_forests_no_color2",
+      "entities": [
+        "dino_mounts_ai:mystic_direwolf_couleur_1_hostile",
+        "dino_mounts_ai:mystic_direwolf_couleur_3_hostile",
+        "dino_mounts_ai:mystic_direwolf_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false,
+      "note": "Color 2 deliberately excluded."
+    },
+    {
+      "name": "mystic_managarmr_cold_biomes",
+      "entities": [
+        "dino_mounts_ai:mystic_managarmr_couleur_1_hostile",
+        "dino_mounts_ai:mystic_managarmr_couleur_2_hostile",
+        "dino_mounts_ai:mystic_managarmr_couleur_3_hostile",
+        "dino_mounts_ai:mystic_managarmr_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:cold_biomes"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "mystic_direbear_forests",
+      "entities": [
+        "dino_mounts_ai:mystic_direbear_couleur_1_hostile",
+        "dino_mounts_ai:mystic_direbear_couleur_2_hostile",
+        "dino_mounts_ai:mystic_direbear_couleur_3_hostile",
+        "dino_mounts_ai:mystic_direbear_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "mystic_doedicurus_dry",
+      "entities": [
+        "dino_mounts_ai:mystic_doedicurus_couleur_1_hostile",
+        "dino_mounts_ai:mystic_doedicurus_couleur_2_hostile",
+        "dino_mounts_ai:mystic_doedicurus_couleur_3_hostile",
+        "dino_mounts_ai:mystic_doedicurus_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:desert_and_badlands"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "mystic_mammoth_color1_snowy",
+      "entities": [
+        "dino_mounts_ai:mystic_mammoth_couleur_1_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:snowy_biomes"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "mystic_sabertooth_snowy",
+      "entities": [
+        "dino_mounts_ai:mystic_sabertooth_couleur_1_hostile",
+        "dino_mounts_ai:mystic_sabertooth_couleur_2_hostile",
+        "dino_mounts_ai:mystic_sabertooth_couleur_3_hostile",
+        "dino_mounts_ai:mystic_sabertooth_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:snowy_biomes"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "mystic_sarcosuchus_jungle_swamp_mangrove",
+      "entities": [
+        "dino_mounts_ai:mystic_sarcosuchus_couleur_1_hostile",
+        "dino_mounts_ai:mystic_sarcosuchus_couleur_2_hostile",
+        "dino_mounts_ai:mystic_sarcosuchus_couleur_3_hostile",
+        "dino_mounts_ai:mystic_sarcosuchus_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_swamp_mangrove"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "mystic_tyrannosaurus_colors_1_3_4_dry",
+      "entities": [
+        "dino_mounts_ai:mystic_tyrannosaurus_couleur_1_hostile",
+        "dino_mounts_ai:mystic_tyrannosaurus_couleur_3_hostile",
+        "dino_mounts_ai:mystic_tyrannosaurus_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:desert_and_badlands"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false,
+      "note": "Colors 2 and 5 deliberately excluded."
+    },
+    {
+      "name": "mystic_triceratops_dry_plains",
+      "entities": [
+        "dino_mounts_ai:mystic_triceratops_couleur_1_hostile",
+        "dino_mounts_ai:mystic_triceratops_couleur_2_hostile",
+        "dino_mounts_ai:mystic_triceratops_couleur_3_hostile",
+        "dino_mounts_ai:mystic_triceratops_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:desert_and_badlands",
+        "#capitale_creatures:plains"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "mystic_spinosaurus_jungle_dry",
+      "entities": [
+        "dino_mounts_ai:mystic_spinosaurus_couleur_1_hostile",
+        "dino_mounts_ai:mystic_spinosaurus_couleur_2_hostile",
+        "dino_mounts_ai:mystic_spinosaurus_couleur_3_hostile",
+        "dino_mounts_ai:mystic_spinosaurus_couleur_4_hostile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants",
+        "#capitale_creatures:desert_and_badlands"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "hippopotamus_savannas",
+      "entities": [
+        "animalgarden_hippopotamus:hippopotamus"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:savanna_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "white_rhinoceros_savannas",
+      "entities": [
+        "animalgarden_whiterhinoceros:whiterhinoceros"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:savanna_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "western_gorilla_jungle",
+      "entities": [
+        "animalgarden_westerngorilla:westerngorilla"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "antilope_plains_savannas",
+      "entities": [
+        "cubeanimals:antilope"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:plains_and_savannas"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "barnowl_everywhere_night",
+      "entities": [
+        "cubeanimals:barnowl"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:all_overworld"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "night_only"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "bison_plains_savannas",
+      "entities": [
+        "cubeanimals:bison"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:plains_and_savannas"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "blackbear_everywhere",
+      "entities": [
+        "cubeanimals:blackbear"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:all_overworld"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "capuchin_jungle",
+      "entities": [
+        "cubeanimals:capuchin"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "crocodile_jungle_swamp_mangrove",
+      "entities": [
+        "cubeanimals:crocodile"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_swamp_mangrove"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "eagle_everywhere",
+      "entities": [
+        "cubeanimals:eagle"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:all_overworld"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "fennec_forests",
+      "entities": [
+        "cubeanimals:fennec"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "komododragon_jungle_dry",
+      "entities": [
+        "cubeanimals:komododragon"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants",
+        "#capitale_creatures:desert_and_badlands"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "marmot_plains_temperate_forests",
+      "entities": [
+        "cubeanimals:marmot"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:plains",
+        "#capitale_creatures:temperate_forests"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "moose_forests",
+      "entities": [
+        "cubeanimals:moose"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "rattlesnake_dry_savanna",
+      "entities": [
+        "cubeanimals:rattlesnake"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:desert_and_badlands",
+        "#capitale_creatures:savanna_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "reindeer_forests",
+      "entities": [
+        "cubeanimals:reindeer"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "roedeer_forests",
+      "entities": [
+        "cubeanimals:roedeer"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "shark_oceans",
+      "entities": [
+        "cubeanimals:shark"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:ocean_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "snail_everywhere_except_dry",
+      "entities": [
+        "cubeanimals:snail"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:all_overworld"
+      ],
+      "exclude_biome_tags": [
+        "#capitale_creatures:dry_biomes"
+      ],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "snowleopard_snowy_forests",
+      "entities": [
+        "cubeanimals:snowleopard"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:snowy_forests"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "tiger_jungle",
+      "entities": [
+        "cubeanimals:tiger"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "toucan_jungle",
+      "entities": [
+        "cubeanimals:toucan"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "walrus_beaches",
+      "entities": [
+        "cubeanimals:walrus"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:beaches"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "chaos_babyspider_wet_forests",
+      "entities": [
+        "chaos_mmo_ai:babyspider"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:temperate_forests",
+        "#capitale_creatures:jungle_variants",
+        "#capitale_creatures:jungle_swamp_mangrove"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "chaos_bloodygadfly_wet_warm",
+      "entities": [
+        "chaos_mmo_ai:bloodygadfly"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_swamp_mangrove"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "chaos_corpsefly_forests_swamps",
+      "entities": [
+        "chaos_mmo_ai:corpsefly"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:temperate_forests",
+        "#capitale_creatures:jungle_swamp_mangrove"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "chaos_diamondthermite_dry",
+      "entities": [
+        "chaos_mmo_ai:diamondthermite"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:desert_and_badlands",
+        "#capitale_creatures:savanna_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "chaos_dreadhound_forests_cold",
+      "entities": [
+        "chaos_mmo_ai:dreadhound"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:forests_non_jungle_swamp_savanna",
+        "#capitale_creatures:cold_biomes"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "chaos_firelight_dry",
+      "entities": [
+        "chaos_mmo_ai:firelight"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:desert_and_badlands",
+        "#capitale_creatures:savanna_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "chaos_maggot_ground_general",
+      "entities": [
+        "chaos_mmo_ai:maggot"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:plains",
+        "#capitale_creatures:temperate_forests",
+        "#capitale_creatures:jungle_swamp_mangrove"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "capitale_goblin_general",
+      "entities": [
+        "capitale_entities:goblin"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:plains",
+        "#capitale_creatures:temperate_forests",
+        "#capitale_creatures:savanna_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER",
+        "optional external capitale_entities mod"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "chaos_thornshell_amphibious",
+      "entities": [
+        "chaos_mmo_ai:thornshell"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:beaches",
+        "#capitale_creatures:shallow_ocean_variants",
+        "#capitale_creatures:river_variants"
+      ],
+      "exclude_biome_tags": [
+        "#capitale_creatures:deep_ocean_variants"
+      ],
+      "conditions": [
+        "amphibious bottom-walker: beach ground OR shallow-water seabed/riverbed",
+        "never deep_ocean"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "1.2.7: hybrid spawn predicate restricts underwater natural spawn to the water block directly above the seabed/riverbed; deep oceans explicitly excluded."
+    },
+    {
+      "name": "colored_horses_plains",
+      "entities": [
+        "autonomous_colored_horses:black_horse",
+        "autonomous_colored_horses:brown_horse",
+        "autonomous_colored_horses:buckskin_horse",
+        "autonomous_colored_horses:chestnut_horse",
+        "autonomous_colored_horses:gray_horse",
+        "autonomous_colored_horses:paint_horse",
+        "autonomous_colored_horses:palomino_horse",
+        "autonomous_colored_horses:roan_horse",
+        "autonomous_colored_horses:white_horse"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:plains"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "CREATURE"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "deer_forests",
+      "entities": [
+        "deermod:deer"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "CREATURE"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "red_panda_jungle",
+      "entities": [
+        "wanderingwildlife:red_panda"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:jungle_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "CREATURE"
+      ],
+      "remove_existing_spawn_entries_first": true
+    },
+    {
+      "name": "hmobs_brown_bear_forests_taiga",
+      "entities": [
+        "hmobs:brown_bear"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:hmobs_brown_bear_habitat"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false,
+      "note": "Reproduces HMobs original IS_FOREST + IS_TAIGA habitat with original weight/group from spawn_profiles_active.json."
+    },
+    {
+      "name": "hmobs_lion_savanna",
+      "entities": [
+        "hmobs:lion"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:savanna_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "hmobs_hyena_savanna",
+      "entities": [
+        "hmobs:hyena"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:savanna_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "hmobs_zebra_savanna",
+      "entities": [
+        "hmobs:zebra"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:savanna_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": false
+    },
+    {
+      "name": "orc_dungeon_population",
+      "entities": [
+        "autonomous_orc_mobs:orc_archer",
+        "autonomous_orc_mobs:orc_warrior",
+        "autonomous_orc_mobs:female_orc_warrior",
+        "autonomous_orc_mobs:orc_warlock",
+        "autonomous_orc_mobs:orc_champion",
+        "autonomous_orc_mobs:female_orc_elite"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:orc_dungeon"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "ground_only"
+      ],
+      "remove_existing_spawn_entries_first": false,
+      "note": "Dungeon-only orc population. Ground placement is enforced in the bundle spawn restriction layer; water spawning is not permitted."
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+function capitale:player/ensure_runtime_self
+execute if score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20..30 if score @s ACCESS_QH_NORD matches 1.. run function capitale:dialogue/sound/parole_quete_self
+execute if score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20..30 if score @s ACCESS_QH_NORD matches 1.. run tellraw @s [{"text":"[Garde du quartier nord]","color":"#FF8C00"},{"text":" : Laissez-passer du libraire reconnu. Allez droit à votre adresse, puis repartez sans troubler le quartier.","color":"white"}]
+execute unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20..30 if score @s ACCESS_QH_NORD matches 0 run function capitale:dialogue/sound/parole_quete_self
+execute unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20..30 if score @s ACCESS_QH_NORD matches 0 run tellraw @s [{"text":"[Garde du quartier nord]","color":"#FF8C00"},{"text":" : Ce passage est réservé. Sans droit d’accès ou commission reconnue, vous n’irez pas plus loin.","color":"white"}]
+execute unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20..30 if score @s ACCESS_QH_NORD matches 1.. run function capitale:dialogue/sound/parole_quete_self
+execute unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20..30 if score @s ACCESS_QH_NORD matches 1.. run tellraw @s [{"text":"[Garde du quartier nord]","color":"#FF8C00"},{"text":" : Votre accès est en règle. Circulez sans faire attendre les résidents.","color":"white"}]

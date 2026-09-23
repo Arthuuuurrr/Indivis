@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#capitale:weapon/swords",
+    "#capitale:weapon/rapiers"
+  ]
+}

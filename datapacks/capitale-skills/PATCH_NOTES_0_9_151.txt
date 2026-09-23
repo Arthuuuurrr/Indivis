@@ -1,0 +1,19 @@
+CapSkills BETA 0.9.151 / JAR 1.7.14 inchangé
+
+MAÎTRISE DES ARMES À FEU I
+- Le premier nœud devient un tronc commun pour fusils, pistolets et revolvers.
+- Nouveau titre : Maîtrise des armes à feu I — poudre et visée.
+- Icône neutre : poudre à canon, en attendant un modèle de fusil.
+- Les fusils sont définis comme les armes à feu les plus courantes : deux mains, longue portée, forte puissance, rechargement lent.
+- Les pistolets et revolvers restent plus rares et technologiquement avancés : une main, cadence supérieure, portée/précision réduites, double maniement possible.
+- Les bonus revolver déjà implémentés restent strictement inchangés.
+- Le même tag interne capskills.firearm.mastery.r1 sera réutilisé pour les futurs fusils.
+- Aucun changement de coordonnées, de connexion, de coût ou d'identifiant Puffish : les déblocages existants sont conservés.
+
+ARCHITECTURE CONSEILLÉE APRÈS CE TRONC
+- Voie Fusilier : tir de ligne, stabilité, longue portée, rechargement maîtrisé.
+- Voie Pistolero : tir de duel, mobilité, alternance et double maniement.
+
+OPTIMISATION
+- Les optimisations runtime de la 0.9.150 sont conservées sans modification.
+- Aucun changement du hitscan, des dégâts, des munitions ou des animations.

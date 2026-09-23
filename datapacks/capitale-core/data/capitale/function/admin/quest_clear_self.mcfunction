@@ -1,0 +1,1 @@
+function capitale:quest/clear_active_self

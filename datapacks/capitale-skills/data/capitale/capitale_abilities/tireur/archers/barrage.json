@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "spell": "archers:barrage",
+  "ability_categories": [
+    "capitale:branch/trait",
+    "capitale:class/tireur",
+    "capitale:source/archers",
+    "capitale:type/active",
+    "capitale:school/physical_ranged",
+    "capitale:role/active",
+    "capitale:role/projectile",
+    "capitale:role/ranged",
+    "capitale:role/targeted",
+    "capitale:order/000075"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/bows"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

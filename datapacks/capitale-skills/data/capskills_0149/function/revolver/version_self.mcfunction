@@ -1,0 +1,1 @@
+tellraw @s [{"text":"CapSkills BETA 0.9.149","color":"aqua"},{"text":" — revolver : recul personnalisé et animation simple/double stricte","color":"gray"},{"text":" | JAR attendu : 1.7.14-revolver-custom-recoil-single-dual-guard","color":"yellow"}]

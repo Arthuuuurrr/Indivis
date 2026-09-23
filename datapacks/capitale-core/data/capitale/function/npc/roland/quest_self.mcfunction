@@ -1,0 +1,1 @@
+function capitale:quest/side/bas_anneaux/q04_patrouille/interact_self

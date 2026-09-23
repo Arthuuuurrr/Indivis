@@ -1,0 +1,17 @@
+Capitale Core 1.5.6 RC8 — Optimisation légère
+
+Cette RC réduit uniquement des appels périodiques du core. Elle ne modifie pas la logique visible des quêtes, accès, patrouilles, dialogues ou commerces.
+
+Points optimisés :
+1. zone/nomob : passage de 1s à 5s.
+2. zone/nomob : nettoyage uniquement si un joueur est proche du marker anti-spawn.
+3. zone/nomob : pré-test avec limit=1 avant nettoyage complet.
+4. zone/protection/check_marker : préfiltre @a resserré de 5000 à 1000 blocs.
+5. static_guards/defend_reset : tick toutes les 5 ticks avec décrément de 5.
+
+À tester :
+- /reload
+- /function capitale:zone/nomob/clean_here_r800_self
+- entrer/sortir d’une zone protégée en survival
+- frapper un garde statique resettable et vérifier son retour autour de 30 secondes
+- vérifier qu’un passage négocié ne génère plus de crime sans avertissement, comme en RC7

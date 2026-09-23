@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "spell": "archers_expansion:dual_shot",
+  "ability_categories": [
+    "capitale:branch/trait",
+    "capitale:class/tireur_guard",
+    "capitale:source/archers_expansion",
+    "capitale:type/active",
+    "capitale:school/fire_ranged",
+    "capitale:role/active",
+    "capitale:role/projectile",
+    "capitale:role/ranged",
+    "capitale:order/000049"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/crossbows"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

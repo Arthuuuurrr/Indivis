@@ -1,0 +1,85 @@
+{
+  "school": "spell_power:healing",
+  "range": 2.0,
+  "tier": 10,
+  "type": "PASSIVE",
+  "passive": {
+    "triggers": [
+      {
+        "type": "SPELL_IMPACT_SPECIFIC",
+        "chance": 0.2,
+        "spell": {
+          "type": "ACTIVE"
+        },
+        "impact": {
+          "impact_type": "STATUS_EFFECT"
+        }
+      }
+    ]
+  },
+  "target": {
+    "type": "FROM_TRIGGER"
+  },
+  "impacts": [
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
+          "effect_id": "bards_rpg:eclipse_mantle",
+          "duration": 5.0,
+          "amplifier": 1
+        }
+      },
+      "visuals": {
+        "particles": [
+          {
+            "id": "spell_engine:magic_spark",
+            "appearance": {
+              "color": 2084042239,
+              "motion": "DECELERATE"
+            },
+            "batch": {
+              "count": 20.0,
+              "shape": "PIPE",
+              "anchor": "ENTITY",
+              "vertical_origin": 0.1,
+              "min_speed": 0.1,
+              "max_speed": 0.1,
+              "width_factor": 2.0
+            }
+          },
+          {
+            "id": "spell_engine:magic_holy",
+            "appearance": {
+              "color": 2084042239,
+              "motion": "DECELERATE"
+            },
+            "batch": {
+              "count": 15.0,
+              "shape": "SPHERE",
+              "anchor": "ENTITY",
+              "min_speed": 0.2,
+              "max_speed": 0.25
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": {
+        "type": "HEAL",
+        "heal": {
+          "spell_power_coefficient": 0.1
+        }
+      }
+    }
+  ],
+  "cost": {
+    "durability": 0,
+    "cooldown": {
+      "duration": 10.0,
+      "hosting_item": false
+    }
+  },
+  "secondary_archetype": "ANY"
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#capskills:weapon/onehand_axe",
+    "#rogues:double_axes",
+    "#berserker_rpg:berserker_axes"
+  ]
+}

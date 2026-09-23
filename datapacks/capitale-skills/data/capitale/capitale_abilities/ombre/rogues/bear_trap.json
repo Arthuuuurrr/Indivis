@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "spell": "rogues:bear_trap",
+  "ability_categories": [
+    "capitale:branch/ombre",
+    "capitale:class/ombre",
+    "capitale:source/rogues",
+    "capitale:type/active",
+    "capitale:school/physical_melee_dual",
+    "capitale:role/active",
+    "capitale:role/control",
+    "capitale:role/damage",
+    "capitale:role/status_effect",
+    "capitale:order/000037"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/assassin_precise"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

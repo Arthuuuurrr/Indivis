@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "spell": "rogues:throw",
+  "ability_categories": [
+    "capitale:branch/lame",
+    "capitale:class/guerrier",
+    "capitale:source/rogues",
+    "capitale:type/active",
+    "capitale:school/physical_melee",
+    "capitale:role/active",
+    "capitale:role/damage",
+    "capitale:role/melee",
+    "capitale:role/projectile",
+    "capitale:role/status_effect",
+    "capitale:role/targeted",
+    "capitale:order/000024"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/throwable_melee"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

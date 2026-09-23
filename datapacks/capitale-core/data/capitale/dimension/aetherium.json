@@ -1,0 +1,17 @@
+{
+  "type": "capitale:aetherium_eternal_day",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "capitale:aetherium",
+      "layers": [
+        {
+          "block": "minecraft:air",
+          "height": 384
+        }
+      ],
+      "features": false,
+      "structure_overrides": []
+    }
+  }
+}

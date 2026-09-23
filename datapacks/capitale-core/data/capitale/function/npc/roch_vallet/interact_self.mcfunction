@@ -1,0 +1,1 @@
+function capitale:quest/au_seuil_des_profondeurs/roch/interact_self

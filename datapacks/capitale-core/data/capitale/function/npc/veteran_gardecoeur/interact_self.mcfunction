@@ -1,0 +1,1 @@
+function capitale:quest/journalieres/biere_veteran/interact_player

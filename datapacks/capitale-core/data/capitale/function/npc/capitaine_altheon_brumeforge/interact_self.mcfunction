@@ -1,0 +1,1 @@
+function capitale:npc/altheon_brumeforge/interact_self

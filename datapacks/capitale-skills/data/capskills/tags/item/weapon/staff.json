@@ -1,0 +1,77 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "capitale_weapons_standalone:diamond_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_mage_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_mage_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_mage_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:staff1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:staff2",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:staff3",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:staff4",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:tridentstaff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff2",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff3",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff4",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff5",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff6",
+      "required": false
+    }
+  ]
+}

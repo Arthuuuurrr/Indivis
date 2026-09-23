@@ -1,0 +1,7 @@
+CapSkills 0.9.135
+Cause corrigee : les fichiers Puffish definissent capskills:doctrine, mais les commandes utilisaient doctrine,
+qui est converti par Puffish en puffish_skills:doctrine.
+136 arguments de categorie ont ete qualifies en capskills:doctrine.
+skills (12).json integre. Collision restante corrigee : lame_spear_polyvalente_1 de (-120,-150) vers (-90,-150).
+Test : /function capskills:debug/open_correct_tree_self
+Migration : /function capskills:admin/migrate_to_correct_category_self

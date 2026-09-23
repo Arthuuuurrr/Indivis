@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "spell": "death_knights:death_grip",
+  "ability_categories": [
+    "capitale:branch/rempart",
+    "capitale:class/chevalier_mort_impie",
+    "capitale:source/death_knights",
+    "capitale:type/active",
+    "capitale:school/unholy",
+    "capitale:role/active",
+    "capitale:role/control",
+    "capitale:role/defense",
+    "capitale:role/fire",
+    "capitale:role/targeted",
+    "capitale:discipline/necromancie",
+    "capitale:class/necromancie",
+    "capitale:order/000195"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/dk_all"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

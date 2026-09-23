@@ -1,0 +1,9 @@
+function capitale:dialogue/random/roll_2_self
+execute unless score @s QUEST_SPAWN matches 100.. if score @s CAP_DLG_RNG matches 1 run function capitale:dialogue/sound/parole_quete_self
+execute unless score @s QUEST_SPAWN matches 100.. if score @s CAP_DLG_RNG matches 1 run tellraw @s [{"text":"[Matelot de la Couronne]","color":"yellow"},{"text":" : Le capitaine vous attend. Son invitation n’est pas une simple salutation de pont : approchez-vous et adressez-lui directement la parole.","color":"white"}]
+execute unless score @s QUEST_SPAWN matches 100.. if score @s CAP_DLG_RNG matches 2 run function capitale:dialogue/sound/parole_quete_self
+execute unless score @s QUEST_SPAWN matches 100.. if score @s CAP_DLG_RNG matches 2 run tellraw @s [{"text":"[Matelot de la Couronne]","color":"yellow"},{"text":" : Si vous cherchez la cabine du capitaine, ne tardez point. Il n’appelle pas les passagers pour le plaisir d’entendre grincer ses portes.","color":"white"}]
+execute if score @s QUEST_SPAWN matches 100.. if score @s CAP_DLG_RNG matches 1 run function capitale:dialogue/sound/parole_quete_self
+execute if score @s QUEST_SPAWN matches 100.. if score @s CAP_DLG_RNG matches 1 run tellraw @s [{"text":"[Matelot de la Couronne]","color":"yellow"},{"text":" : Le capitaine a déjà dit ce qu’il avait à dire. À présent, c’est le Port qui vous attend.","color":"white"}]
+execute if score @s QUEST_SPAWN matches 100.. if score @s CAP_DLG_RNG matches 2 run function capitale:dialogue/sound/parole_quete_self
+execute if score @s QUEST_SPAWN matches 100.. if score @s CAP_DLG_RNG matches 2 run tellraw @s [{"text":"[Matelot de la Couronne]","color":"yellow"},{"text":" : Vous avez reçu les mots du capitaine ; le reste appartient aux quais. Faites attention aux registres et aux gens pressés.","color":"white"}]

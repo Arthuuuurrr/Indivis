@@ -1,0 +1,1 @@
+function capitale:quest/side/bas_anneaux/q01_quartier_oublies/accept_self

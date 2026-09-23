@@ -1,0 +1,21 @@
+Haute Capitale — Adventure fire extinguish patch
+
+Base: capitale_core_with_aldren_donjon_biome_ACCESS_SPAM_FIX.zip
+Target: Minecraft Java 1.21.11
+
+Behavior:
+- Once per second, Adventure-mode players are checked.
+- Weapons, tools and durable main-hand items (minecraft:max_damage fallback) receive permission to break minecraft:fire and minecraft:soul_fire.
+- Stackable/ordinary items are intentionally not modified, avoiding component-based stacking fragmentation.
+- The can_break tooltip is hidden.
+- Existing can_break components are deliberately NOT overwritten.
+- Empty hand cannot carry an item component; datapack-only extinction therefore requires a compatible held item.
+- Survival/Creative behavior is unchanged; the component matters for Adventure breaking.
+
+Files:
+- data/capitale/function/adventure/fire_extinguish/tick_1s.mcfunction
+- data/capitale/item_modifier/adventure/fire_extinguish.json
+- Hook in data/capitale/function/core/tick.mcfunction on the existing 1-second clock.
+
+Compatibility note:
+If an item already has a custom can_break component, this generic patch leaves it untouched. If such an item must also extinguish fire, merge fire/soul_fire into that item's existing can_break definition at its source.

@@ -1,0 +1,8 @@
+function capitale:player/ensure_runtime_self
+execute if score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20 run function capitale:quest/divers/exemplaire_noble/noble/attempt_receive_self
+execute unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20 if score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 30 run function capitale:dialogue/sound/parole_quete_self
+execute unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20 if score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 30 run tellraw @s [{"text":"[Dame Yselle de Verceuil]","color":"yellow"},{"text":" : L’ouvrage est entre de bonnes mains. Le libraire saura quoi vous répondre.","color":"white"}]
+execute if score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 100 run function capitale:dialogue/sound/parole_quete_self
+execute if score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 100 run tellraw @s [{"text":"[Dame Yselle de Verceuil]","color":"yellow"},{"text":" : L’exemplaire a trouvé sa place. Si le libraire vous confie encore un texte, prenez cela comme un compliment.","color":"white"}]
+execute unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20 unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 30 unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 100 run function capitale:dialogue/sound/parole_quete_self
+execute unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 20 unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 30 unless score @s QUEST_DIVERS_LIBRAIRE_NOBLE matches 100 run tellraw @s [{"text":"[Dame Yselle de Verceuil]","color":"yellow"},{"text":" : Je ne reçois pas les visiteurs sans motif. Si vous cherchez les salons, ils ne sont pas ici.","color":"white"}]

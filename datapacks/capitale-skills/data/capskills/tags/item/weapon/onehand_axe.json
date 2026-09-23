@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:wooden_axe",
+      "required": true
+    },
+    {
+      "id": "minecraft:stone_axe",
+      "required": true
+    },
+    {
+      "id": "minecraft:iron_axe",
+      "required": true
+    },
+    {
+      "id": "minecraft:golden_axe",
+      "required": true
+    },
+    {
+      "id": "minecraft:diamond_axe",
+      "required": true
+    },
+    {
+      "id": "minecraft:netherite_axe",
+      "required": true
+    },
+    {
+      "id": "capitale_weapons_multi_test:axe1",
+      "required": false
+    }
+  ]
+}

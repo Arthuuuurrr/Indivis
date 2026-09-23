@@ -1,0 +1,7 @@
+{
+  "replace": true,
+  "values": [
+    "#capitale_creatures:river_variants",
+    "#capitale_creatures:ocean_variants"
+  ]
+}

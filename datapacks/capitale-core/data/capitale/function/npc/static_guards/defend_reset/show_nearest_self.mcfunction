@@ -1,0 +1,5 @@
+# Admin joueur : affiche le statut du PNJ EasyNPC candidat le plus proche.
+execute unless entity @e[type=#capitale:static_guard_npc_candidates,distance=..5,sort=nearest,limit=1] run tellraw @s {"text":"[Capitale] Aucun PNJ EasyNPC candidat trouvé dans un rayon de 5 blocs.","color":"red"}
+execute if entity @e[type=#capitale:static_guard_npc_candidates,distance=..5,sort=nearest,limit=1] run tellraw @s [{"text":"[Capitale] PNJ candidat proche : ","color":"gold"},{"selector":"@e[type=#capitale:static_guard_npc_candidates,distance=..5,sort=nearest,limit=1]","color":"yellow"}]
+execute if entity @e[type=#capitale:static_guard_npc_candidates,distance=..5,tag=cap_static_guard_resettable,sort=nearest,limit=1] run tellraw @s {"text":"- Statut : déjà tagué resettable.","color":"green"}
+execute unless entity @e[type=#capitale:static_guard_npc_candidates,distance=..5,tag=cap_static_guard_resettable,sort=nearest,limit=1] if entity @e[type=#capitale:static_guard_npc_candidates,distance=..5,sort=nearest,limit=1] run tellraw @s {"text":"- Statut : non tagué resettable.","color":"gray"}

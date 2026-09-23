@@ -1,0 +1,45 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.8,
+  "downfall": 0.0,
+  "effects": {
+    "sky_color": "#EAF7FF",
+    "fog_color": "#F5FBFF",
+    "water_color": "#DFF7FF",
+    "water_fog_color": "#EAFBFF",
+    "grass_color": "#EAF7FF",
+    "foliage_color": "#EAF7FF",
+    "dry_foliage_color": "#EAF7FF"
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": [],
+  "features": [],
+  "attributes": {
+    "minecraft:visual/sky_color": "#EAF7FF",
+    "minecraft:visual/fog_color": "#F5FBFF",
+    "minecraft:visual/sky_fog_end_distance": 4096.0,
+    "minecraft:visual/fog_start_distance": -128.0,
+    "minecraft:visual/fog_end_distance": 4096.0,
+    "minecraft:visual/water_fog_color": "#EAFBFF",
+    "minecraft:visual/cloud_color": "#DDF5FFFF",
+    "minecraft:visual/cloud_height": 192.33,
+    "minecraft:visual/sky_light_color": "#FFFFFF",
+    "minecraft:visual/sky_light_factor": 1.0,
+    "minecraft:visual/sun_angle": 0.0,
+    "minecraft:visual/moon_phase": "new_moon",
+    "minecraft:visual/star_brightness": 0.0,
+    "minecraft:visual/sunrise_sunset_color": "#00000000",
+    "minecraft:visual/moon_angle": 180.0,
+    "minecraft:visual/star_angle": 180.0
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "elemental_wizards_rpg:wand_feather",
+    "elemental_wizards_rpg:wand_wind",
+    "elemental_wizards_rpg:wand_netherite_wind"
+  ]
+}

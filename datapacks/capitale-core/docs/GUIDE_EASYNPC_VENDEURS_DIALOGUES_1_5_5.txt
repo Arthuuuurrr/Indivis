@@ -1,0 +1,80 @@
+GUIDE — Vendeurs EasyNPC avec dialogue natif + Default Trading Menu
+Version core : 1.5.5 hotfix easynpc_vendor_dialogues_native
+
+PRINCIPE
+- Le datapack ne doit plus simuler un bouton [Ouvrir la boutique] en tellraw.
+- La petite boîte de dialogue doit être créée dans EasyNPC.
+- Le bouton d'achat doit être une option EasyNPC native avec l'action : Open Trading Menu.
+- Les fonctions du datapack restent utiles pour les répliques d'ambiance, les sorties de dialogue et les quêtes.
+
+RÉGLAGE GÉNÉRAL D'UN VENDEUR CLASSIQUE
+1. Ouvre la configuration EasyNPC du PNJ.
+2. Configure ses trades dans l'onglet Trading.
+3. Crée un dialogue EasyNPC natif, par exemple :
+   - Texte d'entrée RP.
+   - Option 1 : Ouvrir la boutique -> action Open Trading Menu.
+   - Option 2 : Discuter -> action COMMAND executeAsUser=true vers la fonction talk_self.
+   - Option 3 : Partir -> Close Dialog, ou COMMAND vers leave_self si tu veux une phrase de départ.
+4. Ne mets pas une fonction datapack comme bouton d'ouverture de boutique : une fonction ne peut pas ouvrir le Default Trading Menu EasyNPC.
+
+BRASSEUR DU PORT
+Dialogue EasyNPC conseillé :
+"T'as l'air d'avoir soif. Je sers bière de la Capitale, whisky du Port, et ce qui aide les marins à parler trop fort."
+Options :
+- Ouvrir la boutique -> Open Trading Menu
+- Discuter -> COMMAND, executeAsUser=true, function capitale:npc/brasseur_port/talk_self
+- Partir -> COMMAND, executeAsUser=true, function capitale:npc/brasseur_port/leave_self
+Fonction de salutation optionnelle : function capitale:npc/brasseur_port/interact_self
+
+ARMURIER DU PORT
+Dialogue EasyNPC conseillé :
+"Vous cherchez une pièce précise, ou seulement à éviter de mourir mal habillé ?"
+Options :
+- Ouvrir la boutique -> Open Trading Menu
+- Discuter -> COMMAND, executeAsUser=true, function capitale:npc/armurier_port/talk_self
+- Partir -> COMMAND, executeAsUser=true, function capitale:npc/armurier_port/leave_self
+Fonction de salutation optionnelle : function capitale:npc/armurier_port/interact_self
+
+LIBRAIRE AGRÉÉ
+PNJ hybride : vendeur + quête.
+Dialogue EasyNPC conseillé :
+"Les Archives conservent et contrôlent. Moi, je vends ce que la Couronne accepte de laisser circuler."
+Options :
+- Ouvrir la boutique -> Open Trading Menu
+- Parler des livres -> COMMAND, executeAsUser=true, function capitale:npc/libraire/talk_self
+- Vous auriez du travail pour moi ? -> COMMAND, executeAsUser=true, function capitale:npc/libraire/work_offer_self
+- Partir -> COMMAND, executeAsUser=true, function capitale:npc/libraire/leave_self
+Fonction de salutation optionnelle : function capitale:npc/libraire/interact_self
+
+OBJETS CONSEILLÉS POUR LE BRASSEUR
+- Prix : utilise le vrai item capitale_currency:martin_dor pris dans ton inventaire.
+- Bière : utilise /function capitale:admin/quest/biere_veteran_give_beer_self, puis place l'item réel dans le trade.
+- Whisky : utilise le give whisky déjà fourni, puis place l'item réel dans le trade.
+
+PRIX CONSEILLÉS
+- Bière : 2 Martins d'Or.
+- Whisky : 4 Martins d'Or.
+- Pain : 1 Martin d'Or.
+- Poisson grillé : 2 Martins d'Or.
+- Torches x4 : 1 Martin d'Or.
+- Livre public : 4 à 6 Martins d'Or.
+- Armure de fer complète : environ 120 Martins d'Or en total cumulé.
+- Armure de diamant complète : environ 500 Martins d'Or en total cumulé.
+
+À ÉVITER
+- Ne pas copier/coller les composants NBT à la main dans EasyNPC.
+- Ne pas utiliser un bouton tellraw/datapack pour ouvrir la boutique.
+- Ne pas laisser les anciens achats par /trigger comme source réelle de commerce.
+- Ne pas garder un trade qui provoque "Sanitized 1 invalid trade(s)" : le recréer avec les vrais items pris dans l'inventaire.
+
+VENDEURS DIVERSIFIÉS AJOUTÉS
+- Agriculteur : function capitale:npc/agriculteur/talk_self / leave_self
+- Boucher : function capitale:npc/boucher/talk_self / leave_self
+- Marchand d'artefacts CapSkills : function capitale:npc/marchand d'artefacts_capskills/talk_self / leave_self
+- Apothicaire : function capitale:npc/apothicaire/talk_self / leave_self
+- Quincaillier : function capitale:npc/quincaillier/talk_self / leave_self
+- Cartographe : function capitale:npc/cartographe/talk_self / leave_self
+
+Pour chacun : créer un dialogue EasyNPC natif, avec un bouton Ouvrir la boutique -> Open Trading Menu, un bouton Discuter -> COMMAND executeAsUser=true vers talk_self, et un bouton Partir -> leave_self ou Close Dialog.
+
+Voir aussi : docs/GUIDE_EASYNPC_VENDEURS_DIVERSIFICATION_1_5_5.txt

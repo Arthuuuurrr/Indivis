@@ -1,0 +1,4 @@
+tellraw @s {"text":"[Guide CapSkills] XP, points et progression","color":"gold","bold":true}
+tellraw @s {"text":"Les points de compétence servent à débloquer les perks de la Doctrine. Certains perks ouvrent un sort, d’autres donnent un passif.","color":"gray"}
+tellraw @s {"text":"Les premiers perks de branche donnent maintenant leurs catalyseurs ou équipements de départ lorsque c’est pertinent.","color":"yellow"}
+tellraw @s [{"text":"[Menu admin]","color":"gold","click_event":{"action":"run_command","command":"/function capskills:admin/menu_self"}},{"text":"  "},{"text":"[Guide rôles]","color":"aqua","click_event":{"action":"run_command","command":"/function capskills:guide/roles_self"}},{"text":"  "},{"text":"[Guide catalyseurs]","color":"light_purple","click_event":{"action":"run_command","command":"/function capskills:guide/mod_items_self"}}]

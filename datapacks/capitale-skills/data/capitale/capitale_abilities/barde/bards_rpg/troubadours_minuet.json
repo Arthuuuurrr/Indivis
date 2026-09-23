@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "spell": "bards_rpg:troubadours_minuet",
+  "ability_categories": [
+    "capitale:branch/support",
+    "capitale:class/barde",
+    "capitale:source/bards_rpg",
+    "capitale:type/active",
+    "capitale:school/arcane",
+    "capitale:role/active",
+    "capitale:role/aoe",
+    "capitale:role/buff",
+    "capitale:role/damage",
+    "capitale:role/heal",
+    "capitale:role/status_effect",
+    "capitale:role/support",
+    "capitale:order/000056"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "bards_rpg:lutes"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

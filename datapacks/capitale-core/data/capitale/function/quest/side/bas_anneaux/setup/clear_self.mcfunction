@@ -1,0 +1,12 @@
+kill @e[type=marker,tag=anchor_side_ba_q01_marchand]
+kill @e[type=marker,tag=anchor_side_ba_q02_caisse]
+kill @e[type=marker,tag=anchor_side_ba_q02_charbon]
+kill @e[type=marker,tag=anchor_side_ba_q03_elias]
+kill @e[type=marker,tag=anchor_side_ba_q03_greffier]
+kill @e[type=marker,tag=anchor_side_ba_q03_mira]
+kill @e[type=marker,tag=anchor_side_ba_q03_roland]
+kill @e[type=marker,tag=anchor_side_ba_q03_neutral]
+kill @e[type=marker,tag=anchor_side_ba_q04_inspection]
+kill @e[type=marker,tag=anchor_side_ba_q04_dispute]
+kill @e[type=marker,tag=anchor_side_ba_q04_marchand]
+tellraw @s {"text":"[Setup BA] Anchors Q01-Q04 supprimés.","color":"yellow"}

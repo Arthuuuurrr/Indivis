@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "spell": "archers_expansion:improved_arctic_volley",
+  "ability_categories": [
+    "capitale:branch/trait",
+    "capitale:class/tireur_arctic",
+    "capitale:source/archers_expansion",
+    "capitale:type/modifier",
+    "capitale:school/frost_ranged",
+    "capitale:role/modifier",
+    "capitale:role/upgrade",
+    "capitale:order/000136"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/bows"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

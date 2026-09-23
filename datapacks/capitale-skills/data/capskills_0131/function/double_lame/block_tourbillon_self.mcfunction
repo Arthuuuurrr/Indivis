@@ -1,0 +1,28 @@
+# Toute configuration dual-wield bloque Tourbillon, indépendamment des perks.
+# Les compétences de double arme possèdent leur propre branche et leurs propres triggers.
+tag @s remove capskills_0115.tourbillon.channeling
+tag @s remove capskills_0115.tourbillon.spinning
+tag @s remove capskills_0115.tourbillon.caster
+tag @s remove capskills_0115.tourbillon.heavy_finisher
+tag @s remove capskills_0114.tourbillon.channeling
+tag @s remove capskills_0114.tourbillon.spinning
+tag @s remove capskills_0114.tourbillon.caster
+tag @s remove capskills_0114.tourbillon.heavy_finisher
+tag @s remove capskills_0113.tourbillon.channeling
+tag @s remove capskills_0113.tourbillon.spinning
+tag @s remove capskills_0113.tourbillon.caster
+tag @s remove capskills_0111.tourbillon.channeling
+tag @s remove capskills_0111.tourbillon.spinning
+tag @s remove capskills_0111.tourbillon.caster
+tag @s remove capskills_0110.tourbillon.channeling
+tag @s remove capskills_0110.tourbillon.spinning
+tag @s remove capskills.lame.tourbillon.channeling
+tag @s remove capskills.lame.tourbillon.spinning
+tag @s remove capskills.lame.tourbillon.animation_pending
+scoreboard players set @s CAPSK_LAME_TOURB_PHASE 0
+scoreboard players set @s CAPSK_LAME_TOURB_CHAN_T 0
+scoreboard players set @s CAPSK_LAME_TOURB_SPIN_T 0
+scoreboard players set @s CAPSK_LAME_TOURB_PULSE 0
+
+# Efface un éventuel retour de canalisation produit avant la garde Java.
+title @s actionbar {"text":""}

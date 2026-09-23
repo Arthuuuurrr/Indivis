@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "haute_capitale_fusils:mousquet",
+      "required": false
+    },
+    {
+      "id": "haute_capitale_fusils:arquebuse",
+      "required": false
+    }
+  ]
+}

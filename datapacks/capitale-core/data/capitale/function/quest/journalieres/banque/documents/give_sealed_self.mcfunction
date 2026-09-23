@@ -1,0 +1,1 @@
+give @s minecraft:paper[minecraft:custom_model_data={strings:['documents_banque_scelles']},custom_name=[{"text":"Documents scellés de la Banque","italic":false,"color":"gold"}],lore=[[{"text":"À remettre intact à la Banque du cercle marchand.","italic":false,"color":"gray"}],[{"text":"Lire le pli rompra le sceau.","italic":false,"color":"red"}]]] 1

@@ -1,0 +1,44 @@
+CapSkills BETA 0.10.18 — PASSIFS PHASE A
+
+Base : 0.10.17 Layout Rebuild
+
+Objectif : ajouter et positionner les passifs attributaires immédiatement réalisables, et les utiliser comme troncs de regroupement avant compactage manuel de l'arbre.
+
+Nouveaux nœuds : 19
+- Maîtrise martiale : spell_power:physical_melee +0.10
+- Maîtrise du tir : spell_power:physical_ranged +0.10
+- Maîtrise élémentaire : nœud structurel
+- Pyromancie / Cryomancie / Aquamancie / Géomancie / Aéromancie : +0.10 école correspondante
+- Maîtrise arcanique : spell_power:arcane +0.10
+- Maîtrise de la rage : spell_power:rage_melee +0.10
+- Maîtrise du Sang : spell_power:blood +0.10
+- Maîtrise impie : spell_power:unholy +0.10
+- Maîtrise de l'épée de Sorceleur : spell_power:witcher_melee +0.10
+- Maîtrise des Signes : spell_power:sign +0.05
+- Maîtrises Aard / Igni / Yrden / Axii / Quen : +0.10 école correspondante
+
+Regroupements :
+- Martial -> Maîtrise martiale -> Techniques / Guerrier / Berserker / Maître de Force / Tank / Sorceleur
+- Distance -> Maîtrise du tir -> Arc / Arbalète / Fusils
+- Magie -> Maîtrise arcanique -> Arcane
+- Magie -> Maîtrise élémentaire -> 5 affinités -> 5 écoles
+- Berserker -> Maîtrise rage -> tronc Berserker
+- DK runique -> Sang / Impie via leurs maîtrises
+- Sorceleur -> maîtrises mêlée / signes -> spécialisations
+
+Conservé :
+- Tank existant
+- Maîtrise des soins sacrés existante
+- Maîtrise de l'arc (haste conditionnelle)
+- Maîtrise de l'arbalète (vélocité)
+- Gameplay des abilities existantes
+
+Validation statique :
+- 326 skills
+- 326 définitions
+- 329 connexions bidirectionnelles
+- 0 endpoint manquant
+- 0 connexion dupliquée
+- 487 JSON/pack.mcmeta valides
+
+Note runtime : les nouveaux IDs spell_power sont ceux audités dans HC RPG 0.3.0 b2. Le premier test serveur reste nécessaire pour confirmer que Puffish résout bien toutes les écoles enregistrées au runtime, notamment blood/unholy et les écoles Witcher.

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "spell": "arsenal:sundering_melee",
+  "ability_categories": [
+    "capitale:source/arsenal",
+    "capitale:type/passive",
+    "capitale:internal/authorization"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [],
+    "allowed_items": ["arsenal:unique_dagger_sw"],
+    "hands": "any"
+  },
+  "requires_skill": true
+}

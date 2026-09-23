@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "#paladins:staves",
+    "#rpg_series:weapon_type/healing_staff",
+    {
+      "id": "arsenal:unique_staff_heal_1",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_staff_heal_2",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_staff_heal_sw",
+      "required": false
+    }
+  ]
+}

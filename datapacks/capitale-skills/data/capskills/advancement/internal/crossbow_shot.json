@@ -1,0 +1,10 @@
+{
+  "criteria": {
+    "shot": {
+      "trigger": "minecraft:shot_crossbow"
+    }
+  },
+  "rewards": {
+    "function": "capskills:bridge/combat/crossbow_shot_advancement_self"
+  }
+}

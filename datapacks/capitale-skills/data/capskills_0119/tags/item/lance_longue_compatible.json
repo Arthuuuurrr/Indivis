@@ -1,0 +1,65 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "minecraft:wooden_spear",
+      "required": false
+    },
+    {
+      "id": "minecraft:stone_spear",
+      "required": false
+    },
+    {
+      "id": "minecraft:copper_spear",
+      "required": false
+    },
+    {
+      "id": "minecraft:iron_spear",
+      "required": false
+    },
+    {
+      "id": "minecraft:golden_spear",
+      "required": false
+    },
+    {
+      "id": "minecraft:diamond_spear",
+      "required": false
+    },
+    {
+      "id": "minecraft:netherite_spear",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_knight_spear",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:gold_knight_spear",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_knight_spear",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_knight_halberd",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:gold_knight_halberd",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_knight_halberd",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:halberd1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:halberd2",
+      "required": false
+    }
+  ]
+}

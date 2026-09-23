@@ -1,0 +1,5 @@
+scoreboard players add @s QUEST_SIDE_BA_Q03 0
+execute unless score @s QUEST_SIDE_BA_Q03 matches 30 run tellraw @s {"text":"[Quête] Le Greffier n’attend pas cette livraison maintenant.","color":"red"}
+execute if score @s QUEST_SIDE_BA_Q03 matches 30 unless entity @e[type=marker,tag=anchor_side_ba_q03_greffier,limit=1] run tellraw @s {"text":"[Setup] Anchor Q03 Greffier absent. Place-le sur le Greffier.","color":"red"}
+execute at @s if score @s QUEST_SIDE_BA_Q03 matches 30 if entity @e[type=marker,tag=anchor_side_ba_q03_greffier,limit=1] unless entity @e[type=marker,tag=anchor_side_ba_q03_greffier,distance=..8,limit=1] run tellraw @s {"text":"[Quête] Vous devez être auprès du Greffier pour cette livraison. Le point Q03 Greffier est probablement mal placé.","color":"red"}
+execute at @s if score @s QUEST_SIDE_BA_Q03 matches 30 if entity @e[type=marker,tag=anchor_side_ba_q03_greffier,distance=..8,limit=1] run function capitale:quest/side/bas_anneaux/q03_marche_mille_voix/delivery_greffier_apply_self

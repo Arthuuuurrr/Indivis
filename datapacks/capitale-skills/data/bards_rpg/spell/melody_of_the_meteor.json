@@ -1,0 +1,108 @@
+{
+  "school": "spell_power:arcane",
+  "range": 10.0,
+  "tier": 10,
+  "type": "PASSIVE",
+  "passive": {
+    "triggers": [
+      {
+        "type": "SPELL_IMPACT_SPECIFIC",
+        "chance": 0.3,
+        "spell": {
+          "type": "ACTIVE"
+        },
+        "impact": {
+          "impact_type": "DAMAGE"
+        }
+      }
+    ]
+  },
+  "target": {
+    "type": "FROM_TRIGGER"
+  },
+  "deliver": {
+    "type": "METEOR",
+    "meteor": {
+      "launch_height": 7.0,
+      "launch_radius": 4.0,
+      "launch_properties": {
+        "velocity": 0.9,
+        "extra_launch_count": 2,
+        "extra_launch_delay": 3
+      },
+      "projectile": {
+        "client_data": {
+          "light_level": 12,
+          "travel_particles": [
+            {
+              "id": "spell_engine:magic_arcane",
+              "appearance": {
+                "color": 4278190335,
+                "motion": "BURST"
+              },
+              "batch": {
+                "count": 20.0,
+                "shape": "SPHERE",
+                "anchor": "ENTITY",
+                "min_speed": 0.2,
+                "max_speed": 0.7
+              }
+            }
+          ],
+          "composite_model": {
+            "models": [
+              {
+                "fx": {
+                  "model_id": "bards_rpg:spell_projectile/melody_of_the_meteor",
+                  "scale": 2.0
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "impacts": [
+    {
+      "action": {
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 0.5,
+          "knockback": 1.5
+        }
+      },
+      "visuals": {
+        "particles": [
+          {
+            "id": "spell_engine:magic_arcane",
+            "appearance": {
+              "color": 4278190335,
+              "motion": "BURST"
+            },
+            "batch": {
+              "count": 20.0,
+              "shape": "SPHERE",
+              "anchor": "ENTITY",
+              "min_speed": 0.2,
+              "max_speed": 0.7
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "area_impact": {
+    "radius": 2.0,
+    "area": {
+      "distance_dropoff": "SQUARED"
+    }
+  },
+  "cost": {
+    "durability": 0,
+    "cooldown": {
+      "duration": 5.0
+    }
+  },
+  "secondary_archetype": "ANY"
+}

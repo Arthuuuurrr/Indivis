@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "capitale_skills_items:item/focus_coeur"
+  }
+}

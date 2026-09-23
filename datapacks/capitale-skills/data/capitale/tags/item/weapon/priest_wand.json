@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#paladins:wands",
+    "#rpg_series:weapon_type/healing_wand",
+    {
+      "id": "hazennstuff:divine_scepter",
+      "required": false
+    },
+    {
+      "id": "hazennstuff:glassweaver_scepter",
+      "required": false
+    }
+  ]
+}

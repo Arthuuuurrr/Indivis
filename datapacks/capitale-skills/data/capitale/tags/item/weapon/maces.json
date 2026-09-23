@@ -1,0 +1,51 @@
+{
+  "replace": false,
+  "values": [
+    "#paladins:maces",
+    {
+      "id": "arsenal:unique_mace_1",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_mace_2",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_mace_sw",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_cleric_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_cleric_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_cleric_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:mace1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_cleric_mace",
+      "required": false
+    },
+    "minecraft:mace"
+  ]
+}

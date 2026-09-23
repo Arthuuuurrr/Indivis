@@ -1,0 +1,77 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "capitale_weapons_standalone:dagger1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_assassin_dagger",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_claws",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_rapier",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_sickle",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_assassin_dagger",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_claws",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_rapier",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_sickle",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_assassin_dagger",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_claws",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_rapier",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_sickle",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_rapier",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:rapier1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:rapier1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:dagger1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:dague1",
+      "required": false
+    }
+  ]
+}

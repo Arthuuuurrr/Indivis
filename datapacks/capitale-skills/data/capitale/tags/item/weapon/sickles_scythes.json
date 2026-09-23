@@ -1,0 +1,46 @@
+{
+  "replace": false,
+  "values": [
+    "#rogues:sickles",
+    {
+      "id": "arsenal:unique_sickle_1",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_sickle_2",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_sickle_sw",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:scythe1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_scythe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_sickle",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_scythe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_sickle",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_scythe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_sickle",
+      "required": false
+    }
+  ]
+}

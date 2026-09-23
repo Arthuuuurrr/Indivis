@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#capskills:weapon/lance_long",
+    "#capskills:weapon/spear_short",
+    "#archers:spears",
+    "#rogues:glaives",
+    "minecraft:trident"
+  ]
+}

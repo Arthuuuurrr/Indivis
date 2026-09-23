@@ -1,0 +1,16 @@
+CapSkills BETA 0.9.147 — Revolver hitbox + munitions
+
+- Détection remplacée : le rayon teste désormais l'intersection avec la hitbox via dx/dy/dz,
+  et non plus la distance entre le rayon et la position des pieds de l'entité.
+- Pas du rayon : 0,25 bloc (112 pas à une main = 28 blocs ; 72 pas en double = 18 blocs).
+- Une main : visée exacte du curseur.
+- Double revolver : dispersion réduite à environ ±1,4° horizontal / ±0,8° vertical.
+- Munitions : scoreboards CAPREV_MAIN et CAPREV_OFF autoritaires, 6 cartouches chacun.
+- Une cartouche est consommée dès le départ du tir, même si aucun mob n'est touché.
+- Rechargement : remet les barillets tenus à 6.
+- JAR inchangé : utiliser 1.7.11-revolver-callback-interface-fix sur client et serveur.
+
+Commandes de diagnostic :
+/function capskills_0147:revolver/version_self
+/function capskills_0147:revolver/ammo_self
+/function capskills_0147:revolver/refill_self

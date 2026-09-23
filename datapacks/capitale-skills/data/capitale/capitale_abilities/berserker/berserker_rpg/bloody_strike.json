@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "spell": "berserker_rpg:bloody_strike",
+  "ability_categories": [
+    "capitale:branch/lame",
+    "capitale:class/berserker",
+    "capitale:source/berserker_rpg",
+    "capitale:type/active",
+    "capitale:school/rage_melee",
+    "capitale:role/active",
+    "capitale:role/aoe",
+    "capitale:role/damage",
+    "capitale:role/status_effect",
+    "capitale:order/000196"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/berserker_slashing"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}

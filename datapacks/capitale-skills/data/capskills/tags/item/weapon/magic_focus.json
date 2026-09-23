@@ -1,0 +1,81 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "capitale_weapons_standalone:diamond_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_mage_lantern",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_mage_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_mage_lantern",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_mage_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_mage_lantern",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_mage_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:wand1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:wand2",
+      "required": false
+    },
+    {
+      "id": "capitale_skills_items:focus_coeur",
+      "required": false
+    },
+    {
+      "id": "capitale_skills_items:sceau_secours",
+      "required": false
+    },
+    {
+      "id": "capitale_skills_items:sceau_ombres",
+      "required": false
+    },
+    {
+      "id": "capitale_skills_items:alambic_seuils",
+      "required": false
+    },
+    {
+      "id": "capitale_skills_items:fetiche_ancetres",
+      "required": false
+    },
+    {
+      "id": "capitale_skills_items:relais_rempart",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:wand1",
+      "required": false
+    }
+  ]
+}

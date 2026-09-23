@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#capitale:weapon/onehand_axes",
+    "#capitale:weapon/maces"
+  ]
+}

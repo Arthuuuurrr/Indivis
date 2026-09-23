@@ -1,0 +1,1 @@
+function capskills:revolver/reload_input_self

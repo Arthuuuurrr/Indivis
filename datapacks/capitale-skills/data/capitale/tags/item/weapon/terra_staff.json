@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "elemental_wizards_rpg:staff_terra",
+    "elemental_wizards_rpg:staff_netherite_terra",
+    {
+      "id": "elemental_wizards_rpg:staff_ruby_terra",
+      "required": false
+    },
+    {
+      "id": "elemental_wizards_rpg:staff_aether",
+      "required": false
+    }
+  ]
+}

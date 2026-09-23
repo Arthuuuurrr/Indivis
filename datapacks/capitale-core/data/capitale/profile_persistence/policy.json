@@ -1,0 +1,106 @@
+{
+  "schema": "capitale_profile_persistence_policy_v1",
+  "core_version": "1.5.6-RC9d-profile-persistence-policy-sync",
+  "minecraft": "1.21.11",
+  "hook_order": {
+    "before_save": "function capitale:profiles/before_save_self",
+    "restore_slot_scores_and_tags": "handled_by_mod",
+    "after_load": "function capitale:profiles/after_load_self"
+  },
+  "score_objectives": {
+    "save_by_prefix": [
+      "REP_",
+      "QUEST_",
+      "ACCESS_",
+      "GUILD_",
+      "JOB_",
+      "FACTION_",
+      "CAPSK_",
+      "CAP_"
+    ],
+    "exclude_by_prefix": [
+      "CAP_CTX_",
+      "CAP_TMP_",
+      "CAP_UI_",
+      "CAP_DEBUG_",
+      "CAP_RUNTIME_",
+      "CAP_PROFILE_",
+      "CAP_ZONE_",
+      "CAP_NOMOB_",
+      "CAP_STATIC_GUARD_",
+      "CAP_BRIBE_",
+      "CAP_PASS_",
+      "CAP_QDIALOG_",
+      "CAP_REWARD_",
+      "NPC_"
+    ],
+    "exclude_exact": [
+      "InfoRP",
+      "QuestChoix",
+      "ShopChoix",
+      "CapChoix",
+      "CAP_TEMP",
+      "CAP_RAW",
+      "CAP_FLAG",
+      "CAP_PERF_TICK",
+      "CAP_RANGCLASSE",
+      "CAP_CRIMECLASSE",
+      "CAP_REPCLASSE",
+      "CAP_DIALOGUE",
+      "CAP_TRAITEMENT",
+      "CAP_JUSTICE_LEVEL",
+      "CAP_AMENDE",
+      "CAP_COMPARUTION",
+      "CAP_CRIME_LAST",
+      "CAP_ACCESS_CD",
+      "CAP_ACCESS_WARN",
+      "CAP_ACCESS_ZONE",
+      "CAP_NEAR_REACT",
+      "CAP_DLG_LAST",
+      "CAP_DLG_RNG",
+      "CAP_QSEQ_TIMER",
+      "CAP_ESCORT_WAIT_CD",
+      "CAP_JPASS_TIMER"
+    ],
+    "must_keep_as_source_examples": [
+      "CAP_RANGSOCIAL",
+      "CAP_CRIME",
+      "REP_COURONNE",
+      "REP_GARDECOEUR",
+      "REP_GARDEPORT",
+      "REP_GARDEPROFONDEURS",
+      "REP_NOBLESSE",
+      "REP_PROFONDEURS",
+      "QUEST_PROLOGUE",
+      "ACCESS_PALAIS",
+      "CAP_JCOINS"
+    ],
+    "derived_after_load_examples": [
+      "CAP_RANGCLASSE",
+      "CAP_CRIMECLASSE",
+      "CAP_REPCLASSE",
+      "CAP_JUSTICE_LEVEL",
+      "CAP_AMENDE",
+      "CAP_COMPARUTION",
+      "ACCESS_* tags",
+      "CustomName prefix"
+    ]
+  },
+  "tag_policy": {
+    "prefer_scores_over_tags_for_access": true,
+    "derived_tags_rebuilt_after_load": [
+      "ACCESS_*"
+    ],
+    "do_not_persist_by_prefix": [
+      "CAP_RUNTIME_",
+      "CAP_TMP_",
+      "NPC_"
+    ]
+  },
+  "notes_for_mod": [
+    "Enumerate scoreboard objectives dynamically at runtime; do not hardcode reputation or quest names in Java.",
+    "For every objective whose name matches save_by_prefix and not exclusions, store the player's current score in the active slot snapshot.",
+    "After restoring scores/tags, execute capitale:profiles/after_load_self as the player.",
+    "New objectives such as REP_GUILDE_MAGES, REP_GUILDE_VOLEURS, QUEST_MAGES_MAIN, ACCESS_GUILDE_VOLEURS should be picked up automatically if they follow prefixes."
+  ]
+}

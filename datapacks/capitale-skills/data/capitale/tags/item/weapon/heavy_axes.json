@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "#berserker_rpg:berserker_axes",
+    "#rogues:double_axes",
+    {
+      "id": "arsenal:unique_double_axe_1",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_double_axe_2",
+      "required": false
+    },
+    {
+      "id": "arsenal:unique_double_axe_sw",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_battle_axe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_battle_axe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_battle_axe",
+      "required": false
+    }
+  ]
+}

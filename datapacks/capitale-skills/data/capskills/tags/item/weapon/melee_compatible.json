@@ -1,0 +1,517 @@
+{
+  "replace": true,
+  "values": [
+    {
+      "id": "minecraft:wooden_sword",
+      "required": true
+    },
+    {
+      "id": "minecraft:stone_sword",
+      "required": true
+    },
+    {
+      "id": "minecraft:iron_sword",
+      "required": true
+    },
+    {
+      "id": "minecraft:golden_sword",
+      "required": true
+    },
+    {
+      "id": "minecraft:diamond_sword",
+      "required": true
+    },
+    {
+      "id": "minecraft:netherite_sword",
+      "required": true
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_knight_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_short_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:gold_knight_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_short_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_knight_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_short_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_short_sword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword2",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword3",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword4",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword5",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword6",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword7",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:sword8",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword2",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword3",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword4",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword5",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword6",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword7",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:sword8",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_censer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_cleric_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_censer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_cleric_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_censer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_cleric_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_paladin_mace",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:mace1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_censer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_cleric_mace",
+      "required": false
+    },
+    {
+      "id": "minecraft:wooden_axe",
+      "required": true
+    },
+    {
+      "id": "minecraft:stone_axe",
+      "required": true
+    },
+    {
+      "id": "minecraft:iron_axe",
+      "required": true
+    },
+    {
+      "id": "minecraft:golden_axe",
+      "required": true
+    },
+    {
+      "id": "minecraft:diamond_axe",
+      "required": true
+    },
+    {
+      "id": "minecraft:netherite_axe",
+      "required": true
+    },
+    {
+      "id": "capitale_weapons_multi_test:axe1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_knight_spear",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:gold_knight_spear",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_knight_spear",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:battlehammer1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:claymore1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:claymore2",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_battle_axe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_battle_hammer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_paladin_greatsword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_scythe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_battle_axe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_battle_hammer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_paladin_greatsword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_scythe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_battle_axe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_battle_hammer",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_paladin_greatsword",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_scythe",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:scythe1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_knight_halberd",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:gold_knight_halberd",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:halberd1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:halberd2",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_knight_halberd",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:tridentstaff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:dagger1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_assassin_dagger",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_claws",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_rapier",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_sickle",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_assassin_dagger",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_claws",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_rapier",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_sickle",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_assassin_dagger",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_claws",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_rapier",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_sickle",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_rapier",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:rapier1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:rapier1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:dagger1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:dague1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:diamond_mage_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:golden_mage_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:iron_mage_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:netherite_cleric_staff",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:staff1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:staff2",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:staff3",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_standalone:staff4",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff1",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff2",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff3",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff4",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff5",
+      "required": false
+    },
+    {
+      "id": "capitale_weapons_multi_test:staff6",
+      "required": false
+    },
+    {
+      "id": "minecraft:mace",
+      "required": true
+    },
+    {
+      "id": "minecraft:trident",
+      "required": true
+    },
+    {
+      "id": "minecraft:wooden_pickaxe",
+      "required": true
+    },
+    {
+      "id": "minecraft:wooden_shovel",
+      "required": true
+    },
+    {
+      "id": "minecraft:wooden_hoe",
+      "required": true
+    },
+    {
+      "id": "minecraft:stone_pickaxe",
+      "required": true
+    },
+    {
+      "id": "minecraft:stone_shovel",
+      "required": true
+    },
+    {
+      "id": "minecraft:stone_hoe",
+      "required": true
+    },
+    {
+      "id": "minecraft:iron_pickaxe",
+      "required": true
+    },
+    {
+      "id": "minecraft:iron_shovel",
+      "required": true
+    },
+    {
+      "id": "minecraft:iron_hoe",
+      "required": true
+    },
+    {
+      "id": "minecraft:golden_pickaxe",
+      "required": true
+    },
+    {
+      "id": "minecraft:golden_shovel",
+      "required": true
+    },
+    {
+      "id": "minecraft:golden_hoe",
+      "required": true
+    },
+    {
+      "id": "minecraft:diamond_pickaxe",
+      "required": true
+    },
+    {
+      "id": "minecraft:diamond_shovel",
+      "required": true
+    },
+    {
+      "id": "minecraft:diamond_hoe",
+      "required": true
+    },
+    {
+      "id": "minecraft:netherite_pickaxe",
+      "required": true
+    },
+    {
+      "id": "minecraft:netherite_shovel",
+      "required": true
+    },
+    {
+      "id": "minecraft:netherite_hoe",
+      "required": true
+    }
+  ]
+}

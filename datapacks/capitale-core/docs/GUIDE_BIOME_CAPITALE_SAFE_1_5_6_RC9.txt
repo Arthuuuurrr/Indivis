@@ -1,0 +1,38 @@
+GUIDE — Biome custom capitale:capitale — Core 1.5.6 RC9
+
+Objectif
+- Remplacer progressivement le nettoyage automatique anti-mobs par un biome de Capitale sans spawns naturels.
+- Éviter le coût serveur des scans/kill périodiques.
+- Préserver la couleur de l'eau du biome vanilla minecraft:deep_lukewarm_ocean.
+
+Biome ajouté
+- ID : capitale:capitale
+- Eau : mêmes valeurs que minecraft:deep_lukewarm_ocean
+  - water_color : 4566514 / #45ADF2
+  - water_fog_color : 267827 / #041633
+- Spawns naturels : toutes les catégories sont vides.
+
+Effet attendu
+- Les mobs naturels ne spawnent plus dans les zones repeintes avec ce biome.
+- Les mobs déjà présents, les PNJ EasyNPC, les mobs summon/commande, les mobs de quête et les entités placées volontairement ne sont pas supprimés par le biome.
+
+WorldEdit
+1. Sélectionner le volume ou la surface de la Capitale à protéger.
+2. Exécuter :
+   //setbiome capitale:capitale
+3. Vérifier au F3 ou avec :
+   /locate biome capitale:capitale
+
+Ancienne zone anti-spawn
+- Le nettoyage automatique legacy est désactivé par défaut en RC9.
+- Le nettoyage manuel R800 reste disponible via :
+  /function capitale:zone/nomob/clean_here_r800_self
+- Si le biome n'est pas encore peint et qu'un fallback temporaire est nécessaire :
+  /function capitale:zone/nomob/legacy_enable_self
+- Pour le désactiver :
+  /function capitale:zone/nomob/legacy_disable_self
+
+Recommandation
+- Peindre d'abord la Capitale et les volumes cachés susceptibles de spawn des mobs.
+- Lancer un nettoyage manuel unique après peinture si des mobs sont déjà présents.
+- Garder le nettoyage automatique legacy désactivé ensuite, afin de ne pas supprimer les mobs que tu veux conserver.

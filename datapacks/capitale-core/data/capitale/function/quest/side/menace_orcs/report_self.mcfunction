@@ -1,0 +1,8 @@
+tellraw @s [{"text":"\n"},{"text":"===============================\n","color":"gold"},{"text":"La menace est ecartee\n","color":"gold","bold":true},{"text":"===============================\n","color":"gold"},{"text":"\n"},{"text":"« Te voilà enfin ! J'espérais te revoir en un seul morceau. »\n\n","italic":true,"color":"white"},{"text":"Alors… c'est fait ? Les guerriers, les archers, les Crocs de Guerre… et Morgra ?\n\n","color":"white"},{"text":"Ha ! J'aurais aimé voir la tête de cette maudite Orc quand elle a compris que son règne touchait à sa fin !\n\n","color":"white"},{"text":"Grâce à toi, leur camp est en déroute. Sans Morgra pour les commander, les survivants ne devraient plus représenter une grande menace pour quelque temps.\n\n","color":"white"},{"text":"Les routes vont enfin être plus sûres, et nos convois pourront circuler sans craindre une embuscade à chaque tournant.\n\n","color":"white"},{"text":"Tu as rendu un fier service à notre peuple, voyageur.\n\n","color":"white"},{"text":"Tiens, prends ceci. Tu l'as largement mérité.\n\n","color":"white"},{"text":"Et garde ton arme à portée de main… J'ai comme l'impression que nous n'avons pas fini d'entendre parler des Orcs.\n\n","color":"white"},{"text":"Que la route te soit favorable.","color":"white"}]
+give @s diamond 5
+give @s emerald 12
+scoreboard players set @s QUEST_ALDREN_ORCS 30
+playsound minecraft:entity.player.levelup neutral @s ~ ~ ~ 0.6 1.0
+title @s title {"text":"Quête validée","color":"gold","bold":true}
+title @s subtitle {"text":"La menace des Orcs","color":"yellow"}
+tellraw @s [{"text":"[Quête] ","color":"gold"},{"text":"La menace des Orcs — Terminée. ","color":"green"},{"text":"Récompense : 5 Diamants, 12 Émeraudes.","color":"white"}]

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "spell": "rpg_series:thrust",
+  "ability_categories": [
+    "capitale:branch/lame",
+    "capitale:class/lame",
+    "capitale:source/rpg_series",
+    "capitale:type/active",
+    "capitale:school/physical_melee",
+    "capitale:role/active",
+    "capitale:role/defense",
+    "capitale:role/melee",
+    "capitale:order/000018"
+  ],
+  "weapon_requirements": {
+    "allowed_tags": [
+      "capitale:weapon/glaives",
+      "capitale:weapon/spears"
+    ],
+    "allowed_items": [],
+    "hands": "main_hand"
+  },
+  "requires_skill": true
+}
