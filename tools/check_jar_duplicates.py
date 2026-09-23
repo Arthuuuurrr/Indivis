@@ -12,6 +12,8 @@ LFS_RE = re.compile(
 )
 
 entries = []
+errors = []
+
 for path in sorted(ROOT.rglob("*.jar")):
     data = path.read_bytes()
     try:
@@ -19,11 +21,7 @@ for path in sorted(ROOT.rglob("*.jar")):
     except UnicodeDecodeError:
         text = None
 
-    if text:
-        m = LFS_RE.match(text)
-    else:
-        m = None
-
+    m = LFS_RE.match(text) if text else None
     if m:
         sha256 = m.group(1)
         size = int(m.group(2))
@@ -33,24 +31,48 @@ for path in sorted(ROOT.rglob("*.jar")):
         size = len(data)
         storage = "local"
 
-    entries.append((sha256, size, storage, path.as_posix()))
+    module = path.relative_to(ROOT).parts[0]
+    entries.append((module, sha256, size, storage, path.as_posix()))
 
-groups = {}
+    if size < 1024:
+        errors.append(f"Suspicious JAR size {size} bytes: {path}")
+
+# Policy: the active server library contains at most one JAR per module.
+by_module = {}
 for row in entries:
-    groups.setdefault(row[0], []).append(row)
+    by_module.setdefault(row[0], []).append(row)
 
-duplicates = {sha: rows for sha, rows in groups.items() if len(rows) > 1}
+for module, rows in sorted(by_module.items()):
+    if len(rows) > 1:
+        errors.append(
+            "Multiple active JARs for module "
+            + module
+            + ": "
+            + ", ".join(r[4] for r in rows)
+        )
 
-print(f"JARs indexed: {len(entries)}")
-for sha, size, storage, path in entries:
-    print(f"{sha}  {size:>10}  {storage:>5}  {path}")
+# Exact binary duplicates under different module/name.
+by_sha = {}
+for row in entries:
+    by_sha.setdefault(row[1], []).append(row)
 
-if duplicates:
-    print("\nExact duplicate binaries detected:", file=sys.stderr)
-    for sha, rows in duplicates.items():
-        print(f"\nSHA-256 {sha}", file=sys.stderr)
-        for _, size, _, path in rows:
-            print(f"  {size:>10}  {path}", file=sys.stderr)
+for sha, rows in sorted(by_sha.items()):
+    if len(rows) > 1:
+        errors.append(
+            "Exact duplicate SHA-256 "
+            + sha
+            + ": "
+            + ", ".join(r[4] for r in rows)
+        )
+
+print(f"Active server JARs indexed: {len(entries)}")
+for module, sha, size, storage, path in entries:
+    print(f"{module:28} {sha} {size:>10} {storage:>5} {path}")
+
+if errors:
+    print("\nLibrary policy violations:", file=sys.stderr)
+    for err in errors:
+        print(f"- {err}", file=sys.stderr)
     sys.exit(1)
 
-print("\nNo exact duplicate binaries detected.")
+print("\nServer-current library is coherent.")
