@@ -1,0 +1,28 @@
+HAUTE CAPITALE — SPELL ENGINE TEST3 RC14 ITEM-USE SPELL ICON
+Date: 2026-09-23
+
+Artifact
+--------
+spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC14-ITEM-USE-SPELL-ICON.jar
+SHA-256: 6946c10ef60cc02db10aef7c83ba5b7b9ef0c0f4d29da46bcf8805560670d9ea
+
+Root cause:
+The missing checkerboard is the separate right-click/item-use slot. SpellHotbar stores
+spell=null and itemStack=held item there, so RC13's normal spell icon fallback was not used.
+
+RC14:
+item-use slot -> HcItemUseSpellIcon.resolve(itemStack)
+-> held item SpellContainer -> first spell ID -> SpellRender.iconTexture.
+Null/no usable spell keeps the original ItemStack fallback.
+
+Berserker axes expose more_rpg_classes:decapitate; its PNG already exists.
+
+Delta RC13 -> RC14:
+changed: fabric.mod.json, HudRenderHelper.class
+added: HcItemUseSpellIcon.class
+removed: none
+duplicate paths: 0
+ZIP integrity: PASS
+
+No gameplay/cast/cooldown/impact/input/HUD-position change.
+Status: STATIC PASS; focused visual runtime validation required.
