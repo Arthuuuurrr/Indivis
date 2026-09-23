@@ -1,0 +1,75 @@
+HAUTE CAPITALE — SPELL ENGINE TEST3 RC12 HUD / IMPACT RESTORE
+Date: 2026-09-23
+
+Artifact
+--------
+spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC12-HUD-IMPACT-RESTORE.jar
+SHA-256: d8d16036369a6535204b5a338763a0026390bc70bae9d6115a3f7c95c2cf1539
+
+Runtime evidence
+----------------
+RC11 was confirmed loaded client/server with Spell Power RC9.
+Server crash at 03:24:30: java.lang.VerifyError in
+net.spell_engine.internals.impact.SpellImpacts.performImpact(), reached through
+SpellProjectile.finishFalling(). This is the falling-projectile impact path used by
+meteor-like spells. RC11 had modified SpellImpacts for contextual Haste.
+
+HUD correction
+--------------
+Desired placement recovered from the last validated runtime screenshots/discussion:
+- origin: BOTTOM
+- x: -185
+- y: -11
+The bar is aligned vertically with the vanilla hotbar and shifted left by 15 GUI px.
+It is NOT intended to float above the hotbar.
+
+RC12 defaultHotBar(): (-185, -11).
+Migration corrects only known HC defaults/regressions:
+- (-170, -34) -> (-185, -11)
+- (-170, -11) -> (-185, -11)
+- (-185, -34) -> (-185, -11)  [RC11 regression]
+Other custom positions are preserved.
+
+Impact crash correction
+-----------------------
+SpellImpacts.class is restored byte-for-byte from RC9.
+RC12 SpellImpacts SHA-256: af1c42b97fdce8e5c1a540939f222e68ea00d22c94791dba1a5899279e92981b
+RC9  SpellImpacts SHA-256: af1c42b97fdce8e5c1a540939f222e68ea00d22c94791dba1a5899279e92981b
+Exact match: PASS
+
+Cast controller preservation
+----------------------------
+RC12 ClientCastController SHA-256: de20e2359c151804c1337b3e6a4415c67f825d419141d820e015e472e1aadb99
+RC9  ClientCastController SHA-256: de20e2359c151804c1337b3e6a4415c67f825d419141d820e015e472e1aadb99
+Exact match: PASS
+
+Timing / cooldown preservation
+------------------------------
+RC12 SpellParameters SHA-256: 73c4b266376a9238a85cfb36745890c360a0452959cd868d139cf5fcb8c19ec0
+RC11 SpellParameters SHA-256: 73c4b266376a9238a85cfb36745890c360a0452959cd868d139cf5fcb8c19ec0
+Exact match: PASS
+Spell Power RC9 remains unchanged and continues to separate cast-time and cooldown
+Hazenn attributes. RC12 intentionally does NOT re-patch SpellImpacts for timing.
+
+Resources / spell definitions
+-----------------------------
+All non-class resources are byte-for-byte identical to RC11.
+Spell definitions/resources changed by RC12: 0.
+No spell JSON, icon mapping, targeting definition, or ability mapping was rewritten.
+
+Archive / class validation
+--------------------------
+ZIP integrity: PASS
+Duplicate entries: 0
+classes=968 errors=0
+
+Runtime tests required
+----------------------
+1. Existing RC11 client config should migrate from (-185,-34) to (-185,-11).
+2. Meteor: cast, falling projectile, ground/entity impact; server must not VerifyError.
+3. STANDARD, CHARGE and CHANNEL smoke tests.
+4. Check altered-feeling spells specifically for cast duration / cooldown; note spell IDs
+   if behavior differs from pre-RC11, because those remaining differences are now isolated
+   to SpellParameters + Spell Power RC9 timing rather than input or impact logic.
+
+Status: STATIC PASS; Minecraft runtime validation required before STABLE.
