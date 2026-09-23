@@ -46,11 +46,15 @@ jobs:
           project_graphql() {
             local attempt=1
             local max_attempts=4
+            local output
 
             while true; do
-              if GH_TOKEN="${PROJECT_TOKEN}" gh api graphql "$@"; then
+              if output="$(GH_TOKEN="${PROJECT_TOKEN}" gh api graphql "$@" 2>&1)"; then
+                printf '%s' "$output"
                 return 0
               fi
+
+              echo "$output" >&2
 
               if (( attempt >= max_attempts )); then
                 return 1
