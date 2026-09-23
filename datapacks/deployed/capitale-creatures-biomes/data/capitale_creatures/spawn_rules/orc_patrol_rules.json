@@ -13,7 +13,28 @@
     "nearby_orc_cap": 8,
     "count_radius": 96,
     "exclude_biomes": [
-      "capitale:donjon"
+      "capitale:capitale",
+      "capitale:donjon",
+      "indivis:corruption",
+      "indivis:lion_port",
+      "indivis:clairval",
+      "indivis:haute_rive",
+      "indivis:ilystara",
+      "indivis:sylvarhen",
+      "indivis:avaleiv",
+      "indivis:skarnfjord",
+      "indivis:durak_vor",
+      "minecraft:river",
+      "minecraft:frozen_river",
+      "minecraft:ocean",
+      "minecraft:cold_ocean",
+      "minecraft:lukewarm_ocean",
+      "minecraft:warm_ocean",
+      "minecraft:frozen_ocean",
+      "minecraft:deep_ocean",
+      "minecraft:deep_cold_ocean",
+      "minecraft:deep_lukewarm_ocean",
+      "minecraft:deep_frozen_ocean"
     ],
     "additional_counted_orcs": [
       "autonomous_orc_mobs:orc_champion",
@@ -40,7 +61,10 @@
   ],
   "notes": [
     "One random Overworld player is considered per check, so event frequency does not scale linearly with player count.",
+    "The event checks every 45 seconds with 20% chance after cooldown; default successful patrol spacing averages about 9-10 minutes in eligible conditions.",
     "The event searches loaded surface positions only and rejects water.",
-    "capitale:donjon is excluded from patrol events because that biome has its own natural orc population."
+    "All city biomes, capitale:donjon, indivis:corruption, rivers and ocean variants are explicitly excluded from patrol events.",
+    "Nearby patrol cap is 16 combat orcs within 96 blocks, allowing up to roughly two patrol groups to coexist without runaway accumulation.",
+    "1.2.14 clears Autonomous Orc Mobs persistence on patrol members so patrols can despawn naturally when players leave."
   ]
 }
