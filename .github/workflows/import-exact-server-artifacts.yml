@@ -1,4 +1,4 @@
-name: Import exact server artifacts
+name: Import exact deployed datapacks
 
 on:
   push:
@@ -11,106 +11,123 @@ permissions:
 
 jobs:
   import:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
         with:
           lfs: true
           fetch-depth: 0
 
-      - name: Reconstruct verified source payloads
+      - name: Reconstruct and verify exact archives
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-          import base64, lzma, hashlib, json
+          mkdir -p .import-reconstructed
 
-          root=Path('.import-staging')
-          out=Path('.import-reconstructed')
-          out.mkdir(exist_ok=True)
+          cat .import-staging/core.zip.xz.part.* > .import-reconstructed/core.zip.xz
+          cat .import-staging/skills.zip.xz.part.* > .import-reconstructed/skills.zip.xz
+          cat .import-staging/creatures010.zip.xz.part.* > .import-reconstructed/creatures010.zip.xz
+          cat .import-staging/abilities.zip.xz.part.* > .import-reconstructed/abilities.zip.xz
 
-          expected={
-            'core.zip':'e5b06cd7ae0b9356782c30e3813a3170605a4ec20276edf0789c54331905b521',
-            'skills.zip':'109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4',
-            'abilities.zip':'ba6b9b429859d292ea26dd264574638c0df3d1b0e0898f8ee913da141e32e85d',
-            'creatures010.zip':'5ec4a277bf88a4b7c38aceb9d8a2342851f0a3753ac20ac232573b29787a2099',
-            'currency.jar':'a0158a061a5c5fbb2befcb1de5201198066db41ddf8a94f4b099dc115a7fad34',
-            'weapons.jar':'c5d0c59d054af7496d725458edafd622a9f0de12554e28b41676d54452d32f9c',
-          }
+          xz -dc .import-reconstructed/core.zip.xz > .import-reconstructed/core.zip
+          xz -dc .import-reconstructed/skills.zip.xz > .import-reconstructed/skills.zip
+          xz -dc .import-reconstructed/creatures010.zip.xz > .import-reconstructed/creatures010.zip
+          xz -dc .import-reconstructed/abilities.zip.xz > .import-reconstructed/abilities.zip
 
-          for name, sha in expected.items():
-              parts=sorted(root.glob(name+'.b85.*'))
-              if not parts:
-                  raise SystemExit(f'missing payload parts for {name}')
-              encoded=''.join(p.read_text() for p in parts)
-              raw=lzma.decompress(base64.b85decode(encoded.encode('ascii')))
-              got=hashlib.sha256(raw).hexdigest()
-              if got != sha:
-                  raise SystemExit(f'{name}: sha256 mismatch {got} != {sha}')
-              (out/name).write_bytes(raw)
-              print(f'{name}: {len(raw)} bytes sha256={got}')
-          PY
+          echo "e5b06cd7ae0b9356782c30e3813a3170605a4ec20276edf0789c54331905b521  .import-reconstructed/core.zip" | sha256sum -c -
+          echo "109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4  .import-reconstructed/skills.zip" | sha256sum -c -
+          echo "5ec4a277bf88a4b7c38aceb9d8a2342851f0a3753ac20ac232573b29787a2099  .import-reconstructed/creatures010.zip" | sha256sum -c -
+          echo "ba6b9b429859d292ea26dd264574638c0df3d1b0e0898f8ee913da141e32e85d  .import-reconstructed/abilities.zip" | sha256sum -c -
 
-      - name: Expand full deployed datapacks
+      - name: Import full editable datapack sources
         shell: bash
         run: |
           set -euo pipefail
 
+          # Core and skills are exact deployed/canonical snapshots: replace the
+          # previous metadata-only placeholders with their complete trees.
           rm -rf datapacks/capitale-core
           rm -rf datapacks/capitale-skills
-          rm -rf datapacks/capitale-creatures-biomes
-          rm -rf datapacks/capitale-abilities
-
-          mkdir -p datapacks/capitale-core
-          mkdir -p datapacks/capitale-skills
-          mkdir -p datapacks/capitale-creatures-biomes
-          mkdir -p datapacks/capitale-abilities
-
+          mkdir -p datapacks/capitale-core datapacks/capitale-skills
           unzip -q .import-reconstructed/core.zip -d datapacks/capitale-core
           unzip -q .import-reconstructed/skills.zip -d datapacks/capitale-skills
-          unzip -q .import-reconstructed/creatures010.zip -d datapacks/capitale-creatures-biomes
-          unzip -q .import-reconstructed/abilities.zip -d datapacks/capitale-abilities
 
           cat > datapacks/capitale-core/README_GIT_IMPORT.md <<'EOF'
-          # Git import
-          Exact deployed snapshot: **capitale_core 1.5.6-RC9AO**.
-          Source SHA-256: `e5b06cd7ae0b9356782c30e3813a3170605a4ec20276edf0789c54331905b521`.
+          # Snapshot Git
+          Version exacte déployée : **capitale_core 1.5.6-RC9AO**.
+          Archive vérifiée SHA-256 : `e5b06cd7ae0b9356782c30e3813a3170605a4ec20276edf0789c54331905b521`.
+          Import complet et éditable.
           EOF
 
           cat > datapacks/capitale-skills/README_GIT_IMPORT.md <<'EOF'
-          # Git import
-          Exact deployed snapshot: **capitale_skills 0.10.19-RC2F TREE HARD RESTORE**.
-          Source SHA-256: `109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4`.
+          # Snapshot Git
+          Version exacte déployée : **capitale_skills 0.10.19-RC2F TREE HARD RESTORE**.
+          Archive vérifiée SHA-256 : `109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4`.
+          Import complet et éditable.
           EOF
 
-          cat > datapacks/capitale-creatures-biomes/README_GIT_IMPORT.md <<'EOF'
-          # Git import
-          Exact deployed snapshot: **capitale_creatures_biomes BETA 0.10**.
-          Source SHA-256: `5ec4a277bf88a4b7c38aceb9d8a2342851f0a3753ac20ac232573b29787a2099`.
-          BETA 0.12 is newer source work but is not kept here because it was not confirmed deployed.
+          # Keep BETA 0.12 as the active/newer source candidate and add the
+          # exact deployed BETA 0.10 separately so no newer work is lost.
+          rm -rf datapacks/deployed/capitale-creatures-biomes
+          mkdir -p datapacks/deployed/capitale-creatures-biomes
+          unzip -q .import-reconstructed/creatures010.zip -d datapacks/deployed/capitale-creatures-biomes
+          cat > datapacks/deployed/capitale-creatures-biomes/README_GIT_IMPORT.md <<'EOF'
+          # Snapshot déployé
+          Version constatée sur le serveur : **BETA 0.10**.
+          Archive vérifiée SHA-256 : `5ec4a277bf88a4b7c38aceb9d8a2342851f0a3753ac20ac232573b29787a2099`.
+          Le dossier `datapacks/capitale-creatures-biomes/` conserve BETA 0.12 comme source plus récente non confirmée déployée.
           EOF
 
+          rm -rf datapacks/capitale-abilities
+          mkdir -p datapacks/capitale-abilities
+          unzip -q .import-reconstructed/abilities.zip -d datapacks/capitale-abilities
           cat > datapacks/capitale-abilities/README_GIT_IMPORT.md <<'EOF'
-          # Git import
-          Exact server archive imported from `capitale_abilities.zip`.
-          Source SHA-256: `ba6b9b429859d292ea26dd264574638c0df3d1b0e0898f8ee913da141e32e85d`.
+          # Snapshot Git
+          Archive serveur exacte : **capitale_abilities.zip**.
+          SHA-256 : `ba6b9b429859d292ea26dd264574638c0df3d1b0e0898f8ee913da141e32e85d`.
+          Import complet et éditable.
           EOF
 
-      - name: Add exact server JARs through Git LFS
+      - name: Update datapack inventory
         shell: bash
         run: |
-          set -euo pipefail
-          mkdir -p artifacts/jars/capitale-currency
-          mkdir -p artifacts/jars/capitale-weapons-standalone
+          cat > datapacks/README.md <<'EOF'
+          # Datapacks
 
-          cp .import-reconstructed/currency.jar             artifacts/jars/capitale-currency/capitale_currency_BETA_1_0_hotfix5_bourse50_stack99_legacy_style_1_21_11.jar
+          Les datapacks sont conservés sous forme **décompressée et éditable** quand leurs octets exacts sont disponibles.
 
-          cp .import-reconstructed/weapons.jar             artifacts/jars/capitale-weapons-standalone/capitale_weapons_standalone-0.5.0-gameplay-stats.jar
+          ## Importés intégralement
 
-          git lfs install --local
+          - `capitale-core/` — **1.5.6-RC9AO**, version serveur exacte.
+          - `capitale-skills/` — **0.10.19-RC2F TREE HARD RESTORE**, version serveur exacte.
+          - `capitale-abilities/` — archive serveur `capitale_abilities.zip`, version exacte disponible.
+          - `capitale-creatures-biomes/` — **BETA 0.12**, source plus récente non confirmée déployée.
+          - `deployed/capitale-creatures-biomes/` — **BETA 0.10**, snapshot exact constaté sur le serveur.
 
-      - name: Remove staging payloads and commit import
+          ## Identifiés sur le serveur mais octets exacts encore absents
+
+          - `orc_camp` — dossier serveur.
+          - `arthur_datapack_1_0` — dossier serveur.
+          - `hc_quetes-0.1.0.b8.zip`.
+          - `quete_josue.zip`.
+
+          Les noms/version déployés restent consignés dans `server-manifest.yml`.
+          EOF
+
+      - name: Mark manifest imports complete
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('server-manifest.yml')
+          s=p.read_text()
+          s=s.replace('git_import: "partial"', 'git_import: "complete"', 2)
+          p.write_text(s)
+          PY
+
+      - name: Clean staging and commit
         shell: bash
         run: |
           set -euo pipefail
@@ -120,21 +137,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add -A
-
-          if git diff --cached --quiet; then
-            echo "Nothing to commit"
-            exit 0
-          fi
-
-          git commit -m "artifacts: import exact deployed JARs and full datapacks"
+          git commit -m "datapacks: import exact deployed snapshots as editable sources"
           git push
-
-      - name: Verify resulting working tree JARs
-        shell: bash
-        run: |
-          set -euo pipefail
-          for jar in             artifacts/jars/capitale-currency/*.jar             artifacts/jars/capitale-weapons-standalone/*.jar
-          do
-            test "$(head -c 2 "$jar")" = "PK"
-            test "$(stat -c '%s' "$jar")" -gt 1024
-          done
