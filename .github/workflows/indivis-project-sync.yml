@@ -2,6 +2,9 @@ name: Indivis Project Sync
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/indivis-project-sync.yml"
   issues:
     types: [opened, reopened, closed, labeled, unlabeled]
 
@@ -49,11 +52,11 @@ jobs:
           }
 
           echo "Using Project ${PROJECT_OWNER} #${PROJECT_NUMBER}"
-          project_gh project view "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" --format json >/dev/null
+          project_gh project view "${PROJECT_NUMBER}" --owner "@me" --format json >/dev/null
 
           field_exists() {
             local name="$1"
-            project_gh project field-list "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" --limit 100 --format json \
+            project_gh project field-list "${PROJECT_NUMBER}" --owner "@me" --limit 100 --format json \
               --jq ".fields[] | select(.name == \"$name\") | .name" | grep -Fxq "$name"
           }
 
@@ -62,7 +65,7 @@ jobs:
             local options="$2"
             if ! field_exists "$name"; then
               project_gh project field-create "${PROJECT_NUMBER}" \
-                --owner "${PROJECT_OWNER}" \
+                --owner "@me" \
                 --name "$name" \
                 --data-type SINGLE_SELECT \
                 --single-select-options "$options" >/dev/null
@@ -73,7 +76,7 @@ jobs:
             local name="$1"
             if ! field_exists "$name"; then
               project_gh project field-create "${PROJECT_NUMBER}" \
-                --owner "${PROJECT_OWNER}" \
+                --owner "@me" \
                 --name "$name" \
                 --data-type DATE >/dev/null
             fi
@@ -83,7 +86,7 @@ jobs:
             local name="$1"
             if ! field_exists "$name"; then
               project_gh project field-create "${PROJECT_NUMBER}" \
-                --owner "${PROJECT_OWNER}" \
+                --owner "@me" \
                 --name "$name" \
                 --data-type TEXT >/dev/null
             fi
@@ -234,7 +237,7 @@ jobs:
             state="$(jq -r '.state' <<<"$issue_json")"
             labels="$(jq -r '[.labels[].name] | join(",")' <<<"$issue_json")"
 
-            if ! add_output="$(project_gh project item-add "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" --url "$url" --format json 2>&1)"; then
+            if ! add_output="$(project_gh project item-add "${PROJECT_NUMBER}" --owner "@me" --url "$url" --format json 2>&1)"; then
               if ! grep -qiE 'already|exists|duplicate' <<<"$add_output"; then
                 echo "$add_output"
                 return 1
@@ -245,19 +248,19 @@ jobs:
             priority="$(priority_for_issue "$title" "$labels")"
             category="$(category_for_issue "$title")"
 
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
+            project_gh project item-edit "${PROJECT_NUMBER}" --owner "@me" \
               --url "$url" --field "Avancement" --value "$advancement" >/dev/null
 
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
+            project_gh project item-edit "${PROJECT_NUMBER}" --owner "@me" \
               --url "$url" --field "Priorité" --value "$priority" >/dev/null
 
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
+            project_gh project item-edit "${PROJECT_NUMBER}" --owner "@me" \
               --url "$url" --field "Catégorie" --value "$category" >/dev/null
 
             echo "#${number}: $advancement | $priority | $category"
           }
 
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" || "${GITHUB_EVENT_NAME}" == "push" ]]; then
             create_views_if_needed
 
             mapfile -t ISSUE_URLS < <(
