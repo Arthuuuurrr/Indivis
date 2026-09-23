@@ -160,12 +160,18 @@ jobs:
             echo "Creating missing label: $name"
             GH_TOKEN="${REPO_TOKEN}" gh label create "$name" --repo "${GITHUB_REPOSITORY}" \
               --color "$color" --description "$description" >/dev/null
-            REPO_LABELS="${REPO_LABELS}"
+
+            REPO_LABELS="$(GH_TOKEN="${REPO_TOKEN}" gh label list --repo "${GITHUB_REPOSITORY}" --limit 200 --json name --jq '.[].name')"
+          }
+
           ensure_repo_label "status:backlog" "6E7781" "Roadmap: backlog"
           ensure_repo_label "status:todo" "1F6FEB" "Roadmap: à faire"
           ensure_repo_label "status:in-progress" "D29922" "Roadmap: en cours"
           ensure_repo_label "status:verify" "8250DF" "Roadmap: validation en jeu"
           ensure_repo_label "status:blocked" "CF222E" "Roadmap: bloqué"
+
+          echo "Existing priority-like labels:"
+          grep -Ei 'prior|priorité|priority|(^|[^[:alnum:]])P[0-9]([^[:alnum:]]|$)' <<<"${REPO_LABELS}" || true
 
           field_id() {
             local name="$1"
