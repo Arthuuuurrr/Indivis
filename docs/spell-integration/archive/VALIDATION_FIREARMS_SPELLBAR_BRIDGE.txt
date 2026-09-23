@@ -1,0 +1,53 @@
+HAUTE CAPITALE — FIREARMS SPELLBAR BRIDGE
+Date: 2026-09-23
+
+Root cause:
+The six CapSkills firearm nodes granted only capskills.fusils.* tags and no
+haute_capitale_rpg:abilities reward. AbilitySync therefore had no firearm spell
+IDs to place in the Spell Engine container.
+
+Architecture:
+- Spell Engine = hotbar/input wrapper.
+- Native firearm gameplay = FusilAPI.useSkill(caster, skillId, 0).
+- Six custom delivery handlers registered by FirearmSpellBridge.
+- Weapon compatibility remains enforced by Haute Capitale RPG ability
+  weapon_requirements before delivery.
+- Existing CapSkills player tags are preserved.
+
+CapSkills 0.10.20:
+- 338 existing definition keys preserved.
+- Six existing firearm nodes gain one RPG ability reward each.
+- Six wrapper spell JSONs added.
+- Six ability definition JSONs added.
+- Existing shared files changed only:
+  pack.mcmeta
+  data/capitale/integration/fusils_capskills_plan.json
+  data/capskills/puffish_skills/categories/doctrine/definitions.json
+- No existing file removed.
+- ZIP integrity PASS.
+- Duplicate entries: 0.
+- SHA-256: c9b330330bd3cf3f5df5c8c6749acba0d02d18902fbc4e20524b0f9caa6f6ebc
+
+Haute Capitale RPG RC3:
+- Existing Java classes modified: 0.
+- New classes:
+  FirearmSpellBridge.class
+  FirearmSpellBridge$Handler.class
+- Manifest adds FirearmSpellBridge as a second main entrypoint.
+- Six icon assets copied from the firearm mod item textures.
+- FR/EN spell names/descriptions added.
+- Standalone handler harness PASS for all six skill IDs and both success/failure paths.
+- JAR integrity PASS.
+- Duplicate entries: 0.
+- SHA-256: 08f03d4db0c41286851cbd35318b91afcb0e59483a5ce2d7164aa59ebf047e40
+
+No gameplay cooldown values are added in this patch.
+
+Focused runtime validation:
+1. compatible gun + learned skill => slot visible;
+2. incompatible gun => slot absent/refused;
+3. six slots delegate to native FusilAPI behavior;
+4. reset skill => slot disappears;
+5. icons and French names render correctly.
+
+Status: STATIC PASS; issue remains open until runtime validation.
