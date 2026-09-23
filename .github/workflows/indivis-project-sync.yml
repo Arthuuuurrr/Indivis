@@ -145,13 +145,448 @@ jobs:
           create_simple_field "Version cible" "text"
           create_simple_field "Ordre de travail" "number"
 
+          REPO_LABELS="$(GH_TOKEN="${REPO_TOKEN}" gh label list --repo "${GITHUB_REPOSITORY}" --limit 200 --json name --jq '.[].name')"
+
           ensure_repo_label() {
             local name="$1"
             local color="$2"
             local description="$3"
+
+            if grep -Fxq "$name" <<<"${REPO_LABELS}"; then
+              echo "Reusing existing label: $name"
+              return 0
+            fi
+
+            echo "Creating missing label: $name"
             GH_TOKEN="${REPO_TOKEN}" gh label create "$name" --repo "${GITHUB_REPOSITORY}" \
-              --color "$color" --description "$description" --force >/dev/null
+              --color "$color" --description "$description" >/dev/null
+            REPO_LABELS="${REPO_LABELS}"
+          ensure_repo_label "status:backlog" "6E7781" "Roadmap: backlog"
+          ensure_repo_label "status:todo" "1F6FEB" "Roadmap: à faire"
+          ensure_repo_label "status:in-progress" "D29922" "Roadmap: en cours"
+          ensure_repo_label "status:verify" "8250DF" "Roadmap: validation en jeu"
+          ensure_repo_label "status:blocked" "CF222E" "Roadmap: bloqué"
+
+          field_id() {
+            local name="$1"
+            jq -r --arg name "$name" '.[] | select(.name == $name) | .id' <<<"${FIELDS_JSON}" | head -n1
           }
+
+          option_id() {
+            local field_name="$1"
+            local option_name="$2"
+            jq -r --arg field "$field_name" --arg option "$option_name" '
+              .[]
+              | select(.name == $field)
+              | .options[]
+              | select((.name.raw // .name) == $option)
+              | .id
+            ' <<<"${FIELDS_JSON}" | head -n1
+          }
+
+          AVANCEMENT_FIELD_ID="$(field_id "Avancement")"
+          PRIORITE_FIELD_ID="$(field_id "Priorité")"
+          CATEGORIE_FIELD_ID="$(field_id "Catégorie")"
+
+          create_views_if_needed() {
+            local existing_views view_root
+
+            existing_views="$(GH_TOKEN="${PROJECT_TOKEN}" gh api graphql \
+              -f query='query($login:String!,$number:Int!){user(login:$login){projectV2(number:$number){views(first:100){nodes{name}}}}}' \
+              -f login="${PROJECT_OWNER}" -F number="${PROJECT_NUMBER}" \
+              --jq '.data.user.projectV2.views.nodes[].name')"
+
+            view_root="users/${PROJECT_OWNER}/projectsV2/${PROJECT_NUMBER}/views"
+
+            if ! grep -Fxq "Kanban" <<<"${existing_views}"; then
+              echo "Creating view: Kanban"
+              jq -nc --argjson field "${AVANCEMENT_FIELD_ID}" \
+                '{name:"Kanban",layout:"board",filter:"is:issue",vertical_group_by:[$field]}' | \
+                project_api --method POST "${view_root}" --input - >/dev/null
+            fi
+
+            if ! grep -Fxq "Roadmap" <<<"${existing_views}"; then
+              echo "Creating view: Roadmap"
+              jq -nc '{name:"Roadmap",layout:"roadmap",filter:"is:issue"}' | \
+                project_api --method POST "${view_root}" --input - >/dev/null
+            fi
+
+            if ! grep -Fxq "Priorités" <<<"${existing_views}"; then
+              echo "Creating view: Priorités"
+              jq -nc --argjson field "${PRIORITE_FIELD_ID}" \
+                '{name:"Priorités",layout:"table",filter:"is:issue",group_by:[$field]}' | \
+                project_api --method POST "${view_root}" --input - >/dev/null
+            fi
+          }
+
+          status_for_issue() {
+            local title="$1"
+            local state="$2"
+            local labels="$3"
+
+            if [[ "$state" == "closed" ]]; then
+              echo "Terminé"
+            elif grep -qiE '(^|,)(status:blocked|blocked)(,|$)' <<<"$labels" || grep -qi '\[BLOCKED\]' <<<"$title"; then
+              echo "Bloqué"
+            elif grep -qiE '(^|,)(status:verify|verify)(,|$)' <<<"$labels" || grep -qi '\[VERIFY\]' <<<"$title"; then
+              echo "Validation en jeu"
+            elif grep -qiE '(^|,)(status:in-progress|wip)(,|$)' <<<"$labels" || grep -qi '\[WIP\]' <<<"$title"; then
+              echo "En cours"
+            elif grep -qiE '(^|,)(status:todo|todo)(,|$)' <<<"$labels" || grep -qi '\[TODO\]' <<<"$title"; then
+              echo "À faire"
+            elif grep -qiE '(^|,)(status:backlog|triage)(,|$)' <<<"$labels" || grep -qi '\[TRIAGE\]' <<<"$title"; then
+              echo "Backlog"
+            else
+              echo "Backlog"
+            fi
+          }
+
+          priority_for_issue() {
+            local title="$1"
+            local labels="$2"
+
+            for n in 0 1 2 3 4; do
+              if grep -qiE "(^|,)(Priorité maximale -P1)(,|$)" <<<"$labels"; then
+                echo "P0 Critique"
+                return 0
+              elif grep -qiE "(^|[^[:alnum:]])P${n}([^[:alnum:]]|$)" <<<"$title"; then
+                case "$n" in
+                  0) echo "P0 Critique" ;;
+                  1) echo "P1 Haute" ;;
+                  2) echo "P2 Normale" ;;
+                  3) echo "P3 Basse" ;;
+                  4) echo "P4 Long terme" ;;
+                esac
+                return 0
+              fi
+            done
+
+            echo "Non priorisé"
+          }
+
+          phase_for_issue() {
+            local number="$1"
+            case "$number" in
+              83|70|75|78|58|7|56|57|60|61|62|66) echo "0 — Validation technique" ;;
+              53|3|4|5|6|18|2|15|16|49|14|50|19|48) echo "1 — Progression / combat" ;;
+              43|35|52|38|47|10|39|24) echo "2 — Monde / biomes" ;;
+              63|64|65|8|9|20|21|25|26|59|33) echo "3 — Quêtes / narration" ;;
+              32|51|11|12|13|46|28|23|22) echo "4 — Donjons / boss" ;;
+              34|37|40|45|27|29|30|31|36|41|42|44) echo "5 — Contenu bêta" ;;
+              *) echo "Backlog / maintenance" ;;
+            esac
+          }
+
+          order_for_issue() {
+            local number="$1"
+            case "$number" in
+              83) echo 1 ;;
+              75) echo 2 ;;
+              70) echo 3 ;;
+              7) echo 4 ;;
+              58) echo 5 ;;
+              78) echo 6 ;;
+              56) echo 7 ;;
+              57) echo 8 ;;
+              60) echo 9 ;;
+              61) echo 10 ;;
+              62) echo 11 ;;
+              66) echo 12 ;;
+              53) echo 13 ;;
+              43) echo 14 ;;
+              3) echo 15 ;;
+              4) echo 16 ;;
+              5) echo 17 ;;
+              6) echo 18 ;;
+              18) echo 19 ;;
+              2) echo 20 ;;
+              15) echo 21 ;;
+              16) echo 22 ;;
+              49) echo 23 ;;
+              14) echo 24 ;;
+              50) echo 25 ;;
+              19) echo 26 ;;
+              48) echo 27 ;;
+              35) echo 28 ;;
+              52) echo 29 ;;
+              38) echo 30 ;;
+              47) echo 31 ;;
+              10) echo 32 ;;
+              39) echo 33 ;;
+              24) echo 34 ;;
+              63) echo 35 ;;
+              64) echo 36 ;;
+              65) echo 37 ;;
+              8) echo 38 ;;
+              9) echo 39 ;;
+              20) echo 40 ;;
+              21) echo 41 ;;
+              25) echo 42 ;;
+              26) echo 43 ;;
+              59) echo 44 ;;
+              33) echo 45 ;;
+              32) echo 46 ;;
+              51) echo 47 ;;
+              11) echo 48 ;;
+              12) echo 49 ;;
+              13) echo 50 ;;
+              46) echo 51 ;;
+              28) echo 52 ;;
+              23) echo 53 ;;
+              22) echo 54 ;;
+              34) echo 55 ;;
+              37) echo 56 ;;
+              40) echo 57 ;;
+              45) echo 58 ;;
+              27) echo 59 ;;
+              29) echo 60 ;;
+              30) echo 61 ;;
+              31) echo 62 ;;
+              36) echo 63 ;;
+              41) echo 64 ;;
+              42) echo 65 ;;
+              44) echo 66 ;;
+              *) echo 999 ;;
+            esac
+          }
+
+          category_for_issue() {
+            local title="$1"
+
+            if grep -qi '\[BUG\]' <<<"$title"; then echo "Bug"
+            elif grep -qi '\[INTEGRATION\]' <<<"$title"; then echo "Intégration"
+            elif grep -qi '\[ROADMAP\]' <<<"$title"; then echo "Roadmap"
+            elif grep -qi '\[WORLD\]' <<<"$title"; then echo "World"
+            elif grep -qi '\[ITEMS\]' <<<"$title"; then echo "Items"
+            elif grep -qi '\[POLISH\]' <<<"$title"; then echo "Polish"
+            elif grep -qi '\[TECH\]' <<<"$title"; then echo "Tech"
+            elif grep -qi '\[BALANCE\]' <<<"$title"; then echo "Balance"
+            elif grep -qi '\[COMBAT\]' <<<"$title"; then echo "Combat"
+            elif grep -qiE '\[(DUNGEON|DONJON)\]' <<<"$title"; then echo "Donjon"
+            elif grep -qi '\[GAMEPLAY\]' <<<"$title"; then echo "Gameplay"
+            elif grep -qi '\[PERFORMANCE\]' <<<"$title"; then echo "Performance"
+            elif grep -qi '\[AUDIO\]' <<<"$title"; then echo "Audio"
+            elif grep -qi '\[QUEST\]' <<<"$title"; then echo "Quête"
+            else echo "Autre"
+            fi
+          }
+
+          # GraphQL is used for Project items because it exposes stable node IDs for
+          # both existing issues and Project items, including content already present.
+          PROJECT_GQL_JSON="$(GH_TOKEN="${PROJECT_TOKEN}" gh api graphql \
+            -f query='
+              query($login:String!, $number:Int!) {
+                user(login:$login) {
+                  projectV2(number:$number) {
+                    id
+                    items(first:100) {
+                      nodes {
+                        id
+                        content {
+                          ... on Issue {
+                            id
+                            number
+                            repository { nameWithOwner }
+                          }
+                          ... on PullRequest {
+                            id
+                            number
+                            repository { nameWithOwner }
+                          }
+                        }
+                      }
+                    }
+                    fields(first:100) {
+                      nodes {
+                        ... on ProjectV2Field {
+                          id
+                          name
+                        }
+                        ... on ProjectV2SingleSelectField {
+                          id
+                          name
+                          options {
+                            id
+                            name
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }' \
+            -f login="${PROJECT_OWNER}" -F number="${PROJECT_NUMBER}")"
+
+          PROJECT_NODE_ID="$(jq -r '.data.user.projectV2.id' <<<"${PROJECT_GQL_JSON}")"
+
+          gql_field_id() {
+            local name="$1"
+            jq -r --arg name "$name" '
+              .data.user.projectV2.fields.nodes[]
+              | select(.name == $name)
+              | .id
+            ' <<<"${PROJECT_GQL_JSON}" | head -n1
+          }
+
+          gql_option_id() {
+            local field="$1"
+            local option="$2"
+            jq -r --arg field "$field" --arg option "$option" '
+              .data.user.projectV2.fields.nodes[]
+              | select(.name == $field)
+              | .options[]?
+              | select(.name == $option)
+              | .id
+            ' <<<"${PROJECT_GQL_JSON}" | head -n1
+          }
+
+          AVANCEMENT_FIELD_NODE_ID="$(gql_field_id "Avancement")"
+          PRIORITE_FIELD_NODE_ID="$(gql_field_id "Priorité")"
+          CATEGORIE_FIELD_NODE_ID="$(gql_field_id "Catégorie")"
+          PHASE_FIELD_NODE_ID="$(gql_field_id "Phase")"
+          ORDRE_FIELD_NODE_ID="$(gql_field_id "Ordre de travail")"
+
+          sync_issue() {
+            local url="$1"
+            local number="${url##*/}"
+            local issue_json issue_node_id title state labels item_node_id add_json
+            local advancement priority category phase work_order advancement_option priority_option category_option phase_option
+
+            issue_json="$(repo_api "repos/${GITHUB_REPOSITORY}/issues/${number}")"
+
+            if jq -e '.pull_request != null' <<<"$issue_json" >/dev/null; then
+              return 0
+            fi
+
+            issue_node_id="$(jq -r '.node_id' <<<"$issue_json")"
+            title="$(jq -r '.title' <<<"$issue_json")"
+            state="$(jq -r '.state' <<<"$issue_json")"
+            labels="$(jq -r '[.labels[].name] | join(",")' <<<"$issue_json")"
+
+            item_node_id="$(jq -r --arg content_id "$issue_node_id" '
+              .data.user.projectV2.items.nodes[]
+              | select(.content.id == $content_id)
+              | .id
+            ' <<<"${PROJECT_GQL_JSON}" | head -n1)"
+
+            if [[ -z "$item_node_id" || "$item_node_id" == "null" ]]; then
+              echo "Adding issue #${number} to Project"
+              add_json="$(GH_TOKEN="${PROJECT_TOKEN}" gh api graphql \
+                -f query='
+                  mutation($project:ID!, $content:ID!) {
+                    addProjectV2ItemById(input:{projectId:$project, contentId:$content}) {
+                      item { id }
+                    }
+                  }' \
+                -f project="${PROJECT_NODE_ID}" \
+                -f content="$issue_node_id")"
+              item_node_id="$(jq -r '.data.addProjectV2ItemById.item.id' <<<"$add_json")"
+            else
+              echo "Issue #${number} already in Project"
+            fi
+
+            advancement="$(status_for_issue "$title" "$state" "$labels")"
+            priority="$(priority_for_issue "$title" "$labels")"
+            category="$(category_for_issue "$title")"
+            phase="$(phase_for_issue "$number")"
+            work_order="$(order_for_issue "$number")"
+
+            advancement_option="$(gql_option_id "Avancement" "$advancement")"
+            priority_option="$(gql_option_id "Priorité" "$priority")"
+            category_option="$(gql_option_id "Catégorie" "$category")"
+            phase_option="$(gql_option_id "Phase" "$phase")"
+
+            if [[ -z "$advancement_option" || -z "$priority_option" || -z "$category_option" || -z "$phase_option" ]]; then
+              echo "::error::Unable to resolve Project option IDs for issue #${number}: $advancement / $priority / $category"
+              return 1
+            fi
+
+            GH_TOKEN="${PROJECT_TOKEN}" gh api graphql \
+              -f query='
+                mutation(
+                  $project:ID!,
+                  $item:ID!,
+                  $advancementField:ID!,
+                  $advancementOption:String!,
+                  $priorityField:ID!,
+                  $priorityOption:String!,
+                  $categoryField:ID!,
+                  $categoryOption:String!,
+                  $phaseField:ID!,
+                  $phaseOption:String!,
+                  $orderField:ID!,
+                  $workOrder:Float!
+                ) {
+                  advancement:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$advancementField,
+                    value:{singleSelectOptionId:$advancementOption}
+                  }) { projectV2Item { id } }
+
+                  priority:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$priorityField,
+                    value:{singleSelectOptionId:$priorityOption}
+                  }) { projectV2Item { id } }
+
+                  category:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$categoryField,
+                    value:{singleSelectOptionId:$categoryOption}
+                  }) { projectV2Item { id } }
+
+                  phase:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$phaseField,
+                    value:{singleSelectOptionId:$phaseOption}
+                  }) { projectV2Item { id } }
+
+                  order:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$orderField,
+                    value:{number:$workOrder}
+                  }) { projectV2Item { id } }
+                }' \
+              -f project="${PROJECT_NODE_ID}" \
+              -f item="$item_node_id" \
+              -f advancementField="${AVANCEMENT_FIELD_NODE_ID}" \
+              -f advancementOption="$advancement_option" \
+              -f priorityField="${PRIORITE_FIELD_NODE_ID}" \
+              -f priorityOption="$priority_option" \
+              -f categoryField="${CATEGORIE_FIELD_NODE_ID}" \
+              -f categoryOption="$category_option" \
+              -f phaseField="${PHASE_FIELD_NODE_ID}" \
+              -f phaseOption="$phase_option" \
+              -f orderField="${ORDRE_FIELD_NODE_ID}" \
+              -F workOrder="$work_order" >/dev/null
+
+            echo "#${number}: $advancement | $priority | $category | $phase | ordre $work_order"
+          }
+
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" || "${GITHUB_EVENT_NAME}" == "push" ]]; then
+            create_views_if_needed
+
+            mapfile -t ISSUE_URLS < <(
+              GH_TOKEN="${REPO_TOKEN}" gh issue list --repo "${GITHUB_REPOSITORY}" \
+                --state all --limit 1000 --json url --jq '.[].url'
+            )
+
+            for url in "${ISSUE_URLS[@]}"; do
+              sync_issue "$url"
+            done
+          else
+            sync_issue "${{ github.event.issue.html_url }}"
+          fi
+\n'"$name"
+          }
+
+          echo "Existing priority-like labels:"
+          grep -Ei 'prior|priorité|priority|(^|[^[:alnum:]])P[0-9]([^[:alnum:]]|$)' <<<"${REPO_LABELS}" || true
 
           ensure_repo_label "status:backlog" "6E7781" "Roadmap: backlog"
           ensure_repo_label "status:todo" "1F6FEB" "Roadmap: à faire"
