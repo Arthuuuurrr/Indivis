@@ -8,14 +8,11 @@ import java.util.function.Predicate;
 import net.fabricmc.api.ModInitializer;
 
 /**
- * First-pass ARMOR40 balancing layer.
+ * ARMOR40 first-pass balancing layer.
  *
- * It doubles only additive generic ARMOR values on modded armor-slot items.
- * Vanilla items, toughness, knockback resistance, max health, spell attributes,
- * accessory/hand bonuses and multiplicative armor modifiers are untouched.
- *
- * Reflection is deliberate here: the module operates at the component boundary
- * and stays isolated from every armor mod's implementation classes.
+ * v0.1.2 safety rule: DefaultItemComponentEvents only selects actual equippable
+ * armor items before the component builder consumer is invoked. Weapons and all
+ * other modded items never enter the component rewrite path.
  */
 public final class CapitaleArmorBalance implements ModInitializer {
     public static final double ARMOR_SCALE = 2.0D;
@@ -41,7 +38,7 @@ public final class CapitaleArmorBalance implements ModInitializer {
                                 default -> null;
                             };
                         }
-                        if (method.getName().equals("modify") && args != null && args.length == 1) {
+                        if (method.getName().equals("modify") && args != null && args.length >= 1) {
                             installContext(args[0]);
                         }
                         return null;
@@ -49,9 +46,9 @@ public final class CapitaleArmorBalance implements ModInitializer {
 
             Method register = findMethod(event.getClass(), "register", 1);
             register.invoke(event, callback);
-            System.out.println(LOG + "ARMOR40 x2 registered: modded armor ADD_VALUE only; vanilla/toughness/HP unchanged.");
+            System.out.println(LOG + "ARMOR40 x2 SAFE registered: actual equippable armor items only; weapons are never touched.");
         } catch (Throwable t) {
-            System.err.println(LOG + "FAILED to register ARMOR40 x2: " + t);
+            System.err.println(LOG + "FAILED to register ARMOR40 x2 SAFE: " + t);
             t.printStackTrace();
         }
     }
@@ -71,8 +68,7 @@ public final class CapitaleArmorBalance implements ModInitializer {
 
         Predicate<Object> predicate = item -> {
             try {
-                String id = itemId(item);
-                return id != null && !id.startsWith("minecraft:");
+                return isActualModdedArmor(item);
             } catch (Throwable ignored) {
                 return false;
             }
@@ -85,6 +81,33 @@ public final class CapitaleArmorBalance implements ModInitializer {
             }
         };
         modify.invoke(context, predicate, consumer);
+    }
+
+    /**
+     * Checks immutable item defaults BEFORE the Fabric component-builder callback.
+     * This deliberately excludes staffs, swords, axes, bows, guns and accessories.
+     */
+    private static boolean isActualModdedArmor(Object item) throws Exception {
+        String id = itemId(item);
+        if (id == null || id.startsWith("minecraft:")) return false;
+
+        Object components = findMethod(item.getClass(), "method_57347", 0).invoke(item);
+        if (components == null) return false;
+
+        Class<?> dataComponentTypes = Class.forName("net.minecraft.class_9334");
+        Object equippableType = declaredField(dataComponentTypes, "field_54196").get(null);
+        Object attributeType = declaredField(dataComponentTypes, "field_49636").get(null);
+
+        Object equippable = findCompatibleMethod(components.getClass(), "method_58694", equippableType)
+                .invoke(components, equippableType);
+        if (equippable == null) return false;
+
+        Object slot = findMethod(equippable.getClass(), "comp_3174", 0).invoke(equippable);
+        if (!armorEquipmentSlots().contains(slot)) return false;
+
+        Object modifiers = findCompatibleMethod(components.getClass(), "method_58694", attributeType)
+                .invoke(components, attributeType);
+        return modifiers != null;
     }
 
     private static void scaleArmorComponent(Object componentBuilder, Object item) throws Exception {
@@ -107,7 +130,7 @@ public final class CapitaleArmorBalance implements ModInitializer {
 
         Object armorAttribute = declaredField(Class.forName("net.minecraft.class_5134"), "field_23724").get(null);
         Object addValueOperation = declaredField(Class.forName("net.minecraft.class_1322$class_1323"), "field_6328").get(null);
-        Set<Object> armorSlots = armorSlots();
+        Set<Object> armorSlots = armorAttributeSlots();
 
         Class<?> registryEntryClass = Class.forName("net.minecraft.class_6880");
         Class<?> modifierClass = Class.forName("net.minecraft.class_1322");
@@ -157,7 +180,17 @@ public final class CapitaleArmorBalance implements ModInitializer {
         System.out.println(LOG + "x2 ARMOR " + itemId + " [" + String.join(", ", changes) + "]");
     }
 
-    private static Set<Object> armorSlots() throws Exception {
+    private static Set<Object> armorEquipmentSlots() throws Exception {
+        Class<?> c = Class.forName("net.minecraft.class_1304");
+        LinkedHashSet<Object> result = new LinkedHashSet<>();
+        // EquipmentSlot intermediary fields: FEET, LEGS, CHEST, HEAD, BODY.
+        for (String f : new String[]{"field_6166", "field_6172", "field_6174", "field_6169", "field_48824"}) {
+            result.add(declaredField(c, f).get(null));
+        }
+        return result;
+    }
+
+    private static Set<Object> armorAttributeSlots() throws Exception {
         Class<?> c = Class.forName("net.minecraft.class_9274");
         LinkedHashSet<Object> result = new LinkedHashSet<>();
         for (String f : new String[]{"field_49220", "field_49221", "field_49222", "field_49223", "field_49224", "field_50127"}) {

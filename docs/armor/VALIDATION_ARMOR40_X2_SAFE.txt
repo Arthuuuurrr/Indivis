@@ -1,0 +1,67 @@
+HAUTE CAPITALE — ARMOR BALANCE 0.1.2 SAFE
+Date: 2026-09-23
+
+Artifact
+--------
+capitale_armor_balance-0.1.2+1.21.11-ARMOR40-X2-SAFE.jar
+SHA-256: 767d542ece17a2d72bf93da7c09e4ac0f5b771c42bfde8fd6101ebb876bbc089
+
+Reason for 0.1.2
+----------------
+Runtime report after installing the 0.1.1 balancing layer: weapon spells stopped being exposed for both magical and martial weapons while the datapack itself had not changed.
+
+Static comparison excludes the datapack as a cause. Spell Engine RC14 changes only the separate item-use/right-click icon branch, and Haute Capitale RPG RC3 adds only the firearm bridge plus manifest/lang resources.
+
+0.1.1 design risk
+-----------------
+0.1.1 registered DefaultItemComponentEvents modification for every non-minecraft item, including weapons. It decided only inside the builder consumer whether an ARMOR modifier needed scaling. This was unnecessarily invasive for a modpack where weapons carry Spell Engine custom components such as spell_engine:spell_container.
+
+0.1.2 SAFE
+-------------
+The Fabric predicate now checks immutable item defaults BEFORE invoking the component-builder consumer.
+An item enters Armor Balance only when ALL conditions are true:
+- namespace != minecraft;
+- item already has DataComponentTypes.EQUIPPABLE;
+- EQUIPPABLE slot is FEET, LEGQ, CHEST, HEAD or BODY;
+- item already has ATTRIBUTE_MODIFIERS.
+
+Therefore staffs, swords, axes, bows, guns, hand items and ordinary accessories never enter the component rewrite path.
+
+Inside actual armor items, the original 0.1.1 rule remains:
+- only generic ARMOR;
+- only ADD_VALUE;
+- only armor attribute slots;
+- value x2;
+- toughness, max health, knockback, spell attributes and other modifiers unchanged.
+
+ARMOR40 damage formula
+----------------------
+Unchanged from 0.1.1:
+- intermediate damage x2;
+- effective armor cap 20 -> 40;
+- divisor 25 -> 50;
+- final damage x0.5.
+
+This preserves the old mitigation curve when modded armor A becomes 2A.
+
+Binary delta 0.1.1 -> 0.1.2
+---------------------------
+Changed only:
+- fabric.mod.json
+- fr/hautecapitale/armorbalance/CapitaleArmorBalance.class
+
+Unchanged:
+- Armor40DamageFormulaMixin.class
+- mixin config
+
+ZIP integrity: PASS
+Duplicate entries: 0
+
+Runtime validation
+------------------
+1. Remove 0.1.1 and install 0.1.2 on client + server.
+2. Confirm magical and martial weapon spellbars are restored.
+3. Confirm startup logs contain x2 ARMOR lines only for actual armor items.
+4. Confirm representative modded armor still displays doubled ARMOR.
+
+Status: STATIC PASS; focused runtime validation required.
