@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - 'jars/**'
+      - 'mods/**'
       - 'tools/check_jar_duplicates.py'
       - '.gitattributes'
       - '.github/workflows/check-jar-library.yml'
@@ -12,7 +12,7 @@ on:
     branches:
       - main
     paths:
-      - 'jars/**'
+      - 'mods/**'
       - 'tools/check_jar_duplicates.py'
       - '.gitattributes'
       - '.github/workflows/check-jar-library.yml'
@@ -40,8 +40,8 @@ jobs:
 
             echo "$jar | $size bytes | magic=$magic"
 
-            if [[ "$jar" != jars/*.jar ]]; then
-              echo "::error file=$jar::JAR must be directly inside jars/"
+            if [[ "$jar" != mods/*.jar ]]; then
+              echo "::error file=$jar::Active JAR must be directly inside mods/"
               failed=1
             fi
 
@@ -54,12 +54,12 @@ jobs:
               echo "::error file=$jar::JAR does not start with ZIP/JAR magic PK"
               failed=1
             fi
-          done < <(find jars -type f -name '*.jar' -print0)
+          done < <(find mods -type f -name '*.jar' -print0)
 
           echo "Validated JAR count: $count"
 
           if (( count == 0 )); then
-            echo "::error::No JAR found in jars/"
+            echo "::error::No JAR found in mods/"
             exit 1
           fi
 

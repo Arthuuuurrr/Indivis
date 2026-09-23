@@ -4,7 +4,7 @@ import hashlib
 import re
 import sys
 
-ROOT = Path("jars")
+ROOT = Path("mods")
 LFS_RE = re.compile(
     r"^version https://git-lfs\.github\.com/spec/v1\n"
     r"oid sha256:([0-9a-f]{64})\n"
@@ -39,7 +39,7 @@ for path in sorted(ROOT.glob("*.jar")):
 nested = sorted(ROOT.rglob("*.jar"))
 flat = sorted(ROOT.glob("*.jar"))
 if nested != flat:
-    errors.append("All active JARs must be directly inside jars/; nested JAR folders are forbidden.")
+    errors.append("All active JARs must be directly inside mods/; nested JAR folders are forbidden.")
 
 by_sha = {}
 for row in entries:
@@ -64,4 +64,4 @@ if errors:
         print(f"- {err}", file=sys.stderr)
     sys.exit(1)
 
-print("\nFlat server-current JAR library is coherent.")
+print("\nFlat mods JAR library is coherent.")
