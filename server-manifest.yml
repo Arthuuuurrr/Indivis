@@ -38,6 +38,16 @@ deployed:
     haute_capitale_pirates:
       artifact: "haute-capitale-pirates-0.1.0.b4.jar"
       sha256: null
+    capitale_currency:
+      artifact: "capitale_currency_BETA_1_0_hotfix5_bourse50_stack99_legacy_style_1_21_11.jar"
+      size_bytes: 16958
+      sha256: "a0158a061a5c5fbb2befcb1de5201198066db41ddf8a94f4b099dc115a7fad34"
+      git_binary: "archived and validated"
+    capitale_weapons_standalone:
+      artifact: "capitale_weapons_standalone-0.5.0-gameplay-stats.jar"
+      size_bytes: 886969
+      sha256: "c5d0c59d054af7496d725458edafd622a9f0de12554e28b41676d54452d32f9c"
+      git_binary: "archived and validated"
     spell_engine:
       artifact: "spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC7-HAZENN-FULLCOMPAT.jar"
       sha256: "ecd2065e849a32d6626f9a4f760aae6edda15972ad300305c427b12527eb283c"
