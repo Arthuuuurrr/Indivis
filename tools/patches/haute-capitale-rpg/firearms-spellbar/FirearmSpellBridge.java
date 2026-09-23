@@ -13,10 +13,11 @@ import net.spell_engine.api.spell.event.SpellHandlers;
 import net.spell_engine.internals.SpellExecution;
 
 /**
- * Spell Engine hotbar adapter for Haute Capitale firearm skills.
+ * Exposes Haute Capitale firearm skills through Spell Engine's hotbar while
+ * delegating the actual gameplay to the native firearm implementation.
  *
- * Spell Engine owns the visible slot/input path. The firearm mod remains
- * authoritative for actual gunplay through FusilAPI.useSkill(...).
+ * Spell Engine owns input/cost/cooldown presentation; FusilAPI remains the
+ * authority for burst, special ammunition, retreat and hunter mark behavior.
  */
 public final class FirearmSpellBridge implements ModInitializer {
     public static final String PREFIX = "haute_capitale_rpg:firearm_";
@@ -50,6 +51,7 @@ public final class FirearmSpellBridge implements ModInitializer {
                 Optional<String> error = FusilAPI.useSkill(caster, skillId, 0);
                 return error.isEmpty();
             } catch (Throwable ignored) {
+                // Never let an optional firearm integration crash the spell stack.
                 return false;
             }
         }
