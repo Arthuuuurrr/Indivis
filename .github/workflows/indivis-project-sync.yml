@@ -232,7 +232,7 @@ jobs:
             local labels="$2"
 
             for n in 0 1 2 3 4; do
-              if grep -qiE "(^|,)(priority:)?P${n}(,|$)" <<<"$labels" || grep -qi "\[P${n}\]" <<<"$title"; then
+              if grep -qiE "(^|,)(priority:)?P${n}(,|$)" <<<"$labels" || grep -qiE "(^|[^[:alnum:]])P${n}([^[:alnum:]]|$)" <<<"$title"; then
                 case "$n" in
                   0) echo "P0 Critique" ;;
                   1) echo "P1 Haute" ;;
