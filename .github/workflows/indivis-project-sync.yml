@@ -177,12 +177,12 @@ jobs:
 
             existing="$(grep -Ei -- "-${level}$" <<<"${REPO_LABELS}" | head -n1 || true)"
             if [[ -n "$existing" ]]; then
-              echo "Reusing existing priority label for ${level}: $existing"
+              echo "Reusing existing priority label for ${level}: $existing" >&2
               printf '%s' "$existing"
               return 0
             fi
 
-            ensure_repo_label "$fallback_name" "$color" "$description"
+            ensure_repo_label "$fallback_name" "$color" "$description" >&2
             printf '%s' "$fallback_name"
           }
 
