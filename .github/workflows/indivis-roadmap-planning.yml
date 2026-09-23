@@ -1,0 +1,257 @@
+name: Indivis Roadmap Planning
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/indivis-roadmap-planning.yml"
+  workflow_run:
+    workflows: ["Indivis Project Sync"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indivis-roadmap-planning
+  cancel-in-progress: true
+
+jobs:
+  plan-roadmap:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_URL: ${{ vars.INDIVIS_PROJECT_URL }}
+      PROJECT_TOKEN: ${{ secrets.INDIVIS_PROJECT_TOKEN }}
+
+    steps:
+      - name: Populate roadmap planning fields
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${PROJECT_URL}" || -z "${PROJECT_TOKEN}" ]]; then
+            echo "::error::INDIVIS_PROJECT_URL and INDIVIS_PROJECT_TOKEN are required."
+            exit 1
+          fi
+
+          if [[ ! "${PROJECT_URL}" =~ ^https://github.com/users/([^/]+)/projects/([0-9]+)/?$ ]]; then
+            echo "::error::Unexpected Project URL: ${PROJECT_URL}"
+            exit 1
+          fi
+
+          OWNER="${BASH_REMATCH[1]}"
+          PROJECT_NUMBER="${BASH_REMATCH[2]}"
+
+          project_graphql() {
+            GH_TOKEN="${PROJECT_TOKEN}" gh api graphql "$@"
+          }
+
+          PROJECT_JSON="$(project_graphql \
+            -f query='
+              query($login:String!, $number:Int!) {
+                user(login:$login) {
+                  projectV2(number:$number) {
+                    id
+                    items(first:100) {
+                      nodes {
+                        id
+                        content {
+                          ... on Issue {
+                            number
+                            state
+                            repository { nameWithOwner }
+                          }
+                        }
+                      }
+                    }
+                    fields(first:100) {
+                      nodes {
+                        ... on ProjectV2Field {
+                          id
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }' \
+            -f login="${OWNER}" \
+            -F number="${PROJECT_NUMBER}")"
+
+          PROJECT_ID="$(jq -r '.data.user.projectV2.id' <<<"${PROJECT_JSON}")"
+
+          field_id() {
+            local name="$1"
+            jq -r --arg name "$name" '
+              .data.user.projectV2.fields.nodes[]
+              | select(.name == $name)
+              | .id
+            ' <<<"${PROJECT_JSON}" | head -n1
+          }
+
+          START_FIELD="$(field_id "Start date")"
+          TARGET_FIELD="$(field_id "Target date")"
+          VERSION_FIELD="$(field_id "Version cible")"
+
+          if [[ -z "${START_FIELD}" || -z "${TARGET_FIELD}" || -z "${VERSION_FIELD}" ]]; then
+            echo "::error::Start date, Target date or Version cible field is missing."
+            exit 1
+          fi
+
+          plan_for_issue() {
+            local number="$1"
+            local base index step duration version
+
+            case "$number" in
+              83) base="2026-09-23"; index=0;  step=2; duration=5;  version="Bêta fermée — stabilisation" ;;
+              75) base="2026-09-23"; index=1;  step=2; duration=5;  version="Bêta fermée — stabilisation" ;;
+              70) base="2026-09-23"; index=2;  step=2; duration=5;  version="Bêta fermée — stabilisation" ;;
+              7)  base="2026-09-23"; index=3;  step=2; duration=5;  version="Bêta fermée — stabilisation" ;;
+              58) base="2026-09-23"; index=4;  step=2; duration=5;  version="Bêta fermée — stabilisation" ;;
+              78) base="2026-09-23"; index=5;  step=2; duration=5;  version="Bêta fermée — stabilisation" ;;
+              56) base="2026-09-23"; index=6;  step=2; duration=4;  version="Bêta fermée — stabilisation" ;;
+              57) base="2026-09-23"; index=7;  step=2; duration=4;  version="Bêta fermée — stabilisation" ;;
+              60) base="2026-09-23"; index=8;  step=2; duration=4;  version="Bêta fermée — stabilisation" ;;
+              61) base="2026-09-23"; index=9;  step=2; duration=4;  version="Bêta fermée — stabilisation" ;;
+              62) base="2026-09-23"; index=10; step=2; duration=4;  version="Bêta fermée — stabilisation" ;;
+              66) base="2026-09-23"; index=11; step=2; duration=4;  version="Bêta fermée — stabilisation" ;;
+
+              53) base="2026-10-05"; index=0;  step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              3)  base="2026-10-05"; index=1;  step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              4)  base="2026-10-05"; index=2;  step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              5)  base="2026-10-05"; index=3;  step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              6)  base="2026-10-05"; index=4;  step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              18) base="2026-10-05"; index=5;  step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              2)  base="2026-10-05"; index=6;  step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              15) base="2026-10-05"; index=7;  step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              16) base="2026-10-05"; index=8;  step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              49) base="2026-10-05"; index=9;  step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              14) base="2026-10-05"; index=10; step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              50) base="2026-10-05"; index=11; step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              19) base="2026-10-05"; index=12; step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+              48) base="2026-10-05"; index=13; step=2; duration=7; version="Bêta fermée — socle gameplay" ;;
+
+              43) base="2026-10-26"; index=0; step=3; duration=8; version="Bêta fermée — monde" ;;
+              35) base="2026-10-26"; index=1; step=3; duration=8; version="Bêta fermée — monde" ;;
+              52) base="2026-10-26"; index=2; step=3; duration=8; version="Bêta fermée — monde" ;;
+              38) base="2026-10-26"; index=3; step=3; duration=8; version="Bêta fermée — monde" ;;
+              47) base="2026-10-26"; index=4; step=3; duration=8; version="Bêta fermée — monde" ;;
+              10) base="2026-10-26"; index=5; step=3; duration=8; version="Bêta fermée — monde" ;;
+              39) base="2026-10-26"; index=6; step=3; duration=8; version="Bêta fermée — monde" ;;
+              24) base="2026-10-26"; index=7; step=3; duration=8; version="Bêta fermée — monde" ;;
+
+              63) base="2026-11-16"; index=0;  step=3; duration=8; version="Bêta fermée — narration" ;;
+              64) base="2026-11-16"; index=1;  step=3; duration=8; version="Bêta fermée — narration" ;;
+              65) base="2026-11-16"; index=2;  step=3; duration=8; version="Bêta fermée — narration" ;;
+              8)  base="2026-11-16"; index=3;  step=3; duration=8; version="Bêta fermée — narration" ;;
+              9)  base="2026-11-16"; index=4;  step=3; duration=8; version="Bêta fermée — narration" ;;
+              20) base="2026-11-16"; index=5;  step=3; duration=8; version="Bêta fermée — narration" ;;
+              21) base="2026-11-16"; index=6;  step=3; duration=8; version="Bêta fermée — narration" ;;
+              25) base="2026-11-16"; index=7;  step=3; duration=8; version="Bêta fermée — narration" ;;
+              26) base="2026-11-16"; index=8;  step=3; duration=8; version="Bêta fermée — narration" ;;
+              59) base="2026-11-16"; index=9;  step=3; duration=8; version="Bêta fermée — narration" ;;
+              33) base="2026-11-16"; index=10; step=3; duration=8; version="Bêta fermée — narration" ;;
+
+              32) base="2026-12-07"; index=0; step=3; duration=8; version="Bêta fermée — donjons" ;;
+              51) base="2026-12-07"; index=1; step=3; duration=8; version="Bêta fermée — donjons" ;;
+              11) base="2026-12-07"; index=2; step=3; duration=8; version="Bêta fermée — donjons" ;;
+              12) base="2026-12-07"; index=3; step=3; duration=8; version="Bêta fermée — donjons" ;;
+              13) base="2026-12-07"; index=4; step=3; duration=8; version="Bêta fermée — donjons" ;;
+              46) base="2026-12-07"; index=5; step=3; duration=8; version="Bêta fermée — donjons" ;;
+              28) base="2026-12-07"; index=6; step=3; duration=8; version="Bêta fermée — donjons" ;;
+              23) base="2026-12-07"; index=7; step=3; duration=8; version="Bêta fermée — donjons" ;;
+              22) base="2026-12-07"; index=8; step=3; duration=8; version="Bêta fermée — donjons" ;;
+
+              34) base="2027-01-04"; index=0;  step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              37) base="2027-01-04"; index=1;  step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              40) base="2027-01-04"; index=2;  step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              45) base="2027-01-04"; index=3;  step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              27) base="2027-01-04"; index=4;  step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              29) base="2027-01-04"; index=5;  step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              30) base="2027-01-04"; index=6;  step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              31) base="2027-01-04"; index=7;  step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              36) base="2027-01-04"; index=8;  step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              41) base="2027-01-04"; index=9;  step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              42) base="2027-01-04"; index=10; step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              44) base="2027-01-04"; index=11; step=4; duration=10; version="Bêta fermée — contenu secondaire" ;;
+              *) return 1 ;;
+            esac
+
+            local start target
+            start="$(date -d "$base +$((index * step)) days" +%F)"
+            target="$(date -d "$start +$duration days" +%F)"
+            printf '%s|%s|%s' "$start" "$target" "$version"
+          }
+
+          update_planning() {
+            local item_id="$1"
+            local number="$2"
+            local plan start target version
+
+            if ! plan="$(plan_for_issue "$number")"; then
+              return 0
+            fi
+
+            IFS='|' read -r start target version <<<"$plan"
+
+            project_graphql \
+              -f query='
+                mutation(
+                  $project:ID!,
+                  $item:ID!,
+                  $startField:ID!,
+                  $start:Date!,
+                  $targetField:ID!,
+                  $target:Date!,
+                  $versionField:ID!,
+                  $version:String!
+                ) {
+                  start:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$startField,
+                    value:{date:$start}
+                  }) { projectV2Item { id } }
+
+                  target:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$targetField,
+                    value:{date:$target}
+                  }) { projectV2Item { id } }
+
+                  version:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$versionField,
+                    value:{text:$version}
+                  }) { projectV2Item { id } }
+                }' \
+              -f project="${PROJECT_ID}" \
+              -f item="$item_id" \
+              -f startField="${START_FIELD}" \
+              -f start="$start" \
+              -f targetField="${TARGET_FIELD}" \
+              -f target="$target" \
+              -f versionField="${VERSION_FIELD}" \
+              -f version="$version" >/dev/null
+
+            echo "#$number: $start -> $target | $version"
+          }
+
+          mapfile -t ROWS < <(
+            jq -r '
+              .data.user.projectV2.items.nodes[]
+              | select(.content.number != null)
+              | [.id, (.content.number|tostring), .content.repository.nameWithOwner]
+              | @tsv
+            ' <<<"${PROJECT_JSON}"
+          )
+
+          for row in "${ROWS[@]}"; do
+            IFS=$'\t' read -r item_id issue_number repository <<<"$row"
+            if [[ "$repository" == "Arthuuuurrr/Indivis" ]]; then
+              update_planning "$item_id" "$issue_number"
+            fi
+          done
