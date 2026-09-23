@@ -508,11 +508,32 @@ jobs:
             state="$(jq -r '.state' <<<"$issue_json")"
             labels="$(jq -r '[.labels[].name] | join(",")' <<<"$issue_json")"
 
-            item_node_id="$(jq -r --arg content_id "$issue_node_id" '
-              .data.user.projectV2.items.nodes[]
-              | select(.content.id == $content_id)
+            # Resolve Project membership from the issue side. This remains reliable
+            # when GitHub Projects' forward item index/search is stale.
+            item_lookup="$(project_graphql_retry \
+              -f query='
+                query($owner:String!, $repo:String!, $number:Int!) {
+                  repository(owner:$owner, name:$repo) {
+                    issue(number:$number) {
+                      projectItems(first:20, includeArchived:true) {
+                        nodes {
+                          id
+                          isArchived
+                          project { id }
+                        }
+                      }
+                    }
+                  }
+                }' \
+              -f owner="${REPO_OWNER}" \
+              -f repo="${REPO_NAME}" \
+              -F number="$number")"
+
+            item_node_id="$(jq -r --arg project "${PROJECT_NODE_ID}" '
+              .data.repository.issue.projectItems.nodes[]
+              | select(.project.id == $project and .isArchived == false)
               | .id
-            ' <<<"${PROJECT_GQL_JSON}" | head -n1)"
+            ' <<<"$item_lookup" | head -n1)"
 
             if [[ -z "$item_node_id" || "$item_node_id" == "null" ]]; then
               echo "Adding issue #${number} to Project"
@@ -527,7 +548,7 @@ jobs:
                 -f content="$issue_node_id")"
               item_node_id="$(jq -r '.data.addProjectV2ItemById.item.id' <<<"$add_json")"
             else
-              echo "Issue #${number} already in Project"
+              echo "Issue #${number} already linked to Project"
             fi
 
             advancement="$(status_for_issue "$title" "$state" "$labels")"
