@@ -36,74 +36,107 @@ jobs:
           fi
 
           if [[ ! "${PROJECT_URL}" =~ ^https://github.com/users/([^/]+)/projects/([0-9]+)/?$ ]]; then
-            echo "::error::INDIVIS_PROJECT_URL must be a user-owned Project URL such as https://github.com/users/Arthuuuurrr/projects/1"
+            echo "::error::INDIVIS_PROJECT_URL must look like https://github.com/users/OWNER/projects/NUMBER"
             exit 1
           fi
 
           PROJECT_OWNER="${BASH_REMATCH[1]}"
           PROJECT_NUMBER="${BASH_REMATCH[2]}"
+          PROJECT_ROOT="users/${PROJECT_OWNER}/projectsV2/${PROJECT_NUMBER}"
 
-          project_gh() {
-            GH_TOKEN="${PROJECT_TOKEN}" gh "$@"
+          project_api() {
+            GH_TOKEN="${PROJECT_TOKEN}" gh api \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2026-03-10" "$@"
           }
 
-          repo_gh() {
-            GH_TOKEN="${REPO_TOKEN}" gh "$@"
+          repo_api() {
+            GH_TOKEN="${REPO_TOKEN}" gh api "$@"
           }
 
           echo "Using Project ${PROJECT_OWNER} #${PROJECT_NUMBER}"
-          project_gh project view "${PROJECT_NUMBER}" --owner "@me" --format json >/dev/null
+          project_api "${PROJECT_ROOT}" >/dev/null
+
+          FIELDS_JSON="$(project_api "${PROJECT_ROOT}/fields?per_page=100")"
 
           field_exists() {
             local name="$1"
-            project_gh project field-list "${PROJECT_NUMBER}" --owner "@me" --limit 100 --format json \
-              --jq ".fields[] | select(.name == \"$name\") | .name" | grep -Fxq "$name"
+            jq -e --arg name "$name" '.[] | select(.name == $name)' <<<"${FIELDS_JSON}" >/dev/null
           }
 
-          ensure_select_field() {
+          refresh_fields() {
+            FIELDS_JSON="$(project_api "${PROJECT_ROOT}/fields?per_page=100")"
+          }
+
+          create_select_field() {
             local name="$1"
-            local options="$2"
+            local options_json="$2"
             if ! field_exists "$name"; then
-              project_gh project field-create "${PROJECT_NUMBER}" \
-                --owner "@me" \
-                --name "$name" \
-                --data-type SINGLE_SELECT \
-                --single-select-options "$options" >/dev/null
+              echo "Creating field: $name"
+              jq -nc --arg name "$name" --argjson options "$options_json" \
+                '{name:$name,data_type:"single_select",single_select_options:$options}' | \
+                project_api --method POST "${PROJECT_ROOT}/fields" --input - >/dev/null
+              refresh_fields
             fi
           }
 
-          ensure_date_field() {
+          create_simple_field() {
             local name="$1"
+            local type="$2"
             if ! field_exists "$name"; then
-              project_gh project field-create "${PROJECT_NUMBER}" \
-                --owner "@me" \
-                --name "$name" \
-                --data-type DATE >/dev/null
+              echo "Creating field: $name"
+              jq -nc --arg name "$name" --arg type "$type" \
+                '{name:$name,data_type:$type}' | \
+                project_api --method POST "${PROJECT_ROOT}/fields" --input - >/dev/null
+              refresh_fields
             fi
           }
 
-          ensure_text_field() {
-            local name="$1"
-            if ! field_exists "$name"; then
-              project_gh project field-create "${PROJECT_NUMBER}" \
-                --owner "@me" \
-                --name "$name" \
-                --data-type TEXT >/dev/null
-            fi
-          }
+          create_select_field "Avancement" '[
+            {"name":"Backlog","color":"GRAY","description":"À qualifier ou planifier"},
+            {"name":"À faire","color":"BLUE","description":"Prêt à être pris"},
+            {"name":"En cours","color":"YELLOW","description":"Travail actif"},
+            {"name":"Validation en jeu","color":"PURPLE","description":"À tester en conditions réelles"},
+            {"name":"Bloqué","color":"RED","description":"Dépendance ou problème bloquant"},
+            {"name":"Terminé","color":"GREEN","description":"Validé et terminé"}
+          ]'
 
-          ensure_select_field "Avancement" "Backlog,À faire,En cours,Validation en jeu,Bloqué,Terminé"
-          ensure_select_field "Priorité" "P0 Critique,P1 Haute,P2 Normale,P3 Basse,P4 Long terme,Non priorisé"
-          ensure_select_field "Catégorie" "Bug,Intégration,Roadmap,World,Items,Polish,Tech,Balance,Combat,Donjon,Gameplay,Performance,Audio,Quête,Autre"
-          ensure_date_field "Start date"
-          ensure_date_field "Target date"
-          ensure_text_field "Version cible"
+          create_select_field "Priorité" '[
+            {"name":"P0 Critique","color":"RED","description":"Bloquant immédiat"},
+            {"name":"P1 Haute","color":"ORANGE","description":"Haute priorité"},
+            {"name":"P2 Normale","color":"YELLOW","description":"Priorité normale"},
+            {"name":"P3 Basse","color":"BLUE","description":"Peut attendre"},
+            {"name":"P4 Long terme","color":"GRAY","description":"Roadmap long terme"},
+            {"name":"Non priorisé","color":"GRAY","description":"À classer"}
+          ]'
+
+          create_select_field "Catégorie" '[
+            {"name":"Bug","color":"RED","description":"Correction"},
+            {"name":"Intégration","color":"PURPLE","description":"Interopérabilité"},
+            {"name":"Roadmap","color":"BLUE","description":"Fonctionnalité planifiée"},
+            {"name":"World","color":"GREEN","description":"Monde et biomes"},
+            {"name":"Items","color":"YELLOW","description":"Objets et équipements"},
+            {"name":"Polish","color":"PINK","description":"Finition et UX"},
+            {"name":"Tech","color":"GRAY","description":"Infrastructure technique"},
+            {"name":"Balance","color":"ORANGE","description":"Équilibrage"},
+            {"name":"Combat","color":"RED","description":"Combat"},
+            {"name":"Donjon","color":"PURPLE","description":"Donjons"},
+            {"name":"Gameplay","color":"BLUE","description":"Gameplay"},
+            {"name":"Performance","color":"YELLOW","description":"Performances"},
+            {"name":"Audio","color":"PINK","description":"Audio et musiques"},
+            {"name":"Quête","color":"GREEN","description":"Quêtes"},
+            {"name":"Autre","color":"GRAY","description":"Autre"}
+          ]'
+
+          create_simple_field "Start date" "date"
+          create_simple_field "Target date" "date"
+          create_simple_field "Version cible" "text"
 
           ensure_repo_label() {
             local name="$1"
             local color="$2"
             local description="$3"
-            repo_gh label create "$name" --repo "${GITHUB_REPOSITORY}" \
+            GH_TOKEN="${REPO_TOKEN}" gh label create "$name" --repo "${GITHUB_REPOSITORY}" \
               --color "$color" --description "$description" --force >/dev/null
           }
 
@@ -118,44 +151,56 @@ jobs:
           ensure_repo_label "priority:P3" "0E8A16" "Priorité basse"
           ensure_repo_label "priority:P4" "6E7781" "Priorité long terme"
 
-          create_views_if_needed() {
-            local existing_views fields_json advancement_id priority_id user_id endpoint
+          field_id() {
+            local name="$1"
+            jq -r --arg name "$name" '.[] | select(.name == $name) | .id' <<<"${FIELDS_JSON}" | head -n1
+          }
 
-            existing_views="$(project_gh api graphql \
+          option_id() {
+            local field_name="$1"
+            local option_name="$2"
+            jq -r --arg field "$field_name" --arg option "$option_name" '
+              .[]
+              | select(.name == $field)
+              | .options[]
+              | select((.name.raw // .name) == $option)
+              | .id
+            ' <<<"${FIELDS_JSON}" | head -n1
+          }
+
+          AVANCEMENT_FIELD_ID="$(field_id "Avancement")"
+          PRIORITE_FIELD_ID="$(field_id "Priorité")"
+          CATEGORIE_FIELD_ID="$(field_id "Catégorie")"
+
+          create_views_if_needed() {
+            local existing_views user_id view_root
+
+            existing_views="$(GH_TOKEN="${PROJECT_TOKEN}" gh api graphql \
               -f query='query($login:String!,$number:Int!){user(login:$login){projectV2(number:$number){views(first:100){nodes{name}}}}}' \
               -f login="${PROJECT_OWNER}" -F number="${PROJECT_NUMBER}" \
               --jq '.data.user.projectV2.views.nodes[].name')"
 
-            fields_json="$(project_gh api \
-              -H "X-GitHub-Api-Version: 2026-03-10" \
-              "users/${PROJECT_OWNER}/projectsV2/${PROJECT_NUMBER}/fields?per_page=100")"
+            user_id="$(project_api "users/${PROJECT_OWNER}" --jq '.id')"
+            view_root="users/${user_id}/projectsV2/${PROJECT_NUMBER}/views"
 
-            advancement_id="$(jq -r '.[] | select(.name == "Avancement") | .id' <<<"$fields_json" | head -n1)"
-            priority_id="$(jq -r '.[] | select(.name == "Priorité") | .id' <<<"$fields_json" | head -n1)"
-            user_id="$(project_gh api "users/${PROJECT_OWNER}" --jq '.id')"
-            endpoint="users/${user_id}/projectsV2/${PROJECT_NUMBER}/views"
-
-            if ! grep -Fxq "Kanban" <<<"$existing_views"; then
-              jq -nc --argjson field "$advancement_id" \
+            if ! grep -Fxq "Kanban" <<<"${existing_views}"; then
+              echo "Creating view: Kanban"
+              jq -nc --argjson field "${AVANCEMENT_FIELD_ID}" \
                 '{name:"Kanban",layout:"board",filter:"is:issue",vertical_group_by:[$field]}' | \
-                project_gh api --method POST \
-                  -H "X-GitHub-Api-Version: 2026-03-10" \
-                  "$endpoint" --input - >/dev/null
+                project_api --method POST "${view_root}" --input - >/dev/null
             fi
 
-            if ! grep -Fxq "Roadmap" <<<"$existing_views"; then
+            if ! grep -Fxq "Roadmap" <<<"${existing_views}"; then
+              echo "Creating view: Roadmap"
               jq -nc '{name:"Roadmap",layout:"roadmap",filter:"is:issue"}' | \
-                project_gh api --method POST \
-                  -H "X-GitHub-Api-Version: 2026-03-10" \
-                  "$endpoint" --input - >/dev/null
+                project_api --method POST "${view_root}" --input - >/dev/null
             fi
 
-            if ! grep -Fxq "Priorités" <<<"$existing_views"; then
-              jq -nc --argjson field "$priority_id" \
+            if ! grep -Fxq "Priorités" <<<"${existing_views}"; then
+              echo "Creating view: Priorités"
+              jq -nc --argjson field "${PRIORITE_FIELD_ID}" \
                 '{name:"Priorités",layout:"table",filter:"is:issue",group_by:[$field]}' | \
-                project_gh api --method POST \
-                  -H "X-GitHub-Api-Version: 2026-03-10" \
-                  "$endpoint" --input - >/dev/null
+                project_api --method POST "${view_root}" --input - >/dev/null
             fi
           }
 
@@ -222,40 +267,60 @@ jobs:
             fi
           }
 
+          PROJECT_ITEMS_JSON="$(project_api "${PROJECT_ROOT}/items?per_page=100")"
+
           sync_issue() {
             local url="$1"
             local number="${url##*/}"
-            local issue_json title state labels advancement priority category add_output
+            local issue_json issue_id title state labels item_id add_response
+            local advancement priority category advancement_option priority_option category_option update_payload
 
-            issue_json="$(repo_gh api "repos/${GITHUB_REPOSITORY}/issues/${number}")"
+            issue_json="$(repo_api "repos/${GITHUB_REPOSITORY}/issues/${number}")"
 
             if jq -e '.pull_request != null' <<<"$issue_json" >/dev/null; then
               return 0
             fi
 
+            issue_id="$(jq -r '.id' <<<"$issue_json")"
             title="$(jq -r '.title' <<<"$issue_json")"
             state="$(jq -r '.state' <<<"$issue_json")"
             labels="$(jq -r '[.labels[].name] | join(",")' <<<"$issue_json")"
 
-            if ! add_output="$(project_gh project item-add "${PROJECT_NUMBER}" --owner "@me" --url "$url" --format json 2>&1)"; then
-              if ! grep -qiE 'already|exists|duplicate' <<<"$add_output"; then
-                echo "$add_output"
-                return 1
-              fi
+            item_id="$(jq -r --argjson issue_id "$issue_id" '
+              .[] | select(.content.id == $issue_id) | .id
+            ' <<<"${PROJECT_ITEMS_JSON}" | head -n1)"
+
+            if [[ -z "$item_id" || "$item_id" == "null" ]]; then
+              echo "Adding issue #${number} to Project"
+              add_response="$(jq -nc --argjson id "$issue_id" '{type:"Issue",id:$id}' | \
+                project_api --method POST "${PROJECT_ROOT}/items" --input -)"
+              item_id="$(jq -r '.value.id' <<<"$add_response")"
+              PROJECT_ITEMS_JSON="$(jq --argjson item "$(jq -c '.value' <<<"$add_response")" '. + [$item]' <<<"${PROJECT_ITEMS_JSON}")"
             fi
 
             advancement="$(status_for_issue "$title" "$state" "$labels")"
             priority="$(priority_for_issue "$title" "$labels")"
             category="$(category_for_issue "$title")"
 
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "@me" \
-              --url "$url" --field "Avancement" --value "$advancement" >/dev/null
+            advancement_option="$(option_id "Avancement" "$advancement")"
+            priority_option="$(option_id "Priorité" "$priority")"
+            category_option="$(option_id "Catégorie" "$category")"
 
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "@me" \
-              --url "$url" --field "Priorité" --value "$priority" >/dev/null
+            update_payload="$(jq -nc \
+              --argjson advancement_field "${AVANCEMENT_FIELD_ID}" \
+              --arg advancement_value "$advancement_option" \
+              --argjson priority_field "${PRIORITE_FIELD_ID}" \
+              --arg priority_value "$priority_option" \
+              --argjson category_field "${CATEGORIE_FIELD_ID}" \
+              --arg category_value "$category_option" \
+              '{fields:[
+                {id:$advancement_field,value:$advancement_value},
+                {id:$priority_field,value:$priority_value},
+                {id:$category_field,value:$category_value}
+              ]}')"
 
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "@me" \
-              --url "$url" --field "Catégorie" --value "$category" >/dev/null
+            project_api --method PATCH "${PROJECT_ROOT}/items/${item_id}" \
+              --input - <<<"$update_payload" >/dev/null
 
             echo "#${number}: $advancement | $priority | $category"
           }
@@ -264,7 +329,8 @@ jobs:
             create_views_if_needed
 
             mapfile -t ISSUE_URLS < <(
-              repo_gh issue list --repo "${GITHUB_REPOSITORY}" --state all --limit 1000 --json url --jq '.[].url'
+              GH_TOKEN="${REPO_TOKEN}" gh issue list --repo "${GITHUB_REPOSITORY}" \
+                --state all --limit 1000 --json url --jq '.[].url'
             )
 
             for url in "${ISSUE_URLS[@]}"; do
