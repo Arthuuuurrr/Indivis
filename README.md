@@ -17,9 +17,9 @@ Le pilotage quotidien ne se fait plus depuis un fichier roadmap. Les **Issues Gi
 ## Organisation
 
 - `mods/` : sources ou références source des mods développés/maintenus.
+- `jars/` : JAR serveur de référence, tous regroupés à plat et suivis avec Git LFS.
 - `datapacks/` : datapacks développés pour le serveur.
 - `docs/` : architecture, inventaires, spécifications et tests.
-- `artifacts/` : politique des artefacts compilés.
 - `.github/` : templates d'issues/PR.
 - `server-manifest.yml` : état déployé + sources de référence.
 - `docs/RUNTIME_SNAPSHOT_2026-09-22.md` : inventaire du serveur/client constaté sur captures.

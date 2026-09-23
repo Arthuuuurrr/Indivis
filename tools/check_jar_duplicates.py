@@ -4,7 +4,7 @@ import hashlib
 import re
 import sys
 
-ROOT = Path("artifacts/jars")
+ROOT = Path("jars")
 LFS_RE = re.compile(
     r"^version https://git-lfs\.github\.com/spec/v1\n"
     r"oid sha256:([0-9a-f]{64})\n"
@@ -14,7 +14,7 @@ LFS_RE = re.compile(
 entries = []
 errors = []
 
-for path in sorted(ROOT.rglob("*.jar")):
+for path in sorted(ROOT.glob("*.jar")):
     data = path.read_bytes()
     try:
         text = data.decode("utf-8")
@@ -31,30 +31,19 @@ for path in sorted(ROOT.rglob("*.jar")):
         size = len(data)
         storage = "local"
 
-    module = path.relative_to(ROOT).parts[0]
-    entries.append((module, sha256, size, storage, path.as_posix()))
+    entries.append((sha256, size, storage, path.as_posix()))
 
     if size < 1024:
         errors.append(f"Suspicious JAR size {size} bytes: {path}")
 
-# Policy: the active server library contains at most one JAR per module.
-by_module = {}
-for row in entries:
-    by_module.setdefault(row[0], []).append(row)
+nested = sorted(ROOT.rglob("*.jar"))
+flat = sorted(ROOT.glob("*.jar"))
+if nested != flat:
+    errors.append("All active JARs must be directly inside jars/; nested JAR folders are forbidden.")
 
-for module, rows in sorted(by_module.items()):
-    if len(rows) > 1:
-        errors.append(
-            "Multiple active JARs for module "
-            + module
-            + ": "
-            + ", ".join(r[4] for r in rows)
-        )
-
-# Exact binary duplicates under different module/name.
 by_sha = {}
 for row in entries:
-    by_sha.setdefault(row[1], []).append(row)
+    by_sha.setdefault(row[0], []).append(row)
 
 for sha, rows in sorted(by_sha.items()):
     if len(rows) > 1:
@@ -62,12 +51,12 @@ for sha, rows in sorted(by_sha.items()):
             "Exact duplicate SHA-256 "
             + sha
             + ": "
-            + ", ".join(r[4] for r in rows)
+            + ", ".join(r[3] for r in rows)
         )
 
 print(f"Active server JARs indexed: {len(entries)}")
-for module, sha, size, storage, path in entries:
-    print(f"{module:28} {sha} {size:>10} {storage:>5} {path}")
+for sha, size, storage, path in entries:
+    print(f"{sha} {size:>10} {storage:>5} {path}")
 
 if errors:
     print("\nLibrary policy violations:", file=sys.stderr)
@@ -75,4 +64,4 @@ if errors:
         print(f"- {err}", file=sys.stderr)
     sys.exit(1)
 
-print("\nServer-current library is coherent.")
+print("\nFlat server-current JAR library is coherent.")

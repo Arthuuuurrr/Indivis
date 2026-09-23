@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - 'artifacts/jars/**'
+      - 'jars/**'
       - 'tools/check_jar_duplicates.py'
       - '.gitattributes'
       - '.github/workflows/check-jar-library.yml'
@@ -12,7 +12,7 @@ on:
     branches:
       - main
     paths:
-      - 'artifacts/jars/**'
+      - 'jars/**'
       - 'tools/check_jar_duplicates.py'
       - '.gitattributes'
       - '.github/workflows/check-jar-library.yml'
@@ -25,7 +25,7 @@ jobs:
         with:
           lfs: true
 
-      - name: Verify LFS binaries are materialized
+      - name: Verify flat LFS JAR library
         shell: bash
         run: |
           set -euo pipefail
@@ -40,6 +40,11 @@ jobs:
 
             echo "$jar | $size bytes | magic=$magic"
 
+            if [[ "$jar" != jars/*.jar ]]; then
+              echo "::error file=$jar::JAR must be directly inside jars/"
+              failed=1
+            fi
+
             if (( size < 1024 )); then
               echo "::error file=$jar::JAR is still an LFS pointer or otherwise too small ($size bytes)"
               failed=1
@@ -49,12 +54,12 @@ jobs:
               echo "::error file=$jar::JAR does not start with ZIP/JAR magic PK"
               failed=1
             fi
-          done < <(find artifacts/jars -type f -name '*.jar' -print0)
+          done < <(find jars -type f -name '*.jar' -print0)
 
           echo "Validated JAR count: $count"
 
           if (( count == 0 )); then
-            echo "::error::No JAR found in artifacts/jars"
+            echo "::error::No JAR found in jars/"
             exit 1
           fi
 
