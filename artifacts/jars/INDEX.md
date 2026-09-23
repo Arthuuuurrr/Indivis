@@ -39,3 +39,21 @@ Le workflow `Check JAR library` exécute `tools/check_jar_duplicates.py` sur cha
 
 - `capitale_currency ... hotfix5` : premier transfert détecté invalide (93 octets), source réelle retrouvée.
 - `capitale_weapons_standalone 0.5.0` : premier transfert détecté invalide (93 octets), source réelle à réinjecter.
+
+
+## Historique importé — vague 1
+
+### Spell Power
+- TEST3 RC1 — SHA-256 `ba0c66e31eebcb04bd1d0d167782d1f8f3737b6e347d9fa999a414139b3f63fe`
+- TEST3 RC2 — SHA-256 `fe31701f8db9a2822906fc49d83fd5a9e3f63ea439221d9b26dc787e81c112d8`
+- TEST3 RC6 — SHA-256 `f05f2bf01e6b55818dd24eec290cdeeb8e8fcd3a1bdd6c4c4047641fef1eba71`
+- TEST3 RC7 Direct Resist — déjà présent
+- TEST3 RC8 ClassFormat Fix — déjà présent
+
+### HUD
+- 1.2.9 Nexus Authority — SHA-256 `dcb51a9a715096477476ea736389b26e00745a0eb26ccd208b5745f3913d4ba8`
+- 1.3.2 Nexus Authority Final Armor40 — déjà présent
+
+### Haute Capitale RPG
+- TEST3 RC1 — SHA-256 `36e1e6c3fc8f7d37d77f7a0d47f1b6feb7715d87604057a47ff39d8b21e276ec`
+- TEST3 RC2 — déjà présent
