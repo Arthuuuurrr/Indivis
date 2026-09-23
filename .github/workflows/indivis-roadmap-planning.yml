@@ -53,18 +53,6 @@ jobs:
                 user(login:$login) {
                   projectV2(number:$number) {
                     id
-                    items(first:100) {
-                      nodes {
-                        id
-                        content {
-                          ... on Issue {
-                            number
-                            state
-                            repository { nameWithOwner }
-                          }
-                        }
-                      }
-                    }
                     fields(first:100) {
                       nodes {
                         ... on ProjectV2Field {
@@ -80,10 +68,6 @@ jobs:
             -F number="${PROJECT_NUMBER}")"
 
           PROJECT_ID="$(jq -r '.data.user.projectV2.id' <<<"${PROJECT_JSON}")"
-
-          echo "Project item count: $(jq -r '.data.user.projectV2.items.nodes | length' <<<"${PROJECT_JSON}")"
-          echo "First Project issue numbers:"
-          jq -r '.data.user.projectV2.items.nodes[:10][] | .content.number // "no-issue-number"' <<<"${PROJECT_JSON}"
 
           field_id() {
             local name="$1"
@@ -189,15 +173,40 @@ jobs:
           }
 
           update_planning() {
-            local item_id="$1"
-            local number="$2"
-            local plan start target version
+            local number="$1"
+            local plan start target version issue_json state issue_node item_id add_json
 
             if ! plan="$(plan_for_issue "$number")"; then
               return 0
             fi
 
+            issue_json="$(GH_TOKEN="${PROJECT_TOKEN}" gh api "repos/Arthuuuurrr/Indivis/issues/$number")"
+            state="$(jq -r '.state' <<<"$issue_json")"
+
+            if [[ "$state" == "closed" ]]; then
+              echo "#$number: closed — skipped from active roadmap dating"
+              return 0
+            fi
+
+            issue_node="$(jq -r '.node_id' <<<"$issue_json")"
             IFS='|' read -r start target version <<<"$plan"
+
+            add_json="$(project_graphql \
+              -f query='
+                mutation($project:ID!, $content:ID!) {
+                  addProjectV2ItemById(input:{projectId:$project, contentId:$content}) {
+                    item { id }
+                  }
+                }' \
+              -f project="${PROJECT_ID}" \
+              -f content="$issue_node")"
+
+            item_id="$(jq -r '.data.addProjectV2ItemById.item.id' <<<"$add_json")"
+
+            if [[ -z "$item_id" || "$item_id" == "null" ]]; then
+              echo "::error::Unable to resolve Project item for issue #$number"
+              return 1
+            fi
 
             project_graphql \
               -f query='
@@ -244,18 +253,15 @@ jobs:
             echo "#$number: $start -> $target | $version"
           }
 
-          mapfile -t ROWS < <(
-            jq -r '
-              .data.user.projectV2.items.nodes[]
-              | select(.content.number != null)
-              | [.id, (.content.number|tostring), .content.repository.nameWithOwner]
-              | @tsv
-            ' <<<"${PROJECT_JSON}"
+          PLANNED_ISSUES=(
+            83 75 70 7 58 78 56 57 60 61 62 66
+            53 3 4 5 6 18 2 15 16 49 14 50 19 48
+            43 35 52 38 47 10 39 24
+            63 64 65 8 9 20 21 25 26 59 33
+            32 51 11 12 13 46 28 23 22
+            34 37 40 45 27 29 30 31 36 41 42 44
           )
 
-          for row in "${ROWS[@]}"; do
-            IFS=$'\t' read -r item_id issue_number repository <<<"$row"
-            if [[ "$repository" == "Arthuuuurrr/Indivis" ]]; then
-              update_planning "$item_id" "$issue_number"
-            fi
+          for issue_number in "${PLANNED_ISSUES[@]}"; do
+            update_planning "$issue_number"
           done
