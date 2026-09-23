@@ -1,0 +1,60 @@
+name: Rebuild staged JARs
+
+on:
+  push:
+    branches:
+      - artifacts/history-spell-engine
+    paths:
+      - '.rebuild-jars'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: artifacts/history-spell-engine
+          lfs: false
+          fetch-depth: 0
+      - name: Rebuild and verify staged JARs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, shutil
+
+          root = Path("artifact-staging")
+          manifest = root / "manifest.tsv"
+          for line in manifest.read_text(encoding="utf-8").splitlines():
+              if not line.strip() or line.startswith("#"):
+                  continue
+              directory, module, target, expected = line.split("\t")
+              d = root / directory
+              encoded = "".join(p.read_text(encoding="utf-8").strip() for p in sorted(d.glob("part_*.b64")))
+              data = base64.b64decode(encoded)
+              actual = hashlib.sha256(data).hexdigest()
+              if actual != expected.lower():
+                  raise SystemExit(f"SHA mismatch for {target}: {actual} != {expected}")
+              dest = Path("artifacts/jars") / module / target
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              dest.write_bytes(data)
+              print(f"{target}: {len(data)} bytes, sha256={actual}")
+              shutil.rmtree(d)
+
+          manifest.unlink()
+          trigger = Path(".rebuild-jars")
+          if trigger.exists():
+              trigger.unlink()
+          if root.exists() and not any(root.iterdir()):
+              root.rmdir()
+          PY
+          git add -A
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "artifacts(spell-engine): reconstruct staged JARs"
+          git push origin HEAD:artifacts/history-spell-engine
