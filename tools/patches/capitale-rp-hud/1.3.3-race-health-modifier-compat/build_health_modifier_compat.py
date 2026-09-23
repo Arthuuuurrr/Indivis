@@ -44,7 +44,7 @@ def compile_sources(helper_source: Path, patch_source: Path, work: Path) -> tupl
         patch_classes,
     )
 
-def patch_classes(hud: Path, nexus: Path, patch_classes: Path, work: Path) -> dict[str, Path]:
+def run_patcher(hud: Path, nexus: Path, patch_classes: Path, work: Path) -> dict[str, Path]:
     hud_entries = {
         "strict": "fr/arthur/capitale/rphud/CapitaleStrictRaceHealthFinalizer.class",
         "rebuild": "fr/arthur/capitale/rphud/CapitaleRebuildMorphServer.class",
@@ -138,12 +138,12 @@ def main() -> int:
 
     with tempfile.TemporaryDirectory() as td:
         work = Path(td)
-        helper, patch_classes = compile_sources(
+        helper, patch_class_dir = compile_sources(
             here / "RaceHealthModifierCompat.java",
             here / "PatchHealthCompat.java",
             work,
         )
-        patched = patch_classes(args.hud_1_3_2, args.nexus_alpha1_1, patch_classes, work)
+        patched = run_patcher(args.hud_1_3_2, args.nexus_alpha1_1, patch_class_dir, work)
         build_hud(args.hud_1_3_2, hud_out, helper, patched)
         build_nexus(args.nexus_alpha1_1, nexus_out, patched["nexus"])
 
