@@ -2,7 +2,7 @@ schema_version: 2
 project: Indivis
 minecraft: "1.21.11"
 fabric_loader_min: "0.19.5"
-updated: "2026-09-22"
+updated: "2026-09-23"
 
 snapshot:
   source: "captures serveur/client/datapacks du 22-09-2026"
@@ -79,10 +79,16 @@ deployed:
   datapacks:
     capitale_skills:
       deployed_form: "folder"
-      exact_version: null
+      exact_version: "0.10.19-RC2F"
+      verified_archive: "capitale_skills_BETA_0_10_19_RC2F_TREE_HARD_RESTORE.zip"
+      sha256: "109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4"
+      verification: "server copy supplied 2026-09-23; byte-identical to source_reference"
     capitale_core:
       deployed_form: "folder"
-      exact_version: null
+      exact_version: "1.5.6-RC9AO"
+      verified_archive: "capitale_core_1_5_6_RC9AO.zip"
+      sha256: "e5b06cd7ae0b9356782c30e3813a3170605a4ec20276edf0789c54331905b521"
+      verification: "server copy supplied 2026-09-23; byte-identical to source_reference"
     capitale_creatures_biomes:
       deployed: "capitale_creatures_biomes_BETA_0_10.zip"
       sha256: "5ec4a277bf88a4b7c38aceb9d8a2342851f0a3753ac20ac232573b29787a2099"
