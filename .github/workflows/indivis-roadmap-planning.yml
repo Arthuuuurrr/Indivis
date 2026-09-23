@@ -44,7 +44,22 @@ jobs:
           PROJECT_NUMBER="${BASH_REMATCH[2]}"
 
           project_graphql() {
-            GH_TOKEN="${PROJECT_TOKEN}" gh api graphql "$@"
+            local attempt=1
+            local max_attempts=4
+
+            while true; do
+              if GH_TOKEN="${PROJECT_TOKEN}" gh api graphql "$@"; then
+                return 0
+              fi
+
+              if (( attempt >= max_attempts )); then
+                return 1
+              fi
+
+              echo "Transient GitHub GraphQL failure; retry $((attempt + 1))/${max_attempts}..." >&2
+              sleep $((attempt * 2))
+              attempt=$((attempt + 1))
+            done
           }
 
           PROJECT_JSON="$(project_graphql \
