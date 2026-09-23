@@ -12,7 +12,7 @@ Le choix des biomes sert d'abord à fixer une identité environnementale stable 
 Principes retenus :
 
 - les zones naturelles utilisent autant que possible des biomes vanilla ;
-- les villes utilisent des biomes custom `capitale:*` dédiés ;
+- les nouveaux biomes custom utilisent le namespace `indivis:*` ; le biome historique de la Haute Capitale reste `capitale:capitale` ;
 - le terrain, la végétation et les décors sont terraformés : le nom ou la génération naturelle du biome ne contraignent donc pas l'apparence finale ;
 - les biomes naturels sont peu nombreux afin d'éviter des changements de musique trop fréquents ;
 - chaque biome retenu doit apporter une différence visuelle ou climatique suffisamment nette ;
@@ -31,13 +31,15 @@ Climat général : tempéré, avec une jungle chaude sur la bordure du territoir
 | Jungle de frontière méridionale / orque | `minecraft:jungle` |
 | Montagnes non enneigées | `minecraft:windswept_gravelly_hills` |
 | Montagnes enneigées | `minecraft:snowy_slopes` |
-| Grande zone corrompue | `capitale:donjon` |
+| Donjon / zone corrompue historique | `capitale:donjon` |
+| Zone de corruption générique | `indivis:corruption` |
 
 ### Notes
 
 - `minecraft:stony_peaks` n'est plus utilisé comme biome montagneux impérial : il est réservé au territoire nain.
 - `minecraft:taiga` apporte une vraie variation forestière par rapport à `minecraft:forest`, contrairement aux variantes de bouleaux jugées trop proches visuellement.
-- `capitale:donjon` reste une zone environnementale à part et ne doit pas être traitée comme une simple variante musicale impériale.
+- `capitale:donjon` reste une zone environnementale à part et conserve son ID historique.
+- `indivis:corruption` reprend les mêmes propriétés que `capitale:donjon` afin de pouvoir identifier séparément les zones de corruption qui ne sont pas des donjons.
 
 ## 3. Continent elfique
 
@@ -106,7 +108,7 @@ Ces biomes ne sont pas systématiquement rattachés aux banques musicales d'un c
 
 ## 8. Biomes urbains custom
 
-Les villes doivent utiliser des biomes spécifiques `capitale:*` afin de contrôler précisément :
+Les nouvelles villes doivent utiliser des biomes spécifiques `indivis:*` afin de contrôler précisément :
 
 - couleur de l'herbe ;
 - couleur du feuillage ;
@@ -116,15 +118,19 @@ Les villes doivent utiliser des biomes spécifiques `capitale:*` afin de contrô
 - musique urbaine ;
 - règles de spawn.
 
-Biomes urbains prévus :
+Biomes urbains :
 
-- `capitale:haute_capitale`
-- `capitale:ilystara`
-- `capitale:sylvarhen`
-- `capitale:avaleiv`
-- `capitale:skarnfjord`
-- `capitale:durak_vor`
-- `capitale:urzak_tor`
+- `capitale:capitale` — biome existant de la Haute Capitale, à conserver ;
+- `indivis:lion_port` — ville portuaire, première ville rencontrée en quittant la Haute Capitale ;
+- `indivis:clairval` — petit village impérial ;
+- `indivis:haute_rive` — ville portuaire aux abords de la jungle ;
+- `indivis:ilystara` — ville haut-elfe ;
+- `indivis:sylvarhen` — ville des Elfes des Bois ;
+- `indivis:avaleiv` — ville elfique maritime ;
+- `indivis:skarnfjord` — ville nordique ;
+- `indivis:durak_vor` — ville naine.
+
+`indivis:urzak_tor` n'est pas créé à ce stade : la définition d'un biome urbain orc est jugée prématurée.
 
 Ces biomes sont distincts des biomes naturels listés plus haut.
 
@@ -154,7 +160,7 @@ Les plages restent autorisées.
 
 Le système doit reposer sur une whitelist de biomes autorisés ou, de manière équivalente, sur un contrôle explicite excluant les familles rivière/océan.
 
-Les biomes custom `capitale:*` ne doivent pas être considérés comme autorisés automatiquement. Ils pourront être ajoutés explicitement si un besoin de gameplay le justifie.
+Les biomes custom `capitale:*` et `indivis:*` ne doivent pas être considérés comme autorisés automatiquement. Ils pourront être ajoutés explicitement si un besoin de gameplay le justifie.
 
 Le contrôle doit idéalement être effectué :
 
@@ -165,7 +171,7 @@ Le contrôle doit idéalement être effectué :
 
 | Région | Biomes naturels validés |
 |---|---|
-| Empire | `plains`, `forest`, `taiga`, `jungle`, `windswept_gravelly_hills`, `snowy_slopes`, `capitale:donjon` |
+| Empire | `plains`, `forest`, `taiga`, `jungle`, `windswept_gravelly_hills`, `snowy_slopes`, `capitale:donjon`, `indivis:corruption` |
 | Elfes | `sunflower_plains`, `cherry_grove`, `meadow` |
 | Nordiques | `snowy_plains`, `snowy_taiga`, `ice_spikes` |
 | Nains | `windswept_hills`, `grove`, `stony_peaks`, `jagged_peaks` |
