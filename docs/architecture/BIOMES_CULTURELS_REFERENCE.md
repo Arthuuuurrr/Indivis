@@ -39,7 +39,8 @@ Climat général : tempéré, avec une jungle chaude sur la bordure du territoir
 - `minecraft:stony_peaks` n'est plus utilisé comme biome montagneux impérial : il est réservé au territoire nain.
 - `minecraft:taiga` apporte une vraie variation forestière par rapport à `minecraft:forest`, contrairement aux variantes de bouleaux jugées trop proches visuellement.
 - `capitale:donjon` reste une zone environnementale à part et conserve son ID historique.
-- `indivis:corruption` reprend les mêmes propriétés que `capitale:donjon` afin de pouvoir identifier séparément les zones de corruption qui ne sont pas des donjons.
+- `indivis:corruption` reprend exactement les mêmes propriétés environnementales et de spawn que `capitale:donjon` afin de pouvoir identifier séparément les zones de corruption qui ne sont pas des donjons.
+- `indivis:corruption` doit également être rattaché à la même zone musicale MMOMusicZones que `capitale:donjon`, afin de conserver les mêmes musiques de donjon.
 
 ## 3. Continent elfique
 
@@ -180,6 +181,7 @@ Le contrôle doit idéalement être effectué :
 ## 11. Points restant à verrouiller
 
 - palette naturelle définitive des Orcs ;
-- paramètres environnementaux exacts des biomes urbains custom ;
+- paramètres environnementaux exacts des nouveaux biomes urbains custom ;
+- mapping MMOMusicZones de `indivis:corruption` vers les musiques de `capitale:donjon` lorsque la configuration/source du mod sera disponible dans le dépôt ;
 - regroupement final des biomes dans MMOMusicZones ;
 - implémentation effective des tags/conditions de spawn des patrouilles dans `capitale_core`.
