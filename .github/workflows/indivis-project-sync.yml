@@ -512,7 +512,7 @@ jobs:
 
             if [[ -z "$item_node_id" || "$item_node_id" == "null" ]]; then
               echo "Adding issue #${number} to Project"
-              add_json="$(GH_TOKEN="${PROJECT_TOKEN}" gh api graphql \
+              add_json="$(project_graphql_retry \
                 -f query='
                   mutation($project:ID!, $content:ID!) {
                     addProjectV2ItemById(input:{projectId:$project, contentId:$content}) {
