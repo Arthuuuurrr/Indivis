@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   plan-roadmap:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && (github.event.workflow_run.event == 'push' || github.event.workflow_run.event == 'workflow_dispatch')) }}
     runs-on: ubuntu-latest
     env:
       PROJECT_URL: ${{ vars.INDIVIS_PROJECT_URL }}
