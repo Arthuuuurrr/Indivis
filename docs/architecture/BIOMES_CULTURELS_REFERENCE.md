@@ -135,6 +135,27 @@ Biomes urbains :
 
 Ces biomes sont distincts des biomes naturels listés plus haut.
 
+### Première passe environnementale des villes
+
+Les biomes urbains doivent rester proches des biomes vanilla voisins. Sauf nécessité, les couleurs d'herbe et de feuillage ne sont pas forcées : elles sont dérivées de la température et du downfall. L'eau reçoit une variation légère. `indivis:sylvarhen` reprend explicitement les couleurs de végétation du `cherry_grove` vanilla afin de rester raccord avec cet environnement.
+
+| Biome urbain | Température | Downfall | Eau | Ciel |
+|---|---:|---:|---|---|
+| `indivis:lion_port` | 0.8 | 0.4 | `#3d79df` | `#78a7ff` |
+| `indivis:clairval` | 0.8 | 0.4 | `#3f76e4` | `#78a7ff` |
+| `indivis:haute_rive` | 0.9 | 0.8 | `#3d82df` | `#77a8ff` |
+| `indivis:ilystara` | 0.8 | 0.4 | `#4a86e4` | `#78a7ff` |
+| `indivis:sylvarhen` | 0.5 | 0.8 | `#5db7ef` | `#7ba4ff` |
+| `indivis:avaleiv` | 0.65 | 0.6 | `#4891e2` | `#7aa5ff` |
+| `indivis:skarnfjord` | -0.5 | 0.4 | `#3d57d6` | `#839eff` |
+| `indivis:durak_vor` | 0.2 | 0.3 | `#3d70d4` | `#7da2ff` |
+
+### Règle anti-spawn urbaine
+
+Tous les biomes de ville ont les catégories de spawners suivantes vides : `monster`, `creature`, `ambient`, `axolotls`, `underground_water_creature`, `water_creature`, `water_ambient` et `misc`.
+
+Le tag `#indivis:city` regroupe les villes existantes et nouvelles. Les patrouilles orques doivent en plus exclure explicitement chaque biome urbain, indépendamment des spawners vanilla.
+
 ## 9. Patrouilles orques
 
 Règle retenue :
