@@ -1,0 +1,22 @@
+HAUTE CAPITALE — ARMOR BALANCE 0.1.4 STARTUP-SAFE
+
+Observed crash in 0.1.3:
+both client and server fail during Mixin PREPARE because ItemStackArmorAttributeMixin targets net.minecraft.class_1799.method_58695, absent in Minecraft 1.21.11.
+
+0.1.4:
+- removes ItemStackArmorAttributeMixin entirely;
+- hooks verified AttributeModifiersComponent methods method_57482, method_60618 and method_70727;
+- uses require=0 on the new injections so a future target mismatch is non-fatal;
+- preserves Armor40DamageFormulaMixin byte-for-byte.
+
+Harness PASS:
+- ARMOR chest 8 -> 16
+- ARMOR MAINHAND 3 -> 3
+- other attribute 5 -> 5
+- original component remains 8
+
+Artifact:
+capitale_armor_balance-0.1.4+1.21.11-ARMOR40-COMPONENT-RUNTIME-SAFE.jar
+SHA-256: 3f868542ce33d4fa14c948a42d8e63bef18687d50bb8c2af2e6df8aa1a21e47a
+
+RC16 Spell Engine unchanged.
