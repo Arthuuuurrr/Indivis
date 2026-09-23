@@ -268,44 +268,84 @@ jobs:
             fi
           }
 
-          PROJECT_ITEMS_JSON="$(project_api "${PROJECT_ROOT}/items?per_page=100")"
+          # GraphQL is used for Project items because it exposes stable node IDs for
+          # both existing issues and Project items, including content already present.
+          PROJECT_GQL_JSON="$(GH_TOKEN="${PROJECT_TOKEN}" gh api graphql \
+            -f query='
+              query($login:String!, $number:Int!) {
+                user(login:$login) {
+                  projectV2(number:$number) {
+                    id
+                    items(first:100) {
+                      nodes {
+                        id
+                        content {
+                          ... on Issue {
+                            id
+                            number
+                            repository { nameWithOwner }
+                          }
+                          ... on PullRequest {
+                            id
+                            number
+                            repository { nameWithOwner }
+                          }
+                        }
+                      }
+                    }
+                    fields(first:100) {
+                      nodes {
+                        ... on ProjectV2Field {
+                          id
+                          name
+                        }
+                        ... on ProjectV2SingleSelectField {
+                          id
+                          name
+                          options {
+                            id
+                            name
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }' \
+            -f login="${PROJECT_OWNER}" -F number="${PROJECT_NUMBER}")"
 
-          # Temporary safe diagnostic: only IDs/types/numbers, never secrets or bodies.
-          echo "Project items response type: $(jq -r 'type' <<<"${PROJECT_ITEMS_JSON}")"
-          jq -c '
-            if type == "array" then
-              .[:5] | map({
-                item_id: .id,
-                content_type: .content_type,
-                content_id: .content.id,
-                content_node_id: .content.node_id,
-                title: .content.title,
-                number: .content.number,
-                repository_url: .content.repository_url,
-                html_url: .content.html_url
-              })
-            else
-              {
-                keys: (keys),
-                items_preview: ((.items // .values // [])[:5] | map({
-                  item_id: .id,
-                  content_type: .content_type,
-                  content_id: .content.id,
-                  content_node_id: .content.node_id,
-                  title: .content.title,
-                  number: .content.number,
-                  repository_url: .content.repository_url,
-                  html_url: .content.html_url
-                }))
-              }
-            end
-          ' <<<"${PROJECT_ITEMS_JSON}"
+          PROJECT_NODE_ID="$(jq -r '.data.user.projectV2.id' <<<"${PROJECT_GQL_JSON}")"
+
+          gql_field_id() {
+            local name="$1"
+            jq -r --arg name "$name" '
+              .data.user.projectV2.fields.nodes[]
+              | select(.name == $name)
+              | .id
+            ' <<<"${PROJECT_GQL_JSON}" | head -n1
+          }
+
+          gql_option_id() {
+            local field="$1"
+            local option="$2"
+            jq -r --arg field "$field" --arg option "$option" '
+              .data.user.projectV2.fields.nodes[]
+              | select(.name == $field)
+              | .options[]?
+              | select(.name == $option)
+              | .id
+            ' <<<"${PROJECT_GQL_JSON}" | head -n1
+          }
+
+          AVANCEMENT_FIELD_NODE_ID="$(gql_field_id "Avancement")"
+          PRIORITE_FIELD_NODE_ID="$(gql_field_id "Priorité")"
+          CATEGORIE_FIELD_NODE_ID="$(gql_field_id "Catégorie")"
 
           sync_issue() {
             local url="$1"
             local number="${url##*/}"
-            local issue_json issue_id title state labels item_id add_response
-            local advancement priority category advancement_option priority_option category_option update_payload
+            local issue_json issue_node_id title state labels item_node_id add_json
+            local advancement priority category advancement_option priority_option category_option
 
             issue_json="$(repo_api "repos/${GITHUB_REPOSITORY}/issues/${number}")"
 
@@ -313,78 +353,87 @@ jobs:
               return 0
             fi
 
-            issue_id="$(jq -r '.id' <<<"$issue_json")"
+            issue_node_id="$(jq -r '.node_id' <<<"$issue_json")"
             title="$(jq -r '.title' <<<"$issue_json")"
             state="$(jq -r '.state' <<<"$issue_json")"
             labels="$(jq -r '[.labels[].name] | join(",")' <<<"$issue_json")"
 
-            item_id="$(jq -r --argjson issue_id "$issue_id" '
-              .[] | select(.content.id == $issue_id) | .id
-            ' <<<"${PROJECT_ITEMS_JSON}" | head -n1)"
+            item_node_id="$(jq -r --arg content_id "$issue_node_id" '
+              .data.user.projectV2.items.nodes[]
+              | select(.content.id == $content_id)
+              | .id
+            ' <<<"${PROJECT_GQL_JSON}" | head -n1)"
 
-            if [[ -z "$item_id" || "$item_id" == "null" ]]; then
+            if [[ -z "$item_node_id" || "$item_node_id" == "null" ]]; then
               echo "Adding issue #${number} to Project"
-
-              if ! add_response="$(jq -nc --argjson id "$issue_id" '{type:"Issue",id:$id}' | \
-                project_api --method POST "${PROJECT_ROOT}/items" --input - 2>&1)"; then
-                first_add_error="$add_response"
-                echo "Add by internal issue ID failed; trying repository coordinates."
-
-                if ! add_response="$(jq -nc \
-                  --arg owner "${REPO_OWNER}" \
-                  --arg repo "${REPO_NAME}" \
-                  --argjson number "$number" \
-                  '{type:"Issue",owner:$owner,repo:$repo,number:$number}' | \
-                  project_api --method POST "${PROJECT_ROOT}/items" --input - 2>&1)"; then
-
-                  if ! GH_TOKEN="${PROJECT_TOKEN}" gh api "repos/${GITHUB_REPOSITORY}/issues/${number}" >/dev/null 2>&1; then
-                    echo "::error::INDIVIS_PROJECT_TOKEN can manage the Project but cannot read the private repository. Edit the classic PAT and enable the repo scope, then update the INDIVIS_PROJECT_TOKEN secret."
-                  else
-                    echo "::error::GitHub rejected issue #${number} while adding it to the Project."
-                    echo "First attempt: $first_add_error"
-                    echo "Fallback attempt: $add_response"
-                  fi
-                  return 1
-                fi
-              fi
-
-              item_id="$(jq -r '.value.id // empty' <<<"$add_response")"
-              if [[ -z "$item_id" ]]; then
-                PROJECT_ITEMS_JSON="$(project_api "${PROJECT_ROOT}/items?per_page=100")"
-                item_id="$(jq -r --argjson issue_id "$issue_id" '.[] | select(.content.id == $issue_id) | .id' <<<"${PROJECT_ITEMS_JSON}" | head -n1)"
-              else
-                PROJECT_ITEMS_JSON="$(jq --argjson item "$(jq -c '.value' <<<"$add_response")" '. + [$item]' <<<"${PROJECT_ITEMS_JSON}")"
-              fi
-
-              if [[ -z "$item_id" || "$item_id" == "null" ]]; then
-                echo "::error::Issue #${number} was not returned as a Project item after insertion."
-                return 1
-              fi
+              add_json="$(GH_TOKEN="${PROJECT_TOKEN}" gh api graphql \
+                -f query='
+                  mutation($project:ID!, $content:ID!) {
+                    addProjectV2ItemById(input:{projectId:$project, contentId:$content}) {
+                      item { id }
+                    }
+                  }' \
+                -f project="${PROJECT_NODE_ID}" \
+                -f content="$issue_node_id")"
+              item_node_id="$(jq -r '.data.addProjectV2ItemById.item.id' <<<"$add_json")"
+            else
+              echo "Issue #${number} already in Project"
             fi
 
             advancement="$(status_for_issue "$title" "$state" "$labels")"
             priority="$(priority_for_issue "$title" "$labels")"
             category="$(category_for_issue "$title")"
 
-            advancement_option="$(option_id "Avancement" "$advancement")"
-            priority_option="$(option_id "Priorité" "$priority")"
-            category_option="$(option_id "Catégorie" "$category")"
+            advancement_option="$(gql_option_id "Avancement" "$advancement")"
+            priority_option="$(gql_option_id "Priorité" "$priority")"
+            category_option="$(gql_option_id "Catégorie" "$category")"
 
-            update_payload="$(jq -nc \
-              --argjson advancement_field "${AVANCEMENT_FIELD_ID}" \
-              --arg advancement_value "$advancement_option" \
-              --argjson priority_field "${PRIORITE_FIELD_ID}" \
-              --arg priority_value "$priority_option" \
-              --argjson category_field "${CATEGORIE_FIELD_ID}" \
-              --arg category_value "$category_option" \
-              '{fields:[
-                {id:$advancement_field,value:$advancement_value},
-                {id:$priority_field,value:$priority_value},
-                {id:$category_field,value:$category_value}
-              ]}')"
+            if [[ -z "$advancement_option" || -z "$priority_option" || -z "$category_option" ]]; then
+              echo "::error::Unable to resolve Project option IDs for issue #${number}: $advancement / $priority / $category"
+              return 1
+            fi
 
-            project_api --method PATCH "${PROJECT_ROOT}/items/${item_id}" \
-              --input - <<<"$update_payload" >/dev/null
+            GH_TOKEN="${PROJECT_TOKEN}" gh api graphql \
+              -f query='
+                mutation(
+                  $project:ID!,
+                  $item:ID!,
+                  $advancementField:ID!,
+                  $advancementOption:String!,
+                  $priorityField:ID!,
+                  $priorityOption:String!,
+                  $categoryField:ID!,
+                  $categoryOption:String!
+                ) {
+                  advancement:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$advancementField,
+                    value:{singleSelectOptionId:$advancementOption}
+                  }) { projectV2Item { id } }
+
+                  priority:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$priorityField,
+                    value:{singleSelectOptionId:$priorityOption}
+                  }) { projectV2Item { id } }
+
+                  category:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$categoryField,
+                    value:{singleSelectOptionId:$categoryOption}
+                  }) { projectV2Item { id } }
+                }' \
+              -f project="${PROJECT_NODE_ID}" \
+              -f item="$item_node_id" \
+              -f advancementField="${AVANCEMENT_FIELD_NODE_ID}" \
+              -f advancementOption="$advancement_option" \
+              -f priorityField="${PRIORITE_FIELD_NODE_ID}" \
+              -f priorityOption="$priority_option" \
+              -f categoryField="${CATEGORIE_FIELD_NODE_ID}" \
+              -f categoryOption="$category_option" >/dev/null
 
             echo "#${number}: $advancement | $priority | $category"
           }
