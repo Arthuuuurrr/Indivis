@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse, hashlib, json, zipfile
+import argparse, base64, hashlib, json, zipfile
 from pathlib import Path
 
 ICON_PATH = "assets/more_rpg_classes/textures/spell/decapitate.png"
