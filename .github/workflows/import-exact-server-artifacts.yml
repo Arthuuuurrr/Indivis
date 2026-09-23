@@ -26,10 +26,10 @@ jobs:
           set -euo pipefail
           mkdir -p .import-reconstructed
 
-          cat .import-staging/core.zip.xz.part.* > .import-reconstructed/core.zip.xz
-          cat .import-staging/skills.zip.xz.part.* > .import-reconstructed/skills.zip.xz
-          cat .import-staging/creatures010.zip.xz.part.* > .import-reconstructed/creatures010.zip.xz
-          cat .import-staging/abilities.zip.xz.part.* > .import-reconstructed/abilities.zip.xz
+          cat .import-staging/core.zip.xz.b64.part.* | base64 -d > .import-reconstructed/core.zip.xz
+          cat .import-staging/skills.zip.xz.b64.part.* | base64 -d > .import-reconstructed/skills.zip.xz
+          cat .import-staging/creatures010.zip.xz.b64.part.* | base64 -d > .import-reconstructed/creatures010.zip.xz
+          cat .import-staging/abilities.zip.xz.b64.part.* | base64 -d > .import-reconstructed/abilities.zip.xz
 
           xz -dc .import-reconstructed/core.zip.xz > .import-reconstructed/core.zip
           xz -dc .import-reconstructed/skills.zip.xz > .import-reconstructed/skills.zip
