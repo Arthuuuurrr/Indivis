@@ -165,10 +165,34 @@ jobs:
           ensure_repo_label "status:backlog" "6E7781" "Roadmap: backlog"
           ensure_repo_label "status:todo" "1F6FEB" "Roadmap: à faire"
           ensure_repo_label "status:in-progress" "D29922" "Roadmap: en cours"
-          ensure_repo_label "status:verify" "8250DF" "Roadmap: validation en jeu"
           ensure_repo_label "status:blocked" "CF222E" "Roadmap: bloqué"
 
-          for obsolete_label in "priority:P0" "priority:P1" "priority:P2" "priority:P3" "priority:P4"; do
+          # Reuse any existing priority label for a level before creating one.
+          ensure_priority_level() {
+            local level="$1"
+            local fallback_name="$2"
+            local color="$3"
+            local description="$4"
+            local existing
+
+            existing="$(grep -Ei -- "-${level}$" <<<"${REPO_LABELS}" | head -n1 || true)"
+            if [[ -n "$existing" ]]; then
+              echo "Reusing existing priority label for ${level}: $existing"
+              printf '%s' "$existing"
+              return 0
+            fi
+
+            ensure_repo_label "$fallback_name" "$color" "$description"
+            printf '%s' "$fallback_name"
+          }
+
+          PRIORITY_P1_LABEL="$(ensure_priority_level "P1" "Priorité maximale -P1" "B60205" "À corriger en priorité maximale")"
+          PRIORITY_P2_LABEL="$(ensure_priority_level "P2" "Priorité haute -P2" "D93F0B" "Priorité haute")"
+          PRIORITY_P3_LABEL="$(ensure_priority_level "P3" "Priorité moyenne -P3" "FBCA04" "Priorité moyenne")"
+          PRIORITY_P4_LABEL="$(ensure_priority_level "P4" "Priorité basse -P4" "0E8A16" "Priorité basse")"
+          PRIORITY_P5_LABEL="$(ensure_priority_level "P5" "Priorité minimale -P5" "6E7781" "Priorité minimale / long terme")"
+
+          for obsolete_label in "priority:P0" "priority:P1" "priority:P2" "priority:P3" "priority:P4" "status:verify"; do
             if grep -Fxq "$obsolete_label" <<<"${REPO_LABELS}"; then
               echo "Removing obsolete duplicate label: $obsolete_label"
               GH_TOKEN="${REPO_TOKEN}" gh label delete "$obsolete_label" --repo "${GITHUB_REPOSITORY}" --yes
@@ -240,7 +264,7 @@ jobs:
               echo "Terminé"
             elif grep -qiE '(^|,)(status:blocked|blocked)(,|$)' <<<"$labels" || grep -qi '\[BLOCKED\]' <<<"$title"; then
               echo "Bloqué"
-            elif grep -qiE '(^|,)(status:verify|verify)(,|$)' <<<"$labels" || grep -qi '\[VERIFY\]' <<<"$title"; then
+            elif grep -qiE '(^|,)A tester / Valider(,|$)' <<<"$labels" || grep -qi '\[VERIFY\]' <<<"$title"; then
               echo "Validation en jeu"
             elif grep -qiE '(^|,)(status:in-progress|wip)(,|$)' <<<"$labels" || grep -qi '\[WIP\]' <<<"$title"; then
               echo "En cours"
@@ -257,11 +281,13 @@ jobs:
             local title="$1"
             local labels="$2"
 
-            if grep -qiE '(^|,)Priorité maximale -P1(,|$)' <<<"$labels"; then
-              echo "P0 Critique"
-              return 0
-            fi
+            if grep -Fqi "$PRIORITY_P1_LABEL" <<<"$labels"; then echo "P0 Critique"; return 0; fi
+            if grep -Fqi "$PRIORITY_P2_LABEL" <<<"$labels"; then echo "P1 Haute"; return 0; fi
+            if grep -Fqi "$PRIORITY_P3_LABEL" <<<"$labels"; then echo "P2 Normale"; return 0; fi
+            if grep -Fqi "$PRIORITY_P4_LABEL" <<<"$labels"; then echo "P3 Basse"; return 0; fi
+            if grep -Fqi "$PRIORITY_P5_LABEL" <<<"$labels"; then echo "P4 Long terme"; return 0; fi
 
+            # Legacy fallback only: old issue titles may still contain P0/P1/P2/P3/P4.
             for n in 0 1 2 3 4; do
               if grep -qiE "(^|[^[:alnum:]])P${n}([^[:alnum:]]|$)" <<<"$title"; then
                 case "$n" in
