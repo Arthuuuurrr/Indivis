@@ -261,19 +261,23 @@ jobs:
             local title="$1"
             local labels="$2"
 
-            if grep -qiE '(^|,)Priorité maximale -P1(,|$)' <<<"$labels"; then echo "P0 Critique"; return 0; fi
-            if grep -qiE '(^|,)Problème prioritaire secondaire -P2(,|$)' <<<"$labels"; then echo "P1 Haute"; return 0; fi
-            if grep -qiE '(^|,)A régler -P3(,|$)' <<<"$labels"; then echo "P2 Normale"; return 0; fi
-            if grep -qiE '(^|,)A traiter -P4(,|$)' <<<"$labels"; then echo "P3 Basse"; return 0; fi
+            if grep -qiE '(^|[^[:alnum:]])P0([^[:alnum:]]|$)' <<<"$title"; then
+              echo "P0 Critique"
+              return 0
+            fi
 
-            # Legacy fallback for older issue titles not yet relabelled.
-            for n in 0 1 2 3 4; do
+            if grep -qiE '(^|,)Priorité maximale -P1(,|$)' <<<"$labels"; then echo "P1 Haute"; return 0; fi
+            if grep -qiE '(^|,)Problème prioritaire secondaire -P2(,|$)' <<<"$labels"; then echo "P2 Normale"; return 0; fi
+            if grep -qiE '(^|,)A régler -P3(,|$)' <<<"$labels"; then echo "P3 Basse"; return 0; fi
+            if grep -qiE '(^|,)A traiter -P4(,|$)' <<<"$labels"; then echo "P4 Long terme"; return 0; fi
+
+            for n in 1 2 3 4; do
               if grep -qiE "(^|[^[:alnum:]])P${n}([^[:alnum:]]|$)" <<<"$title"; then
                 case "$n" in
-                  0|1) echo "P0 Critique" ;;
-                  2) echo "P1 Haute" ;;
-                  3) echo "P2 Normale" ;;
-                  4) echo "P3 Basse" ;;
+                  1) echo "P1 Haute" ;;
+                  2) echo "P2 Normale" ;;
+                  3) echo "P3 Basse" ;;
+                  4) echo "P4 Long terme" ;;
                 esac
                 return 0
               fi
