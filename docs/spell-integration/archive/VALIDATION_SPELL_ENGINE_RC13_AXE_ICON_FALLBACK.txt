@@ -1,0 +1,36 @@
+HAUTE CAPITALE — SPELL ENGINE TEST3 RC13 AXE ICON FALLBACK
+Date: 2026-09-23
+
+Artifact
+--------
+spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC13-AXE-ICON-FALLBACK.jar
+SHA-256: 50ec8ae31733ee454b16e36f1e60a0521947e6d28cbab97159d1b6f22b96dc48
+
+Exact spell
+-----------
+Berserker axes assign more_rpg_classes:decapitate as native weapon skill.
+CapSkills node: ability_berserker_more_rpg_classes_decapitate
+CapSkills icon: more_rpg_classes:textures/spell/decapitate.png
+RC12 Hc icon map already points Decapitate to that exact path.
+
+RC13 resource fallback
+----------------------
+Added:
+assets/more_rpg_classes/textures/spell/decapitate.png
+PNG: 16x16 RGBA, 784 bytes
+SHA-256: 7f972f91fe7de5960550aea89c4cd87c01636c57374f7905f464c1cd8ce1dbf7
+Upstream Git blob: 6aad6307fe31a29a0eee4081a184bebd813b9c4c
+
+Delta RC12 -> RC13
+------------------
+Only new entry: Decapitate PNG above.
+Only changed shared entry: fabric.mod.json.
+Classes: 968; changed classes: 0.
+Unexpected shared-entry changes: 0.
+Duplicate ZIP entries: 0.
+ZIP integrity: PASS.
+
+No gameplay logic, spell JSON, cooldown, cast timing, impact, input, HUD position,
+CapSkills mapping or weapon assignment is modified.
+
+Status: STATIC PASS; focused runtime visual validation required.
