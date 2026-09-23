@@ -173,15 +173,14 @@ jobs:
           CATEGORIE_FIELD_ID="$(field_id "Catégorie")"
 
           create_views_if_needed() {
-            local existing_views user_id view_root
+            local existing_views view_root
 
             existing_views="$(GH_TOKEN="${PROJECT_TOKEN}" gh api graphql \
               -f query='query($login:String!,$number:Int!){user(login:$login){projectV2(number:$number){views(first:100){nodes{name}}}}}' \
               -f login="${PROJECT_OWNER}" -F number="${PROJECT_NUMBER}" \
               --jq '.data.user.projectV2.views.nodes[].name')"
 
-            user_id="$(project_api "users/${PROJECT_OWNER}" --jq '.id')"
-            view_root="users/${user_id}/projectsV2/${PROJECT_NUMBER}/views"
+            view_root="users/${PROJECT_OWNER}/projectsV2/${PROJECT_NUMBER}/views"
 
             if ! grep -Fxq "Kanban" <<<"${existing_views}"; then
               echo "Creating view: Kanban"
