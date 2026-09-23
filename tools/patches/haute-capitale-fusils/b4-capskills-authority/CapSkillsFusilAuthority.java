@@ -14,10 +14,14 @@ public final class CapSkillsFusilAuthority {
     public static boolean canFire(class_1309 entity) {
         if (entity == null) return false;
         class_1937 world = entity.method_73183();
+
         if (world != null && world.method_8608()) return true;
+
         if (!(entity instanceof class_1657)) return true;
         return entity.method_5752().contains(USE_TAG);
     }
+
+
 
     public static boolean canUseSkill(class_1309 entity, String skillId) {
         if (!canFire(entity)) return false;
