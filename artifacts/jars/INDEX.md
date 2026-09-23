@@ -2,7 +2,7 @@
 
 Les fichiers de ce dossier sont de **vrais JAR archivés avec Git LFS**. Le fichier Git visible est un pointeur LFS contenant le SHA-256 et la taille du binaire ; le contenu complet est stocké dans Git LFS et récupéré lors d'un checkout LFS.
 
-## Première vague importée
+## Première vague importée (15 JAR)
 
 ### Systèmes centraux
 - `nexuscharacters/NexusCharacters-HauteCapitale-1.21.11-v0.8.0-alpha1.1-LEGACY-SKIN-COMPAT.jar`
@@ -22,9 +22,7 @@ Les fichiers de ce dossier sont de **vrais JAR archivés avec Git LFS**. Le fich
 ### Modules Haute Capitale
 - `capitale-admin-commands/capitale_admin_commands_1_0_2_SERVER_ONLY_EVENT_ACCESS_FIX.jar`
 - `capitale-armor-test/capitale_armor_test-0.7.3-local-player-first-person-only.jar`
-- `capitale-currency/capitale_currency_BETA_1_0_hotfix5_bourse50_stack99_legacy_style_1_21_11.jar`
 - `capitale-housing/capitale_housing_BETA_0_1_0_HOTFIX2_fabric_1_21_11.jar`
-- `capitale-weapons/capitale_weapons_standalone-0.5.0-gameplay-stats.jar`
 - `haute-capitale-fusils/haute_capitale_fusils-0.1.0+1.21.11.b3.jar`
 
 ## Politique
@@ -36,3 +34,8 @@ Les fichiers de ce dossier sont de **vrais JAR archivés avec Git LFS**. Le fich
 - `server-manifest.yml` indique ce qui est déployé/candidat ; cette bibliothèque indique ce qui a été conservé.
 
 Le workflow `Check JAR library` exécute `tools/check_jar_duplicates.py` sur chaque modification de la bibliothèque.
+
+## À réimporter
+
+- `capitale_currency ... hotfix5` : premier transfert détecté invalide (93 octets), source réelle retrouvée.
+- `capitale_weapons_standalone 0.5.0` : premier transfert détecté invalide (93 octets), source réelle à réinjecter.
