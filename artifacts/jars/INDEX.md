@@ -1,59 +1,56 @@
-# Bibliothèque JAR — Indivis
+# Bibliothèque JAR — serveur courant
 
-Les fichiers de ce dossier sont de **vrais JAR archivés avec Git LFS**. Le fichier Git visible est un pointeur LFS contenant le SHA-256 et la taille du binaire ; le contenu complet est stocké dans Git LFS et récupéré lors d'un checkout LFS.
+Ce dossier contient uniquement les **JAR correspondant à l'état serveur de référence**. Il ne sert plus d'archive de toutes les RC historiques.
 
-## Première vague importée (15 JAR)
+Les binaires sont stockés avec **Git LFS**. Git conserve un pointeur contenant le SHA-256 et la taille ; le JAR complet est récupéré lors d'un checkout LFS.
 
-### Systèmes centraux
-- `nexuscharacters/NexusCharacters-HauteCapitale-1.21.11-v0.8.0-alpha1.1-LEGACY-SKIN-COMPAT.jar`
-- `capitale-rp-hud/capitale_rp_hud_BETA_1_3_2_NEXUS_AUTHORITY_FINAL_ARMOR40.jar`
-- `capitale-skills-items/capitale_skills_items_fabric_1_7_18_EVENT_ACCESS_FIX_1_21_11.jar`
-- `haute-capitale-rpg/haute-capitale-rpg-0.3.0+1.21.11.b2.HC.TEST3.RC2.jar`
+## Règle
 
-### Stack spells / combat
-- `spell-engine/spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC7-HAZENN-FULLCOMPAT.jar`
-- `spell-power/spell_power-fabric-1.6.1.001+1.21.11-HC-HAZENN-PRECISE-TEST3-RC7-DIRECT-RESIST.jar`
-- `spell-power/spell_power-fabric-1.6.1.001+1.21.11-HC-HAZENN-PRECISE-TEST3-RC8-CLASSFORMAT-FIX.jar`
-- `hazennstuff/hazennstuff-fabric-1.21.11-1.0.0-b4-HC-SPELLCOMPAT1.jar`
-- `arsenal/arsenal-fabric-1.5.1.002-mmo+1.21.11-HC-FR-PRIMARY-ORDER1.jar`
-- `azurelibarmor/azurelibarmor-fabric-1.21.11-3.1.4-HC-TEST3-RC1.jar`
-- `witcher-class/witcher-class-mod-fabric-3.1.0-1.21.11-mmo-HC-FOOTWORK-TEST3-RC1.jar`
+- **1 module = 1 JAR actif maximum**.
+- La version conservée doit correspondre à la version réellement installée sur le serveur de référence.
+- Une RC plus récente mais uniquement présente sur le client ou dans nos fichiers de travail n'est pas mise ici.
+- Les copies Windows `(1)`, `(2)`, etc. ne sont jamais considérées comme de nouvelles versions.
+- Si le JAR serveur exact n'est pas disponible dans nos fichiers, on préfère laisser le module absent plutôt que d'archiver une mauvaise version.
 
-### Modules Haute Capitale
-- `capitale-admin-commands/capitale_admin_commands_1_0_2_SERVER_ONLY_EVENT_ACCESS_FIX.jar`
-- `capitale-armor-test/capitale_armor_test-0.7.3-local-player-first-person-only.jar`
-- `capitale-housing/capitale_housing_BETA_0_1_0_HOTFIX2_fabric_1_21_11.jar`
-- `haute-capitale-fusils/haute_capitale_fusils-0.1.0+1.21.11.b3.jar`
+## JAR serveur actuellement archivés
 
-## Politique
+- Arsenal — `PRIMARY-ORDER1`
+- AzureLibArmor — `TEST3-RC1`
+- capitale_admin_commands — `1.0.2 SERVER_ONLY_EVENT_ACCESS_FIX`
+- capitale_armor_test — `0.7.3 local-player-first-person-only`
+- capitale_housing — `BETA 0.1.0 HOTFIX2`
+- capitale_rp_hud — `1.3.2 NEXUS_AUTHORITY_FINAL_ARMOR40`
+- capitale_skills_items — `1.7.18 EVENT_ACCESS_FIX`
+- haute_capitale_fusils — `b3`
+- Haute Capitale RPG — `TEST3-RC2`
+- Hazennstuff — `SPELLCOMPAT1`
+- NexusCharacters — `0.8.0-alpha1.1 LEGACY-SKIN-COMPAT`
+- Spell Engine — `TEST3-RC7 HAZENN-FULLCOMPAT`
+- Witcher Class — `FOOTWORK TEST3-RC1`
 
-- Plusieurs **versions différentes** d'un même module sont conservées : c'est l'historique.
-- Deux fichiers ayant exactement le même SHA-256 ne doivent pas être archivés deux fois sous des noms différents.
-- Les suffixes locaux Windows comme `(1)`, `(2)` ou `(3)` ne constituent pas une nouvelle version.
-- Une build n'est pas automatiquement considérée stable parce qu'elle se trouve dans cette bibliothèque.
-- `server-manifest.yml` indique ce qui est déployé/candidat ; cette bibliothèque indique ce qui a été conservé.
+## Versions serveur identifiées mais JAR exact pas encore archivé
 
-Le workflow `Check JAR library` exécute `tools/check_jar_duplicates.py` sur chaque modification de la bibliothèque.
+- Spell Power — **serveur : RC6-CLASSFORMAT-FIX**
+- capitale_creatures_bundle — **1.2.16**
+- capitale_heraldry — **0.1.7**
+- MMO Music Zones — **1.2.7 indivis-dungeon-biome-FULL**
+- haute-capitale-dialogue — **b7**
+- haute-capitale-quests — **b3**
+- haute-capitale-pirates — **b4**
+- haute-capitale-party — **b9**
+- haute-capitale-metiers — **b12**
+- haute-capitale-orcs — **b9**
+- haute-capitale-spawns — **b6**
+- hc-necromancer — **b3**
+- capitale_currency — **hotfix5**
+- capitale_weapons_standalone — **0.5.0**
+- capitale_entities — **0.3.0-alpha.1**
 
-## À réimporter
+Ces modules seront ajoutés uniquement quand le **binaire correspondant exactement à la version serveur** sera disponible.
 
-- `capitale_currency ... hotfix5` : premier transfert détecté invalide (93 octets), source réelle retrouvée.
-- `capitale_weapons_standalone 0.5.0` : premier transfert détecté invalide (93 octets), source réelle à réinjecter.
+## Contrôle automatique
 
-
-## Historique importé — vague 1
-
-### Spell Power
-- TEST3 RC1 — SHA-256 `ba0c66e31eebcb04bd1d0d167782d1f8f3737b6e347d9fa999a414139b3f63fe`
-- TEST3 RC2 — SHA-256 `fe31701f8db9a2822906fc49d83fd5a9e3f63ea439221d9b26dc787e81c112d8`
-- TEST3 RC6 — SHA-256 `f05f2bf01e6b55818dd24eec290cdeeb8e8fcd3a1bdd6c4c4047641fef1eba71`
-- TEST3 RC7 Direct Resist — déjà présent
-- TEST3 RC8 ClassFormat Fix — déjà présent
-
-### HUD
-- 1.2.9 Nexus Authority — SHA-256 `dcb51a9a715096477476ea736389b26e00745a0eb26ccd208b5745f3913d4ba8`
-- 1.3.2 Nexus Authority Final Armor40 — déjà présent
-
-### Haute Capitale RPG
-- TEST3 RC1 — SHA-256 `36e1e6c3fc8f7d37d77f7a0d47f1b6feb7715d87604057a47ff39d8b21e276ec`
-- TEST3 RC2 — déjà présent
+Le workflow `Check JAR library` exécute `tools/check_jar_duplicates.py`. Il échoue si :
+- un module contient plusieurs JAR ;
+- deux noms différents contiennent exactement le même binaire ;
+- un prétendu JAR a une taille manifestement invalide.
