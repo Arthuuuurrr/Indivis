@@ -61,7 +61,7 @@ Conserve RC7/RC8 et ajoute :
 - ASM `CheckClassAdapter` : PASS sur les quatre classes HUD/icônes modifiées ;
 - validation runtime requise (#80).
 
-### RC10 CAST SAFETY — candidat actuel
+### RC10 CAST SAFETY — rejetée en runtime
 
 Conserve intégralement RC9 et ajoute deux protections globales :
 
@@ -74,6 +74,31 @@ Conserve intégralement RC9 et ajoute deux protections globales :
 - audit de l’univers complet de 319 ressources de sorts : 0 erreur ;
 - 33 CHANNEL au total, et aucun CHANNEL caché supplémentaire hors arbre ;
 - validation runtime requise (#83).
+
+### RC11 HUD-TIMING-SPLIT — rejetée en runtime
+
+Tentative de séparation contextuelle entre temps d'incantation et cooldown :
+
+- restauration du `ClientCastController` RC9 ;
+- `SpellParameters` sépare CAST_TIME_REDUCTION et COOLDOWN_REDUCTION ;
+- Spell Power RC9 laisse HASTE natif ;
+- **régression HUD** : la barre a été replacée à tort en `(-185,-34)` alors que le placement runtime validé est `(-185,-11)` ;
+- **régression fatale** : le patch de `SpellImpacts.performImpact()` produit un `VerifyError` lors de l'impact du météore / projectile tombant ;
+- RC11 ne doit plus être utilisé.
+
+### RC12 HUD-IMPACT-RESTORE — candidat runtime actuel
+
+RC12 part de RC11 mais restaure les chemins validés :
+
+- `HudConfig.class` restauré depuis RC9 : `BOTTOM (-185,-11)` ;
+- migration étendue pour corriger aussi `(-185,-34)` généré par RC11 ;
+- `SpellImpacts.class` restauré byte-for-byte depuis RC9 ;
+- `ClientCastController.class` reste byte-for-byte RC9 ;
+- `SpellParameters.class` reste byte-for-byte RC11 afin de conserver le correctif cooldown/cast-time ;
+- aucun JSON de sort ni mapping de gameplay modifié ;
+- 968 classes analysées, 0 erreur ;
+- validation Minecraft runtime requise avant STABLE.
+
 
 ## Spell Power
 
