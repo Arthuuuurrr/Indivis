@@ -172,7 +172,7 @@ Les pourcentages définis par les items/sets ne sont pas rééquilibrés.
 - conserve les corrections hors arbre ;
 - délègue le verrou Avatar à Haute Capitale RPG RC2.
 
-### 0.10.20 FIREARMS SPELLBAR BRIDGE — candidat actuel
+### 0.10.20 FIREARMS SPELLBAR BRIDGE — référence précédente
 
 Base RC2F inchangée pour l'arbre, avec intégration des six compétences Fusilier à la barre Spell Engine :
 
@@ -185,6 +185,17 @@ Base RC2F inchangée pour l'arbre, avec intégration des six compétences Fusili
 - aucune entrée existante supprimée ;
 - validation runtime ciblée suivie dans #4.
 
+
+### 0.10.21 FIREARMS SERVER AUTHORITY — candidat actuel
+
+Conserve intégralement 0.10.20 et ajoute l'autorité de branche Fusilier :
+
+- `classe_fusilier` accorde `capskills.fusils.use` ;
+- le reset retire ce tag ;
+- les six tags `capskills.fusils.<skill>` existants restent les autorisations spécifiques ;
+- la barre Spell Engine RC3 reste inchangée ;
+- aucun autre nœud de l'arbre n'est modifié ;
+- validation runtime ciblée suivie dans #3 et #4.
 
 ## AzureLibArmor
 
@@ -202,6 +213,21 @@ Ajoute `footwork.png` et conserve la structure CapSkills corrigée.
 
 Le JAR `HC-FR-PRIMARY-ORDER1` est conservé ; les gates TEST3 sont portées
 par Spell Engine + CapSkills.
+
+## Haute Capitale Fusils
+
+### b4 CAPSKILLS AUTHORITY — candidat actuel
+
+Corrige l'autorité réelle après reset CapSkills :
+
+- le tir normal d'un joueur serveur exige `capskills.fusils.use` ;
+- une compétence native exige en plus `capskills.fusils.<skillId>` ;
+- le contrôle est effectué dans `GunplayManager.tryFire` et `HunterSkills.use` côté serveur ;
+- la prédiction client n'est pas utilisée comme autorité ;
+- les appels non-joueurs de l'API sont préservés ;
+- dégâts, munitions, reload, rafales et projectiles restent inchangés ;
+- harness d'autorité : PASS ;
+- validation Minecraft suivie dans #3.
 
 ## capitale_skills_items
 
