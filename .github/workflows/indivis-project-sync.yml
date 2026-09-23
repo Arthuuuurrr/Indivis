@@ -12,7 +12,7 @@ on:
 
 permissions:
   contents: read
-  issues: read
+  issues: write
 
 concurrency:
   group: indivis-project-sync
@@ -119,6 +119,27 @@ jobs:
           ensure_date_field "Start date"
           ensure_date_field "Target date"
           ensure_text_field "Version cible"
+
+          # Labels are optional controls for future synchronization. They are created
+          # once so an issue can be re-prioritized or moved without rewriting its title.
+          ensure_repo_label() {
+            local name="$1"
+            local color="$2"
+            local description="$3"
+            repo_gh label create "$name" --repo "${GITHUB_REPOSITORY}" \
+              --color "$color" --description "$description" --force >/dev/null
+          }
+
+          ensure_repo_label "status:backlog" "6E7781" "Roadmap: backlog"
+          ensure_repo_label "status:todo" "1F6FEB" "Roadmap: à faire"
+          ensure_repo_label "status:in-progress" "D29922" "Roadmap: en cours"
+          ensure_repo_label "status:verify" "8250DF" "Roadmap: validation en jeu"
+          ensure_repo_label "status:blocked" "CF222E" "Roadmap: bloqué"
+          ensure_repo_label "priority:P0" "B60205" "Priorité critique"
+          ensure_repo_label "priority:P1" "D93F0B" "Priorité haute"
+          ensure_repo_label "priority:P2" "FBCA04" "Priorité normale"
+          ensure_repo_label "priority:P3" "0E8A16" "Priorité basse"
+          ensure_repo_label "priority:P4" "6E7781" "Priorité long terme"
 
           status_for_issue() {
             local title="$1"
