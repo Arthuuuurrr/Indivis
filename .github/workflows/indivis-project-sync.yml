@@ -130,9 +130,20 @@ jobs:
             {"name":"Autre","color":"GRAY","description":"Autre"}
           ]'
 
+          create_select_field "Phase" '[
+            {"name":"0 — Validation technique","color":"RED","description":"Fermer les incertitudes et blocages techniques"},
+            {"name":"1 — Progression / combat","color":"ORANGE","description":"Skills, spells, armes, armures et combat"},
+            {"name":"2 — Monde / biomes","color":"GREEN","description":"Biomes, cultures, villes safe et spawns"},
+            {"name":"3 — Quêtes / narration","color":"PURPLE","description":"Prologue, Bas-Anneaux et progression narrative"},
+            {"name":"4 — Donjons / boss","color":"BLUE","description":"Donjons, boss et loot"},
+            {"name":"5 — Contenu bêta","color":"YELLOW","description":"Construction, polish et contenu secondaire"},
+            {"name":"Backlog / maintenance","color":"GRAY","description":"Hors séquence principale ou maintenance"}
+          ]'
+
           create_simple_field "Start date" "date"
           create_simple_field "Target date" "date"
           create_simple_field "Version cible" "text"
+          create_simple_field "Ordre de travail" "number"
 
           ensure_repo_label() {
             local name="$1"
@@ -247,6 +258,92 @@ jobs:
             echo "Non priorisé"
           }
 
+          phase_for_issue() {
+            local number="$1"
+            case "$number" in
+              83|70|75|78|58|7|56|57|60|61|62|66) echo "0 — Validation technique" ;;
+              53|3|4|5|6|18|2|15|16|49|14|50|19|48) echo "1 — Progression / combat" ;;
+              43|35|52|38|47|10|39|24) echo "2 — Monde / biomes" ;;
+              63|64|65|8|9|20|21|25|26|59|33) echo "3 — Quêtes / narration" ;;
+              32|51|11|12|13|46|28|23|22) echo "4 — Donjons / boss" ;;
+              34|37|40|45|27|29|30|31|36|41|42|44) echo "5 — Contenu bêta" ;;
+              *) echo "Backlog / maintenance" ;;
+            esac
+          }
+
+          order_for_issue() {
+            local number="$1"
+            case "$number" in
+              83) echo 1 ;;
+              75) echo 2 ;;
+              70) echo 3 ;;
+              7) echo 4 ;;
+              58) echo 5 ;;
+              78) echo 6 ;;
+              56) echo 7 ;;
+              57) echo 8 ;;
+              60) echo 9 ;;
+              61) echo 10 ;;
+              62) echo 11 ;;
+              66) echo 12 ;;
+              53) echo 13 ;;
+              43) echo 14 ;;
+              3) echo 15 ;;
+              4) echo 16 ;;
+              5) echo 17 ;;
+              6) echo 18 ;;
+              18) echo 19 ;;
+              2) echo 20 ;;
+              15) echo 21 ;;
+              16) echo 22 ;;
+              49) echo 23 ;;
+              14) echo 24 ;;
+              50) echo 25 ;;
+              19) echo 26 ;;
+              48) echo 27 ;;
+              35) echo 28 ;;
+              52) echo 29 ;;
+              38) echo 30 ;;
+              47) echo 31 ;;
+              10) echo 32 ;;
+              39) echo 33 ;;
+              24) echo 34 ;;
+              63) echo 35 ;;
+              64) echo 36 ;;
+              65) echo 37 ;;
+              8) echo 38 ;;
+              9) echo 39 ;;
+              20) echo 40 ;;
+              21) echo 41 ;;
+              25) echo 42 ;;
+              26) echo 43 ;;
+              59) echo 44 ;;
+              33) echo 45 ;;
+              32) echo 46 ;;
+              51) echo 47 ;;
+              11) echo 48 ;;
+              12) echo 49 ;;
+              13) echo 50 ;;
+              46) echo 51 ;;
+              28) echo 52 ;;
+              23) echo 53 ;;
+              22) echo 54 ;;
+              34) echo 55 ;;
+              37) echo 56 ;;
+              40) echo 57 ;;
+              45) echo 58 ;;
+              27) echo 59 ;;
+              29) echo 60 ;;
+              30) echo 61 ;;
+              31) echo 62 ;;
+              36) echo 63 ;;
+              41) echo 64 ;;
+              42) echo 65 ;;
+              44) echo 66 ;;
+              *) echo 999 ;;
+            esac
+          }
+
           category_for_issue() {
             local title="$1"
 
@@ -340,12 +437,14 @@ jobs:
           AVANCEMENT_FIELD_NODE_ID="$(gql_field_id "Avancement")"
           PRIORITE_FIELD_NODE_ID="$(gql_field_id "Priorité")"
           CATEGORIE_FIELD_NODE_ID="$(gql_field_id "Catégorie")"
+          PHASE_FIELD_NODE_ID="$(gql_field_id "Phase")"
+          ORDRE_FIELD_NODE_ID="$(gql_field_id "Ordre de travail")"
 
           sync_issue() {
             local url="$1"
             local number="${url##*/}"
             local issue_json issue_node_id title state labels item_node_id add_json
-            local advancement priority category advancement_option priority_option category_option
+            local advancement priority category phase work_order advancement_option priority_option category_option phase_option
 
             issue_json="$(repo_api "repos/${GITHUB_REPOSITORY}/issues/${number}")"
 
@@ -383,12 +482,15 @@ jobs:
             advancement="$(status_for_issue "$title" "$state" "$labels")"
             priority="$(priority_for_issue "$title" "$labels")"
             category="$(category_for_issue "$title")"
+            phase="$(phase_for_issue "$number")"
+            work_order="$(order_for_issue "$number")"
 
             advancement_option="$(gql_option_id "Avancement" "$advancement")"
             priority_option="$(gql_option_id "Priorité" "$priority")"
             category_option="$(gql_option_id "Catégorie" "$category")"
+            phase_option="$(gql_option_id "Phase" "$phase")"
 
-            if [[ -z "$advancement_option" || -z "$priority_option" || -z "$category_option" ]]; then
+            if [[ -z "$advancement_option" || -z "$priority_option" || -z "$category_option" || -z "$phase_option" ]]; then
               echo "::error::Unable to resolve Project option IDs for issue #${number}: $advancement / $priority / $category"
               return 1
             fi
@@ -403,7 +505,11 @@ jobs:
                   $priorityField:ID!,
                   $priorityOption:String!,
                   $categoryField:ID!,
-                  $categoryOption:String!
+                  $categoryOption:String!,
+                  $phaseField:ID!,
+                  $phaseOption:String!,
+                  $orderField:ID!,
+                  $workOrder:Float!
                 ) {
                   advancement:updateProjectV2ItemFieldValue(input:{
                     projectId:$project,
@@ -425,6 +531,20 @@ jobs:
                     fieldId:$categoryField,
                     value:{singleSelectOptionId:$categoryOption}
                   }) { projectV2Item { id } }
+
+                  phase:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$phaseField,
+                    value:{singleSelectOptionId:$phaseOption}
+                  }) { projectV2Item { id } }
+
+                  order:updateProjectV2ItemFieldValue(input:{
+                    projectId:$project,
+                    itemId:$item,
+                    fieldId:$orderField,
+                    value:{number:$workOrder}
+                  }) { projectV2Item { id } }
                 }' \
               -f project="${PROJECT_NODE_ID}" \
               -f item="$item_node_id" \
@@ -433,9 +553,13 @@ jobs:
               -f priorityField="${PRIORITE_FIELD_NODE_ID}" \
               -f priorityOption="$priority_option" \
               -f categoryField="${CATEGORIE_FIELD_NODE_ID}" \
-              -f categoryOption="$category_option" >/dev/null
+              -f categoryOption="$category_option" \
+              -f phaseField="${PHASE_FIELD_NODE_ID}" \
+              -f phaseOption="$phase_option" \
+              -f orderField="${ORDRE_FIELD_NODE_ID}" \
+              -F workOrder="$work_order" >/dev/null
 
-            echo "#${number}: $advancement | $priority | $category"
+            echo "#${number}: $advancement | $priority | $category | $phase | ordre $work_order"
           }
 
           if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" || "${GITHUB_EVENT_NAME}" == "push" ]]; then
