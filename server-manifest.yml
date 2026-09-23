@@ -45,6 +45,7 @@ deployed:
       artifact: "spell_power-fabric-1.6.1.001+1.21.11-HC-HAZENN-PRECISE-TEST3-RC6-CLASSFORMAT-FIX.jar"
       size_bytes: 230643
       sha256: null
+      git_binary: "missing exact deployed bytes"
       validation_issue: 70
     hazennstuff:
       artifact: "hazennstuff-fabric-1.21.11-1.0.0-b4-HC-SPELLCOMPAT1.jar"
@@ -127,7 +128,8 @@ warnings:
   - "Spell Power is visibly mismatched: server RC6 CLASSFORMAT FIX, client RC8 CLASSFORMAT FIX. Do not close #70 until the server runs RC8 and passes runtime validation."
   - "PlayerAnimationLibFabric 1.1.10 and 1.1.7 are both visible in the server mods directory; stale duplicate must be checked/removed."
   - "Do not treat BETA 0.12 creatures datapack as deployed: screenshot shows BETA 0.10 on server."
-  - "A missing sha256 means the exact binary is visible in screenshots but not available as bytes in the accessible Library."
+  - "Spell Power server RC6-CLASSFORMAT-FIX is not archived as a JAR: a 231892-byte RC6 candidate was rejected because the deployed snapshot records 230643 bytes."
+  - "A missing sha256 means the exact binary is visible in screenshots but not available as verified bytes in the accessible Library."
 
 rules:
   - "Never replace a deployed version based only on a newer filename found in Library."
