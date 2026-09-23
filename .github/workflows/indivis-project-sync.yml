@@ -3,12 +3,7 @@ name: Indivis Project Sync
 on:
   workflow_dispatch:
   issues:
-    types:
-      - opened
-      - reopened
-      - closed
-      - labeled
-      - unlabeled
+    types: [opened, reopened, closed, labeled, unlabeled]
 
 permissions:
   contents: read
@@ -21,44 +16,29 @@ concurrency:
 jobs:
   sync-project:
     runs-on: ubuntu-latest
-
     env:
       PROJECT_URL: ${{ vars.INDIVIS_PROJECT_URL }}
       PROJECT_TOKEN: ${{ secrets.INDIVIS_PROJECT_TOKEN }}
       REPO_TOKEN: ${{ github.token }}
 
     steps:
-      - name: Check project configuration
-        id: config
-        shell: bash
-        run: |
-          if [[ -z "${PROJECT_URL}" || -z "${PROJECT_TOKEN}" ]]; then
-            echo "configured=false" >> "${GITHUB_OUTPUT}"
-            echo "::notice::Indivis Project Sync is installed but inactive. Configure the repository variable INDIVIS_PROJECT_URL and secret INDIVIS_PROJECT_TOKEN."
-            exit 0
-          fi
-
-          if [[ ! "${PROJECT_URL}" =~ ^https://github.com/(users|orgs)/([^/]+)/projects/([0-9]+)/?$ ]]; then
-            echo "::error::INDIVIS_PROJECT_URL must look like https://github.com/users/OWNER/projects/NUMBER or https://github.com/orgs/OWNER/projects/NUMBER"
-            exit 1
-          fi
-
-          echo "configured=true" >> "${GITHUB_OUTPUT}"
-
-      - name: Bootstrap fields and synchronize issues
-        if: steps.config.outputs.configured == 'true'
+      - name: Bootstrap and synchronize Project
         shell: bash
         run: |
           set -euo pipefail
 
-          if [[ "${PROJECT_URL}" =~ ^https://github.com/(users|orgs)/([^/]+)/projects/([0-9]+)/?$ ]]; then
-            PROJECT_SCOPE="${BASH_REMATCH[1]}"
-            PROJECT_OWNER="${BASH_REMATCH[2]}"
-            PROJECT_NUMBER="${BASH_REMATCH[3]}"
-          else
-            echo "::error::Unable to parse project URL."
+          if [[ -z "${PROJECT_URL}" || -z "${PROJECT_TOKEN}" ]]; then
+            echo "::notice::Project automation is installed but inactive. Configure INDIVIS_PROJECT_URL and INDIVIS_PROJECT_TOKEN."
+            exit 0
+          fi
+
+          if [[ ! "${PROJECT_URL}" =~ ^https://github.com/users/([^/]+)/projects/([0-9]+)/?$ ]]; then
+            echo "::error::INDIVIS_PROJECT_URL must be a user-owned Project URL such as https://github.com/users/Arthuuuurrr/projects/1"
             exit 1
           fi
+
+          PROJECT_OWNER="${BASH_REMATCH[1]}"
+          PROJECT_NUMBER="${BASH_REMATCH[2]}"
 
           project_gh() {
             GH_TOKEN="${PROJECT_TOKEN}" gh "$@"
@@ -68,7 +48,7 @@ jobs:
             GH_TOKEN="${REPO_TOKEN}" gh "$@"
           }
 
-          echo "Project: ${PROJECT_OWNER} #${PROJECT_NUMBER}"
+          echo "Using Project ${PROJECT_OWNER} #${PROJECT_NUMBER}"
           project_gh project view "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" --format json >/dev/null
 
           field_exists() {
@@ -81,7 +61,6 @@ jobs:
             local name="$1"
             local options="$2"
             if ! field_exists "$name"; then
-              echo "Creating field: $name"
               project_gh project field-create "${PROJECT_NUMBER}" \
                 --owner "${PROJECT_OWNER}" \
                 --name "$name" \
@@ -93,7 +72,6 @@ jobs:
           ensure_date_field() {
             local name="$1"
             if ! field_exists "$name"; then
-              echo "Creating date field: $name"
               project_gh project field-create "${PROJECT_NUMBER}" \
                 --owner "${PROJECT_OWNER}" \
                 --name "$name" \
@@ -104,7 +82,6 @@ jobs:
           ensure_text_field() {
             local name="$1"
             if ! field_exists "$name"; then
-              echo "Creating text field: $name"
               project_gh project field-create "${PROJECT_NUMBER}" \
                 --owner "${PROJECT_OWNER}" \
                 --name "$name" \
@@ -112,8 +89,6 @@ jobs:
             fi
           }
 
-          # Custom fields deliberately avoid changing GitHub's built-in Status field.
-          # This makes the automation safe on a new or already configured Project.
           ensure_select_field "Avancement" "Backlog,À faire,En cours,Validation en jeu,Bloqué,Terminé"
           ensure_select_field "Priorité" "P0 Critique,P1 Haute,P2 Normale,P3 Basse,P4 Long terme,Non priorisé"
           ensure_select_field "Catégorie" "Bug,Intégration,Roadmap,World,Items,Polish,Tech,Balance,Combat,Donjon,Gameplay,Performance,Audio,Quête,Autre"
@@ -121,8 +96,6 @@ jobs:
           ensure_date_field "Target date"
           ensure_text_field "Version cible"
 
-          # Labels are optional controls for future synchronization. They are created
-          # once so an issue can be re-prioritized or moved without rewriting its title.
           ensure_repo_label() {
             local name="$1"
             local color="$2"
@@ -142,85 +115,46 @@ jobs:
           ensure_repo_label "priority:P3" "0E8A16" "Priorité basse"
           ensure_repo_label "priority:P4" "6E7781" "Priorité long terme"
 
-          ensure_project_views() {
-            local existing_views fields_json advancement_field_id priority_field_id view_endpoint
+          create_views_if_needed() {
+            local existing_views fields_json advancement_id priority_id user_id endpoint
 
-            if [[ "${PROJECT_SCOPE}" == "users" ]]; then
-              existing_views="$(project_gh api graphql \
-                -f query='query($login:String!,$number:Int!){user(login:$login){projectV2(number:$number){views(first:100){nodes{name}}}}}' \
-                -f login="${PROJECT_OWNER}" -F number="${PROJECT_NUMBER}" \
-                --jq '.data.user.projectV2.views.nodes[].name')"
+            existing_views="$(project_gh api graphql \
+              -f query='query($login:String!,$number:Int!){user(login:$login){projectV2(number:$number){views(first:100){nodes{name}}}}}' \
+              -f login="${PROJECT_OWNER}" -F number="${PROJECT_NUMBER}" \
+              --jq '.data.user.projectV2.views.nodes[].name')"
 
-              fields_json="$(project_gh api \
-                -H "X-GitHub-Api-Version: 2026-03-10" \
-                "users/${PROJECT_OWNER}/projectsV2/${PROJECT_NUMBER}/fields?per_page=100")"
+            fields_json="$(project_gh api \
+              -H "X-GitHub-Api-Version: 2026-03-10" \
+              "users/${PROJECT_OWNER}/projectsV2/${PROJECT_NUMBER}/fields?per_page=100")"
 
-              local user_id
-              user_id="$(project_gh api "users/${PROJECT_OWNER}" --jq '.id')"
-              view_endpoint="users/${user_id}/projectsV2/${PROJECT_NUMBER}/views"
-            else
-              existing_views="$(project_gh api graphql \
-                -f query='query($login:String!,$number:Int!){organization(login:$login){projectV2(number:$number){views(first:100){nodes{name}}}}}' \
-                -f login="${PROJECT_OWNER}" -F number="${PROJECT_NUMBER}" \
-                --jq '.data.organization.projectV2.views.nodes[].name')"
+            advancement_id="$(jq -r '.[] | select(.name == "Avancement") | .id' <<<"$fields_json" | head -n1)"
+            priority_id="$(jq -r '.[] | select(.name == "Priorité") | .id' <<<"$fields_json" | head -n1)"
+            user_id="$(project_gh api "users/${PROJECT_OWNER}" --jq '.id')"
+            endpoint="users/${user_id}/projectsV2/${PROJECT_NUMBER}/views"
 
-              fields_json="$(project_gh api \
-                -H "X-GitHub-Api-Version: 2026-03-10" \
-                "orgs/${PROJECT_OWNER}/projectsV2/${PROJECT_NUMBER}/fields?per_page=100")"
-
-              view_endpoint="orgs/${PROJECT_OWNER}/projectsV2/${PROJECT_NUMBER}/views"
+            if ! grep -Fxq "Kanban" <<<"$existing_views"; then
+              jq -nc --argjson field "$advancement_id" \
+                '{name:"Kanban",layout:"board",filter:"is:issue",vertical_group_by:[$field]}' | \
+                project_gh api --method POST \
+                  -H "X-GitHub-Api-Version: 2026-03-10" \
+                  "$endpoint" --input - >/dev/null
             fi
 
-            advancement_field_id="$(jq -r '.[] | select(.name == "Avancement") | .id' <<<"$fields_json" | head -n1)"
-            priority_field_id="$(jq -r '.[] | select(.name == "Priorité") | .id' <<<"$fields_json" | head -n1)"
-
-            create_board_view() {
-              local name="$1"
-              if grep -Fxq "$name" <<<"$existing_views"; then
-                return 0
-              fi
-              echo "Creating Project view: $name"
-              jq -nc --arg name "$name" --argjson field "$advancement_field_id" \
-                '{name:$name,layout:"board",filter:"is:issue",vertical_group_by:[$field]}' | \
+            if ! grep -Fxq "Roadmap" <<<"$existing_views"; then
+              jq -nc '{name:"Roadmap",layout:"roadmap",filter:"is:issue"}' | \
                 project_gh api --method POST \
                   -H "X-GitHub-Api-Version: 2026-03-10" \
-                  "$view_endpoint" --input - >/dev/null
-            }
+                  "$endpoint" --input - >/dev/null
+            fi
 
-            create_roadmap_view() {
-              local name="$1"
-              if grep -Fxq "$name" <<<"$existing_views"; then
-                return 0
-              fi
-              echo "Creating Project view: $name"
-              jq -nc --arg name "$name" \
-                '{name:$name,layout:"roadmap",filter:"is:issue"}' | \
+            if ! grep -Fxq "Priorités" <<<"$existing_views"; then
+              jq -nc --argjson field "$priority_id" \
+                '{name:"Priorités",layout:"table",filter:"is:issue",group_by:[$field]}' | \
                 project_gh api --method POST \
                   -H "X-GitHub-Api-Version: 2026-03-10" \
-                  "$view_endpoint" --input - >/dev/null
-            }
-
-            create_priority_view() {
-              local name="$1"
-              if grep -Fxq "$name" <<<"$existing_views"; then
-                return 0
-              fi
-              echo "Creating Project view: $name"
-              jq -nc --arg name "$name" --argjson field "$priority_field_id" \
-                '{name:$name,layout:"table",filter:"is:issue",group_by:[$field]}' | \
-                project_gh api --method POST \
-                  -H "X-GitHub-Api-Version: 2026-03-10" \
-                  "$view_endpoint" --input - >/dev/null
-            }
-
-            create_board_view "Kanban"
-            create_roadmap_view "Roadmap"
-            create_priority_view "Priorités"
+                  "$endpoint" --input - >/dev/null
+            fi
           }
-
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
-            ensure_project_views
-          fi
 
           status_for_issue() {
             local title="$1"
@@ -247,162 +181,21 @@ jobs:
           priority_for_issue() {
             local title="$1"
             local labels="$2"
-            local p=""
 
             for n in 0 1 2 3 4; do
               if grep -qiE "(^|,)(priority:)?P${n}(,|$)" <<<"$labels" || grep -qi "\[P${n}\]" <<<"$title"; then
-                p="P${n}"
-                break
-              fi
-            done
-
-            case "$p" in
-              P0) echo "P0 Critique" ;;
-              P1) echo "P1 Haute" ;;
-              P2) echo "P2 Normale" ;;
-              P3) echo "P3 Basse" ;;
-              P4) echo "P4 Long terme" ;;
-              *)  echo "Non priorisé" ;;
-            esac
-          }
-
-          category_for_issue() {
-            local title="$1"
-
-            if grep -qi '\[BUG\]' <<<"$title"; then echo "Bug"
-            elif grep -qi '\[INTEGRATION\]' <<<"$title"; then echo "Intégration"
-            elif grep -qi '\[ROADMAP\]' <<<"$title"; then echo "Roadmap"
-            elif grep -qi '\[WORLD\]' <<<"$title"; then echo "World"
-            elif grep -qi '\[ITEMS\]' <<<"$title"; then echo "Items"
-            elif grep -qi '\[POLISH\]' <<<"$title"; then echo "Polish"
-            elif grep -qi '\[TECH\]' <<<"$title"; then echo "Tech"
-            elif grep -qi '\[BALANCE\]' <<<"$title"; then echo "Balance"
-            elif grep -qi '\[COMBAT\]' <<<"$title"; then echo "Combat"
-            elif grep -qiE '\[(DUNGEON|DONJON)\]' <<<"$title"; then echo "Donjon"
-            elif grep -qi '\[GAMEPLAY\]' <<<"$title"; then echo "Gameplay"
-            elif grep -qi '\[PERFORMANCE\]' <<<"$title"; then echo "Performance"
-            elif grep -qi '\[AUDIO\]' <<<"$title"; then echo "Audio"
-            elif grep -qi '\[QUEST\]' <<<"$title"; then echo "Quête"
-            else echo "Autre"
-            fi
-          }
-
-          sync_issue() {
-            local url="$1"
-            local number="${url##*/}"
-
-            echo "Syncing issue #${number}"
-
-            local issue_json
-            issue_json="$(repo_gh api "repos/${GITHUB_REPOSITORY}/issues/${number}")"
-
-            # Ignore pull requests if an unexpected URL is ever supplied.
-            if jq -e '.pull_request != null' <<<"$issue_json" >/dev/null; then
-              echo "Skipping PR #${number}"
-              return 0
-            fi
-
-            local title state labels
-            title="$(jq -r '.title' <<<"$issue_json")"
-            state="$(jq -r '.state' <<<"$issue_json")"
-            labels="$(jq -r '[.labels[].name] | join(",")' <<<"$issue_json")"
-
-            # item-add is idempotent in normal use; if GitHub reports an already-present
-            # item, continue so the field synchronization still runs.
-            local add_output
-            if ! add_output="$(project_gh project item-add "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" --url "$url" --format json 2>&1)"; then
-              if ! grep -qiE 'already|exists|duplicate' <<<"$add_output"; then
-                echo "$add_output"
-                return 1
-              fi
-            fi
-
-            local advancement priority category
-            advancement="$(status_for_issue "$title" "$state" "$labels")"
-            priority="$(priority_for_issue "$title" "$labels")"
-            category="$(category_for_issue "$title")"
-
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
-              --url "$url" --field "Avancement" --value "$advancement" >/dev/null
-
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
-              --url "$url" --field "Priorité" --value "$priority" >/dev/null
-
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
-              --url "$url" --field "Catégorie" --value "$category" >/dev/null
-
-            echo "  Avancement: $advancement | Priorité: $priority | Catégorie: $category"
-          }
-
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
-            echo "Manual run: importing and synchronizing every issue in ${GITHUB_REPOSITORY}."
-            mapfile -t ISSUE_URLS < <(
-              repo_gh issue list --repo "${GITHUB_REPOSITORY}" --state all --limit 1000 --json url --jq '.[].url'
-            )
-
-            for url in "${ISSUE_URLS[@]}"; do
-              sync_issue "$url"
-            done
-          else
-            ISSUE_URL="${{ github.event.issue.html_url }}"
-            sync_issue "${ISSUE_URL}"
-          fi
-\\n'"$name"
-            }
-
-            create_roadmap_view() {
-              local name="$1"
-              if grep -Fxq "$name" <<<"$existing_views"; then
+                case "$n" in
+                  0) echo "P0 Critique" ;;
+                  1) echo "P1 Haute" ;;
+                  2) echo "P2 Normale" ;;
+                  3) echo "P3 Basse" ;;
+                  4) echo "P4 Long terme" ;;
+                esac
                 return 0
               fi
-              echo "Creating Project view: $name"
-              jq -nc --arg name "$name" \
-                '{name:$name,layout:"roadmap",filter:"is:issue"}' | \
-                project_gh api --method POST \
-                  -H "X-GitHub-Api-Version: 2026-03-10" \
-                  "$view_endpoint" --input - >/dev/null
-              existing_views="$existing_views"          status_for_issue() {
-            local title="$1"
-            local state="$2"
-            local labels="$3"
-
-            if [[ "$state" == "closed" ]]; then
-              echo "Terminé"
-            elif grep -qiE '(^|,)(status:blocked|blocked)(,|$)' <<<"$labels" || grep -qi '\[BLOCKED\]' <<<"$title"; then
-              echo "Bloqué"
-            elif grep -qiE '(^|,)(status:verify|verify)(,|$)' <<<"$labels" || grep -qi '\[VERIFY\]' <<<"$title"; then
-              echo "Validation en jeu"
-            elif grep -qiE '(^|,)(status:in-progress|wip)(,|$)' <<<"$labels" || grep -qi '\[WIP\]' <<<"$title"; then
-              echo "En cours"
-            elif grep -qiE '(^|,)(status:todo|todo)(,|$)' <<<"$labels" || grep -qi '\[TODO\]' <<<"$title"; then
-              echo "À faire"
-            elif grep -qiE '(^|,)(status:backlog|triage)(,|$)' <<<"$labels" || grep -qi '\[TRIAGE\]' <<<"$title"; then
-              echo "Backlog"
-            else
-              echo "Backlog"
-            fi
-          }
-
-          priority_for_issue() {
-            local title="$1"
-            local labels="$2"
-            local p=""
-
-            for n in 0 1 2 3 4; do
-              if grep -qiE "(^|,)(priority:)?P${n}(,|$)" <<<"$labels" || grep -qi "\[P${n}\]" <<<"$title"; then
-                p="P${n}"
-                break
-              fi
             done
 
-            case "$p" in
-              P0) echo "P0 Critique" ;;
-              P1) echo "P1 Haute" ;;
-              P2) echo "P2 Normale" ;;
-              P3) echo "P3 Basse" ;;
-              P4) echo "P4 Long terme" ;;
-              *)  echo "Non priorisé" ;;
-            esac
+            echo "Non priorisé"
           }
 
           category_for_issue() {
@@ -429,26 +222,18 @@ jobs:
           sync_issue() {
             local url="$1"
             local number="${url##*/}"
+            local issue_json title state labels advancement priority category add_output
 
-            echo "Syncing issue #${number}"
-
-            local issue_json
             issue_json="$(repo_gh api "repos/${GITHUB_REPOSITORY}/issues/${number}")"
 
-            # Ignore pull requests if an unexpected URL is ever supplied.
             if jq -e '.pull_request != null' <<<"$issue_json" >/dev/null; then
-              echo "Skipping PR #${number}"
               return 0
             fi
 
-            local title state labels
             title="$(jq -r '.title' <<<"$issue_json")"
             state="$(jq -r '.state' <<<"$issue_json")"
             labels="$(jq -r '[.labels[].name] | join(",")' <<<"$issue_json")"
 
-            # item-add is idempotent in normal use; if GitHub reports an already-present
-            # item, continue so the field synchronization still runs.
-            local add_output
             if ! add_output="$(project_gh project item-add "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" --url "$url" --format json 2>&1)"; then
               if ! grep -qiE 'already|exists|duplicate' <<<"$add_output"; then
                 echo "$add_output"
@@ -456,7 +241,6 @@ jobs:
               fi
             fi
 
-            local advancement priority category
             advancement="$(status_for_issue "$title" "$state" "$labels")"
             priority="$(priority_for_issue "$title" "$labels")"
             category="$(category_for_issue "$title")"
@@ -470,11 +254,12 @@ jobs:
             project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
               --url "$url" --field "Catégorie" --value "$category" >/dev/null
 
-            echo "  Avancement: $advancement | Priorité: $priority | Catégorie: $category"
+            echo "#${number}: $advancement | $priority | $category"
           }
 
           if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
-            echo "Manual run: importing and synchronizing every issue in ${GITHUB_REPOSITORY}."
+            create_views_if_needed
+
             mapfile -t ISSUE_URLS < <(
               repo_gh issue list --repo "${GITHUB_REPOSITORY}" --state all --limit 1000 --json url --jq '.[].url'
             )
@@ -483,282 +268,5 @@ jobs:
               sync_issue "$url"
             done
           else
-            ISSUE_URL="${{ github.event.issue.html_url }}"
-            sync_issue "${ISSUE_URL}"
-          fi
-\\n'"$name"
-            }
-
-            create_priority_view() {
-              local name="$1"
-              if grep -Fxq "$name" <<<"$existing_views"; then
-                return 0
-              fi
-              echo "Creating Project view: $name"
-              jq -nc --arg name "$name" --argjson field "$priority_field_id" \
-                '{name:$name,layout:"table",filter:"is:issue",group_by:[$field]}' | \
-                project_gh api --method POST \
-                  -H "X-GitHub-Api-Version: 2026-03-10" \
-                  "$view_endpoint" --input - >/dev/null
-              existing_views="$existing_views"          status_for_issue() {
-            local title="$1"
-            local state="$2"
-            local labels="$3"
-
-            if [[ "$state" == "closed" ]]; then
-              echo "Terminé"
-            elif grep -qiE '(^|,)(status:blocked|blocked)(,|$)' <<<"$labels" || grep -qi '\[BLOCKED\]' <<<"$title"; then
-              echo "Bloqué"
-            elif grep -qiE '(^|,)(status:verify|verify)(,|$)' <<<"$labels" || grep -qi '\[VERIFY\]' <<<"$title"; then
-              echo "Validation en jeu"
-            elif grep -qiE '(^|,)(status:in-progress|wip)(,|$)' <<<"$labels" || grep -qi '\[WIP\]' <<<"$title"; then
-              echo "En cours"
-            elif grep -qiE '(^|,)(status:todo|todo)(,|$)' <<<"$labels" || grep -qi '\[TODO\]' <<<"$title"; then
-              echo "À faire"
-            elif grep -qiE '(^|,)(status:backlog|triage)(,|$)' <<<"$labels" || grep -qi '\[TRIAGE\]' <<<"$title"; then
-              echo "Backlog"
-            else
-              echo "Backlog"
-            fi
-          }
-
-          priority_for_issue() {
-            local title="$1"
-            local labels="$2"
-            local p=""
-
-            for n in 0 1 2 3 4; do
-              if grep -qiE "(^|,)(priority:)?P${n}(,|$)" <<<"$labels" || grep -qi "\[P${n}\]" <<<"$title"; then
-                p="P${n}"
-                break
-              fi
-            done
-
-            case "$p" in
-              P0) echo "P0 Critique" ;;
-              P1) echo "P1 Haute" ;;
-              P2) echo "P2 Normale" ;;
-              P3) echo "P3 Basse" ;;
-              P4) echo "P4 Long terme" ;;
-              *)  echo "Non priorisé" ;;
-            esac
-          }
-
-          category_for_issue() {
-            local title="$1"
-
-            if grep -qi '\[BUG\]' <<<"$title"; then echo "Bug"
-            elif grep -qi '\[INTEGRATION\]' <<<"$title"; then echo "Intégration"
-            elif grep -qi '\[ROADMAP\]' <<<"$title"; then echo "Roadmap"
-            elif grep -qi '\[WORLD\]' <<<"$title"; then echo "World"
-            elif grep -qi '\[ITEMS\]' <<<"$title"; then echo "Items"
-            elif grep -qi '\[POLISH\]' <<<"$title"; then echo "Polish"
-            elif grep -qi '\[TECH\]' <<<"$title"; then echo "Tech"
-            elif grep -qi '\[BALANCE\]' <<<"$title"; then echo "Balance"
-            elif grep -qi '\[COMBAT\]' <<<"$title"; then echo "Combat"
-            elif grep -qiE '\[(DUNGEON|DONJON)\]' <<<"$title"; then echo "Donjon"
-            elif grep -qi '\[GAMEPLAY\]' <<<"$title"; then echo "Gameplay"
-            elif grep -qi '\[PERFORMANCE\]' <<<"$title"; then echo "Performance"
-            elif grep -qi '\[AUDIO\]' <<<"$title"; then echo "Audio"
-            elif grep -qi '\[QUEST\]' <<<"$title"; then echo "Quête"
-            else echo "Autre"
-            fi
-          }
-
-          sync_issue() {
-            local url="$1"
-            local number="${url##*/}"
-
-            echo "Syncing issue #${number}"
-
-            local issue_json
-            issue_json="$(repo_gh api "repos/${GITHUB_REPOSITORY}/issues/${number}")"
-
-            # Ignore pull requests if an unexpected URL is ever supplied.
-            if jq -e '.pull_request != null' <<<"$issue_json" >/dev/null; then
-              echo "Skipping PR #${number}"
-              return 0
-            fi
-
-            local title state labels
-            title="$(jq -r '.title' <<<"$issue_json")"
-            state="$(jq -r '.state' <<<"$issue_json")"
-            labels="$(jq -r '[.labels[].name] | join(",")' <<<"$issue_json")"
-
-            # item-add is idempotent in normal use; if GitHub reports an already-present
-            # item, continue so the field synchronization still runs.
-            local add_output
-            if ! add_output="$(project_gh project item-add "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" --url "$url" --format json 2>&1)"; then
-              if ! grep -qiE 'already|exists|duplicate' <<<"$add_output"; then
-                echo "$add_output"
-                return 1
-              fi
-            fi
-
-            local advancement priority category
-            advancement="$(status_for_issue "$title" "$state" "$labels")"
-            priority="$(priority_for_issue "$title" "$labels")"
-            category="$(category_for_issue "$title")"
-
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
-              --url "$url" --field "Avancement" --value "$advancement" >/dev/null
-
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
-              --url "$url" --field "Priorité" --value "$priority" >/dev/null
-
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
-              --url "$url" --field "Catégorie" --value "$category" >/dev/null
-
-            echo "  Avancement: $advancement | Priorité: $priority | Catégorie: $category"
-          }
-
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
-            echo "Manual run: importing and synchronizing every issue in ${GITHUB_REPOSITORY}."
-            mapfile -t ISSUE_URLS < <(
-              repo_gh issue list --repo "${GITHUB_REPOSITORY}" --state all --limit 1000 --json url --jq '.[].url'
-            )
-
-            for url in "${ISSUE_URLS[@]}"; do
-              sync_issue "$url"
-            done
-          else
-            ISSUE_URL="${{ github.event.issue.html_url }}"
-            sync_issue "${ISSUE_URL}"
-          fi
-\\n'"$name"
-            }
-
-            create_board_view "Kanban"
-            create_roadmap_view "Roadmap"
-            create_priority_view "Priorités"
-          }
-
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
-            ensure_project_views
-          fi
-
-          status_for_issue() {
-            local title="$1"
-            local state="$2"
-            local labels="$3"
-
-            if [[ "$state" == "closed" ]]; then
-              echo "Terminé"
-            elif grep -qiE '(^|,)(status:blocked|blocked)(,|$)' <<<"$labels" || grep -qi '\[BLOCKED\]' <<<"$title"; then
-              echo "Bloqué"
-            elif grep -qiE '(^|,)(status:verify|verify)(,|$)' <<<"$labels" || grep -qi '\[VERIFY\]' <<<"$title"; then
-              echo "Validation en jeu"
-            elif grep -qiE '(^|,)(status:in-progress|wip)(,|$)' <<<"$labels" || grep -qi '\[WIP\]' <<<"$title"; then
-              echo "En cours"
-            elif grep -qiE '(^|,)(status:todo|todo)(,|$)' <<<"$labels" || grep -qi '\[TODO\]' <<<"$title"; then
-              echo "À faire"
-            elif grep -qiE '(^|,)(status:backlog|triage)(,|$)' <<<"$labels" || grep -qi '\[TRIAGE\]' <<<"$title"; then
-              echo "Backlog"
-            else
-              echo "Backlog"
-            fi
-          }
-
-          priority_for_issue() {
-            local title="$1"
-            local labels="$2"
-            local p=""
-
-            for n in 0 1 2 3 4; do
-              if grep -qiE "(^|,)(priority:)?P${n}(,|$)" <<<"$labels" || grep -qi "\[P${n}\]" <<<"$title"; then
-                p="P${n}"
-                break
-              fi
-            done
-
-            case "$p" in
-              P0) echo "P0 Critique" ;;
-              P1) echo "P1 Haute" ;;
-              P2) echo "P2 Normale" ;;
-              P3) echo "P3 Basse" ;;
-              P4) echo "P4 Long terme" ;;
-              *)  echo "Non priorisé" ;;
-            esac
-          }
-
-          category_for_issue() {
-            local title="$1"
-
-            if grep -qi '\[BUG\]' <<<"$title"; then echo "Bug"
-            elif grep -qi '\[INTEGRATION\]' <<<"$title"; then echo "Intégration"
-            elif grep -qi '\[ROADMAP\]' <<<"$title"; then echo "Roadmap"
-            elif grep -qi '\[WORLD\]' <<<"$title"; then echo "World"
-            elif grep -qi '\[ITEMS\]' <<<"$title"; then echo "Items"
-            elif grep -qi '\[POLISH\]' <<<"$title"; then echo "Polish"
-            elif grep -qi '\[TECH\]' <<<"$title"; then echo "Tech"
-            elif grep -qi '\[BALANCE\]' <<<"$title"; then echo "Balance"
-            elif grep -qi '\[COMBAT\]' <<<"$title"; then echo "Combat"
-            elif grep -qiE '\[(DUNGEON|DONJON)\]' <<<"$title"; then echo "Donjon"
-            elif grep -qi '\[GAMEPLAY\]' <<<"$title"; then echo "Gameplay"
-            elif grep -qi '\[PERFORMANCE\]' <<<"$title"; then echo "Performance"
-            elif grep -qi '\[AUDIO\]' <<<"$title"; then echo "Audio"
-            elif grep -qi '\[QUEST\]' <<<"$title"; then echo "Quête"
-            else echo "Autre"
-            fi
-          }
-
-          sync_issue() {
-            local url="$1"
-            local number="${url##*/}"
-
-            echo "Syncing issue #${number}"
-
-            local issue_json
-            issue_json="$(repo_gh api "repos/${GITHUB_REPOSITORY}/issues/${number}")"
-
-            # Ignore pull requests if an unexpected URL is ever supplied.
-            if jq -e '.pull_request != null' <<<"$issue_json" >/dev/null; then
-              echo "Skipping PR #${number}"
-              return 0
-            fi
-
-            local title state labels
-            title="$(jq -r '.title' <<<"$issue_json")"
-            state="$(jq -r '.state' <<<"$issue_json")"
-            labels="$(jq -r '[.labels[].name] | join(",")' <<<"$issue_json")"
-
-            # item-add is idempotent in normal use; if GitHub reports an already-present
-            # item, continue so the field synchronization still runs.
-            local add_output
-            if ! add_output="$(project_gh project item-add "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" --url "$url" --format json 2>&1)"; then
-              if ! grep -qiE 'already|exists|duplicate' <<<"$add_output"; then
-                echo "$add_output"
-                return 1
-              fi
-            fi
-
-            local advancement priority category
-            advancement="$(status_for_issue "$title" "$state" "$labels")"
-            priority="$(priority_for_issue "$title" "$labels")"
-            category="$(category_for_issue "$title")"
-
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
-              --url "$url" --field "Avancement" --value "$advancement" >/dev/null
-
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
-              --url "$url" --field "Priorité" --value "$priority" >/dev/null
-
-            project_gh project item-edit "${PROJECT_NUMBER}" --owner "${PROJECT_OWNER}" \
-              --url "$url" --field "Catégorie" --value "$category" >/dev/null
-
-            echo "  Avancement: $advancement | Priorité: $priority | Catégorie: $category"
-          }
-
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
-            echo "Manual run: importing and synchronizing every issue in ${GITHUB_REPOSITORY}."
-            mapfile -t ISSUE_URLS < <(
-              repo_gh issue list --repo "${GITHUB_REPOSITORY}" --state all --limit 1000 --json url --jq '.[].url'
-            )
-
-            for url in "${ISSUE_URLS[@]}"; do
-              sync_issue "$url"
-            done
-          else
-            ISSUE_URL="${{ github.event.issue.html_url }}"
-            sync_issue "${ISSUE_URL}"
+            sync_issue "${{ github.event.issue.html_url }}"
           fi
