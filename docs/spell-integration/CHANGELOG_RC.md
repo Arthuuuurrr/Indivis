@@ -86,7 +86,7 @@ Tentative de séparation contextuelle entre temps d'incantation et cooldown :
 - **régression fatale** : le patch de `SpellImpacts.performImpact()` produit un `VerifyError` lors de l'impact du météore / projectile tombant ;
 - RC11 ne doit plus être utilisé.
 
-### RC12 HUD-IMPACT-RESTORE — candidat runtime actuel
+### RC12 HUD-IMPACT-RESTORE — validée sur mage de feu, supersédée par RC13
 
 RC12 part de RC11 mais restaure les chemins validés :
 
@@ -98,6 +98,18 @@ RC12 part de RC11 mais restaure les chemins validés :
 - aucun JSON de sort ni mapping de gameplay modifié ;
 - 968 classes analysées, 0 erreur ;
 - validation Minecraft runtime requise avant STABLE.
+
+
+### RC13 AXE-ICON-FALLBACK — candidat runtime actuel
+
+Hotfix strictement visuel construit sur RC12 :
+
+- identifie la technique native des haches de Berserker comme `more_rpg_classes:decapitate` ;
+- confirme que CapSkills mappe déjà ce spell vers `more_rpg_classes:textures/spell/decapitate.png` ;
+- ajoute l'asset upstream exact à `assets/more_rpg_classes/textures/spell/decapitate.png` comme fallback de ressource ;
+- 968 classes : **0 classe modifiée** par rapport à RC12 ;
+- aucun JSON de sort, cooldown, cast-time, impact, input ou placement HUD modifié ;
+- ZIP valide, 0 doublon ; validation runtime visuelle ciblée requise.
 
 
 ## Spell Power
