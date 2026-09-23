@@ -81,6 +81,10 @@ jobs:
 
           PROJECT_ID="$(jq -r '.data.user.projectV2.id' <<<"${PROJECT_JSON}")"
 
+          echo "Project item count: $(jq -r '.data.user.projectV2.items.nodes | length' <<<"${PROJECT_JSON}")"
+          echo "First Project issue numbers:"
+          jq -r '.data.user.projectV2.items.nodes[:10][] | .content.number // "no-issue-number"' <<<"${PROJECT_JSON}"
+
           field_id() {
             local name="$1"
             jq -r --arg name "$name" '
