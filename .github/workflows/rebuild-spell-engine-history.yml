@@ -1,0 +1,69 @@
+name: Rebuild Spell Engine history
+
+on:
+  push:
+    branches:
+      - artifacts/history-wave-2-spell-engine
+    paths:
+      - 'artifact-staging/.ready'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: artifacts/history-wave-2-spell-engine
+          fetch-depth: 0
+          lfs: false
+
+      - name: Rebuild staged JARs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, shutil
+
+          root = Path("artifact-staging")
+          manifest = root / "manifest.tsv"
+          if not manifest.exists():
+              raise SystemExit("Missing manifest.tsv")
+
+          for line in manifest.read_text(encoding="utf-8").splitlines():
+              if not line.strip() or line.startswith("#"):
+                  continue
+              directory, target, expected = line.split("\t")
+              d = root / directory
+              parts = sorted(d.glob("part_*.bin"))
+              if not parts:
+                  raise SystemExit(f"No parts for {directory}")
+              data = b"".join(p.read_bytes() for p in parts)
+              actual = hashlib.sha256(data).hexdigest()
+              if actual != expected:
+                  raise SystemExit(f"SHA mismatch for {target}: {actual} != {expected}")
+              dest = Path(target)
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              dest.write_bytes(data)
+              shutil.rmtree(d)
+
+          for p in (root / ".ready", manifest):
+              if p.exists():
+                  p.unlink()
+          if root.exists() and not any(root.iterdir()):
+              root.rmdir()
+          PY
+
+      - name: Commit reconstructed JARs through LFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A artifacts/jars artifact-staging
+          git commit -m "artifacts: reconstruct Spell Engine history"
+          git push origin HEAD:artifacts/history-wave-2-spell-engine
