@@ -210,17 +210,41 @@ jobs:
             issue_node="$(jq -r '.node_id' <<<"$issue_json")"
             IFS='|' read -r start target version <<<"$plan"
 
-            add_json="$(project_graphql \
+            item_lookup="$(project_graphql \
               -f query='
-                mutation($project:ID!, $content:ID!) {
-                  addProjectV2ItemById(input:{projectId:$project, contentId:$content}) {
-                    item { id }
+                query($number:Int!) {
+                  repository(owner:"Arthuuuurrr", name:"Indivis") {
+                    issue(number:$number) {
+                      projectItems(first:20, includeArchived:true) {
+                        nodes {
+                          id
+                          isArchived
+                          project { id }
+                        }
+                      }
+                    }
                   }
                 }' \
-              -f project="${PROJECT_ID}" \
-              -f content="$issue_node")"
+              -F number="$number")"
 
-            item_id="$(jq -r '.data.addProjectV2ItemById.item.id' <<<"$add_json")"
+            item_id="$(jq -r --arg project "${PROJECT_ID}" '
+              .data.repository.issue.projectItems.nodes[]
+              | select(.project.id == $project and .isArchived == false)
+              | .id
+            ' <<<"$item_lookup" | head -n1)"
+
+            if [[ -z "$item_id" || "$item_id" == "null" ]]; then
+              add_json="$(project_graphql \
+                -f query='
+                  mutation($project:ID!, $content:ID!) {
+                    addProjectV2ItemById(input:{projectId:$project, contentId:$content}) {
+                      item { id }
+                    }
+                  }' \
+                -f project="${PROJECT_ID}" \
+                -f content="$issue_node")"
+              item_id="$(jq -r '.data.addProjectV2ItemById.item.id' <<<"$add_json")"
+            fi
 
             if [[ -z "$item_id" || "$item_id" == "null" ]]; then
               echo "::error::Unable to resolve Project item for issue #$number"
