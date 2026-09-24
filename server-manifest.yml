@@ -2,7 +2,7 @@ schema_version: 2
 project: Indivis
 minecraft: "1.21.11"
 fabric_loader_min: "0.19.5"
-updated: "2026-09-23"
+updated: "2026-09-25"
 
 snapshot:
   source: "captures serveur/client/datapacks du 22-09-2026"
@@ -117,39 +117,41 @@ deployed:
 
 source_reference:
   capitale_creatures_bundle:
-    version: "1.2.21"
-    source_artifact: "capitale_creatures_bundle-1.2.21-fabric-1.21.11-POI-BOSS-SAFE-DESPAWN.jar"
-    sha256: "5d09f1ba40acae925e143c90b32aae38a97b164d348c618529715f03b517ec14"
+    version: "1.2.22"
+    source_artifact: "capitale_creatures_bundle-1.2.22-fabric-1.21.11-14-CITY-SAFE.jar"
+    sha256: "56b87dffc945dd049a8f578f5be155cefdbf0ae6a51c65e28052b2c978e5c987"
     git_patch_sources:
       - "tools/patches/PatchOrcPatrolCityGuard.java"
       - "tools/patches/PatchCityNoSpawn.java"
       - "tools/patches/PatchCreatures119.java"
       - "tools/patches/PatchGlobalLivingDespawn120.java"
       - "tools/patches/PatchBossPoi121.java"
+      - "tools/patches/PatchCities122.java"
     validation_docs:
       - "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
       - "docs/architecture/CITY_NO_SPAWN_GUARD_1_2_18.md"
       - "docs/architecture/CITY_SAFE_1_2_19.md"
       - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_20.md"
       - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_21_POI_BOSS.md"
-    status: "candidate delivered; global LivingEntity hard >128 despawn with POI/boss catalog protection"
+      - "docs/architecture/IMPERIAL_CITY_BIOMES_RC9AR.md"
+    status: "candidate delivered; 14 city biomes protected by exact RegistryKey clear + patrol guard"
   capitale_core:
-    version: "1.5.6-RC9AQ"
-    source_archive: "capitale_core_1.5.6-RC9AQ_IND1VIS_BIOMES_FULL.zip"
-    sha256: "b8ca60dd2ed5b1bc47f043eb93b64d84911ea19b4616dd603c002468cc0050e3"
+    version: "1.5.6-RC9AR"
+    source_archive: "capitale_core_1.5.6-RC9AR_5_NEW_IMPERIAL_CITIES_FULL.zip"
+    sha256: "8cc7425e07e9d898f43260a2f65e88b45f69bc38a19a34e6a8740485e173b5eb"
     git_import: "complete"
-    status: "candidate delivered; fixes 1.21.11 pack metadata rejected in RC9AP"
+    status: "candidate delivered; adds five imperial city biomes with empty spawn tables"
   capitale_skills:
     version: "0.10.19-RC2F"
     source_archive: "capitale_skills_BETA_0_10_19_RC2F_TREE_HARD_RESTORE.zip"
     sha256: "109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4"
     git_import: "complete"
   capitale_creatures_biomes:
-    version: "BETA-0.14"
-    source_archive: "capitale_creatures_biomes_BETA_0_14.zip"
-    sha256: "4fbe2b971003bf1c125975d6d296a9a8fd159d27ef864908707fb26e8e2ba72c"
+    version: "BETA-0.15"
+    source_archive: "capitale_creatures_biomes_BETA_0_15.zip"
+    sha256: "7a2bc0dfefd82be0e825d4a4f2fa9c92de48b65049b42f14f37f442f4812a61a"
     git_import: "complete"
-    status: "candidate delivered; adds #capitale_creatures:city_no_spawn"
+    status: "candidate delivered; extends city_no_spawn and orc patrol exclusions to 14 city biomes"
 
 warnings:
   - "Server and client custom mod versions must be aligned before release."
