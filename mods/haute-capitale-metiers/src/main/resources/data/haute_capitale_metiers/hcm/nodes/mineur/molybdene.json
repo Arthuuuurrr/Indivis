@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 34,
+  "xp": 114,
+  "bloc_plein": "landsoficaria:molybdenum_ore",
+  "bloc_vide": "minecraft:stone",
+  "loot": [
+    { "id": "landsoficaria:raw_molybdenum", "min": 1, "max": 2 }
+  ],
+  "respawn": 600,
+  "coups": 5,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon de molybdène",
+  "commentaire": "L'acier de molybdène d'Icaria. Icaria requis."
+}

@@ -1,0 +1,16 @@
+{
+  "titre": "Jambon glacé au miel (festin)",
+  "metier": "cuisinier",
+  "niveau": 38,
+  "xp": 126.0,
+  "ingredients": [
+    { "id": "minecraft:sweet_berries", "quantite": 4, "nom": "Baies sucrées" },
+    { "id": "minecraft:honey_bottle", "quantite": 1, "nom": "Fiole de miel" },
+    { "id": "farmersdelight:smoked_ham", "quantite": 1, "nom": "Jambon fumé" },
+    { "id": "farmersdelight:cooked_rice", "quantite": 2, "nom": "Riz cuit" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 3,
+  "repas": { "buff": "haute_capitale_metiers:festin", "valeur": 0.100 },
+  "resultat": { "id": "farmersdelight:honey_glazed_ham", "quantite": 4 }
+}

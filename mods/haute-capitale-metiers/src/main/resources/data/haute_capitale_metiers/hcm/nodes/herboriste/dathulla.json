@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 16,
+  "xp": 60,
+  "bloc_plein": "landsoficaria:dathulla",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:dathulla", "min": 1, "max": 2 }
+  ],
+  "respawn": 300,
+  "coups": 2,
+  "titre": "Dathulla",
+  "commentaire": "La plante de la chute lente. Icaria requis."
+}

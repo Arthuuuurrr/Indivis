@@ -1,0 +1,14 @@
+{
+  "titre": "Bouillon d'os",
+  "metier": "cuisinier",
+  "niveau": 6,
+  "xp": 30.0,
+  "ingredients": [
+    { "tag": "c:bones", "quantite": 1, "nom": "Os" },
+    { "id": "minecraft:glow_berries", "quantite": 1, "nom": "Baies lumineuses" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 0,
+  "repas": { "buff": "haute_capitale_metiers:regeneration", "valeur": 0.030 },
+  "resultat": { "id": "farmersdelight:bone_broth", "quantite": 1 }
+}

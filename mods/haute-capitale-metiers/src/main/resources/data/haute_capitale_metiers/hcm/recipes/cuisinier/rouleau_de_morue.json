@@ -1,0 +1,13 @@
+{
+  "titre": "Rouleau de morue",
+  "metier": "cuisinier",
+  "niveau": 23,
+  "xp": 81.0,
+  "ingredients": [
+    { "id": "farmersdelight:cod_slice", "quantite": 2, "nom": "Tranche de morue" },
+    { "id": "farmersdelight:cooked_rice", "quantite": 1, "nom": "Riz cuit" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:discretion", "valeur": 0.059 },
+  "resultat": { "id": "farmersdelight:cod_roll", "quantite": 1 }
+}

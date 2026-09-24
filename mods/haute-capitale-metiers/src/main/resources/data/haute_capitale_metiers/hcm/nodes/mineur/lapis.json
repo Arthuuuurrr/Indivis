@@ -1,0 +1,14 @@
+{
+  "metier": "mineur",
+  "niveau": 20,
+  "xp": 72,
+  "bloc_plein": "minecraft:lapis_ore",
+  "bloc_vide": "minecraft:stone",
+  "loot": [
+    { "id": "minecraft:lapis_lazuli", "min": 2, "max": 5 }
+  ],
+  "respawn": 420,
+  "coups": 4,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon de lapis-lazuli"
+}

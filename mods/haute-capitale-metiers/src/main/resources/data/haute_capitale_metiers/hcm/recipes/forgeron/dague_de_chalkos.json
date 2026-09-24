@@ -1,0 +1,12 @@
+{
+  "titre": "Dague de chalkos",
+  "metier": "forgeron",
+  "niveau": 3,
+  "xp": 21.0,
+  "ingredients": [
+    { "id": "landsoficaria:chalkos_ingot", "quantite": 2, "nom": "Lingot de chalkos" },
+    { "id": "minecraft:stick", "quantite": 1, "nom": "Bâton" }
+  ],
+  "cout": 0,
+  "resultat": { "id": "landsoficaria:chalkos_dagger", "quantite": 1 }
+}

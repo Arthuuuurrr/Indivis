@@ -1,0 +1,13 @@
+{
+  "titre": "Rouleau de saumon",
+  "metier": "cuisinier",
+  "niveau": 23,
+  "xp": 81.0,
+  "ingredients": [
+    { "id": "farmersdelight:salmon_slice", "quantite": 2, "nom": "Tranche de saumon" },
+    { "id": "farmersdelight:cooked_rice", "quantite": 1, "nom": "Riz cuit" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:distance", "valeur": 0.059 },
+  "resultat": { "id": "farmersdelight:salmon_roll", "quantite": 1 }
+}

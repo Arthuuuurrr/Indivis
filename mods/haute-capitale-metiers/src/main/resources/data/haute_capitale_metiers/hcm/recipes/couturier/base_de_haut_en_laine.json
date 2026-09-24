@@ -1,0 +1,12 @@
+{
+  "titre": "Base de haut en laine",
+  "metier": "couturier",
+  "niveau": 16,
+  "xp": 60.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_laine", "quantite": 4, "nom": "Tissu de laine" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:base_de_haut_en_laine", "quantite": 1 }
+}

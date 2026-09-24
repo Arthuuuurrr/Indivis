@@ -1,0 +1,12 @@
+{
+  "titre": "Pâtes crues",
+  "metier": "cuisinier",
+  "niveau": 15,
+  "xp": 57.0,
+  "ingredients": [
+    { "id": "farmersdelight:wheat_dough", "quantite": 1, "nom": "Pâte" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "farmersdelight:raw_pasta", "quantite": 2 }
+}

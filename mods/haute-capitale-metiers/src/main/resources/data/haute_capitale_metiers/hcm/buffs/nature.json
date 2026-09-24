@@ -1,0 +1,8 @@
+{
+  "titre": "Sève vive",
+  "attribut": "spell_power:nature",
+  "operation": "pourcent_base",
+  "valeur": 0.08,
+  "duree": 900,
+  "commentaire": "Ragoût de cerver : l'école de la nature."
+}

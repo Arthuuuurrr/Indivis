@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "joaillier",
+  "titre": "Maître joaillier",
+  "accueil": "La pierre brute cache toujours quelque chose.",
+  "peut_enseigner": true
+}

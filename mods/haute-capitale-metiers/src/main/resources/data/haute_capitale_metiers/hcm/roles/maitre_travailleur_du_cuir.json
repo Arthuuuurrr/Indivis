@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "travailleur_du_cuir",
+  "titre": "Maître du cuir",
+  "accueil": "Une peau bien tannée vaut une armure.",
+  "peut_enseigner": true
+}

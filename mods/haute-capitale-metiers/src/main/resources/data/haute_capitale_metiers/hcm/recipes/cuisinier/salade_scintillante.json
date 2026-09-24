@@ -1,0 +1,18 @@
+{
+  "titre": "Salade scintillante (festin)",
+  "metier": "cuisinier",
+  "niveau": 46,
+  "xp": 150.0,
+  "ingredients": [
+    { "id": "minecraft:glow_berries", "quantite": 2, "nom": "Baies lumineuses" },
+    { "id": "minecraft:honey_bottle", "quantite": 1, "nom": "Fiole de miel" },
+    { "tag": "c:crops/tomato", "quantite": 1, "nom": "Tomate" },
+    { "id": "minecraft:golden_carrot", "quantite": 1, "nom": "Carotte dorée" },
+    { "tag": "c:crops/beetroot", "quantite": 1, "nom": "Betterave" },
+    { "id": "farmersdelight:cabbage", "quantite": 2, "nom": "Chou" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 5,
+  "repas": { "buff": "haute_capitale_metiers:festin", "valeur": 0.100 },
+  "resultat": { "id": "farmersdelight:gleaming_salad", "quantite": 4 }
+}

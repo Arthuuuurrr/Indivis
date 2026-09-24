@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de chute lente",
+  "metier": "alchimiste",
+  "niveau": 16,
+  "xp": 60.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:dathulla", "quantite": 2, "nom": "Dathulla" },
+    { "id": "minecraft:feather", "quantite": 1, "nom": "Plume" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:slow_falling" } }
+  }
+}

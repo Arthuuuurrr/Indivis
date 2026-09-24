@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de célérité prolongée",
+  "metier": "alchimiste",
+  "niveau": 27,
+  "xp": 93.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:sunkettle", "quantite": 3, "nom": "Bouilloire solaire" },
+    { "id": "minecraft:redstone", "quantite": 1, "nom": "Redstone" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:long_swiftness" } }
+  }
+}

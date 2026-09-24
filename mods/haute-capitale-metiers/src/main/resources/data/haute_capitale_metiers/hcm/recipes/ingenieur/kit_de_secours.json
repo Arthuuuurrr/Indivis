@@ -1,0 +1,15 @@
+{
+  "titre": "Kit de secours",
+  "metier": "ingenieur",
+  "niveau": 28,
+  "xp": 96.0,
+  "ingredients": [
+    { "id": "minecraft:honey_bottle", "quantite": 1, "nom": "Fiole de miel" },
+    { "id": "minecraft:glistering_melon_slice", "quantite": 1, "nom": "Tranche de pastèque scintillante" },
+    { "id": "minecraft:paper", "quantite": 2, "nom": "Papier" },
+    { "id": "minecraft:string", "quantite": 1, "nom": "Ficelle" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:kit_de_secours", "quantite": 2 }
+}

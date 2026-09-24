@@ -1,0 +1,13 @@
+{
+  "titre": "Anneau de tanzanite en netherite",
+  "metier": "joaillier",
+  "niveau": 41,
+  "xp": 135.0,
+  "ingredients": [
+    { "id": "jewelry:tanzanite", "quantite": 1, "nom": "Tanzanite" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "jewelry:netherite_tanzanite_ring", "quantite": 1 }
+}

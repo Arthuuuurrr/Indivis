@@ -1,0 +1,12 @@
+{
+  "titre": "Coiffe matelassée",
+  "metier": "forgeron",
+  "niveau": 12,
+  "xp": 48.0,
+  "ingredients": [
+    { "id": "magistuarmory:woolen_fabric", "quantite": 5, "nom": "Étoffe de laine" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "magistuarmory:coif", "quantite": 1 }
+}

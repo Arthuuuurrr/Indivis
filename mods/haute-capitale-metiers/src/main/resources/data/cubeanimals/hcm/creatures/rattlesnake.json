@@ -1,0 +1,34 @@
+{
+  "commentaire": "Reptile venimeux.",
+  "categorie": "reptile",
+  "rarete": "peu_commune",
+  "chasseur": {
+    "niveau": 20,
+    "xp": 72
+  },
+  "depecage": {
+    "niveau": 20,
+    "xp": 108,
+    "duree_carcasse": 75,
+    "canalisation": 3,
+    "outil": "haute_capitale_metiers:couteaux/compagnon",
+    "matiere": {
+      "id": "minecraft:rabbit_hide"
+    },
+    "secondaires": [
+      {
+        "id": "cubeanimals:rattlesnake_venom",
+        "chance": 0.5
+      }
+    ]
+  },
+  "viande": {
+    "id": "cubeanimals:raw_reptile_meat",
+    "min": 1,
+    "max": 1
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

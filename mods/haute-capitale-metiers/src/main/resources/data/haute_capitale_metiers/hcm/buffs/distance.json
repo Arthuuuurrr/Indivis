@@ -1,0 +1,8 @@
+{
+  "titre": "Œil du chasseur",
+  "attribut": "puffish_attributes:ranged_damage",
+  "operation": "pourcent_base",
+  "valeur": 0.05,
+  "duree": 900,
+  "commentaire": "Volaille et poisson : les dégâts à distance."
+}

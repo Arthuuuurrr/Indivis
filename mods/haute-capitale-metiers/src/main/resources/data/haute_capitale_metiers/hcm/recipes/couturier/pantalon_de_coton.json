@@ -1,0 +1,12 @@
+{
+  "titre": "Pantalon de coton",
+  "metier": "couturier",
+  "niveau": 15,
+  "xp": 57.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:jambe_de_coton", "quantite": 2, "nom": "Jambe de coton" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "haute_capitale_metiers:pantalon_de_coton", "quantite": 1 }
+}

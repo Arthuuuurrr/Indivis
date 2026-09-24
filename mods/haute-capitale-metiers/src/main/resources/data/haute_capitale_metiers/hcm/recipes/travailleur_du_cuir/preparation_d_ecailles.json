@@ -1,0 +1,13 @@
+{
+  "titre": "Préparation d'écailles",
+  "metier": "travailleur_du_cuir",
+  "niveau": 33,
+  "xp": 111.0,
+  "ingredients": [
+    { "tag": "haute_capitale_metiers:ecailles", "quantite": 4, "nom": "Écailles" },
+    { "tag": "haute_capitale_metiers:tanin", "quantite": 2, "nom": "Écorce" }
+  ],
+  "cout": 3,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:ecailles_preparees", "quantite": 1 }
+}

@@ -1,0 +1,12 @@
+{
+  "titre": "Sacoche runique",
+  "metier": "couturier",
+  "niveau": 25,
+  "xp": 87.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_jean", "quantite": 2, "nom": "Tissu de jean" },
+    { "id": "minecraft:leather", "quantite": 2, "nom": "Cuir" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "runes:small_rune_pouch", "quantite": 1 }
+}

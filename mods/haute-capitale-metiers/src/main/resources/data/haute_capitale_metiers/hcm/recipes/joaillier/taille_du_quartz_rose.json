@@ -1,0 +1,13 @@
+{
+  "titre": "Taille du quartz rose",
+  "metier": "joaillier",
+  "niveau": 47,
+  "xp": 153.0,
+  "ingredients": [
+    { "id": "minecraft:quartz", "quantite": 4, "nom": "Quartz" },
+    { "id": "minecraft:redstone", "quantite": 2, "nom": "Redstone" }
+  ],
+  "cout": 5,
+  "qualite": false,
+  "resultat": { "id": "hazennstuff:rose_quartz", "quantite": 1 }
+}

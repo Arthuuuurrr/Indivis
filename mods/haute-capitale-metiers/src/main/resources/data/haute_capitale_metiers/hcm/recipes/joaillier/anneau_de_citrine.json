@@ -1,0 +1,12 @@
+{
+  "titre": "Anneau de citrine",
+  "metier": "joaillier",
+  "niveau": 12,
+  "xp": 48.0,
+  "ingredients": [
+    { "id": "jewelry:citrine", "quantite": 1, "nom": "Citrine" },
+    { "id": "minecraft:gold_ingot", "quantite": 3, "nom": "Lingot d'or" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "jewelry:citrine_ring", "quantite": 1 }
+}

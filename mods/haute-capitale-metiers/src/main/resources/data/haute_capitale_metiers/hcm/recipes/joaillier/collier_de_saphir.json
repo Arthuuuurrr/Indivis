@@ -1,0 +1,13 @@
+{
+  "titre": "Collier de saphir",
+  "metier": "joaillier",
+  "niveau": 29,
+  "xp": 99.0,
+  "ingredients": [
+    { "id": "jewelry:sapphire", "quantite": 1, "nom": "Saphir" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "jewelry:sapphire_necklace", "quantite": 1 }
+}

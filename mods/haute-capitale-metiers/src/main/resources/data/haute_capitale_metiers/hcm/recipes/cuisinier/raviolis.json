@@ -1,0 +1,16 @@
+{
+  "titre": "Raviolis",
+  "metier": "cuisinier",
+  "niveau": 24,
+  "xp": 84.0,
+  "ingredients": [
+    { "tag": "c:foods/dough", "quantite": 1, "nom": "Pâte" },
+    { "tag": "c:crops/cabbage", "quantite": 1, "nom": "Chou" },
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" },
+    { "tag": "c:foods/raw_chicken", "quantite": 1, "nom": "Poulet cru" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:vigueur", "valeur": 0.062 },
+  "resultat": { "id": "farmersdelight:dumplings", "quantite": 1 }
+}

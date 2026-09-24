@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 12,
+  "xp": 48,
+  "bloc_plein": "landsoficaria:anthracite_ore",
+  "bloc_vide": "minecraft:stone",
+  "loot": [
+    { "id": "landsoficaria:anthracite", "min": 1, "max": 3 }
+  ],
+  "respawn": 300,
+  "coups": 3,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon d'anthracite",
+  "commentaire": "Le charbon riche d'Icaria. Icaria requis."
+}

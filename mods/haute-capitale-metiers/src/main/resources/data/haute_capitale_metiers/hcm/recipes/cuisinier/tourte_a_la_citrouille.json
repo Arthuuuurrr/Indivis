@@ -1,0 +1,15 @@
+{
+  "titre": "Tourte à la citrouille",
+  "metier": "cuisinier",
+  "niveau": 26,
+  "xp": 90.0,
+  "ingredients": [
+    { "id": "farmersdelight:pumpkin_slice", "quantite": 4, "nom": "Tranche de citrouille" },
+    { "tag": "minecraft:eggs", "quantite": 1, "nom": "Œuf" },
+    { "id": "minecraft:sugar", "quantite": 1, "nom": "Sucre" },
+    { "id": "farmersdelight:pie_crust", "quantite": 1, "nom": "Fond de tarte" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:magie", "valeur": 0.066 },
+  "resultat": { "id": "minecraft:pumpkin_pie", "quantite": 1 }
+}

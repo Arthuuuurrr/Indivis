@@ -1,0 +1,13 @@
+{
+  "titre": "Cape de coton",
+  "metier": "couturier",
+  "niveau": 18,
+  "xp": 66.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_coton", "quantite": 5, "nom": "Tissu de coton" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" },
+    { "id": "minecraft:gold_nugget", "quantite": 1, "nom": "Pépite d'or" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "haute_capitale_metiers:cape_de_coton", "quantite": 1 }
+}

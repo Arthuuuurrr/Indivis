@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 8,
+  "xp": 36,
+  "bloc_plein": "landsoficaria:kassiteros_ore",
+  "bloc_vide": "minecraft:stone",
+  "loot": [
+    { "id": "landsoficaria:raw_kassiteros", "min": 1, "max": 2 }
+  ],
+  "respawn": 300,
+  "coups": 3,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon de kassiteros",
+  "commentaire": "L'étain d'Icaria, pour le bronze et la dague de kassiteros. Icaria requis."
+}

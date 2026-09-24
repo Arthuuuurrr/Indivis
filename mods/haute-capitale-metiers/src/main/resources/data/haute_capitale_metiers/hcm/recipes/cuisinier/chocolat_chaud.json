@@ -1,0 +1,15 @@
+{
+  "titre": "Chocolat chaud",
+  "metier": "cuisinier",
+  "niveau": 21,
+  "xp": 75.0,
+  "ingredients": [
+    { "tag": "c:drinks/milk", "quantite": 1, "nom": "Lait" },
+    { "id": "minecraft:sugar", "quantite": 1, "nom": "Sucre" },
+    { "id": "minecraft:cocoa_beans", "quantite": 2, "nom": "Fèves de cacao" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:magie", "valeur": 0.055 },
+  "resultat": { "id": "farmersdelight:hot_cocoa", "quantite": 1 }
+}

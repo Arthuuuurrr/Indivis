@@ -1,0 +1,12 @@
+{
+  "titre": "Taille du jaspe",
+  "metier": "joaillier",
+  "niveau": 8,
+  "xp": 36.0,
+  "ingredients": [
+    { "id": "landsoficaria:jasper_shard", "quantite": 4, "nom": "Éclat de jaspe" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "landsoficaria:jasper", "quantite": 1 }
+}

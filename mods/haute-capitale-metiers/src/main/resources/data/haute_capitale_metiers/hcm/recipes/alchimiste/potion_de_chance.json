@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de chance",
+  "metier": "alchimiste",
+  "niveau": 44,
+  "xp": 144.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:mondanos", "quantite": 2, "nom": "Mondanos" },
+    { "id": "landsoficaria:clover", "quantite": 2, "nom": "Trèfle" }
+  ],
+  "cout": 4,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:luck" } }
+  }
+}

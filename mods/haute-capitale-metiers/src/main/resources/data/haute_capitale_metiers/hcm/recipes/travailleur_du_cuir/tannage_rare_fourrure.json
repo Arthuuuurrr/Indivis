@@ -1,0 +1,13 @@
+{
+  "titre": "Tannage rare (fourrure)",
+  "metier": "travailleur_du_cuir",
+  "niveau": 45,
+  "xp": 147.0,
+  "ingredients": [
+    { "tag": "haute_capitale_metiers:fourrures/rares", "quantite": 3, "nom": "Fourrure rare" },
+    { "tag": "haute_capitale_metiers:tanin", "quantite": 3, "nom": "Écorce" }
+  ],
+  "cout": 5,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:cuir_rare", "quantite": 1 }
+}

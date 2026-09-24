@@ -1,0 +1,13 @@
+{
+  "titre": "Collier d'acier sombre au jade",
+  "metier": "joaillier",
+  "niveau": 38,
+  "xp": 126.0,
+  "ingredients": [
+    { "id": "mmo_accessories:steel_jade_necklace", "quantite": 1, "nom": "Collier d'acier au jade" },
+    { "id": "minecraft:netherite_scrap", "quantite": 1, "nom": "Débris de netherite" },
+    { "id": "minecraft:black_dye", "quantite": 1, "nom": "Teinture noire" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "mmo_accessories:dark_steel_jade_necklace", "quantite": 1 }
+}

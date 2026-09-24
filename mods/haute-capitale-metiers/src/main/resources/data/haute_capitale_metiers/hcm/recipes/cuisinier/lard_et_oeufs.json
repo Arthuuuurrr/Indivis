@@ -1,0 +1,14 @@
+{
+  "titre": "Lard et œufs",
+  "metier": "cuisinier",
+  "niveau": 11,
+  "xp": 45.0,
+  "ingredients": [
+    { "tag": "c:foods/cooked_bacon", "quantite": 2, "nom": "Lard cuit" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" },
+    { "tag": "c:foods/cooked_egg", "quantite": 2, "nom": "Œuf cuit" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:melee", "valeur": 0.032 },
+  "resultat": { "id": "farmersdelight:bacon_and_eggs", "quantite": 1 }
+}

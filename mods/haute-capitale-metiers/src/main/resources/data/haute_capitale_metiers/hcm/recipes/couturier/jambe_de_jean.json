@@ -1,0 +1,12 @@
+{
+  "titre": "Jambes de pantalon en jean",
+  "metier": "couturier",
+  "niveau": 21,
+  "xp": 75.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_jean", "quantite": 3, "nom": "Tissu de jean" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:jambe_de_jean", "quantite": 2 }
+}

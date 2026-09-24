@@ -1,0 +1,8 @@
+{
+  "titre": "Célérité",
+  "attribut": "minecraft:movement_speed",
+  "operation": "pourcent_base",
+  "valeur": 0.05,
+  "duree": 900,
+  "commentaire": "Salades et plats végétaux : la vitesse de déplacement."
+}

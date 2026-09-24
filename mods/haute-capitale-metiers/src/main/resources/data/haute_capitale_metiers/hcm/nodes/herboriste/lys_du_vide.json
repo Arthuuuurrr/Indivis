@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 22,
+  "xp": 78,
+  "bloc_plein": "landsoficaria:voidlily",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:voidlily", "min": 1, "max": 2 }
+  ],
+  "respawn": 420,
+  "coups": 2,
+  "titre": "Lys du vide",
+  "commentaire": "La fleur de l invisibilité. Icaria requis."
+}

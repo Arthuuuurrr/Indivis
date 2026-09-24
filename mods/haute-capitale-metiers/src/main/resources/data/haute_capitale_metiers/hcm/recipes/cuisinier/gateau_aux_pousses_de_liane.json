@@ -1,0 +1,15 @@
+{
+  "titre": "Gâteau aux pousses de liane",
+  "metier": "cuisinier",
+  "niveau": 20,
+  "xp": 72.0,
+  "ingredients": [
+    { "id": "landsoficaria:vine_sprout", "quantite": 4, "nom": "Pousse de liane" },
+    { "tag": "c:crops/wheat", "quantite": 3, "nom": "Blé" },
+    { "id": "minecraft:sugar", "quantite": 2, "nom": "Sucre" },
+    { "id": "minecraft:egg", "quantite": 1, "nom": "Œuf" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "landsoficaria:vine_sprout_cake", "quantite": 1 }
+}

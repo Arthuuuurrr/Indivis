@@ -1,0 +1,12 @@
+{
+  "titre": "Anneau de malachite",
+  "metier": "joaillier",
+  "niveau": 22,
+  "xp": 78.0,
+  "ingredients": [
+    { "id": "mmo_accessories:malachite", "quantite": 1, "nom": "Malachite" },
+    { "id": "minecraft:copper_ingot", "quantite": 3, "nom": "Lingot de cuivre" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "mmo_accessories:malachite_ring", "quantite": 1 }
+}

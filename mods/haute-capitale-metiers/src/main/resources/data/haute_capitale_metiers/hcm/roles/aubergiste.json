@@ -1,0 +1,7 @@
+{
+  "commentaire": "Ne sert aucun métier en particulier : il montre au joueur où il en est de tous, et lie sa Pierre de foyer à son auberge.",
+  "interface": "registre",
+  "titre": "Registre des métiers",
+  "accueil": "Voyons où tu en es.",
+  "foyer": true
+}

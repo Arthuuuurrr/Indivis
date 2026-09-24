@@ -1,0 +1,13 @@
+{
+  "titre": "Lanterne de sac",
+  "metier": "ingenieur",
+  "niveau": 16,
+  "xp": 60.0,
+  "ingredients": [
+    { "id": "minecraft:lantern", "quantite": 1, "nom": "Lanterne" },
+    { "id": "minecraft:leather", "quantite": 2, "nom": "Cuir" },
+    { "id": "minecraft:glowstone_dust", "quantite": 2, "nom": "Poudre lumineuse" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "haute_capitale_metiers:lanterne_de_sac", "quantite": 1 }
+}

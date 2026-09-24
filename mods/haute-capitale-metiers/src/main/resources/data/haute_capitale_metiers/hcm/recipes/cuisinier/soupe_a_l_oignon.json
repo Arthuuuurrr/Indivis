@@ -1,0 +1,15 @@
+{
+  "titre": "Soupe à l'oignon",
+  "metier": "cuisinier",
+  "niveau": 8,
+  "xp": 36.0,
+  "ingredients": [
+    { "tag": "c:crops/onion", "quantite": 2, "nom": "Oignon" },
+    { "tag": "c:foods/bread", "quantite": 1, "nom": "Pain" },
+    { "tag": "c:drinks/milk", "quantite": 1, "nom": "Lait" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 0,
+  "repas": { "buff": "haute_capitale_metiers:regeneration", "valeur": 0.030 },
+  "resultat": { "id": "farmersdelight:onion_soup", "quantite": 1 }
+}

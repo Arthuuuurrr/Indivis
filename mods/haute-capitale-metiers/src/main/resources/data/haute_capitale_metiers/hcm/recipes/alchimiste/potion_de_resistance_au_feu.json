@@ -1,0 +1,17 @@
+{
+  "titre": "Potion de résistance au feu",
+  "metier": "alchimiste",
+  "niveau": 9,
+  "xp": 39.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:charmonder", "quantite": 3, "nom": "Charmonder" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:fire_resistance" } }
+  }
+}

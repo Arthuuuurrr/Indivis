@@ -1,0 +1,16 @@
+{
+  "titre": "Riz frit",
+  "metier": "cuisinier",
+  "niveau": 22,
+  "xp": 78.0,
+  "ingredients": [
+    { "tag": "c:crops/rice", "quantite": 1, "nom": "Riz" },
+    { "tag": "minecraft:eggs", "quantite": 1, "nom": "Œuf" },
+    { "tag": "c:crops/carrot", "quantite": 1, "nom": "Carotte" },
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:vigueur", "valeur": 0.057 },
+  "resultat": { "id": "farmersdelight:fried_rice", "quantite": 1 }
+}

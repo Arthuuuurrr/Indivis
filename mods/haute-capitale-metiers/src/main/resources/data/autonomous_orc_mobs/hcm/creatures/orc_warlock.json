@@ -1,0 +1,9 @@
+{
+  "commentaire": "",
+  "categorie": "orc",
+  "rarete": "peu_commune",
+  "loot_combat": [
+    { "id": "capitale_currency:martin_dor", "min": 8, "max": 15, "chance": 0.9 }
+  ],
+  "origines_xp": ["naturelle", "spawn_mmo"]
+}

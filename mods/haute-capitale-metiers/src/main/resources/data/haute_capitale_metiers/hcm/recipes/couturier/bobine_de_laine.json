@@ -1,0 +1,13 @@
+{
+  "titre": "Bobine de laine",
+  "metier": "couturier",
+  "niveau": 4,
+  "xp": 24.0,
+  "ingredients": [
+    { "tag": "minecraft:wool", "quantite": 1, "nom": "Laine" },
+    { "id": "haute_capitale_metiers:bobine_vide", "quantite": 1, "nom": "Bobine vide" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:bobine_de_laine", "quantite": 1 }
+}

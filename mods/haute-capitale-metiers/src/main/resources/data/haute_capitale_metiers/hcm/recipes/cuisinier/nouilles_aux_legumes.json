@@ -1,0 +1,17 @@
+{
+  "titre": "Nouilles aux légumes",
+  "metier": "cuisinier",
+  "niveau": 26,
+  "xp": 90.0,
+  "ingredients": [
+    { "tag": "c:crops/carrot", "quantite": 1, "nom": "Carotte" },
+    { "tag": "c:mushrooms", "quantite": 1, "nom": "Champignon" },
+    { "tag": "c:foods/pasta", "quantite": 1, "nom": "Pâtes" },
+    { "tag": "c:foods/leafy_green", "quantite": 1, "nom": "Feuilles vertes" },
+    { "tag": "c:foods/vegetable", "quantite": 1, "nom": "Légume" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:celerite", "valeur": 0.066 },
+  "resultat": { "id": "farmersdelight:vegetable_noodles", "quantite": 1 }
+}

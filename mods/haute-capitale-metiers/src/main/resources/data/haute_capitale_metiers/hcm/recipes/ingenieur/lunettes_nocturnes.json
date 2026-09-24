@@ -1,0 +1,14 @@
+{
+  "titre": "Lunettes nocturnes",
+  "metier": "ingenieur",
+  "niveau": 8,
+  "xp": 36.0,
+  "ingredients": [
+    { "id": "minecraft:glass", "quantite": 2, "nom": "Verre" },
+    { "id": "minecraft:golden_carrot", "quantite": 1, "nom": "Carotte dorée" },
+    { "id": "minecraft:leather", "quantite": 1, "nom": "Cuir" },
+    { "id": "minecraft:iron_ingot", "quantite": 1, "nom": "Lingot de fer" }
+  ],
+  "cout": 0,
+  "resultat": { "id": "haute_capitale_metiers:lunettes_nocturnes", "quantite": 1 }
+}

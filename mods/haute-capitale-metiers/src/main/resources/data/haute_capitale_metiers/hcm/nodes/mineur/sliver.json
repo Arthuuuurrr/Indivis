@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 22,
+  "xp": 78,
+  "bloc_plein": "landsoficaria:sliver_ore",
+  "bloc_vide": "minecraft:stone",
+  "loot": [
+    { "id": "landsoficaria:sliver", "min": 1, "max": 2 }
+  ],
+  "respawn": 420,
+  "coups": 4,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon de sliver",
+  "commentaire": "Le métal pâle d'Icaria. Icaria requis."
+}

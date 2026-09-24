@@ -1,0 +1,12 @@
+{
+  "titre": "Bobine vide",
+  "metier": "couturier",
+  "niveau": 1,
+  "xp": 15.0,
+  "ingredients": [
+    { "id": "minecraft:stick", "quantite": 2, "nom": "Bâton" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:bobine_vide", "quantite": 2 }
+}

@@ -1,0 +1,14 @@
+{
+  "titre": "Voile fantôme",
+  "metier": "couturier",
+  "niveau": 39,
+  "xp": 129.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 3, "nom": "Tissu de soie" },
+    { "id": "minecraft:black_dye", "quantite": 2, "nom": "Teinture noire" },
+    { "id": "minecraft:phantom_membrane", "quantite": 2, "nom": "Membrane de phantom" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "mmo_accessories:phantom_veil", "quantite": 1 }
+}

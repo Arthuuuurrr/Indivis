@@ -1,0 +1,12 @@
+{
+  "titre": "Anneau de saphir",
+  "metier": "joaillier",
+  "niveau": 23,
+  "xp": 81.0,
+  "ingredients": [
+    { "id": "jewelry:sapphire", "quantite": 1, "nom": "Saphir" },
+    { "id": "minecraft:gold_ingot", "quantite": 3, "nom": "Lingot d'or" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "jewelry:sapphire_ring", "quantite": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Kit de raffinage",
+  "metier": "ingenieur",
+  "niveau": 34,
+  "xp": 114.0,
+  "ingredients": [
+    { "id": "minecraft:blast_furnace", "quantite": 1, "nom": "Haut fourneau" },
+    { "id": "minecraft:coal", "quantite": 8, "nom": "Charbon" },
+    { "id": "minecraft:iron_ingot", "quantite": 2, "nom": "Lingot de fer" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "haute_capitale_metiers:kit_de_raffinage", "quantite": 1 }
+}

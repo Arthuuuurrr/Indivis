@@ -1,0 +1,13 @@
+{
+  "titre": "Anneau de saphir en netherite",
+  "metier": "joaillier",
+  "niveau": 39,
+  "xp": 129.0,
+  "ingredients": [
+    { "id": "jewelry:sapphire", "quantite": 1, "nom": "Saphir" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "jewelry:netherite_sapphire_ring", "quantite": 1 }
+}

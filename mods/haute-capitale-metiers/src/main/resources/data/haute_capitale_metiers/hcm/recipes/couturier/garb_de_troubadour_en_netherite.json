@@ -1,0 +1,13 @@
+{
+  "titre": "Garb de troubadour en netherite",
+  "metier": "couturier",
+  "niveau": 44,
+  "xp": 144.0,
+  "ingredients": [
+    { "id": "bards_rpg:troubadour_garb_chest", "quantite": 1, "nom": "Garb de troubadour" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" },
+    { "id": "hazennstuff:cloth_of_the_flamebearer", "quantite": 1, "nom": "Étoffe du Porte-Flamme" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "bards_rpg:netherite_troubadour_garb_chest", "quantite": 1 }
+}

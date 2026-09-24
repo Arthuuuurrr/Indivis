@@ -1,0 +1,14 @@
+{
+  "titre": "Souliers de troubadour",
+  "metier": "couturier",
+  "niveau": 37,
+  "xp": 123.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 2, "nom": "Tissu de soie" },
+    { "id": "minecraft:leather", "quantite": 1, "nom": "Cuir" },
+    { "id": "minecraft:purple_dye", "quantite": 1, "nom": "Teinture violette" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "bards_rpg:troubadour_garb_feet", "quantite": 1 }
+}

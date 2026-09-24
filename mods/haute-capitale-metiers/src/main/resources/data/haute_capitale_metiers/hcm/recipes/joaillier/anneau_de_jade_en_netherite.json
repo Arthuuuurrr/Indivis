@@ -1,0 +1,13 @@
+{
+  "titre": "Anneau de jade en netherite",
+  "metier": "joaillier",
+  "niveau": 37,
+  "xp": 123.0,
+  "ingredients": [
+    { "id": "jewelry:jade", "quantite": 1, "nom": "Jade" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "jewelry:netherite_jade_ring", "quantite": 1 }
+}

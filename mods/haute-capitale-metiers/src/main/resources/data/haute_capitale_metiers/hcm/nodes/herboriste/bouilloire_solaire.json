@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 3,
+  "xp": 21,
+  "bloc_plein": "landsoficaria:sunkettle",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:sunkettle", "min": 1, "max": 2 }
+  ],
+  "respawn": 150,
+  "coups": 1,
+  "titre": "Bouilloire solaire",
+  "commentaire": "La plante de la célérité. Icaria requis."
+}

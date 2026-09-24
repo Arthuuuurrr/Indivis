@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 25,
+  "xp": 87,
+  "bloc_plein": "minecraft:amethyst_cluster[facing=up]",
+  "bloc_vide": "minecraft:amethyst_block",
+  "loot": [
+    { "id": "minecraft:amethyst_shard", "min": 1, "max": 2 }
+  ],
+  "respawn": 600,
+  "coups": 4,
+  "outil": "minecraft:pickaxes",
+  "titre": "Géode d'améthyste",
+  "commentaire": "Récoltée, la grappe laisse un bloc d'améthyste nu ; elle repousse dessus. Pas de géode bourgeonnante : elle ferait pousser des bourgeons autour, hors du registre."
+}

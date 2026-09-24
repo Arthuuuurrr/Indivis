@@ -1,0 +1,12 @@
+{
+  "titre": "Petites plaques d'\''acier",
+  "metier": "forgeron",
+  "niveau": 8,
+  "xp": 36.0,
+  "ingredients": [
+    { "id": "magistuarmory:steel_ingot", "quantite": 1, "nom": "Lingot d'acier" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "magistuarmory:small_steel_plate", "quantite": 4 }
+}

@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 20,
+  "xp": 72,
+  "bloc_plein": "minecraft:blue_orchid",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "minecraft:blue_orchid", "min": 1, "max": 1 }
+  ],
+  "respawn": 300,
+  "coups": 2,
+  "titre": "Orchidée bleue",
+  "commentaire": "Deux coups : fragile, on la détache avec soin."
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Bobine de coton",
+  "metier": "couturier",
+  "niveau": 3,
+  "xp": 21.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:fibre_de_coton", "quantite": 4, "nom": "Fibre de coton" },
+    { "id": "haute_capitale_metiers:bobine_vide", "quantite": 1, "nom": "Bobine vide" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:bobine_de_coton", "quantite": 1 }
+}

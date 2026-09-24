@@ -1,0 +1,13 @@
+{
+  "titre": "Cape de laine",
+  "metier": "couturier",
+  "niveau": 30,
+  "xp": 102.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_laine", "quantite": 5, "nom": "Tissu de laine" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" },
+    { "id": "minecraft:gold_nugget", "quantite": 1, "nom": "Pépite d'or" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "haute_capitale_metiers:cape_de_laine", "quantite": 1 }
+}

@@ -1,0 +1,8 @@
+{
+  "titre": "Convalescence",
+  "attribut": "puffish_attributes:natural_regeneration",
+  "operation": "pourcent_base",
+  "valeur": 0.10,
+  "duree": 900,
+  "commentaire": "Soupes et bouillons : la régénération naturelle."
+}

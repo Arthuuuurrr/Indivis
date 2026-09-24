@@ -1,0 +1,8 @@
+{
+  "titre": "Souffle de givre",
+  "attribut": "spell_power:frost",
+  "operation": "pourcent_base",
+  "valeur": 0.08,
+  "duree": 900,
+  "commentaire": "Ragoût d'aeternae : l'école du givre."
+}

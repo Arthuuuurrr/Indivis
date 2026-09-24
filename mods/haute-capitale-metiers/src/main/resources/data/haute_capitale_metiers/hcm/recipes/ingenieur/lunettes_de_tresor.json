@@ -1,0 +1,14 @@
+{
+  "titre": "Lunettes de trésor",
+  "metier": "ingenieur",
+  "niveau": 24,
+  "xp": 84.0,
+  "ingredients": [
+    { "id": "minecraft:glass", "quantite": 2, "nom": "Verre" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:ender_pearl", "quantite": 1, "nom": "Perle de l'Ender" },
+    { "id": "minecraft:leather", "quantite": 1, "nom": "Cuir" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "haute_capitale_metiers:lunettes_de_tresor", "quantite": 1 }
+}

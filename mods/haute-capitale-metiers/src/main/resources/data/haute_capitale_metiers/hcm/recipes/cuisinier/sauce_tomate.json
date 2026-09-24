@@ -1,0 +1,13 @@
+{
+  "titre": "Sauce tomate",
+  "metier": "cuisinier",
+  "niveau": 18,
+  "xp": 66.0,
+  "ingredients": [
+    { "tag": "c:crops/tomato", "quantite": 2, "nom": "Tomate" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "farmersdelight:tomato_sauce", "quantite": 1 }
+}

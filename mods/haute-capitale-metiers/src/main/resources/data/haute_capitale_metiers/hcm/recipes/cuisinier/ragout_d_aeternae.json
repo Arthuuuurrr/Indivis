@@ -1,0 +1,15 @@
+{
+  "titre": "Ragoût d'aeternae",
+  "metier": "cuisinier",
+  "niveau": 43,
+  "xp": 141.0,
+  "ingredients": [
+    { "id": "landsoficaria:raw_aeternae_meat", "quantite": 2, "nom": "Viande d'aeternae" },
+    { "tag": "c:crops/carrot", "quantite": 1, "nom": "Carotte" },
+    { "id": "minecraft:brown_mushroom", "quantite": 1, "nom": "Champignon brun" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 5,
+  "repas": { "buff": "haute_capitale_metiers:givre", "valeur": 0.104 },
+  "resultat": { "id": "landsoficaria:aeternae_stew", "quantite": 1 }
+}

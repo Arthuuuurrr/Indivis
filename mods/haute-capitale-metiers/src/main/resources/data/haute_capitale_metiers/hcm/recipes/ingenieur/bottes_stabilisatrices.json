@@ -1,0 +1,14 @@
+{
+  "titre": "Bottes stabilisatrices",
+  "metier": "ingenieur",
+  "niveau": 25,
+  "xp": 87.0,
+  "ingredients": [
+    { "id": "minecraft:leather_boots", "quantite": 1, "nom": "Bottes de cuir" },
+    { "id": "minecraft:slime_ball", "quantite": 2, "nom": "Boule de slime" },
+    { "id": "minecraft:iron_ingot", "quantite": 2, "nom": "Lingot de fer" },
+    { "id": "haute_capitale_metiers:tendon", "quantite": 1, "nom": "Tendon" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "haute_capitale_metiers:bottes_stabilisatrices", "quantite": 1 }
+}

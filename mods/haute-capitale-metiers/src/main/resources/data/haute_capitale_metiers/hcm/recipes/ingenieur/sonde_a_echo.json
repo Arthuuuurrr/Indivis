@@ -1,0 +1,14 @@
+{
+  "titre": "Sonde à écho",
+  "metier": "ingenieur",
+  "niveau": 30,
+  "xp": 102.0,
+  "ingredients": [
+    { "id": "minecraft:amethyst_shard", "quantite": 3, "nom": "Éclat d'améthyste" },
+    { "id": "minecraft:copper_ingot", "quantite": 4, "nom": "Lingot de cuivre" },
+    { "id": "minecraft:ender_pearl", "quantite": 1, "nom": "Perle de l'Ender" },
+    { "id": "minecraft:redstone", "quantite": 2, "nom": "Redstone" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "haute_capitale_metiers:sonde_a_echo", "quantite": 1 }
+}

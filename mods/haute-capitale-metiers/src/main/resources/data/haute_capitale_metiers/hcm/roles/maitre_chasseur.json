@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "chasseur",
+  "titre": "Maître chasseur",
+  "accueil": "Une bête se lit avant de se tirer.",
+  "peut_enseigner": true
+}

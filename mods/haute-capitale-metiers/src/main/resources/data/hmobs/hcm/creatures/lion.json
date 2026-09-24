@@ -1,0 +1,17 @@
+{
+  "commentaire": "Félin (GeckoLib) ; fourrure rare, croc en prime.",
+  "categorie": "bete",
+  "rarete": "rare",
+  "chasseur": { "niveau": 25, "xp": 87 },
+  "depecage": {
+    "niveau": 25,
+    "xp": 131,
+    "duree_carcasse": 90,
+    "canalisation": 5,
+    "outil": "haute_capitale_metiers:couteaux/expert",
+    "matiere": { "id": "haute_capitale_metiers:fourrure_rare", "min": 1, "max": 1 },
+    "secondaires": [ { "id": "hmobs:lion_fang", "chance": 0.3 }, { "id": "haute_capitale_metiers:tendon", "chance": 0.35 } ]
+  },
+  "viande": { "id": "hmobs:animal_meat", "min": 1, "max": 2 },
+  "origines_xp": ["naturelle", "spawn_mmo"]
+}
