@@ -117,16 +117,18 @@ deployed:
 
 source_reference:
   capitale_creatures_bundle:
-    version: "1.2.18"
-    source_artifact: "capitale_creatures_bundle-1.2.18-fabric-1.21.11-CITY-NO-SPAWN-GUARD.jar"
-    sha256: "a9b7b7508fbb314aa262b96daf48c85a59e11640bda662ed6deb678061e152ef"
+    version: "1.2.19"
+    source_artifact: "capitale_creatures_bundle-1.2.19-fabric-1.21.11-EXACT-CITY-SAFE.jar"
+    sha256: "7bda94ef06fa5cd3da514221e4da576167cf42c69fd748b89e5635d8f209140c"
     git_patch_sources:
       - "tools/patches/PatchOrcPatrolCityGuard.java"
       - "tools/patches/PatchCityNoSpawn.java"
+      - "tools/patches/PatchCreatures119.java"
     validation_docs:
       - "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
       - "docs/architecture/CITY_NO_SPAWN_GUARD_1_2_18.md"
-    status: "candidate delivered; 1.2.18 adds hard natural-spawn clear in city biomes"
+      - "docs/architecture/CITY_SAFE_1_2_19.md"
+    status: "candidate delivered; exact RegistryKey city spawn clear + patrol containment"
   capitale_core:
     version: "1.5.6-RC9AQ"
     source_archive: "capitale_core_1.5.6-RC9AQ_IND1VIS_BIOMES_FULL.zip"
