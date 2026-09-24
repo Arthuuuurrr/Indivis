@@ -20,9 +20,9 @@ deployed:
       artifact: "capitale_skills_items_fabric_1_7_18_EVENT_ACCESS_FIX_1_21_11.jar"
       sha256: "0dfbfe3f324d40851de01346b2bced6ecb6ab2ab38a36c1bc977f5623f94b30b"
     capitale_creatures_bundle:
-      artifact: "capitale_creatures_bundle-1.2.16-fabric-1.21.11-HMOBS_ORC_PATROLS_DUNGEON-7MOBS.jar"
-      size_bytes: 20591877
-      sha256: null
+      artifact: "capitale_creatures_bundle-1.2.17-fabric-1.21.11-CITY-SAFE-ORC-PATROLS.jar"
+      sha256: "9c2837193ee3cabfd81d41ff8d1f49e4aec1f70a8a557d3383097ecf41720c94"
+      verification: "confirmed loaded by server log 2026-09-24"
     capitale_heraldry:
       artifact: "capitale_heraldry-0.1.7+1.21.11.jar"
       sha256: null
@@ -101,9 +101,9 @@ deployed:
       sha256: "e5b06cd7ae0b9356782c30e3813a3170605a4ec20276edf0789c54331905b521"
       verification: "server copy supplied 2026-09-23; byte-identical to source_reference"
     capitale_creatures_biomes:
-      deployed: "capitale_creatures_biomes_BETA_0_10.zip"
-      sha256: "5ec4a277bf88a4b7c38aceb9d8a2342851f0a3753ac20ac232573b29787a2099"
-      repository_source_candidate: "BETA-0.12"
+      deployed: "capitale_creatures_biomes_BETA_0_13.zip"
+      sha256: "c06f36731836951ce0601228e2dfaa3fb56eaef483a5ec63bb15c9c5d8a9e701"
+      verification: "confirmed loaded by server log 2026-09-24"
     orc_camp:
       deployed_form: "folder"
     arthur_datapack_1_0:
@@ -117,12 +117,16 @@ deployed:
 
 source_reference:
   capitale_creatures_bundle:
-    version: "1.2.17"
-    source_artifact: "capitale_creatures_bundle-1.2.17-fabric-1.21.11-CITY-SAFE-ORC-PATROLS.jar"
-    sha256: "9c2837193ee3cabfd81d41ff8d1f49e4aec1f70a8a557d3383097ecf41720c94"
-    git_patch_source: "tools/patches/PatchOrcPatrolCityGuard.java"
-    validation_doc: "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
-    status: "candidate delivered; replaces deployed 1.2.16 after server validation"
+    version: "1.2.18"
+    source_artifact: "capitale_creatures_bundle-1.2.18-fabric-1.21.11-CITY-NO-SPAWN-GUARD.jar"
+    sha256: "a9b7b7508fbb314aa262b96daf48c85a59e11640bda662ed6deb678061e152ef"
+    git_patch_sources:
+      - "tools/patches/PatchOrcPatrolCityGuard.java"
+      - "tools/patches/PatchCityNoSpawn.java"
+    validation_docs:
+      - "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
+      - "docs/architecture/CITY_NO_SPAWN_GUARD_1_2_18.md"
+    status: "candidate delivered; 1.2.18 adds hard natural-spawn clear in city biomes"
   capitale_core:
     version: "1.5.6-RC9AQ"
     source_archive: "capitale_core_1.5.6-RC9AQ_IND1VIS_BIOMES_FULL.zip"
@@ -135,11 +139,11 @@ source_reference:
     sha256: "109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4"
     git_import: "complete"
   capitale_creatures_biomes:
-    version: "BETA-0.13"
-    source_archive: "capitale_creatures_biomes_BETA_0_13.zip"
-    sha256: "c06f36731836951ce0601228e2dfaa3fb56eaef483a5ec63bb15c9c5d8a9e701"
+    version: "BETA-0.14"
+    source_archive: "capitale_creatures_biomes_BETA_0_14.zip"
+    sha256: "4fbe2b971003bf1c125975d6d296a9a8fd159d27ef864908707fb26e8e2ba72c"
     git_import: "complete"
-    status: "not confirmed deployed — required for city-safe orc patrol exclusions"
+    status: "candidate delivered; adds #capitale_creatures:city_no_spawn"
 
 warnings:
   - "Server and client custom mod versions must be aligned before release."
