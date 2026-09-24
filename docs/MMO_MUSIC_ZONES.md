@@ -1,10 +1,21 @@
 # MMO Music Zones — configuration Haute Capitale
 
-## Version cible
+## Version actuelle validée
 
-Prochaine version : **1.2.10**
+Version : **1.2.11-indivis-city-biomes-combat30s-avaleiv-stackmapfix**
 
-Base attendue : **1.2.9-indivis-city-biomes-combat30s**
+SHA-256 du JAR complet :
+`75a8234825b1c5c4ae6631d3d76b89527889cf793c195c72d473afb23e68366a`
+
+### Important
+
+La version **1.2.10** est **défectueuse et ne doit plus être utilisée**.
+
+Cause observée sur le client : `java.lang.VerifyError: Expecting a stackmap frame at branch target 78` dans
+`ZoneMusicPlayer.selectBiomeZone`.
+
+La **1.2.11** recalcule correctement le `StackMapTable`. Validation effectuée avec Java 21 via
+`-Xverify:all` sur le JAR final réassemblé, en plus du contrôle ZIP et du SHA-256.
 
 ## Playlists de villes par biome
 
@@ -24,7 +35,15 @@ Base attendue : **1.2.9-indivis-city-biomes-combat30s**
 
 - Combat : **600 ticks = 30 secondes** après le dernier événement de combat.
 - Fade combat : **40 ticks = 2 secondes**.
-- Boss : **18 secondes** pour l'instant.
+- Boss : **18 secondes**.
+
+## Bibliothèque audio
+
+- NATURE : **36 pistes**
+- DONJON : **9 pistes**
+- COMBAT : **16 pistes**
+- BOSS : **14 pistes**
+- VILLE : **41 pistes**
 
 ## Priorité audio
 
