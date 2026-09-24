@@ -117,20 +117,22 @@ deployed:
 
 source_reference:
   capitale_creatures_bundle:
-    version: "1.2.20"
-    source_artifact: "capitale_creatures_bundle-1.2.20-fabric-1.21.11-GLOBAL-LIVING-DESPAWN.jar"
-    sha256: "05e7d51ff972fe97a0d547d64fda3a6f8fe56d33ee39659c282f2826bf584930"
+    version: "1.2.21"
+    source_artifact: "capitale_creatures_bundle-1.2.21-fabric-1.21.11-POI-BOSS-SAFE-DESPAWN.jar"
+    sha256: "5d09f1ba40acae925e143c90b32aae38a97b164d348c618529715f03b517ec14"
     git_patch_sources:
       - "tools/patches/PatchOrcPatrolCityGuard.java"
       - "tools/patches/PatchCityNoSpawn.java"
       - "tools/patches/PatchCreatures119.java"
       - "tools/patches/PatchGlobalLivingDespawn120.java"
+      - "tools/patches/PatchBossPoi121.java"
     validation_docs:
       - "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
       - "docs/architecture/CITY_NO_SPAWN_GUARD_1_2_18.md"
       - "docs/architecture/CITY_SAFE_1_2_19.md"
       - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_20.md"
-    status: "candidate delivered; global LivingEntity hard >128 despawn + exact city safety + patrol containment"
+      - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_21_POI_BOSS.md"
+    status: "candidate delivered; global LivingEntity hard >128 despawn with POI/boss catalog protection"
   capitale_core:
     version: "1.5.6-RC9AQ"
     source_archive: "capitale_core_1.5.6-RC9AQ_IND1VIS_BIOMES_FULL.zip"
