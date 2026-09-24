@@ -17,7 +17,7 @@ En revanche, un équipement qui accorde directement un sort, une capacité activ
 | Mod | Type de bonus identifié | Spell Engine / Spell Power | Risque | Action |
 | --- | --- | --- | --- | --- |
 | `hazennstuff 1.0.0-b4+hc.spellcompat1` | attributs custom + effets de set | bridge HC déjà présent | élevé | audit bytecode exact en cours, anomalies confirmées |
-| `landsoficaria 1.0.1` | armure vanilla-like + marche neige poudreuse | sans objet | faible | aucune adaptation spell nécessaire |
+| `landsoficaria` (build HC exact audité) | armure vanilla-like + marche neige poudreuse | sans objet | faible | aucune adaptation spell nécessaire |
 | `treasures_of_the_dead` | ArmorItem + rendu Gecko | sans objet | faible | aucune capacité combat d'armure trouvée dans les sources auditées |
 | `myths_of_the_sea 1.3.0` | vitesse aquatique + passif Bake Kujira | indépendant | moyen/élevé | conserver Abaia; revoir immunité de ciblage des morts-vivants |
 | `dungeonnowloading 2.2+1.21.11-mmo.b10` | bonus complet Spawner: invocation périodique | indépendant | moyen | audit du port exact requis avant modification |
@@ -25,8 +25,8 @@ En revanche, un équipement qui accorde directement un sort, une capacité activ
 | `rpg-minibosses 1.7.0+1.21.11.b3` | ArmorSetConfig / RPG Series | natif | faible | référence, pas cible principale |
 | `nightreign_armor 1.6.1+1.21.11-fabric.b2` | non confirmé sur port exact | non confirmé | inconnu | bytecode exact requis |
 | `remains_cave 1.0.0+1.21.11-mmo.b3` | non confirmé sur port exact | non confirmé | inconnu | bytecode exact requis |
-| `haute_capitale_metiers 0.1.0.b12` | mod privé HC | non confirmé | inconnu | retrouver source/JAR exact avant modification |
-| `death_knights 1.0.0` | port 1.21.11 spécifique | à vérifier | moyen | audit séparé du port exact |
+| `haute_capitale_metiers 0.1.0.b12` | aucun système/classe d'armure dans le JAR exact | sans objet | nul | sortir du périmètre |
+| `death_knights 1.0.0` port HC 1.21.11 | `ArmorSetConfig` / RPG Series confirmé dans le JAR exact | natif | faible | sortir du périmètre tiers; simple non-régression |
 
 ## Références d'équilibrage RPG Series
 
