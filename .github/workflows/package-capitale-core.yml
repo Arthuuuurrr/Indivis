@@ -28,6 +28,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: capitale_core_1.5.6-RC9AR_5_NEW_IMPERIAL_CITIES_FULL
-          path: capitale-core-INDIVIS-BIOMES-FULL.zip
+          path: capitale_core_1.5.6-RC9AR_5_NEW_IMPERIAL_CITIES_FULL.zip
           if-no-files-found: error
           retention-days: 7
