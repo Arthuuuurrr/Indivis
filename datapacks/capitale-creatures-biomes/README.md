@@ -1,6 +1,31 @@
-# Capitale Creatures — Biomes BETA 0.15
+# Capitale Creatures — Biomes BETA 0.16
 
 Minecraft 1.21.11 / Fabric.
+
+
+## BETA 0.16 — Remapping du spawnpool sur les biomes culturels
+
+Cette passe ne modifie **ni les weights ni les tailles de groupe**. Elle remappe d'abord les habitats du spawnpool existant sur la géographie culturelle validée afin de tester séparément la répartition et la densité.
+
+### Tags culturels
+
+- `#capitale_creatures:culture_empire` : `plains`, `forest`, `taiga`, `jungle`, `windswept_gravelly_hills`, `snowy_slopes`.
+- `#capitale_creatures:culture_elves` : `sunflower_plains`, `cherry_grove`, `meadow`.
+- `#capitale_creatures:culture_nordics` : `snowy_plains`, `snowy_taiga`, `ice_spikes`.
+- `#capitale_creatures:culture_dwarves` : `windswept_hills`, `grove`, `stony_peaks`, `jagged_peaks`.
+- `#capitale_creatures:culture_orcs_provisional` : `desert` + variantes de `badlands` ; palette provisoire jusqu'au verrouillage du territoire orc.
+- `#capitale_creatures:culture_corruption` : `capitale:donjon` + `indivis:corruption`.
+
+### Effets sur les habitats existants
+
+- les forêts tempérées deviennent `forest` (Empire) + `cherry_grove` (Elfes) ;
+- les forêts générales deviennent `forest`, `taiga`, `cherry_grove`, `snowy_taiga`, `grove` ;
+- la jungle du pool devient uniquement `minecraft:jungle`, conforme au biome impérial de frontière ;
+- les pools froids sont limités aux biomes culturels froids terrestres et n'incluent plus rivières/océans gelés ;
+- les règles historiques « partout » (chouette, ours noir, aigle, escargot) utilisent désormais `#capitale_creatures:cultural_surface_land` au lieu de `all_overworld`, donc plus de spawn dans océans, grottes, Deep Dark, villes ou corruption ;
+- les choix historiques sont conservés, notamment le fennec en forêt, les variantes de dinos exclues et les répartitions jungle/désert/badlands.
+
+Les villes restent entièrement sans spawn naturel. Aucun nouveau mob Lands of Icaria, Myths of the Sea, Mythika, etc. n'est ajouté dans cette passe.
 
 ## BETA 0.15 — Cinq nouvelles villes impériales safe
 
