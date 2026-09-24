@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "controller_version": "1.2.14",
+  "controller_version": "1.2.22",
   "config": {
     "enabled": true,
     "interval_ticks": 900,
@@ -24,6 +24,11 @@
       "indivis:avaleiv",
       "indivis:skarnfjord",
       "indivis:durak_vor",
+      "indivis:clos_des_ormes",
+      "indivis:sombrefleche",
+      "indivis:sillons_d_or",
+      "indivis:port_levant",
+      "indivis:blanche_fleche",
       "minecraft:river",
       "minecraft:frozen_river",
       "minecraft:ocean",
@@ -63,7 +68,7 @@
     "One random Overworld player is considered per check, so event frequency does not scale linearly with player count.",
     "The event checks every 45 seconds with 20% chance after cooldown; default successful patrol spacing averages about 9-10 minutes in eligible conditions.",
     "The event searches loaded surface positions only and rejects water.",
-    "All city biomes, capitale:donjon, indivis:corruption, rivers and ocean variants are explicitly excluded from patrol events.",
+    "All fourteen city biomes, capitale:donjon, indivis:corruption, rivers and ocean variants are explicitly excluded from patrol events.",
     "Nearby patrol cap is 16 combat orcs within 96 blocks, allowing up to roughly two patrol groups to coexist without runaway accumulation.",
     "1.2.14 clears Autonomous Orc Mobs persistence on patrol members so patrols can despawn naturally when players leave."
   ]
