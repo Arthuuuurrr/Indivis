@@ -116,6 +116,13 @@ deployed:
       deployed: "capitale_abilities.zip"
 
 source_reference:
+  capitale_creatures_bundle:
+    version: "1.2.17"
+    source_artifact: "capitale_creatures_bundle-1.2.17-fabric-1.21.11-CITY-SAFE-ORC-PATROLS.jar"
+    sha256: "9c2837193ee3cabfd81d41ff8d1f49e4aec1f70a8a557d3383097ecf41720c94"
+    git_patch_source: "tools/patches/PatchOrcPatrolCityGuard.java"
+    validation_doc: "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
+    status: "candidate delivered; replaces deployed 1.2.16 after server validation"
   capitale_core:
     version: "1.5.6-RC9AO"
     source_archive: "capitale_core_1_5_6_RC9AO.zip"
