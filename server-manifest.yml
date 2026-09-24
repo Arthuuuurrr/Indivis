@@ -124,10 +124,11 @@ source_reference:
     validation_doc: "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
     status: "candidate delivered; replaces deployed 1.2.16 after server validation"
   capitale_core:
-    version: "1.5.6-RC9AO"
-    source_archive: "capitale_core_1_5_6_RC9AO.zip"
-    sha256: "e5b06cd7ae0b9356782c30e3813a3170605a4ec20276edf0789c54331905b521"
+    version: "1.5.6-RC9AQ"
+    source_archive: "capitale_core_1.5.6-RC9AQ_IND1VIS_BIOMES_FULL.zip"
+    sha256: "b8ca60dd2ed5b1bc47f043eb93b64d84911ea19b4616dd603c002468cc0050e3"
     git_import: "complete"
+    status: "candidate delivered; fixes 1.21.11 pack metadata rejected in RC9AP"
   capitale_skills:
     version: "0.10.19-RC2F"
     source_archive: "capitale_skills_BETA_0_10_19_RC2F_TREE_HARD_RESTORE.zip"
