@@ -1,0 +1,33 @@
+name: Package capitale-creatures-biomes
+
+on:
+  push:
+    branches:
+      - feature/indivis-corruption-biome
+    paths:
+      - '.github/workflows/package-capitale-creatures-biomes.yml'
+      - 'datapacks/capitale-creatures-biomes/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Build complete datapack ZIP
+        run: |
+          cd datapacks/capitale-creatures-biomes
+          zip -r ../../capitale_creatures_biomes_BETA_0_13.zip .
+
+      - name: Upload complete datapack
+        uses: actions/upload-artifact@v4
+        with:
+          name: capitale_creatures_biomes_BETA_0_13
+          path: capitale_creatures_biomes_BETA_0_13.zip
+          if-no-files-found: error
+          retention-days: 7
