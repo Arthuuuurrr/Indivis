@@ -20,10 +20,10 @@ présents sur le poste de développement**, pas déclarés. Chemin de référenc
 |---|---|---|---|---|---|
 | haute-capitale-dialogue | b7 | b7 | non | #59, #20, #21, #72 | ⛏️ |
 | haute-capitale-quetes (mod) | b3 | serveur b3 / client b2 | non | #33, #72 | ⛏️ |
-| hc_quetes (datapack) | **b10** | non suivi | non | **aucune** | ⛏️ |
+| hc_quetes (datapack) | **b10** | b8 recensé dans #72 | non | #33, #72 | ⛏️ |
 | haute-capitale-spawns | b6 | non suivi | non | #72 | ⛏️ |
 | haute-capitale-party | b9 | non suivi | non | #72 | ⛏️ |
-| dungeonz-hc (moteur d'instances) | **b23** | non suivi | non | #32 | ⛏️ |
+| dungeonz (moteur d'instances) | b23 | non déployé | non | #32, #72 | ⛏️ |
 | capitale-prison-glace | b6 | non suivi | non | #32 | ⛏️ |
 | haute-capitale-metiers | b12 | non suivi | non | #72 | ⛏️ |
 | haute_capitale_fusils | b3 | b3 | **oui** | #3, #4, #72 | ⛏️ |
@@ -44,43 +44,40 @@ et non déployés.
 Conséquence : l'écart entre la production et la source de référence est de deux builds,
 et non « binaire hashé » comme indiqué actuellement dans le registre.
 
-### 2. `dungeonz-hc b23` absent de la liste d'import de #72
+### 2. Datapack `hc_quetes` — divergence b8 → b10
 
-Le moteur de donjons instanciés est suivi **en tant que fonctionnalité** par #32, mais
-son artefact ne figure pas dans la checklist d'import de #72, contrairement à tous les
-autres modules Haute Capitale. Il s'agit d'un oubli de recensement, pas d'un travail
-inexistant.
+#72 recense `hc_quetes-0.1.0.b8.zip` dans les datapacks internes à inventorier. Le poste
+de développement contient **b10**. Il s'agit donc d'un écart de deux builds à rattraper à
+l'import, pas d'une absence de suivi.
 
-### 3. Datapack `hc_quetes b10` non recensé
+`datapacks/` ne contient pas encore ce datapack (`capitale-abilities`, `capitale-core`,
+`capitale-creatures-biomes`, `capitale-skills`, `capskills`, `deployed/`).
 
-`datapacks/` contient `capitale-abilities`, `capitale-core`, `capitale-creatures-biomes`,
-`capitale-skills`, `capskills` et `deployed/`. Le datapack de quêtes `hc_quetes`
-(build b10) n'y figure pas et n'apparaît dans aucune issue — alors que le mod
-`haute-capitale-quetes` qui le consomme est, lui, bien suivi.
+### 3. Moteur d'instances — deux noms pour un seul composant
 
-## Préalable bloquant à #72
+#72 le liste sous `dungeon2-hc b23`, l'artefact local s'appelle
+`dungeonz-hc-1.3.0+1.21.11.hc.b23.jar`. Vérification faite sur le `fabric.mod.json` du
+JAR : `id = dungeonz`, `name = DungeonZ (portage Haute Capitale)`,
+`version = 1.3.0+1.21.11.hc.b23`.
 
-Le dépôt est **public** (`visibility: PUBLIC`) et ne contient **aucun fichier LICENSE**.
+C'est bien **le même composant**, au même build. Nom canonique retenu : **`dungeonz`**,
+artefact `dungeonz-hc-1.3.0+1.21.11.hc.b23.jar`. À uniformiser dans #72.
 
-Or la checklist d'import de #72 mélange deux catégories juridiquement distinctes :
+## Provenance technique des modules
 
-- les **modules Haute Capitale** écrits pour le projet — leur import ne pose aucun
-  problème ;
-- les **forks de mods tiers** (Spell Engine HC, Spell Power HC, Arsenal HC,
-  Hazennstuff HC, Haute Capitale RPG, Witcher Class HC) — les mods amont
-  correspondants sont sous licence *All Rights Reserved*. Importer leurs sources dans
-  un dépôt public constitue une redistribution.
+Plusieurs modules sont des portages ou forks partis d'une base tierce, puis largement
+modifiés, réécrits et adaptés pour Indivis : Spell Engine HC, Spell Power HC, Arsenal HC,
+Hazennstuff HC, Haute Capitale RPG, Witcher Class HC, `dungeonz`,
+`haute-capitale-pirates`, `hc-necromancer`.
 
-Le même point vaut pour certains modules Haute Capitale construits à partir de mods
-tiers ARR (`haute-capitale-pirates`, `hc-necromancer`).
-
-Ce constat ne remet pas en cause l'objectif de #72 ; il demande simplement de trancher
-au préalable entre : passer le dépôt en privé, scinder les forks dans un dépôt privé
-séparé, ou limiter l'import aux modules écrits pour le projet.
+Cette information est conservée à titre **technique** — elle aide à savoir où chercher un
+comportement amont lors d'un débogage, et quelle version de base a servi de départ. Le
+versionnement de ces sources dans le dépôt est arbitré au niveau projet.
 
 ## Suite proposée
 
-1. corriger `docs/MODULES.md` sur les trois divergences ci-dessus ;
-2. ajouter `dungeonz-hc b23` et `hc_quetes b10` à la checklist de #72 ;
-3. trancher la question de visibilité du dépôt avant tout import de sources de forks ;
-4. importer en priorité les modules sans dépendance ARR.
+1. uniformiser le nom du moteur d'instances sur `dungeonz` dans #72 ;
+2. porter `hc_quetes` de b8 à b10 dans la checklist de #72 ;
+3. importer les sources par lots, en commençant par les modules déjà construits et
+   stables (`dialogue b7`, `spawns b6`, `party b9`, `metiers b12`, `fusils b3`) ;
+4. déployer ou archiver `haute-capitale-rpg b4`, la production étant encore en b2.
