@@ -1,0 +1,3 @@
+{ "category": "canon", "name": { "translate": "item.haute_capitale_fusils.canon_evase" }, "item": "haute_capitale_fusils:canon_evase",
+  "description": [ { "text": "Bouche en trompette : plus de plombs, moins de portée." } ],
+  "stats": { "projectile_count": 3, "damage": { "op": "mul", "value": 0.25 }, "spread": 3, "range": { "op": "mul", "value": -0.25 } } }

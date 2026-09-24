@@ -1,0 +1,3 @@
+{ "category": "mecanisme", "name": { "translate": "item.haute_capitale_fusils.huile_armurier" }, "item": "haute_capitale_fusils:huile_armurier",
+  "description": [ { "text": "Un mécanisme bien huilé se recharge plus vite." } ],
+  "stats": { "reload_speed": { "op": "mul", "value": 0.25 } } }

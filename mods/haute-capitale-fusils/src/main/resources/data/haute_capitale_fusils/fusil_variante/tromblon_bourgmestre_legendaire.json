@@ -1,0 +1,6 @@
+{ "profile": "haute_capitale_fusils:tromblon", "rarity": "legendaire",
+  "name": { "text": "Tromblon du Bourgmestre" },
+  "lore": [ { "text": "Laiton ciselé, poudre parfumée." }, { "text": "Chaque plomb brûle." } ],
+  "stats": { "damage": { "op": "mul", "value": 0.2 }, "projectile_count": 2, "reload_speed": { "op": "mul", "value": 0.3 } },
+  "effects": [ { "type": "haute_capitale_fusils:ignite", "ticks": 40 } ],
+  "skill_effects": { "tir_explosif": [ { "type": "haute_capitale_fusils:stat", "stat": "damage", "op": "mul", "value": 0.25 } ] } }

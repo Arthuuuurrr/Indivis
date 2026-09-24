@@ -1,0 +1,4 @@
+{ "profile": "haute_capitale_fusils:mousquet", "rarity": "rare",
+  "name": { "text": "Mousquet du Vétéran" },
+  "lore": [ { "text": "Crosse polie par vingt campagnes." } ],
+  "stats": { "reload_speed": { "op": "mul", "value": 0.2 }, "spread": { "op": "mul", "value": -0.2 } } }
