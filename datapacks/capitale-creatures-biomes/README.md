@@ -1,6 +1,19 @@
-# Capitale Creatures — Biomes BETA 0.14
+# Capitale Creatures — Biomes BETA 0.15
 
 Minecraft 1.21.11 / Fabric.
+
+## BETA 0.15 — Cinq nouvelles villes impériales safe
+
+Ajoute à la protection urbaine :
+- `indivis:blanche_fleche` ;
+- `indivis:port_levant` ;
+- `indivis:sillons_d_or` ;
+- `indivis:sombrefleche` ;
+- `indivis:clos_des_ormes`.
+
+Ces cinq biomes rejoignent `#capitale_creatures:city_no_spawn` et `exclude_biomes` des patrouilles orques. Avec le bundle 1.2.22, ils sont également ciblés par RegistryKey exact dans le `clearSpawns()` POST_PROCESSING et par le garde-fou dur des patrouilles.
+
+Leur JSON dans `capitale_core 1.5.6-RC9AR` déclare en plus les huit catégories de spawners vides.
 
 ## BETA 0.14 — Villes sans spawn naturel
 
