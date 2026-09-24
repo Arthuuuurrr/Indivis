@@ -1,6 +1,16 @@
-# Capitale Creatures — Biomes BETA 0.13
+# Capitale Creatures — Biomes BETA 0.14
 
 Minecraft 1.21.11 / Fabric.
+
+## BETA 0.14 — Villes sans spawn naturel
+
+Ajoute `#capitale_creatures:city_no_spawn` pour la Haute Capitale et les huit biomes urbains `indivis:*` actuels.
+
+Le bundle 1.2.18 utilise ce tag dans le sélecteur de son `clearSpawns()` en phase `POST_PROCESSING`. Les villes sont donc nettoyées des entrées de spawn naturel ajoutées par Minecraft ou par les mods, sans être ajoutées à `#capitale_creatures:all_overworld` et sans recevoir ensuite la faune de l'Overworld.
+
+La protection des patrouilles orques reste séparée et est conservée depuis le bundle 1.2.17.
+
+`capitale:donjon` et `indivis:corruption` ne sont volontairement pas inclus dans ce tag.
 
 ## BETA 0.13 — Patrouilles orques sécurisées par biome
 
