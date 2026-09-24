@@ -1,0 +1,125 @@
+plugins {
+    id 'fabric-loom' version '1.17.20'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+// Le code client vit dans son propre source set : sur un serveur dédié il n'est
+// même pas présent, aucune classe d'écran ou de caméra ne peut y être chargée
+// par accident.
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        "haute_capitale_dialogue" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+
+    runConfigs {
+        client {
+            runDir "run-client"
+            // Autotest en jeu : ./gradlew runClient -PdialogueSelfTest
+            // Le client entre dans le monde « hcdtest », joue le scénario et s'arrête seul.
+            if (project.hasProperty("dialogueSelfTest")) {
+                programArgs("--quickPlaySingleplayer", "hcdtest")
+                vmArgs("-Dhcd.selftest=true")
+            }
+            // Banc d'essai multijoueur : ordres du serveur au client (voir DevTools).
+            if (project.hasProperty("dialogueDevTools")) {
+                vmArgs("-Dhcd.devtools=true")
+            }
+        }
+        server {
+            if (project.hasProperty("dialogueDevTools")) {
+                vmArgs("-Dhcd.devtools=true")
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // Easy NPC (MIT) — dépendance seulement, ni modifié ni redistribué.
+    modImplementation files("libs/${project.easynpc_jar}")
+
+    // Haute Capitale — RPG : le module caméra (CameraFocus, CameraOverrideManager).
+    modImplementation files("libs/${project.rpg_jar}")
+
+    // Better Combat (ARR) : compilation seule, pour son interface publique
+    // MinecraftClient_BetterCombat (cancelUpswing). Classe de compat isolée.
+    modCompileOnly files("libs/${project.bettercombat_jar}")
+
+    // Spell Engine (GPL-3.0) : compilation seule, pour SpellEvents.CASTING_ATTEMPT.
+    modCompileOnly("net.spell_engine:spell_engine-fabric:${project.spell_engine_version}") { transitive = false }
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release = 21
+}
+
+java {
+    withSourcesJar()
+}
+
+// Harnais de vérification de la logique pure (main() classique, pas JUnit).
+sourceSets {
+    test {
+        compileClasspath += sourceSets.main.compileClasspath + sourceSets.main.output + sourceSets.client.compileClasspath + sourceSets.client.output
+        runtimeClasspath += sourceSets.main.runtimeClasspath + sourceSets.main.output + sourceSets.client.runtimeClasspath + sourceSets.client.output
+    }
+}
+
+tasks.register('runCadrageTest', JavaExec) {
+    group = 'verification'
+    description = 'Vérifie le cadrage de la caméra de dialogue avec une collision simulée.'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'net.hautecapitale.dialogue.CadrageTest'
+    defaultCharacterEncoding = 'UTF-8'
+}
+
+tasks.register('runDialogueTest', JavaExec) {
+    group = 'verification'
+    description = 'Vérifie les codecs, l éligibilité, le cadrage et les états.'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'net.hautecapitale.dialogue.DialogueTest'
+    defaultCharacterEncoding = 'UTF-8'
+}
+
+tasks.named('test') {
+    enabled = false
+}
+tasks.register('runCaptureTest', JavaExec) {
+    group = 'verification'
+    description = 'Vérifie le tri des messages de chat en répliques et réponses.'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'net.hautecapitale.dialogue.CaptureTest'
+    defaultCharacterEncoding = 'UTF-8'
+}
+
+tasks.named('check') {
+    dependsOn 'runDialogueTest', 'runCadrageTest', 'runCaptureTest'
+}
