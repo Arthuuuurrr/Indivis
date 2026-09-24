@@ -1,0 +1,92 @@
+HAUTE CAPITALE — HAZENNSTUFF SETFIX1
+Date: 2026-09-24
+Target: Fabric / Minecraft 1.21.11 / Java 21
+
+BASE
+hazennstuff 1.0.0-b4+hc.spellcompat1
+SHA-256 original:
+88beb1a43a5d3f4a2ee5f4391937cf2dc0a67e6d8a587f2cbc6203e85846a748
+
+CANDIDATE
+hazennstuff-fabric-1.21.11-1.0.0-b4-HC-SPELLCOMPAT1-SETFIX1.jar
+Version metadata: 1.0.0-b4+hc.spellcompat1.setfix1
+SHA-256:
+c727bc949077f6a3262767e4dff97d46ab6163fb8e1c6aac2f0d7ed43366a651
+HC helper class major: 65 (Java 21)
+
+SCOPE
+SETFIX1 does NOT change raw armor values, ARMOR40 damage formula, per-piece spell power values, weapon stats, Spell Engine/Spell Power binaries, or CapSkills gating.
+
+PARTIAL / VARIANT SET DETECTION
+Original Hazenn logic required HEAD+CHEST+LEGS+FEET with the exact same set key.
+SETFIX1 retains that default and adds explicit logical-set rules for:
+- Bishop of Deceit: HEAD+CHEST
+- Necromancer: HEAD+CHEST+LEGS
+- Nameless One: HEAD+CHEST+LEGS
+- Chlorophyte: role head + Chlorophyte CHEST/LEGS/FEET
+- Mothic Witch: Mothic HEAD/LEGS/FEET + normal or Nerfed Mothic CHEST
+- legacy Fireblossom: crown/helmet head variant + matching legacy body
+- Gecko legacy Fireblossom: same explicit head/body rule
+
+Harness PASS:
+ordinary full true
+ordinary incomplete false
+Bishop valid true / wrong chest false
+Necromancer valid true
+Nameless One valid true
+Chlorophyte alias true / wrong body false
+Mothic Nerfed chest alias true
+legacy Fireblossom crown true
+Gecko legacy Fireblossom helmet true
+wrong Fireblossom head false
+
+FIREBLOSSOM WARRIOR
+Both ARMOR and ARMOR_TOUGHNESS operations in HnSEffects.lambda$static$6 are changed from ADD_MULTIPLIED_BASE to ADD_VALUE.
+Values remain 2.0:
+- +2 ARMOR
+- +2 ARMOR_TOUGHNESS
+
+TYRANT'S GRACE REMAP
+Exactly 36 armor-piece registrations are remapped:
+- Cryogenic Ruler -> MAGE_SET_BONUS
+- Dead King -> SUMMONER_SET_BONUS
+- Garments of the First Flamebearer -> FIREBLOSSOM_RULER_EFFECT
+- Legionnaire -> SWORDMASTER_SET_BONUS
+- Legionnaire Ruler -> SWORDMASTER_SET_BONUS
+- Soul Legionnaire Ruler -> SWORDMASTER_SET_BONUS
+- Legionnaire Commander -> SWORDMASTER_SET_BONUS
+- Pyrium -> SWORDMASTER_SET_BONUS
+- Pyrium Battlemage -> MAGE_SET_BONUS
+
+Candidate HnSItems armor registrations contain 0 TYRANTS_GRACE_EFFECT references.
+
+BINARY DELTA
+Added:
+- net/hazen/hazennstuff/hc/HcSetRules.class
+- net/hazen/hazennstuff/hc/HcSetRules$Access.class
+
+Changed:
+- fabric.mod.json
+- net/hazen/hazennstuff/item/HnSGeoArmorItem.class
+- net/hazen/hazennstuff/registry/HnSEffects.class
+- net/hazen/hazennstuff/registry/HnSItems.class
+
+Removed: none
+Unexpected Minecraft stub classes added: none
+ZIP integrity: PASS
+
+DEFERRED
+No numerical nerf is applied yet to Dreadsteel Knight, Permafrost Prince, Frostbite Hunter/Knight or divergent visual variants. Those require tier/progression comparison first.
+
+RUNTIME CHECKLIST
+1. Replace HC-SPELLCOMPAT1 with SETFIX1 on client+server; do not keep both.
+2. Confirm startup without crash.
+3. Confirm raw armor values are unchanged from validated ARMOR40.
+4. Test Bishop 2-piece and Necromancer/Nameless 3-piece activation.
+5. Test Chlorophyte role-head aliases.
+6. Confirm an ordinary incomplete 4-piece set does not activate.
+7. Confirm Fireblossom Warrior grants +2 armor/+2 toughness once.
+8. Confirm Cryogenic/Dead King/Legionnaire/Pyrium families use specialized bonuses and no stray +100% arrow/FIRE Tyrant bonus.
+9. Reconnect/change dimension and verify no duplicate/stuck effect.
+
+STATUS: STATIC PASS; runtime validation required before promotion.
