@@ -127,11 +127,11 @@ source_reference:
     sha256: "109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4"
     git_import: "complete"
   capitale_creatures_biomes:
-    version: "BETA-0.12"
-    source_archive: "capitale_creatures_biomes_BETA_0_12.zip"
-    sha256: "ff2e97877b97c331c362062ccccf64ad3141269f23a900e36ce98aa357f45c19"
+    version: "BETA-0.13"
+    source_archive: "capitale_creatures_biomes_BETA_0_13.zip"
+    sha256: "c06f36731836951ce0601228e2dfaa3fb56eaef483a5ec63bb15c9c5d8a9e701"
     git_import: "complete"
-    status: "not confirmed deployed"
+    status: "not confirmed deployed — required for city-safe orc patrol exclusions"
 
 warnings:
   - "Server and client custom mod versions must be aligned before release."
