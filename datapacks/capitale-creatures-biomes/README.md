@@ -1,6 +1,27 @@
-# Capitale Creatures — Biomes BETA 0.12
+# Capitale Creatures — Biomes BETA 0.13
 
 Minecraft 1.21.11 / Fabric.
+
+## BETA 0.13 — Patrouilles orques sécurisées par biome
+
+Cette version conserve l'équilibrage de BETA 0.12 et corrige le filtrage des patrouilles.
+
+Les patrouilles sont maintenant explicitement exclues de :
+- `capitale:capitale` ;
+- `capitale:donjon` ;
+- `indivis:corruption` ;
+- `indivis:lion_port` ;
+- `indivis:clairval` ;
+- `indivis:haute_rive` ;
+- `indivis:ilystara` ;
+- `indivis:sylvarhen` ;
+- `indivis:avaleiv` ;
+- `indivis:skarnfjord` ;
+- `indivis:durak_vor` ;
+- toutes les rivières vanilla ;
+- tous les océans et océans profonds vanilla.
+
+Le contrôleur du bundle vérifie `exclude_biomes` au biome du joueur, au point d'ancrage de la patrouille et à la position exacte de chaque membre. Cette correction doit donc être déployée avec le datapack créatures ; le seul remplacement de `capitale-core` ne modifie pas la configuration lue par ce contrôleur.
 
 ## BETA 0.12 — Orcs plus présents
 
@@ -35,7 +56,7 @@ En conditions éligibles, cela donne environ une patrouille toutes les **9–10 
 Les patrouilles restent :
 - en surface uniquement ;
 - hors de l'eau ;
-- exclues de `capitale:donjon` ;
+- exclues des biomes urbains, de `capitale:donjon`, de `indivis:corruption`, des rivières et des océans ;
 - limitées aux chunks déjà chargés.
 
 ## Architecture conservée
