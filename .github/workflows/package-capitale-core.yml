@@ -22,12 +22,12 @@ jobs:
       - name: Build complete datapack ZIP
         run: |
           cd datapacks/capitale-core
-          zip -r ../../capitale_core_1.5.6-RC9AR_5_NEW_IMPERIAL_CITIES_FULL.zip .
+          zip -r ../../capitale_core_1.5.6-RC9AS_6_NEW_IMPERIAL_SETTLEMENTS_FULL.zip .
 
       - name: Upload complete core
         uses: actions/upload-artifact@v4
         with:
-          name: capitale_core_1.5.6-RC9AR_5_NEW_IMPERIAL_CITIES_FULL
-          path: capitale_core_1.5.6-RC9AR_5_NEW_IMPERIAL_CITIES_FULL.zip
+          name: capitale_core_1.5.6-RC9AS_6_NEW_IMPERIAL_SETTLEMENTS_FULL
+          path: capitale_core_1.5.6-RC9AS_6_NEW_IMPERIAL_SETTLEMENTS_FULL.zip
           if-no-files-found: error
           retention-days: 7
