@@ -23,7 +23,7 @@ JAR validé :
 `MMOMusicZones_1.2.13_FULL.jar`
 
 SHA-256 :
-`455a1caa0a704868373ff91acbced22a3926f7b8a8bae15a6b698fd9c7ae8c6b`
+`d703bd3fd4c4e62529a4194650200adedd9916126f401ce9486ea92cca298da7`
 
 Validation :
 - archive ZIP/JAR : OK
