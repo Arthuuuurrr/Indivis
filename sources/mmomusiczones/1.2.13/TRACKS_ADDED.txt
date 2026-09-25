@@ -1,0 +1,12 @@
+MMOMusicZones 1.2.13 — pistes ajoutées
+
+VILLE:
+42, 43, 44, 45, 46, 47, 48, 49, 50,
+51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+61, 62, 63, 64, 65, 66, 67, 68, 69, 70
+
+NATURE:
+37, 38, 39, 40
+
+Les numéros sont conservés tels qu'ils ont été fournis.
+Aucune de ces nouvelles pistes VILLE n'est encore liée à un biome urbain dans CityBiomeMusic.
