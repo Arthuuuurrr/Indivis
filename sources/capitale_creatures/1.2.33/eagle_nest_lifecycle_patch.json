@@ -1,0 +1,20 @@
+{
+  "version": "1.2.33",
+  "base": "1.2.32",
+  "issue": 116,
+  "cubeanimals": {
+    "natural_nest_check_ticks": 6000,
+    "empty_natural_nest_action": "remove",
+    "post_hatch_check_ticks": 6000,
+    "player_placed_persistent": true,
+    "egg_harvest_marks_player_managed": true,
+    "patched_classes": [
+      "net/suprk/ufauna/block/custom/EagleNest.class",
+      "net/suprk/ufauna/entity/custom/EagleEntity.class"
+    ]
+  },
+  "sha256": {
+    "bundle": "cb430df199651d6a914f7ba2d6d447e7a501d49c057f06d12dbb630685f49b78",
+    "nested_cubeanimals": "69d9e3b966c766b9673e07a407588c30b10790ccb109b90ce30684af49268037"
+  }
+}
