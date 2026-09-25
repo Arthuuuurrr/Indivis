@@ -117,9 +117,9 @@ deployed:
 
 source_reference:
   capitale_creatures_bundle:
-    version: "1.2.23"
-    source_artifact: "capitale_creatures_bundle-1.2.23-fabric-1.21.11-FAMILY-WEIGHT-AGGRESSIVE-POOL.jar"
-    sha256: "9d45a304b10db815e44234f242062c01455fbcdc99ff7dd0a027744af951e58d"
+    version: "1.2.24"
+    source_artifact: "capitale_creatures_bundle-1.2.24-fabric-1.21.11-AUBECOURT-15-CITY-SAFE.jar"
+    sha256: "d997fcdbd5bc62f4ab3919a159626e70994753dd3a38a7d4caa68d6fe5d80e88"
     git_patch_sources:
       - "tools/patches/PatchOrcPatrolCityGuard.java"
       - "tools/patches/PatchCityNoSpawn.java"
@@ -128,6 +128,7 @@ source_reference:
       - "tools/patches/PatchBossPoi121.java"
       - "tools/patches/PatchCities122.java"
       - "tools/patches/PatchCreatures123FamilyAndChaosBalance.java"
+      - "tools/patches/PatchCities124.java"
     validation_docs:
       - "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
       - "docs/architecture/CITY_NO_SPAWN_GUARD_1_2_18.md"
@@ -135,24 +136,25 @@ source_reference:
       - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_20.md"
       - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_21_POI_BOSS.md"
       - "docs/architecture/IMPERIAL_CITY_BIOMES_RC9AR.md"
-    status: "candidate built and archive-tested; retains 14-city safety, adds family-level variant weights and first aggressive-pool balance pass; not deployed"
+      - "docs/architecture/AUBECOURT_RC9AS.md"
+    status: "candidate built and archive-tested; retains BETA 0.17/1.2.23 aggressive-pool balance and extends exact city safety to Aubecourt (15 protected biomes); not deployed"
   capitale_core:
-    version: "1.5.6-RC9AR"
-    source_archive: "capitale_core_1.5.6-RC9AR_5_NEW_IMPERIAL_CITIES_FULL.zip"
-    sha256: "8cc7425e07e9d898f43260a2f65e88b45f69bc38a19a34e6a8740485e173b5eb"
+    version: "1.5.6-RC9AS"
+    source_archive: "capitale_core_1.5.6-RC9AS_6_NEW_IMPERIAL_SETTLEMENTS_FULL.zip"
+    sha256: "85708effcfd363a038fcacdbb9df71a06c5a087b27f6f3a9c2a170446329b348"
     git_import: "complete"
-    status: "candidate delivered; adds five imperial city biomes with empty spawn tables"
+    status: "candidate delivered; adds Aubecourt as sixth new imperial settlement with empty spawn tables"
   capitale_skills:
     version: "0.10.19-RC2F"
     source_archive: "capitale_skills_BETA_0_10_19_RC2F_TREE_HARD_RESTORE.zip"
     sha256: "109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4"
     git_import: "complete"
   capitale_creatures_biomes:
-    version: "BETA-0.17"
-    source_archive: "capitale_creatures_biomes_BETA_0_17.zip"
-    sha256: "82b0579abd87965d6e3bf6bd7a8feae639bb1cda31f31d2372c5e8bad3b05ae3"
+    version: "BETA-0.18"
+    source_archive: "capitale_creatures_biomes_BETA_0_18.zip"
+    sha256: "a5c6c470f6dd1f4ada8ff19661820b8efe2a65ca6a9f3cc68629b0d49cb37cd3"
     git_import: "complete"
-    status: "candidate built; BETA 0.16 cultural remap retained, family weights and first aggressive-pool balance pass added; not deployed"
+    status: "candidate built; retains BETA 0.17 cultural/family-weight/aggressive-pool balance and adds Aubecourt to city safety; not deployed"
 
 warnings:
   - "Server and client custom mod versions must be aligned before release."
