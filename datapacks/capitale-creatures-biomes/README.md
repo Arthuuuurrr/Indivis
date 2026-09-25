@@ -1,6 +1,17 @@
-# Capitale Creatures — Biomes BETA 0.17
+# Capitale Creatures — Biomes BETA 0.18
 
 Minecraft 1.21.11 / Fabric.
+
+## BETA 0.18 — Aubecourt protégé comme implantation impériale
+
+Conserve intégralement le remapping culturel et l'équilibrage du pool agressif de BETA 0.17.
+
+Ajoute `indivis:aubecourt` :
+- à `#capitale_creatures:city_no_spawn` ;
+- à `exclude_biomes` des patrouilles orques ;
+- à la protection runtime exacte du bundle 1.2.24.
+
+Le biome `indivis:aubecourt` est défini dans `capitale_core 1.5.6-RC9AS` avec les huit catégories de spawners vides.
 
 
 ## BETA 0.17 — Variantes par famille + première passe du pool agressif
