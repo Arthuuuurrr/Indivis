@@ -1,18 +1,17 @@
 {
   "schema_version": 1,
   "minecraft": "1.21.11",
-  "status": "ACTIVE — BETA 0.17 user cultural-fauna assignments on 1.2.13 ecology + aquatic bridge",
+  "status": "ACTIVE — BETA 0.16 cultural-biome remap on 1.2.13 ecology + aquatic bridge + bounded dungeon orcs",
   "interpretation": {
     "dino_natural_variant": "For Dino Mounts families, natural wild populations use the matching *_hostile entity. Non-hostile variants remain outside natural spawning and can stay reserved for shops/taming.",
-    "weights": "Weights and group sizes remain unchanged in BETA 0.17. 'Rare' cultural notes such as Empire goblins and Nordic mammoths are targets for the next balance pass, not silently altered here.",
+    "weights": "Weights and group sizes are read directly from spawn_profiles_active.json by bundle 1.2.5. The datapack is authoritative.",
     "night_only": "Barn owl biome placement is active; its pre-existing CubeAnimals spawn-placement predicate is preserved. Strict night-only gating will require a dedicated predicate patch if the original predicate does not enforce darkness.",
     "vanilla_policy": "All natural Overworld spawn lists are cleared in POST_PROCESSING, then explicit Haute Capitale fauna is re-added in the SAME phase, after the clear.",
     "marine_policy": "Strict swimming fauna is handled by aquatic_runtime_rules.json. Thornshell remains amphibious and uses thornshell_behavior_rules.json for bottom-walking/shore-exit behavior.",
     "hmobs_policy": "HMobs is bundled in 1.2.12; its original natural weights/groups are reproduced in the authoritative datapack because the Haute Capitale controller clears/rebuilds Overworld spawn lists.",
     "orc_policy": "General Overworld orcs remain event-only through orc_patrol_rules.json. Natural orc populations are restricted to #capitale_creatures:orc_dungeon and bounded by orc_dungeon_rules.json.",
     "cultural_biomes": "BETA 0.16 narrows terrestrial habitat tags to the validated cultural geography: Empire, Elves, Nordics and Dwarves. Desert/badlands remain the provisional Orc dry territory. Cities and corruption are excluded from ordinary wildlife.",
-    "everywhere_surface": "Rules historically described as 'everywhere' now target #capitale_creatures:cultural_surface_land rather than #capitale_creatures:all_overworld. all_overworld stays broad because the controller still needs it for global vanilla/mod spawn clearing.",
-    "user_cultural_fauna": "BETA 0.17 applies the user's preserved cultural-fauna assignments to entities already active. Planned new entities (white unicorn, Aeternae, Capella, Cyclops, Minotaur, Crocotta, Argan Hound, Droughtroot Forest Hag, Revenants, Arachne Drone and Snull) remain inactive until manual validation."
+    "everywhere_surface": "Rules historically described as 'everywhere' now target #capitale_creatures:cultural_surface_land rather than #capitale_creatures:all_overworld. all_overworld stays broad because the controller still needs it for global vanilla/mod spawn clearing."
   },
   "rules": [
     {
@@ -156,19 +155,19 @@
       "remove_existing_spawn_entries_first": false
     },
     {
-      "name": "mystic_direwolf_nordics_no_color2",
+      "name": "mystic_direwolf_forests_no_color2",
       "entities": [
         "dino_mounts_ai:mystic_direwolf_couleur_1_hostile",
         "dino_mounts_ai:mystic_direwolf_couleur_3_hostile",
         "dino_mounts_ai:mystic_direwolf_couleur_4_hostile"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:nordic_predator_habitat"
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
-      "note": "Color 2 deliberately excluded. Preserved user cultural assignment: direwolf in Nordic territory; color 2 remains excluded."
+      "note": "Color 2 deliberately excluded."
     },
     {
       "name": "mystic_managarmr_cold_biomes",
@@ -216,20 +215,19 @@
       "remove_existing_spawn_entries_first": false
     },
     {
-      "name": "mystic_mammoth_color1_nordics",
+      "name": "mystic_mammoth_color1_snowy",
       "entities": [
         "dino_mounts_ai:mystic_mammoth_couleur_1_hostile"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_nordics"
+        "#capitale_creatures:snowy_biomes"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false,
-      "note": "Preserved user cultural assignment: mammoth is a rare Nordic encounter; only color 1 remains allowed."
+      "remove_existing_spawn_entries_first": false
     },
     {
-      "name": "mystic_sabertooth_nordics",
+      "name": "mystic_sabertooth_snowy",
       "entities": [
         "dino_mounts_ai:mystic_sabertooth_couleur_1_hostile",
         "dino_mounts_ai:mystic_sabertooth_couleur_2_hostile",
@@ -237,12 +235,11 @@
         "dino_mounts_ai:mystic_sabertooth_couleur_4_hostile"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_nordics"
+        "#capitale_creatures:snowy_biomes"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false,
-      "note": "Preserved user cultural assignment: sabertooth in Nordic territory."
+      "remove_existing_spawn_entries_first": false
     },
     {
       "name": "mystic_sarcosuchus_jungle_swamp_mangrove",
@@ -381,18 +378,16 @@
       "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "blackbear_empire_nordics",
+      "name": "blackbear_cultural_surface",
       "entities": [
         "cubeanimals:blackbear"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:empire_bear_habitat",
-        "#capitale_creatures:nordic_bear_habitat"
+        "#capitale_creatures:cultural_surface_land"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: bears in Empire and Nordic territories."
+      "remove_existing_spawn_entries_first": true
     },
     {
       "name": "capuchin_jungle",
@@ -419,17 +414,16 @@
       "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "eagle_empire",
+      "name": "eagle_cultural_surface",
       "entities": [
         "cubeanimals:eagle"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_empire"
+        "#capitale_creatures:cultural_surface_land"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: eagle as Imperial fauna."
+      "remove_existing_spawn_entries_first": true
     },
     {
       "name": "fennec_forests",
@@ -444,18 +438,17 @@
       "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "komododragon_jungle_orc_dry",
+      "name": "komododragon_jungle_dry",
       "entities": [
         "cubeanimals:komododragon"
       ],
       "include_biome_tags": [
         "#capitale_creatures:jungle_variants",
-        "#capitale_creatures:culture_orcs_provisional"
+        "#capitale_creatures:desert_and_badlands"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserves older jungle assignment while making desert/badlands explicitly Orc territory."
+      "remove_existing_spawn_entries_first": true
     },
     {
       "name": "marmot_plains_temperate_forests",
@@ -471,57 +464,53 @@
       "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "moose_nordics",
+      "name": "moose_forests",
       "entities": [
         "cubeanimals:moose"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:nordic_ungulate_habitat"
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: moose in Nordic territory."
+      "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "rattlesnake_orc_dry_savanna",
+      "name": "rattlesnake_dry_savanna",
       "entities": [
         "cubeanimals:rattlesnake"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_orcs_provisional",
+        "#capitale_creatures:desert_and_badlands",
         "#capitale_creatures:savanna_variants"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserves older savanna assignment while making desert/badlands explicitly Orc territory."
+      "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "reindeer_nordics",
+      "name": "reindeer_forests",
       "entities": [
         "cubeanimals:reindeer"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:nordic_ungulate_habitat"
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: reindeer in Nordic territory."
+      "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "roedeer_empire",
+      "name": "roedeer_forests",
       "entities": [
         "cubeanimals:roedeer"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:empire_deer_habitat"
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: roe deer in Empire."
+      "remove_existing_spawn_entries_first": true
     },
     {
       "name": "shark_oceans",
@@ -598,125 +587,127 @@
       "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "chaos_babyspider_corruption",
+      "name": "chaos_babyspider_wet_forests",
       "entities": [
         "chaos_mmo_ai:babyspider"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_corruption"
+        "#capitale_creatures:temperate_forests",
+        "#capitale_creatures:jungle_variants",
+        "#capitale_creatures:jungle_swamp_mangrove"
       ],
       "exclude_biome_tags": [],
       "conditions": [
         "MONSTER"
       ],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: terrestrial Chaos mobs are corruption fauna."
+      "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "chaos_bloodygadfly_corruption",
+      "name": "chaos_bloodygadfly_wet_warm",
       "entities": [
         "chaos_mmo_ai:bloodygadfly"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_corruption"
+        "#capitale_creatures:jungle_swamp_mangrove"
       ],
       "exclude_biome_tags": [],
       "conditions": [
         "MONSTER"
       ],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: terrestrial Chaos mobs are corruption fauna."
+      "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "chaos_corpsefly_corruption",
+      "name": "chaos_corpsefly_forests_swamps",
       "entities": [
         "chaos_mmo_ai:corpsefly"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_corruption"
+        "#capitale_creatures:temperate_forests",
+        "#capitale_creatures:jungle_swamp_mangrove"
       ],
       "exclude_biome_tags": [],
       "conditions": [
         "MONSTER"
       ],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: terrestrial Chaos mobs are corruption fauna."
+      "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "chaos_diamondthermite_corruption",
+      "name": "chaos_diamondthermite_dry",
       "entities": [
         "chaos_mmo_ai:diamondthermite"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_corruption"
+        "#capitale_creatures:desert_and_badlands",
+        "#capitale_creatures:savanna_variants"
       ],
       "exclude_biome_tags": [],
       "conditions": [
         "MONSTER"
       ],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: terrestrial Chaos mobs are corruption fauna."
+      "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "chaos_dreadhound_corruption",
+      "name": "chaos_dreadhound_forests_cold",
       "entities": [
         "chaos_mmo_ai:dreadhound"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_corruption"
+        "#capitale_creatures:forests_non_jungle_swamp_savanna",
+        "#capitale_creatures:cold_biomes"
       ],
       "exclude_biome_tags": [],
       "conditions": [
         "MONSTER"
       ],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: terrestrial Chaos mobs are corruption fauna."
+      "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "chaos_firelight_corruption",
+      "name": "chaos_firelight_dry",
       "entities": [
         "chaos_mmo_ai:firelight"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_corruption"
+        "#capitale_creatures:desert_and_badlands",
+        "#capitale_creatures:savanna_variants"
       ],
       "exclude_biome_tags": [],
       "conditions": [
         "MONSTER"
       ],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: terrestrial Chaos mobs are corruption fauna."
+      "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "chaos_maggot_corruption",
+      "name": "chaos_maggot_ground_general",
       "entities": [
         "chaos_mmo_ai:maggot"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_corruption"
+        "#capitale_creatures:plains",
+        "#capitale_creatures:temperate_forests",
+        "#capitale_creatures:jungle_swamp_mangrove"
       ],
       "exclude_biome_tags": [],
       "conditions": [
         "MONSTER"
       ],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: terrestrial Chaos mobs are corruption fauna."
+      "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "capitale_goblin_empire",
+      "name": "capitale_goblin_general",
       "entities": [
         "capitale_entities:goblin"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:culture_empire"
+        "#capitale_creatures:plains",
+        "#capitale_creatures:temperate_forests",
+        "#capitale_creatures:savanna_variants"
       ],
       "exclude_biome_tags": [],
       "conditions": [
         "MONSTER",
         "optional external capitale_entities mod"
       ],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: rare goblins in Empire; rarity weight will be reduced in the balance pass."
+      "remove_existing_spawn_entries_first": true
     },
     {
       "name": "chaos_thornshell_amphibious",
@@ -761,19 +752,18 @@
       "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "deer_empire",
+      "name": "deer_forests",
       "entities": [
         "deermod:deer"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:empire_deer_habitat"
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
       ],
       "exclude_biome_tags": [],
       "conditions": [
         "CREATURE"
       ],
-      "remove_existing_spawn_entries_first": true,
-      "note": "Preserved user cultural assignment: deer in Empire."
+      "remove_existing_spawn_entries_first": true
     },
     {
       "name": "red_panda_jungle",
@@ -790,18 +780,17 @@
       "remove_existing_spawn_entries_first": true
     },
     {
-      "name": "hmobs_brown_bear_empire_nordics",
+      "name": "hmobs_brown_bear_forests_taiga",
       "entities": [
         "hmobs:brown_bear"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:empire_bear_habitat",
-        "#capitale_creatures:nordic_bear_habitat"
+        "#capitale_creatures:hmobs_brown_bear_habitat"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
-      "note": "Reproduces HMobs original IS_FOREST + IS_TAIGA habitat with original weight/group from spawn_profiles_active.json. Cultural remap keeps brown bear in Empire and Nordic territories."
+      "note": "Reproduces HMobs original IS_FOREST + IS_TAIGA habitat with original weight/group from spawn_profiles_active.json."
     },
     {
       "name": "hmobs_lion_savanna",

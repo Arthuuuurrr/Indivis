@@ -1,42 +1,6 @@
-# Capitale Creatures — Biomes BETA 0.17
+# Capitale Creatures — Biomes BETA 0.16
 
 Minecraft 1.21.11 / Fabric.
-
-
-## BETA 0.17 — Affectations culturelles de faune conservées
-
-Cette passe reprend explicitement les affectations culturelles déjà définies par Arthur et les applique aux mobs **déjà actifs** du spawnpool.
-
-### Affectations conservées
-
-- **Empire** : cerf, chevreuil, aigle, ours, gobelins rares.
-- **Elfes** : licorne blanche, Aeternae, Capella.
-- **Nordiques** : renne, élan, ours, loup/direwolf, mammouth rare, sabertooth.
-- **Nains** : Cyclope très rare, Minotaure souterrain.
-- **Orcs** : Komodo, crotale, Crocotta, Argan Hound, Droughtroot Forest Hag.
-- **Corruption** : Revenants, Arachne Drone, Snull et mobs Chaos terrestres.
-
-### Activé dans BETA 0.17
-
-Les entités déjà présentes sont remappées immédiatement :
-- cerfs/chevreuils/aigles/gobelins -> Empire ;
-- ours -> Empire + Nordiques ;
-- renne/élan/direwolf/mammouth/sabertooth -> Nordiques ;
-- Komodo -> jungle historique + territoire orc sec ;
-- crotale -> territoire orc sec + savanes historiques ;
-- Baby Spider, Bloody Gadfly, Corpse Fly, Diamond Thermite, Dreadhound, Firelight et Maggot -> corruption.
-
-### Gardé en attente de validation manuelle
-
-Ne sont **pas encore activés** malgré l'affectation culturelle déjà définie :
-- Elfes : `capitale_entities:white_unicorn`, `landsoficaria:aeternae`, `landsoficaria:capella` ;
-- Nains : `mythika:cyclops`, `mythika:minotaur` ;
-- Orcs : `landsoficaria:crocotta`, `landsoficaria:argan_hound`, `landsoficaria:droughtroot_forest_hag` ;
-- Corruption : Revenants, `landsoficaria:arachne_drone`, `landsoficaria:snull`.
-
-Ils seront ajoutés après le test visuel/comportemental demandé, afin de ne pas injecter dans le monde des mobs dont le rôle ou l'IA n'est pas encore validé.
-
-Les weights et tailles de groupe restent inchangés dans cette version. « Gobelins rares » et « mammouth rare » seront réellement matérialisés par les weights lors de la passe d'équilibrage suivante.
 
 
 ## BETA 0.16 — Remapping du spawnpool sur les biomes culturels
