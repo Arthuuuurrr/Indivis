@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "spell_engine",
-  "version": "1.10.5.1+1.21.11-HC-TEST3-RC10-CAST-SAFETY",
+  "version": "1.10.5.001+1.21.11-HC-TEST3-RC14-ITEM-USE-SPELL-ICON",
   "name": "Spell Engine",
-  "description": "HC TEST3 RC10: RC9 HUD/icon fixes plus finite CHANNEL cycle per key press and cast-duration/Haste safety; includes Hazenn compatibility.",
+  "description": "HC TEST3 RC14: RC13 plus spell-icon rendering for the vanilla-use/right-click SpellHotbar slot, with ItemStack fallback.",
   "environment": "*",
   "entrypoints": {
     "client": [
