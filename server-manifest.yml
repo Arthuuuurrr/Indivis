@@ -128,7 +128,7 @@ source_reference:
       - "tools/patches/PatchBossPoi121.java"
       - "tools/patches/PatchCities122.java"
       - "tools/patches/PatchCreatures123FamilyAndChaosBalance.java"
-      - "tools/patches/PatchCities124.java"
+      - "tools/patches/PatchCities124.java"\n      - "tools/patches/PatchCreatures125MarineAndChaos.java"
     validation_docs:
       - "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
       - "docs/architecture/CITY_NO_SPAWN_GUARD_1_2_18.md"
@@ -136,8 +136,8 @@ source_reference:
       - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_20.md"
       - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_21_POI_BOSS.md"
       - "docs/architecture/IMPERIAL_CITY_BIOMES_RC9AR.md"
-      - "docs/architecture/AUBECOURT_RC9AS.md"
-    status: "candidate built and archive-tested; retains BETA 0.17/1.2.23 aggressive-pool balance and extends exact city safety to Aubecourt (15 protected biomes); not deployed"
+      - "docs/architecture/AUBECOURT_RC9AS.md"\n      - "docs/architecture/CREATURES_CULTURAL_AGGRESSIVE_MARINE_1_2_25.md"
+    status: "candidate built and archive-tested; retains 15-city safety, adds BETA 0.19 cultural aggressive spawns, validated Chaos damage balance, and Myths marine AI stage; not deployed"
   capitale_core:
     version: "1.5.6-RC9AS"
     source_archive: "capitale_core_1.5.6-RC9AS_6_NEW_IMPERIAL_SETTLEMENTS_FULL.zip"
@@ -154,7 +154,7 @@ source_reference:
     source_archive: "capitale_creatures_biomes_BETA_0_18.zip"
     sha256: "a5c6c470f6dd1f4ada8ff19661820b8efe2a65ca6a9f3cc68629b0d49cb37cd3"
     git_import: "complete"
-    status: "candidate built; retains BETA 0.17 cultural/family-weight/aggressive-pool balance and adds Aubecourt to city safety; not deployed"
+    status: "candidate built; retains BETA 0.18/Aubecourt safety and adds validated cultural aggressive placements; not deployed"
 
 warnings:
   - "Server and client custom mod versions must be aligned before release."

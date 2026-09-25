@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "minecraft": "1.21.11",
-  "status": "ACTIVE — BETA 0.17 family-level variant weights + aggressive-pool first pass",
+  "status": "ACTIVE — BETA 0.19 validated aggressive cultural placements + family weights + Aubecourt safety",
   "interpretation": {
     "dino_natural_variant": "For Dino Mounts families, natural wild populations use the matching *_hostile entity. Non-hostile variants remain outside natural spawning and can stay reserved for shops/taming.",
     "weights": "Logical weights and group sizes are read from spawn_profiles_active.json. For terrestrial multi-variant Dino Mounts rules, family_weight is authoritative and is shared across all listed variants by bundle 1.2.23.",
@@ -13,7 +13,10 @@
     "cultural_biomes": "BETA 0.16 narrows terrestrial habitat tags to the validated cultural geography: Empire, Elves, Nordics and Dwarves. Desert/badlands remain the provisional Orc dry territory. Cities and corruption are excluded from ordinary wildlife.",
     "everywhere_surface": "Rules historically described as 'everywhere' now target #capitale_creatures:cultural_surface_land rather than #capitale_creatures:all_overworld. all_overworld stays broad because the controller still needs it for global vanilla/mod spawn clearing.",
     "family_weighting": "A species with several colors/sexes receives one logical spawn budget. Bundle 1.2.23 uses an internal scale of 12 so 2/3/4 variants can share a family weight exactly without changing relative weights of ordinary mobs.",
-    "aggressive_pool_pass": "BETA 0.17 only starts aggressive-pool balancing. Passive wildlife is intentionally deferred. Maggot/Baby Spider/Corpse Fly weights/groups are reduced and hostile HMobs are assigned to MONSTER."
+    "aggressive_pool_pass": "BETA 0.17 only starts aggressive-pool balancing. Passive wildlife is intentionally deferred. Maggot/Baby Spider/Corpse Fly weights/groups are reduced and hostile HMobs are assigned to MONSTER.",
+    "validated_aggressive_placements": "BETA 0.19 applies Arthur-approved aggressive/monster placements. Raven is explicitly excluded. Droughtroot Forest Hag is reserved for a future haunted-forest biome and is not naturally spawned yet.",
+    "cave_policy": "Cave-only rules currently target vanilla lush_caves and dripstone_caves. A future runtime underground predicate can extend them below surface biomes without polluting surface spawn lists.",
+    "marine_myths_policy": "Myths of the Sea natural placement remains staged until aquatic AI validation; bundle 1.2.25 extends generic 3D marine locomotion/water-breathing support to fishlike Myths entities, excluding amphibious Bunyip."
   },
   "rules": [
     {
@@ -181,13 +184,13 @@
         "dino_mounts_ai:mystic_direwolf_couleur_4_hostile"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+        "#capitale_creatures:nordic_predator_habitat"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
-      "note": "Color 2 deliberately excluded. BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency.",
-      "family_weight": 2
+      "note": "Color 2 deliberately excluded. BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency. BETA 0.19: moved to Nordic snowy plains/taiga.",
+      "family_weight": 1
     },
     {
       "name": "mystic_managarmr_cold_biomes",
@@ -198,13 +201,13 @@
         "dino_mounts_ai:mystic_managarmr_couleur_4_hostile"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:cold_biomes"
+        "#capitale_creatures:nordic_extreme_cold"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
       "family_weight": 1,
-      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency. BETA 0.19: reserved to Nordic ice spikes."
     },
     {
       "name": "mystic_direbear_forests",
@@ -215,13 +218,13 @@
         "dino_mounts_ai:mystic_direbear_couleur_4_hostile"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+        "#capitale_creatures:direbear_habitat"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
       "family_weight": 1,
-      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency. BETA 0.19: Nordic snowy taiga plus rare Dwarven grove habitat."
     },
     {
       "name": "mystic_doedicurus_dry",
@@ -246,13 +249,13 @@
         "dino_mounts_ai:mystic_mammoth_couleur_1_hostile"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:snowy_biomes"
+        "#capitale_creatures:nordic_mammoth_habitat"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
-      "family_weight": 2,
-      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency. BETA 0.19: Nordic snowy plains only."
     },
     {
       "name": "mystic_sabertooth_snowy",
@@ -263,13 +266,13 @@
         "dino_mounts_ai:mystic_sabertooth_couleur_4_hostile"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:snowy_biomes"
+        "#capitale_creatures:nordic_sabertooth_habitat"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
       "family_weight": 1,
-      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency. BETA 0.19: Nordic snowy taiga/ice spikes only."
     },
     {
       "name": "mystic_sarcosuchus_jungle_swamp_mangrove",
@@ -420,11 +423,12 @@
         "cubeanimals:blackbear"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:cultural_surface_land"
+        "#capitale_creatures:empire_forest"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": true
+      "remove_existing_spawn_entries_first": true,
+      "note": "BETA 0.19: ordinary Empire forest/taiga only."
     },
     {
       "name": "capuchin_jungle",
@@ -581,11 +585,12 @@
         "cubeanimals:snowleopard"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:snowy_forests"
+        "#capitale_creatures:nordic_snow_forest"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": true
+      "remove_existing_spawn_entries_first": true,
+      "note": "BETA 0.19: Nordic snowy taiga."
     },
     {
       "name": "tiger_jungle",
@@ -689,14 +694,14 @@
         "chaos_mmo_ai:dreadhound"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:forests_non_jungle_swamp_savanna",
-        "#capitale_creatures:cold_biomes"
+        "#capitale_creatures:nordic_predator_habitat"
       ],
       "exclude_biome_tags": [],
       "conditions": [
         "MONSTER"
       ],
-      "remove_existing_spawn_entries_first": true
+      "remove_existing_spawn_entries_first": true,
+      "note": "BETA 0.19: moved out of ordinary Empire forests into Nordic territory."
     },
     {
       "name": "chaos_firelight_dry",
@@ -822,12 +827,12 @@
         "hmobs:brown_bear"
       ],
       "include_biome_tags": [
-        "#capitale_creatures:hmobs_brown_bear_habitat"
+        "#capitale_creatures:empire_forest"
       ],
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
-      "note": "Reproduces HMobs original IS_FOREST + IS_TAIGA habitat with original weight/group from spawn_profiles_active.json."
+      "note": "Reproduces HMobs original IS_FOREST + IS_TAIGA habitat with original weight/group from spawn_profiles_active.json. BETA 0.19: ordinary Empire forest/taiga only."
     },
     {
       "name": "hmobs_lion_savanna",
@@ -884,6 +889,340 @@
       ],
       "remove_existing_spawn_entries_first": false,
       "note": "Dungeon-only orc population. Ground placement is enforced in the bundle spawn restriction layer; water spawning is not permitted."
+    },
+    {
+      "name": "icaria_vinegaroon_corruption",
+      "entities": [
+        "landsoficaria:vinegaroon"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:culture_corruption"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Arthur-approved BETA 0.19 placement: corruption + capitale:donjon."
+    },
+    {
+      "name": "icaria_solifugae_corruption",
+      "entities": [
+        "landsoficaria:solifugae"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:culture_corruption"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Arthur-approved BETA 0.19 placement: corruption + capitale:donjon."
+    },
+    {
+      "name": "icaria_snull_corruption",
+      "entities": [
+        "landsoficaria:snull"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:culture_corruption"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Arthur-approved BETA 0.19 placement: corruption + capitale:donjon."
+    },
+    {
+      "name": "icaria_plane_hag_corruption",
+      "entities": [
+        "landsoficaria:plane_forest_hag"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:culture_corruption"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Arthur-approved BETA 0.19 placement: corruption + capitale:donjon."
+    },
+    {
+      "name": "icaria_hyliaster_corruption",
+      "entities": [
+        "landsoficaria:hyliaster"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:culture_corruption"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Arthur-approved BETA 0.19 placement: corruption + capitale:donjon."
+    },
+    {
+      "name": "icaria_myrmeke_drone_corruption",
+      "entities": [
+        "landsoficaria:myrmeke_drone"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:culture_corruption"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Arthur-approved BETA 0.19 placement: corruption + capitale:donjon."
+    },
+    {
+      "name": "icaria_myrmeke_soldier_corruption",
+      "entities": [
+        "landsoficaria:myrmeke_soldier"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:culture_corruption"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Arthur-approved BETA 0.19 placement: corruption + capitale:donjon."
+    },
+    {
+      "name": "icaria_laurel_hag_general_forests",
+      "entities": [
+        "landsoficaria:laurel_forest_hag"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Rare general-forest encounter."
+    },
+    {
+      "name": "icaria_arachne_drone_general_forests",
+      "entities": [
+        "landsoficaria:arachne_drone"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:forests_non_jungle_swamp_savanna"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "General-forest Arachne Drone population."
+    },
+    {
+      "name": "icaria_arachne_caves",
+      "entities": [
+        "landsoficaria:arachne"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:cave_biomes"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Heavy cave encounter; weight 1 / group 1."
+    },
+    {
+      "name": "icaria_arachne_drone_caves",
+      "entities": [
+        "landsoficaria:arachne_drone"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:cave_biomes"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Arachne Drone cave population."
+    },
+    {
+      "name": "mythika_satyr_elf_forest",
+      "entities": [
+        "mythika:satyr"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:elf_forest"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Elven forest placement; category provisional until aggression is runtime-validated."
+    },
+    {
+      "name": "capitale_spider_one_empire_forest",
+      "entities": [
+        "capitale_entities:spider_one"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:empire_forest"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Rare Imperial forest spider."
+    },
+    {
+      "name": "capitale_spider_two_dry",
+      "entities": [
+        "capitale_entities:spider_two"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:dry_biomes"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Dry-biome spider."
+    },
+    {
+      "name": "capitale_snake_empire",
+      "entities": [
+        "capitale_entities:snake"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:empire_open_land",
+        "#capitale_creatures:empire_forest"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Small Imperial hostile."
+    },
+    {
+      "name": "icaria_cerver_empire_open",
+      "entities": [
+        "landsoficaria:cerver"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:empire_open_land"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Low-weight Imperial open-land predator."
+    },
+    {
+      "name": "icaria_argan_hound_empire_forest",
+      "entities": [
+        "landsoficaria:argan_hound"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:empire_forest"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Rare Imperial forest/taiga predator."
+    },
+    {
+      "name": "icaria_crocotta_dry_savanna",
+      "entities": [
+        "landsoficaria:crocotta"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:desert_and_badlands",
+        "#capitale_creatures:savanna_variants"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Dry/savanna predator."
+    },
+    {
+      "name": "icaria_scorpion_dry",
+      "entities": [
+        "landsoficaria:scorpion"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:dry_biomes"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Small dry-biome hostile."
+    },
+    {
+      "name": "icaria_fir_populus_hags_elf_forest",
+      "entities": [
+        "landsoficaria:fir_forest_hag",
+        "landsoficaria:populus_forest_hag"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:elf_forest"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Rare Elven forest hags; shared family weight.",
+      "family_weight": 1
+    },
+    {
+      "name": "icaria_cypress_olive_hags_elf_open",
+      "entities": [
+        "landsoficaria:cypress_forest_hag",
+        "landsoficaria:olive_forest_hag"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:elf_open_land"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Rare Elven meadow/sunflower hags; shared family weight.",
+      "family_weight": 1
+    },
+    {
+      "name": "mythika_cyclops_dwarf_peaks",
+      "entities": [
+        "mythika:cyclops"
+      ],
+      "include_biome_tags": [
+        "#capitale_creatures:dwarf_peaks"
+      ],
+      "exclude_biome_tags": [],
+      "conditions": [
+        "MONSTER"
+      ],
+      "remove_existing_spawn_entries_first": true,
+      "note": "Very rare Dwarven high-mountain encounter."
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "controller_version": "1.2.23-family-weight",
-  "policy": "BETA 0.17 aggressive-pool first pass. Passive wildlife remains unchanged; terrestrial variant families use rule-level family_weight.",
+  "controller_version": "1.2.25-cultural-aggressive-marine-stage",
+  "policy": "BETA 0.19: validated aggressive cultural placements, existing family weights, first Myths marine behavior stage. Passive-pool balancing still deferred.",
   "family_profiles": [
     {
       "family": "mystic_raptor",
@@ -86,8 +86,8 @@
       "family": "mystic_bison",
       "weight_per_variant": 1,
       "group": [
-        2,
-        4
+        1,
+        2
       ]
     },
     {
@@ -103,7 +103,7 @@
       "weight_per_variant": 2,
       "group": [
         1,
-        3
+        2
       ],
       "excluded_colors": [
         2
@@ -114,7 +114,7 @@
       "weight_per_variant": 1,
       "group": [
         1,
-        2
+        1
       ]
     },
     {
@@ -137,8 +137,8 @@
       "family": "mystic_mammoth",
       "weight_per_variant": 2,
       "group": [
-        2,
-        3
+        1,
+        2
       ],
       "allowed_colors": [
         1
@@ -159,7 +159,7 @@
       "weight_per_variant": 1,
       "group": [
         1,
-        2
+        1
       ]
     },
     {
@@ -187,7 +187,7 @@
       "weight_per_variant": 1,
       "group": [
         1,
-        2
+        1
       ]
     },
     {
@@ -250,10 +250,10 @@
     },
     {
       "entity": "cubeanimals:blackbear",
-      "weight": 8,
+      "weight": 3,
       "group": [
         1,
-        2
+        1
       ],
       "spawn_group": "MONSTER"
     },
@@ -403,10 +403,10 @@
     },
     {
       "entity": "capitale_entities:goblin",
-      "weight": 20,
+      "weight": 4,
       "group": [
-        2,
-        4
+        1,
+        2
       ],
       "spawn_group": "MONSTER"
     },
@@ -448,10 +448,10 @@
     },
     {
       "entity": "chaos_mmo_ai:dreadhound",
-      "weight": 8,
+      "weight": 1,
       "group": [
         1,
-        2
+        1
       ],
       "spawn_group": "MONSTER"
     },
@@ -608,10 +608,10 @@
     },
     {
       "entity": "hmobs:brown_bear",
-      "weight": 8,
+      "weight": 2,
       "group": [
         1,
-        2
+        1
       ],
       "spawn_group": "MONSTER"
     },
@@ -695,12 +695,222 @@
         1
       ],
       "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:vinegaroon",
+      "weight": 3,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:solifugae",
+      "weight": 4,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:snull",
+      "weight": 3,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:plane_forest_hag",
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:hyliaster",
+      "weight": 2,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:myrmeke_drone",
+      "weight": 3,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:myrmeke_soldier",
+      "weight": 2,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:laurel_forest_hag",
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:arachne_drone",
+      "weight": 2,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:arachne",
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "mythika:satyr",
+      "weight": 2,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "CREATURE"
+    },
+    {
+      "entity": "capitale_entities:spider_one",
+      "weight": 2,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "capitale_entities:spider_two",
+      "weight": 3,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "capitale_entities:snake",
+      "weight": 3,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:cerver",
+      "weight": 2,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:argan_hound",
+      "weight": 3,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:crocotta",
+      "weight": 3,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:scorpion",
+      "weight": 5,
+      "group": [
+        1,
+        2
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:fir_forest_hag",
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:populus_forest_hag",
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:cypress_forest_hag",
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "landsoficaria:olive_forest_hag",
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
+    },
+    {
+      "entity": "mythika:cyclops",
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ],
+      "spawn_group": "MONSTER"
     }
   ],
   "logical_weight_scale": 12,
   "policy_notes": {
     "family_weighting": "For rules defining family_weight, bundle 1.2.23 shares family_weight*12 across the listed variants. Ordinary profile weights are multiplied by 12, preserving their relative probability.",
     "aggressive_pool": "Maggot 5/1-2, Baby Spider 5/1-2, Corpse Fly 3/1-2. HMobs Brown Bear/Lion/Hyena use MONSTER because their AI can target players.",
-    "attributes": "Bundle 1.2.23 forces Chaos health targets Maggot=6 HP, Baby Spider=8 HP, Corpse Fly=6 HP. Damage remains unchanged pending the separate damage review."
+    "attributes": "Bundle 1.2.23 forces Chaos health targets Maggot=6 HP, Baby Spider=8 HP, Corpse Fly=6 HP. Damage remains unchanged pending the separate damage review.",
+    "validated_damage": "Chaos damage targets now validated: Maggot 2.0, Baby Spider 2.5, Corpse Fly 3.0 (bundle 1.2.25).",
+    "raven": "capitale_entities:raven is explicitly excluded from natural spawning.",
+    "reserved": "landsoficaria:droughtroot_forest_hag reserved for future haunted forest; mythika:minotaur reserved for Dwarven underground/structure rule."
   }
 }

@@ -1,6 +1,30 @@
-# Capitale Creatures — Biomes BETA 0.18
+# Capitale Creatures — Biomes BETA 0.19
 
 Minecraft 1.21.11 / Fabric.
+
+
+## BETA 0.19 — Pool agressif culturel et préparation Myths of the Sea
+
+Passe validée par Arthur, construite au-dessus de BETA 0.18/Aubecourt. Le pool passif reste hors périmètre.
+
+- **Corruption + `capitale:donjon`** : Vinegaroon, Solifugae, Snull, Plane Forest Hag, Hyliaster, Myrmeke Drone et Myrmeke Soldier.
+- **Forêts générales** : Laurel Forest Hag (rare) et Arachne Drone.
+- **Grottes vanilla** : Arachne très rare + Arachne Drone.
+- **Forêt elfique** : Satyr ; Fir/Populus Hags rares.
+- **Prairies elfiques** : Cypress/Olive Hags rares.
+- **Forêt impériale** : Spider I rare, Snake, Argan Hound.
+- **Plaine/relief impérial** : Cerver + Snake.
+- **Biomes secs** : Spider II, Crocotta, Scorpion.
+- **Pics nains** : Cyclops très rare.
+
+`capitale_entities:raven` est exclu. Droughtroot Forest Hag reste réservé à la future forêt hantée. Le Minotaure reste réservé à une future règle souterraine/structure naine.
+
+Direwolf, Managarmr, Direbear, Mammouth, Sabertooth, Snow Leopard et Dreadhound sont recentrés sur les habitats nordiques/haute montagne ; Black Bear et Brown Bear sur les forêts impériales. Goblin passe à 4 / 1–2, Brown Bear à 2 / 1, Dreadhound à 1 / 1.
+
+Le bundle 1.2.25 applique Maggot **2.0**, Baby Spider **2.5**, Corpse Fly **3.0** dégâts.
+
+Les spawns naturels Myths of the Sea restent en attente du test IA. Le bundle 1.2.25 ajoute à Abaia, Bake Kujira, Hippocampus, Kraken et Leviathan le contrôleur 3D marin générique, respiration aquatique, poursuite d'une cible déjà acquise dans l'eau et dessiccation hors de l'eau. Bunyip est exclu car amphibie.
+
 
 ## BETA 0.18 — Aubecourt protégé comme implantation impériale
 
