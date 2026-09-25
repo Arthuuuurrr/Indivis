@@ -2,10 +2,7 @@
   "function": "minecraft:set_components",
   "components": {
     "minecraft:can_break": {
-      "blocks": [
-        "minecraft:fire",
-        "minecraft:soul_fire"
-      ]
+      "blocks": "#capitale:adventure_breakables"
     }
   }
 }
