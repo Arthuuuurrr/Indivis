@@ -2,20 +2,28 @@
 
 ## Version actuelle validée
 
-Version : **1.2.11-indivis-city-biomes-combat30s-avaleiv-stackmapfix**
+Version : **1.2.12-indivis-city-biomes-corruption-dungeon**
 
 SHA-256 du JAR complet :
-`75a8234825b1c5c4ae6631d3d76b89527889cf793c195c72d473afb23e68366a`
+`1f56301d51a3391a31c77ad5624c58f02e5216015b247865057b3cc2b596edb1`
 
 ### Important
 
-La version **1.2.10** est **défectueuse et ne doit plus être utilisée**.
+La version **1.2.10** est défectueuse et ne doit plus être utilisée.
 
-Cause observée sur le client : `java.lang.VerifyError: Expecting a stackmap frame at branch target 78` dans
-`ZoneMusicPlayer.selectBiomeZone`.
+La **1.2.11** corrigeait le `StackMapTable` de `ZoneMusicPlayer.selectBiomeZone`.
+La **1.2.12** conserve ce correctif et ajoute le routage du biome de corruption vers la banque DONJON.
 
-La **1.2.11** recalcule correctement le `StackMapTable`. Validation effectuée avec Java 21 via
-`-Xverify:all` sur le JAR final réassemblé, en plus du contrôle ZIP et du SHA-256.
+## Biomes DONJON / corruption
+
+Les identifiants suivants utilisent **DONJON 01–09** :
+
+- `capitale:donjon`
+- `indivis:corruption`
+- `capitale:corruption` (alias de compatibilité)
+- `indivis:donjon` (alias de compatibilité)
+
+Le biome de corruption ne doit donc pas retomber sur une playlist NATURE ou continentale.
 
 ## Playlists de villes par biome
 
@@ -69,12 +77,6 @@ Puis supprimer la zone concernée avec son nom exact :
 
 ```mcfunction
 /musiczone delete NOM_DE_LA_ZONE
-```
-
-Exemple :
-
-```mcfunction
-/musiczone delete capitale
 ```
 
 La suppression doit être sauvegardée immédiatement dans `zones.json` et synchronisée aux joueurs ; aucun `/reload` ne doit être nécessaire.
