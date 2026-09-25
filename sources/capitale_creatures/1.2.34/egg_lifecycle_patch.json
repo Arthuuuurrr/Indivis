@@ -1,0 +1,32 @@
+{
+  "version": "1.2.34",
+  "base": "1.2.33",
+  "issue": 116,
+  "harvest": {
+    "crocodile_egg": "silk_touch_only",
+    "komododragon_egg": "silk_touch_only"
+  },
+  "natural_egg_lifecycle": {
+    "despawn_after_loaded_ticks": 6000,
+    "hatch": false,
+    "player_placed_property": "placed_by_player",
+    "player_placed_hatch_after_loaded_ticks": 6000
+  },
+  "legacy_migration": {
+    "random_ticks_enabled": true,
+    "action": "schedule_cleanup",
+    "delay_loaded_ticks": 6000,
+    "legacy_player_placement_distinguishable": false
+  },
+  "patched_classes": [
+    "net/suprk/ufauna/block/ModBlocks.class",
+    "net/suprk/ufauna/block/custom/CrocodileEgg.class",
+    "net/suprk/ufauna/block/custom/KomodoDragonEgg.class",
+    "net/suprk/ufauna/entity/custom/CrocodileEntity.class",
+    "net/suprk/ufauna/entity/custom/KomodoDragonEntity.class"
+  ],
+  "sha256": {
+    "bundle": "789ff3a190f371ff60117dd9ff277d591a481b4f70ac9c9e9c0069086f28d7cf",
+    "nested_cubeanimals": "c2b94da043981cb877dcf83c463558645a222c9647e28ad9414a134ba3ea8093"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": "1.2.35",
+  "base": "1.2.34",
+  "issue": 116,
+  "right_click_harvest": {
+    "blocks": [
+      "cubeanimals:crocodile_egg",
+      "cubeanimals:komododragon_egg"
+    ],
+    "requires_silk_touch": false,
+    "preserve_variant": true,
+    "inventory_first": true,
+    "drop_if_inventory_full": true,
+    "server_side_block_removal": true
+  },
+  "silk_touch_harvest_retained": true,
+  "sha256": {
+    "bundle": "1cb083b716368ef0bc5714f4ba312936a612901726be781741e3d3a7888c8739",
+    "nested_cubeanimals": "0687924bca417926663b72cbe05a60b8e06702578d39281f34613835434e0351"
+  }
+}
