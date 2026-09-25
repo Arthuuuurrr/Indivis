@@ -1,0 +1,38 @@
+{
+  "change_id": "creatures-aggressive-category-audit-1.2.26",
+  "scope": "aggressive_pool_only",
+  "passive_pool_changed": false,
+  "base": {
+    "datapack": "capitale_creatures_biomes_BETA_0_19.zip",
+    "bundle": "capitale_creatures_bundle-1.2.25-fabric-1.21.11-CULTURAL-AGGRESSIVE-MYTHS-MARINE.jar"
+  },
+  "result": {
+    "datapack": "capitale_creatures_biomes_BETA_0_20.zip",
+    "bundle": "capitale_creatures_bundle-1.2.26-fabric-1.21.11-AGGRESSIVE-CATEGORY-AUDIT.jar"
+  },
+  "changes": [
+    {
+      "entity": "mythika:satyr",
+      "from_spawn_group": "CREATURE",
+      "to_spawn_group": "MONSTER",
+      "biome_rule": "mythika_satyr_elf_forest",
+      "biome_tag": "#capitale_creatures:elf_forest",
+      "weight": 2,
+      "group": [1, 2]
+    }
+  ],
+  "preserved": [
+    "BETA 0.19 cultural aggressive placements",
+    "Lands of Icaria aggressive entries already in MONSTER",
+    "CubeAnimals hostile predator MONSTER corrections including tiger",
+    "hmobs:brown_bear, hmobs:lion and hmobs:hyena in MONSTER",
+    "city no-spawn safety including Aubecourt",
+    "orc patrol and dungeon rules",
+    "Myths of the Sea marine behavior staging",
+    "passive pool weights and groups"
+  ],
+  "excluded": [
+    "capitale_entities:raven",
+    "landsoficaria:droughtroot_forest_hag natural spawn until haunted-forest biome exists"
+  ]
+}
