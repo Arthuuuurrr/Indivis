@@ -117,9 +117,9 @@ deployed:
 
 source_reference:
   capitale_creatures_bundle:
-    version: "1.2.22"
-    source_artifact: "capitale_creatures_bundle-1.2.22-fabric-1.21.11-14-CITY-SAFE.jar"
-    sha256: "56b87dffc945dd049a8f578f5be155cefdbf0ae6a51c65e28052b2c978e5c987"
+    version: "1.2.23"
+    source_artifact: "capitale_creatures_bundle-1.2.23-fabric-1.21.11-FAMILY-WEIGHT-AGGRESSIVE-POOL.jar"
+    sha256: "9d45a304b10db815e44234f242062c01455fbcdc99ff7dd0a027744af951e58d"
     git_patch_sources:
       - "tools/patches/PatchOrcPatrolCityGuard.java"
       - "tools/patches/PatchCityNoSpawn.java"
@@ -127,6 +127,7 @@ source_reference:
       - "tools/patches/PatchGlobalLivingDespawn120.java"
       - "tools/patches/PatchBossPoi121.java"
       - "tools/patches/PatchCities122.java"
+      - "tools/patches/PatchCreatures123FamilyAndChaosBalance.java"
     validation_docs:
       - "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
       - "docs/architecture/CITY_NO_SPAWN_GUARD_1_2_18.md"
@@ -134,7 +135,7 @@ source_reference:
       - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_20.md"
       - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_21_POI_BOSS.md"
       - "docs/architecture/IMPERIAL_CITY_BIOMES_RC9AR.md"
-    status: "candidate delivered; 14 city biomes protected by exact RegistryKey clear + patrol guard"
+    status: "candidate built and archive-tested; retains 14-city safety, adds family-level variant weights and first aggressive-pool balance pass; not deployed"
   capitale_core:
     version: "1.5.6-RC9AR"
     source_archive: "capitale_core_1.5.6-RC9AR_5_NEW_IMPERIAL_CITIES_FULL.zip"
@@ -147,11 +148,11 @@ source_reference:
     sha256: "109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4"
     git_import: "complete"
   capitale_creatures_biomes:
-    version: "BETA-0.15"
-    source_archive: "capitale_creatures_biomes_BETA_0_15.zip"
-    sha256: "7a2bc0dfefd82be0e825d4a4f2fa9c92de48b65049b42f14f37f442f4812a61a"
+    version: "BETA-0.17"
+    source_archive: "capitale_creatures_biomes_BETA_0_17.zip"
+    sha256: "82b0579abd87965d6e3bf6bd7a8feae639bb1cda31f31d2372c5e8bad3b05ae3"
     git_import: "complete"
-    status: "candidate delivered; extends city_no_spawn and orc patrol exclusions to 14 city biomes"
+    status: "candidate built; BETA 0.16 cultural remap retained, family weights and first aggressive-pool balance pass added; not deployed"
 
 warnings:
   - "Server and client custom mod versions must be aligned before release."

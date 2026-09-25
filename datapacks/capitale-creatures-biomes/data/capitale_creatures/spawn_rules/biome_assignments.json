@@ -1,17 +1,19 @@
 {
   "schema_version": 1,
   "minecraft": "1.21.11",
-  "status": "ACTIVE — BETA 0.16 cultural-biome remap on 1.2.13 ecology + aquatic bridge + bounded dungeon orcs",
+  "status": "ACTIVE — BETA 0.17 family-level variant weights + aggressive-pool first pass",
   "interpretation": {
     "dino_natural_variant": "For Dino Mounts families, natural wild populations use the matching *_hostile entity. Non-hostile variants remain outside natural spawning and can stay reserved for shops/taming.",
-    "weights": "Weights and group sizes are read directly from spawn_profiles_active.json by bundle 1.2.5. The datapack is authoritative.",
+    "weights": "Logical weights and group sizes are read from spawn_profiles_active.json. For terrestrial multi-variant Dino Mounts rules, family_weight is authoritative and is shared across all listed variants by bundle 1.2.23.",
     "night_only": "Barn owl biome placement is active; its pre-existing CubeAnimals spawn-placement predicate is preserved. Strict night-only gating will require a dedicated predicate patch if the original predicate does not enforce darkness.",
     "vanilla_policy": "All natural Overworld spawn lists are cleared in POST_PROCESSING, then explicit Haute Capitale fauna is re-added in the SAME phase, after the clear.",
     "marine_policy": "Strict swimming fauna is handled by aquatic_runtime_rules.json. Thornshell remains amphibious and uses thornshell_behavior_rules.json for bottom-walking/shore-exit behavior.",
     "hmobs_policy": "HMobs is bundled in 1.2.12; its original natural weights/groups are reproduced in the authoritative datapack because the Haute Capitale controller clears/rebuilds Overworld spawn lists.",
     "orc_policy": "General Overworld orcs remain event-only through orc_patrol_rules.json. Natural orc populations are restricted to #capitale_creatures:orc_dungeon and bounded by orc_dungeon_rules.json.",
     "cultural_biomes": "BETA 0.16 narrows terrestrial habitat tags to the validated cultural geography: Empire, Elves, Nordics and Dwarves. Desert/badlands remain the provisional Orc dry territory. Cities and corruption are excluded from ordinary wildlife.",
-    "everywhere_surface": "Rules historically described as 'everywhere' now target #capitale_creatures:cultural_surface_land rather than #capitale_creatures:all_overworld. all_overworld stays broad because the controller still needs it for global vanilla/mod spawn clearing."
+    "everywhere_surface": "Rules historically described as 'everywhere' now target #capitale_creatures:cultural_surface_land rather than #capitale_creatures:all_overworld. all_overworld stays broad because the controller still needs it for global vanilla/mod spawn clearing.",
+    "family_weighting": "A species with several colors/sexes receives one logical spawn budget. Bundle 1.2.23 uses an internal scale of 12 so 2/3/4 variants can share a family weight exactly without changing relative weights of ordinary mobs.",
+    "aggressive_pool_pass": "BETA 0.17 only starts aggressive-pool balancing. Passive wildlife is intentionally deferred. Maggot/Baby Spider/Corpse Fly weights/groups are reduced and hostile HMobs are assigned to MONSTER."
   },
   "rules": [
     {
@@ -26,7 +28,8 @@
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
-      "note": "Natural wild spawn uses _hostile variant; non-hostile variants remain reserved for acquisition/taming."
+      "note": "Natural wild spawn uses _hostile variant; non-hostile variants remain reserved for acquisition/taming. BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency.",
+      "family_weight": 2
     },
     {
       "name": "mystic_raptor_colors_1_4_dry",
@@ -40,7 +43,8 @@
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
-      "note": "Natural wild spawn uses _hostile variant."
+      "note": "Natural wild spawn uses _hostile variant. BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency.",
+      "family_weight": 2
     },
     {
       "name": "dawn_ceratosaurus_desert",
@@ -53,7 +57,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "dawn_diabloceratops_jungle",
@@ -66,7 +72,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 2,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "dawn_triceratops_desert",
@@ -79,7 +87,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 2,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "dawn_tyrannosaurus_badlands",
@@ -92,7 +102,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "dawn_torvosaurus_jungle",
@@ -105,7 +117,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "mystic_ankylosaurus_colors_1_2_4_jungle_dry",
@@ -121,7 +135,8 @@
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
-      "note": "Color 3 deliberately excluded because it is reported bugged."
+      "note": "Color 3 deliberately excluded because it is reported bugged. BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency.",
+      "family_weight": 1
     },
     {
       "name": "mystic_bison_plains_savannas",
@@ -136,7 +151,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "mystic_brontosaurus_jungle_dry",
@@ -152,7 +169,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "mystic_direwolf_forests_no_color2",
@@ -167,7 +186,8 @@
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
-      "note": "Color 2 deliberately excluded."
+      "note": "Color 2 deliberately excluded. BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency.",
+      "family_weight": 2
     },
     {
       "name": "mystic_managarmr_cold_biomes",
@@ -182,7 +202,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "mystic_direbear_forests",
@@ -197,7 +219,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "mystic_doedicurus_dry",
@@ -212,7 +236,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "mystic_mammoth_color1_snowy",
@@ -224,7 +250,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 2,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "mystic_sabertooth_snowy",
@@ -239,7 +267,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "mystic_sarcosuchus_jungle_swamp_mangrove",
@@ -254,7 +284,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "mystic_tyrannosaurus_colors_1_3_4_dry",
@@ -269,7 +301,8 @@
       "exclude_biome_tags": [],
       "conditions": [],
       "remove_existing_spawn_entries_first": false,
-      "note": "Colors 2 and 5 deliberately excluded."
+      "note": "Colors 2 and 5 deliberately excluded. BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency.",
+      "family_weight": 1
     },
     {
       "name": "mystic_triceratops_dry_plains",
@@ -285,7 +318,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "mystic_spinosaurus_jungle_dry",
@@ -301,7 +336,9 @@
       ],
       "exclude_biome_tags": [],
       "conditions": [],
-      "remove_existing_spawn_entries_first": false
+      "remove_existing_spawn_entries_first": false,
+      "family_weight": 1,
+      "note": "BETA 0.17: listed color/sex variants share this single logical family_weight; variants no longer multiply species frequency."
     },
     {
       "name": "hippopotamus_savannas",

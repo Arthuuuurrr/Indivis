@@ -1,6 +1,37 @@
-# Capitale Creatures — Biomes BETA 0.16
+# Capitale Creatures — Biomes BETA 0.17
 
 Minecraft 1.21.11 / Fabric.
+
+
+## BETA 0.17 — Variantes par famille + première passe du pool agressif
+
+Cette passe ne rééquilibre **que le pool agressif**. Le pool passif est volontairement reporté.
+
+### Poids par famille
+
+Les variantes de couleur/sexe Dino Mounts ne cumulent plus artificiellement leur fréquence. Chaque règle multi-variante possède désormais un `family_weight` unique. Le bundle 1.2.23 utilise une échelle interne de 12 et partage ce budget entre les variantes de la règle.
+
+Exemple : quatre Triceratops avec `family_weight: 1` représentent ensemble le même poids logique qu'une seule espèce weight 1, au lieu d'un poids cumulé 4. Toutes les variantes restent disponibles.
+
+### Petits Chaos
+
+Valeurs réelles du mod avant correction :
+- `chaos_mmo_ai:maggot` : 12 HP / 3 dégâts ; spawn 18, groupe 2–5 ;
+- `chaos_mmo_ai:babyspider` : 18 HP / 3,5 dégâts ; spawn 18, groupe 2–5 ;
+- `chaos_mmo_ai:corpsefly` : 34 HP / 5 dégâts ; spawn 10, groupe 1–3.
+
+BETA 0.17 applique :
+- Maggot : **6 HP**, weight **5**, groupe **1–2** ;
+- Baby Spider : **8 HP**, weight **5**, groupe **1–2** ;
+- Corpse Fly : **6 HP**, weight **3**, groupe **1–2**.
+
+Les dégâts ne sont pas encore modifiés dans cette build : ils font l'objet de la prochaine décision d'équilibrage.
+
+### Catégories agressives
+
+`hmobs:brown_bear`, `hmobs:lion` et `hmobs:hyena` passent dans le spawn group `MONSTER`, leur IA pouvant cibler les joueurs. Le zèbre reste `CREATURE`.
+
+Le remapping culturel de BETA 0.16 est conservé tel quel ; aucune nouvelle espèce non intégrée n'est encore injectée dans les tables naturelles.
 
 
 ## BETA 0.16 — Remapping du spawnpool sur les biomes culturels
