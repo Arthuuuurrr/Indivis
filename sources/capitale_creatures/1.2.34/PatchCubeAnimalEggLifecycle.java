@@ -11,7 +11,7 @@ public class PatchCubeAnimalEggLifecycle implements Opcodes {
     static final String BLOCK_POS="net/minecraft/class_2338";
     static final String BLOCK="net/minecraft/class_2248";
     static final String BLOCKS="net/minecraft/class_2246";
-    static final String MOD_BLOCKS="net/suprk/ufauna/block/ModBlocks";
+    static final String MOD_BLOCKS="net/suprk/ufauna/block/ModBlocks";\n    static final String SETTINGS="net/minecraft/class_4970$class_2251";
 
     static AbstractInsnNode nextReal(AbstractInsnNode n){
         for(AbstractInsnNode x=n.getNext();x!=null;x=x.getNext())
@@ -111,6 +111,26 @@ public class PatchCubeAnimalEggLifecycle implements Opcodes {
                 tick++;
             }
         }
+        // Migration path for legacy eggs: random ticks only schedule cleanup for natural/legacy states.
+        MethodNode randomTick = new MethodNode(ACC_PROTECTED, "method_9514",
+                "(Lnet/minecraft/class_2680;Lnet/minecraft/class_3218;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V", null, null);
+        LabelNode ret = new LabelNode();
+        randomTick.instructions.add(new VarInsnNode(ALOAD,1));
+        randomTick.instructions.add(new FieldInsnNode(GETSTATIC,owner,"PLACED_BY_PLAYER","L"+BOOL_PROP+";"));
+        randomTick.instructions.add(new MethodInsnNode(INVOKEVIRTUAL,BLOCK_STATE,"method_11654","(L"+PROP+";)Ljava/lang/Comparable;",false));
+        randomTick.instructions.add(new TypeInsnNode(CHECKCAST,"java/lang/Boolean"));
+        randomTick.instructions.add(new MethodInsnNode(INVOKEVIRTUAL,"java/lang/Boolean","booleanValue","()Z",false));
+        randomTick.instructions.add(new JumpInsnNode(IFNE,ret));
+        randomTick.instructions.add(new VarInsnNode(ALOAD,2));
+        randomTick.instructions.add(new VarInsnNode(ALOAD,3));
+        randomTick.instructions.add(new VarInsnNode(ALOAD,0));
+        randomTick.instructions.add(new IntInsnNode(SIPUSH,6000));
+        randomTick.instructions.add(new MethodInsnNode(INVOKEVIRTUAL,SERVER_WORLD,"method_64310","(L"+BLOCK_POS+";L"+BLOCK+";I)V",false));
+        randomTick.instructions.add(ret);
+        randomTick.instructions.add(new FrameNode(F_SAME,0,null,0,null));
+        randomTick.instructions.add(new InsnNode(RETURN));
+        cn.methods.add(randomTick);
+
         if(ctor!=1||props!=1||placement<1||tick!=1)
             throw new IllegalStateException(owner+" patch counts ctor="+ctor+" props="+props+" placement="+placement+" tick="+tick);
     }
@@ -139,11 +159,37 @@ public class PatchCubeAnimalEggLifecycle implements Opcodes {
         if(schedules!=1) throw new IllegalStateException(cn.name+" schedule patches="+schedules);
     }
 
+    static void enableEggRandomTicks(ClassNode cn){
+        int patched=0;
+        for(MethodNode m:cn.methods){
+            if(!m.name.equals("<clinit>")) continue;
+            for(AbstractInsnNode n=m.instructions.getFirst();n!=null;n=n.getNext()){
+                if(n instanceof MethodInsnNode mi && mi.getOpcode()==INVOKESPECIAL
+                        && (mi.owner.equals("net/suprk/ufauna/block/custom/CrocodileEgg") || mi.owner.equals("net/suprk/ufauna/block/custom/KomodoDragonEgg"))
+                        && mi.name.equals("<init>")) {
+                    m.instructions.insertBefore(n,new MethodInsnNode(INVOKEVIRTUAL,SETTINGS,"method_9640","()L"+SETTINGS+";",false));
+                    patched++;
+                }
+            }
+        }
+        if(patched!=2) throw new IllegalStateException("ModBlocks random tick settings patches="+patched);
+    }
+
     static byte[] patch(byte[] input, boolean blockClass, String eggField){
         ClassReader cr=new ClassReader(input);
         ClassNode cn=new ClassNode();
         cr.accept(cn,0);
         if(blockClass) addPlayerProperty(cn); else scheduleNaturalEgg(cn,eggField);
+        ClassWriter cw=new ClassWriter(cr,ClassWriter.COMPUTE_MAXS);
+        cn.accept(cw);
+        return cw.toByteArray();
+    }
+
+    static byte[] patchModBlocks(byte[] input){
+        ClassReader cr=new ClassReader(input);
+        ClassNode cn=new ClassNode();
+        cr.accept(cn,0);
+        enableEggRandomTicks(cn);
         ClassWriter cw=new ClassWriter(cr,ClassWriter.COMPUTE_MAXS);
         cn.accept(cw);
         return cw.toByteArray();
@@ -164,5 +210,10 @@ public class PatchCubeAnimalEggLifecycle implements Opcodes {
             Files.write(dst,patch(Files.readAllBytes(src),t[1].equals("block"),t[2]));
             System.out.println("patched "+t[0]);
         }
+        Path mbSrc=in.resolve("net/suprk/ufauna/block/ModBlocks.class");
+        Path mbDst=out.resolve("net/suprk/ufauna/block/ModBlocks.class");
+        Files.createDirectories(mbDst.getParent());
+        Files.write(mbDst,patchModBlocks(Files.readAllBytes(mbSrc)));
+        System.out.println("patched net/suprk/ufauna/block/ModBlocks");
     }
 }
