@@ -2,7 +2,7 @@ schema_version: 2
 project: Indivis
 minecraft: "1.21.11"
 fabric_loader_min: "0.19.5"
-updated: "2026-09-23"
+updated: "2026-09-25"
 
 snapshot:
   source: "captures serveur/client/datapacks du 22-09-2026"
@@ -20,9 +20,9 @@ deployed:
       artifact: "capitale_skills_items_fabric_1_7_18_EVENT_ACCESS_FIX_1_21_11.jar"
       sha256: "0dfbfe3f324d40851de01346b2bced6ecb6ab2ab38a36c1bc977f5623f94b30b"
     capitale_creatures_bundle:
-      artifact: "capitale_creatures_bundle-1.2.16-fabric-1.21.11-HMOBS_ORC_PATROLS_DUNGEON-7MOBS.jar"
-      size_bytes: 20591877
-      sha256: null
+      artifact: "capitale_creatures_bundle-1.2.17-fabric-1.21.11-CITY-SAFE-ORC-PATROLS.jar"
+      sha256: "9c2837193ee3cabfd81d41ff8d1f49e4aec1f70a8a557d3383097ecf41720c94"
+      verification: "confirmed loaded by server log 2026-09-24"
     capitale_heraldry:
       artifact: "capitale_heraldry-0.1.7+1.21.11.jar"
       sha256: null
@@ -101,9 +101,9 @@ deployed:
       sha256: "e5b06cd7ae0b9356782c30e3813a3170605a4ec20276edf0789c54331905b521"
       verification: "server copy supplied 2026-09-23; byte-identical to source_reference"
     capitale_creatures_biomes:
-      deployed: "capitale_creatures_biomes_BETA_0_10.zip"
-      sha256: "5ec4a277bf88a4b7c38aceb9d8a2342851f0a3753ac20ac232573b29787a2099"
-      repository_source_candidate: "BETA-0.12"
+      deployed: "capitale_creatures_biomes_BETA_0_13.zip"
+      sha256: "c06f36731836951ce0601228e2dfaa3fb56eaef483a5ec63bb15c9c5d8a9e701"
+      verification: "confirmed loaded by server log 2026-09-24"
     orc_camp:
       deployed_form: "folder"
     arthur_datapack_1_0:
@@ -116,22 +116,45 @@ deployed:
       deployed: "capitale_abilities.zip"
 
 source_reference:
+  capitale_creatures_bundle:
+    version: "1.2.24"
+    source_artifact: "capitale_creatures_bundle-1.2.24-fabric-1.21.11-AUBECOURT-15-CITY-SAFE.jar"
+    sha256: "d997fcdbd5bc62f4ab3919a159626e70994753dd3a38a7d4caa68d6fe5d80e88"
+    git_patch_sources:
+      - "tools/patches/PatchOrcPatrolCityGuard.java"
+      - "tools/patches/PatchCityNoSpawn.java"
+      - "tools/patches/PatchCreatures119.java"
+      - "tools/patches/PatchGlobalLivingDespawn120.java"
+      - "tools/patches/PatchBossPoi121.java"
+      - "tools/patches/PatchCities122.java"
+      - "tools/patches/PatchCreatures123FamilyAndChaosBalance.java"
+      - "tools/patches/PatchCities124.java"\n      - "tools/patches/PatchCreatures125MarineAndChaos.java"
+    validation_docs:
+      - "docs/architecture/ORC_PATROL_CITY_GUARD_1_2_17.md"
+      - "docs/architecture/CITY_NO_SPAWN_GUARD_1_2_18.md"
+      - "docs/architecture/CITY_SAFE_1_2_19.md"
+      - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_20.md"
+      - "docs/architecture/GLOBAL_LIVING_DESPAWN_1_2_21_POI_BOSS.md"
+      - "docs/architecture/IMPERIAL_CITY_BIOMES_RC9AR.md"
+      - "docs/architecture/AUBECOURT_RC9AS.md"\n      - "docs/architecture/CREATURES_CULTURAL_AGGRESSIVE_MARINE_1_2_25.md"
+    status: "candidate built and archive-tested; retains 15-city safety, adds BETA 0.19 cultural aggressive spawns, validated Chaos damage balance, and Myths marine AI stage; not deployed"
   capitale_core:
-    version: "1.5.6-RC9AO"
-    source_archive: "capitale_core_1_5_6_RC9AO.zip"
-    sha256: "e5b06cd7ae0b9356782c30e3813a3170605a4ec20276edf0789c54331905b521"
+    version: "1.5.6-RC9AS"
+    source_archive: "capitale_core_1.5.6-RC9AS_6_NEW_IMPERIAL_SETTLEMENTS_FULL.zip"
+    sha256: "85708effcfd363a038fcacdbb9df71a06c5a087b27f6f3a9c2a170446329b348"
     git_import: "complete"
+    status: "candidate delivered; adds Aubecourt as sixth new imperial settlement with empty spawn tables"
   capitale_skills:
     version: "0.10.19-RC2F"
     source_archive: "capitale_skills_BETA_0_10_19_RC2F_TREE_HARD_RESTORE.zip"
     sha256: "109ec0428909c009d6599637cc0b23a90c78bd84c9d5772c6447ecf01a3d34f4"
     git_import: "complete"
   capitale_creatures_biomes:
-    version: "BETA-0.12"
-    source_archive: "capitale_creatures_biomes_BETA_0_12.zip"
-    sha256: "ff2e97877b97c331c362062ccccf64ad3141269f23a900e36ce98aa357f45c19"
+    version: "BETA-0.18"
+    source_archive: "capitale_creatures_biomes_BETA_0_18.zip"
+    sha256: "a5c6c470f6dd1f4ada8ff19661820b8efe2a65ca6a9f3cc68629b0d49cb37cd3"
     git_import: "complete"
-    status: "not confirmed deployed"
+    status: "candidate built; retains BETA 0.18/Aubecourt safety and adds validated cultural aggressive placements; not deployed"
 
 warnings:
   - "Server and client custom mod versions must be aligned before release."

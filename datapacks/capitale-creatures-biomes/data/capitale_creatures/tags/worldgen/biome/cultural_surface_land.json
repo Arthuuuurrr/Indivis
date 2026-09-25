@@ -1,0 +1,16 @@
+{
+  "replace": true,
+  "values": [
+    "#capitale_creatures:culture_empire",
+    "#capitale_creatures:culture_elves",
+    "#capitale_creatures:culture_nordics",
+    "#capitale_creatures:culture_dwarves",
+    "#capitale_creatures:culture_orcs_provisional",
+    "#capitale_creatures:savanna_variants",
+    "minecraft:swamp",
+    "minecraft:mangrove_swamp",
+    "#capitale_creatures:beaches",
+    "minecraft:stony_shore",
+    "minecraft:mushroom_fields"
+  ]
+}

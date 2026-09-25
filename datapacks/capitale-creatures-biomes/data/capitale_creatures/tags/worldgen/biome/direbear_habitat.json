@@ -1,9 +1,6 @@
 {
   "replace": true,
   "values": [
-    "minecraft:forest",
-    "minecraft:taiga",
-    "minecraft:cherry_grove",
     "minecraft:snowy_taiga",
     "minecraft:grove"
   ]
