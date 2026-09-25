@@ -1,0 +1,38 @@
+{
+  "version": "1.2.30",
+  "datapack": "BETA_0_24",
+  "disabled_entrypoints": [
+    "CapitaleCreaturesMarineSystem120",
+    "CapitaleCreaturesMarineLocomotion1210",
+    "CapitaleCreaturesMarineCombat129"
+  ],
+  "active_marine_authority": "CapitaleCreaturesMarineCombat130",
+  "direct_control": [
+    "dino_mounts_ai:dawn_aegirocassis_*_hostile",
+    "dino_mounts_ai:dawn_dunkleosteus_*_hostile",
+    "dino_mounts_ai:mystic_mosasaurus_couleur_1..3_hostile",
+    "chaos_mmo_ai:corpsefish",
+    "chaos_mmo_ai:gluttonfish",
+    "cubeanimals:piranha"
+  ],
+  "myths_policy": "preserve native AI",
+  "kraken": {
+    "policy": "buoyancy only",
+    "native_horizontal_ai": true,
+    "native_combat": true,
+    "no_gravity_in_water": true,
+    "ground_upward_velocity_min": 0.055,
+    "downward_velocity_cap": -0.01
+  },
+  "target_filter": [
+    "alive",
+    "not spectator",
+    "not creative"
+  ],
+  "target_memory_ticks": 20,
+  "obstacle_policy": "water-forward probe; deterministic vertical/lateral avoidance; brake if no water-forward option",
+  "hashes": {
+    "bundle": "137289be89108c8f371c9d65175728656f6e8e3a514487137f017ca3cf402aec",
+    "datapack": "13722c1b5e2a5c69bab9a753efda444879a133080a737875bc5f10729b9aa6cb"
+  }
+}
