@@ -1,0 +1,37 @@
+{
+  "version": "1.2.29",
+  "datapack": "BETA_0_23",
+  "marine_combat": {
+    "pursuit": "direct normalized 3D velocity, native navigation stopped",
+    "swimmer_aggro": {
+      "corpsefish": 28,
+      "gluttonfish": 30,
+      "piranha": 18,
+      "mosasaurus": 28,
+      "dunkleosteus": 24,
+      "aegirocassis": 18
+    },
+    "melee_engage": {
+      "corpsefish": 1.75,
+      "gluttonfish": 3.2,
+      "piranha": 1.35,
+      "mosasaurus": 3.6,
+      "dunkleosteus": 2.5,
+      "aegirocassis": 1.8
+    },
+    "note": "native setTarget is cleared outside engage range and restored inside it"
+  },
+  "maggot": {
+    "weight": 5,
+    "empire_high_mountains_excluded": [
+      "minecraft:windswept_gravelly_hills",
+      "minecraft:snowy_slopes"
+    ],
+    "runtime_altitude_guard_y": 115,
+    "guard_action": "discard without loot"
+  },
+  "hashes": {
+    "datapack": "fb4133a0554b1775e71f81daf962bfa3551d6639b0d3266d98e45c36b7c12f0c",
+    "bundle": "041e527ef08ae4caef6e31b2f4f15bbbdca0284e5941fc4dc0460a0af1cd0608"
+  }
+}
