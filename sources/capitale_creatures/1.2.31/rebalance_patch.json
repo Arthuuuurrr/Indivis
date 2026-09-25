@@ -1,0 +1,30 @@
+{
+  "version": "1.2.31",
+  "datapack": "BETA_0_25",
+  "corruption": {
+    "natural_orc": {
+      "entity": "autonomous_orc_mobs:female_orc_warrior_red",
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ]
+    },
+    "runtime_cap": 4,
+    "radius": 96
+  },
+  "dungeon": {
+    "runtime_cap": 10,
+    "radius": 96,
+    "weights": {
+      "autonomous_orc_mobs:orc_archer": 3,
+      "autonomous_orc_mobs:orc_warrior": 4,
+      "autonomous_orc_mobs:female_orc_warrior": 3,
+      "autonomous_orc_mobs:orc_warlock": 1,
+      "autonomous_orc_mobs:orc_champion": 1,
+      "autonomous_orc_mobs:female_orc_elite": 1
+    }
+  },
+  "persistence_guard": "excess unnamed orcs culled every 40 ticks; named entities excluded",
+  "miniboss_probe": "uploaded rogues-fabric JAR is not the source of Oyra/Aurelio/Dena"
+}
