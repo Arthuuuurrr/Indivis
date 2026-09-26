@@ -1,0 +1,33 @@
+{
+  "version": "1.2.37",
+  "base": "1.2.34",
+  "issue": 116,
+  "supersedes_broken": ["1.2.35", "1.2.36"],
+  "right_click_harvest": {
+    "crocodile_egg": {
+      "enabled": true,
+      "preserve_variant": true
+    },
+    "komododragon_egg": {
+      "enabled": true,
+      "preserve_variant": false,
+      "reason": "KomodoDragonEgg has no VARIANT property"
+    },
+    "inventory_method_descriptor": "(Lnet/minecraft/class_1799;)Z",
+    "drop_method_descriptor": "(Lnet/minecraft/class_1799;Z)Lnet/minecraft/class_1542;"
+  },
+  "class_writer": {
+    "seeded_with_old_constant_pool": false,
+    "reason": "purge stale invalid constants from 1.2.35/1.2.36"
+  },
+  "validation": {
+    "cubeanimals_class_count_checked": 235,
+    "invalid_constant_pool_descriptors": 0,
+    "asm_basic_verifier": "PASS",
+    "changed_inner_classes": 2
+  },
+  "sha256": {
+    "bundle": "7706186c882802b15bd7878521dc2e37d3ebb5ad1e9efd9400f6b4e8d7a4b856",
+    "nested_cubeanimals": "6a0d27282820916cac574306e4edb4a9f1be2eda7b2c8095356d35de2cb5c844"
+  }
+}
