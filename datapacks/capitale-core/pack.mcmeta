@@ -1,7 +1,13 @@
 {
   "pack": {
-    "min_format": 48,
-    "max_format": 94,
-    "description": "capitale_core 1.5.6-RC9AP — city biomes + Sylvharen forest palette"
+    "description": "capitale_core 1.5.6-RC9AU — RC9AT + city biomes + Sylvharen green palette (Minecraft 1.21.11)",
+    "min_format": [
+      94,
+      1
+    ],
+    "max_format": [
+      94,
+      1
+    ]
   }
 }
