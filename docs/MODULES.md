@@ -16,7 +16,7 @@ La source de vérité est désormais séparée en deux notions :
 | capitale_creatures_bundle | **1.2.16** | source complète encore à importer | #61, #72 |
 | Spell Engine HC | TEST3 RC7 | binaire hashé | #53 |
 | Spell Power HC | **serveur RC6 / client RC8 CLASSFORMAT FIX** | RC8 candidat hashé | #70 |
-| Haute Capitale RPG | TEST3 RC2 | binaire hashé | #53 |
+| Haute Capitale RPG | TEST3 RC2 (**b2**) | **b3 (caméra dialogue) et b4 (classe necromancien) construits, non déployés** | #53, #72 |
 | Hazennstuff HC | SPELLCOMPAT1 | binaire hashé | #53 |
 | Arsenal HC | PRIMARY ORDER1 | binaire hashé | #5, #53 |
 | Witcher Class HC | Footwork RC1 | binaire hashé | #53 |
@@ -25,5 +25,8 @@ La source de vérité est désormais séparée en deux notions :
 | Dialogue/caméra NPC | **b7** | source exacte à importer | #59, #72 |
 | Haute Capitale Quests | serveur b3 / client b2 | source à synchroniser | divergence runtime |
 | Haute Capitale Pirates | serveur b4 / client b2 | source à synchroniser | divergence runtime |
+| Moteur d'instances `dungeonz` | non déployé | b23 construit, source à importer (listé `dungeon2-hc` dans #72) | #32, #72 |
+| Datapack `hc_quetes` | b8 recensé | **b10 construit**, écart de deux builds à l'import | #33, #72 |
 
-Voir `server-manifest.yml` et `docs/RUNTIME_SNAPSHOT_2026-09-22.md`.
+Voir `server-manifest.yml`, `docs/RUNTIME_SNAPSHOT_2026-09-22.md` et
+`docs/CLEMENT_WORK_AUDIT.md` (relevé des builds mesurés sur le poste de développement).
