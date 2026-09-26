@@ -1,0 +1,20 @@
+{
+  "version": "1.2.36",
+  "base": "1.2.35",
+  "issue": 116,
+  "fix": {
+    "type": "jvm_descriptor",
+    "owner": "net/minecraft/class_1657",
+    "method": "method_7270",
+    "wrong_descriptor": "(Lnet/minecraft/class_1799)Z",
+    "correct_descriptor": "(Lnet/minecraft/class_1799;)Z",
+    "patched_classes": [
+      "net/suprk/ufauna/block/custom/CrocodileEgg.class",
+      "net/suprk/ufauna/block/custom/KomodoDragonEgg.class"
+    ]
+  },
+  "sha256": {
+    "bundle": "794d21d2bfb9517c31bb7c4da2c914e427b16f63d2f7af5221fa884c66c7c01f",
+    "nested_cubeanimals": "169a4b8cfeab9b239787d193d324b028ec97f97a47b656009aef76915a6adb42"
+  }
+}
