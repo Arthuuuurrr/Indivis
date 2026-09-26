@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 5,
+  "xp": 27,
+  "bloc_plein": "landsoficaria:strawberry_bush",
+  "bloc_vide": "minecraft:dead_bush",
+  "loot": [
+    { "id": "landsoficaria:strawberries", "min": 2, "max": 4 }
+  ],
+  "respawn": 240,
+  "coups": 1,
+  "titre": "Fraisier",
+  "commentaire": "Les fraises du gâteau du Cuisinier. Icaria requis."
+}

@@ -1,0 +1,8 @@
+{
+  "titre": "Vigueur",
+  "attribut": "minecraft:max_health",
+  "operation": "pourcent_base",
+  "valeur": 0.05,
+  "duree": 900,
+  "commentaire": "Ragoûts consistants : la vie maximale."
+}

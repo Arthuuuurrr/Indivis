@@ -1,0 +1,14 @@
+{
+  "titre": "Kit de campement",
+  "metier": "ingenieur",
+  "niveau": 30,
+  "xp": 102.0,
+  "ingredients": [
+    { "id": "minecraft:white_wool", "quantite": 2, "nom": "Laine blanche" },
+    { "id": "haute_capitale_metiers:fourrure_commune", "quantite": 2, "nom": "Fourrure commune" },
+    { "id": "minecraft:cooked_beef", "quantite": 2, "nom": "Steak" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:kit_de_campement", "quantite": 2 }
+}

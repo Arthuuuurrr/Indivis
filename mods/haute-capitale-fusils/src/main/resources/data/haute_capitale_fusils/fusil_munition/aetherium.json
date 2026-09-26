@@ -1,0 +1,4 @@
+{ "name": { "translate": "munition.haute_capitale_fusils.aetherium", "fallback": "Balle d'Aetherium" }, "color": 8454143, "muzzle_tint": 9498367, "default_shots": 1, "item": "haute_capitale_fusils:balle_aetherium",
+  "effects": [ { "type": "haute_capitale_fusils:stat", "stat": "seeking", "op": "set", "value": 0.35 }, { "type": "haute_capitale_fusils:stat", "stat": "gravity", "op": "set", "value": 0.0 },
+    { "type": "haute_capitale_fusils:stat", "stat": "damage", "op": "mul", "value": 0.3 }, { "type": "haute_capitale_fusils:armor_pierce", "fraction": 0.25, "piercing": 2 },
+    { "type": "haute_capitale_fusils:trail", "color": 8454143, "muzzle_tint": 9498367 } ] }

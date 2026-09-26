@@ -1,0 +1,13 @@
+{
+  "titre": "Riz cuit",
+  "metier": "cuisinier",
+  "niveau": 10,
+  "xp": 42.0,
+  "ingredients": [
+    { "tag": "c:crops/rice", "quantite": 1, "nom": "Riz" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "farmersdelight:cooked_rice", "quantite": 1 }
+}

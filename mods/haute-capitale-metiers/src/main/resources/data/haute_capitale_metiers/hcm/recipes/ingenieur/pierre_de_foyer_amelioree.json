@@ -1,0 +1,14 @@
+{
+  "titre": "Pierre de foyer améliorée",
+  "metier": "ingenieur",
+  "niveau": 45,
+  "xp": 147.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:pierre_de_foyer", "quantite": 1, "nom": "Pierre de foyer" },
+    { "id": "minecraft:ender_pearl", "quantite": 4, "nom": "Perle de l'Ender" },
+    { "id": "minecraft:diamond", "quantite": 2, "nom": "Diamant" },
+    { "id": "minecraft:amethyst_shard", "quantite": 4, "nom": "Éclat d'améthyste" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "haute_capitale_metiers:pierre_de_foyer_amelioree", "quantite": 1 }
+}

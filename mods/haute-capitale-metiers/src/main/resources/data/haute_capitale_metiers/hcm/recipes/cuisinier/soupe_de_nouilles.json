@@ -1,0 +1,16 @@
+{
+  "titre": "Soupe de nouilles",
+  "metier": "cuisinier",
+  "niveau": 26,
+  "xp": 90.0,
+  "ingredients": [
+    { "tag": "c:foods/pasta", "quantite": 1, "nom": "Pâtes" },
+    { "tag": "minecraft:eggs", "quantite": 1, "nom": "Œuf" },
+    { "id": "minecraft:dried_kelp", "quantite": 1, "nom": "Algue séchée" },
+    { "tag": "c:foods/raw_pork", "quantite": 1, "nom": "Porc cru" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:regeneration", "valeur": 0.066 },
+  "resultat": { "id": "farmersdelight:noodle_soup", "quantite": 1 }
+}

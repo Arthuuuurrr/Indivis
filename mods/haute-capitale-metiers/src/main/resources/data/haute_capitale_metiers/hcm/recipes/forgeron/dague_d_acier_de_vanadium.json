@@ -1,0 +1,12 @@
+{
+  "titre": "Dague d'\''acier de vanadium",
+  "metier": "forgeron",
+  "niveau": 31,
+  "xp": 105.0,
+  "ingredients": [
+    { "id": "landsoficaria:vanadiumsteel_ingot", "quantite": 2, "nom": "Lingot d'acier de vanadium" },
+    { "id": "magistuarmory:hilt", "quantite": 1, "nom": "Garde d'arme" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "landsoficaria:vanadiumsteel_dagger", "quantite": 1 }
+}

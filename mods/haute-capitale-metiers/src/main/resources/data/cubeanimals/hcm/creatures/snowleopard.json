@@ -1,0 +1,29 @@
+{
+  "commentaire": "Proie rare de zone froide — respawn contrôlé conseillé (30 min).",
+  "categorie": "bete",
+  "rarete": "rare",
+  "chasseur": {
+    "niveau": 26,
+    "xp": 90
+  },
+  "depecage": {
+    "niveau": 26,
+    "xp": 135,
+    "duree_carcasse": 90,
+    "canalisation": 5,
+    "outil": "haute_capitale_metiers:couteaux/expert",
+    "matiere": {
+      "id": "haute_capitale_metiers:fourrure_rare"
+    },
+    "secondaires": [
+      {
+        "id": "haute_capitale_metiers:tendon",
+        "chance": 0.35
+      }
+    ]
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

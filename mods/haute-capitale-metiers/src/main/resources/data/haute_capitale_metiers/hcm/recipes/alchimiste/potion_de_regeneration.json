@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de régénération",
+  "metier": "alchimiste",
+  "niveau": 11,
+  "xp": 45.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:chameomile", "quantite": 2, "nom": "Chaméomille" },
+    { "id": "minecraft:sweet_berries", "quantite": 1, "nom": "Baies sucrées" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:regeneration" } }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Collier d'acier au jade",
+  "metier": "joaillier",
+  "niveau": 27,
+  "xp": 93.0,
+  "ingredients": [
+    { "id": "jewelry:jade", "quantite": 1, "nom": "Jade" },
+    { "id": "magistuarmory:steel_ingot", "quantite": 2, "nom": "Lingot d'acier" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "mmo_accessories:steel_jade_necklace", "quantite": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 3,
+  "xp": 21,
+  "bloc_plein": "haute_capitale_metiers:cotonnier",
+  "bloc_vide": "haute_capitale_metiers:cotonnier_jeune",
+  "loot": [
+    { "id": "haute_capitale_metiers:coton", "min": 2, "max": 4 }
+  ],
+  "respawn": 300,
+  "coups": 2,
+  "titre": "Cotonnier",
+  "commentaire": "Le coton du Couturier. Le cotonnier est un bloc du mod, jamais posé par un joueur : la plante mûre donne ses capsules, la jeune pousse repousse en cinq minutes."
+}

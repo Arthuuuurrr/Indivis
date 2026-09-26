@@ -1,0 +1,34 @@
+{
+  "commentaire": "",
+  "categorie": "reptile",
+  "rarete": "rare",
+  "chasseur": {
+    "niveau": 23,
+    "xp": 81
+  },
+  "depecage": {
+    "niveau": 23,
+    "xp": 122,
+    "duree_carcasse": 90,
+    "canalisation": 5,
+    "outil": "haute_capitale_metiers:couteaux/expert",
+    "matiere": {
+      "id": "haute_capitale_metiers:peau_epaisse"
+    },
+    "secondaires": [
+      {
+        "id": "cubeanimals:komododragon_saliva",
+        "chance": 0.5
+      }
+    ]
+  },
+  "viande": {
+    "id": "cubeanimals:raw_reptile_meat",
+    "min": 1,
+    "max": 2
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

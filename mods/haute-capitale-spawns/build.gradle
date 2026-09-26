@@ -1,0 +1,59 @@
+plugins {
+    id 'fabric-loom' version '1.17.20'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base { archivesName = project.archives_base_name }
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // Deux dependances DOUCES, compilation seule, jamais embarquees :
+    //  - le mod de groupe (credit de quete a tout le groupe proche) ;
+    //  - Easy NPC (actions personnalisees pour activer/desactiver un spawn depuis un PNJ).
+    // Les ponts (package `bridge`) ne les touchent que si le mod est charge et se
+    // coupent d'eux-memes a la premiere erreur de liaison.
+    modCompileOnly files("libs/haute-capitale-party-0.1.0+1.21.11.b6.jar")
+    modCompileOnly files("libs/easy_npc-fabric-1.21.11-7.8.0-HOTFIX-index-iteration.jar")
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") { expand "version": project.version }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release = 21
+}
+
+java { withSourcesJar() }
+
+// --- Harnais de verification -------------------------------------------------
+// SpawnsTest est un main() classique, pas du JUnit : branche sur `check` pour
+// qu'un `build` ne passe jamais avec un codec casse ou une resolution fausse.
+sourceSets {
+    test { compileClasspath += sourceSets.main.compileClasspath + sourceSets.main.output
+           runtimeClasspath += sourceSets.main.runtimeClasspath + sourceSets.main.output }
+}
+
+tasks.register('runSpawnsTest', JavaExec) {
+    group = 'verification'
+    description = 'Verifie les codecs, la resolution des reglages, les timers et la machine a etats.'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'net.hautecapitale.spawns.SpawnsTest'
+    defaultCharacterEncoding = 'UTF-8'
+}
+
+tasks.named('test') { enabled = false }
+tasks.named('check') { dependsOn 'runSpawnsTest' }

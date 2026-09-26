@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "herboriste",
+  "titre": "Maître herboriste",
+  "accueil": "Les plantes parlent à qui sait regarder.",
+  "peut_enseigner": true
+}

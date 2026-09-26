@@ -1,0 +1,12 @@
+{
+  "titre": "Jambes de pantalon en soie",
+  "metier": "couturier",
+  "niveau": 29,
+  "xp": 99.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 3, "nom": "Tissu de soie" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:jambe_de_soie", "quantite": 2 }
+}

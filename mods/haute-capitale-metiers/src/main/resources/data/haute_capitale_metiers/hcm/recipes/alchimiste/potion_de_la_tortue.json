@@ -1,0 +1,17 @@
+{
+  "titre": "Potion de la tortue",
+  "metier": "alchimiste",
+  "niveau": 34,
+  "xp": 114.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:bolbos", "quantite": 3, "nom": "Bolbos" }
+  ],
+  "cout": 3,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:turtle_master" } }
+  }
+}

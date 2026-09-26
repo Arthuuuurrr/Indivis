@@ -1,0 +1,13 @@
+{
+  "titre": "Corde d'évasion",
+  "metier": "ingenieur",
+  "niveau": 18,
+  "xp": 66.0,
+  "ingredients": [
+    { "id": "minecraft:string", "quantite": 6, "nom": "Ficelle" },
+    { "id": "minecraft:slime_ball", "quantite": 1, "nom": "Boule de slime" },
+    { "id": "minecraft:feather", "quantite": 2, "nom": "Plume" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "haute_capitale_metiers:corde_d_evasion", "quantite": 1 }
+}

@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 30,
+  "xp": 102,
+  "bloc_plein": "landsoficaria:vanadium_ore",
+  "bloc_vide": "minecraft:stone",
+  "loot": [
+    { "id": "landsoficaria:raw_vanadium", "min": 1, "max": 2 }
+  ],
+  "respawn": 600,
+  "coups": 4,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon de vanadium",
+  "commentaire": "L'acier de vanadium d'Icaria : la dague du niveau 31. Icaria requis."
+}

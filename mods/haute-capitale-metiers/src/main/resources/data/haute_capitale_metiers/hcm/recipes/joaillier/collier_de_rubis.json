@@ -1,0 +1,13 @@
+{
+  "titre": "Collier de rubis",
+  "metier": "joaillier",
+  "niveau": 28,
+  "xp": 96.0,
+  "ingredients": [
+    { "id": "jewelry:ruby", "quantite": 1, "nom": "Rubis" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "jewelry:ruby_necklace", "quantite": 1 }
+}

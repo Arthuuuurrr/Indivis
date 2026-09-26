@@ -1,0 +1,15 @@
+{
+  "titre": "Ragoût de thog",
+  "metier": "cuisinier",
+  "niveau": 45,
+  "xp": 147.0,
+  "ingredients": [
+    { "id": "landsoficaria:raw_thog_meat", "quantite": 2, "nom": "Viande de thog" },
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" },
+    { "tag": "c:crops/rice", "quantite": 1, "nom": "Riz" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 5,
+  "repas": { "buff": "haute_capitale_metiers:vol_de_vie", "valeur": 0.109 },
+  "resultat": { "id": "landsoficaria:thog_stew", "quantite": 1 }
+}

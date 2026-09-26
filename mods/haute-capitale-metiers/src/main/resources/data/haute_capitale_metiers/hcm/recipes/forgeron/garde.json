@@ -1,0 +1,13 @@
+{
+  "titre": "Garde d'\''arme",
+  "metier": "forgeron",
+  "niveau": 6,
+  "xp": 30.0,
+  "ingredients": [
+    { "id": "minecraft:stick", "quantite": 1, "nom": "Bâton" },
+    { "id": "magistuarmory:leather_strip", "quantite": 1, "nom": "Lanière de cuir" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "magistuarmory:hilt", "quantite": 1 }
+}

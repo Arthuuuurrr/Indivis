@@ -1,0 +1,4 @@
+{ "category": "canon", "name": { "translate": "item.haute_capitale_fusils.longue_vue" }, "item": "haute_capitale_fusils:longue_vue", "scope": true,
+  "description": [ { "text": "Lentilles d'artificier : visée à la longue-vue." } ],
+  "stats": { "spread": -1, "aim_spread_multiplier": { "op": "mul", "value": -0.4 } },
+  "attachment": { "bone": "attachment_optic", "model": "haute_capitale_fusils:item/longue_vue", "texture": "haute_capitale_fusils:textures/item/longue_vue_modele.png" } }

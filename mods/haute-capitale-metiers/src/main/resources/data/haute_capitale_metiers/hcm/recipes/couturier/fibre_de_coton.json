@@ -1,0 +1,12 @@
+{
+  "titre": "Fibre de coton",
+  "metier": "couturier",
+  "niveau": 1,
+  "xp": 15.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:coton", "quantite": 1, "nom": "Coton" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:fibre_de_coton", "quantite": 3 }
+}

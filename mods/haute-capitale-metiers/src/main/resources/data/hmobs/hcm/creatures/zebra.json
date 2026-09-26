@@ -1,0 +1,16 @@
+{
+  "commentaire": "Ongulé de savane (GeckoLib) ; peau commune.",
+  "categorie": "animal",
+  "rarete": "commune",
+  "chasseur": { "niveau": 10, "xp": 42 },
+  "depecage": {
+    "niveau": 10,
+    "xp": 63,
+    "duree_carcasse": 60,
+    "canalisation": 3,
+    "matiere": { "id": "fleshz:hide", "min": 1, "max": 2 },
+    "secondaires": [ { "id": "minecraft:bone", "chance": 0.3 } ]
+  },
+  "viande": { "id": "hmobs:animal_meat", "min": 1, "max": 2 },
+  "origines_xp": ["naturelle", "spawn_mmo"]
+}

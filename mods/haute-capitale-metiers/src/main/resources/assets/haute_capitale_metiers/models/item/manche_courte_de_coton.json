@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "haute_capitale_metiers:item/manche_courte_de_coton"
+  }
+}

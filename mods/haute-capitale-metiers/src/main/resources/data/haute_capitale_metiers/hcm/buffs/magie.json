@@ -1,0 +1,8 @@
+{
+  "titre": "Esprit clair",
+  "attribut": "spell_power:generic",
+  "operation": "pourcent_base",
+  "valeur": 0.05,
+  "duree": 900,
+  "commentaire": "Desserts et boissons chaudes : la puissance de sort."
+}

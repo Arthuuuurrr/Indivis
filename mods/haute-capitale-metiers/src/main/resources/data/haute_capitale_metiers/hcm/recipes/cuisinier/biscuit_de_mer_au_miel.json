@@ -1,0 +1,13 @@
+{
+  "titre": "Biscuit de mer au miel",
+  "metier": "cuisinier",
+  "niveau": 7,
+  "xp": 33.0,
+  "ingredients": [
+    { "id": "cubeanimals:hardtack", "quantite": 1, "nom": "Biscuit de mer" },
+    { "id": "minecraft:honey_bottle", "quantite": 1, "nom": "Fiole de miel" }
+  ],
+  "cout": 0,
+  "repas": { "buff": "haute_capitale_metiers:endurance", "valeur": 0.030 },
+  "resultat": { "id": "cubeanimals:hardtack_with_honey", "quantite": 1 }
+}

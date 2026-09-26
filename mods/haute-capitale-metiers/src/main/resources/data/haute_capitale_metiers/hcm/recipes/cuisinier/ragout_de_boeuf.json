@@ -1,0 +1,15 @@
+{
+  "titre": "Ragoût de bœuf",
+  "metier": "cuisinier",
+  "niveau": 22,
+  "xp": 78.0,
+  "ingredients": [
+    { "tag": "c:foods/raw_beef", "quantite": 1, "nom": "Bœuf cru" },
+    { "tag": "c:crops/carrot", "quantite": 1, "nom": "Carotte" },
+    { "tag": "c:crops/potato", "quantite": 1, "nom": "Pomme de terre" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:melee", "valeur": 0.057 },
+  "resultat": { "id": "farmersdelight:beef_stew", "quantite": 1 }
+}

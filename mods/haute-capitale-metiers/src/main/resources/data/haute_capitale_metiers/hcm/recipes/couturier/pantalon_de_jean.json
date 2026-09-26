@@ -1,0 +1,12 @@
+{
+  "titre": "Pantalon de jean",
+  "metier": "couturier",
+  "niveau": 22,
+  "xp": 78.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:jambe_de_jean", "quantite": 2, "nom": "Jambe de jean" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "haute_capitale_metiers:pantalon_de_jean", "quantite": 1 }
+}

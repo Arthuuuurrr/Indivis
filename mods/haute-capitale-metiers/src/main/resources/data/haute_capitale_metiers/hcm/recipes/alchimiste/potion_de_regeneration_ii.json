@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de régénération II",
+  "metier": "alchimiste",
+  "niveau": 22,
+  "xp": 78.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:chameomile", "quantite": 3, "nom": "Chaméomille" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:strong_regeneration" } }
+  }
+}

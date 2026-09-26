@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de vision nocturne",
+  "metier": "alchimiste",
+  "niveau": 7,
+  "xp": 33.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:blindweed", "quantite": 2, "nom": "Herbe aveugle" },
+    { "id": "minecraft:carrot", "quantite": 1, "nom": "Carotte" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:night_vision" } }
+  }
+}

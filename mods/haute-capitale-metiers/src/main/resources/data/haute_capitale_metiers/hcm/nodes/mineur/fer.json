@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 5,
+  "xp": 27,
+  "bloc_plein": "minecraft:iron_ore",
+  "bloc_vide": "minecraft:stone",
+  "loot": [
+    { "id": "minecraft:raw_iron", "min": 1, "max": 2 }
+  ],
+  "respawn": 300,
+  "coups": 3,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon de fer",
+  "commentaire": "Base de tout le Forgeron d'apprenti."
+}

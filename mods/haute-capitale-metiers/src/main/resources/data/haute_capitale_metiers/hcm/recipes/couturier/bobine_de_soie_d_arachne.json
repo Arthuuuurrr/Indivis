@@ -1,0 +1,13 @@
+{
+  "titre": "Bobine de soie d'arachné",
+  "metier": "couturier",
+  "niveau": 21,
+  "xp": 75.0,
+  "ingredients": [
+    { "id": "landsoficaria:arachne_string", "quantite": 2, "nom": "Soie d'arachné" },
+    { "id": "haute_capitale_metiers:bobine_vide", "quantite": 1, "nom": "Bobine vide" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:bobine_de_soie", "quantite": 2 }
+}

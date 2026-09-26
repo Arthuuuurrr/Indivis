@@ -1,0 +1,12 @@
+{
+  "titre": "Manches courtes de coton",
+  "metier": "couturier",
+  "niveau": 11,
+  "xp": 45.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_coton", "quantite": 2, "nom": "Tissu de coton" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:manche_courte_de_coton", "quantite": 2 }
+}

@@ -1,0 +1,35 @@
+{
+  "commentaire": "Proie rare d'Icaria — respawn contrôlé conseillé (1 h). Peau fantasy et crâne au dépeçage (étape 8).",
+  "categorie": "bete_fantasy",
+  "rarete": "exotique",
+  "chasseur": {
+    "niveau": 35,
+    "xp": 117
+  },
+  "depecage": {
+    "niveau": 35,
+    "xp": 176,
+    "duree_carcasse": 120,
+    "canalisation": 6,
+    "outil": "haute_capitale_metiers:couteaux/maitre",
+    "matiere": {
+      "id": "landsoficaria:aeternae_hide",
+      "min": 1,
+      "max": 2
+    },
+    "secondaires": [
+      {
+        "id": "haute_capitale_metiers:tendon",
+        "chance": 0.5
+      },
+      {
+        "id": "landsoficaria:aeternae_skull",
+        "chance": 0.1
+      }
+    ]
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "alchimiste",
+  "titre": "Maître alchimiste",
+  "accueil": "L'Herboriste cueille, l'Alchimiste comprend.",
+  "peut_enseigner": true
+}

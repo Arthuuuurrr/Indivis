@@ -1,0 +1,7 @@
+{
+  "interface": "atelier",
+  "metier": "forgeron",
+  "titre": "Forge",
+  "reparation": true,
+  "commentaire": "Le seul rôle qui répare : ouvert à tous, sans métier. Mettez « reparation »: true sur un autre rôle pour lui donner le service."
+}

@@ -1,0 +1,12 @@
+{
+  "titre": "Dague de kassiteros",
+  "metier": "forgeron",
+  "niveau": 11,
+  "xp": 45.0,
+  "ingredients": [
+    { "id": "landsoficaria:kassiteros_ingot", "quantite": 2, "nom": "Lingot de kassiteros" },
+    { "id": "minecraft:stick", "quantite": 1, "nom": "Bâton" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "landsoficaria:kassiteros_dagger", "quantite": 1 }
+}

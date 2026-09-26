@@ -1,0 +1,8 @@
+{
+  "titre": "Soif de sang",
+  "attribut": "puffish_attributes:life_steal",
+  "operation": "pourcent_base",
+  "valeur": 0.03,
+  "duree": 900,
+  "commentaire": "Plats de haut niveau : le vol de vie."
+}

@@ -1,0 +1,13 @@
+{
+  "metier": "herboriste",
+  "niveau": 3,
+  "xp": 21,
+  "bloc_plein": "minecraft:poppy",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "minecraft:poppy", "min": 1, "max": 2 }
+  ],
+  "respawn": 120,
+  "coups": 1,
+  "titre": "Coquelicots"
+}

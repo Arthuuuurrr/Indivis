@@ -1,0 +1,20 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "net.hautecapitale.fusils.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+	],
+	"client": [
+		"client.MinecraftAttackMixin",
+		"client.ItemInHandRendererMixin",
+		"client.HumanoidModelMixin",
+		"client.AbstractClientPlayerFovMixin",
+		"client.CameraRecoilMixin",
+		"client.MouseHandlerMixin",
+		"client.GuiCrosshairMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

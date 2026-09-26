@@ -1,0 +1,8 @@
+{
+  "titre": "Vigueur guerrière",
+  "attribut": "puffish_attributes:melee_damage",
+  "operation": "pourcent_base",
+  "valeur": 0.05,
+  "duree": 900,
+  "commentaire": "Plats de viande rouge : les dégâts de mêlée."
+}

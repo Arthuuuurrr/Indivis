@@ -1,0 +1,6 @@
+{
+  "values": [
+    "haute_capitale_metiers:fourrure_epaisse",
+    { "id": "more_rpg_classes:polar_bear_fur", "required": false }
+  ]
+}

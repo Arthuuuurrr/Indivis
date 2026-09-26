@@ -1,0 +1,17 @@
+{
+  "commentaire": "Ursidé (GeckoLib) ; la peau d'ours brun existe déjà chez H Mobs.",
+  "categorie": "bete",
+  "rarete": "rare",
+  "chasseur": { "niveau": 27, "xp": 93 },
+  "depecage": {
+    "niveau": 27,
+    "xp": 140,
+    "duree_carcasse": 90,
+    "canalisation": 5,
+    "outil": "haute_capitale_metiers:couteaux/expert",
+    "matiere": { "id": "hmobs:brown_bear_hide", "min": 1, "max": 2 },
+    "secondaires": [ { "id": "haute_capitale_metiers:tendon", "chance": 0.4 }, { "id": "minecraft:bone", "min": 1, "max": 2, "chance": 0.5 } ]
+  },
+  "viande": { "id": "hmobs:animal_meat", "min": 2, "max": 3 },
+  "origines_xp": ["naturelle", "spawn_mmo"]
+}

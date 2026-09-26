@@ -1,0 +1,16 @@
+{
+  "titre": "Salade de fruits",
+  "metier": "cuisinier",
+  "niveau": 7,
+  "xp": 33.0,
+  "ingredients": [
+    { "id": "minecraft:apple", "quantite": 1, "nom": "Pomme" },
+    { "id": "minecraft:melon_slice", "quantite": 2, "nom": "Tranche de pastèque" },
+    { "tag": "c:foods/berry", "quantite": 2, "nom": "Baies" },
+    { "id": "farmersdelight:pumpkin_slice", "quantite": 1, "nom": "Tranche de citrouille" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 0,
+  "repas": { "buff": "haute_capitale_metiers:celerite", "valeur": 0.030 },
+  "resultat": { "id": "farmersdelight:fruit_salad", "quantite": 1 }
+}

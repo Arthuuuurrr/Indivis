@@ -1,0 +1,16 @@
+{
+  "titre": "Hachis Parmentier (festin)",
+  "metier": "cuisinier",
+  "niveau": 40,
+  "xp": 132.0,
+  "ingredients": [
+    { "id": "minecraft:baked_potato", "quantite": 2, "nom": "Pomme de terre cuite" },
+    { "tag": "c:drinks/milk", "quantite": 1, "nom": "Lait" },
+    { "tag": "c:foods/cooked_mutton", "quantite": 3, "nom": "Mouton cuit" },
+    { "tag": "c:crops/onion", "quantite": 2, "nom": "Oignon" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 3,
+  "repas": { "buff": "haute_capitale_metiers:festin", "valeur": 0.100 },
+  "resultat": { "id": "farmersdelight:shepherds_pie", "quantite": 4 }
+}

@@ -1,0 +1,14 @@
+{
+  "titre": "Manteau de chute d'étoile",
+  "metier": "couturier",
+  "niveau": 48,
+  "xp": 156.0,
+  "ingredients": [
+    { "id": "hazennstuff:storm_weave", "quantite": 2, "nom": "Tissage d'orage" },
+    { "id": "minecraft:amethyst_shard", "quantite": 4, "nom": "Éclat d'améthyste" },
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 4, "nom": "Tissu de soie" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "mmo_accessories:starfall_mantle", "quantite": 1 }
+}

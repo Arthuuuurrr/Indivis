@@ -1,0 +1,13 @@
+{
+  "titre": "Pull de laine",
+  "metier": "couturier",
+  "niveau": 17,
+  "xp": 63.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:base_de_haut_en_laine", "quantite": 1, "nom": "Base de haut en laine" },
+    { "id": "haute_capitale_metiers:manche_longue_de_laine", "quantite": 2, "nom": "Manche longue de laine" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "haute_capitale_metiers:pull_de_laine", "quantite": 1 }
+}

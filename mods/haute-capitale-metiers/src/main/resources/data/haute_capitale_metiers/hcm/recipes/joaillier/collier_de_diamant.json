@@ -1,0 +1,13 @@
+{
+  "titre": "Collier de diamant",
+  "metier": "joaillier",
+  "niveau": 26,
+  "xp": 90.0,
+  "ingredients": [
+    { "id": "minecraft:diamond", "quantite": 1, "nom": "Diamant" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "jewelry:diamond_necklace", "quantite": 1 }
+}

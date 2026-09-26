@@ -1,0 +1,16 @@
+{
+  "titre": "Hamburger",
+  "metier": "cuisinier",
+  "niveau": 21,
+  "xp": 75.0,
+  "ingredients": [
+    { "tag": "c:foods/bread", "quantite": 1, "nom": "Pain" },
+    { "id": "farmersdelight:beef_patty", "quantite": 1, "nom": "Steak haché" },
+    { "tag": "c:foods/leafy_green", "quantite": 1, "nom": "Feuilles vertes" },
+    { "tag": "c:crops/tomato", "quantite": 1, "nom": "Tomate" },
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:melee", "valeur": 0.055 },
+  "resultat": { "id": "farmersdelight:hamburger", "quantite": 1 }
+}

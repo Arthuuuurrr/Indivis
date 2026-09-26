@@ -1,0 +1,13 @@
+{
+  "titre": "Biscuits aux baies",
+  "metier": "cuisinier",
+  "niveau": 6,
+  "xp": 30.0,
+  "ingredients": [
+    { "id": "minecraft:sweet_berries", "quantite": 1, "nom": "Baies sucrées" },
+    { "tag": "c:crops/wheat", "quantite": 2, "nom": "Blé" }
+  ],
+  "cout": 0,
+  "repas": { "buff": "haute_capitale_metiers:magie", "valeur": 0.030 },
+  "resultat": { "id": "farmersdelight:sweet_berry_cookie", "quantite": 1 }
+}

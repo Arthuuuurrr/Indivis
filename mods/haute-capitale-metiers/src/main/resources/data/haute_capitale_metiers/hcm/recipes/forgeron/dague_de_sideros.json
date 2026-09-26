@@ -1,0 +1,12 @@
+{
+  "titre": "Dague de sideros",
+  "metier": "forgeron",
+  "niveau": 21,
+  "xp": 75.0,
+  "ingredients": [
+    { "id": "landsoficaria:sideros_ingot", "quantite": 2, "nom": "Lingot de sideros" },
+    { "id": "magistuarmory:hilt", "quantite": 1, "nom": "Garde d'arme" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "landsoficaria:sideros_dagger", "quantite": 1 }
+}

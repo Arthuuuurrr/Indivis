@@ -1,0 +1,12 @@
+{
+  "titre": "Lanières de cuir",
+  "metier": "travailleur_du_cuir",
+  "niveau": 2,
+  "xp": 18.0,
+  "ingredients": [
+    { "id": "minecraft:leather", "quantite": 2, "nom": "Cuir" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "magistuarmory:leather_strip", "quantite": 6 }
+}

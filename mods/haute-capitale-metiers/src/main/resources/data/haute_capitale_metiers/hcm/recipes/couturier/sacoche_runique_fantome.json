@@ -1,0 +1,12 @@
+{
+  "titre": "Sacoche runique fantôme",
+  "metier": "couturier",
+  "niveau": 35,
+  "xp": 117.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 3, "nom": "Tissu de soie" },
+    { "id": "haute_capitale_metiers:cuir_exotique", "quantite": 2, "nom": "Cuir exotique" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "runes:medium_rune_pouch", "quantite": 1 }
+}

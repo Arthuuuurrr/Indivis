@@ -1,0 +1,14 @@
+{
+  "titre": "Œuf d'araignée de glace frit",
+  "metier": "cuisinier",
+  "niveau": 47,
+  "xp": 153.0,
+  "ingredients": [
+    { "id": "minecraft:egg", "quantite": 2, "nom": "Œuf" },
+    { "id": "hazennstuff:permafrost_fragment", "quantite": 1, "nom": "Fragment de permafrost" },
+    { "id": "hazennstuff:spider_fang", "quantite": 1, "nom": "Croc d'araignée" }
+  ],
+  "cout": 5,
+  "qualite": false,
+  "resultat": { "id": "hazennstuff:fried_ice_spider_egg", "quantite": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Bottes de lave",
+  "metier": "ingenieur",
+  "niveau": 38,
+  "xp": 126.0,
+  "ingredients": [
+    { "id": "minecraft:iron_boots", "quantite": 1, "nom": "Bottes de fer" },
+    { "id": "minecraft:magma_cream", "quantite": 4, "nom": "Crème de magma" },
+    { "id": "minecraft:obsidian", "quantite": 2, "nom": "Obsidienne" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "haute_capitale_metiers:bottes_de_lave", "quantite": 1 }
+}

@@ -1,0 +1,15 @@
+{
+  "titre": "Tourte au chocolat",
+  "metier": "cuisinier",
+  "niveau": 36,
+  "xp": 120.0,
+  "ingredients": [
+    { "id": "minecraft:cocoa_beans", "quantite": 3, "nom": "Fèves de cacao" },
+    { "tag": "c:drinks/milk", "quantite": 3, "nom": "Lait" },
+    { "id": "minecraft:sugar", "quantite": 2, "nom": "Sucre" },
+    { "id": "farmersdelight:pie_crust", "quantite": 1, "nom": "Fond de tarte" }
+  ],
+  "cout": 3,
+  "repas": { "buff": "haute_capitale_metiers:magie", "valeur": 0.089 },
+  "resultat": { "id": "farmersdelight:chocolate_pie_slice", "quantite": 4 }
+}

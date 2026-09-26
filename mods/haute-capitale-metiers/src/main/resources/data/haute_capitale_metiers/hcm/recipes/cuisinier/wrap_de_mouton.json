@@ -1,0 +1,15 @@
+{
+  "titre": "Wrap de mouton",
+  "metier": "cuisinier",
+  "niveau": 19,
+  "xp": 69.0,
+  "ingredients": [
+    { "tag": "c:foods/bread", "quantite": 1, "nom": "Pain" },
+    { "tag": "c:foods/cooked_mutton", "quantite": 1, "nom": "Mouton cuit" },
+    { "tag": "c:foods/leafy_green", "quantite": 1, "nom": "Feuilles vertes" },
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:melee", "valeur": 0.050 },
+  "resultat": { "id": "farmersdelight:mutton_wrap", "quantite": 1 }
+}

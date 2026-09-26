@@ -1,0 +1,13 @@
+{
+  "titre": "Anneau de topaze en netherite",
+  "metier": "joaillier",
+  "niveau": 40,
+  "xp": 132.0,
+  "ingredients": [
+    { "id": "jewelry:topaz", "quantite": 1, "nom": "Topaze" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "jewelry:netherite_topaz_ring", "quantite": 1 }
+}

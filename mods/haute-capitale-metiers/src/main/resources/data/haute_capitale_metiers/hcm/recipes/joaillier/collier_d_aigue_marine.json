@@ -1,0 +1,13 @@
+{
+  "titre": "Collier d'aigue-marine",
+  "metier": "joaillier",
+  "niveau": 28,
+  "xp": 96.0,
+  "ingredients": [
+    { "id": "mmo_accessories:aquamarine", "quantite": 1, "nom": "Aigue-marine" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "mmo_accessories:aquamarine_necklace", "quantite": 1 }
+}

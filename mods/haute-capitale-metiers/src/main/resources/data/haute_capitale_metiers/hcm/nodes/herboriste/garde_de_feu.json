@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 13,
+  "xp": 51,
+  "bloc_plein": "landsoficaria:firehilt",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:firehilt", "min": 1, "max": 2 }
+  ],
+  "respawn": 300,
+  "coups": 2,
+  "titre": "Garde-de-feu",
+  "commentaire": "La plante de la force. Icaria requis."
+}

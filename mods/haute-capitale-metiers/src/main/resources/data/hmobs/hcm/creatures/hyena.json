@@ -1,0 +1,17 @@
+{
+  "commentaire": "Charognard (GeckoLib) ; fourrure commune.",
+  "categorie": "bete",
+  "rarete": "peu_commune",
+  "chasseur": { "niveau": 14, "xp": 54 },
+  "depecage": {
+    "niveau": 14,
+    "xp": 81,
+    "duree_carcasse": 60,
+    "canalisation": 3,
+    "outil": "haute_capitale_metiers:couteaux/compagnon",
+    "matiere": { "id": "haute_capitale_metiers:fourrure_commune", "min": 1, "max": 2 },
+    "secondaires": [ { "id": "minecraft:bone", "chance": 0.4 } ]
+  },
+  "viande": { "id": "hmobs:animal_meat", "min": 1, "max": 2 },
+  "origines_xp": ["naturelle", "spawn_mmo"]
+}

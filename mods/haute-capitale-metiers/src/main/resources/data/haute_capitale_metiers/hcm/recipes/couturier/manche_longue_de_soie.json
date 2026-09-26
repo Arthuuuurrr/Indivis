@@ -1,0 +1,12 @@
+{
+  "titre": "Manches longues de soie",
+  "metier": "couturier",
+  "niveau": 28,
+  "xp": 96.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 3, "nom": "Tissu de soie" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:manche_longue_de_soie", "quantite": 2 }
+}

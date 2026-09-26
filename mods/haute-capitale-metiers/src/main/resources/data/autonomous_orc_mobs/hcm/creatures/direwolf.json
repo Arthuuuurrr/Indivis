@@ -1,0 +1,33 @@
+{
+  "commentaire": "Loup de guerre des orcs : une bête, donc une proie.",
+  "categorie": "bete",
+  "rarete": "peu_commune",
+  "chasseur": {
+    "niveau": 17,
+    "xp": 63
+  },
+  "depecage": {
+    "niveau": 17,
+    "xp": 95,
+    "duree_carcasse": 75,
+    "canalisation": 4,
+    "outil": "haute_capitale_metiers:couteaux/compagnon",
+    "matiere": {
+      "id": "haute_capitale_metiers:fourrure_epaisse",
+      "min": 1,
+      "max": 2
+    },
+    "secondaires": [
+      {
+        "id": "minecraft:bone",
+        "min": 1,
+        "max": 2,
+        "chance": 0.4
+      }
+    ]
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

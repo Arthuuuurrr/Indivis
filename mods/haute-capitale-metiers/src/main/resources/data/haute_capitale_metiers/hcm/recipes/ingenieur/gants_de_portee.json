@@ -1,0 +1,14 @@
+{
+  "titre": "Gants de portée",
+  "metier": "ingenieur",
+  "niveau": 32,
+  "xp": 108.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:cuir_exotique", "quantite": 2, "nom": "Cuir exotique" },
+    { "id": "minecraft:leather", "quantite": 2, "nom": "Cuir" },
+    { "id": "minecraft:ender_pearl", "quantite": 1, "nom": "Perle de l'Ender" },
+    { "id": "minecraft:slime_ball", "quantite": 2, "nom": "Boule de slime" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "haute_capitale_metiers:gants_de_portee", "quantite": 1 }
+}

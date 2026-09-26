@@ -1,0 +1,13 @@
+{
+  "titre": "Casque d'exosquelette",
+  "metier": "ingenieur",
+  "niveau": 35,
+  "xp": 117.0,
+  "ingredients": [
+    { "id": "minecraft:iron_helmet", "quantite": 1, "nom": "Casque de fer" },
+    { "id": "magistuarmory:steel_ingot", "quantite": 3, "nom": "Lingot d'acier" },
+    { "id": "minecraft:redstone", "quantite": 2, "nom": "Redstone" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "haute_capitale_metiers:exosquelette_casque", "quantite": 1 }
+}

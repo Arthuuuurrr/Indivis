@@ -1,0 +1,12 @@
+{
+  "titre": "Bonnet de laine",
+  "metier": "couturier",
+  "niveau": 12,
+  "xp": 48.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_laine", "quantite": 2, "nom": "Tissu de laine" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "haute_capitale_metiers:bonnet_de_laine", "quantite": 1 }
+}

@@ -1,0 +1,31 @@
+{
+  "commentaire": "Félin : fourrure rayée au dépeçage (étape 8).",
+  "categorie": "bete",
+  "rarete": "rare",
+  "chasseur": {
+    "niveau": 24,
+    "xp": 84
+  },
+  "depecage": {
+    "niveau": 24,
+    "xp": 126,
+    "duree_carcasse": 90,
+    "canalisation": 5,
+    "outil": "haute_capitale_metiers:couteaux/expert",
+    "matiere": {
+      "id": "haute_capitale_metiers:fourrure_rare"
+    },
+    "secondaires": [
+      {
+        "id": "minecraft:bone",
+        "min": 1,
+        "max": 2,
+        "chance": 0.5
+      }
+    ]
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

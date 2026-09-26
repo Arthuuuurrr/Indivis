@@ -1,0 +1,16 @@
+{
+  "titre": "Steak et pommes de terre",
+  "metier": "cuisinier",
+  "niveau": 32,
+  "xp": 108.0,
+  "ingredients": [
+    { "id": "minecraft:baked_potato", "quantite": 1, "nom": "Pomme de terre cuite" },
+    { "id": "minecraft:cooked_beef", "quantite": 1, "nom": "Steak" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" },
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" },
+    { "id": "farmersdelight:cooked_rice", "quantite": 1, "nom": "Riz cuit" }
+  ],
+  "cout": 3,
+  "repas": { "buff": "haute_capitale_metiers:melee", "valeur": 0.080 },
+  "resultat": { "id": "farmersdelight:steak_and_potatoes", "quantite": 1 }
+}

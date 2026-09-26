@@ -1,0 +1,13 @@
+{
+  "titre": "Aiguille enfilée",
+  "metier": "couturier",
+  "niveau": 5,
+  "xp": 27.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:aiguille", "quantite": 1, "nom": "Aiguille" },
+    { "id": "haute_capitale_metiers:bobine_de_coton", "quantite": 1, "nom": "Bobine de coton" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1 }
+}

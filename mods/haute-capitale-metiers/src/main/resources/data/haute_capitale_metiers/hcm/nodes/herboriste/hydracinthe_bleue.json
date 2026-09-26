@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 14,
+  "xp": 54,
+  "bloc_plein": "landsoficaria:blue_hydracinth",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:blue_hydracinth", "min": 1, "max": 2 }
+  ],
+  "respawn": 300,
+  "coups": 1,
+  "titre": "Hydracinthe bleue",
+  "commentaire": "Entre dans la respiration aquatique. Icaria requis."
+}

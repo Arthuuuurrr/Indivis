@@ -1,0 +1,14 @@
+{
+  "titre": "Étoffe du Porte-Flamme",
+  "metier": "couturier",
+  "niveau": 41,
+  "xp": 135.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 4, "nom": "Tissu de soie" },
+    { "id": "minecraft:blaze_powder", "quantite": 4, "nom": "Poudre de blaze" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 5,
+  "qualite": false,
+  "resultat": { "id": "hazennstuff:cloth_of_the_flamebearer", "quantite": 1 }
+}

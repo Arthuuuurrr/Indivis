@@ -1,0 +1,13 @@
+{
+  "titre": "Tannage robuste",
+  "metier": "travailleur_du_cuir",
+  "niveau": 16,
+  "xp": 60.0,
+  "ingredients": [
+    { "tag": "haute_capitale_metiers:peaux/epaisses", "quantite": 3, "nom": "Peau épaisse" },
+    { "tag": "haute_capitale_metiers:tanin", "quantite": 2, "nom": "Écorce" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "more_rpg_classes:hardened_leather", "quantite": 1 }
+}

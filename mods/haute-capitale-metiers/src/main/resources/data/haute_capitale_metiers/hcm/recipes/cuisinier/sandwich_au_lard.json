@@ -1,0 +1,15 @@
+{
+  "titre": "Sandwich au lard",
+  "metier": "cuisinier",
+  "niveau": 13,
+  "xp": 51.0,
+  "ingredients": [
+    { "tag": "c:foods/bread", "quantite": 1, "nom": "Pain" },
+    { "tag": "c:foods/cooked_bacon", "quantite": 1, "nom": "Lard cuit" },
+    { "tag": "c:foods/leafy_green", "quantite": 1, "nom": "Feuilles vertes" },
+    { "tag": "c:crops/tomato", "quantite": 1, "nom": "Tomate" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:endurance", "valeur": 0.037 },
+  "resultat": { "id": "farmersdelight:bacon_sandwich", "quantite": 1 }
+}

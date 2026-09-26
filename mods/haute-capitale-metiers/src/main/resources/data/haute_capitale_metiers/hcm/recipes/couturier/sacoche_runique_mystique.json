@@ -1,0 +1,13 @@
+{
+  "titre": "Sacoche runique mystique",
+  "metier": "couturier",
+  "niveau": 45,
+  "xp": 147.0,
+  "ingredients": [
+    { "id": "hazennstuff:storm_weave", "quantite": 1, "nom": "Tissage d'orage" },
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 3, "nom": "Tissu de soie" },
+    { "id": "jewelry:sapphire", "quantite": 1, "nom": "Saphir" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "runes:large_rune_pouch", "quantite": 1 }
+}

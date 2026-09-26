@@ -1,0 +1,12 @@
+{
+  "titre": "Débardeur",
+  "metier": "couturier",
+  "niveau": 9,
+  "xp": 39.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_coton", "quantite": 2, "nom": "Tissu de coton" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 0,
+  "resultat": { "id": "haute_capitale_metiers:debardeur", "quantite": 1 }
+}

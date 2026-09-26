@@ -1,0 +1,8 @@
+{
+  "titre": "Peau dure",
+  "attribut": "puffish_attributes:resistance",
+  "operation": "pourcent_base",
+  "valeur": 0.05,
+  "duree": 900,
+  "commentaire": "Plats épicés : la résistance."
+}

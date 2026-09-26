@@ -1,0 +1,2 @@
+{ "name": { "translate": "munition.haute_capitale_fusils.incendiaire", "fallback": "Balle incendiaire" }, "color": 16746496,
+  "effects": [ { "type": "haute_capitale_fusils:ignite", "ticks": 80 }, { "type": "haute_capitale_fusils:stat", "stat": "damage", "op": "mul", "value": 0.1 } ] }

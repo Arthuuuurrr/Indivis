@@ -1,0 +1,34 @@
+{
+  "commentaire": "Comme le troll.",
+  "categorie": "humanoide_monstrueux",
+  "rarete": "exotique",
+  "chasseur": {
+    "niveau": 39,
+    "xp": 129
+  },
+  "depecage": {
+    "niveau": 39,
+    "xp": 194,
+    "duree_carcasse": 150,
+    "canalisation": 6,
+    "outil": "haute_capitale_metiers:couteaux/maitre",
+    "matiere": {
+      "id": "haute_capitale_metiers:peau_epaisse",
+      "min": 1,
+      "max": 2
+    },
+    "secondaires": [
+      {
+        "id": "haute_capitale_metiers:tendon",
+        "chance": 0.5
+      }
+    ]
+  },
+  "loot_combat": [
+    { "id": "capitale_currency:martin_dor", "min": 15, "max": 30, "chance": 0.9 }
+  ],
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "titre": "Lumière",
+  "attribut": "spell_power:healing",
+  "operation": "pourcent_base",
+  "valeur": 0.08,
+  "duree": 900,
+  "commentaire": "Plats de haut niveau : l'école sacrée."
+}

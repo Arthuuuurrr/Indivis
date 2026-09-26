@@ -1,0 +1,30 @@
+{
+  "commentaire": "Rapace : proie difficile à atteindre, XP en conséquence.",
+  "categorie": "animal",
+  "rarete": "peu_commune",
+  "chasseur": {
+    "niveau": 12,
+    "xp": 48
+  },
+  "depecage": {
+    "niveau": 12,
+    "xp": 72,
+    "duree_carcasse": 60,
+    "canalisation": 2,
+    "outil": "haute_capitale_metiers:couteaux/compagnon",
+    "matiere": {
+      "id": "minecraft:feather",
+      "min": 2,
+      "max": 4
+    }
+  },
+  "viande": {
+    "id": "cubeanimals:raw_bird_leg",
+    "min": 1,
+    "max": 1
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

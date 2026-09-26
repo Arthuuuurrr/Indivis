@@ -1,0 +1,15 @@
+{
+  "titre": "Diadème étoilé",
+  "metier": "couturier",
+  "niveau": 50,
+  "xp": 162.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 2, "nom": "Tissu de soie" },
+    { "id": "hazennstuff:cloth_of_the_flamebearer", "quantite": 1, "nom": "Étoffe du Porte-Flamme" },
+    { "id": "jewelry:sapphire", "quantite": 2, "nom": "Saphir" },
+    { "id": "jewelry:topaz", "quantite": 2, "nom": "Topaze" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "mmo_accessories:starlit_diadem", "quantite": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 15,
+  "xp": 57,
+  "bloc_plein": "landsoficaria:sunsponge",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:sunsponge", "min": 1, "max": 2 }
+  ],
+  "respawn": 300,
+  "coups": 1,
+  "titre": "Éponge solaire",
+  "commentaire": "La plante de la respiration aquatique. Icaria requis."
+}

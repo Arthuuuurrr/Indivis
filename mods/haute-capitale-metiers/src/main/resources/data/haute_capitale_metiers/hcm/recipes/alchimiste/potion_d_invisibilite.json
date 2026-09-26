@@ -1,0 +1,17 @@
+{
+  "titre": "Potion d'invisibilité",
+  "metier": "alchimiste",
+  "niveau": 25,
+  "xp": 87.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:voidlily", "quantite": 3, "nom": "Lys du vide" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:invisibility" } }
+  }
+}

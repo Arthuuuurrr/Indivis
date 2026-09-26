@@ -1,0 +1,19 @@
+{
+  "titre": "Potion jetable de force II",
+  "metier": "alchimiste",
+  "niveau": 40,
+  "xp": 132.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:firehilt", "quantite": 3, "nom": "Garde-de-feu" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" },
+    { "id": "minecraft:gunpowder", "quantite": 1, "nom": "Poudre à canon" }
+  ],
+  "cout": 4,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:splash_potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:strong_strength" } }
+  }
+}

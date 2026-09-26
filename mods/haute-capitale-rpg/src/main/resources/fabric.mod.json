@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "haute_capitale_rpg",
+  "version": "${version}",
+  "name": "Haute Capitale — RPG",
+  "description": "Noyau RPG du serveur Haute Capitale : onze classes, données joueur, configuration, commandes, et une caméra troisième personne côté client. Se pose à côté des mods de classe existants sans rien leur revendiquer.",
+  "authors": ["Haute Capitale"],
+  "license": "ARR",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["net.hautecapitale.rpg.HauteCapitaleRpg"],
+    "client": ["net.hautecapitale.rpg.client.RpgCameraClient"]
+  },
+  "mixins": [
+    {
+      "config": "haute_capitale_rpg.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}

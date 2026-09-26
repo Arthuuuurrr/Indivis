@@ -1,0 +1,12 @@
+{
+  "titre": "Anneau d'aigue-marine en netherite",
+  "metier": "joaillier",
+  "niveau": 42,
+  "xp": 138.0,
+  "ingredients": [
+    { "id": "mmo_accessories:aquamarine_ring", "quantite": 1, "nom": "Anneau d'aigue-marine" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "mmo_accessories:netherite_aquamarine_ring", "quantite": 1 }
+}

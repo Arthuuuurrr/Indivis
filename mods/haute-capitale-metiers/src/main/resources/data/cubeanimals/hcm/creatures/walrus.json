@@ -1,0 +1,36 @@
+{
+  "commentaire": "Aquatique combattu, donc chasse.",
+  "categorie": "animal",
+  "rarete": "rare",
+  "chasseur": {
+    "niveau": 28,
+    "xp": 96
+  },
+  "depecage": {
+    "niveau": 28,
+    "xp": 144,
+    "duree_carcasse": 90,
+    "canalisation": 5,
+    "outil": "haute_capitale_metiers:couteaux/expert",
+    "matiere": {
+      "id": "haute_capitale_metiers:peau_epaisse",
+      "min": 1,
+      "max": 2
+    },
+    "secondaires": [
+      {
+        "id": "haute_capitale_metiers:tendon",
+        "chance": 0.4
+      }
+    ]
+  },
+  "viande": {
+    "id": "minecraft:cod",
+    "min": 1,
+    "max": 2
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

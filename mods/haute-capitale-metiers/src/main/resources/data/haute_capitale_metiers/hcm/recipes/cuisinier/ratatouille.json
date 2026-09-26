@@ -1,0 +1,16 @@
+{
+  "titre": "Ratatouille",
+  "metier": "cuisinier",
+  "niveau": 29,
+  "xp": 99.0,
+  "ingredients": [
+    { "tag": "c:crops/tomato", "quantite": 1, "nom": "Tomate" },
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" },
+    { "tag": "c:crops/beetroot", "quantite": 1, "nom": "Betterave" },
+    { "tag": "c:foods/vegetable", "quantite": 1, "nom": "Légume" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:resistance", "valeur": 0.073 },
+  "resultat": { "id": "farmersdelight:ratatouille", "quantite": 1 }
+}

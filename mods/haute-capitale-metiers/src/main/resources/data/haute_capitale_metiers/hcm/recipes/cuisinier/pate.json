@@ -1,0 +1,13 @@
+{
+  "titre": "Pâte",
+  "metier": "cuisinier",
+  "niveau": 5,
+  "xp": 27.0,
+  "ingredients": [
+    { "tag": "c:crops/wheat", "quantite": 3, "nom": "Blé" },
+    { "id": "minecraft:water_bucket", "quantite": 1, "nom": "Seau d'eau" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "farmersdelight:wheat_dough", "quantite": 3 }
+}

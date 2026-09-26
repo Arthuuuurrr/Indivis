@@ -1,0 +1,12 @@
+{
+  "titre": "Anneau de topaze",
+  "metier": "joaillier",
+  "niveau": 25,
+  "xp": 87.0,
+  "ingredients": [
+    { "id": "jewelry:topaz", "quantite": 1, "nom": "Topaze" },
+    { "id": "minecraft:gold_ingot", "quantite": 3, "nom": "Lingot d'or" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "jewelry:topaz_ring", "quantite": 1 }
+}

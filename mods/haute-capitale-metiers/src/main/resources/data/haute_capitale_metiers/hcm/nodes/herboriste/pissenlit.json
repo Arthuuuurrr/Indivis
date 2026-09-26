@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 1,
+  "xp": 15,
+  "bloc_plein": "minecraft:dandelion",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "minecraft:dandelion", "min": 1, "max": 2 }
+  ],
+  "respawn": 120,
+  "coups": 1,
+  "titre": "Touffe de pissenlits",
+  "commentaire": "Un seul coup : une plante se cueille, elle ne se mine pas."
+}

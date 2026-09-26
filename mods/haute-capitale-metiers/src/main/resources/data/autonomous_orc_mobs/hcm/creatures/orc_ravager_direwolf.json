@@ -1,0 +1,9 @@
+{
+  "commentaire": "Le cavalier ; le loup monté a sa propre fiche (direwolf), chassable.",
+  "categorie": "orc",
+  "rarete": "peu_commune",
+  "loot_combat": [
+    { "id": "capitale_currency:martin_dor", "min": 3, "max": 8, "chance": 0.7 }
+  ],
+  "origines_xp": ["naturelle", "spawn_mmo"]
+}

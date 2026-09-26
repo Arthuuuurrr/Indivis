@@ -1,0 +1,23 @@
+{
+  "pose": "pistol", "magazine": 1, "reload_ticks": 40, "fire_mode": "semi",
+  "stats": { "damage": 20, "bullet_speed": 9, "spread": 3, "fire_delay": 1, "blowback": 0.5, "gravity": 0.05, "range": 64, "crit_chance": 0.05 },
+  "recoil": { "magnitude": 35, "horizontal_ratio": 0.45, "frequency": 1.7, "seed": 0 },
+  "muzzle_flash": { "distance": 1.5, "types": ["large"] },
+  "adjuster": "lower_hammer",
+  "occupancy": { "reload": "both" },
+  "aim_offset": [ -3.2, 1.6, 0.5 ], "aim_fov": 0.85,
+  "sounds": {
+    "shoot": { "id": "haute_capitale_fusils:pistolet_silex.tir", "volume": 1.0, "pitch_min": 0.9, "pitch_max": 1.1 },
+    "echo": { "id": "haute_capitale_fusils:arme.echo_poudre", "volume": 1.0, "pitch_min": 1.0, "pitch_max": 1.2 },
+    "dry": { "id": "haute_capitale_fusils:arme.a_vide", "volume": 0.75, "pitch_min": 1.4, "pitch_max": 1.6 },
+    "equip": { "id": "haute_capitale_fusils:pistolet_silex.equip", "volume": 0.75, "pitch_min": 0.9, "pitch_max": 1.1 },
+    "reload_cues": [
+      { "at": 0.0, "sound": { "id": "haute_capitale_fusils:arme.cuir", "volume": 0.75, "pitch_min": 0.95, "pitch_max": 1.05 } },
+      { "at": 0.2, "sound": { "id": "haute_capitale_fusils:pistolet_silex.insert", "volume": 1.25, "pitch_min": 0.95, "pitch_max": 1.05 } },
+      { "at": 1.0, "sound": { "id": "haute_capitale_fusils:pistolet_silex.bourre", "volume": 1.25, "pitch_min": 1.05, "pitch_max": 1.15 } },
+      { "at": 1.75, "sound": { "id": "haute_capitale_fusils:arme.cuir", "volume": 0.75, "pitch_min": 0.85, "pitch_max": 0.95 } },
+      { "at": 1.85, "sound": { "id": "haute_capitale_fusils:arme.chien", "volume": 1.25, "pitch_min": 0.85, "pitch_max": 0.95 } }
+    ]
+  },
+  "assets": { "model": "haute_capitale_fusils:item/pistolet_silex", "texture": "haute_capitale_fusils:textures/item/pistolet_silex.png", "animation": "haute_capitale_fusils:item/pistolet_silex" }
+}

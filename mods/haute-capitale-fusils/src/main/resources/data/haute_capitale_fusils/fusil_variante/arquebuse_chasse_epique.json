@@ -1,0 +1,5 @@
+{ "profile": "haute_capitale_fusils:arquebuse", "rarity": "epique",
+  "name": { "text": "Arquebuse du Traqueur" },
+  "lore": [ { "text": "Prise sur le cadavre d'un chef orc : le bois est encore chaud." } ],
+  "stats": { "crit_chance": 0.15, "crit_multiplier": 0.25, "damage": { "op": "mul", "value": 0.1 } },
+  "skill_effects": { "tir_perforant": [ { "type": "haute_capitale_fusils:bleed", "ticks": 100, "period": 20, "damage_per_tick": 1.0 } ] } }

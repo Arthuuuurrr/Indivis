@@ -1,0 +1,14 @@
+{
+  "titre": "Jus de pastèque",
+  "metier": "cuisinier",
+  "niveau": 8,
+  "xp": 36.0,
+  "ingredients": [
+    { "id": "minecraft:melon_slice", "quantite": 4, "nom": "Tranche de pastèque" },
+    { "id": "minecraft:sugar", "quantite": 1, "nom": "Sucre" },
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole vide" }
+  ],
+  "cout": 0,
+  "repas": { "buff": "haute_capitale_metiers:magie", "valeur": 0.030 },
+  "resultat": { "id": "farmersdelight:melon_juice", "quantite": 1 }
+}

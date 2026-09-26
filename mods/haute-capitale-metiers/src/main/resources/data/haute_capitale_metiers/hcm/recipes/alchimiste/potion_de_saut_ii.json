@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de saut II",
+  "metier": "alchimiste",
+  "niveau": 28,
+  "xp": 96.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:speardrops", "quantite": 3, "nom": "Larmes de lance" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:strong_leaping" } }
+  }
+}

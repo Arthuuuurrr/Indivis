@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 7,
+  "xp": 33,
+  "bloc_plein": "landsoficaria:blindweed",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:blindweed", "min": 1, "max": 2 }
+  ],
+  "respawn": 180,
+  "coups": 1,
+  "titre": "Herbe aveugle",
+  "commentaire": "La plante de la vision nocturne. Icaria requis."
+}

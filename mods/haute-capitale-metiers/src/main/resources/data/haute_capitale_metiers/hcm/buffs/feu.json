@@ -1,0 +1,8 @@
+{
+  "titre": "Cœur de braise",
+  "attribut": "spell_power:fire",
+  "operation": "pourcent_base",
+  "valeur": 0.08,
+  "duree": 900,
+  "commentaire": "Ragoût de catoblepas : l'école du feu."
+}

@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de résistance au feu prolongée",
+  "metier": "alchimiste",
+  "niveau": 33,
+  "xp": 111.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:charmonder", "quantite": 3, "nom": "Charmonder" },
+    { "id": "minecraft:redstone", "quantite": 1, "nom": "Redstone" }
+  ],
+  "cout": 3,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:long_fire_resistance" } }
+  }
+}

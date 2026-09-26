@@ -1,0 +1,9 @@
+{
+  "commentaire": "Le chef : toujours quelques Martins. Pour un donjon à générateurs, ajoutez « spawner » aux origines — en sachant que le générateur devient une source de Martins.",
+  "categorie": "orc",
+  "rarete": "rare",
+  "loot_combat": [
+    { "id": "capitale_currency:martin_dor", "min": 10, "max": 25, "chance": 1.0 }
+  ],
+  "origines_xp": ["naturelle", "spawn_mmo"]
+}
