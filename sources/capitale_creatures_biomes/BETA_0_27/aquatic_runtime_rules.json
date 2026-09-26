@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "minecraft": "1.21.11",
+  "status": "ACTIVE — BETA 0.27 deep-ocean danger pass; normal oceans and rivers retain BETA 0.26 density/weights.",
+  "config": {
+    "enabled": true,
+    "interval_ticks": 60,
+    "max_nearby_per_player": 16,
+    "count_radius": 128,
+    "search_min_radius": 32,
+    "search_max_radius": 96,
+    "candidate_attempts": 30,
+    "success_log_limit": 12,
+    "failure_log_limit": 12
+  },
+  "rules": [
+    {
+      "name": "dawn_aegirocassis_all_oceans",
+      "entities": [
+        "dino_mounts_ai:dawn_aegirocassis_green_hostile",
+        "dino_mounts_ai:dawn_aegirocassis_red_hostile",
+        "dino_mounts_ai:dawn_aegirocassis_spotted_hostile"
+      ],
+      "include_biome_tags": ["#capitale_creatures:ocean_variants"],
+      "exclude_biome_tags": [],
+      "conditions": ["WATER_CREATURE", "IN_WATER"],
+      "remove_existing_spawn_entries_first": false,
+      "minimum_water_depth": 5,
+      "runtime_population": true,
+      "weight_per_variant": 2
+    },
+    {
+      "name": "dawn_dunkleosteus_oceans",
+      "entities": [
+        "dino_mounts_ai:dawn_dunkleosteus_female_hostile",
+        "dino_mounts_ai:dawn_dunkleosteus_male_hostile"
+      ],
+      "include_biome_tags": ["#capitale_creatures:ocean_variants"],
+      "exclude_biome_tags": [],
+      "conditions": ["WATER_CREATURE", "IN_WATER"],
+      "remove_existing_spawn_entries_first": false,
+      "minimum_water_depth": 5,
+      "runtime_population": true,
+      "weight_per_variant": 3
+    },
+    {
+      "name": "mystic_mosasaurus_deep_oceans_only",
+      "entities": [
+        "dino_mounts_ai:mystic_mosasaurus_couleur_1_hostile",
+        "dino_mounts_ai:mystic_mosasaurus_couleur_2_hostile",
+        "dino_mounts_ai:mystic_mosasaurus_couleur_3_hostile"
+      ],
+      "include_biome_tags": ["#capitale_creatures:deep_ocean_variants"],
+      "exclude_biome_tags": [],
+      "conditions": ["WATER_CREATURE", "IN_WATER", "deep ocean only"],
+      "remove_existing_spawn_entries_first": false,
+      "note": "BETA 0.27: deep-ocean-only weight 3/variant; colours 1-3 only; colour 4 remains hard-blacklisted.",
+      "minimum_water_depth": 8,
+      "runtime_population": true,
+      "weight_per_variant": 3
+    },
+    {
+      "name": "piranha_rivers_oceans",
+      "entities": ["cubeanimals:piranha"],
+      "include_biome_tags": ["#capitale_creatures:rivers_and_oceans"],
+      "exclude_biome_tags": [],
+      "conditions": [],
+      "remove_existing_spawn_entries_first": true,
+      "minimum_water_depth": 3,
+      "runtime_population": true,
+      "weight_per_variant": 9,
+      "group": [4, 7]
+    },
+    {
+      "name": "chaos_corpsefish_water",
+      "entities": ["chaos_mmo_ai:corpsefish"],
+      "include_biome_tags": ["#capitale_creatures:ocean_variants", "#capitale_creatures:river_variants"],
+      "exclude_biome_tags": [],
+      "conditions": ["WATER_CREATURE", "IN_WATER"],
+      "remove_existing_spawn_entries_first": true,
+      "minimum_water_depth": 3,
+      "runtime_population": true,
+      "weight_per_variant": 12,
+      "group": [2, 5]
+    },
+    {
+      "name": "chaos_gluttonfish_abyss",
+      "entities": ["chaos_mmo_ai:gluttonfish"],
+      "include_biome_tags": ["#capitale_creatures:deep_ocean_variants"],
+      "exclude_biome_tags": [],
+      "conditions": ["WATER_CREATURE", "IN_WATER", "deep ocean only", "very rare"],
+      "remove_existing_spawn_entries_first": true,
+      "minimum_water_depth": 8,
+      "runtime_population": true,
+      "weight_per_variant": 4,
+      "group": [1, 1],
+      "note": "BETA 0.27: deep-ocean-only weight raised 2 -> 4; singleton abyssal predator."
+    },
+    {
+      "name": "dawn_aegirocassis_deep_ocean_bonus",
+      "entities": [
+        "dino_mounts_ai:dawn_aegirocassis_green_hostile",
+        "dino_mounts_ai:dawn_aegirocassis_red_hostile",
+        "dino_mounts_ai:dawn_aegirocassis_spotted_hostile"
+      ],
+      "include_biome_tags": ["#capitale_creatures:deep_ocean_variants"],
+      "exclude_biome_tags": [],
+      "conditions": ["WATER_CREATURE", "IN_WATER", "deep ocean bonus"],
+      "remove_existing_spawn_entries_first": false,
+      "minimum_water_depth": 7,
+      "runtime_population": true,
+      "weight_per_variant": 1,
+      "note": "BETA 0.27 additive weighting only in deep oceans; base all-ocean rule remains unchanged."
+    },
+    {
+      "name": "dawn_dunkleosteus_deep_ocean_bonus",
+      "entities": [
+        "dino_mounts_ai:dawn_dunkleosteus_female_hostile",
+        "dino_mounts_ai:dawn_dunkleosteus_male_hostile"
+      ],
+      "include_biome_tags": ["#capitale_creatures:deep_ocean_variants"],
+      "exclude_biome_tags": [],
+      "conditions": ["WATER_CREATURE", "IN_WATER", "deep ocean bonus"],
+      "remove_existing_spawn_entries_first": false,
+      "minimum_water_depth": 7,
+      "runtime_population": true,
+      "weight_per_variant": 2,
+      "note": "BETA 0.27 additive weighting only in deep oceans; base all-ocean rule remains unchanged."
+    },
+    {
+      "name": "chaos_corpsefish_deep_ocean_bonus",
+      "entities": ["chaos_mmo_ai:corpsefish"],
+      "include_biome_tags": ["#capitale_creatures:deep_ocean_variants"],
+      "exclude_biome_tags": [],
+      "conditions": ["WATER_CREATURE", "IN_WATER", "deep ocean bonus"],
+      "remove_existing_spawn_entries_first": false,
+      "minimum_water_depth": 6,
+      "runtime_population": true,
+      "weight_per_variant": 4,
+      "group": [2, 4],
+      "note": "BETA 0.27 additive weighting only in deep oceans; base ocean/river rule remains unchanged."
+    }
+  ]
+}
