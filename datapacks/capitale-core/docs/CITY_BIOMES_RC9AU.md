@@ -22,3 +22,13 @@ Palette corrigée :
 
 ## Règles
 Les nouveaux biomes ont toutes les catégories de spawns naturels vides, ainsi que `carvers: []` et `features: []`. La musique vanilla est neutralisée pour laisser MMOMusicZones gérer les playlists.
+
+
+## Aurelune
+
+**Aurelune** est le nom canonique de l'ancienne grande cité humaine aujourd'hui en ruines au cœur de la corruption et occupée par les Orcs.
+
+- biome actuel : `capitale:donjon`
+- aucun biome urbain dédié pour le moment ;
+- musicalement, la zone reste donc rattachée au pool DONJON ;
+- le nom conserve une évocation subtile de l'or et de l'ancien prestige de la cité.
