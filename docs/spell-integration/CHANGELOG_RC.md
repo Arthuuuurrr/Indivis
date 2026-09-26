@@ -11,13 +11,27 @@ Base fonctionnelle de la lignée TEST3 :
 - abilities techniques Arsenal exclues de la barre visible ;
 - ordre explicite des abilities.
 
-### TEST3 RC2 — référence finale
+### TEST3 RC2 — référence précédente
 
 Ajoute le gate ciblé du Bâton de l’Avatar :
 
 - staff normal inchangé ;
 - ability du staff Avatar autorisée seulement si le sort est effectivement présent dans son container natif choisi ;
 - aucun verrou générique SpellChoice.
+
+### TEST3 RC3 FIREARMS SPELLBAR — candidat actuel
+
+Ajoute le pont des six compétences d'armes à feu vers Spell Engine sans remplacer le gameplay natif du mod Fusils :
+
+- six handlers `SpellHandlers.customDelivery` ;
+- délégation vers `FusilAPI.useSkill(caster, skillId, 0)` ;
+- compatibilités d'armes filtrées par les `weapon_requirements` Haute Capitale RPG ;
+- six icônes de spell dérivées des textures natives du mod Fusils ;
+- aucune classe RC2 existante modifiée ; deux classes de bridge seulement ajoutées ;
+- aucun cooldown de gameplay inventé à ce stade ;
+- validation statique et harness des six handlers : PASS ;
+- validation runtime ciblée suivie dans #4.
+
 
 ## Spell Engine
 
@@ -152,11 +166,36 @@ Les pourcentages définis par les items/sets ne sont pas rééquilibrés.
 
 - première restauration.
 
-### RC2F TREE HARD RESTORE — référence finale
+### RC2F TREE HARD RESTORE — référence précédente
 
 - restaure tout `data/capskills/puffish_skills/` depuis RC2B ;
 - conserve les corrections hors arbre ;
 - délègue le verrou Avatar à Haute Capitale RPG RC2.
+
+### 0.10.20 FIREARMS SPELLBAR BRIDGE — référence précédente
+
+Base RC2F inchangée pour l'arbre, avec intégration des six compétences Fusilier à la barre Spell Engine :
+
+- les tags persistants `capskills.fusils.*` sont conservés ;
+- les six nœuds existants gagnent une reward `haute_capitale_rpg:abilities` ;
+- six definitions d'abilities ajoutées avec gates par familles d'armes ;
+- six spells wrappers `CUSTOM` ajoutés sous `haute_capitale_rpg:firearm_*` ;
+- les wrappers ne simulent pas les projectiles : ils délèguent au mod Fusils ;
+- 338 definitions préexistantes conservées ;
+- aucune entrée existante supprimée ;
+- validation runtime ciblée suivie dans #4.
+
+
+### 0.10.21 FIREARMS SERVER AUTHORITY — candidat actuel
+
+Conserve intégralement 0.10.20 et ajoute l'autorité de branche Fusilier :
+
+- `classe_fusilier` accorde `capskills.fusils.use` ;
+- le reset retire ce tag ;
+- les six tags `capskills.fusils.<skill>` existants restent les autorisations spécifiques ;
+- la barre Spell Engine RC3 reste inchangée ;
+- aucun autre nœud de l'arbre n'est modifié ;
+- validation runtime ciblée suivie dans #3 et #4.
 
 ## AzureLibArmor
 
@@ -174,6 +213,21 @@ Ajoute `footwork.png` et conserve la structure CapSkills corrigée.
 
 Le JAR `HC-FR-PRIMARY-ORDER1` est conservé ; les gates TEST3 sont portées
 par Spell Engine + CapSkills.
+
+## Haute Capitale Fusils
+
+### b4 CAPSKILLS AUTHORITY — candidat actuel
+
+Corrige l'autorité réelle après reset CapSkills :
+
+- le tir normal d'un joueur serveur exige `capskills.fusils.use` ;
+- une compétence native exige en plus `capskills.fusils.<skillId>` ;
+- le contrôle est effectué dans `GunplayManager.tryFire` et `HunterSkills.use` côté serveur ;
+- la prédiction client n'est pas utilisée comme autorité ;
+- les appels non-joueurs de l'API sont préservés ;
+- dégâts, munitions, reload, rafales et projectiles restent inchangés ;
+- harness d'autorité : PASS ;
+- validation Minecraft suivie dans #3.
 
 ## capitale_skills_items
 
