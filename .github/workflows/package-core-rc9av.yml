@@ -1,0 +1,25 @@
+name: package-core-rc9av
+
+on:
+  push:
+    branches:
+      - perf/core-fire-raycast-tag
+    paths:
+      - ".github/workflows/package-core-rc9av.yml"
+      - "datapacks/capitale-core/**"
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build full datapack ZIP
+        run: |
+          cd datapacks/capitale-core
+          zip -r ../../capitale_core_1.5.6-RC9AV.zip .
+      - name: Upload candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: capitale_core_1.5.6-RC9AV
+          path: capitale_core_1.5.6-RC9AV.zip
+          if-no-files-found: error
