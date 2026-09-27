@@ -2,7 +2,7 @@ schema_version: 2
 project: Indivis
 minecraft: "1.21.11"
 fabric_loader_min: "0.19.5"
-updated: "2026-09-23"
+updated: "2026-09-27"
 
 snapshot:
   source: "captures serveur/client/datapacks du 22-09-2026"
@@ -116,6 +116,14 @@ deployed:
       deployed: "capitale_abilities.zip"
 
 source_reference:
+  nexuscharacters:
+    version: "BETA-1.0-PRE1"
+    artifact: "NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE1.jar"
+    sha256: "bdbef6af729490efd3cbed31030d97d45bb73162c1aa2e7319831b814964668a"
+    source_bundle: "NexusCharacters-HauteCapitale-BETA-1.0-PRE1-source.zip"
+    source_bundle_sha256: "44f2b23a693c3181945d2b5b295afec5672c77bf816f773268fc49c68458a392"
+    git_reference: "mods/nexuscharacters/reference/BETA-1.0-PRE1"
+    status: "pre-release / testing; not confirmed deployed"
   capitale_core:
     version: "1.5.6-RC9AO"
     source_archive: "capitale_core_1_5_6_RC9AO.zip"
