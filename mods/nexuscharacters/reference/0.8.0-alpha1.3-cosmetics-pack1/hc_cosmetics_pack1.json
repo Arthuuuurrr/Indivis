@@ -1,0 +1,36 @@
+{
+  "pack": "HC Cosmetics Pack 1",
+  "nexus_base": "0.8.0-alpha1.2-HEALTH-MODIFIER-COMPAT",
+  "nexus_target": "0.8.0-alpha1.3-COSMETICS-PACK1",
+  "compatibility_strategy": {
+    "legacy_modular_index": "unchanged (4 body x 5 face x 10 hair x 20 outfit x 5 tone)",
+    "v69_marker": "extended hair 00..12 and outfit 01..35",
+    "facial_hair": "existing slots 2 and 3 replaced in place to avoid changing marker schema",
+    "hair_storage_note": "slots 11/12 use technical filenames hair_long_06/07 because the historical runtime mapper treats indices >5 as long_n; the supplied visuals remain unchanged"
+  },
+  "outfits": [
+    {"slot":21,"label":"Tenue civile 1","source":"tenue de civil1.png"},
+    {"slot":22,"label":"Tenue civile 2","source":"tenue de civil2.png"},
+    {"slot":23,"label":"Tenue civile 3","source":"tenue de civil3.png"},
+    {"slot":24,"label":"Tenue de roturier","source":"tenue de roturier.png"},
+    {"slot":25,"label":"Tenue de voyageur","source":"tenue de voyageur.png"},
+    {"slot":26,"label":"Tenue noble 1","source":"tenue noble1.png"},
+    {"slot":27,"label":"Tenue de barbare","source":"tenue de barbare.png"},
+    {"slot":28,"label":"Armure de cuir","source":"armure de cuir.png"},
+    {"slot":29,"label":"Gambison","source":"gambison.png"},
+    {"slot":30,"label":"Haubert 1","source":"haubert1.png"},
+    {"slot":31,"label":"Haubert 2","source":"haubert2.png"},
+    {"slot":32,"label":"Haubert de Sylvharen","source":"haubert de sylvharen.png"},
+    {"slot":33,"label":"Cotte de mailles 1","source":"côte de maille1.png"},
+    {"slot":34,"label":"Armure 2","source":"armure2.png"},
+    {"slot":35,"label":"Armure 3","source":"armure3.png"}
+  ],
+  "hair": [
+    {"slot":11,"label":"Cheveux courts 1","source":"cheveux courts 1.png","resource":"hair_long_06.png"},
+    {"slot":12,"label":"Cheveux courts 2","source":"cheveux courts 2.png","resource":"hair_long_07.png"}
+  ],
+  "facial_hair_replacements": [
+    {"slot":2,"label":"Moustache","source":"moustache1.png","resource":"moustache_short.png"},
+    {"slot":3,"label":"Barbe légère","source":"barbe légère.png","resource":"moustache_thick.png"}
+  ]
+}
