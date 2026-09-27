@@ -1,0 +1,2 @@
+1b29d520f8da9551927bf20601b298bd24d1672a9bd7b36ecbaee89b911dbc7c  NexusCharacters-HauteCapitale-1.21.11-v0.8.0-alpha1.3.6-OUTFIT-CLEANUP-BEARD-SYNC-PERF1.jar
+13dc23052d31ef1328852cd8de7f0888003af51a8ba932054154149ae8145ce5  NexusCharacters-HauteCapitale-0.8.0-alpha1.3.6-OUTFIT-CLEANUP-BEARD-SYNC-source.zip
