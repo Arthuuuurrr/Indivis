@@ -1,0 +1,2 @@
+84dc9b1b38cdef21ee5a429001f66ec5062ab5d348f71acb816a1cb358a78180  NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE2.jar
+61e1b9117717f2976deccf82fe8a23a346a5b0ff718dce337d757456670eb3b4  NexusCharacters-HauteCapitale-BETA-1.0-PRE2-source.zip
