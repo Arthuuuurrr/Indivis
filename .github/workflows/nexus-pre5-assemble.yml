@@ -61,4 +61,6 @@ jobs:
           fi
 
           git commit -m "nexus: publish BETA 1.0 PRE5 runtime JAR"
-          git push
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
