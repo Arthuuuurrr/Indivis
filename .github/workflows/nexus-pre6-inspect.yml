@@ -17,15 +17,15 @@ jobs:
         shell: bash
         run: |
           python mods/nexuscharacters/releases/BETA-1.0-PRE5/parts/assemble_pre5.py
-          ls -lh mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar
+          ls -lh mods/mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar
       - name: List relevant classes
         shell: bash
         run: |
-          jar tf mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar | grep -E 'RacialAppearance|CharacterCreationAppearance|LongBeardModelSupport|CulturalBeardUiSupport|UnifiedPilositySupport' || true
+          jar tf mods/mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar | grep -E 'RacialAppearance|CharacterCreationAppearance|LongBeardModelSupport|CulturalBeardUiSupport|UnifiedPilositySupport' || true
       - name: Disassemble layout classes
         shell: bash
         run: |
-          J=mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar
+          J=mods/mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar
           for C in             net.tompsen.nexuscharacters.RacialAppearance69Support             net.tompsen.nexuscharacters.mixin.client.CharacterCreationAppearance65Mixin             net.tompsen.nexuscharacters.LongBeardModelSupport             net.tompsen.nexuscharacters.CulturalBeardUiSupport; do
             echo "===== $C ====="
             javap -classpath "$J" -p -c -constants "$C" || true
