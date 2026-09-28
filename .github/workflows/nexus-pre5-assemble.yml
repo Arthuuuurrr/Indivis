@@ -1,0 +1,64 @@
+name: Assemble Nexus BETA 1.0 PRE5
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/releases/BETA-1.0-PRE5/parts/**"
+      - ".github/workflows/nexus-pre5-assemble.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct PRE5 JAR
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, json
+
+          root = Path("mods/nexuscharacters/releases/BETA-1.0-PRE5/parts")
+          manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+          encoded = "".join(
+              "".join((root / name).read_text(encoding="ascii").split())
+              for name in manifest["parts"]
+          )
+          data = base64.b64decode(encoded, validate=True)
+          sha = hashlib.sha256(data).hexdigest()
+          if sha != manifest["artifact_sha256"]:
+              raise SystemExit(f"SHA-256 mismatch: {sha} != {manifest['artifact_sha256']}")
+          if len(data) != manifest["artifact_size"]:
+              raise SystemExit(f"Size mismatch: {len(data)} != {manifest['artifact_size']}")
+          out = Path("mods") / manifest["artifact"]
+          out.write_bytes(data)
+          print(f"Reconstructed {out} ({len(data)} bytes)")
+          print(f"SHA-256 {sha}")
+          PY
+
+      - name: Publish PRE5 through Git LFS
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Only the current Nexus runtime stays in mods/.
+          git rm -f --ignore-unmatch mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE4.jar
+          git add mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar
+
+          if git diff --cached --quiet; then
+            echo "No binary update to commit."
+            exit 0
+          fi
+
+          git commit -m "nexus: publish BETA 1.0 PRE5 runtime JAR"
+          git push
