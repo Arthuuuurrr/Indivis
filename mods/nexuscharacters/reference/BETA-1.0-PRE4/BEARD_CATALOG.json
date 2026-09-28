@@ -1,0 +1,34 @@
+{
+  "human": [
+    {"id":"trimmed","label":"Barbe taillée"},
+    {"id":"noble_goatee","label":"Menton noble"},
+    {"id":"long","label":"Barbe ajourée"}
+  ],
+  "nordic": [
+    {"id":"short","label":"Barbe courte"},
+    {"id":"full","label":"Barbe pleine"},
+    {"id":"long","label":"Barbe ajourée"},
+    {"id":"wild","label":"Barbe sauvage"},
+    {"id":"split","label":"Barbe fendue"}
+  ],
+  "dwarf": [
+    {"id":"short","label":"Barbe courte"},
+    {"id":"full","label":"Barbe pleine"},
+    {"id":"long","label":"Barbe ajourée"},
+    {"id":"forked","label":"Barbe fourchue"},
+    {"id":"braided","label":"Barbe tressée"},
+    {"id":"double_braid","label":"Double natte"},
+    {"id":"triple_braid","label":"Triple tresse"},
+    {"id":"runic","label":"Barbe runique"},
+    {"id":"segmented","label":"Barbe segmentée"}
+  ],
+  "ornaments": [
+    {"id":"iron_ring","label":"Anneau de fer","argb":"#74787C"},
+    {"id":"bronze_ring","label":"Anneau de bronze","argb":"#9A6335"},
+    {"id":"silver_ring","label":"Anneau d'argent","argb":"#C5CBD1"},
+    {"id":"gold_ring","label":"Anneau d'or","argb":"#D4A83E"},
+    {"id":"runic_bead","label":"Perle runique","argb":"#4B8E94"},
+    {"id":"engraved_clasp","label":"Pince gravée","argb":"#B29652"},
+    {"id":"braid_tip","label":"Embout de tresse","argb":"#85898D"}
+  ]
+}
