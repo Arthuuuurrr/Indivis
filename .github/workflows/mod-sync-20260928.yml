@@ -1,0 +1,102 @@
+name: Sync current mod library 2026-09-28
+
+on:
+  push:
+    paths:
+      - "mods/releases/mod-sync-20260928/parts/**"
+      - ".github/workflows/mod-sync-20260928.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository without downloading existing LFS objects
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct mod sync bundle
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, json, zipfile, shutil
+
+          root = Path("mods/releases/mod-sync-20260928/parts")
+          manifest = json.loads((root / "relay_manifest.json").read_text(encoding="utf-8"))
+          encoded = "".join(
+              "".join((root / name).read_text(encoding="ascii").split())
+              for name in manifest["parts"]
+          )
+          data = base64.b64decode(encoded, validate=True)
+          sha = hashlib.sha256(data).hexdigest()
+          if sha != manifest["bundle_sha256"]:
+              raise SystemExit(f"Bundle SHA mismatch: {sha} != {manifest['bundle_sha256']}")
+          if len(data) != manifest["bundle_size"]:
+              raise SystemExit(f"Bundle size mismatch: {len(data)} != {manifest['bundle_size']}")
+          bundle = Path("/tmp") / manifest["bundle"]
+          bundle.write_bytes(data)
+          out = Path("/tmp/mod-sync")
+          if out.exists():
+              shutil.rmtree(out)
+          out.mkdir(parents=True)
+          with zipfile.ZipFile(bundle) as z:
+              z.extractall(out)
+          print("Reconstructed:", bundle, sha)
+          PY
+
+      - name: Install latest JARs and remove superseded live versions
+        shell: bash
+        run: |
+          set -euo pipefail
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          python - <<'PY'
+          from pathlib import Path
+          import json, hashlib, shutil
+
+          src = Path("/tmp/mod-sync")
+          manifest = json.loads((src / "MOD_SYNC_MANIFEST_2026-09-28.json").read_text(encoding="utf-8"))
+          mods = Path("mods")
+
+          for old in manifest["removals"]:
+              p = mods / old
+              if p.exists():
+                  p.unlink()
+                  print("Removed superseded:", p)
+
+          for item in manifest["selected"]:
+              source = src / item["name"]
+              data = source.read_bytes()
+              sha = hashlib.sha256(data).hexdigest()
+              if sha != item["sha256"]:
+                  raise SystemExit(f"JAR SHA mismatch for {item['name']}: {sha} != {item['sha256']}")
+              if len(data) != item["size"]:
+                  raise SystemExit(f"JAR size mismatch for {item['name']}")
+              target = mods / item["name"]
+              shutil.copy2(source, target)
+              print("Installed:", target)
+
+          (mods / "CURRENT_MODS_2026-09-28.json").write_text(
+              json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
+              encoding="utf-8"
+          )
+          PY
+
+          # Superseded runtime builds disappear from the live mods/ folder.
+          # Their bytes remain recoverable from Git history.
+          git add -A mods
+
+          if git diff --cached --quiet; then
+            echo "No mod changes to commit."
+            exit 0
+          fi
+
+          git commit -m "mods: sync latest project builds and remove superseded versions"
+          git push
