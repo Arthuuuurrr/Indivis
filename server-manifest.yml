@@ -12,7 +12,7 @@ deployed:
   server:
     nexuscharacters:
       artifact: "NexusCharacters-HauteCapitale-1.21.11-v0.8.0-alpha1.1-LEGACY-SKIN-COMPAT.jar"
-      sha256: "8d918571c3f7ff518c94c0793fb1080a0f08cc2d9e697d6a0584d09a551efa1e"
+      sha256: "b8fc3cd3fb24803f4d64b0fa6dc574e343751d1a9678bd0360aaa5e7ea0fe0a5"
     capitale_rp_hud:
       artifact: "capitale_rp_hud_BETA_1_3_2_NEXUS_AUTHORITY_FINAL_ARMOR40.jar"
       sha256: "c29d2c029d31152f5f697e6ba347619f58377ff8f9c6d7b1cb8af456bfebb367"
@@ -117,12 +117,12 @@ deployed:
 
 source_reference:
   nexuscharacters:
-    version: "BETA-1.0-PRE3"
-    artifact: "NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE3.jar"
+    version: "BETA-1.0-PRE4"
+    artifact: "NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE4.jar"
     sha256: "4cb9293df6487897804057749b45381b149253572f3918e674e4aec889270540"
-    source_bundle: "NexusCharacters-HauteCapitale-BETA-1.0-PRE3-source.zip"
-    source_bundle_sha256: "327c4d89257f516e7d915a74b9e2c6ad933fb3c2ef6582b7f21991d3b2c958ec"
-    git_reference: "mods/nexuscharacters/reference/BETA-1.0-PRE3"
+    source_bundle: "NexusCharacters-HauteCapitale-BETA-1.0-PRE4-source.zip"
+    source_bundle_sha256: "9a70e279d12f51318525dcc3eec9eb095eebe9dc1b236f8f1fe13f68a5b4bf2e"
+    git_reference: "mods/nexuscharacters/reference/BETA-1.0-PRE4"
     status: "pre-release / testing; not confirmed deployed"
   capitale_core:
     version: "1.5.6-RC9AO"
