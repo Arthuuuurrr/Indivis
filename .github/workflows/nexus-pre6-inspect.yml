@@ -20,23 +20,29 @@ jobs:
           J=mods/mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar
           test -s "$J"
           unzip -t "$J" >/dev/null
-      - name: Inspect creation layout
+      - name: Targeted layout inspection
         shell: bash
         run: |
           J=mods/mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar
-          javap -classpath "$J" -p -c -constants net.tompsen.nexuscharacters.mixin.client.CharacterCreationAppearance65Mixin > /tmp/layout.txt
-          echo "=== SIGNATURES/FIELDS ==="
-          javap -classpath "$J" -p net.tompsen.nexuscharacters.mixin.client.CharacterCreationAppearance65Mixin
-          echo "=== COSMETIC BUTTON CONTEXT ==="
-          grep -n -C 45 'nexuscharacters\$cosmeticButton' /tmp/layout.txt || true
-          echo "=== INIT/REFRESH/LAMBDA CONTEXT ==="
-          grep -n -E -C 12 'init|refresh|lambda|method_37063|method_25355|Button' /tmp/layout.txt | head -n 700 || true
-      - name: Inspect PRE5 beard geometry
+          for C in             net.tompsen.nexuscharacters.mixin.client.CharacterCreationAppearance65Mixin             net.tompsen.nexuscharacters.mixin.client.CharacterCreationCosmeticMixin; do
+            javap -classpath "$J" -p -c -constants "$C" > "/tmp/$(basename "$C").txt"
+          done
+          echo "=== COSMETIC MIXIN SIGNATURES ==="
+          javap -classpath "$J" -p net.tompsen.nexuscharacters.mixin.client.CharacterCreationCosmeticMixin
+          echo "=== APPEARANCE LAYOUT METHOD ==="
+          awk '/private void nexuscharacters\$layoutEverything\(\);/{p=1} p{print} p && /^  private static void placeName/{exit}' /tmp/net.tompsen.nexuscharacters.mixin.client.CharacterCreationAppearance65Mixin.txt
+          echo "=== COSMETIC MIXIN FULL ==="
+          cat /tmp/net.tompsen.nexuscharacters.mixin.client.CharacterCreationCosmeticMixin.txt
+      - name: Decompile relevant PRE5 classes
         shell: bash
         run: |
           J=mods/mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar
-          javap -classpath "$J" -p -c -constants net.tompsen.nexuscharacters.LongBeardModelSupport > /tmp/beard.txt
-          echo "=== BEARD SIGNATURES ==="
-          javap -classpath "$J" -p net.tompsen.nexuscharacters.LongBeardModelSupport
-          echo "=== CREATE CUSTOM ==="
-          sed -n '/private static java.lang.Object createCustom/,/^}/p' /tmp/beard.txt
+          curl -fsSL https://www.benf.org/other/cfr/cfr-0.152.jar -o /tmp/cfr.jar
+          mkdir -p /tmp/decomp
+          java -jar /tmp/cfr.jar "$J" --outputdir /tmp/decomp --silent true >/dev/null 2>&1
+          echo "=== LONG BEARD SOURCE ==="
+          cat /tmp/decomp/net/tompsen/nexuscharacters/LongBeardModelSupport.java
+          echo "=== COSMETIC MIXIN SOURCE ==="
+          cat /tmp/decomp/net/tompsen/nexuscharacters/mixin/client/CharacterCreationCosmeticMixin.java
+          echo "=== APPEARANCE MIXIN LAYOUT SNIPPET ==="
+          grep -n -A180 -B20 'layoutEverything' /tmp/decomp/net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.java | tail -n 240
