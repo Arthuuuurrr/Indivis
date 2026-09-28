@@ -1,0 +1,12 @@
+{
+  "version": "BETA-1.0-PRE3",
+  "unified_pilosity": {
+    "human": ["none","facial_1","facial_2","facial_3","facial_4","facial_5","facial_6","long"],
+    "nordic": ["none","facial_1","facial_2","facial_3","facial_4","facial_5","facial_6","short","full","long"],
+    "dwarf": ["none","short","full","long","forked","braided"]
+  },
+  "long_internal_id": "long",
+  "long_ui_label": "Barbe ajourée",
+  "linked_colour": "facialColor=0 -> hairColor index -> shared beard palette",
+  "legacy_3d_beard_colour_button": "disabled/not-created"
+}
