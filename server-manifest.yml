@@ -117,12 +117,12 @@ deployed:
 
 source_reference:
   nexuscharacters:
-    version: "BETA-1.0-PRE2"
-    artifact: "NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE2.jar"
-    sha256: "84dc9b1b38cdef21ee5a429001f66ec5062ab5d348f71acb816a1cb358a78180"
-    source_bundle: "NexusCharacters-HauteCapitale-BETA-1.0-PRE2-source.zip"
-    source_bundle_sha256: "61e1b9117717f2976deccf82fe8a23a346a5b0ff718dce337d757456670eb3b4"
-    git_reference: "mods/nexuscharacters/reference/BETA-1.0-PRE2"
+    version: "BETA-1.0-PRE3"
+    artifact: "NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE3.jar"
+    sha256: "4cb9293df6487897804057749b45381b149253572f3918e674e4aec889270540"
+    source_bundle: "NexusCharacters-HauteCapitale-BETA-1.0-PRE3-source.zip"
+    source_bundle_sha256: "327c4d89257f516e7d915a74b9e2c6ad933fb3c2ef6582b7f21991d3b2c958ec"
+    git_reference: "mods/nexuscharacters/reference/BETA-1.0-PRE3"
     status: "pre-release / testing; not confirmed deployed"
   capitale_core:
     version: "1.5.6-RC9AO"
