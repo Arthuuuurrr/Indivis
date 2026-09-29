@@ -1,6 +1,6 @@
 {
   "pack": {
-    "description": "capitale_core 1.5.6-RC9AV — RC9AU + restore indivis:corruption registry biome (Minecraft 1.21.11)",
+    "description": "capitale_core 1.5.6-RC9AW — cross-thread consolidation: cities + corruption + CubeAnimals breakables + fire PERF1 (Minecraft 1.21.11)",
     "min_format": [
       94,
       1
