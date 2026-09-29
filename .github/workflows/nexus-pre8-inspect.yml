@@ -104,3 +104,5 @@ jobs:
             java -jar /tmp/cfr.jar "$C" --outputdir /tmp/decomp --silent true || true
             find /tmp/decomp -name '*.java' -type f -maxdepth 10 -print -exec cat {} \;
           done
+
+# inspection trigger
