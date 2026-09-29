@@ -1,0 +1,21 @@
+{
+  "version": "1.2.45",
+  "base_version": "1.2.44",
+  "base_sha256": "91c70bb653ca2e6806de1b7a56afeb2aad8ae16dc5ba77a0b207a897c7134b6d",
+  "sha256": "bc6fcc39bcb126b76847f8df1ad136838b05624314a2ec9c3c38fcc8f93aabe5",
+  "size_bytes": 20124388,
+  "nested_jars_verified_unchanged": 11,
+  "protected_orc_entries_verified_unchanged": [
+    "fr/hautecapitale/creatures/spawn/CapitaleCreaturesOrcPatrol1212.class",
+    "data/capitale_creatures/spawn_rules/orc_patrol_rules.json",
+    "data/capitale_creatures/tags/worldgen/biome/city_no_spawn.json"
+  ],
+  "runtime_guard": {
+    "function": "capitale_creatures:runtime/remove_snake_skeleton_jockeys",
+    "targets": [
+      "cubeanimals:rattlesnake",
+      "capitale_entities:snake"
+    ],
+    "passenger": "minecraft:skeleton"
+  }
+}
