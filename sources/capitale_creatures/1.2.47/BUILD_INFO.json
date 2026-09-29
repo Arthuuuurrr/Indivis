@@ -1,0 +1,15 @@
+{
+  "version": "1.2.47",
+  "base_version": "1.2.46",
+  "base_sha256": "385bc650ed488eee4a5573f519b25dd8a3f79277a00d222c90e15a55a5fbbab4",
+  "sha256": "d2372a79c0ce7187251ec4679fbc53ec388a6017eb74e08bedf3832bcb2d811b",
+  "size_bytes": 20124885,
+  "startup_crash_fix": "Mixin annotation compiled with CLASS retention",
+  "tick_scan_removed": true,
+  "nested_jars_verified_unchanged": 11,
+  "protected_orc_entries_verified_unchanged": [
+    "fr/hautecapitale/creatures/spawn/CapitaleCreaturesOrcPatrol1212.class",
+    "data/capitale_creatures/spawn_rules/orc_patrol_rules.json",
+    "data/capitale_creatures/tags/worldgen/biome/city_no_spawn.json"
+  ]
+}
