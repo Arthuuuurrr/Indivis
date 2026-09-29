@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - ".github/workflows/nexus-pre9-inspect.yml"
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -14,14 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          lfs: true
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "21"
-      - name: Reconstruct PRE5
+      - name: Reconstruct PRE5 and print exact allowsPilosity
         shell: bash
         run: |
           python - <<'PY'
@@ -33,13 +29,4 @@ jobs:
           assert hashlib.sha256(data).hexdigest()==m["artifact_sha256"]
           Path("/tmp/pre5.jar").write_bytes(data)
           PY
-      - name: Inspect only relevant ABI
-        shell: bash
-        run: |
-          PRE8="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE8.jar"
-          echo "=== PRE5 UnifiedPilositySupport ==="
-          javap -classpath /tmp/pre5.jar -p net.tompsen.nexuscharacters.UnifiedPilositySupport
-          echo "=== PRE8 UnifiedPilositySupport ==="
-          javap -classpath "$PRE8" -p net.tompsen.nexuscharacters.UnifiedPilositySupport
-          echo "=== PRE8 RacialAppearance69Support ==="
-          javap -classpath "$PRE8" -p -c net.tompsen.nexuscharacters.RacialAppearance69Support
+          javap -classpath /tmp/pre5.jar -p -c net.tompsen.nexuscharacters.UnifiedPilositySupport             | sed -n '/public static boolean allowsPilosity/,/public static void fix/p'
