@@ -1,0 +1,270 @@
+name: Rebuild creature bundle 1.2.46
+
+on:
+  push:
+    branches:
+      - fix/121-marine-spawn-safety
+    paths:
+      - 'sources/capitale_creatures/1.2.46/SnakeJockeyGuardMixin.java'
+      - 'sources/capitale_creatures/1.2.46/capitale_creatures_jockey.mixins.json'
+      - 'sources/capitale_creatures/1.2.46/jockey_guard_contract.json'
+      - '.github/workflows/rebuild-creature-bundle-1.2.46.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: ${{ !contains(github.event.head_commit.message, '[cc146-built]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false
+
+      - name: Compile targeted Mixin with minimal intermediary stubs
+        shell: bash
+        run: |
+          set -euo pipefail
+          work=/tmp/cc146build
+          rm -rf "$work"
+          mkdir -p "$work/stubs/net/minecraft"                    "$work/stubs/org/spongepowered/asm/mixin/injection/callback"                    "$work/stubs/org/spongepowered/asm/mixin/injection"                    "$work/stubs/org/spongepowered/asm/mixin"                    "$work/classes"
+
+          cat > "$work/stubs/net/minecraft/class_1299.java" <<'JAVA'
+          package net.minecraft;
+          public class class_1299<T> {}
+          JAVA
+
+          cat > "$work/stubs/net/minecraft/class_2960.java" <<'JAVA'
+          package net.minecraft;
+          public class class_2960 {}
+          JAVA
+
+          cat > "$work/stubs/net/minecraft/class_7922.java" <<'JAVA'
+          package net.minecraft;
+          public interface class_7922<T> {
+              class_2960 method_10221(Object value);
+          }
+          JAVA
+
+          cat > "$work/stubs/net/minecraft/class_7923.java" <<'JAVA'
+          package net.minecraft;
+          public final class class_7923 {
+              public static class_7922<class_1299<?>> field_41177;
+          }
+          JAVA
+
+          cat > "$work/stubs/net/minecraft/class_1297.java" <<'JAVA'
+          package net.minecraft;
+          public class class_1297 {
+              public class_1299<?> method_5864() { return null; }
+              public void method_31472() {}
+          }
+          JAVA
+
+          cat > "$work/stubs/org/spongepowered/asm/mixin/Mixin.java" <<'JAVA'
+          package org.spongepowered.asm.mixin;
+          import java.lang.annotation.*;
+          @Retention(RetentionPolicy.RUNTIME)
+          @Target(ElementType.TYPE)
+          public @interface Mixin {
+              Class<?>[] value() default {};
+              String[] targets() default {};
+              boolean remap() default true;
+          }
+          JAVA
+
+          cat > "$work/stubs/org/spongepowered/asm/mixin/injection/At.java" <<'JAVA'
+          package org.spongepowered.asm.mixin.injection;
+          import java.lang.annotation.*;
+          @Retention(RetentionPolicy.RUNTIME)
+          @Target({})
+          public @interface At {
+              String value();
+          }
+          JAVA
+
+          cat > "$work/stubs/org/spongepowered/asm/mixin/injection/Inject.java" <<'JAVA'
+          package org.spongepowered.asm.mixin.injection;
+          import java.lang.annotation.*;
+          @Retention(RetentionPolicy.RUNTIME)
+          @Target(ElementType.METHOD)
+          public @interface Inject {
+              String[] method();
+              At at();
+              boolean cancellable() default false;
+              boolean remap() default true;
+          }
+          JAVA
+
+          cat > "$work/stubs/org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.java" <<'JAVA'
+          package org.spongepowered.asm.mixin.injection.callback;
+          public class CallbackInfoReturnable<T> {
+              public void setReturnValue(T value) {}
+          }
+          JAVA
+
+          javac --release 21 -d "$work/classes"             $(find "$work/stubs" -name '*.java' | sort)             sources/capitale_creatures/1.2.46/SnakeJockeyGuardMixin.java
+
+          test -f "$work/classes/fr/hautecapitale/creatures/mixin/SnakeJockeyGuardMixin.class"
+          javap -classpath "$work/classes" -p -c -verbose             fr.hautecapitale.creatures.mixin.SnakeJockeyGuardMixin             > sources/capitale_creatures/1.2.46/SnakeJockeyGuardMixin.javap.txt
+
+      - name: Build and verify 1.2.46
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import zipfile
+          from pathlib import Path
+
+          root = Path.cwd()
+          src = root / "sources/capitale_creatures/1.2.46"
+          base = root / "mods/capitale_creatures_bundle-1.2.45-fabric-1.21.11-SKELETON-JOCKEY-GUARD-NO-ORC-CHANGES.jar"
+          out = root / "mods/capitale_creatures_bundle-1.2.46-fabric-1.21.11-SPAWN-TIME-JOCKEY-BLOCK-NO-ORC-CHANGES.jar"
+          compiled = Path("/tmp/cc146build/classes/fr/hautecapitale/creatures/mixin/SnakeJockeyGuardMixin.class")
+
+          expected_base_sha = "bc6fcc39bcb126b76847f8df1ad136838b05624314a2ec9c3c38fcc8f93aabe5"
+          actual = hashlib.sha256(base.read_bytes()).hexdigest()
+          if actual != expected_base_sha:
+              raise SystemExit(f"Unexpected 1.2.45 base SHA: {actual}")
+
+          with zipfile.ZipFile(base, "r") as zin:
+              infos = zin.infolist()
+              original = {i.filename: zin.read(i.filename) for i in infos}
+
+          fabric_path = "fabric.mod.json"
+          tick_tag = "data/minecraft/tags/function/tick.json"
+          old_tick_fn = "data/capitale_creatures/function/runtime/remove_snake_skeleton_jockeys.mcfunction"
+          old_remove_fn = "data/capitale_creatures/function/runtime/remove_snake_skeleton_jockey.mcfunction"
+          mixin_cfg = "capitale_creatures_jockey.mixins.json"
+          mixin_cls = "fr/hautecapitale/creatures/mixin/SnakeJockeyGuardMixin.class"
+          function_id = "capitale_creatures:runtime/remove_snake_skeleton_jockeys"
+
+          patched = dict(original)
+
+          # Remove the per-tick workaround from 1.2.45.
+          patched.pop(old_tick_fn, None)
+          patched.pop(old_remove_fn, None)
+          if tick_tag in patched:
+              data = json.loads(patched[tick_tag].decode("utf-8"))
+              values = [v for v in data.get("values", []) if v != function_id]
+              if values:
+                  data["values"] = values
+                  patched[tick_tag] = (json.dumps(data, ensure_ascii=False, indent=2) + "\n").encode()
+              else:
+                  patched.pop(tick_tag, None)
+
+          # Version and register the targeted Mixin.
+          fabric = json.loads(patched[fabric_path].decode("utf-8"))
+          if str(fabric.get("version")) != "1.2.45":
+              raise SystemExit(f"Expected fabric.mod.json 1.2.45, got {fabric.get('version')!r}")
+          fabric["version"] = "1.2.46"
+          mixins = fabric.get("mixins", [])
+          if isinstance(mixins, str):
+              mixins = [mixins]
+          if mixin_cfg not in mixins:
+              mixins.append(mixin_cfg)
+          fabric["mixins"] = mixins
+          patched[fabric_path] = (json.dumps(fabric, ensure_ascii=False, indent=2) + "\n").encode()
+
+          patched[mixin_cfg] = (src / mixin_cfg).read_bytes()
+          patched[mixin_cls] = compiled.read_bytes()
+
+          # Rebuild while preserving metadata for unchanged entries.
+          info_map = {i.filename: i for i in infos}
+          tmp = out.with_suffix(out.suffix + ".tmp")
+          with zipfile.ZipFile(tmp, "w", allowZip64=True) as zout:
+              for name, data in patched.items():
+                  if name in info_map:
+                      zout.writestr(info_map[name], data)
+                  else:
+                      zout.writestr(name, data, compress_type=zipfile.ZIP_DEFLATED)
+          os.replace(tmp, out)
+
+          with zipfile.ZipFile(out, "r") as zout:
+              rebuilt = {name: zout.read(name) for name in zout.namelist()}
+
+          allowed = {fabric_path, tick_tag, old_tick_fn, old_remove_fn, mixin_cfg, mixin_cls}
+          for name, data in original.items():
+              if name not in allowed and rebuilt.get(name) != data:
+                  raise SystemExit(f"Unexpected modified entry: {name}")
+
+          # Ensure the old continuous scan is fully gone.
+          if old_tick_fn in rebuilt or old_remove_fn in rebuilt:
+              raise SystemExit("Old tick workaround still present")
+          if tick_tag in rebuilt:
+              td = json.loads(rebuilt[tick_tag].decode("utf-8"))
+              if function_id in td.get("values", []):
+                  raise SystemExit("Old jockey tick function still registered")
+
+          # Validate Mixin registration and version.
+          final_fabric = json.loads(rebuilt[fabric_path].decode("utf-8"))
+          if final_fabric.get("version") != "1.2.46":
+              raise SystemExit("fabric.mod.json version is not 1.2.46")
+          if mixin_cfg not in final_fabric.get("mixins", []):
+              raise SystemExit("Mixin config not registered")
+          if mixin_cls not in rebuilt:
+              raise SystemExit("Mixin class missing")
+
+          # Preserve every nested creature mod exactly.
+          nested = [n for n in original if n.lower().endswith(".jar")]
+          for n in nested:
+              if rebuilt.get(n) != original[n]:
+                  raise SystemExit(f"Nested JAR changed: {n}")
+
+          protected_orc_entries = [
+              "fr/hautecapitale/creatures/spawn/CapitaleCreaturesOrcPatrol1212.class",
+              "data/capitale_creatures/spawn_rules/orc_patrol_rules.json",
+              "data/capitale_creatures/tags/worldgen/biome/city_no_spawn.json",
+          ]
+          for n in protected_orc_entries:
+              if original.get(n) != rebuilt.get(n):
+                  raise SystemExit(f"Protected Orc entry changed: {n}")
+
+          # Bytecode sanity: target IDs and intermediary riding method must be present.
+          cls = rebuilt[mixin_cls]
+          for needle in [
+              b"minecraft:skeleton",
+              b"cubeanimals:rattlesnake",
+              b"capitale_entities:snake",
+              b"method_5873",
+              b"method_31472",
+              b"method_10221",
+          ]:
+              if needle not in cls:
+                  raise SystemExit(f"Missing expected bytecode marker: {needle!r}")
+
+          sha = hashlib.sha256(out.read_bytes()).hexdigest()
+          info = {
+              "version": "1.2.46",
+              "base_version": "1.2.45",
+              "base_sha256": expected_base_sha,
+              "sha256": sha,
+              "size_bytes": out.stat().st_size,
+              "tick_scan_removed": True,
+              "hook": "class_1297.method_5873(class_1297,boolean,boolean)",
+              "rider": "minecraft:skeleton",
+              "vehicles": ["cubeanimals:rattlesnake", "capitale_entities:snake"],
+              "nested_jars_verified_unchanged": len(nested),
+              "protected_orc_entries_verified_unchanged": protected_orc_entries,
+          }
+          (src / "BUILD_INFO.json").write_text(json.dumps(info, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(info, indent=2))
+          PY
+
+      - name: Commit versioned 1.2.46 JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "mods/capitale_creatures_bundle-1.2.46-fabric-1.21.11-SPAWN-TIME-JOCKEY-BLOCK-NO-ORC-CHANGES.jar"
+          git add "sources/capitale_creatures/1.2.46/BUILD_INFO.json"
+          git add "sources/capitale_creatures/1.2.46/SnakeJockeyGuardMixin.javap.txt"
+          git rm "mods/capitale_creatures_bundle-1.2.45-fabric-1.21.11-SKELETON-JOCKEY-GUARD-NO-ORC-CHANGES.jar"
+          git commit -m "mods: capitale_creatures_bundle 1.2.46 block snake skeleton jockey at ride start [cc146-built]"
+          git push origin HEAD:fix/121-marine-spawn-safety
