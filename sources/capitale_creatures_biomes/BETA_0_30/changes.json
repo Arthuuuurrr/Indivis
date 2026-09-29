@@ -1,0 +1,16 @@
+{
+  "version": "BETA_0_30",
+  "base": "BETA_0_28",
+  "changes": {
+    "chaos_mmo_ai:maggot": {"weight": [5,7], "group": [[1,2],[1,3]]},
+    "capitale_entities:snake": {"weight": [6,4]},
+    "cubeanimals:rattlesnake": {"weight": [10,7]},
+    "mystic_triceratops_plains": {"frequency_percent": 70}
+  },
+  "unchanged": {
+    "orc_patrol_rules.json": true,
+    "city_no_spawn.json": true,
+    "orc_patrol_system": true
+  },
+  "sha256": "514e72592cc9012a94c3c24fad4052522efcb072ac3e6861e6bb8de769dc4bb2"
+}
