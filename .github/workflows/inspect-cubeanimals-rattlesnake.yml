@@ -90,6 +90,12 @@ jobs:
             echo
             echo "## Skeleton/passenger string matches"
             zipgrep -ainE 'skeleton|passenger|riding|ride' "$cube" 2>/dev/null | head -n 300 || true
+            echo
+            echo "## Outer bundle snake/capitale_entities entries"
+            jar tf "$GITHUB_WORKSPACE/$bundle" | grep -Ei 'snake|capitale_entities' || true
+            echo
+            echo "## Outer bundle textual capitale_entities:snake matches"
+            zipgrep -ain 'capitale_entities:snake' "$GITHUB_WORKSPACE/$bundle" 2>/dev/null | head -n 100 || true
           } >> "$report"
 
       - name: Commit inspection
