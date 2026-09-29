@@ -1,0 +1,210 @@
+name: Build Nexus BETA 1.0 PRE9
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/reference/BETA-1.0-PRE9/**"
+      - ".github/workflows/nexus-pre9-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with LFS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Verify PRE8 base
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE8.jar"
+          test -s "$BASE"
+          unzip -t "$BASE" >/dev/null
+          ACTUAL="$(sha256sum "$BASE" | awk '{print $1}')"
+          EXPECTED="0f149b9801e2b51710b54f8b86b4f81de1110ba38dddf6f0663d106c5ef8ad71"
+          test "$ACTUAL" = "$EXPECTED" || {
+            echo "PRE8 SHA mismatch: $ACTUAL"
+            exit 1
+          }
+          echo "PRE8 base verified: $ACTUAL"
+
+      - name: Compile PRE9 ABI patch
+        shell: bash
+        run: |
+          mkdir -p /tmp/pre9-tools
+          javac             --add-exports java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED             --add-exports java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED             -d /tmp/pre9-tools             mods/nexuscharacters/reference/BETA-1.0-PRE9/tools/PatchUnifiedPilosityAbi.java
+
+      - name: Patch PRE8 runtime
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE8.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar"
+
+          mkdir -p /tmp/pre9-in/net/tompsen/nexuscharacters
+          mkdir -p /tmp/pre9-out/net/tompsen/nexuscharacters
+
+          unzip -p "$BASE" net/tompsen/nexuscharacters/UnifiedPilositySupport.class             > /tmp/pre9-in/net/tompsen/nexuscharacters/UnifiedPilositySupport.class
+
+          java             --add-exports java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED             --add-exports java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED             -cp /tmp/pre9-tools PatchUnifiedPilosityAbi             /tmp/pre9-in/net/tompsen/nexuscharacters/UnifiedPilositySupport.class             /tmp/pre9-out/net/tompsen/nexuscharacters/UnifiedPilositySupport.class
+
+          cp "$BASE" "$OUT"
+          jar uf "$OUT" -C /tmp/pre9-out net/tompsen/nexuscharacters/UnifiedPilositySupport.class
+
+          mkdir -p /tmp/pre9-meta
+          unzip -p "$OUT" fabric.mod.json > /tmp/pre9-meta/fabric.mod.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("/tmp/pre9-meta/fabric.mod.json")
+          data=json.loads(p.read_text(encoding="utf-8"))
+          data["version"]="1.0.0-beta.9+hc.1.21.11"
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          jar uf "$OUT" -C /tmp/pre9-meta fabric.mod.json
+
+      - name: Validate PRE9
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE8.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar"
+
+          unzip -t "$OUT" >/dev/null
+
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,zipfile
+
+          base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE8.jar")
+          out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar")
+
+          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
+              n0=z0.namelist()
+              n1=z1.namelist()
+
+              if len(n1)!=len(set(n1)):
+                  dup=sorted({n for n in n1 if n1.count(n)>1})
+                  raise SystemExit(f"Duplicate ZIP entries: {dup}")
+
+              if set(n0)!=set(n1):
+                  raise SystemExit("PRE9 changed the JAR entry set")
+
+              expected={
+                  "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
+                  "fabric.mod.json",
+              }
+              changed={
+                  name for name in n0
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest()
+              }
+              if changed!=expected:
+                  raise SystemExit(f"Unexpected changed entries: {sorted(changed)}")
+
+              # PRE8 console-silencing hotfix must remain byte-identical.
+              for name in (
+                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
+                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
+                  "net/tompsen/nexuscharacters/NexusCharacters.class",
+                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
+                  "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
+              ):
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                      raise SystemExit(f"Unexpected regression in preserved PRE8/PRE7 class: {name}")
+
+              mod=json.loads(z1.read("fabric.mod.json"))
+              if mod.get("version")!="1.0.0-beta.9+hc.1.21.11":
+                  raise SystemExit(f"Wrong version: {mod.get('version')}")
+
+          raw=out.read_bytes()
+          sha=hashlib.sha256(raw).hexdigest()
+          size=len(raw)
+
+          ref=Path("mods/nexuscharacters/reference/BETA-1.0-PRE9")
+          (ref/"SHA256SUMS.txt").write_text(f"{sha}  {out.name}\n",encoding="utf-8")
+          (ref/"VALIDATION.md").write_text(
+              "# Validation BETA 1.0 PRE9\n\n"
+              f"- JAR : `{out.name}`\n"
+              f"- Taille : **{size} octets**\n"
+              f"- SHA-256 : `{sha}`\n"
+              "- Base : PRE8 SHA vérifié.\n"
+              "- Archive ZIP/JAR : OK.\n"
+              "- Aucun doublon d'entrée ZIP.\n"
+              "- Ensemble des entrées identique à PRE8.\n"
+              "- Entrées modifiées uniquement : `UnifiedPilositySupport.class`, `fabric.mod.json`.\n"
+              "- `ProfileStateBridge.class`, `PuffishSkillsBridge.class` et `NexusCharacters.class` strictement inchangés depuis PRE8.\n"
+              "- Correctifs barbes/layout PRE7/PRE6 préservés.\n"
+              "- ABI `allowsPilosity(Object)` restaurée avec sémantique PRE5 HUMAN/NORDIC/DWARF.\n"
+              "- Version : `1.0.0-beta.9+hc.1.21.11`.\n",
+              encoding="utf-8"
+          )
+          print("PRE9",size,sha)
+          PY
+
+          echo "=== UnifiedPilositySupport signature ==="
+          javap -classpath "$OUT" -p net.tompsen.nexuscharacters.UnifiedPilositySupport             | grep -F 'public static boolean allowsPilosity(java.lang.Object);'
+
+      - name: Runtime smoke test of restored ABI
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar"
+          cat >/tmp/NexusPre9Probe.java <<'JAVA'
+          import java.lang.reflect.Method;
+
+          public final class NexusPre9Probe {
+              enum Race { HUMAN, NORDIC, DWARF, HIGH_ELF, WOOD_ELF }
+
+              public static void main(String[] args) throws Exception {
+                  Class<?> c=Class.forName("net.tompsen.nexuscharacters.UnifiedPilositySupport");
+                  Method m=c.getMethod("allowsPilosity",Object.class);
+
+                  expect(m,Race.HUMAN,true);
+                  expect(m,Race.NORDIC,true);
+                  expect(m,Race.DWARF,true);
+                  expect(m,Race.HIGH_ELF,false);
+                  expect(m,Race.WOOD_ELF,false);
+
+                  System.out.println("PRE9 ABI smoke test OK");
+              }
+
+              private static void expect(Method m,Object race,boolean expected) throws Exception {
+                  boolean actual=(Boolean)m.invoke(null,race);
+                  if(actual!=expected) {
+                      throw new AssertionError(race+": expected "+expected+", got "+actual);
+                  }
+              }
+          }
+          JAVA
+          javac -cp "$OUT" /tmp/NexusPre9Probe.java
+          java -cp "$OUT:/tmp" NexusPre9Probe
+
+      - name: Publish PRE9 through Git LFS
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE8.jar
+
+          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar             mods/nexuscharacters/reference/BETA-1.0-PRE9/SHA256SUMS.txt             mods/nexuscharacters/reference/BETA-1.0-PRE9/VALIDATION.md
+
+          if git diff --cached --quiet; then
+            echo "No PRE9 artifacts to publish."
+            exit 0
+          fi
+
+          git commit -m "nexus: publish BETA 1.0 PRE9 creation-screen crash hotfix"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
