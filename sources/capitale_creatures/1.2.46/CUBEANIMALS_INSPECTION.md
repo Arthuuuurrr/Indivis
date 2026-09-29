@@ -8896,3 +8896,15 @@ InnerClasses:
 SourceFile: "RattleSnakeAnimations.java"
 
 ## Skeleton/passenger string matches
+
+## Outer bundle snake/capitale_entities entries
+assets/capitale_entities/
+assets/capitale_entities/lang/
+assets/capitale_entities/lang/fr_fr.json
+data/capitale_creatures/function/runtime/remove_snake_skeleton_jockeys.mcfunction
+data/capitale_creatures/function/runtime/remove_snake_skeleton_jockey.mcfunction
+
+## Outer bundle textual capitale_entities:snake matches
+data/capitale_creatures/spawn_rules/biome_assignments.json:1150:        "capitale_entities:snake"
+data/capitale_creatures/spawn_rules/spawn_profiles_active.json:817:      "entity": "capitale_entities:snake",
+data/capitale_creatures/function/runtime/remove_snake_skeleton_jockeys.mcfunction:3:execute as @e[type=capitale_entities:snake] at @s on passengers if entity @s[type=minecraft:skeleton] run function capitale_creatures:runtime/remove_snake_skeleton_jockey
