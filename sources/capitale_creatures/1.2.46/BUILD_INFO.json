@@ -1,0 +1,20 @@
+{
+  "version": "1.2.46",
+  "base_version": "1.2.45",
+  "base_sha256": "bc6fcc39bcb126b76847f8df1ad136838b05624314a2ec9c3c38fcc8f93aabe5",
+  "sha256": "385bc650ed488eee4a5573f519b25dd8a3f79277a00d222c90e15a55a5fbbab4",
+  "size_bytes": 20124884,
+  "tick_scan_removed": true,
+  "hook": "class_1297.method_5873(class_1297,boolean,boolean)",
+  "rider": "minecraft:skeleton",
+  "vehicles": [
+    "cubeanimals:rattlesnake",
+    "capitale_entities:snake"
+  ],
+  "nested_jars_verified_unchanged": 11,
+  "protected_orc_entries_verified_unchanged": [
+    "fr/hautecapitale/creatures/spawn/CapitaleCreaturesOrcPatrol1212.class",
+    "data/capitale_creatures/spawn_rules/orc_patrol_rules.json",
+    "data/capitale_creatures/tags/worldgen/biome/city_no_spawn.json"
+  ]
+}
