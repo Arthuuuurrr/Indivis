@@ -23,6 +23,11 @@ jobs:
           fetch-depth: 0
           lfs: false
 
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
       - name: Compile targeted Mixin with minimal intermediary stubs
         shell: bash
         run: |
