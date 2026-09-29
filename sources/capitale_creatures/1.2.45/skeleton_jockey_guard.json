@@ -1,0 +1,17 @@
+{
+  "version": "1.2.45",
+  "base_bundle": "1.2.44",
+  "companion_datapack": "BETA_0_30",
+  "scope": "skeleton_snake_jockey_guard",
+  "targets": [
+    "cubeanimals:rattlesnake",
+    "capitale_entities:snake"
+  ],
+  "passenger_type": "minecraft:skeleton",
+  "orc_changes": false,
+  "spawn_balance_changes": false,
+  "implementation": {
+    "tick_function": "capitale_creatures:runtime/remove_snake_skeleton_jockeys",
+    "action": "dismount_then_teleport_below_world"
+  }
+}
