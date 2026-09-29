@@ -28,3 +28,4 @@ PRE8 ne modifie pas :
 - les cosmétiques et le layout PRE7.
 
 Le build valide que seules `ProfileStateBridge.class`, `PuffishSkillsBridge.class` et `fabric.mod.json` diffèrent de PRE7.
+
