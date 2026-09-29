@@ -1,0 +1,44 @@
+name: Rebuild creature bundle 1.2.44
+
+on:
+  push:
+    branches:
+      - fix/121-marine-spawn-safety
+    paths:
+      - 'tools/relay/cc144/**'
+      - '.github/workflows/rebuild-creature-bundle-1.2.44.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false
+
+      - name: Reconstruct and verify JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="/tmp/capitale_creatures_bundle-1.2.44-fabric-1.21.11-BALANCE-ONLY-NO-ORC-CHANGES.jar"
+          cat tools/relay/cc144/part*.b64 | base64 -d > "$out"
+          echo "91c70bb653ca2e6806de1b7a56afeb2aad8ae16dc5ba77a0b207a897c7134b6d  $out" | sha256sum -c -
+          test "$(stat -c '%s' "$out")" -eq 20125579
+          test "$(head -c 2 "$out")" = "PK"
+          cp "$out" "mods/capitale_creatures_bundle-1.2.44-fabric-1.21.11-BALANCE-ONLY-NO-ORC-CHANGES.jar"
+
+      - name: Commit real versioned JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .gitattributes
+          git add "mods/capitale_creatures_bundle-1.2.44-fabric-1.21.11-BALANCE-ONLY-NO-ORC-CHANGES.jar"
+          git rm -r tools/relay/cc144
+          git commit -m "mods: replace LFS pointer with real capitale_creatures_bundle 1.2.44 binary [cc144-built]"
+          git push origin HEAD:fix/121-marine-spawn-safety
