@@ -1,0 +1,108 @@
+name: Build capitale_core 1.5.6-RC9AV
+
+on:
+  push:
+    paths:
+      - "datapacks/capitale-core/**"
+      - ".github/workflows/build-core-rc9av.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate source
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("datapacks/capitale-core")
+          pack = json.loads((root / "pack.mcmeta").read_text(encoding="utf-8"))
+          desc = pack["pack"]["description"]
+          if "1.5.6-RC9AV" not in desc:
+              raise SystemExit(f"Unexpected pack version: {desc}")
+
+          corruption = root / "data/indivis/worldgen/biome/corruption.json"
+          data = json.loads(corruption.read_text(encoding="utf-8"))
+          required = {
+              "has_precipitation", "temperature", "downfall", "effects",
+              "attributes", "spawners", "spawn_costs", "carvers", "features"
+          }
+          missing = required - set(data)
+          if missing:
+              raise SystemExit(f"Corruption biome missing keys: {sorted(missing)}")
+
+          if data["effects"].get("grass_color") != "#778272":
+              raise SystemExit("Corruption biome palette mismatch")
+          if data["attributes"].get("minecraft:visual/fog_color") != "#817770":
+              raise SystemExit("Corruption biome fog mismatch")
+
+          print("Source validation OK")
+          PY
+
+      - name: Build full datapack archive
+        shell: bash
+        run: |
+          mkdir -p datapacks/releases
+          OUT="datapacks/releases/capitale_core_1.5.6-RC9AV.zip"
+          rm -f "$OUT"
+
+          (
+            cd datapacks/capitale-core
+            zip -qr "../../releases.tmp.zip" .
+          )
+          mv releases.tmp.zip "$OUT"
+
+          unzip -t "$OUT" >/dev/null
+          unzip -l "$OUT" | grep -q " pack.mcmeta$"
+          unzip -l "$OUT" | grep -q " data/indivis/worldgen/biome/corruption.json$"
+
+          SHA="$(sha256sum "$OUT" | awk '{print $1}')"
+          SIZE="$(stat -c%s "$OUT")"
+
+          printf '%s  %s\n' "$SHA" "$(basename "$OUT")"             > datapacks/releases/capitale_core_1.5.6-RC9AV.SHA256SUMS.txt
+
+          cat > datapacks/releases/capitale_core_1.5.6-RC9AV.VALIDATION.md <<EOF
+          # capitale_core 1.5.6-RC9AV
+
+          - Archive complète : `$(basename "$OUT")`
+          - Taille : **$SIZE octets**
+          - SHA-256 : `$SHA`
+          - `pack.mcmeta` à la racine : OK
+          - `data/indivis/worldgen/biome/corruption.json` : présent
+          - JSON source : valide
+          - Archive ZIP : valide
+          - Base : RC9AU + restauration exacte de `indivis:corruption`
+          EOF
+
+          echo "CORE_ARCHIVE=$OUT"
+          echo "CORE_SHA=$SHA"
+          echo "CORE_SIZE=$SIZE"
+
+      - name: Publish archive
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add             datapacks/releases/capitale_core_1.5.6-RC9AV.zip             datapacks/releases/capitale_core_1.5.6-RC9AV.SHA256SUMS.txt             datapacks/releases/capitale_core_1.5.6-RC9AV.VALIDATION.md
+
+          if git diff --cached --quiet; then
+            echo "Archive already current."
+            exit 0
+          fi
+
+          git commit -m "core: publish full 1.5.6-RC9AV archive"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
