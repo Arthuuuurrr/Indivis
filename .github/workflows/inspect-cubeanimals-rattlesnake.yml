@@ -1,0 +1,103 @@
+name: Inspect CubeAnimals rattlesnake jockey
+
+on:
+  push:
+    branches:
+      - fix/121-marine-spawn-safety
+    paths:
+      - 'sources/capitale_creatures/1.2.46/INSPECT_TRIGGER'
+      - '.github/workflows/inspect-cubeanimals-rattlesnake.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  inspect:
+    if: ${{ !contains(github.event.head_commit.message, '[cubeanimals-inspected]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false
+
+      - name: Inspect embedded CubeAnimals bytecode
+        shell: bash
+        run: |
+          set -euo pipefail
+          bundle="mods/capitale_creatures_bundle-1.2.45-fabric-1.21.11-SKELETON-JOCKEY-GUARD-NO-ORC-CHANGES.jar"
+          work="/tmp/cc146"
+          rm -rf "$work"
+          mkdir -p "$work/extracted" "$work/nested"
+          cd "$work/extracted"
+          unzip -qq "$GITHUB_WORKSPACE/$bundle"
+
+          report="$GITHUB_WORKSPACE/sources/capitale_creatures/1.2.46/CUBEANIMALS_INSPECTION.md"
+          mkdir -p "$(dirname "$report")"
+          {
+            echo "# CubeAnimals rattlesnake inspection"
+            echo
+            echo "Base bundle: 1.2.45"
+            echo
+            echo "## Nested JARs"
+          } > "$report"
+
+          find . -type f -name '*.jar' -print | sort | while read -r jar; do
+            echo "- $jar" >> "$report"
+            cp "$jar" "$work/nested/$(basename "$jar")"
+          done
+
+          cube=""
+          for jar in "$work"/nested/*.jar; do
+            if unzip -p "$jar" fabric.mod.json 2>/dev/null | grep -q '"id"[[:space:]]*:[[:space:]]*"cubeanimals"'; then
+              cube="$jar"
+              break
+            fi
+          done
+
+          if [ -z "$cube" ]; then
+            echo "CubeAnimals nested JAR not found" >> "$report"
+            exit 1
+          fi
+
+          {
+            echo
+            echo "## CubeAnimals JAR"
+            echo "$(basename "$cube")"
+            echo
+            echo "### fabric.mod.json"
+            unzip -p "$cube" fabric.mod.json
+            echo
+            echo
+            echo "### Classes containing snake/rattle"
+            jar tf "$cube" | grep -Ei 'rattle|snake' || true
+          } >> "$report"
+
+          mapfile -t classes < <(jar tf "$cube" | grep -Ei 'rattle|snake' | grep '\.class$' | sed 's#/#.#g;s#\.class$##')
+          {
+            echo
+            echo "## javap"
+          } >> "$report"
+          for cls in "${classes[@]}"; do
+            {
+              echo
+              echo "### $cls"
+              javap -classpath "$cube" -c -p -verbose "$cls" 2>&1 || true
+            } >> "$report"
+          done
+
+          {
+            echo
+            echo "## Skeleton/passenger string matches"
+            zipgrep -ainE 'skeleton|passenger|riding|ride' "$cube" 2>/dev/null | head -n 300 || true
+          } >> "$report"
+
+      - name: Commit inspection
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sources/capitale_creatures/1.2.46/CUBEANIMALS_INSPECTION.md
+          git commit -m "chore(creatures): inspect CubeAnimals rattlesnake jockey bytecode [cubeanimals-inspected]"
+          git push origin HEAD:fix/121-marine-spawn-safety
