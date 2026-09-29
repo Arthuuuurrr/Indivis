@@ -1,0 +1,25 @@
+{
+  "version": "1.2.44",
+  "base_bundle": "1.2.41",
+  "datapack": "BETA_0_30",
+  "base_datapack": "BETA_0_28",
+  "balance": {
+    "chaos_mmo_ai:maggot": {"weight": 7, "group": [1,3]},
+    "capitale_entities:snake": {"weight": 4, "group": [1,2]},
+    "cubeanimals:rattlesnake": {"weight": 7, "group": [1,2]},
+    "mystic_triceratops_plains": {"frequency_percent": 70},
+    "mystic_triceratops_dry": {"frequency_percent": 100}
+  },
+  "localisation": {
+    "entity.hmobs.brown_bear": "Ours brun"
+  },
+  "orc_changes": false,
+  "orc_unchanged_from": {
+    "bundle": "1.2.41",
+    "datapack": "BETA_0_28"
+  },
+  "sha256": {
+    "bundle": "91c70bb653ca2e6806de1b7a56afeb2aad8ae16dc5ba77a0b207a897c7134b6d",
+    "datapack": "514e72592cc9012a94c3c24fad4052522efcb072ac3e6861e6bb8de769dc4bb2"
+  }
+}
