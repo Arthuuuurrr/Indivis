@@ -1,0 +1,171 @@
+name: Build capitale_core 1.5.6-RC9AW
+
+on:
+  push:
+    paths:
+      - ".github/workflows/build-core-rc9aw.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Cross-thread static audit and package
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, zipfile
+          from pathlib import Path
+
+          root = Path("datapacks/capitale-core")
+          releases = Path("datapacks/releases")
+          releases.mkdir(parents=True, exist_ok=True)
+          out = releases / "capitale_core_1.5.6-RC9AW.zip"
+
+          def read_json(p):
+              return json.loads(p.read_text(encoding="utf-8"))
+
+          # Every JSON in the core must parse.
+          json_files = sorted(root.rglob("*.json"))
+          for p in json_files:
+              read_json(p)
+
+          pack = read_json(root / "pack.mcmeta")
+          desc = pack["pack"]["description"]
+          assert "1.5.6-RC9AW" in desc, desc
+
+          # Corruption: registry key restored with the historical definition.
+          corruption = root / "data/indivis/worldgen/biome/corruption.json"
+          assert corruption.exists()
+          c = read_json(corruption)
+          assert c["effects"]["grass_color"] == "#778272"
+          assert c["effects"]["foliage_color"] == "#878d76"
+          assert c["attributes"]["minecraft:visual/fog_color"] == "#817770"
+          assert c["spawners"]["monster"] == []
+
+          # City contract: every tagged city resolves and has no natural spawns.
+          city_tag = read_json(root / "data/indivis/tags/worldgen/biome/city.json")
+          cities = city_tag["values"]
+          assert len(cities) == 19, cities
+          for biome in cities:
+              ns, name = biome.split(":", 1)
+              p = root / "data" / ns / "worldgen/biome" / f"{name}.json"
+              assert p.exists(), f"Missing city biome {biome}: {p}"
+              data = read_json(p)
+              for group, entries in data["spawners"].items():
+                  assert entries == [], f"{biome} has natural spawns in {group}: {entries}"
+              assert data.get("spawn_costs", {}) == {}, biome
+              assert data.get("carvers", []) == [], biome
+              features = data.get("features", [])
+              assert all(not x for x in features), f"{biome} has generation features: {features}"
+
+          # Aurelune intentionally uses capitale:donjon; no dedicated registry key expected.
+          assert not (root / "data/indivis/worldgen/biome/aurelune.json").exists()
+          assert (root / "data/capitale/worldgen/biome/donjon.json").exists()
+
+          # RC9AT Adventure breakables.
+          breakables_path = root / "data/capitale/tags/block/adventure_breakables.json"
+          breakables = read_json(breakables_path)["values"]
+          expected_breakables = [
+              "minecraft:fire",
+              "minecraft:soul_fire",
+              "cubeanimals:eagle_nest",
+              "cubeanimals:crocodile_egg",
+              "cubeanimals:komododragon_egg",
+          ]
+          assert breakables == expected_breakables, breakables
+
+          modifier = read_json(root / "data/capitale/item_modifier/adventure/fire_extinguish.json")
+          assert modifier["components"]["minecraft:can_break"]["blocks"] == "#capitale:adventure_breakables"
+
+          tick = (root / "data/capitale/function/adventure/fire_extinguish/tick_1s.mcfunction").read_text(encoding="utf-8")
+          legacy = 'minecraft:can_break={blocks:["minecraft:fire","minecraft:soul_fire"]}'
+          assert legacy in tick
+          assert "capitale:adventure/fire_extinguish" in tick
+
+          # PERF1 fire raycast.
+          fire_tag = read_json(root / "data/capitale/tags/block/adventure_bare_hand_fire.json")["values"]
+          assert fire_tag == ["minecraft:fire", "minecraft:soul_fire"]
+          for rel in [
+              "data/capitale/function/adventure/fire_extinguish/bare_hand_scan_step.mcfunction",
+              "data/capitale/function/adventure/fire_extinguish/bare_hand_hit_step.mcfunction",
+          ]:
+              txt = (root / rel).read_text(encoding="utf-8")
+              assert "#capitale:adventure_bare_hand_fire" in txt
+              executable = "\n".join(line for line in txt.splitlines() if not line.lstrip().startswith("#"))
+              assert "if block ~ ~ ~ minecraft:fire" not in executable
+              assert "if block ~ ~ ~ minecraft:soul_fire" not in executable
+              assert "matches ..19" in executable
+              assert "positioned ^ ^ ^0.25" in executable
+
+          # Cross-thread audit file must travel with the package.
+          audit = root / "docs/CROSS_THREAD_AUDIT_RC9AW.md"
+          assert audit.exists()
+
+          if out.exists():
+              out.unlink()
+          with zipfile.ZipFile(out, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+              for p in sorted(root.rglob("*")):
+                  if p.is_file():
+                      z.write(p, p.relative_to(root).as_posix())
+
+          with zipfile.ZipFile(out) as z:
+              bad = z.testzip()
+              assert bad is None, bad
+              names = set(z.namelist())
+              required = {
+                  "pack.mcmeta",
+                  "data/indivis/worldgen/biome/corruption.json",
+                  "data/indivis/tags/worldgen/biome/city.json",
+                  "data/capitale/tags/block/adventure_breakables.json",
+                  "data/capitale/tags/block/adventure_bare_hand_fire.json",
+                  "docs/CROSS_THREAD_AUDIT_RC9AW.md",
+              }
+              assert required <= names, required - names
+
+          sha = hashlib.sha256(out.read_bytes()).hexdigest()
+          size = out.stat().st_size
+          file_count = sum(1 for p in root.rglob("*") if p.is_file())
+
+          (releases / "capitale_core_1.5.6-RC9AW.SHA256SUMS.txt").write_text(
+              f"{sha}  {out.name}\n", encoding="utf-8"
+          )
+          (releases / "capitale_core_1.5.6-RC9AW.VALIDATION.md").write_text(
+              "# capitale_core 1.5.6-RC9AW — validation\n\n"
+              f"- Archive : `{out.name}`\n"
+              f"- Taille : **{size} octets**\n"
+              f"- SHA-256 : `{sha}`\n"
+              f"- Fichiers source embarqués : **{file_count}**\n"
+              f"- JSON contrôlés : **{len(json_files)}**\n"
+              f"- Biomes urbains/alias contrôlés : **{len(cities)}**\n"
+              "- `indivis:corruption` : présent et palette historique vérifiée\n"
+              "- Toutes les villes taguées : zéro spawn naturel, zéro carver, zéro feature active\n"
+              "- Aubecourt / RC9AU / alias Sombreflèche : présents via le tag urbain\n"
+              "- Aurelune : absence de biome dédié volontaire, `capitale:donjon` conservé\n"
+              "- RC9AT : 3 blocs Cube Animals + fire/soul_fire dans `#capitale:adventure_breakables`\n"
+              "- Migration ciblée des anciens `can_break` : présente\n"
+              "- PERF1 : tag fire/soul_fire présent et utilisé par les deux raycasts\n"
+              "- ZIP : valide\n"
+              "- Runtime encore requis pour PERF1 et vérification serveur finale\n",
+              encoding="utf-8"
+          )
+          print(f"RC9AW sha256={sha} size={size} files={file_count} json={len(json_files)} cities={len(cities)}")
+          PY
+
+      - name: Publish full RC9AW archive
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             datapacks/releases/capitale_core_1.5.6-RC9AW.zip             datapacks/releases/capitale_core_1.5.6-RC9AW.SHA256SUMS.txt             datapacks/releases/capitale_core_1.5.6-RC9AW.VALIDATION.md
+          git commit -m "core: publish consolidated 1.5.6-RC9AW archive"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
