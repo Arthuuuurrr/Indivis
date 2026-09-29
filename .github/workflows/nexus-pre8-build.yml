@@ -61,7 +61,7 @@ jobs:
           java             --add-exports java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED             --add-exports java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED             -cp /tmp/pre8-tools PatchConsoleSpam             /tmp/pre8-in/net/tompsen/nexuscharacters/ProfileStateBridge.class             /tmp/pre8-out/net/tompsen/nexuscharacters/ProfileStateBridge.class             /tmp/pre8-in/net/tompsen/nexuscharacters/PuffishSkillsBridge.class             /tmp/pre8-out/net/tompsen/nexuscharacters/PuffishSkillsBridge.class
 
           cp "$BASE" "$OUT"
-          jar uf "$OUT" -C /tmp/pre8-out             net/tompsen/nexuscharacters/ProfileStateBridge.class             net/tompsen/nexuscharacters/PuffishSkillsBridge.class
+          jar uf "$OUT" -C /tmp/pre8-out net/tompsen/nexuscharacters/ProfileStateBridge.class -C /tmp/pre8-out net/tompsen/nexuscharacters/PuffishSkillsBridge.class
 
           mkdir -p /tmp/pre8-meta
           unzip -p "$OUT" fabric.mod.json > /tmp/pre8-meta/fabric.mod.json
