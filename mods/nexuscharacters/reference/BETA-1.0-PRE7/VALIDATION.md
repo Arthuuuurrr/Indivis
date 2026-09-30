@@ -2,7 +2,7 @@
 
 - JAR : `NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE7.jar`
 - Taille : **21418779 octets**
-- SHA-256 : `6e96b378a82c5237a28ca128556f326eb77beb31373ff0c6ca4eddab0b7d6ab9`
+- SHA-256 : `b6fc158a62f90ac44895e93f59c8aba9ecf4803f8e5cd16b83cb22416cab9bba`
 - Base : PRE5 reconstruite et SHA vérifié.
 - Correctif layout PRE6 réappliqué sans changement de calcul responsive.
 - Archive ZIP/JAR : OK.
