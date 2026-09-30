@@ -1,0 +1,35 @@
+{
+  "version": "1.2.38",
+  "base_bundle": "1.2.37",
+  "datapack": "BETA_0_27",
+  "issues": [119, 120, 121],
+  "marine_idle": {
+    "entities": ["Aegirocassis", "Dunkleosteus", "Corpsefish", "Gluttonfish", "Mosasaurus"],
+    "depth_aware": true,
+    "gluttonfish_deep_preference": true,
+    "mosasaurus_water_player_detection_range": 28,
+    "mosasaurus_explicit_target_steering": true,
+    "mosasaurus_colour_4_natural_spawn": false
+  },
+  "terrestrial_spawn_safety": {
+    "current_position_must_be_dry": true,
+    "support_must_be_dry": true,
+    "leaves_forbidden": true,
+    "solid_support_required": true,
+    "existing_spawn_predicates_preserved": true,
+    "orc_patrol_uses_same_validation": true
+  },
+  "deep_ocean_only_boost": {
+    "biomes": ["minecraft:deep_ocean", "minecraft:deep_lukewarm_ocean", "minecraft:deep_cold_ocean", "minecraft:deep_frozen_ocean"],
+    "normal_oceans_unchanged": true,
+    "rivers_unchanged": true,
+    "base_cap": 16,
+    "deep_cap": 24,
+    "bonus_interval_ticks": 40
+  },
+  "sha256": {
+    "bundle": "7fa71bdcbdff7a7844274a1dfbaa4f341b147ec7527b6846cc2f0ff005dffdd2",
+    "datapack": "fa74dda1ea35a4950b2f7ebc8d0a5115e80f13993cb58512374febeadf287884",
+    "nested_cubeanimals": "6a0d27282820916cac574306e4edb4a9f1be2eda7b2c8095356d35de2cb5c844"
+  }
+}

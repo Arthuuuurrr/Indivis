@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "capitale:capitale", "required": false},
+    {"id": "indivis:lion_port", "required": false},
+    {"id": "indivis:clairval", "required": false},
+    {"id": "indivis:haute_rive", "required": false},
+    {"id": "indivis:ilystara", "required": false},
+    {"id": "indivis:sylvarhen", "required": false},
+    {"id": "indivis:avaleiv", "required": false},
+    {"id": "indivis:skarnfjord", "required": false},
+    {"id": "indivis:durak_vor", "required": false},
+    {"id": "indivis:blanche_fleche", "required": false},
+    {"id": "indivis:port_levant", "required": false},
+    {"id": "indivis:sillons_d_or", "required": false},
+    {"id": "indivis:sombrefleche", "required": false},
+    {"id": "indivis:clos_des_ormes", "required": false},
+    {"id": "indivis:aubecourt", "required": false}
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "version": "1.2.39",
+  "base": "1.2.38",
+  "datapack": "BETA_0_27",
+  "issue": 121,
+  "marine_targets": [
+    "Aegirocassis hostile variants",
+    "Dunkleosteus hostile variants",
+    "Mosasaurus hostile variants",
+    "chaos_mmo_ai:corpsefish",
+    "chaos_mmo_ai:gluttonfish"
+  ],
+  "underwater_breathing": {
+    "enabled": true,
+    "behavior": "set current air to entity max air every tick while touching water"
+  },
+  "orientation": {
+    "source": "final velocity vector",
+    "yaw": true,
+    "body_yaw": true,
+    "head_yaw": true,
+    "pitch": true,
+    "pitch_clamp_degrees": 35,
+    "interpolated": true,
+    "applied_idle": true,
+    "applied_combat": true
+  },
+  "sharks_modified": false,
+  "sha256": {
+    "bundle": "7ed676040db22b88cf4207d5a562afb84f541a37f25b978edbb54dcbf7f5f26d"
+  },
+  "validation": {
+    "asm_basic_verifier": "PASS",
+    "verified_methods": 25,
+    "nested_jars_changed": 0
+  }
+}

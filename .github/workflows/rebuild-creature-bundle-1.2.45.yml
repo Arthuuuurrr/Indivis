@@ -1,0 +1,152 @@
+name: Rebuild creature bundle 1.2.45
+
+on:
+  push:
+    branches:
+      - fix/121-marine-spawn-safety
+    paths:
+      - 'sources/capitale_creatures/1.2.45/**'
+      - '.github/workflows/rebuild-creature-bundle-1.2.45.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: ${{ !contains(github.event.head_commit.message, '[cc145-built]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false
+
+      - name: Build and verify 1.2.45
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          import shutil
+          import zipfile
+          from pathlib import Path
+
+          root = Path.cwd()
+          base = root / "mods/capitale_creatures_bundle-1.2.44-fabric-1.21.11-BALANCE-ONLY-NO-ORC-CHANGES.jar"
+          out = root / "mods/capitale_creatures_bundle-1.2.45-fabric-1.21.11-SKELETON-JOCKEY-GUARD-NO-ORC-CHANGES.jar"
+          src = root / "sources/capitale_creatures/1.2.45"
+
+          expected_base_sha = "91c70bb653ca2e6806de1b7a56afeb2aad8ae16dc5ba77a0b207a897c7134b6d"
+          actual_base_sha = hashlib.sha256(base.read_bytes()).hexdigest()
+          if actual_base_sha != expected_base_sha:
+              raise SystemExit(f"Unexpected 1.2.44 base SHA: {actual_base_sha}")
+
+          tick_fn_path = "data/capitale_creatures/function/runtime/remove_snake_skeleton_jockeys.mcfunction"
+          remove_fn_path = "data/capitale_creatures/function/runtime/remove_snake_skeleton_jockey.mcfunction"
+          tick_tag_path = "data/minecraft/tags/function/tick.json"
+          fabric_path = "fabric.mod.json"
+
+          with zipfile.ZipFile(base, "r") as zin:
+              infos = zin.infolist()
+              original = {info.filename: zin.read(info.filename) for info in infos}
+
+          if fabric_path not in original:
+              raise SystemExit("fabric.mod.json missing from base JAR")
+
+          fabric = json.loads(original[fabric_path].decode("utf-8"))
+          if str(fabric.get("version")) != "1.2.44":
+              raise SystemExit(f"Expected fabric.mod.json version 1.2.44, got {fabric.get('version')!r}")
+          fabric["version"] = "1.2.45"
+
+          patched = dict(original)
+          patched[fabric_path] = (json.dumps(fabric, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+          patched[tick_fn_path] = (src / "data/capitale_creatures/function/runtime/remove_snake_skeleton_jockeys.mcfunction").read_bytes()
+          patched[remove_fn_path] = (src / "data/capitale_creatures/function/runtime/remove_snake_skeleton_jockey.mcfunction").read_bytes()
+
+          function_id = "capitale_creatures:runtime/remove_snake_skeleton_jockeys"
+          if tick_tag_path in patched:
+              tick_tag = json.loads(patched[tick_tag_path].decode("utf-8"))
+              values = list(tick_tag.get("values", []))
+              if function_id not in values:
+                  values.append(function_id)
+              tick_tag["values"] = values
+              tick_tag.setdefault("replace", False)
+          else:
+              tick_tag = {"replace": False, "values": [function_id]}
+          patched[tick_tag_path] = (json.dumps(tick_tag, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+
+          # Preserve original ZipInfo metadata for existing entries; add new entries normally.
+          info_map = {info.filename: info for info in infos}
+          tmp = out.with_suffix(out.suffix + ".tmp")
+          with zipfile.ZipFile(tmp, "w", allowZip64=True) as zout:
+              for name, data in patched.items():
+                  if name in info_map:
+                      info = info_map[name]
+                      zout.writestr(info, data)
+                  else:
+                      zout.writestr(name, data, compress_type=zipfile.ZIP_DEFLATED)
+          os.replace(tmp, out)
+
+          # Validate intended logical delta only.
+          allowed_changed = {fabric_path, tick_tag_path, tick_fn_path, remove_fn_path}
+          with zipfile.ZipFile(out, "r") as zout:
+              rebuilt = {name: zout.read(name) for name in zout.namelist()}
+
+          for name, data in original.items():
+              if name not in allowed_changed and rebuilt.get(name) != data:
+                  raise SystemExit(f"Unexpected modified JAR entry: {name}")
+
+          nested = [name for name in original if name.lower().endswith(".jar")]
+          for name in nested:
+              if hashlib.sha256(original[name]).digest() != hashlib.sha256(rebuilt[name]).digest():
+                  raise SystemExit(f"Nested JAR changed unexpectedly: {name}")
+
+          protected_orc_entries = [
+              "fr/hautecapitale/creatures/spawn/CapitaleCreaturesOrcPatrol1212.class",
+              "data/capitale_creatures/spawn_rules/orc_patrol_rules.json",
+              "data/capitale_creatures/tags/worldgen/biome/city_no_spawn.json",
+          ]
+          for name in protected_orc_entries:
+              if name not in original:
+                  raise SystemExit(f"Protected Orc entry missing from base: {name}")
+              if rebuilt[name] != original[name]:
+                  raise SystemExit(f"Protected Orc entry changed: {name}")
+
+          # Validate new runtime resources.
+          assert rebuilt[tick_fn_path] == patched[tick_fn_path]
+          assert rebuilt[remove_fn_path] == patched[remove_fn_path]
+          assert function_id in json.loads(rebuilt[tick_tag_path].decode("utf-8"))["values"]
+          assert json.loads(rebuilt[fabric_path].decode("utf-8"))["version"] == "1.2.45"
+
+          out_sha = hashlib.sha256(out.read_bytes()).hexdigest()
+          build_info = {
+              "version": "1.2.45",
+              "base_version": "1.2.44",
+              "base_sha256": expected_base_sha,
+              "sha256": out_sha,
+              "size_bytes": out.stat().st_size,
+              "nested_jars_verified_unchanged": len(nested),
+              "protected_orc_entries_verified_unchanged": protected_orc_entries,
+              "runtime_guard": {
+                  "function": function_id,
+                  "targets": ["cubeanimals:rattlesnake", "capitale_entities:snake"],
+                  "passenger": "minecraft:skeleton"
+              }
+          }
+          (src / "BUILD_INFO.json").write_text(json.dumps(build_info, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(build_info, indent=2))
+          PY
+
+      - name: Commit versioned 1.2.45 JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "mods/capitale_creatures_bundle-1.2.45-fabric-1.21.11-SKELETON-JOCKEY-GUARD-NO-ORC-CHANGES.jar"
+          git add "sources/capitale_creatures/1.2.45/BUILD_INFO.json"
+          git rm "mods/capitale_creatures_bundle-1.2.44-fabric-1.21.11-BALANCE-ONLY-NO-ORC-CHANGES.jar"
+          git commit -m "mods: capitale_creatures_bundle 1.2.45 suppress snake skeleton jockeys [cc145-built]"
+          git push origin HEAD:fix/121-marine-spawn-safety

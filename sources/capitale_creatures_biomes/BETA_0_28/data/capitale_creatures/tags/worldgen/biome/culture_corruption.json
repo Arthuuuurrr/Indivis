@@ -1,0 +1,7 @@
+{
+  "replace": true,
+  "values": [
+    {"id": "capitale:donjon", "required": false},
+    {"id": "indivis:corruption", "required": false}
+  ]
+}

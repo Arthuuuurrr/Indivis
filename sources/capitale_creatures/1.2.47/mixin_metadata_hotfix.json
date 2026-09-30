@@ -1,0 +1,14 @@
+{
+  "version": "1.2.47",
+  "base_bundle": "1.2.46",
+  "companion_datapack": "BETA_0_30",
+  "fix": "mixin_annotation_retention",
+  "mixin_annotation_retention": "CLASS",
+  "inject_annotation_retention": "RUNTIME",
+  "at_annotation_retention": "RUNTIME",
+  "target": "net.minecraft.class_1297",
+  "hook": "method_5873(Lnet/minecraft/class_1297;ZZ)Z",
+  "tick_scan": false,
+  "orc_changes": false,
+  "spawn_balance_changes": false
+}

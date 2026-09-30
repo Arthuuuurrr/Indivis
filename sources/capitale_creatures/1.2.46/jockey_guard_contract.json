@@ -1,0 +1,16 @@
+{
+  "version": "1.2.46",
+  "base_bundle": "1.2.45",
+  "companion_datapack": "BETA_0_30",
+  "change": "event_driven_skeleton_snake_jockey_prevention",
+  "hook": "net.minecraft.class_1297.method_5873(Lnet/minecraft/class_1297;ZZ)Z",
+  "rider": "minecraft:skeleton",
+  "vehicles": [
+    "cubeanimals:rattlesnake",
+    "capitale_entities:snake"
+  ],
+  "discard_rider": true,
+  "tick_scan": false,
+  "orc_changes": false,
+  "spawn_balance_changes": false
+}

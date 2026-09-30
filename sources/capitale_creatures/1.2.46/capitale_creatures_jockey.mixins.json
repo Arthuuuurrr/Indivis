@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "fr.hautecapitale.creatures.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "SnakeJockeyGuardMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
