@@ -1,47 +1,54 @@
 package fr.hautecapitale.daycycle.mixin;
 
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.world.level.ServerWorldProperties;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
- * Changes only the vanilla time-of-day increment performed by ServerWorld.tickTime().
+ * Doubles only the automatic vanilla day/night cycle length.
  *
- * <p>Vanilla still executes tickTime() every server tick. gameTime, scheduled ticks,
- * weather timers, random ticks, entities, redstone, cooldowns and every other
- * tick-based subsystem therefore keep their vanilla cadence. Only every second
- * automatic +1 of timeOfDay is neutralized.</p>
+ * <p>The complete vanilla ServerWorld.tickTime() method still runs every server tick.
+ * This preserves gameTime and every system driven by normal server ticks. At HEAD we
+ * snapshot timeOfDay. At TAIL, if vanilla advanced it by exactly +1, every second
+ * such automatic increment is neutralized. No other time change is intercepted.</p>
  *
- * <p>/time commands and sleep jumps call setTimeOfDay outside this injection point
- * and are intentionally left untouched. doDaylightCycle is neither changed nor
- * bypassed: when vanilla disables the automatic increment, this injector simply
- * has no invocation to modify.</p>
+ * <p>Consequences by design:
+ * - doDaylightCycle=false remains fully vanilla (no +1 detected, nothing changed);
+ * - /time commands remain immediate because they execute outside tickTime();
+ * - sleep/time jumps remain immediate;
+ * - gameTime, scheduled ticks, weather timers, random ticks, entities, redstone,
+ *   cooldowns and effects are untouched.</p>
  */
 @Mixin(ServerWorld.class)
 public abstract class ServerWorldMixin {
     @Unique
-    private boolean capitaleDaycycle$advanceThisInvocation;
+    private long capitaleDaycycle$timeOfDayBeforeTick;
 
-    @ModifyArg(
-        method = "tickTime",
-        at = @At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/world/level/ServerWorldProperties;setTimeOfDay(J)V"
-        ),
-        index = 0,
-        require = 1
-    )
-    private long capitaleDaycycle$halveAutomaticTimeOfDay(long vanillaNextTimeOfDay) {
-        this.capitaleDaycycle$advanceThisInvocation = !this.capitaleDaycycle$advanceThisInvocation;
+    @Unique
+    private boolean capitaleDaycycle$suppressNextAutomaticIncrement;
 
-        if (this.capitaleDaycycle$advanceThisInvocation) {
-            return vanillaNextTimeOfDay;
+    @Inject(method = "tickTime", at = @At("HEAD"), require = 1)
+    private void capitaleDaycycle$captureTimeOfDay(CallbackInfo ci) {
+        this.capitaleDaycycle$timeOfDayBeforeTick =
+            ((ServerWorld) (Object) this).getTimeOfDay();
+    }
+
+    @Inject(method = "tickTime", at = @At("TAIL"), require = 1)
+    private void capitaleDaycycle$halveAutomaticTimeOfDay(CallbackInfo ci) {
+        ServerWorld world = (ServerWorld) (Object) this;
+        long current = world.getTimeOfDay();
+
+        // Only touch the exact vanilla automatic +1. Any other change is left alone.
+        if (current == this.capitaleDaycycle$timeOfDayBeforeTick + 1L) {
+            if (this.capitaleDaycycle$suppressNextAutomaticIncrement) {
+                world.setTimeOfDay(this.capitaleDaycycle$timeOfDayBeforeTick);
+            }
+            this.capitaleDaycycle$suppressNextAutomaticIncrement =
+                !this.capitaleDaycycle$suppressNextAutomaticIncrement;
         }
-
-        return ((ServerWorld) (Object) this).getTimeOfDay();
     }
 }
