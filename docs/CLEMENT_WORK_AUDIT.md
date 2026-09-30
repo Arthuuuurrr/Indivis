@@ -1,83 +1,95 @@
-# Audit du travail de Clément — 2026-09-24
+# Audit du travail de Clément — état vérifié au 30/09/2026
 
-Relevé des modules développés et maintenus par Clément, confronté à l'état déployé
-(`server-manifest.yml`), au registre `docs/MODULES.md` et aux issues existantes.
+Remplace la version du 24/09, dont plusieurs constats étaient faux ou dépassés (voir « Corrections de
+l'audit du 24/09 » en fin de document).
 
-Les numéros de build indiqués en colonne « Local » ont été **mesurés sur les artefacts
-présents sur le poste de développement**, pas déclarés. Chemin de référence :
-`C:\Users\denne\<projet>\` (`DELIVERY/`, `build/libs/`, `testserver/mods/`).
+## Méthode et limites
 
-## Méthode
+Ce qui a été **réellement fait** :
 
-- inventaire des JAR/datapacks construits par projet, triés par date de modification ;
-- comparaison avec `server-manifest.yml` (section `deployed`) et `mods/` ;
-- recherche systématique d'une issue correspondante avant tout constat de « non suivi » ;
-- aucun travail attribué sans artefact daté sur le poste.
+- lecture de `main`, des PR ouvertes, de toutes les branches distantes et de `server-manifest.yml` (sur `main` et
+  dans chaque PR) ;
+- mesure des builds sur le poste de développement (`C:\Users\denne\<projet>`) et dans le dossier `mods` du client
+  de Clément ;
+- **recompilation** des 6 modules de #104 depuis la branche de la PR, puis comparaison **fichier par fichier**
+  avec les JAR réellement livrés (manifeste exclu, fins de ligne CRLF/LF neutralisées) ;
+- comparaison des JAR de `haute-capitale-rpg` (b2 poste ↔ RC2 ↔ RC3 ↔ b4) ;
+- lecture du code du datapack `hc_quetes` pour #108, #109, #111, #115 ;
+- chargement réel des zips `hc_quetes` b17 et b18 sur un serveur dédié 1.21.11 de test.
 
-## Tableau de correspondance
+**Limites** : pas d'accès au serveur Indivis (distant). Les versions « serveur » viennent du manifeste et de sa date.
+Aucun test en jeu réel n'a été fait pendant cet audit.
 
-| Module | Local (mesuré) | Déployé | Dans `mods/` | Issue | État |
-|---|---|---|---|---|---|
-| haute-capitale-dialogue | b7 | b7 | non | #59, #20, #21, #72 | ⛏️ |
-| haute-capitale-quetes (mod) | b3 | serveur b3 / client b2 | non | #33, #72 | ⛏️ |
-| hc_quetes (datapack) | **b10** | b8 recensé dans #72 | non | #33, #72 | ⛏️ |
-| haute-capitale-spawns | b6 | non suivi | non | #72 | ⛏️ |
-| haute-capitale-party | b9 | non suivi | non | #72 | ⛏️ |
-| dungeonz (moteur d'instances) | b23 | non déployé | non | #32, #72 | ⛏️ |
-| capitale-prison-glace | b6 | non suivi | non | #32 | ⛏️ |
-| haute-capitale-metiers | b12 | non suivi | non | #72 | ⛏️ |
-| haute_capitale_fusils | b3 | b3 | **oui** | #3, #4, #72 | ⛏️ |
-| haute-capitale-rpg | **b4** | b2 (TEST3 RC2) | b2 | #53, #72 | ⛏️ |
-| hc-necromancer | b3 | non suivi | non | #72 | ⛏️ |
-| haute-capitale-pirates | b4 | serveur b4 / client b2 | non | #72 | ⛏️ |
-| Arsenal (portage 1.21.11) | 1.5.1.002-mmo | PRIMARY ORDER1 | **oui** | #5, #53, #72 | ⛏️ |
+## Modules de Clément
 
-## Divergences relevées
+SHA-256 : 16 premiers caractères. « Correspondance » = une recompilation depuis Git redonne le contenu du JAR livré.
 
-### 1. `haute-capitale-rpg` — deux builds d'avance sur la production
+| Module | Serveur (source) | Client de Clément (30/09) | Dans Git | Dernière source (poste) | JAR livré | Correspondance source → JAR | Suivi |
+|---|---|---|---|---|---|---|---|
+| haute-capitale-rpg | b2 **RC2** (manifeste) | RC3 FIREARMS-SPELLBAR | RC2 dans `mods/` ; b4 dans #104 ; patch RC3 dans #92 | b4 | RC2 `65824c4c…`, RC3 `08f03d4d…`, b4 `54fdeb16…` | b4 : **confirmée** ; RC2 : **aucune source** | #105 |
+| haute-capitale-dialogue | b7 | b8 | b7 dans #104 | b8 | b7 `959ebe1d…`, b8 `428c771e…` | b7 : **confirmée** (après `6abc026`) | #104 |
+| haute-capitale-fusils | b3 | b3 | b3 dans `mods/` + sources #104 ; patch b4 dans #92 | b3 | `0979a7c9…` | **confirmée** | #3, #4 |
+| haute-capitale-spawns | non listé | b6 | #104 | b6 | `7dbf1fa4…` | **confirmée** | #72 |
+| haute-capitale-party | non listé | b9 | #104 | b9 + 1 modif non publiée | `b19a4268…` | **non** : touche P → ² modifiée après le build b9 | #104 |
+| haute-capitale-metiers | non listé | b12 | #104 | b12 | `8db5970b…` | **confirmée** (tests 76/76) | #72 |
+| journal `haute_capitale_quetes` | b3 (manifeste, nom corrigé) | b5 | absent | b5 | b5 `bce1c3c5…` | non vérifiée | #30, #72 |
+| datapack `hc_quetes` | b8 | — | absent | b18 (30/09) | b17 = dernier zip correct ; **b18 illisible** | non vérifiée | #33, #108, #109, #111, #115 |
+| haute-capitale-pirates | b4 | b4 | absent | b4 | `567f3130…` | non vérifiée | #72 |
+| dungeonz | non déployé | b23 | absent | b23 (Git local) | `a8118510…` | non vérifiée | #32, #72 |
+| capitale-prison-glace | non listé | — | absent | b6 (Git local) | `0a0ad2cd…` | non vérifiée | #72 |
+| hc-necromancer | non listé | b3 | absent | b3 | `462d8010…` | non vérifiée | #72 |
+| haute-capitale-orcs | non listé | b9 | absent | b9 | `1489c804…` | non vérifiée | #72 |
+| dungeonnowloading-mmo | non listé | b10 | absent | b10 | `9fec82b3…` | non vérifiée | #72 |
+| capitale_creatures_bundle (base) | 1.2.16 (`main`) / 1.2.17 (#100) | 1.2.16 | patchs 1.2.27+ (Arthur) | base 1.2.16 = projet `autonomous-orc-mobs` | 1.2.16 `0c3bddde…` | non vérifiée | #61, #100 |
 
-`server-manifest.yml` et `docs/MODULES.md` référencent **b2** (`TEST3 RC2`).
-Le poste de développement contient **b3** (module caméra de dialogue, dossier
-`DELIVERY-camera/`) et **b4** (ajout de la classe `necromancien`), tous deux construits
-et non déployés.
+Ajouts depuis le 26/09, chacun avec son issue « à tester » (sources à importer) : `hurans` b81 #140,
+`goblins_tyranny` b4 #141, `tral` b8 #142, `legendaryshrines` b2 #143, `ancient_remnants` b1 #144, `hmag` b1 #145,
+`thalassophobia` b1 #146, `mythicmounts` ground b3 + montures du journal b5 #30.
 
-Conséquence : l'écart entre la production et la source de référence est de deux builds,
-et non « binaire hashé » comme indiqué actuellement dans le registre.
+## Constats principaux
 
-### 2. Datapack `hc_quetes` — divergence b8 → b10
+1. **`haute-capitale-rpg` — deux lignées concurrentes.** La production RC1 → RC2 a été obtenue par patchs binaires
+   sur b2 (main/off-hand, ordre explicite, abilities Arsenal ; `HcAvatarStaffGate`, `AbilityFeature`/`AbilityResolver`),
+   sans source. b3/b4 partent de b2 sans ces patchs. **Déployer b4 effacerait RC1–RC3.** Provenance des patchs
+   RC1/RC2 à établir avec Arthur avant toute fusion des lignées. (#105)
+2. **Import #104 — un fichier avait été exclu en silence** par la règle `debug/` du `.gitignore` racine
+   (`DialogueDebugOverlay.java`, qui fait partie de b7) : les sources dialogue ne compilaient pas. Corrigé par
+   `6abc026` ; vérifié par recompilation.
+3. **party** : les sources contiennent une modification postérieure à b9 et jamais publiée (touche par défaut du
+   menu de groupe P → ²). Décision en attente : produire un b10 ou revenir à b9.
+4. **metiers** : pas de wrapper Gradle, se compile avec Gradle 9.5.1 installé.
+5. **`hc_quetes` b18 est illisible** : ses entrées de zip utilisent `\` ; Minecraft l'accepte mais n'en charge aucun
+   fichier (prouvé : `function hc_quetes:lib/anti_double` → « Unknown function » avec b18 seul, « returned 1 » avec
+   b17). Ne pas le déployer ; b17 est le dernier zip correct.
+6. **Quêtes** : #115 corrigé en b10 (verrou `lib/anti_double` dans les 21 points d'entrée), à tester sur le serveur ;
+   #108 sans défaut de code (marqueur cliquable probablement non posé) ; **#109 et #111 : défauts confirmés, non
+   corrigés** — la mort de la sorcière / de la Rongeuse n'est comptée qu'à un état précis puis le compteur est remis
+   à 0 à chaque tick. Même mécanisme utilisé par 6 autres ennemis de quête : non audité.
+7. **`haute_capitale_spawns`** ne figure pas dans la liste « deployed » du manifeste alors que plusieurs objectifs de
+   quête dépendent de ses compteurs : présence sur le serveur à confirmer.
 
-#72 recense `hc_quetes-0.1.0.b8.zip` dans les datapacks internes à inventorier. Le poste
-de développement contient **b10**. Il s'agit donc d'un écart de deux builds à rattraper à
-l'import, pas d'une absence de suivi.
+## Actions faites (30/09)
 
-`datapacks/` ne contient pas encore ce datapack (`capitale-abilities`, `capitale-core`,
-`capitale-creatures-biomes`, `capitale-skills`, `capskills`, `deployed/`).
+- `6abc026` (PR #104) : restauration de `DialogueDebugOverlay.java`.
+- `b1e5314` : `server-manifest.yml` — `haute_capitale_quests` → `haute_capitale_quetes`.
+- `docs/MODULES.md` : lignes des modules de Clément mises à jour.
+- Issues : #105 corrigée (ne pas déployer b4, -P2) ; #140–#146 créées ; #30 complétée ; #72 complétée ;
+  commentaires de vérification sur #108, #109, #111, #115.
 
-### 3. Moteur d'instances — deux noms pour un seul composant
+## Reste à faire
 
-#72 le liste sous `dungeon2-hc b23`, l'artefact local s'appelle
-`dungeonz-hc-1.3.0+1.21.11.hc.b23.jar`. Vérification faite sur le `fabric.mod.json` du
-JAR : `id = dungeonz`, `name = DungeonZ (portage Haute Capitale)`,
-`version = 1.3.0+1.21.11.hc.b23`.
+- Décision party (b10 ou b9) et revue de #104.
+- Import des sources manquantes, depuis la version la plus récente au moment de l'import (#72).
+- Provenance des patchs RC1/RC2 de `haute-capitale-rpg` (#105).
+- Corrections de #109 et #111 (et audit des 6 autres ennemis comptés de la même façon).
+- Refaire le zip `hc_quetes` b18 avec des séparateurs `/`.
 
-C'est bien **le même composant**, au même build. Nom canonique retenu : **`dungeonz`**,
-artefact `dungeonz-hc-1.3.0+1.21.11.hc.b23.jar`. À uniformiser dans #72.
+## Corrections de l'audit du 24/09
 
-## Provenance technique des modules
-
-Plusieurs modules sont des portages ou forks partis d'une base tierce, puis largement
-modifiés, réécrits et adaptés pour Indivis : Spell Engine HC, Spell Power HC, Arsenal HC,
-Hazennstuff HC, Haute Capitale RPG, Witcher Class HC, `dungeonz`,
-`haute-capitale-pirates`, `hc-necromancer`.
-
-Cette information est conservée à titre **technique** — elle aide à savoir où chercher un
-comportement amont lors d'un débogage, et quelle version de base a servi de départ. Le
-versionnement de ces sources dans le dépôt est arbitré au niveau projet.
-
-## Suite proposée
-
-1. uniformiser le nom du moteur d'instances sur `dungeonz` dans #72 ;
-2. porter `hc_quetes` de b8 à b10 dans la checklist de #72 ;
-3. importer les sources par lots, en commençant par les modules déjà construits et
-   stables (`dialogue b7`, `spawns b6`, `party b9`, `metiers b12`, `fusils b3`) ;
-4. déployer ou archiver `haute-capitale-rpg b4`, la production étant encore en b2.
+| Affirmation du 24/09 | Réalité vérifiée |
+|---|---|
+| « déployer ou archiver `haute-capitale-rpg` b4 » | dangereux : b4 ne contient pas RC1–RC3 (constat 1) |
+| « `hc_quetes` b10 sur le poste » | b18 au 30/09 (b17 = dernier zip correct) |
+| bundle créatures 1.2.16 comme référence | 1.2.17 en production selon #100, patchs jusqu'à 1.2.32 sur `main` |
+| « Haute Capitale Quests » | l'id réel est `haute_capitale_quetes` |
+| dialogue b7 = dernier état | b8 construit (baguette Easy NPC) |
