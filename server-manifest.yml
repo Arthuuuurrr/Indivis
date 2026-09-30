@@ -32,8 +32,8 @@ deployed:
     capitale_dialogue:
       artifact: "haute-capitale-dialogue-0.1.0+1.21.11.b7.jar"
       sha256: null
-    haute_capitale_quests:
-      artifact: "haute-capitale-quests-0.1.0+1.21.11.b3.jar"
+    haute_capitale_quetes:
+      artifact: "haute-capitale-quetes-0.1.0+1.21.11.b3.jar"
       sha256: null
     haute_capitale_pirates:
       artifact: "haute-capitale-pirates-0.1.0.b4.jar"
@@ -76,9 +76,9 @@ deployed:
   client:
     note: "captures client alignées sur le serveur sauf divergences listées ci-dessous"
     divergences:
-      haute_capitale_quests:
-        client: "haute-capitale-quests-0.1.0+1.21.11.b2.jar"
-        server: "haute-capitale-quests-0.1.0+1.21.11.b3.jar"
+      haute_capitale_quetes:
+        client: "haute-capitale-quetes-0.1.0+1.21.11.b2.jar"
+        server: "haute-capitale-quetes-0.1.0+1.21.11.b3.jar"
       haute_capitale_pirates:
         client: "haute-capitale-pirates-0.1.0.b2.jar"
         server: "haute-capitale-pirates-0.1.0.b4.jar"
