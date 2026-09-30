@@ -1,0 +1,118 @@
+name: Audit creature bundle entity removal
+
+on:
+  push:
+    branches:
+      - fix/121-marine-spawn-safety
+    paths:
+      - 'sources/capitale_creatures/AUDIT_EASYNPC_TRIGGER'
+      - '.github/workflows/audit-creature-entity-removal.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: ${{ !contains(github.event.head_commit.message, '[creature-removal-audited]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: false
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Inspect outer bundle classes for entity removal
+        shell: bash
+        run: |
+          set -euo pipefail
+          bundle="mods/capitale_creatures_bundle-1.2.47-fabric-1.21.11-SPAWN-TIME-JOCKEY-MIXIN-HOTFIX-NO-ORC-CHANGES.jar"
+          work=/tmp/creature_removal_audit
+          report="$GITHUB_WORKSPACE/sources/capitale_creatures/AUDIT_EASYNPC_DESPAWN_2026-09-30.md"
+          rm -rf "$work"
+          mkdir -p "$work/unpacked"
+          cd "$work/unpacked"
+          unzip -qq "$GITHUB_WORKSPACE/$bundle"
+
+          {
+            echo "# Audit EasyNPC despawn vs Creature Bundle"
+            echo
+            echo "Bundle: 1.2.47"
+            echo
+            echo "## fabric.mod.json"
+            echo '~~~json'
+            cat fabric.mod.json
+            echo
+            echo '~~~'
+            echo
+            echo "## Haute Capitale outer classes"
+            find fr/hautecapitale/creatures -type f -name '*.class' | sort
+            echo
+            echo "## Direct easy_npc textual references in outer bundle"
+            grep -RIna --binary-files=text 'easy_npc' . --exclude='*.jar' 2>/dev/null || true
+            echo
+            echo "## Classes referencing known entity-removal / world-entity markers"
+          } > "$report"
+
+          python3 - <<'PY' >> "$report"
+          from pathlib import Path
+          markers = [
+              b"method_31472", # Entity.discard in current intermediary
+              b"discard",
+              b"remove",
+              b"kill",
+              b"method_27909", # ServerWorld iterable entities
+              b"method_18456", # players
+              b"method_5864",  # entity type
+              b"method_5890",  # entity type id
+          ]
+          for p in sorted(Path("fr/hautecapitale/creatures").rglob("*.class")):
+              b = p.read_bytes()
+              hits = [m.decode() for m in markers if m in b]
+              if hits:
+                  print(f"- {p}: {', '.join(hits)}")
+          PY
+
+          mapfile -t classes < <(python3 - <<'PY'
+          from pathlib import Path
+          markers=[b"method_31472",b"discard",b"method_27909",b"method_18456"]
+          for p in sorted(Path("fr/hautecapitale/creatures").rglob("*.class")):
+              b=p.read_bytes()
+              if any(m in b for m in markers):
+                  print(str(p).replace("/",".")[:-6])
+          PY
+          )
+
+          {
+            echo
+            echo "## javap candidates"
+          } >> "$report"
+          for cls in "${classes[@]}"; do
+            {
+              echo
+              echo "### $cls"
+              echo '~~~text'
+              javap -classpath "$GITHUB_WORKSPACE/$bundle" -p -c -verbose "$cls" 2>&1 || true
+              echo '~~~'
+            } >> "$report"
+          done
+
+          {
+            echo
+            echo "## Spawn JSON references to EasyNPC or generic entity categories"
+            grep -RInaE 'easy_npc|minecraft:mob|monster|creature|misc|entity_type|namespace'               "$GITHUB_WORKSPACE/datapacks/capitale-creatures-biomes" 2>/dev/null | head -n 1000 || true
+          } >> "$report"
+
+      - name: Commit audit report
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sources/capitale_creatures/AUDIT_EASYNPC_DESPAWN_2026-09-30.md
+          git commit -m "chore(creatures): audit EasyNPC despawn interactions [creature-removal-audited]"
+          git push origin HEAD:fix/121-marine-spawn-safety
