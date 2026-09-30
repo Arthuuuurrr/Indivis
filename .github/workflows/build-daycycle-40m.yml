@@ -1,4 +1,4 @@
-name: Build and validate Haute Capitale 40m day cycle # retry 5
+name: Build and validate Haute Capitale 40m day cycle # retry 6
 
 on:
   push:
@@ -135,8 +135,8 @@ jobs:
               game1 = last_int(cmd("time query gametime"))
               elapsed = time.monotonic() - t0
 
-              rule_after = cmd("gamerule doDaylightCycle")
-              random_after = cmd("gamerule randomTickSpeed")
+              rule_after = cmd("gamerule minecraft:advance_time")
+              random_after = cmd("gamerule minecraft:random_tick_speed")
 
               day_delta = (day1 - day0) % 24000
               game_delta = game1 - game0
