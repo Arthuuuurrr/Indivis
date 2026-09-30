@@ -5,15 +5,10 @@ on:
     branches:
       - fix/121-marine-spawn-safety
     paths:
-      - 'sources/capitale_creatures/AUDIT_EASYNPC_TRIGGER'
       - '.github/workflows/audit-creature-entity-removal.yml'
-
-permissions:
-  contents: write
 
 jobs:
   audit:
-    if: ${{ !contains(github.event.head_commit.message, '[creature-removal-summary]') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,94 +21,59 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Produce concise removal summary
+      - name: Print concise removal paths
         shell: bash
         run: |
           set -euo pipefail
           bundle="mods/capitale_creatures_bundle-1.2.47-fabric-1.21.11-SPAWN-TIME-JOCKEY-MIXIN-HOTFIX-NO-ORC-CHANGES.jar"
-          work=/tmp/easynpc_summary
-          out="$GITHUB_WORKSPACE/sources/capitale_creatures/AUDIT_EASYNPC_DESPAWN_SUMMARY_2026-09-30.md"
-          rm -rf "$work"
-          mkdir -p "$work/unpacked"
-          cd "$work/unpacked"
-          unzip -qq "$GITHUB_WORKSPACE/$bundle"
-
-          {
-            echo "# Concise EasyNPC despawn audit"
-            echo
-            echo "Bundle: 1.2.47"
-            echo
-            echo "## Direct easy_npc references"
-            grep -RIna --binary-files=text 'easy_npc' fr data 2>/dev/null || true
-            echo
-            echo "## Candidate outer classes"
-          } > "$out"
-
-          python3 - <<'PY' >> "$out"
-          from pathlib import Path
-          markers = {
-              b"method_31472":"Entity.discard",
-              b"method_27909":"ServerWorld.iterateEntities",
-              b"method_18456":"ServerWorld.players",
-              b"method_5864":"Entity.getType",
-              b"method_5890":"EntityType.getId",
-          }
-          for p in sorted(Path("fr/hautecapitale/creatures").rglob("*.class")):
-              b = p.read_bytes()
-              hits=[name for raw,name in markers.items() if raw in b]
+          python3 - "$bundle" <<'PY'
+          import io, re, subprocess, sys, zipfile
+          jar=sys.argv[1]
+          z=zipfile.ZipFile(jar)
+          print("=== DIRECT EASY_NPC REFERENCES ===")
+          for n in z.namelist():
+              if n.endswith(".jar"): continue
+              try: b=z.read(n)
+              except: continue
+              if b"easy_npc" in b:
+                  print(n)
+          print("=== OUTER CLASS CANDIDATES ===")
+          candidates=[]
+          markers=[b"method_31472",b"method_27909",b"method_18456"]
+          for n in z.namelist():
+              if not n.startswith("fr/hautecapitale/creatures/") or not n.endswith(".class"): continue
+              b=z.read(n)
+              hits=[m.decode() for m in markers if m in b]
               if hits:
-                  print(f"{str(p).replace('/', '.')[:-6]} :: {', '.join(hits)}")
+                  cls=n[:-6].replace("/",".")
+                  candidates.append(cls)
+                  print(cls,"::",",".join(hits))
+          print("=== JAVAP CONTEXT ===")
+          for cls in candidates:
+              print("\n###",cls)
+              p=subprocess.run(["javap","-classpath",jar,"-p","-c",cls],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+              lines=p.stdout.splitlines()
+              hitidx=[i for i,l in enumerate(lines) if any(x in l for x in ("method_31472","method_27909","method_18456"))]
+              if not hitidx:
+                  print("\n".join(lines[:180])); continue
+              ranges=[]
+              for i in hitidx:
+                  ranges.append((max(0,i-55),min(len(lines),i+80)))
+              merged=[]
+              for lo,hi in ranges:
+                  if merged and lo<=merged[-1][1]: merged[-1]=(merged[-1][0],max(merged[-1][1],hi))
+                  else: merged.append((lo,hi))
+              for lo,hi in merged:
+                  print("\n".join(lines[lo:hi]))
+                  print("...")
+          print("=== DATAPACK DELETE COMMANDS ===")
+          import pathlib
+          root=pathlib.Path("datapacks/capitale-creatures-biomes")
+          rx=re.compile(r"(^|\s)(kill\s|data\s+remove|run\s+kill\s)",re.I)
+          for p in root.rglob("*"):
+              if p.is_file():
+                  try:
+                      for i,l in enumerate(p.read_text(errors="ignore").splitlines(),1):
+                          if rx.search(l): print(f"{p}:{i}:{l}")
+                  except: pass
           PY
-
-          mapfile -t candidates < <(python3 - <<'PY'
-          from pathlib import Path
-          for p in sorted(Path("fr/hautecapitale/creatures").rglob("*.class")):
-              b=p.read_bytes()
-              if b"method_31472" in b or b"method_27909" in b:
-                  print(str(p).replace("/",".")[:-6])
-          PY
-          )
-
-          for cls in "${candidates[@]}"; do
-            tmp="$work/$(echo "$cls" | tr '.' '_').txt"
-            javap -classpath "$GITHUB_WORKSPACE/$bundle" -p -c "$cls" > "$tmp" 2>&1 || true
-            {
-              echo
-              echo "## $cls"
-              echo '~~~text'
-              python3 - "$tmp" <<'PY'
-          import re,sys
-          lines=open(sys.argv[1],encoding='utf-8',errors='replace').read().splitlines()
-          needles=("method_31472","method_27909","method_18456")
-          keep=set()
-          for i,l in enumerate(lines):
-              if any(n in l for n in needles):
-                  lo=max(0,i-45); hi=min(len(lines),i+70)
-                  keep.update(range(lo,hi))
-          if not keep:
-              keep.update(range(min(len(lines),220)))
-          last=-2
-          for i in sorted(keep):
-              if i>last+1: print("...")
-              print(lines[i])
-              last=i
-          PY
-              echo '~~~'
-            } >> "$out"
-          done
-
-          {
-            echo
-            echo "## Datapack command files capable of entity deletion"
-            grep -RInaE '(^|[[:space:]])(kill|tp .* -[0-9]{3,}|data remove|execute .* run kill)'               "$GITHUB_WORKSPACE/datapacks/capitale-creatures-biomes" 2>/dev/null || true
-          } >> "$out"
-
-      - name: Commit concise audit
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sources/capitale_creatures/AUDIT_EASYNPC_DESPAWN_SUMMARY_2026-09-30.md
-          git commit -m "chore(creatures): summarize EasyNPC despawn audit [creature-removal-summary]"
-          git push origin HEAD:fix/121-marine-spawn-safety
