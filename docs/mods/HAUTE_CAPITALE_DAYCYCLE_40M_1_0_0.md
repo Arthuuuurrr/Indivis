@@ -9,15 +9,32 @@
 
 ## Comportement validé
 
-Le Mixin intervient uniquement sur l'argument de `ServerWorld.tickTime() -> ServerWorldProperties.setTimeOfDay(long)`.
+Le Mixin encadre uniquement `ServerWorld.tickTime()` :
+- à l'entrée, il mémorise `timeOfDay` ;
+- vanilla exécute ensuite intégralement `tickTime()` ;
+- à la sortie, si et seulement si vanilla a effectué l'incrément automatique exact `+1`, un incrément sur deux est neutralisé.
 
-- `timeOfDay` automatique: **0,5x**
-- `gameTime`: **1,0x**
-- cycle complet à 20 TPS: **~40 minutes**
-- `doDaylightCycle`: inchangé
-- `randomTickSpeed`: inchangé
-- `/time` et les sauts de temps hors incrément automatique: non interceptés
+Il ne remplace donc pas `tickTime()` et ne bloque aucun autre travail effectué par cette méthode.
 
-Le test runtime GitHub Actions mesure simultanément `time query daytime` et `time query gametime` sur 10 secondes et exige un ratio compris entre 0,45 et 0,55.
+## Mesure runtime réelle
 
-Source: `sources/capitale-daycycle/`.
+Test serveur Fabric 1.21.11 / Loader 0.19.5 sur 10 secondes :
+- `gameTime` : **+200**
+- `timeOfDay` : **+100**
+- ratio : **0,500x**
+
+Un passage précédent a également mesuré **101 / 200 = 0,505x** selon l'alignement exact des requêtes RCON.
+
+## Invariants vérifiés
+
+- cycle automatique complet à 20 TPS : **~40 minutes**
+- `gameTime` : **1,0x**
+- gamerule 1.21.11 `minecraft:advance_time` : inchangée à `true`
+- `minecraft:random_tick_speed` : inchangée à `3`
+- aucune erreur Mixin au démarrage
+- arrêt serveur propre
+- `/time` et les sauts de temps hors incrément automatique ne sont pas interceptés
+
+Les ticks serveur, scheduled ticks, météo, random ticks, redstone, IA, cooldowns et effets ne sont pas ralentis par ce mod.
+
+Source : `sources/capitale-daycycle/`.
