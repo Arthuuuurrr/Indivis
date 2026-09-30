@@ -31,16 +31,19 @@ Le score numérique `month` reste utilisé en interne pour le calcul 365 jours/a
 ## Biomes
 Audit du JAR : aucune référence de biome n'est présente. Aucun ancien identifiant de biome/ville n'est donc à migrer dans ce module.
 
-## Validation locale
+## Build déterministe et validation
+- reconstruction déterministe à partir du SHA exact de la base ;
+- deux builds successifs vérifiés byte-for-byte identiques ;
 - archive JAR/ZIP valide ;
 - tous les JSON parsables ;
 - chemins legacy et overlay 1.21+ synchronisés ;
 - 12 noms impériaux présents dans l'animation quotidienne et annuelle ;
 - plus aucun rendu `/ MOIS <numéro>` ;
-- tous les composants JSON des commandes `title ... actionbar` parsables ;
+- composants JSON des commandes `title ... actionbar` parsables ;
 - fenêtre `1..40` présente, ancienne fenêtre `1..80` absente.
 
-Build local livré : `Typewriter-Calendar-HauteCapitale-1.21.11-HC40M-1.1.0.jar`
-SHA-256 local : `56b3566bbd3f2678b327de418243c8b1f2b2305edeaf8ebb192184dd174ee4cf`
+Artefact : `Typewriter-Calendar-HauteCapitale-1.21.11-HC40M-1.1.0.jar`
+Taille : **55 675 octets**
+SHA-256 : `f7efcf715518123ce390a1f16282d32ef2adf27f880092d4506f2ebcc73d34d7`
 
 Source de reconstruction : `tools/patches/patch_typewriter_calendar_hc40m_1_1_0.py`.
