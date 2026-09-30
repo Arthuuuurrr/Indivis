@@ -1,4 +1,4 @@
-name: Build and validate Haute Capitale 40m day cycle
+name: Build and validate Haute Capitale 40m day cycle # retry 2
 
 on:
   push:
