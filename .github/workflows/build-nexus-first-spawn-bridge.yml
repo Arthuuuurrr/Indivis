@@ -1,0 +1,47 @@
+name: Build Nexus Capitale First Spawn Bridge
+
+on:
+  push:
+    branches:
+      - fix/nexus-first-spawn-bridge
+    paths:
+      - 'sources/nexus-capitale-first-spawn-bridge/**'
+      - '.github/workflows/build-nexus-first-spawn-bridge.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14'
+
+      - name: Build
+        working-directory: sources/nexus-capitale-first-spawn-bridge
+        run: gradle clean build --stacktrace
+
+      - name: Validate JAR
+        run: |
+          set -euo pipefail
+          JAR=$(find sources/nexus-capitale-first-spawn-bridge/build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n1)
+          test -n "$JAR"
+          jar tf "$JAR" | grep -F 'fr/hautecapitale/nexusbridge/NexusCapitaleFirstSpawnBridge.class'
+          jar tf "$JAR" | grep -F 'fr/hautecapitale/nexusbridge/mixin/ServerAuthorityV080Mixin.class'
+          sha256sum "$JAR" | tee nexus-first-spawn-bridge.sha256
+          cp "$JAR" nexus-capitale-first-spawn-bridge-1.0.0+mc1.21.11.jar
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nexus-capitale-first-spawn-bridge-1.0.0
+          path: |
+            nexus-capitale-first-spawn-bridge-1.0.0+mc1.21.11.jar
+            nexus-first-spawn-bridge.sha256
+          if-no-files-found: error
