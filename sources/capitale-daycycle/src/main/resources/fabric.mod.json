@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "capitale_daycycle",
+  "version": "${version}",
+  "name": "Haute Capitale — Cycle 40 min",
+  "description": "Double uniquement la durée du cycle jour/nuit en ralentissant timeOfDay à 0,5x. Les ticks serveur et le gameTime restent inchangés.",
+  "authors": ["Haute Capitale"],
+  "environment": "server",
+  "mixins": [
+    "capitale_daycycle.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "=1.21.11",
+    "java": ">=21"
+  }
+}
