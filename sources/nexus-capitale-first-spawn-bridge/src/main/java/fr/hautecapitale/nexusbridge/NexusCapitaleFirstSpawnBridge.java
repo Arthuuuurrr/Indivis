@@ -69,12 +69,12 @@ public final class NexusCapitaleFirstSpawnBridge implements ModInitializer {
             }
 
             try {
-                String username = player.getGameProfile().getName();
-                int result = server.getCommandManager().executeWithPrefix(
+                String username = player.getNameForScoreboard();
+                server.getCommandManager().parseAndExecute(
                         server.getCommandSource(),
                         "execute as " + username + " at @s run " + PROLOGUE_FUNCTION);
                 System.out.println("[NexusCapitaleBridge] First-prologue hook executed for "
-                        + player.getName().getString() + " result=" + result
+                        + player.getName().getString()
                         + " pos=" + player.getX() + "," + player.getY() + "," + player.getZ());
             } catch (Throwable t) {
                 System.err.println("[NexusCapitaleBridge] First-prologue hook failed for "
