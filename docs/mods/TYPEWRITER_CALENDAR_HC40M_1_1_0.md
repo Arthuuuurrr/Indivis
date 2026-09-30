@@ -5,6 +5,15 @@
 - SHA-256 base : `e700fdcae5a9d683aa2fba1acc587eb2b1dfd1a4d9bc1b7c17b67a5a5b8bdcf7`
 - Mod id conservé : `mr_typewriter_daycounter`
 
+## Dépendance fonctionnelle
+
+Ce JAR de calendrier **ne ralentit pas lui-même le temps**. Il est uniquement adapté au cycle 40 minutes.
+
+Le ralentissement réel est fourni séparément par :
+`mods/HauteCapitale-DayCycle-1.21.11-1.0.0.jar`
+
+Les deux JAR ont volontairement des responsabilités séparées.
+
 ## Compatibilité cycle 40 minutes
 Le calendrier ne convertit pas une durée réelle en jour. Il lit directement `time query day`. Avec le nouveau système qui ralentit uniquement `timeOfDay` à 0,5x, la date avance donc naturellement toutes les 40 minutes.
 
