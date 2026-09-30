@@ -1,0 +1,10 @@
+{
+  "criteria": {
+    "first_runtime_tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "function": "capitale:player/bootstrap_runtime_v100_self"
+  }
+}
