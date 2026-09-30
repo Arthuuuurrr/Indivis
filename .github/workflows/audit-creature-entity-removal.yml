@@ -15,65 +15,34 @@ jobs:
         with:
           fetch-depth: 0
           lfs: false
-
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
-
-      - name: Print concise removal paths
+      - name: Inspect Runtime124 despawn policy
         shell: bash
         run: |
           set -euo pipefail
           bundle="mods/capitale_creatures_bundle-1.2.47-fabric-1.21.11-SPAWN-TIME-JOCKEY-MIXIN-HOTFIX-NO-ORC-CHANGES.jar"
-          python3 - "$bundle" <<'PY'
-          import io, re, subprocess, sys, zipfile
-          jar=sys.argv[1]
-          z=zipfile.ZipFile(jar)
-          print("=== DIRECT EASY_NPC REFERENCES ===")
-          for n in z.namelist():
-              if n.endswith(".jar"): continue
-              try: b=z.read(n)
-              except: continue
-              if b"easy_npc" in b:
-                  print(n)
-          print("=== OUTER CLASS CANDIDATES ===")
-          candidates=[]
-          markers=[b"method_31472",b"method_27909",b"method_18456"]
-          for n in z.namelist():
-              if not n.startswith("fr/hautecapitale/creatures/") or not n.endswith(".class"): continue
-              b=z.read(n)
-              hits=[m.decode() for m in markers if m in b]
-              if hits:
-                  cls=n[:-6].replace("/",".")
-                  candidates.append(cls)
-                  print(cls,"::",",".join(hits))
-          print("=== JAVAP CONTEXT ===")
-          for cls in candidates:
-              print("\n###",cls)
-              p=subprocess.run(["javap","-classpath",jar,"-p","-c",cls],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
-              lines=p.stdout.splitlines()
-              hitidx=[i for i,l in enumerate(lines) if any(x in l for x in ("method_31472","method_27909","method_18456"))]
-              if not hitidx:
-                  print("\n".join(lines[:180])); continue
-              ranges=[]
-              for i in hitidx:
-                  ranges.append((max(0,i-55),min(len(lines),i+80)))
-              merged=[]
-              for lo,hi in ranges:
-                  if merged and lo<=merged[-1][1]: merged[-1]=(merged[-1][0],max(merged[-1][1],hi))
-                  else: merged.append((lo,hi))
-              for lo,hi in merged:
-                  print("\n".join(lines[lo:hi]))
-                  print("...")
-          print("=== DATAPACK DELETE COMMANDS ===")
-          import pathlib
-          root=pathlib.Path("datapacks/capitale-creatures-biomes")
-          rx=re.compile(r"(^|\s)(kill\s|data\s+remove|run\s+kill\s)",re.I)
-          for p in root.rglob("*"):
-              if p.is_file():
-                  try:
-                      for i,l in enumerate(p.read_text(errors="ignore").splitlines(),1):
-                          if rx.search(l): print(f"{p}:{i}:{l}")
-                  except: pass
+          echo "=== POLICY MARKER ==="
+          unzip -p "$bundle" META-INF/INDIVIS_GLOBAL_LIVING_DESPAWN_1_2_20.txt || true
+          echo
+          echo "=== RUNTIME124 STRINGS RELATED TO PROTECTION ==="
+          unzip -p "$bundle" fr/hautecapitale/creatures/spawn/CapitaleCreaturesRuntime124.class | strings | grep -Ei 'easy_npc|persistent|despawn|named|custom|owner|quest|npc|living|hostile|distance' || true
+          echo
+          echo "=== SHOULD HARD DESPAWN METHOD ==="
+          javap -classpath "$bundle" -p -c fr.hautecapitale.creatures.spawn.CapitaleCreaturesRuntime124 > /tmp/runtime124.txt
+          python3 - <<'PY'
+          import re
+          lines=open("/tmp/runtime124.txt").read().splitlines()
+          targets=["shouldHardDespawnLiving","hardDespawn"]
+          for target in targets:
+              print("\n###",target)
+              starts=[i for i,l in enumerate(lines) if target in l and re.search(r'\b(private|public|protected)\b',l)]
+              for st in starts:
+                  en=len(lines)
+                  for j in range(st+1,len(lines)):
+                      if re.match(r'^  (private|public|protected) ',lines[j]):
+                          en=j; break
+                  print("\n".join(lines[st:en]))
           PY
