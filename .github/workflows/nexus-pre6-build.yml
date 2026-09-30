@@ -1,0 +1,183 @@
+name: Build Nexus BETA 1.0 PRE6
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/reference/BETA-1.0-PRE6/**"
+      - ".github/workflows/nexus-pre6-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Reconstruct PRE5 base
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib, json
+          root = Path("mods/nexuscharacters/releases/BETA-1.0-PRE5/parts")
+          manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+          encoded = "".join(
+              "".join((root / name).read_text(encoding="ascii").split())
+              for name in manifest["parts"]
+          )
+          data = base64.b64decode(encoded, validate=True)
+          sha = hashlib.sha256(data).hexdigest()
+          if sha != manifest["artifact_sha256"]:
+              raise SystemExit(f"PRE5 SHA mismatch: {sha}")
+          Path("/tmp/nexus-pre5.jar").write_bytes(data)
+          print("PRE5", len(data), sha)
+          PY
+          unzip -t /tmp/nexus-pre5.jar >/dev/null
+
+      - name: Compile PRE6 beard geometry
+        shell: bash
+        run: |
+          mkdir -p /tmp/pre6-classes
+          javac -cp /tmp/nexus-pre5.jar             -d /tmp/pre6-classes             mods/nexuscharacters/reference/BETA-1.0-PRE6/sources/LongBeardModelSupport.java
+          test -f /tmp/pre6-classes/net/tompsen/nexuscharacters/LongBeardModelSupport.class
+
+      - name: Assemble PRE6 conservatively
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE6.jar"
+          cp /tmp/nexus-pre5.jar "$OUT"
+
+          # Replace only the beard catalogue class.
+          jar uf "$OUT" -C /tmp/pre6-classes net/tompsen/nexuscharacters/LongBeardModelSupport.class
+
+          # Patch only the two stale label prefixes used by the existing
+          # responsive layout detector. No coordinates or row arithmetic change.
+          mkdir -p /tmp/pre6-patch/net/tompsen/nexuscharacters/mixin/client
+          unzip -p "$OUT"             net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class             > /tmp/pre6-patch/net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class
+          python mods/nexuscharacters/reference/BETA-1.0-PRE6/tools/patch_pre6_layout.py             /tmp/pre6-patch/net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class
+          jar uf "$OUT" -C /tmp/pre6-patch             net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class
+
+          # Bump only the mod version metadata.
+          mkdir -p /tmp/pre6-meta
+          unzip -p "$OUT" fabric.mod.json > /tmp/pre6-meta/fabric.mod.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p = Path("/tmp/pre6-meta/fabric.mod.json")
+          data = json.loads(p.read_text(encoding="utf-8"))
+          data["version"] = "1.0.0-beta.6+hc.1.21.11"
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+          jar uf "$OUT" -C /tmp/pre6-meta fabric.mod.json
+
+      - name: Validate PRE6
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE6.jar"
+          unzip -t "$OUT" >/dev/null
+
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, zipfile
+
+          base = Path("/tmp/nexus-pre5.jar")
+          out = Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE6.jar")
+
+          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
+              n0 = z0.namelist()
+              n1 = z1.namelist()
+              if len(n1) != len(set(n1)):
+                  dup = sorted({n for n in n1 if n1.count(n) > 1})
+                  raise SystemExit(f"Duplicate ZIP entries: {dup}")
+              if set(n0) != set(n1):
+                  raise SystemExit("PRE6 changed the JAR entry set")
+
+              expected = {
+                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
+                  "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
+                  "fabric.mod.json",
+              }
+              changed = {
+                  name for name in n0
+                  if hashlib.sha256(z0.read(name)).digest() != hashlib.sha256(z1.read(name)).digest()
+              }
+              if changed != expected:
+                  raise SystemExit(f"Unexpected changed entries: {sorted(changed)}")
+
+              mod = json.loads(z1.read("fabric.mod.json"))
+              if mod.get("version") != "1.0.0-beta.6+hc.1.21.11":
+                  raise SystemExit(f"Wrong fabric.mod.json version: {mod.get('version')}")
+
+              layout = z1.read("net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class")
+              for required in (b"Oreilles", b"Ornement"):
+                  if required not in layout:
+                      raise SystemExit(f"Missing patched layout prefix: {required!r}")
+              for stale in (b"Oreilles elfiques", b"Barbe nordique"):
+                  if stale in layout:
+                      raise SystemExit(f"Stale layout prefix still present: {stale!r}")
+
+          raw = out.read_bytes()
+          sha = hashlib.sha256(raw).hexdigest()
+          size = len(raw)
+          print("PRE6", size, sha)
+
+          ref = Path("mods/nexuscharacters/reference/BETA-1.0-PRE6")
+          (ref / "SHA256SUMS.txt").write_text(
+              f"{sha}  {out.name}\n", encoding="utf-8"
+          )
+          (ref / "VALIDATION.md").write_text(
+              "# Validation BETA 1.0 PRE6\n\n"
+              f"- JAR : `{out.name}`\n"
+              f"- Taille : **{size} octets**\n"
+              f"- SHA-256 : `{sha}`\n"
+              "- Base : PRE5 reconstruite et SHA vérifié.\n"
+              "- Archive ZIP/JAR : OK.\n"
+              "- Aucun doublon d'entrée ZIP.\n"
+              "- Ensemble des entrées identique à PRE5.\n"
+              "- Entrées modifiées uniquement : `LongBeardModelSupport.class`, "
+              "`CharacterCreationAppearance65Mixin.class`, `fabric.mod.json`.\n"
+              "- Version : `1.0.0-beta.6+hc.1.21.11`.\n"
+              "- Layout : détection `Oreilles` / `Ornement` confirmée sans modification "
+              "des coordonnées ou de l'algorithme responsive.\n"
+              "- Défilement horizontal des libellés : inchangé.\n",
+              encoding="utf-8"
+          )
+          PY
+
+          echo "=== PRE6 beard class ==="
+          javap -classpath "$OUT" -p net.tompsen.nexuscharacters.LongBeardModelSupport | head -n 30
+          echo "=== PRE6 layout constants ==="
+          javap -classpath "$OUT" -p -c -constants             net.tompsen.nexuscharacters.mixin.client.CharacterCreationAppearance65Mixin             | grep -E 'String (Oreilles|Ornement|Barbe naine)' || true
+
+      - name: Publish PRE6 through Git LFS
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Keep only the current Nexus runtime in mods/.
+          git rm -f --ignore-unmatch mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar
+          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE6.jar             mods/nexuscharacters/reference/BETA-1.0-PRE6/SHA256SUMS.txt             mods/nexuscharacters/reference/BETA-1.0-PRE6/VALIDATION.md
+
+          if git diff --cached --quiet; then
+            echo "No PRE6 artifacts to commit."
+            exit 0
+          fi
+
+          git commit -m "nexus: publish BETA 1.0 PRE6"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main

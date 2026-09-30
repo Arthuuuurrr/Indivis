@@ -1,0 +1,70 @@
+{
+  "version": "1.2.27",
+  "datapack": "BETA_0_21",
+  "dungeon_orcs": {
+    "local_cap": {
+      "from": 24,
+      "to": 20
+    },
+    "weights": {
+      "autonomous_orc_mobs:orc_archer": 7,
+      "autonomous_orc_mobs:orc_warrior": 10,
+      "autonomous_orc_mobs:female_orc_warrior": 8,
+      "autonomous_orc_mobs:orc_warlock": 3,
+      "autonomous_orc_mobs:orc_champion": 2,
+      "autonomous_orc_mobs:female_orc_elite": 2
+    }
+  },
+  "corruption_only": [
+    "landsoficaria:vinegaroon",
+    "landsoficaria:solifugae",
+    "landsoficaria:snull",
+    "landsoficaria:plane_forest_hag",
+    "landsoficaria:hyliaster",
+    "landsoficaria:myrmeke_drone",
+    "landsoficaria:myrmeke_soldier"
+  ],
+  "empire_small_hostile_weights": {
+    "capitale_entities:spider_one": 4,
+    "capitale_entities:snake": 6,
+    "landsoficaria:cerver": 4,
+    "landsoficaria:argan_hound": 5,
+    "chaos_mmo_ai:babyspider": 7,
+    "chaos_mmo_ai:maggot": 7,
+    "chaos_mmo_ai:corpsefly": 5
+  },
+  "dino_damage_by_species": {
+    "aegirocassis": 2,
+    "ceratosaurus": 8,
+    "diabloceratops": 6,
+    "dunkleosteus": 10,
+    "torvosaurus": 9,
+    "triceratops": 7,
+    "tyrannosaurus": 12,
+    "ankylosaurus": 6,
+    "bison": 5,
+    "brontosaurus": 7,
+    "direwolf": 6,
+    "managarmr": 9,
+    "direbear": 8,
+    "doedicurus": 5,
+    "mammoth": 8,
+    "mosasaurus": 13,
+    "raptor": 6,
+    "sabertooth": 7,
+    "sarcosuchus": 10,
+    "spinosaurus": 11
+  },
+  "preserved": [
+    "dino health",
+    "dino armor",
+    "city no-spawn",
+    "orc patrol exclusions",
+    "BETA 0.20 hostile categories"
+  ],
+  "open_items": [
+    "aquatic AI 3D navigation",
+    "aquatic target acquisition/pursuit",
+    "aquatic water/land behavior validation"
+  ]
+}

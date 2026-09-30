@@ -1,0 +1,195 @@
+name: Build Nexus BETA 1.0 PRE8
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/reference/BETA-1.0-PRE8/**"
+      - ".github/workflows/nexus-pre8-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with LFS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Verify PRE7 base
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE7.jar"
+          test -s "$BASE"
+          unzip -t "$BASE" >/dev/null
+          ACTUAL="$(sha256sum "$BASE" | awk '{print $1}')"
+          EXPECTED="6e96b378a82c5237a28ca128556f326eb77beb31373ff0c6ca4eddab0b7d6ab9"
+          test "$ACTUAL" = "$EXPECTED" || {
+            echo "PRE7 SHA mismatch: $ACTUAL"
+            exit 1
+          }
+          echo "PRE7 base verified: $ACTUAL"
+
+      - name: Compile PRE8 bytecode patch
+        shell: bash
+        run: |
+          mkdir -p /tmp/pre8-tools
+          javac             --add-exports java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED             --add-exports java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED             -d /tmp/pre8-tools             mods/nexuscharacters/reference/BETA-1.0-PRE8/tools/PatchConsoleSpam.java
+
+      - name: Patch PRE7 runtime
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE7.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE8.jar"
+
+          mkdir -p /tmp/pre8-in/net/tompsen/nexuscharacters
+          mkdir -p /tmp/pre8-out/net/tompsen/nexuscharacters
+
+          unzip -p "$BASE" net/tompsen/nexuscharacters/ProfileStateBridge.class             > /tmp/pre8-in/net/tompsen/nexuscharacters/ProfileStateBridge.class
+          unzip -p "$BASE" net/tompsen/nexuscharacters/PuffishSkillsBridge.class             > /tmp/pre8-in/net/tompsen/nexuscharacters/PuffishSkillsBridge.class
+
+          java             --add-exports java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED             --add-exports java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED             -cp /tmp/pre8-tools PatchConsoleSpam             /tmp/pre8-in/net/tompsen/nexuscharacters/ProfileStateBridge.class             /tmp/pre8-out/net/tompsen/nexuscharacters/ProfileStateBridge.class             /tmp/pre8-in/net/tompsen/nexuscharacters/PuffishSkillsBridge.class             /tmp/pre8-out/net/tompsen/nexuscharacters/PuffishSkillsBridge.class
+
+          cp "$BASE" "$OUT"
+          jar uf "$OUT" -C /tmp/pre8-out net/tompsen/nexuscharacters/ProfileStateBridge.class -C /tmp/pre8-out net/tompsen/nexuscharacters/PuffishSkillsBridge.class
+
+          mkdir -p /tmp/pre8-meta
+          unzip -p "$OUT" fabric.mod.json > /tmp/pre8-meta/fabric.mod.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p = Path("/tmp/pre8-meta/fabric.mod.json")
+          data = json.loads(p.read_text(encoding="utf-8"))
+          data["version"] = "1.0.0-beta.8+hc.1.21.11"
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+          jar uf "$OUT" -C /tmp/pre8-meta fabric.mod.json
+
+      - name: Validate PRE8
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE7.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE8.jar"
+          unzip -t "$OUT" >/dev/null
+
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, zipfile
+
+          base = Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE7.jar")
+          out = Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE8.jar")
+
+          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
+              n0 = z0.namelist()
+              n1 = z1.namelist()
+
+              if len(n1) != len(set(n1)):
+                  dup = sorted({n for n in n1 if n1.count(n) > 1})
+                  raise SystemExit(f"Duplicate ZIP entries: {dup}")
+
+              if set(n0) != set(n1):
+                  raise SystemExit("PRE8 changed the JAR entry set")
+
+              expected = {
+                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
+                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
+                  "fabric.mod.json",
+              }
+              changed = {
+                  name for name in n0
+                  if hashlib.sha256(z0.read(name)).digest()
+                  != hashlib.sha256(z1.read(name)).digest()
+              }
+              if changed != expected:
+                  raise SystemExit(f"Unexpected changed entries: {sorted(changed)}")
+
+              profile = z1.read("net/tompsen/nexuscharacters/ProfileStateBridge.class")
+              puffish = z1.read("net/tompsen/nexuscharacters/PuffishSkillsBridge.class")
+              nexus = z1.read("net/tompsen/nexuscharacters/NexusCharacters.class")
+              nexus0 = z0.read("net/tompsen/nexuscharacters/NexusCharacters.class")
+
+              if b"Profile scores saved for character" in profile:
+                  raise SystemExit("Profile save-success stdout constant still present")
+              if b"Puffish Skills saved for character" in puffish:
+                  raise SystemExit("Puffish save-success INFO constant still present")
+              if b"before_save_self" not in profile or b"after_load_self" not in profile:
+                  raise SystemExit("Profile hooks were removed instead of silenced")
+              if b"method_9217" not in profile:
+                  raise SystemExit("ServerCommandSource.withSilent intermediary call missing")
+              if b"Puffish Skills save failed" not in puffish:
+                  raise SystemExit("Puffish save failure diagnostic was removed")
+              if b"Profile score save failed" not in profile:
+                  raise SystemExit("Profile save failure diagnostic was removed")
+              if hashlib.sha256(nexus).digest() != hashlib.sha256(nexus0).digest():
+                  raise SystemExit("NexusCharacters.class changed; checkpoint cadence must remain untouched")
+
+              mod = json.loads(z1.read("fabric.mod.json"))
+              if mod.get("version") != "1.0.0-beta.8+hc.1.21.11":
+                  raise SystemExit(f"Wrong version: {mod.get('version')}")
+
+          raw = out.read_bytes()
+          sha = hashlib.sha256(raw).hexdigest()
+          size = len(raw)
+
+          ref = Path("mods/nexuscharacters/reference/BETA-1.0-PRE8")
+          (ref / "SHA256SUMS.txt").write_text(
+              f"{sha}  {out.name}\n", encoding="utf-8"
+          )
+          (ref / "VALIDATION.md").write_text(
+              "# Validation BETA 1.0 PRE8\n\n"
+              f"- JAR : `{out.name}`\n"
+              f"- Taille : **{size} octets**\n"
+              f"- SHA-256 : `{sha}`\n"
+              "- Base : PRE7 SHA vérifié.\n"
+              "- Archive ZIP/JAR : OK.\n"
+              "- Aucun doublon d'entrée ZIP.\n"
+              "- Ensemble des entrées identique à PRE7.\n"
+              "- Entrées modifiées uniquement : `ProfileStateBridge.class`, "
+              "`PuffishSkillsBridge.class`, `fabric.mod.json`.\n"
+              "- `NexusCharacters.class` inchangé : checkpoint 100 ticks / 5 s préservé.\n"
+              "- Hooks `before_save_self` et `after_load_self` conservés.\n"
+              "- Source des hooks rendue silencieuse via `class_2168.method_9217()` / `withSilent()`.\n"
+              "- Logs de succès périodiques Puffish/Profile supprimés.\n"
+              "- Diagnostics d'échec Puffish/Profile conservés.\n"
+              "- Version : `1.0.0-beta.8+hc.1.21.11`.\n",
+              encoding="utf-8",
+          )
+          print("PRE8", size, sha)
+          PY
+
+          echo "=== Profile hook bytecode ==="
+          javap -classpath "$OUT" -p -c net.tompsen.nexuscharacters.ProfileStateBridge             | grep -n -A35 -B5 'runHookIfCorePresent' | tail -n 80
+
+          echo "=== Remaining save-success strings (must be empty) ==="
+          (strings "$OUT" | grep -E 'Puffish Skills saved for character|Profile scores saved for character') || true
+
+      - name: Publish PRE8 through Git LFS
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE7.jar
+
+          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE8.jar             mods/nexuscharacters/reference/BETA-1.0-PRE8/SHA256SUMS.txt             mods/nexuscharacters/reference/BETA-1.0-PRE8/VALIDATION.md
+
+          if git diff --cached --quiet; then
+            echo "No PRE8 artifacts to publish."
+            exit 0
+          fi
+
+          git commit -m "nexus: publish BETA 1.0 PRE8 console-silent checkpoint"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main

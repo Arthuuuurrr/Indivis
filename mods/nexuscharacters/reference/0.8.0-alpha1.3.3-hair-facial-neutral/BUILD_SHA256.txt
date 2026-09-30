@@ -1,0 +1,2 @@
+cd1101b5efc5792e274cd780b8b76a04e16755bd8ddfc7b2e273045f6d5992be  NexusCharacters-HauteCapitale-1.21.11-v0.8.0-alpha1.3.3-COSMETICS-PACK1-PERSISTENCE-PERF1-HAIR-FACIAL-NEUTRAL.jar
+2a3ff2c6d27cfa13be4446b6c5e6894381bdadc87827c5df252145cd1b4ed6d7  NexusCharacters-HauteCapitale-0.8.0-alpha1.3.3-HAIR-FACIAL-NEUTRAL-source.zip

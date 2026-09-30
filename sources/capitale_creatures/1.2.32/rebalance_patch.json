@@ -1,0 +1,74 @@
+{
+  "version": "1.2.32",
+  "datapack": "BETA_0_26",
+  "corruption": {
+    "landsoficaria:vinegaroon": {
+      "weight": 4,
+      "group": [
+        1,
+        2
+      ]
+    },
+    "landsoficaria:solifugae": {
+      "weight": 4,
+      "group": [
+        1,
+        2
+      ]
+    },
+    "landsoficaria:snull": {
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ]
+    },
+    "landsoficaria:plane_forest_hag": {
+      "weight": 2,
+      "group": [
+        1,
+        1
+      ]
+    },
+    "landsoficaria:hyliaster": {
+      "weight": 3,
+      "group": [
+        1,
+        1
+      ]
+    },
+    "landsoficaria:myrmeke_drone": {
+      "weight": 4,
+      "group": [
+        1,
+        2
+      ]
+    },
+    "landsoficaria:myrmeke_soldier": {
+      "weight": 3,
+      "group": [
+        1,
+        2
+      ]
+    },
+    "landsoficaria:arachne": {
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ],
+      "rarity": "very rare"
+    },
+    "autonomous_orc_mobs:female_orc_warrior_red": {
+      "weight": 1,
+      "group": [
+        3,
+        4
+      ],
+      "runtime_cap": 4,
+      "radius": 96
+    }
+  },
+  "dungeon": "unchanged from BETA 0.25",
+  "french_names": "added/cleaned; ambiguous proper/invented names preserved"
+}

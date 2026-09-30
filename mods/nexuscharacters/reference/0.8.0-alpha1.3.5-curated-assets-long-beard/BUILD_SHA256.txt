@@ -1,0 +1,2 @@
+e024fcde969ad9a7593619f019490d070cbd2e5ffa36772f8e4a9e5193ef46a8  NexusCharacters-HauteCapitale-1.21.11-v0.8.0-alpha1.3.5-CURATED-ASSETS-LONG-BEARD-PERF1.jar
+5360b98e725310cf7a458d45511dccc0901439bb24c55a70c7a34aa80a76556b  NexusCharacters-HauteCapitale-0.8.0-alpha1.3.5-CURATED-ASSETS-LONG-BEARD-source.zip

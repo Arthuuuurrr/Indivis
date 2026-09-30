@@ -1,0 +1,73 @@
+{
+  "version": "1.2.28",
+  "datapack": "BETA_0_22",
+  "corruption": {
+    "rare_orc": {
+      "entity": "autonomous_orc_mobs:female_orc_warrior_red",
+      "weight": 1,
+      "group": [
+        1,
+        1
+      ]
+    }
+  },
+  "rollback": {
+    "chaos_mmo_ai:maggot": {
+      "from": 7,
+      "to": 5
+    }
+  },
+  "aquatic": {
+    "config": {
+      "interval_ticks": 60,
+      "max_nearby_per_player": 16,
+      "candidate_attempts": 30
+    },
+    "normal_spawn": {
+      "cubeanimals:shark": {
+        "weight": 2,
+        "group": [
+          1,
+          1
+        ]
+      }
+    },
+    "runtime": {
+      "dawn_aegirocassis_all_oceans": {
+        "weight_per_variant": 2
+      },
+      "dawn_dunkleosteus_oceans": {
+        "weight_per_variant": 3
+      },
+      "mystic_mosasaurus_deep_oceans_only": {
+        "weight_per_variant": 2
+      },
+      "cubeanimals:piranha": {
+        "weight": 9,
+        "group": [
+          4,
+          7
+        ]
+      },
+      "chaos_mmo_ai:corpsefish": {
+        "weight": 12,
+        "group": [
+          2,
+          5
+        ]
+      },
+      "chaos_mmo_ai:gluttonfish": {
+        "weight": 2,
+        "group": [
+          1,
+          1
+        ]
+      }
+    },
+    "ai_fix": "combatTarget restriction to myths_of_the_sea removed; applies to all entities already in STRICT marine set"
+  },
+  "hashes": {
+    "datapack": "c824cb1ff3104b5350e9466670232c807f974836e9236884a41ec0de489f62db",
+    "bundle": "66c812475273c687f011db7813fbee544929e2ef141f88db26f8d0780f4be504"
+  }
+}

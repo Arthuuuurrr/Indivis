@@ -1,0 +1,30 @@
+{
+  "version": "0.8.0-alpha1.3.5",
+  "hair": {
+    "1-12": "user replacements, normalized",
+    "13": {"label":"Calvitie","resource":"hair_long_08.png","source":"calvitie.png"}
+  },
+  "facial_hair": {
+    "1": {"label":"Barbe de trois jours","resource":"stubble.png"},
+    "2": {"label":"Moustache courte","resource":"moustache_short.png"},
+    "3": {"label":"Moustache épaisse","resource":"moustache_thick.png"},
+    "4": {"label":"Moustache mince","resource":"moustache_user_01.png","source":"moustache 1.png"},
+    "5": {"label":"Barbe mince 1","resource":"beard_light.png","source":"barbe légère 1.png"},
+    "6": {"label":"Barbe mince 2","resource":"beard_light_02.png","source":"barbe légère 2.png"}
+  },
+  "facial_hair_races": ["HUMAN","NORDIC"],
+  "beard_3d": {
+    "new_style": "long",
+    "source_reference": "barbe longue.png",
+    "races": ["HUMAN","NORDIC","DWARF"]
+  },
+  "outfits": {
+    "33": "côte de maille1.png",
+    "35": "armure1.png",
+    "36": "tenue de pirate.png",
+    "37": "tenue de voyageur1.png",
+    "38": "Tenue d'apothicaire.png"
+  },
+  "removed_duplicate": "armure3.png (pixel-identical to côte de maille1.png)",
+  "slot20": "supplied outfit_20.png replaces legacy kingclothes content"
+}

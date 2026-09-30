@@ -1,0 +1,23 @@
+{
+  "artifact": "NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE4.jar",
+  "artifact_sha256": "b8fc3cd3fb24803f4d64b0fa6dc574e343751d1a9678bd0360aaa5e7ea0fe0a5",
+  "artifact_size": 21569859,
+  "encoding": "base64",
+  "parts": [
+    "Nexus_BETA_1_0_PRE4.jar.b64part000.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part001.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part002.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part003.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part004.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part005.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part006.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part007.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part008.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part009.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part010.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part011.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part012.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part013.txt",
+    "Nexus_BETA_1_0_PRE4.jar.b64part014.txt"
+  ]
+}
