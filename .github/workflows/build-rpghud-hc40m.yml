@@ -1,0 +1,64 @@
+name: Build RPG-HUD HC40M compatibility
+
+on:
+  push:
+    paths:
+      - ".github/workflows/build-rpghud-hc40m.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Download exact RPG-HUD 3.13 base
+        shell: bash
+        run: |
+          curl -L --fail --retry 3             'https://cdn.modrinth.com/data/EC41AOIq/versions/MBR7kJNW/%5B1.21.11%5D%5BFabric%5D%20RPG-HUD-3.13.jar'             -o /tmp/rpghud-base.jar
+          echo 'ab2dec0daf697af037c294c50ba7a8dc5251048294d5f88229bc14d832a02b00  /tmp/rpghud-base.jar' | sha256sum -c -
+
+      - name: Rebuild patched JAR
+        shell: bash
+        run: |
+          python tools/patches/rpghud-hc40m/patch_rpghud_hc40m.py             /tmp/rpghud-base.jar             /tmp/RPG-HUD-3.13-HauteCapitale-HC40M-1.0.jar             tools/patches/rpghud-hc40m/HauteCapitaleClockMixin.class.b64
+          echo 'a255bfe59ddc0bff9081dfc9219da46c5917a3052e8b6279571872fd09552c02  /tmp/RPG-HUD-3.13-HauteCapitale-HC40M-1.0.jar' | sha256sum -c -
+
+      - name: Validate patch structure
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, zipfile
+          p='/tmp/RPG-HUD-3.13-HauteCapitale-HC40M-1.0.jar'
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              f=json.loads(z.read('fabric.mod.json'))
+              m=json.loads(z.read('rpg-hud.mixins.json'))
+              assert f['id']=='rpg-hud'
+              assert f['version']=='3.13+hc40m.1'
+              assert 'HauteCapitaleClockMixin' in m['client']
+              assert 'net/spellcraftgaming/rpghud/mixin/HauteCapitaleClockMixin.class' in z.namelist()
+          print('RPG-HUD HC40M archive validation: OK')
+          PY
+
+      - name: Publish into mods library
+        shell: bash
+        run: |
+          DEST='mods/RPG-HUD-3.13-HauteCapitale-HC40M-1.0.jar'
+          cp /tmp/RPG-HUD-3.13-HauteCapitale-HC40M-1.0.jar "$DEST"
+          printf '%s  %s\n'             'a255bfe59ddc0bff9081dfc9219da46c5917a3052e8b6279571872fd09552c02'             'RPG-HUD-3.13-HauteCapitale-HC40M-1.0.jar'             > mods/RPG-HUD-3.13-HauteCapitale-HC40M-1.0.SHA256.txt
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git lfs install --local
+          git add "$DEST" mods/RPG-HUD-3.13-HauteCapitale-HC40M-1.0.SHA256.txt
+          git commit -m "rpghud: publish HC40M clock-compatible 3.13 build"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
