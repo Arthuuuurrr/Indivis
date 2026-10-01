@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "net.hautecapitale.dialogue.patch.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MessageCaptureMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
