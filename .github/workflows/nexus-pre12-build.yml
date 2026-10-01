@@ -58,7 +58,7 @@ jobs:
 
           javac -cp "$BASE" -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersDynamicSkinBridge.java             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/LongHair3DRenderSupport.java
 
-          javac -cp "$BASE:/tmp/pre12-classes:/tmp/sponge-mixin.jar" -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersPlayerUtilCompatMixin.java
+          javac -proc:none -cp "$BASE:/tmp/pre12-classes:/tmp/sponge-mixin.jar" -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersPlayerUtilCompatMixin.java
 
           javac -d /tmp/pre12-tools             mods/nexuscharacters/reference/BETA-1.0-PRE12/tools/SeparateLongHairFromBody.java
 
