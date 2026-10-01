@@ -1,22 +1,36 @@
-# Nexus Capitale First Spawn Bridge 1.0.0
+# Nexus Capitale First Spawn Bridge 1.0.1
 
 Server-side Fabric 1.21.11 compatibility bridge.
 
-## Purpose
+## Cause confirmée
 
-NexusCharacters creates a genuinely empty server-authoritative vault for a newly-created character,
-but the old RP-HUD integration that called
-`capitale:spawn/character_first_join_to_prologue_start_self` no longer owns character slots.
+La 1.0.0 détectait correctement la création d'un nouveau vault Nexus et téléportait bien le joueur
+sur le dirigeable, mais elle appelait l'ancien wrapper RP-HUD :
 
-The bridge hooks the exact Nexus method that creates an empty authoritative vault:
+`capitale:spawn/character_first_join_to_prologue_start_self`
+
+Ce wrapper ajoute `capitale_identity_mandatory`, ce qui réouvre l'ancien menu de création
+d'identité RP-HUD alors que NexusCharacters a déjà créé le personnage avant la connexion.
+
+## 1.0.1
+
+Le bridge conserve exactement le même déclencheur fiable :
 `ServerAuthorityV080.createEmptyAuthoritativeVault(Path, UUID)`.
 
-Only in that case, on the corresponding player's JOIN, it waits 3 server ticks then executes as the
-player:
+À la connexion du propriétaire, il attend 3 ticks, purge les anciens marqueurs d'identité RP-HUD
+(`capitale_identity_mandatory`, `capitale_identity_open_pending`,
+`capitale_identity_menu_opened`) puis exécute directement :
 
-`function capitale:spawn/character_first_join_to_prologue_start_self`
+`function capitale:spawn/first_join_to_prologue_start_self`
 
-Existing character vaults do not pass through this hook and therefore are not restarted.
+Cette fonction conserve :
+- `player/init`;
+- l'initialisation des scores;
+- le TP/spawnpoint du dirigeable;
+- le démarrage de `QUEST_SPAWN` / `QUEST_PROLOGUE`;
 
-This is intentionally server-only and does not alter Nexus persistence, character data, scores,
-quests, Creature Bundle, Orc logic, or EasyNPC.
+mais n'appelle pas l'ancien menu d'identité.
+
+Les personnages existants ne passent pas par ce hook.
+
+Aucune modification de NexusCharacters PRE9, Creature Bundle, EasyNPC, quêtes ou logique Orc.
