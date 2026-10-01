@@ -21,29 +21,30 @@ public final class B9ServerPatch implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
-            dispatcher.register(
-                    CommandManager.literal("hcd_interpellation")
-                            .requires(source -> source.getEntity() instanceof ServerPlayerEntity)
-                            .then(
-                                    CommandManager.literal("auto_guard")
-                                            .executes(context -> open(
-                                                    context.getSource().getPlayerOrThrow(),
-                                                    null,
-                                                    true)))
-                            .then(
-                                    CommandManager.literal("nearest_named")
-                                            .then(
-                                                    CommandManager.argument(
-                                                                    "name",
-                                                                    StringArgumentType.greedyString())
-                                                            .executes(context -> open(
-                                                                    context.getSource().getPlayerOrThrow(),
-                                                                    StringArgumentType.getString(
-                                                                            context,
-                                                                            "name"),
-                                                                    false))))));
-        });
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
+                dispatcher.register(
+                        CommandManager.literal("hcd_interpellation")
+                                .requires(source -> source.getEntity() instanceof ServerPlayerEntity)
+                                .then(
+                                        CommandManager.literal("auto_guard")
+                                                .executes(context ->
+                                                        open(
+                                                                context.getSource().getPlayerOrThrow(),
+                                                                null,
+                                                                true)))
+                                .then(
+                                        CommandManager.literal("nearest_named")
+                                                .then(
+                                                        CommandManager.argument(
+                                                                        "name",
+                                                                        StringArgumentType.greedyString())
+                                                                .executes(context ->
+                                                                        open(
+                                                                                context.getSource().getPlayerOrThrow(),
+                                                                                StringArgumentType.getString(
+                                                                                        context,
+                                                                                        "name"),
+                                                                                false))))));
     }
 
     private static int open(
