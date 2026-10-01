@@ -43,7 +43,9 @@ public final class SkinLayersDynamicSkinBridge {
 
             // This also guarantees that the NativeImageBackedTexture is
             // registered in Minecraft's TextureManager before Skin Layers reads it.
-            Object skinTextures = PresetSkinSupport.textures(presetId);
+            Class<?> presetSupport = Class.forName("net.tompsen.nexuscharacters.PresetSkinSupport");
+            Method textures = presetSupport.getMethod("textures", String.class);
+            Object skinTextures = textures.invoke(null, presetId);
             if (skinTextures == null) return null;
 
             Method bodyMethod = findNoArg(skinTextures.getClass(), "comp_1626");
