@@ -161,11 +161,10 @@ jobs:
           BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE16.jar"
           OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE17.jar"
 
-          mkdir -p /tmp/pre17-bytecode
-          unzip -p "$OUT" net/tompsen/nexuscharacters/LongHair3DRenderSupport.class > /tmp/pre17-bytecode/LongHair3DRenderSupport.class
-          strings /tmp/pre17-bytecode/LongHair3DRenderSupport.class | grep -Fx 'field_3391'
+          javap -classpath "$OUT" -p -c -verbose net.tompsen.nexuscharacters.LongHair3DRenderSupport > /tmp/pre17-long.txt
+          grep -F 'String field_3391' /tmp/pre17-long.txt
           # The old normal-render BODY anchor must be absent from the patched class.
-          if strings /tmp/pre17-bytecode/LongHair3DRenderSupport.class | grep -Fxq 'field_3394'; then
+          if grep -Fq 'String field_3394' /tmp/pre17-long.txt; then
             echo "Old HAT anchor field_3394 is still present in LongHair3DRenderSupport"
             exit 1
           fi
