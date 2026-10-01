@@ -57,7 +57,7 @@ public final class B9ServerPatch implements ModInitializer {
 
         Box area = player.getBoundingBox().expand(MAX_RANGE);
         List<LivingEntity> candidates =
-                player.getServerWorld().getEntitiesByClass(
+                player.getEntityWorld().getEntitiesByClass(
                         LivingEntity.class,
                         area,
                         entity ->
