@@ -1,0 +1,280 @@
+name: Build Nexus BETA 1.0 PRE10
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/reference/BETA-1.0-PRE10/**"
+      - ".github/workflows/nexus-pre10-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with LFS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Verify PRE9 base
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar"
+          test -s "$BASE"
+          unzip -t "$BASE" >/dev/null
+          ACTUAL="$(sha256sum "$BASE" | awk '{print $1}')"
+          EXPECTED="2345e4e47749ee8a3f0ef30dc72df3b75dde63075a70e8b34ab3734c18ef4a31"
+          test "$ACTUAL" = "$EXPECTED" || {
+            echo "PRE9 SHA mismatch: $ACTUAL"
+            exit 1
+          }
+
+      - name: Compile PRE10 tools and support
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar"
+          mkdir -p /tmp/pre10-tools /tmp/pre10-classes
+
+          javac             -cp "$BASE"             -d /tmp/pre10-classes             mods/nexuscharacters/reference/BETA-1.0-PRE10/sources/LongHair3DRenderSupport.java
+
+          javac             -d /tmp/pre10-tools             mods/nexuscharacters/reference/BETA-1.0-PRE10/tools/PrepareLongHairAssets.java
+
+          javac             --add-exports java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED             --add-exports java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED             -d /tmp/pre10-tools             mods/nexuscharacters/reference/BETA-1.0-PRE10/tools/PatchLongHair3D.java
+
+      - name: Generate derived long-hair assets
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar"
+
+          SRC=/tmp/pre10-hair-source
+          HEAD=/tmp/pre10-add/assets/nexuscharacters/appearance_parts_v064/hair
+          BODY=/tmp/pre10-add/assets/nexuscharacters/textures/cosmetic/long_hair_body
+
+          mkdir -p "$SRC" "$HEAD" "$BODY"
+
+          for i in 01 02 03 04 05; do
+            unzip -p "$BASE" "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}.png"               > "$SRC/hair_long_${i}.png"
+          done
+
+          java -cp /tmp/pre10-tools PrepareLongHairAssets "$SRC" "$HEAD" "$BODY"
+
+      - name: Patch PRE9 runtime
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar"
+
+          mkdir -p /tmp/pre10-in/net/tompsen/nexuscharacters
+          mkdir -p /tmp/pre10-out/net/tompsen/nexuscharacters
+
+          unzip -p "$BASE" net/tompsen/nexuscharacters/DynamicAppearanceSupport.class             > /tmp/pre10-in/net/tompsen/nexuscharacters/DynamicAppearanceSupport.class
+          unzip -p "$BASE" net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class             > /tmp/pre10-in/net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class
+
+          java             --add-exports java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED             --add-exports java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED             -cp /tmp/pre10-tools PatchLongHair3D             /tmp/pre10-in/net/tompsen/nexuscharacters/DynamicAppearanceSupport.class             /tmp/pre10-out/net/tompsen/nexuscharacters/DynamicAppearanceSupport.class             /tmp/pre10-in/net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class             /tmp/pre10-out/net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class
+
+          cp "$BASE" "$OUT"
+
+          jar uf "$OUT"             -C /tmp/pre10-classes net/tompsen/nexuscharacters/LongHair3DRenderSupport.class             -C /tmp/pre10-out net/tompsen/nexuscharacters/DynamicAppearanceSupport.class             -C /tmp/pre10-out net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class             -C /tmp/pre10-add assets/nexuscharacters/appearance_parts_v064/hair             -C /tmp/pre10-add assets/nexuscharacters/textures/cosmetic/long_hair_body
+
+          mkdir -p /tmp/pre10-meta
+          unzip -p "$OUT" fabric.mod.json > /tmp/pre10-meta/fabric.mod.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("/tmp/pre10-meta/fabric.mod.json")
+          data=json.loads(p.read_text(encoding="utf-8"))
+          data["version"]="1.0.0-beta.10+hc.1.21.11"
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          jar uf "$OUT" -C /tmp/pre10-meta fabric.mod.json
+
+      - name: Validate PRE10 structure and regression scope
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar"
+          unzip -t "$OUT" >/dev/null
+
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, zipfile
+
+          base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar")
+          out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar")
+
+          new_assets=set()
+          for i in range(1,6):
+              new_assets.add(f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}_head3d.png")
+              new_assets.add(f"assets/nexuscharacters/textures/cosmetic/long_hair_body/hair_long_body_{i:02d}.png")
+
+          expected_changed={
+              "net/tompsen/nexuscharacters/DynamicAppearanceSupport.class",
+              "net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class",
+              "fabric.mod.json",
+          }
+          expected_added={
+              "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
+              *new_assets,
+          }
+
+          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
+              n0=z0.namelist()
+              n1=z1.namelist()
+
+              if len(n1)!=len(set(n1)):
+                  dup=sorted({n for n in n1 if n1.count(n)>1})
+                  raise SystemExit(f"Duplicate ZIP entries: {dup}")
+
+              added=set(n1)-set(n0)
+              removed=set(n0)-set(n1)
+              if removed:
+                  raise SystemExit(f"PRE10 removed entries: {sorted(removed)}")
+              if added!=expected_added:
+                  raise SystemExit(f"Unexpected added entries: {sorted(added ^ expected_added)}")
+
+              changed={
+                  name for name in set(n0)&set(n1)
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest()
+              }
+              if changed!=expected_changed:
+                  raise SystemExit(f"Unexpected changed entries: {sorted(changed)}")
+
+              # Critical PRE8/PRE9 fixes must remain byte-identical.
+              for name in (
+                  "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
+                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
+                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
+                  "net/tompsen/nexuscharacters/NexusCharacters.class",
+                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
+                  "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
+              ):
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                      raise SystemExit(f"Preserved class changed unexpectedly: {name}")
+
+              # Original PRE9 hair assets remain untouched for the no-SkinLayers fallback.
+              for i in range(1,9):
+                  name=f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png"
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                      raise SystemExit(f"Original fallback hair asset changed: {name}")
+
+              mod=json.loads(z1.read("fabric.mod.json"))
+              if mod.get("version")!="1.0.0-beta.10+hc.1.21.11":
+                  raise SystemExit(f"Wrong version: {mod.get('version')}")
+
+          raw=out.read_bytes()
+          sha=hashlib.sha256(raw).hexdigest()
+          size=len(raw)
+          ref=Path("mods/nexuscharacters/reference/BETA-1.0-PRE10")
+          (ref/"SHA256SUMS.txt").write_text(f"{sha}  {out.name}\n",encoding="utf-8")
+          (ref/"VALIDATION.md").write_text(
+              "# Validation BETA 1.0 PRE10\n\n"
+              f"- JAR : `{out.name}`\n"
+              f"- Taille : **{size} octets**\n"
+              f"- SHA-256 : `{sha}`\n"
+              "- Base : PRE9 SHA vérifié.\n"
+              "- Archive ZIP/JAR : OK ; aucun doublon d'entrée.\n"
+              "- Aucune entrée PRE9 supprimée.\n"
+              "- Classes PRE9 modifiées uniquement : `DynamicAppearanceSupport.class`, "
+              "`CharacterCosmeticFeatureRenderer.class`, `fabric.mod.json`.\n"
+              "- Ajouts : `LongHair3DRenderSupport.class` + 5 textures head-only + 5 textures body-mesh.\n"
+              "- Les 8 textures longues PRE9 originales sont byte-identiques et servent de fallback sans 3D Skin Layers.\n"
+              "- `UnifiedPilositySupport.class` PRE9 strictement inchangé.\n"
+              "- Bridges de sauvegarde PRE8 strictement inchangés.\n"
+              "- Barbes et layout strictement inchangés.\n"
+              "- Version : `1.0.0-beta.10+hc.1.21.11`.\n",
+              encoding="utf-8"
+          )
+          print("PRE10",size,sha)
+          PY
+
+      - name: Validate derived PNG semantics
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar"
+          rm -rf /tmp/pre10-verify
+          mkdir -p /tmp/pre10-verify
+          cd /tmp/pre10-verify
+          for i in 01 02 03 04 05; do
+            unzip -p "$GITHUB_WORKSPACE/$OUT"               "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}_head3d.png"               > "head_${i}.png"
+            unzip -p "$GITHUB_WORKSPACE/$OUT"               "assets/nexuscharacters/textures/cosmetic/long_hair_body/hair_long_body_${i}.png"               > "body_${i}.png"
+          done
+
+          # ImageIO can open every generated texture.
+          cat > VerifyPng.java <<'JAVA'
+          import java.io.File;
+          import javax.imageio.ImageIO;
+          import java.awt.image.BufferedImage;
+
+          public class VerifyPng {
+              public static void main(String[] args) throws Exception {
+                  for (int i=1;i<=5;i++) {
+                      BufferedImage h=ImageIO.read(new File(String.format("head_%02d.png",i)));
+                      BufferedImage b=ImageIO.read(new File(String.format("body_%02d.png",i)));
+                      if(h==null||b==null||h.getWidth()!=64||h.getHeight()!=64||b.getWidth()!=64||b.getHeight()!=64)
+                          throw new AssertionError("bad dimensions "+i);
+
+                      int hTorso=0,bOuter=0,bElse=0;
+                      for(int y=0;y<64;y++) for(int x=0;x<64;x++) {
+                          boolean ha=((h.getRGB(x,y)>>>24)&255)!=0;
+                          boolean ba=((b.getRGB(x,y)>>>24)&255)!=0;
+                          boolean torso=x>=16&&x<40&&y>=16&&y<48;
+                          boolean outer=x>=16&&x<40&&y>=32&&y<48;
+                          if(ha&&torso) hTorso++;
+                          if(ba&&outer) bOuter++;
+                          if(ba&&!outer) bElse++;
+                      }
+                      if(hTorso!=0) throw new AssertionError("head torso pixels "+i+": "+hTorso);
+                      if(bOuter==0) throw new AssertionError("empty body mesh "+i);
+                      if(bElse!=0) throw new AssertionError("body texture leaks outside outer torso "+i+": "+bElse);
+                  }
+                  System.out.println("PRE10 PNG split semantics OK");
+              }
+          }
+          JAVA
+          javac VerifyPng.java
+          java VerifyPng
+
+      - name: Validate patched bytecode
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar"
+
+          echo "=== hairName delegates to PRE10 support ==="
+          javap -classpath "$OUT" -p -c net.tompsen.nexuscharacters.DynamicAppearanceSupport             | sed -n '/private static java.lang.String hairName/,/private static java.lang.String facialHairName/p'
+
+          echo "=== cosmetic renderer contains PRE10 hook ==="
+          javap -classpath "$OUT" -p -c net.tompsen.nexuscharacters.CharacterCosmeticFeatureRenderer             | grep -F 'LongHair3DRenderSupport.render'
+
+          echo "=== PRE9 ABI retained ==="
+          javap -classpath "$OUT" -p net.tompsen.nexuscharacters.UnifiedPilositySupport             | grep -F 'public static boolean allowsPilosity(java.lang.Object);'
+
+      - name: Publish PRE10 through Git LFS
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar
+
+          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar             mods/nexuscharacters/reference/BETA-1.0-PRE10/SHA256SUMS.txt             mods/nexuscharacters/reference/BETA-1.0-PRE10/VALIDATION.md
+
+          if git diff --cached --quiet; then
+            echo "No PRE10 artifacts to publish."
+            exit 0
+          fi
+
+          git commit -m "nexus: publish BETA 1.0 PRE10 long-hair 3D separation"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
