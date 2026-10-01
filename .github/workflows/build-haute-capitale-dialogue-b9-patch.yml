@@ -68,7 +68,7 @@ jobs:
           path: |
             mods/haute-capitale-dialogue-0.1.0+1.21.11.b9.jar
             datapacks/releases/capitale_core_1.5.6-RC9BA_DIALOGUE_INTERPELLATIONS_FULL.zip
-            mods/archive/haute-capitale-dialogue-0.1.0+1.21.11.b8-BACKUP.jar
+            sources/haute-capitale-dialogue-b9-patch/backup/haute-capitale-dialogue-0.1.0+1.21.11.b8-BACKUP.jar
             sources/haute-capitale-dialogue-b9-patch/SHA256SUMS.txt
             sources/haute-capitale-dialogue-b9-patch/VALIDATION_FINAL_B9_RC9BA.md
           if-no-files-found: error
