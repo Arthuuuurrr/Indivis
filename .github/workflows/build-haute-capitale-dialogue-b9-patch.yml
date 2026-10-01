@@ -1,0 +1,74 @@
+name: Build Haute Capitale Dialogue b9 patch
+
+on:
+  push:
+    branches:
+      - fix/dialogue-b9-interpellations
+    paths:
+      - 'sources/haute-capitale-dialogue-b9-patch/**'
+      - '.github/workflows/build-haute-capitale-dialogue-b9-patch.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14'
+
+      - name: Build patch
+        working-directory: sources/haute-capitale-dialogue-b9-patch
+        run: gradle clean remapJar --stacktrace
+
+      - name: Validate patch content
+        run: |
+          set -euo pipefail
+          PATCH=$(find sources/haute-capitale-dialogue-b9-patch/build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' | head -n1)
+          test -n "$PATCH"
+          jar tf "$PATCH" | grep -F 'net/hautecapitale/dialogue/patch/B9ServerPatch.class'
+          jar tf "$PATCH" | grep -F 'net/hautecapitale/dialogue/patch/B9ClientPatch.class'
+          jar tf "$PATCH" | grep -F 'net/hautecapitale/dialogue/patch/mixin/MessageCaptureMixin.class'
+          jar tf "$PATCH" | grep -F 'haute_capitale_dialogue.b9.mixins.json'
+          if jar tf "$PATCH" | grep -qF 'net/hautecapitale/dialogue/session/DialogueManager.class'; then
+            echo 'ERROR: ABI stub leaked into patch jar'
+            exit 1
+          fi
+          if jar tf "$PATCH" | grep -qF 'net/hautecapitale/dialogue/client/DialogueClientState.class'; then
+            echo 'ERROR: ABI stub leaked into patch jar'
+            exit 1
+          fi
+          sha256sum "$PATCH" | tee haute-capitale-dialogue-b9-patch.sha256
+          cp "$PATCH" haute-capitale-dialogue-b9-patch.jar
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: haute-capitale-dialogue-b9-patch
+          path: |
+            haute-capitale-dialogue-b9-patch.jar
+            haute-capitale-dialogue-b9-patch.sha256
+          if-no-files-found: error
+
+      - name: Verify final release files
+        run: |
+          set -euo pipefail
+          echo "fedf37a5bc3a6bf6364bdd421ad1a2c1955679a6eeb07467252274838139812a  mods/haute-capitale-dialogue-0.1.0+1.21.11.b9.jar" | sha256sum -c -
+          echo "c8e1df244702100fb3f02568e2718b11dd132c9a7bbe92f6cbefb1f7e0152b73  datapacks/releases/capitale_core_1.5.6-RC9BA_DIALOGUE_INTERPELLATIONS_FULL.zip" | sha256sum -c -
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: haute-capitale-dialogue-b9-release
+          path: |
+            mods/haute-capitale-dialogue-0.1.0+1.21.11.b9.jar
+            datapacks/releases/capitale_core_1.5.6-RC9BA_DIALOGUE_INTERPELLATIONS_FULL.zip
+            sources/haute-capitale-dialogue-b9-patch/backup/haute-capitale-dialogue-0.1.0+1.21.11.b8-BACKUP.jar
+            sources/haute-capitale-dialogue-b9-patch/SHA256SUMS.txt
+            sources/haute-capitale-dialogue-b9-patch/VALIDATION_FINAL_B9_RC9BA.md
+          if-no-files-found: error

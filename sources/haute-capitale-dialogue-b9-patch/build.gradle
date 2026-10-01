@@ -1,0 +1,49 @@
+plugins {
+    id "fabric-loom" version "${loom_version}"
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 21
+    it.options.encoding = "UTF-8"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+sourceSets {
+    main {
+        java.srcDir "src/stubs/java"
+    }
+}
+
+tasks.jar {
+    // Compile-time only ABI stubs for Clément's b8. The final b9 keeps the original
+    // b8 classes byte-for-byte and only adds the patch classes.
+    exclude "net/hautecapitale/dialogue/session/DialogueManager.class"
+    exclude "net/hautecapitale/dialogue/session/DialogueMode.class"
+    exclude "net/hautecapitale/dialogue/session/DialogueSession.class"
+    exclude "net/hautecapitale/dialogue/client/DialogueClientSettings.class"
+    exclude "net/hautecapitale/dialogue/client/DialogueClientState.class"
+    exclude "net/hautecapitale/dialogue/client/capture/MessageCapture.class"
+    exclude 'net/hautecapitale/dialogue/client/capture/MessageCapture$Classification.class'
+}

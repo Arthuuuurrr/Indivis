@@ -1,0 +1,4 @@
+428c771ef958e56245628bb145a198f04715e5e7a21d5a855ede673b5c7b25c0  haute-capitale-dialogue-0.1.0+1.21.11.b8-BACKUP.jar
+b9a63adff0372eb1a9536f23575b9221ecbaab566335e2abd1d2100f194cd2fb  haute-capitale-dialogue-b9-patch.jar
+fedf37a5bc3a6bf6364bdd421ad1a2c1955679a6eeb07467252274838139812a  haute-capitale-dialogue-0.1.0+1.21.11.b9.jar
+c8e1df244702100fb3f02568e2718b11dd132c9a7bbe92f6cbefb1f7e0152b73  capitale_core_1.5.6-RC9BA_DIALOGUE_INTERPELLATIONS_FULL.zip
