@@ -433,7 +433,7 @@ jobs:
 
               public static void main(String[] args)throws Exception{
                   Dto h08=new Dto("@nexus:appearance:player_v69_b1_e1_ec0_ey2_h08_hc02_s05_o20_fh0_fc00_mk0_mc0");
-                  class_8765 main=new class_8765(118,157,new class_5599(),()->PreviewDummyPlayerManager.skin(h08));
+                  class_8765 main=new class_8765(118,157,new class_5599(),()->net.tompsen.nexuscharacters.PreviewDummyPlayerManager.skin(h08));
                   main.method_46421(589);
                   main.method_46419(170);
 
