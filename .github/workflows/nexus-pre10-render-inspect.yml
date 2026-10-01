@@ -1,0 +1,48 @@
+name: Nexus PRE10 render inspect
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre10-render-inspect.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Inspect Nexus render classes
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE9.jar"
+          echo "=== CANDIDATE CLASSES ==="
+          jar tf "$J" | grep '\.class$' | grep -Ei 'cosmetic|appearance|skin|hair|outfit|render|layer|model|voxel' | sort
+
+          echo "=== APPEARANCE ASSETS ==="
+          jar tf "$J" | grep -E '^assets/nexuscharacters/appearance_parts_v064/.+\.png$' | sort | head -n 300
+
+          curl -fsSL https://www.benf.org/other/cfr/cfr-0.152.jar -o /tmp/cfr.jar
+          mkdir -p /tmp/decomp
+          java -jar /tmp/cfr.jar "$J" --outputdir /tmp/decomp --silent true >/dev/null 2>&1
+
+          for f in             /tmp/decomp/net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.java             /tmp/decomp/net/tompsen/nexuscharacters/CosmeticLayerRenderSupport.java             /tmp/decomp/net/tompsen/nexuscharacters/CharacterSkinComposer.java             /tmp/decomp/net/tompsen/nexuscharacters/CharacterAppearanceSupport.java             /tmp/decomp/net/tompsen/nexuscharacters/AppearanceTextureSupport.java             /tmp/decomp/net/tompsen/nexuscharacters/OutfitCatalogSupport.java; do
+            if [ -f "$f" ]; then
+              echo "===== $f ====="
+              cat "$f"
+            fi
+          done
+
+          echo "=== REFERENCES TO appearance_parts_v064 / hair_long / outfit ==="
+          grep -RniE 'appearance_parts_v064|hair_long|outfit|outer|overlay|jacket|body'             /tmp/decomp/net/tompsen/nexuscharacters | head -n 1500 || true
