@@ -1,0 +1,59 @@
+name: Nexus PRE14 transition bridge audit
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre14-transition-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Download exact Skin Layers release
+        shell: bash
+        run: |
+          curl -fL --retry 3             "https://github.com/tr7zw/3d-Skin-Layers/releases/download/1.10.2/skinlayers3d-fabric-1.10.2-mc1.21.11.jar"             -o /tmp/skinlayers.jar
+          test "$(sha256sum /tmp/skinlayers.jar | awk '{print $1}')" =             "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756"
+          jar tf /tmp/skinlayers.jar | grep -i transition || true
+          unzip -p /tmp/skinlayers.jar fabric.mod.json > /tmp/sl-fabric.json
+          cat /tmp/sl-fabric.json
+
+      - name: Extract and inspect bundled transition
+        shell: bash
+        run: |
+          NESTED="$(jar tf /tmp/skinlayers.jar | grep -E '(^|/)transition[^/]*\.jar$' | head -n1 || true)"
+          echo "NESTED=$NESTED"
+          if [ -n "$NESTED" ]; then
+            unzip -p /tmp/skinlayers.jar "$NESTED" > /tmp/transition.jar
+            jar tf /tmp/transition.jar | grep 'dev/tr7zw/transition/mc/PlayerUtil.class'
+            javap -classpath /tmp/transition.jar -p -c -s dev.tr7zw.transition.mc.PlayerUtil
+          else
+            # Some release builds shade Transition classes directly.
+            jar tf /tmp/skinlayers.jar | grep 'dev/tr7zw/transition/mc/PlayerUtil.class'
+            javap -classpath /tmp/skinlayers.jar -p -c -s dev.tr7zw.transition.mc.PlayerUtil
+          fi
+
+      - name: Inspect PRE14 bridge
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
+          echo "=== mixin config entries ==="
+          unzip -p "$J" nexuscharacters.mixins.json | grep -n -C 2 'SkinLayersDynamicSkinBridge' || true
+          unzip -p "$J" nexuscharacters.client.mixins.json | grep -n -C 2 'SkinLayersDynamicSkinBridge' || true
+
+          echo "=== bridge bytecode ==="
+          javap -classpath "$J" -p -c -s net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin || true
+          javap -classpath "$J" -p -c -s net.tompsen.nexuscharacters.SkinLayersDynamicSkinBridge || true
+
+          echo "=== all strings/references around transition ==="
+          unzip -p "$J" net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class             | strings | grep -E 'PlayerUtil|getPlayerSkin|method_|nexuscharacters|dynamic' || true
