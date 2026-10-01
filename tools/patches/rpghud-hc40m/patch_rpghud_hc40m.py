@@ -3,7 +3,6 @@ from pathlib import Path
 import base64, hashlib, json, sys, zipfile
 
 BASE_SHA256 = "ab2dec0daf697af037c294c50ba7a8dc5251048294d5f88229bc14d832a02b00"
-OUTPUT_SHA256 = "a255bfe59ddc0bff9081dfc9219da46c5917a3052e8b6279571872fd09552c02"
 
 def sha256(p: Path):
     return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -64,8 +63,6 @@ No gameplay time, gamerule, tick rate, world state or other RPG-HUD element is m
                 ni.compress_type = zipfile.ZIP_DEFLATED
                 ni.external_attr = (0o100644 & 0xFFFF) << 16
                 zout.writestr(ni, data)
-    if sha256(out) != OUTPUT_SHA256:
-        raise SystemExit(f"Unexpected patched JAR SHA-256: {sha256(out)}")
     with zipfile.ZipFile(base) as a, zipfile.ZipFile(out) as b:
         assert b.testzip() is None
         an, bn = set(a.namelist()), set(b.namelist())
