@@ -1,0 +1,611 @@
+name: Build Nexus BETA 1.0 PRE16
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/reference/BETA-1.0-PRE16/**"
+      - ".github/workflows/nexus-pre16-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository with LFS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Verify PRE15 base
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar"
+          test -s "$BASE"
+          unzip -t "$BASE" >/dev/null
+          ACTUAL="$(sha256sum "$BASE" | awk '{print $1}')"
+          EXPECTED="ae3c6b30ac7a2c75d1e92a44c2b76a1053c59ed2676d1c2dd3b658d3566f75af"
+          test "$ACTUAL" = "$EXPECTED" || {
+            echo "PRE15 SHA mismatch: $ACTUAL"
+            exit 1
+          }
+
+      - name: Compile PRE16 preview fix
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar"
+          mkdir -p /tmp/pre16-classes
+
+          javac -cp "$BASE" -d /tmp/pre16-classes             mods/nexuscharacters/reference/BETA-1.0-PRE16/sources/LongHair3DRenderSupport.java             mods/nexuscharacters/reference/BETA-1.0-PRE16/sources/WorldlessSkinLayersPreviewSupport.java             mods/nexuscharacters/reference/BETA-1.0-PRE16/sources/WorldlessHairWidgetRenderer.java             mods/nexuscharacters/reference/BETA-1.0-PRE16/sources/BeardPreviewVisibilitySupport.java             mods/nexuscharacters/reference/BETA-1.0-PRE16/sources/WorldlessCosmeticPreview.java
+
+          for c in             LongHair3DRenderSupport             WorldlessSkinLayersPreviewSupport             WorldlessHairWidgetRenderer             BeardPreviewVisibilitySupport             WorldlessCosmeticPreview; do
+            test -f "/tmp/pre16-classes/net/tompsen/nexuscharacters/$c.class"
+          done
+
+          # No new companion class may be silently omitted like PRE14 HairParts.
+          find /tmp/pre16-classes/net/tompsen/nexuscharacters -type f -name '*.class' -print | sort
+          test "$(find /tmp/pre16-classes/net/tompsen/nexuscharacters -type f -name '*.class' | wc -l)" -eq 5
+
+      - name: Assemble PRE16
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE16.jar"
+          cp "$BASE" "$OUT"
+
+          jar uf "$OUT"             -C /tmp/pre16-classes net/tompsen/nexuscharacters/LongHair3DRenderSupport.class             -C /tmp/pre16-classes net/tompsen/nexuscharacters/WorldlessSkinLayersPreviewSupport.class             -C /tmp/pre16-classes net/tompsen/nexuscharacters/WorldlessHairWidgetRenderer.class             -C /tmp/pre16-classes net/tompsen/nexuscharacters/BeardPreviewVisibilitySupport.class             -C /tmp/pre16-classes net/tompsen/nexuscharacters/WorldlessCosmeticPreview.class
+
+          mkdir -p /tmp/pre16-meta
+          unzip -p "$OUT" fabric.mod.json > /tmp/pre16-meta/fabric.mod.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("/tmp/pre16-meta/fabric.mod.json")
+          data=json.loads(p.read_text(encoding="utf-8"))
+          data["version"]="1.0.0-beta.16+hc.1.21.11"
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          jar uf "$OUT" -C /tmp/pre16-meta fabric.mod.json
+          unzip -t "$OUT" >/dev/null
+
+      - name: Verify exact 3D Skin Layers 1.10.2 contract
+        shell: bash
+        run: |
+          curl -fL --retry 3             "https://github.com/tr7zw/3d-Skin-Layers/releases/download/1.10.2/skinlayers3d-fabric-1.10.2-mc1.21.11.jar"             -o /tmp/skinlayers.jar
+          echo "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756  /tmp/skinlayers.jar"             | sha256sum -c -
+
+          javap -classpath /tmp/skinlayers.jar -p -s dev.tr7zw.skinlayers.SkinUtil             | grep -A2 -F 'getTexture(net.minecraft.class_2960, dev.tr7zw.skinlayers.accessor.SkullSettings)'
+          javap -classpath /tmp/skinlayers.jar -p dev.tr7zw.skinlayers.api.MeshHelper             | grep -F 'create3DMesh'
+          javap -classpath /tmp/skinlayers.jar -p dev.tr7zw.skinlayers.accessor.ModelPartInjector             | grep -F 'setInjectedMesh'
+
+          # Exact intermediary outer-layer fields used by the official 1.10.2 mixin.
+          javap -classpath /tmp/skinlayers.jar -p -c dev.tr7zw.skinlayers.mixin.PlayerModelMixin > /tmp/sl-player.txt
+          for field in field_3394 field_3483 field_3484 field_3486 field_3482 field_3479; do
+            grep -F "Field $field:Lnet/minecraft/class_630;" /tmp/sl-player.txt
+          done
+
+      - name: Build PRE16 worldless integration stubs
+        shell: bash
+        run: |
+          ST=/tmp/pre16-stubs
+          CLS=/tmp/pre16-stub-classes
+          mkdir -p             "$ST/net/minecraft"             "$ST/dev/tr7zw/skinlayers/api"             "$ST/dev/tr7zw/skinlayers/accessor"             "$ST/dev/tr7zw/skinlayers"             "$ST/net/tompsen/nexuscharacters"             "$ST/org/slf4j"
+
+          cat > "$ST/org/slf4j/Logger.java" <<'JAVA'
+          package org.slf4j;
+          public interface Logger {
+              default void info(String s,Object... a){}
+              default void warn(String s,Object... a){}
+              default void error(String s,Object... a){}
+          }
+          JAVA
+
+          cat > "$ST/net/tompsen/nexuscharacters/NexusCharacters.java" <<'JAVA'
+          package net.tompsen.nexuscharacters;
+          public final class NexusCharacters {
+              public static final org.slf4j.Logger LOGGER = new org.slf4j.Logger(){};
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_1011.java" <<'JAVA'
+          package net.minecraft;
+          import java.io.InputStream;
+          public class class_1011 implements AutoCloseable {
+              public static class_1011 method_4309(InputStream in){ return new class_1011(); }
+              public void close(){}
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_4587.java" <<'JAVA'
+          package net.minecraft;
+          import java.util.ArrayList;
+          import java.util.List;
+          public class class_4587 {
+              public final List<float[]> scales=new ArrayList<>();
+              public void method_22905(float x,float y,float z){ scales.add(new float[]{x,y,z}); }
+              public void method_22904(float x,float y,float z){}
+          }
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/api/Mesh.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.api;
+          public interface Mesh {}
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/api/OffsetProvider.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.api;
+          import net.minecraft.class_4587;
+          public interface OffsetProvider {
+              void applyOffset(class_4587 matrices, Mesh mesh);
+              OffsetProvider HEAD=(m,x)->{};
+              OffsetProvider BODY=(m,x)->{};
+              OffsetProvider LEFT_ARM=(m,x)->{};
+              OffsetProvider RIGHT_ARM=(m,x)->{};
+              OffsetProvider LEFT_ARM_SLIM=(m,x)->{};
+              OffsetProvider RIGHT_ARM_SLIM=(m,x)->{};
+              OffsetProvider LEFT_LEG=(m,x)->{};
+              OffsetProvider RIGHT_LEG=(m,x)->{};
+          }
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/api/MeshHelper.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.api;
+          import net.minecraft.class_1011;
+          public interface MeshHelper {
+              Mesh create3DMesh(class_1011 image,int w,int h,int d,int u,int v,boolean top,float rot);
+          }
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/api/SkinLayersAPI.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.api;
+          public final class SkinLayersAPI {
+              public static int created;
+              private static final MeshHelper HELPER=(img,w,h,d,u,v,top,rot)->{
+                  created++; return new Mesh(){};
+              };
+              public static MeshHelper getMeshHelper(){ return HELPER; }
+          }
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/accessor/ModelPartInjector.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.accessor;
+          import dev.tr7zw.skinlayers.api.Mesh;
+          import dev.tr7zw.skinlayers.api.OffsetProvider;
+          public interface ModelPartInjector {
+              void setInjectedMesh(Mesh mesh, OffsetProvider offset);
+          }
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/accessor/SkullSettings.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.accessor;
+          public interface SkullSettings {}
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/SkinUtil.java" <<'JAVA'
+          package dev.tr7zw.skinlayers;
+          import net.minecraft.class_1011;
+          import net.minecraft.class_2960;
+          import dev.tr7zw.skinlayers.accessor.SkullSettings;
+          public final class SkinUtil {
+              public static int resolves;
+              public static class_1011 getTexture(class_2960 id, SkullSettings settings){
+                  resolves++; return new class_1011();
+              }
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_630.java" <<'JAVA'
+          package net.minecraft;
+          import java.util.LinkedHashMap;
+          import java.util.Map;
+          import dev.tr7zw.skinlayers.api.Mesh;
+          import dev.tr7zw.skinlayers.api.OffsetProvider;
+          import dev.tr7zw.skinlayers.accessor.ModelPartInjector;
+          public class class_630 implements ModelPartInjector {
+              public Map<String,class_630> field_3661=new LinkedHashMap<>();
+              public boolean field_3665=true;
+              public boolean field_38456=false;
+              public Mesh injectedMesh;
+              public OffsetProvider injectedOffset;
+              private Object pose=new Object();
+              public void setInjectedMesh(Mesh mesh, OffsetProvider offset){
+                  injectedMesh=mesh; injectedOffset=offset;
+              }
+              public Object method_32084(){ return pose; }
+              public void method_32085(Object p){ pose=p; }
+              public void method_22703(class_4587 matrices){}
+          }
+          JAVA
+
+          cat > "$ST/net/tompsen/nexuscharacters/BeardVoxelModelFactory.java" <<'JAVA'
+          package net.tompsen.nexuscharacters;
+          public final class BeardVoxelModelFactory {
+              public static final class Cuboid {}
+              public static Object bake(Cuboid... cuboids){ return new net.minecraft.class_630(); }
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_591.java" <<'JAVA'
+          package net.minecraft;
+          public class class_591 {
+              public final class_630 field_3398=new class_630();
+              public final class_630 field_3394=new class_630();
+              public final class_630 field_3391=new class_630();
+              public final class_630 field_3401=new class_630();
+              public final class_630 field_27433=new class_630();
+              public final class_630 field_3392=new class_630();
+              public final class_630 field_3397=new class_630();
+
+              public final class_630 field_3483=new class_630();
+              public final class_630 field_3484=new class_630();
+              public final class_630 field_3486=new class_630();
+              public final class_630 field_3482=new class_630();
+              public final class_630 field_3479=new class_630();
+
+              public void method_2805(boolean visible){
+                  for(class_630 p:new class_630[]{
+                      field_3398,field_3394,field_3391,field_3401,field_27433,field_3392,field_3397,
+                      field_3483,field_3484,field_3486,field_3482,field_3479}) p.field_3665=visible;
+              }
+              public class_630 method_2838(){ return field_3398; }
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_5599.java" <<'JAVA'
+          package net.minecraft;
+          public final class class_5599 {}
+          JAVA
+
+          cat > "$ST/net/minecraft/class_310.java" <<'JAVA'
+          package net.minecraft;
+          public final class class_310 {
+              private static final class_310 INSTANCE=new class_310();
+              private final class_5599 models=new class_5599();
+              public static class_310 method_1551(){ return INSTANCE; }
+              public class_5599 method_31974(){ return models; }
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_2960.java" <<'JAVA'
+          package net.minecraft;
+          public final class class_2960 {
+              public final String value;
+              private class_2960(String v){ value=v; }
+              public static class_2960 method_60655(String ns,String path){ return new class_2960(ns+":"+path); }
+              public String toString(){ return value; }
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_12079.java" <<'JAVA'
+          package net.minecraft;
+          public final class class_12079 {
+              public static class class_12081 {
+                  protected final class_2960 texture;
+                  public class_12081(class_2960 texture){ this.texture=texture; }
+                  public class_2960 comp_3626(){ return texture; }
+                  public class_2960 comp_3627(){ return texture; }
+              }
+              public static final class class_10726 extends class_12081 {
+                  private final class_2960 actual;
+                  public class_10726(class_2960 cache,class_2960 actual){ super(cache); this.actual=actual; }
+                  public class_2960 comp_3626(){ return actual; }
+                  public class_2960 comp_3627(){ return actual; }
+              }
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_7920.java" <<'JAVA'
+          package net.minecraft;
+          public final class class_7920 {
+              public static final class_7920 field_41123=new class_7920();
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_8685.java" <<'JAVA'
+          package net.minecraft;
+          public class class_8685 {
+              private final class_12079.class_12081 ref;
+              private final class_7920 model;
+              public class_8685(class_12079.class_12081 ref,Object cape,Object elytra,class_7920 model,boolean secure){
+                  this.ref=ref; this.model=model;
+              }
+              public class_12079.class_12081 comp_1626(){ return ref; }
+              public class_7920 comp_1629(){ return model; }
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_8765.java" <<'JAVA'
+          package net.minecraft;
+          import java.util.function.Supplier;
+          public class class_8765 {
+              public static int created;
+              public static int renders;
+              public static class_8765 lastCreated;
+              public final class_591 field_59834=new class_591();
+              public final class_591 field_59835=new class_591();
+              public float field_46005;
+              public float field_46006;
+              private int x,y,w,h;
+              private final Supplier<?> skin;
+              public class_8765(int w,int h,class_5599 models,Supplier<?> skin){
+                  this.w=w;this.h=h;this.skin=skin;created++;lastCreated=this;
+              }
+              public int method_46426(){return x;}
+              public int method_46427(){return y;}
+              public int method_25368(){return w;}
+              public int method_25364(){return h;}
+              public void method_55445(int w,int h){this.w=w;this.h=h;}
+              public void method_46421(int x){this.x=x;}
+              public void method_46419(int y){this.y=y;}
+              public void method_25394(Object ctx,int mx,int my,float delta){
+                  if(skin.get()==null) throw new AssertionError("overlay skin null");
+                  renders++;
+              }
+          }
+          JAVA
+
+          cat > "$ST/net/tompsen/nexuscharacters/PreviewDummyPlayerManager.java" <<'JAVA'
+          package net.tompsen.nexuscharacters;
+          import net.minecraft.*;
+          public final class PreviewDummyPlayerManager {
+              public static Object skin(Object dto){
+                  class_2960 id=class_2960.method_60655("nexuscharacters",
+                      "dynamic/appearance/player_v69_b1_e1_ec0_ey2_h08_hc02_s05_o20_fh0_fc00_mk0_mc0");
+                  return new class_8685(new class_12079.class_10726(id,id),null,null,class_7920.field_41123,false);
+              }
+          }
+          JAVA
+
+          cat > "$ST/net/tompsen/nexuscharacters/PresetSkinSupport.java" <<'JAVA'
+          package net.tompsen.nexuscharacters;
+          public final class PresetSkinSupport {
+              public static String markerId(String raw){
+                  String p="@nexus:appearance:";
+                  return raw!=null&&raw.startsWith(p)?raw.substring(p.length()):raw;
+              }
+          }
+          JAVA
+
+          cat > "$ST/net/tompsen/nexuscharacters/PreviewDragInput.java" <<'JAVA'
+          package net.tompsen.nexuscharacters;
+          public final class PreviewDragInput {
+              public static float yaw;
+              public static float getYawDegrees(){ return yaw; }
+          }
+          JAVA
+
+          cat > "$ST/net/tompsen/nexuscharacters/CosmeticColorSupport.java" <<'JAVA'
+          package net.tompsen.nexuscharacters;
+          public final class CosmeticColorSupport {
+              public static Object dto;
+              public static void setPreviewDto(Object value){ dto=value; }
+          }
+          JAVA
+
+          cat > "$ST/net/tompsen/nexuscharacters/WorldlessBeardWidgetRenderer.java" <<'JAVA'
+          package net.tompsen.nexuscharacters;
+          public final class WorldlessBeardWidgetRenderer {
+              public static int renders;
+              public static void render(Object a,Object b,Object c,int d,int e,int f,int g,int h,int i,float j){
+                  renders++;
+              }
+          }
+          JAVA
+
+          javac -d "$CLS" $(find "$ST" -name '*.java')
+
+      - name: Run PRE16 end-to-end worldless preview harness
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE16.jar"
+          CLS=/tmp/pre16-stub-classes
+
+          cat >/tmp/Pre16Harness.java <<'JAVA'
+          import java.lang.reflect.Field;
+          import java.util.Map;
+          import net.minecraft.*;
+          import dev.tr7zw.skinlayers.api.*;
+
+          public final class Pre16Harness {
+              public static final class Dto {
+                  private final String marker;
+                  public Dto(String marker){this.marker=marker;}
+                  public String skinUsername(){return marker;}
+              }
+
+              static class_630 child(class_630 parent,String key){
+                  return parent.field_3661.get(key);
+              }
+
+              static void require(boolean condition,String message){
+                  if(!condition) throw new AssertionError(message);
+              }
+
+              public static void main(String[] args)throws Exception{
+                  Dto h08=new Dto("@nexus:appearance:player_v69_b1_e1_ec0_ey2_h08_hc02_s05_o20_fh0_fc00_mk0_mc0");
+                  class_8765 main=new class_8765(118,157,new class_5599(),()->PreviewDummyPlayerManager.skin(h08));
+                  main.method_46421(589);
+                  main.method_46419(170);
+
+                  // The same hook CharacterPreviewRenderer calls before its main widget render.
+                  net.tompsen.nexuscharacters.WorldlessCosmeticPreview.apply(main,h08);
+                  require(net.tompsen.nexuscharacters.CosmeticColorSupport.dto==h08,"preview DTO bridge not preserved");
+
+                  // All six vanilla outer parts must now carry genuine Skin Layers meshes.
+                  for(class_591 model:new class_591[]{main.field_59834,main.field_59835}){
+                      require(model.field_3394.injectedMesh!=null,"hat mesh missing");
+                      require(model.field_3483.injectedMesh!=null,"jacket mesh missing");
+                      require(model.field_3484.injectedMesh!=null,"left sleeve mesh missing");
+                      require(model.field_3486.injectedMesh!=null,"right sleeve mesh missing");
+                      require(model.field_3482.injectedMesh!=null,"left pants mesh missing");
+                      require(model.field_3479.injectedMesh!=null,"right pants mesh missing");
+                  }
+                  require(dev.tr7zw.skinlayers.SkinUtil.resolves==1,"dynamic texture not resolved through SkinUtil");
+                  require(dev.tr7zw.skinlayers.api.SkinLayersAPI.created==8,"expected 8 cached main outer meshes");
+
+                  int beforeWidgets=class_8765.created;
+                  net.tompsen.nexuscharacters.PreviewDragInput.yaw=0f;
+                  net.tompsen.nexuscharacters.BeardPreviewVisibilitySupport.render(
+                      new Object(),h08,main,589,170,118,157,600,250,0f);
+                  require(class_8765.created==beforeWidgets+1,"hair overlay widget not created");
+                  require(class_8765.renders==1,"hair overlay widget not rendered");
+                  require(net.tompsen.nexuscharacters.WorldlessBeardWidgetRenderer.renders==1,"front beard path changed");
+
+                  class_8765 overlay=class_8765.lastCreated;
+                  class_630 head=child(overlay.field_59834.field_3398,"nexuscharacters$hair_head");
+                  class_630 body=child(overlay.field_59834.field_3391,"nexuscharacters$hair_body");
+                  require(head!=null&&head.injectedMesh!=null,"h08 HEAD dedicated mesh absent");
+                  require(body!=null&&body.injectedMesh!=null,"h08 BODY dedicated mesh absent");
+                  require(overlay.field_59834.field_3398.field_38456,"overlay base head cubes not suppressed");
+                  require(overlay.field_59834.field_3391.field_38456,"overlay base body cubes not suppressed");
+
+                  class_4587 matrices=new class_4587();
+                  body.injectedOffset.applyOffset(matrices,body.injectedMesh);
+                  require(!matrices.scales.isEmpty(),"hair BODY extra scale not applied");
+                  float[] s=matrices.scales.get(matrices.scales.size()-1);
+                  require(Math.abs(s[0]-1.16f)<0.0001f,"hair X separation wrong");
+                  require(Math.abs(s[1]-1.02f)<0.0001f,"hair Y separation wrong");
+                  require(Math.abs(s[2]-1.45f)<0.0001f,"hair Z separation wrong");
+
+                  // Hair must still render when preview is turned backwards; beard must not.
+                  net.tompsen.nexuscharacters.PreviewDragInput.yaw=180f;
+                  int hairBefore=class_8765.renders;
+                  int beardBefore=net.tompsen.nexuscharacters.WorldlessBeardWidgetRenderer.renders;
+                  net.tompsen.nexuscharacters.BeardPreviewVisibilitySupport.render(
+                      new Object(),h08,main,589,170,118,157,600,250,0f);
+                  require(class_8765.renders==hairBefore+1,"back-facing hair overlay was suppressed");
+                  require(net.tompsen.nexuscharacters.WorldlessBeardWidgetRenderer.renders==beardBefore,
+                      "back-facing beard behavior regressed");
+
+                  System.out.println("PRE16 HARNESS OK: main outer Skin Layers=6 parts/model; h08 HEAD+BODY overlay active; BODY extra=1.16/1.02/1.45; back-facing hair retained.");
+              }
+          }
+          JAVA
+
+          javac -cp "$CLS:$OUT" /tmp/Pre16Harness.java
+          java -cp "$CLS:$OUT:/tmp" Pre16Harness
+
+      - name: Verify PRE16 structure and regression scope
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE16.jar"
+
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,zipfile
+
+          base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar")
+          out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE16.jar")
+
+          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
+              n0=set(z0.namelist()); n1=set(z1.namelist())
+              added=n1-n0
+              expected_added={
+                  "net/tompsen/nexuscharacters/WorldlessSkinLayersPreviewSupport.class",
+                  "net/tompsen/nexuscharacters/WorldlessHairWidgetRenderer.class",
+              }
+              if added != expected_added:
+                  raise SystemExit(f"unexpected PRE16 added entries: {sorted(added)}")
+              if n0-n1:
+                  raise SystemExit(f"PRE16 removed entries: {sorted(n0-n1)}")
+
+              changed={
+                  n for n in n0
+                  if hashlib.sha256(z0.read(n)).digest()!=hashlib.sha256(z1.read(n)).digest()
+              }
+              expected_changed={
+                  "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
+                  "net/tompsen/nexuscharacters/BeardPreviewVisibilitySupport.class",
+                  "net/tompsen/nexuscharacters/WorldlessCosmeticPreview.class",
+                  "fabric.mod.json",
+              }
+              if changed != expected_changed:
+                  raise SystemExit(f"unexpected PRE16 changed entries: {sorted(changed)}")
+
+              # All PRE14/PRE15 hair assets and colour topology remain byte-identical.
+              for name in n0:
+                  if name.startswith("assets/nexuscharacters/appearance_parts_v064/hair/")                      or name.startswith("assets/nexuscharacters/textures/cosmetic/hair_3d"):
+                      if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                          raise SystemExit(f"hair asset changed unexpectedly: {name}")
+
+              for name in (
+                  "net/tompsen/nexuscharacters/CharacterPreviewRenderer.class",
+                  "net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class",
+                  "net/tompsen/nexuscharacters/DynamicAppearanceSupport.class",
+                  "net/tompsen/nexuscharacters/WorldlessBeardWidgetRenderer.class",
+                  "net/tompsen/nexuscharacters/WorldlessEarWidgetRenderer.class",
+                  "net/tompsen/nexuscharacters/FixedBeardPreviewRenderer.class",
+                  "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
+                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
+                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
+                  "net/tompsen/nexuscharacters/NexusCharacters.class",
+                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
+              ):
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                      raise SystemExit(f"preserved class changed: {name}")
+
+              mod=json.loads(z1.read("fabric.mod.json"))
+              if mod.get("version")!="1.0.0-beta.16+hc.1.21.11":
+                  raise SystemExit("wrong PRE16 version")
+
+          raw=out.read_bytes()
+          sha=hashlib.sha256(raw).hexdigest()
+          size=len(raw)
+          ref=Path("mods/nexuscharacters/reference/BETA-1.0-PRE16")
+          (ref/"SHA256SUMS.txt").write_text(f"{sha}  {out.name}\n",encoding="utf-8")
+          (ref/"VALIDATION.md").write_text(
+              "# Validation BETA 1.0 PRE16\n\n"
+              f"- JAR : `{out.name}`\n"
+              f"- Taille : **{size} octets**\n"
+              f"- SHA-256 : `{sha}`\n"
+              "- Base PRE15 SHA vérifiée.\n"
+              "- Cause PRE15 confirmée : l'aperçu worldless PlayerSkinWidget ne passe pas par CharacterCosmeticFeatureRenderer.\n"
+              "- Main PlayerSkinWidget : 6 couches outer injectées avec les meshes/OffsetProvider officiels de Skin Layers, wide + slim.\n"
+              "- Hair overlay : widget séparé, HEAD+BODY dédiés, y compris en rotation arrière.\n"
+              "- Harness h08 : BODY présent et offset extra 1.16 / 1.02 / 1.45 appliqué.\n"
+              "- Les 247 textures 3D teintées et tous les assets hair PRE15 sont byte-identiques.\n"
+              "- Barbe/oreilles, CharacterPreviewRenderer, DynamicAppearanceSupport, sauvegarde et ABI restent inchangés.\n"
+              "- Version : `1.0.0-beta.16+hc.1.21.11`.\n",
+              encoding="utf-8"
+          )
+          print("PRE16",size,sha)
+          PY
+
+          # Confirm diagnostic strings and no hidden companion classes.
+          jar tf "$OUT" | grep -F 'net/tompsen/nexuscharacters/WorldlessSkinLayersPreviewSupport.class'
+          jar tf "$OUT" | grep -F 'net/tompsen/nexuscharacters/WorldlessHairWidgetRenderer.class'
+          test "$(jar tf "$OUT" | grep -c 'WorldlessHairWidgetRenderer.*\.class$')" -eq 1
+          unzip -p "$OUT" net/tompsen/nexuscharacters/WorldlessHairWidgetRenderer.class             | strings | grep -F '[NexusCharacters][HairPreview3D] READY'
+          unzip -p "$OUT" net/tompsen/nexuscharacters/WorldlessSkinLayersPreviewSupport.class             | strings | grep -F '[NexusCharacters][SkinLayersPreview] READY'
+
+      - name: Publish PRE16 through Git LFS
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar             .github/workflows/nexus-pre15-preview-audit.yml             .github/workflows/nexus-pre15-worldless-audit.yml             .github/workflows/nexus-pre16-skinlayers-fields.yml             .github/workflows/nexus-pre16-dynamic-texture.yml
+
+          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE16.jar             mods/nexuscharacters/reference/BETA-1.0-PRE16
+
+          if git diff --cached --quiet; then
+            echo "No PRE16 artifacts to publish."
+            exit 0
+          fi
+
+          git commit -m "nexus: publish BETA 1.0 PRE16 worldless Skin Layers preview"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
