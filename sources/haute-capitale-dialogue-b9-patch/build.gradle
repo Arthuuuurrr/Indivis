@@ -45,5 +45,5 @@ tasks.jar {
     exclude "net/hautecapitale/dialogue/client/DialogueClientSettings.class"
     exclude "net/hautecapitale/dialogue/client/DialogueClientState.class"
     exclude "net/hautecapitale/dialogue/client/capture/MessageCapture.class"
-    exclude "net/hautecapitale/dialogue/client/capture/MessageCapture$Classification.class"
+    exclude 'net/hautecapitale/dialogue/client/capture/MessageCapture$Classification.class'
 }
