@@ -11,16 +11,16 @@ import net.hautecapitale.dialogue.client.DialogueClientSettings;
 import net.hautecapitale.dialogue.client.DialogueClientState;
 import net.hautecapitale.dialogue.client.capture.MessageCapture;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.network.chat.ClickEvent;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.Style;
+import net.minecraft.text.ClickEvent;
+import net.minecraft.text.Text;
+import net.minecraft.text.Style;
 
 public final class B9ClientPatch implements ClientModInitializer {
     private static final int PENDING_WINDOW_TICKS = 40;
 
-    private static Component previousGameMessage;
-    private static Component pendingSpeakerMessage;
-    private static Component pendingChoiceMessage;
+    private static Text previousGameMessage;
+    private static Text pendingSpeakerMessage;
+    private static Text pendingChoiceMessage;
     private static int pendingTicks;
     private static boolean commandSent;
 
@@ -38,7 +38,7 @@ public final class B9ClientPatch implements ClientModInitializer {
         ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> clearPending());
     }
 
-    private static void onGameMessage(Component message) {
+    private static void onGameMessage(Text message) {
         if (message == null) {
             return;
         }
@@ -79,7 +79,7 @@ public final class B9ClientPatch implements ClientModInitializer {
         }
     }
 
-    private static boolean isAccessChoicePrompt(Component message) {
+    private static boolean isAccessChoicePrompt(Text message) {
         String text = normalize(message.getString());
         if (!text.contains("arrangement")
                 || !(text.contains("suivre") && text.contains("garde"))) {
@@ -104,7 +104,7 @@ public final class B9ClientPatch implements ClientModInitializer {
         return hasCapChoice.get();
     }
 
-    private static boolean isGuardSpeakerMessage(Component message) {
+    private static boolean isGuardSpeakerMessage(Text message) {
         if (message == null) {
             return false;
         }
@@ -114,7 +114,7 @@ public final class B9ClientPatch implements ClientModInitializer {
                 || text.contains("[garde ");
     }
 
-    private static void replayIntoCapture(Component message) {
+    private static void replayIntoCapture(Text message) {
         if (message == null || !DialogueClientState.captureActive()) {
             return;
         }
