@@ -1,0 +1,213 @@
+name: Build Nexus BETA 1.0 PRE11
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/reference/BETA-1.0-PRE11/**"
+      - ".github/workflows/nexus-pre11-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with LFS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Verify PRE10 base
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar"
+          test -s "$BASE"
+          unzip -t "$BASE" >/dev/null
+          ACTUAL="$(sha256sum "$BASE" | awk '{print $1}')"
+          EXPECTED="70ea36edfcb2914e67e39f1cdb0ddc258ebae21dbec094241c6280bf8a4c0e33"
+          test "$ACTUAL" = "$EXPECTED" || {
+            echo "PRE10 SHA mismatch: $ACTUAL"
+            exit 1
+          }
+
+      - name: Compile PRE11 render support
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar"
+          mkdir -p /tmp/pre11-classes
+          javac -cp "$BASE"             -d /tmp/pre11-classes             mods/nexuscharacters/reference/BETA-1.0-PRE11/sources/LongHair3DRenderSupport.java
+          test -f /tmp/pre11-classes/net/tompsen/nexuscharacters/LongHair3DRenderSupport.class
+
+      - name: Assemble PRE11
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
+
+          cp "$BASE" "$OUT"
+          jar uf "$OUT"             -C /tmp/pre11-classes net/tompsen/nexuscharacters/LongHair3DRenderSupport.class
+
+          mkdir -p /tmp/pre11-meta
+          unzip -p "$OUT" fabric.mod.json > /tmp/pre11-meta/fabric.mod.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("/tmp/pre11-meta/fabric.mod.json")
+          data=json.loads(p.read_text(encoding="utf-8"))
+          data["version"]="1.0.0-beta.11+hc.1.21.11"
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          jar uf "$OUT" -C /tmp/pre11-meta fabric.mod.json
+
+      - name: Validate PRE11 regression scope
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
+          unzip -t "$OUT" >/dev/null
+
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,zipfile
+
+          base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar")
+          out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar")
+
+          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
+              n0=z0.namelist()
+              n1=z1.namelist()
+
+              if len(n1)!=len(set(n1)):
+                  dup=sorted({n for n in n1 if n1.count(n)>1})
+                  raise SystemExit(f"Duplicate ZIP entries: {dup}")
+              if set(n0)!=set(n1):
+                  raise SystemExit("PRE11 changed the JAR entry set")
+
+              expected={
+                  "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
+                  "fabric.mod.json",
+              }
+              changed={
+                  name for name in n0
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest()
+              }
+              if changed!=expected:
+                  raise SystemExit(f"Unexpected changed entries: {sorted(changed)}")
+
+              # Keep the hook and every previous stabilisation byte-identical.
+              for name in (
+                  "net/tompsen/nexuscharacters/DynamicAppearanceSupport.class",
+                  "net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class",
+                  "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
+                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
+                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
+                  "net/tompsen/nexuscharacters/NexusCharacters.class",
+                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
+                  "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
+              ):
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                      raise SystemExit(f"Preserved class changed unexpectedly: {name}")
+
+              # All PRE10/PRE9 hair assets remain byte-identical.
+              for name in n0:
+                  if "/hair/" in name or "/long_hair_body/" in name:
+                      if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                          raise SystemExit(f"Hair asset changed unexpectedly: {name}")
+
+              mod=json.loads(z1.read("fabric.mod.json"))
+              if mod.get("version")!="1.0.0-beta.11+hc.1.21.11":
+                  raise SystemExit(f"Wrong version: {mod.get('version')}")
+
+          raw=out.read_bytes()
+          sha=hashlib.sha256(raw).hexdigest()
+          size=len(raw)
+          ref=Path("mods/nexuscharacters/reference/BETA-1.0-PRE11")
+          (ref/"SHA256SUMS.txt").write_text(f"{sha}  {out.name}\n",encoding="utf-8")
+          (ref/"VALIDATION.md").write_text(
+              "# Validation BETA 1.0 PRE11\n\n"
+              f"- JAR : `{out.name}`\n"
+              f"- Taille : **{size} octets**\n"
+              f"- SHA-256 : `{sha}`\n"
+              "- Base : PRE10 SHA vérifié.\n"
+              "- Archive ZIP/JAR : OK ; aucun doublon d'entrée.\n"
+              "- Ensemble des entrées identique à PRE10.\n"
+              "- Entrées modifiées uniquement : `LongHair3DRenderSupport.class`, `fabric.mod.json`.\n"
+              "- Hook de rendu PRE10 conservé byte-identique.\n"
+              "- DynamicAppearanceSupport byte-identique à PRE10 ; son appel à hairAssetName reste présent.\n"
+              "- Tous les assets de cheveux PRE10 sont byte-identiques.\n"
+              "- Correctifs PRE8/PRE9, barbes et layout strictement inchangés.\n"
+              "- Version : `1.0.0-beta.11+hc.1.21.11`.\n",
+              encoding="utf-8"
+          )
+          print("PRE11",size,sha)
+          PY
+
+      - name: Validate PRE11 fallback and hook
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
+
+          cat >/tmp/NexusPre11Probe.java <<'JAVA'
+          public final class NexusPre11Probe {
+              public static void main(String[] args) throws Exception {
+                  Class<?> c=Class.forName("net.tompsen.nexuscharacters.LongHair3DRenderSupport");
+                  var m=c.getMethod("hairAssetName",int.class);
+
+                  expect(m,5,"hair_short_05.png");
+                  expect(m,6,"hair_long_01.png");
+                  expect(m,8,"hair_long_03.png");
+                  expect(m,10,"hair_long_05.png");
+                  expect(m,13,"hair_long_08.png");
+
+                  System.out.println("PRE11 fallback asset mapping OK");
+              }
+
+              private static void expect(java.lang.reflect.Method m,int i,String expected) throws Exception {
+                  String actual=(String)m.invoke(null,i);
+                  if(!expected.equals(actual)) {
+                      throw new AssertionError(i+": expected "+expected+", got "+actual);
+                  }
+              }
+          }
+          JAVA
+          javac -cp "$OUT" /tmp/NexusPre11Probe.java
+          java -cp "$OUT:/tmp" NexusPre11Probe
+
+          echo "=== PRE10 hook retained ==="
+          javap -classpath "$OUT" -p -c net.tompsen.nexuscharacters.CharacterCosmeticFeatureRenderer             | grep -F 'LongHair3DRenderSupport.render'
+
+          echo "=== PRE11 wrapper path ==="
+          javap -classpath "$OUT" -p -c net.tompsen.nexuscharacters.LongHair3DRenderSupport             | grep -E 'BeardVoxelModelFactory.bake|setInjectedMesh|method_73492|hairAssetName'
+
+          echo "=== PRE9 ABI retained ==="
+          javap -classpath "$OUT" -p net.tompsen.nexuscharacters.UnifiedPilositySupport             | grep -F 'public static boolean allowsPilosity(java.lang.Object);'
+
+      - name: Publish PRE11 through Git LFS
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE10.jar
+
+          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar             mods/nexuscharacters/reference/BETA-1.0-PRE11/SHA256SUMS.txt             mods/nexuscharacters/reference/BETA-1.0-PRE11/VALIDATION.md
+
+          if git diff --cached --quiet; then
+            echo "No PRE11 artifacts to publish."
+            exit 0
+          fi
+
+          git commit -m "nexus: publish BETA 1.0 PRE11 long-hair renderer fix"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
