@@ -1,0 +1,32 @@
+name: Package Haute Capitale Dialogue b9 release
+
+on:
+  push:
+    branches:
+      - fix/dialogue-b9-interpellations
+    paths:
+      - '.github/workflows/package-haute-capitale-dialogue-b9-release.yml'
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify release checksums
+        run: |
+          set -euo pipefail
+          echo "fedf37a5bc3a6bf6364bdd421ad1a2c1955679a6eeb07467252274838139812a  mods/haute-capitale-dialogue-0.1.0+1.21.11.b9.jar" | sha256sum -c -
+          echo "c8e1df244702100fb3f02568e2718b11dd132c9a7bbe92f6cbefb1f7e0152b73  datapacks/releases/capitale_core_1.5.6-RC9BA_DIALOGUE_INTERPELLATIONS_FULL.zip" | sha256sum -c -
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: haute-capitale-dialogue-b9-release
+          path: |
+            mods/haute-capitale-dialogue-0.1.0+1.21.11.b9.jar
+            datapacks/releases/capitale_core_1.5.6-RC9BA_DIALOGUE_INTERPELLATIONS_FULL.zip
+            mods/archive/haute-capitale-dialogue-0.1.0+1.21.11.b8-BACKUP.jar
+            sources/haute-capitale-dialogue-b9-patch/SHA256SUMS.txt
+            sources/haute-capitale-dialogue-b9-patch/VALIDATION_FINAL_B9_RC9BA.md
+          if-no-files-found: error
