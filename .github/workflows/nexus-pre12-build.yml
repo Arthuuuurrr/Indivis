@@ -38,24 +38,27 @@ jobs:
             echo "PRE11 SHA mismatch: $ACTUAL"
             exit 1
           }
-          echo "PRE11 base verified: $ACTUAL"
 
       - name: Fetch compile-only Mixin API
         shell: bash
         run: |
-          curl -fsSL 'https://maven.fabricmc.net/net/fabricmc/sponge-mixin/0.17.4+mixin.0.8.7/sponge-mixin-0.17.4+mixin.0.8.7.jar' -o /tmp/sponge-mixin.jar
-          test -s /tmp/sponge-mixin.jar
+          URL='https://maven.fabricmc.net/net/fabricmc/sponge-mixin/0.17.4+mixin.0.8.7/sponge-mixin-0.17.4+mixin.0.8.7.jar'
+          curl -fsSL "$URL" -o /tmp/sponge-mixin.jar
           echo '1f0ae44db7295f8626f33b1dc0ad7f043d8954a8d6847247875fcc5dfcecc934  /tmp/sponge-mixin.jar' | sha256sum -c -
-          jar tf /tmp/sponge-mixin.jar | grep -q '^org/spongepowered/asm/mixin/Mixin.class
-      - name: Compile PRE12 sources and asset tool
+          jar tf /tmp/sponge-mixin.jar | grep -q '^org/spongepowered/asm/mixin/Mixin.class$'
+          jar tf /tmp/sponge-mixin.jar | grep -q '^org/spongepowered/asm/mixin/Pseudo.class$'
+          jar tf /tmp/sponge-mixin.jar | grep -q '^org/spongepowered/asm/mixin/injection/Inject.class$'
+          jar tf /tmp/sponge-mixin.jar | grep -q '^org/spongepowered/asm/mixin/injection/Coerce.class$'
+
+      - name: Compile PRE12 sources
         shell: bash
         run: |
           BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
           mkdir -p /tmp/pre12-classes /tmp/pre12-tools
 
-          javac -cp "$BASE"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersDynamicSkinBridge.java             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/LongHair3DRenderSupport.java
+          javac -cp "$BASE" -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersDynamicSkinBridge.java             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/LongHair3DRenderSupport.java
 
-          javac -cp "$BASE:/tmp/pre12-classes:/tmp/sponge-mixin.jar"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersPlayerUtilCompatMixin.java
+          javac -cp "$BASE:/tmp/pre12-classes:/tmp/sponge-mixin.jar" -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersPlayerUtilCompatMixin.java
 
           javac -d /tmp/pre12-tools             mods/nexuscharacters/reference/BETA-1.0-PRE12/tools/SeparateLongHairFromBody.java
 
@@ -67,13 +70,14 @@ jobs:
         shell: bash
         run: |
           BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          HAIR=/tmp/pre12-assets/assets/nexuscharacters/appearance_parts_v064/hair
-          BEFORE=/tmp/pre12-before
+          HAIR="/tmp/pre12-assets/assets/nexuscharacters/appearance_parts_v064/hair"
+          BEFORE="/tmp/pre12-before"
           mkdir -p "$HAIR" "$BEFORE"
 
           for i in 01 02 03 04 05; do
-            unzip -p "$BASE"               "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}.png"               > "$HAIR/hair_long_${i}.png"
-            cp "$HAIR/hair_long_${i}.png" "$BEFORE/hair_long_${i}.png"
+            NAME="hair_long_${i}.png"
+            unzip -p "$BASE" "assets/nexuscharacters/appearance_parts_v064/hair/$NAME" > "$HAIR/$NAME"
+            cp "$HAIR/$NAME" "$BEFORE/$NAME"
           done
 
           java -cp /tmp/pre12-tools SeparateLongHairFromBody "$HAIR"
@@ -83,7 +87,6 @@ jobs:
         run: |
           BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
           OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-
           cp "$BASE" "$OUT"
 
           jar uf "$OUT"             -C /tmp/pre12-classes net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class             -C /tmp/pre12-classes net/tompsen/nexuscharacters/LongHair3DRenderSupport.class             -C /tmp/pre12-classes net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class             -C /tmp/pre12-assets assets/nexuscharacters/appearance_parts_v064/hair
@@ -93,7 +96,6 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import json
-
           p=Path("/tmp/pre12-json/nexuscharacters.client.mixins.json")
           data=json.loads(p.read_text(encoding="utf-8"))
           client=data.setdefault("client", [])
@@ -101,7 +103,7 @@ jobs:
           if name not in client:
               client.append(name)
           if client.count(name) != 1:
-              raise SystemExit("SkinLayersPlayerUtilCompatMixin duplicate")
+              raise SystemExit("compat mixin duplicate")
           p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
           jar uf "$OUT" -C /tmp/pre12-json nexuscharacters.client.mixins.json
@@ -118,13 +120,13 @@ jobs:
           PY
           jar uf "$OUT" -C /tmp/pre12-meta fabric.mod.json
 
-      - name: Validate long-hair pixel separation
+      - name: Validate hair separation
         shell: bash
         run: |
           OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
           mkdir -p /tmp/pre12-after
           for i in 01 02 03 04 05; do
-            unzip -p "$OUT"               "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}.png"               > "/tmp/pre12-after/hair_long_${i}.png"
+            unzip -p "$OUT" "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}.png"               > "/tmp/pre12-after/hair_long_${i}.png"
           done
 
           cat >/tmp/VerifyPre12Hair.java <<'JAVA'
@@ -135,38 +137,31 @@ jobs:
           public final class VerifyPre12Hair {
               public static void main(String[] args) throws Exception {
                   for (int i=1;i<=5;i++) {
-                      File beforeFile=new File(String.format("/tmp/pre12-before/hair_long_%02d.png",i));
-                      File afterFile=new File(String.format("/tmp/pre12-after/hair_long_%02d.png",i));
-                      BufferedImage before=ImageIO.read(beforeFile);
-                      BufferedImage after=ImageIO.read(afterFile);
+                      BufferedImage before=ImageIO.read(new File(String.format("/tmp/pre12-before/hair_long_%02d.png",i)));
+                      BufferedImage after=ImageIO.read(new File(String.format("/tmp/pre12-after/hair_long_%02d.png",i)));
                       if(before==null||after==null||before.getWidth()!=64||before.getHeight()!=64
                               ||after.getWidth()!=64||after.getHeight()!=64) {
-                          throw new AssertionError("bad PNG dimensions for "+i);
+                          throw new AssertionError("bad PNG "+i);
                       }
 
                       int baseBefore=0,baseAfter=0,outerBefore=0,outerAfter=0;
                       for(int y=0;y<64;y++) for(int x=0;x<64;x++) {
                           int b=before.getRGB(x,y);
                           int a=after.getRGB(x,y);
-                          boolean inBase=x>=16&&x<40&&y>=16&&y<32;
-                          boolean inOuter=x>=16&&x<40&&y>=32&&y<48;
-                          if(inBase&&((b>>>24)&255)!=0) baseBefore++;
-                          if(inBase&&((a>>>24)&255)!=0) baseAfter++;
-                          if(inOuter&&((b>>>24)&255)!=0) outerBefore++;
-                          if(inOuter&&((a>>>24)&255)!=0) outerAfter++;
-
-                          if(!inBase && b!=a) {
-                              throw new AssertionError("pixel outside base torso changed: hair "+i+" @ "+x+","+y);
-                          }
+                          boolean base=x>=16&&x<40&&y>=16&&y<32;
+                          boolean outer=x>=16&&x<40&&y>=32&&y<48;
+                          if(base&&((b>>>24)&255)!=0) baseBefore++;
+                          if(base&&((a>>>24)&255)!=0) baseAfter++;
+                          if(outer&&((b>>>24)&255)!=0) outerBefore++;
+                          if(outer&&((a>>>24)&255)!=0) outerAfter++;
+                          if(!base && b!=a) throw new AssertionError("outside-base pixel changed "+i+" @ "+x+","+y);
                       }
 
-                      if(baseAfter!=0) {
-                          throw new AssertionError("base torso hair still present for "+i+": "+baseAfter);
-                      }
+                      if(baseAfter!=0) throw new AssertionError("base hair remains "+i+": "+baseAfter);
                       if(outerBefore<=0||outerAfter!=outerBefore) {
-                          throw new AssertionError("outer torso changed for "+i+": "+outerBefore+" -> "+outerAfter);
+                          throw new AssertionError("outer hair changed "+i+": "+outerBefore+" -> "+outerAfter);
                       }
-                      System.out.println("hair "+i+": base "+baseBefore+" -> 0; outer "+outerAfter+" preserved");
+                      System.out.println("hair "+i+": base "+baseBefore+" -> 0; outer "+outerAfter+" kept");
                   }
               }
           }
@@ -174,7 +169,7 @@ jobs:
           javac /tmp/VerifyPre12Hair.java
           java -cp /tmp VerifyPre12Hair
 
-      - name: Validate PRE12 structure and preserved fixes
+      - name: Validate structure and regressions
         shell: bash
         run: |
           BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
@@ -187,16 +182,12 @@ jobs:
 
           base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar")
           out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar")
-
-          allowed_hair={
-              f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png"
-              for i in range(1,6)
-          }
-          required_added={
+          hair={f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png" for i in range(1,6)}
+          added_expected={
               "net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class",
               "net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class",
           }
-          required_changed={
+          changed_required={
               "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
               "nexuscharacters.client.mixins.json",
               "fabric.mod.json",
@@ -205,49 +196,25 @@ jobs:
           with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
               n0=z0.namelist()
               n1=z1.namelist()
-
               if len(n1)!=len(set(n1)):
-                  dup=sorted({n for n in n1 if n1.count(n)>1})
-                  raise SystemExit(f"Duplicate ZIP entries: {dup}")
-
+                  raise SystemExit("duplicate ZIP entries")
               added=set(n1)-set(n0)
               removed=set(n0)-set(n1)
               if removed:
-                  raise SystemExit(f"PRE12 removed entries: {sorted(removed)}")
-              if added!=required_added:
-                  raise SystemExit(f"Unexpected added entries: {sorted(added ^ required_added)}")
+                  raise SystemExit(f"removed entries: {sorted(removed)}")
+              if added!=added_expected:
+                  raise SystemExit(f"unexpected added entries: {sorted(added ^ added_expected)}")
 
               changed={
-                  name for name in set(n0)&set(n1)
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest()
+                  n for n in set(n0)&set(n1)
+                  if hashlib.sha256(z0.read(n)).digest()!=hashlib.sha256(z1.read(n)).digest()
               }
-
-              if not required_changed.issubset(changed):
-                  raise SystemExit(f"Required changed entries missing: {sorted(required_changed-changed)}")
-
-              unexpected=changed-required_changed-allowed_hair
+              if not changed_required.issubset(changed):
+                  raise SystemExit(f"missing changed entries: {sorted(changed_required-changed)}")
+              unexpected=changed-changed_required-hair
               if unexpected:
-                  raise SystemExit(f"Unexpected changed entries: {sorted(unexpected)}")
+                  raise SystemExit(f"unexpected changed entries: {sorted(unexpected)}")
 
-              # At least one hair texture must actually change; 01/02/04/05 are
-              # known to contain duplicate base pixels in PRE11.
-              changed_hair=changed & allowed_hair
-              for expected in (
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_01.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_02.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_04.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_05.png",
-              ):
-                  if expected not in changed_hair:
-                      raise SystemExit(f"Expected cleaned hair asset did not change: {expected}")
-
-              # Long hair 06..08 were never torso-bearing and must remain untouched.
-              for i in range(6,9):
-                  name=f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png"
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
-                      raise SystemExit(f"Non-torso long hair changed: {name}")
-
-              # Critical stabilisations inherited from PRE8/PRE9/PRE11.
               for name in (
                   "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
                   "net/tompsen/nexuscharacters/ProfileStateBridge.class",
@@ -258,16 +225,19 @@ jobs:
                   "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
               ):
                   if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
-                      raise SystemExit(f"Preserved class changed unexpectedly: {name}")
+                      raise SystemExit(f"preserved class changed: {name}")
 
-              client=json.loads(z1.read("nexuscharacters.client.mixins.json"))
-              entries=client.get("client",[])
-              if entries.count("SkinLayersPlayerUtilCompatMixin")!=1:
-                  raise SystemExit("PRE12 compatibility mixin missing or duplicated")
+              for i in range(6,9):
+                  name=f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png"
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                      raise SystemExit(f"non-torso hair changed: {name}")
 
+              mixins=json.loads(z1.read("nexuscharacters.client.mixins.json"))
+              if mixins.get("client",[]).count("SkinLayersPlayerUtilCompatMixin")!=1:
+                  raise SystemExit("compat mixin missing or duplicated")
               mod=json.loads(z1.read("fabric.mod.json"))
               if mod.get("version")!="1.0.0-beta.12+hc.1.21.11":
-                  raise SystemExit(f"Wrong version: {mod.get('version')}")
+                  raise SystemExit("wrong PRE12 version")
 
           raw=out.read_bytes()
           sha=hashlib.sha256(raw).hexdigest()
@@ -279,14 +249,12 @@ jobs:
               f"- JAR : `{out.name}`\n"
               f"- Taille : **{size} octets**\n"
               f"- SHA-256 : `{sha}`\n"
-              "- Base : PRE11 SHA vérifié.\n"
-              "- Archive ZIP/JAR : OK ; aucun doublon d'entrée.\n"
-              "- Aucun fichier PRE11 supprimé.\n"
-              "- Nouveau bridge dynamique Skin Layers + mixin TRansition optionnel.\n"
-              "- Renderer expérimental PRE10/PRE11 neutralisé sans toucher à son hook appelant.\n"
-              "- Cheveux longs 01..05 : pixels dupliqués sur le torse de base supprimés ; surcouche conservée.\n"
-              "- Cheveux longs 06..08 strictement inchangés.\n"
-              "- `UnifiedPilositySupport`, sauvegarde PRE8, barbes, layout et renderer cosmétique appelant strictement inchangés.\n"
+              "- Base PRE11 SHA vérifiée.\n"
+              "- Bridge de texture dynamique pour 3D Skin Layers ajouté via TRansition PlayerUtil.\n"
+              "- Renderer long-hair expérimental PRE10/PRE11 neutralisé.\n"
+              "- Cheveux longs 01..05 : couche torse de base nettoyée, surcouche conservée.\n"
+              "- Cheveux longs 06..08 inchangés.\n"
+              "- Sauvegarde PRE8, ABI PRE9, barbes, layout et renderer cosmétique appelant inchangés.\n"
               "- Version : `1.0.0-beta.12+hc.1.21.11`.\n",
               encoding="utf-8"
           )
@@ -298,31 +266,27 @@ jobs:
         run: |
           OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
 
-          echo "=== mixin target ==="
-          javap -classpath "$OUT:/tmp/sponge-mixin.jar" -p -v             net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin             | grep -E 'dev\.tr7zw\.transition\.mc\.PlayerUtil|getPlayerSkin|Pseudo|require'
+          javap -classpath "$OUT:/tmp/sponge-mixin.jar" -p -v             net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin             | grep -E 'dev\.tr7zw\.transition\.mc\.PlayerUtil|getPlayerSkin|Pseudo'
 
-          echo "=== fallback mapping ==="
           cat >/tmp/NexusPre12Probe.java <<'JAVA'
           public final class NexusPre12Probe {
               public static void main(String[] args) throws Exception {
                   Class<?> c=Class.forName("net.tompsen.nexuscharacters.LongHair3DRenderSupport");
                   var m=c.getMethod("hairAssetName",int.class);
-                  expect(m,6,"hair_long_01.png");
-                  expect(m,8,"hair_long_03.png");
-                  expect(m,10,"hair_long_05.png");
-                  expect(m,13,"hair_long_08.png");
-                  System.out.println("PRE12 full-hair fallback mapping OK");
+                  check(m,6,"hair_long_01.png");
+                  check(m,8,"hair_long_03.png");
+                  check(m,10,"hair_long_05.png");
+                  check(m,13,"hair_long_08.png");
               }
-              private static void expect(java.lang.reflect.Method m,int i,String expected) throws Exception {
-                  String actual=(String)m.invoke(null,i);
-                  if(!expected.equals(actual)) throw new AssertionError(i+": "+actual);
+              private static void check(java.lang.reflect.Method m,int i,String e) throws Exception {
+                  String a=(String)m.invoke(null,i);
+                  if(!e.equals(a)) throw new AssertionError(i+": "+a);
               }
           }
           JAVA
           javac -cp "$OUT" /tmp/NexusPre12Probe.java
           java -cp "$OUT:/tmp" NexusPre12Probe
 
-          echo "=== PRE9 crash ABI retained ==="
           javap -classpath "$OUT" -p net.tompsen.nexuscharacters.UnifiedPilositySupport             | grep -F 'public static boolean allowsPilosity(java.lang.Object);'
 
       - name: Publish PRE12 through Git LFS
@@ -332,908 +296,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar
-
-          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar             mods/nexuscharacters/reference/BETA-1.0-PRE12/SHA256SUMS.txt             mods/nexuscharacters/reference/BETA-1.0-PRE12/VALIDATION.md
-
-          if git diff --cached --quiet; then
-            echo "No PRE12 artifacts to publish."
-            exit 0
-          fi
-
-          git commit -m "nexus: publish BETA 1.0 PRE12 Skin Layers compatibility"
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
-
-          jar tf /tmp/sponge-mixin.jar | grep -q '^org/spongepowered/asm/mixin/Pseudo.class
-      - name: Compile PRE12 sources and asset tool
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          mkdir -p /tmp/pre12-classes /tmp/pre12-tools
-
-          javac -cp "$BASE"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersDynamicSkinBridge.java             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/LongHair3DRenderSupport.java
-
-          javac -cp "$BASE:/tmp/pre12-classes:/tmp/sponge-mixin.jar"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersPlayerUtilCompatMixin.java
-
-          javac -d /tmp/pre12-tools             mods/nexuscharacters/reference/BETA-1.0-PRE12/tools/SeparateLongHairFromBody.java
-
-          test -f /tmp/pre12-classes/net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class
-          test -f /tmp/pre12-classes/net/tompsen/nexuscharacters/LongHair3DRenderSupport.class
-          test -f /tmp/pre12-classes/net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class
-
-      - name: Prepare corrected long-hair assets
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          HAIR=/tmp/pre12-assets/assets/nexuscharacters/appearance_parts_v064/hair
-          BEFORE=/tmp/pre12-before
-          mkdir -p "$HAIR" "$BEFORE"
-
-          for i in 01 02 03 04 05; do
-            unzip -p "$BASE"               "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}.png"               > "$HAIR/hair_long_${i}.png"
-            cp "$HAIR/hair_long_${i}.png" "$BEFORE/hair_long_${i}.png"
-          done
-
-          java -cp /tmp/pre12-tools SeparateLongHairFromBody "$HAIR"
-
-      - name: Assemble PRE12
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-
-          cp "$BASE" "$OUT"
-
-          jar uf "$OUT"             -C /tmp/pre12-classes net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class             -C /tmp/pre12-classes net/tompsen/nexuscharacters/LongHair3DRenderSupport.class             -C /tmp/pre12-classes net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class             -C /tmp/pre12-assets assets/nexuscharacters/appearance_parts_v064/hair
-
-          mkdir -p /tmp/pre12-json
-          unzip -p "$OUT" nexuscharacters.client.mixins.json > /tmp/pre12-json/nexuscharacters.client.mixins.json
-          python - <<'PY'
-          from pathlib import Path
-          import json
-
-          p=Path("/tmp/pre12-json/nexuscharacters.client.mixins.json")
-          data=json.loads(p.read_text(encoding="utf-8"))
-          client=data.setdefault("client", [])
-          name="SkinLayersPlayerUtilCompatMixin"
-          if name not in client:
-              client.append(name)
-          if client.count(name) != 1:
-              raise SystemExit("SkinLayersPlayerUtilCompatMixin duplicate")
-          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-          PY
-          jar uf "$OUT" -C /tmp/pre12-json nexuscharacters.client.mixins.json
-
-          mkdir -p /tmp/pre12-meta
-          unzip -p "$OUT" fabric.mod.json > /tmp/pre12-meta/fabric.mod.json
-          python - <<'PY'
-          from pathlib import Path
-          import json
-          p=Path("/tmp/pre12-meta/fabric.mod.json")
-          data=json.loads(p.read_text(encoding="utf-8"))
-          data["version"]="1.0.0-beta.12+hc.1.21.11"
-          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-          PY
-          jar uf "$OUT" -C /tmp/pre12-meta fabric.mod.json
-
-      - name: Validate long-hair pixel separation
-        shell: bash
-        run: |
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-          mkdir -p /tmp/pre12-after
-          for i in 01 02 03 04 05; do
-            unzip -p "$OUT"               "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}.png"               > "/tmp/pre12-after/hair_long_${i}.png"
-          done
-
-          cat >/tmp/VerifyPre12Hair.java <<'JAVA'
-          import java.awt.image.BufferedImage;
-          import java.io.File;
-          import javax.imageio.ImageIO;
-
-          public final class VerifyPre12Hair {
-              public static void main(String[] args) throws Exception {
-                  for (int i=1;i<=5;i++) {
-                      File beforeFile=new File(String.format("/tmp/pre12-before/hair_long_%02d.png",i));
-                      File afterFile=new File(String.format("/tmp/pre12-after/hair_long_%02d.png",i));
-                      BufferedImage before=ImageIO.read(beforeFile);
-                      BufferedImage after=ImageIO.read(afterFile);
-                      if(before==null||after==null||before.getWidth()!=64||before.getHeight()!=64
-                              ||after.getWidth()!=64||after.getHeight()!=64) {
-                          throw new AssertionError("bad PNG dimensions for "+i);
-                      }
-
-                      int baseBefore=0,baseAfter=0,outerBefore=0,outerAfter=0;
-                      for(int y=0;y<64;y++) for(int x=0;x<64;x++) {
-                          int b=before.getRGB(x,y);
-                          int a=after.getRGB(x,y);
-                          boolean inBase=x>=16&&x<40&&y>=16&&y<32;
-                          boolean inOuter=x>=16&&x<40&&y>=32&&y<48;
-                          if(inBase&&((b>>>24)&255)!=0) baseBefore++;
-                          if(inBase&&((a>>>24)&255)!=0) baseAfter++;
-                          if(inOuter&&((b>>>24)&255)!=0) outerBefore++;
-                          if(inOuter&&((a>>>24)&255)!=0) outerAfter++;
-
-                          if(!inBase && b!=a) {
-                              throw new AssertionError("pixel outside base torso changed: hair "+i+" @ "+x+","+y);
-                          }
-                      }
-
-                      if(baseAfter!=0) {
-                          throw new AssertionError("base torso hair still present for "+i+": "+baseAfter);
-                      }
-                      if(outerBefore<=0||outerAfter!=outerBefore) {
-                          throw new AssertionError("outer torso changed for "+i+": "+outerBefore+" -> "+outerAfter);
-                      }
-                      System.out.println("hair "+i+": base "+baseBefore+" -> 0; outer "+outerAfter+" preserved");
-                  }
-              }
-          }
-          JAVA
-          javac /tmp/VerifyPre12Hair.java
-          java -cp /tmp VerifyPre12Hair
-
-      - name: Validate PRE12 structure and preserved fixes
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-          unzip -t "$OUT" >/dev/null
-
-          python - <<'PY'
-          from pathlib import Path
-          import hashlib,json,zipfile
-
-          base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar")
-          out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar")
-
-          allowed_hair={
-              f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png"
-              for i in range(1,6)
-          }
-          required_added={
-              "net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class",
-              "net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class",
-          }
-          required_changed={
-              "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
-              "nexuscharacters.client.mixins.json",
-              "fabric.mod.json",
-          }
-
-          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
-              n0=z0.namelist()
-              n1=z1.namelist()
-
-              if len(n1)!=len(set(n1)):
-                  dup=sorted({n for n in n1 if n1.count(n)>1})
-                  raise SystemExit(f"Duplicate ZIP entries: {dup}")
-
-              added=set(n1)-set(n0)
-              removed=set(n0)-set(n1)
-              if removed:
-                  raise SystemExit(f"PRE12 removed entries: {sorted(removed)}")
-              if added!=required_added:
-                  raise SystemExit(f"Unexpected added entries: {sorted(added ^ required_added)}")
-
-              changed={
-                  name for name in set(n0)&set(n1)
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest()
-              }
-
-              if not required_changed.issubset(changed):
-                  raise SystemExit(f"Required changed entries missing: {sorted(required_changed-changed)}")
-
-              unexpected=changed-required_changed-allowed_hair
-              if unexpected:
-                  raise SystemExit(f"Unexpected changed entries: {sorted(unexpected)}")
-
-              # At least one hair texture must actually change; 01/02/04/05 are
-              # known to contain duplicate base pixels in PRE11.
-              changed_hair=changed & allowed_hair
-              for expected in (
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_01.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_02.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_04.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_05.png",
-              ):
-                  if expected not in changed_hair:
-                      raise SystemExit(f"Expected cleaned hair asset did not change: {expected}")
-
-              # Long hair 06..08 were never torso-bearing and must remain untouched.
-              for i in range(6,9):
-                  name=f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png"
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
-                      raise SystemExit(f"Non-torso long hair changed: {name}")
-
-              # Critical stabilisations inherited from PRE8/PRE9/PRE11.
-              for name in (
-                  "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
-                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
-                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
-                  "net/tompsen/nexuscharacters/NexusCharacters.class",
-                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
-                  "net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class",
-                  "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
-              ):
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
-                      raise SystemExit(f"Preserved class changed unexpectedly: {name}")
-
-              client=json.loads(z1.read("nexuscharacters.client.mixins.json"))
-              entries=client.get("client",[])
-              if entries.count("SkinLayersPlayerUtilCompatMixin")!=1:
-                  raise SystemExit("PRE12 compatibility mixin missing or duplicated")
-
-              mod=json.loads(z1.read("fabric.mod.json"))
-              if mod.get("version")!="1.0.0-beta.12+hc.1.21.11":
-                  raise SystemExit(f"Wrong version: {mod.get('version')}")
-
-          raw=out.read_bytes()
-          sha=hashlib.sha256(raw).hexdigest()
-          size=len(raw)
-          ref=Path("mods/nexuscharacters/reference/BETA-1.0-PRE12")
-          (ref/"SHA256SUMS.txt").write_text(f"{sha}  {out.name}\n",encoding="utf-8")
-          (ref/"VALIDATION.md").write_text(
-              "# Validation BETA 1.0 PRE12\n\n"
-              f"- JAR : `{out.name}`\n"
-              f"- Taille : **{size} octets**\n"
-              f"- SHA-256 : `{sha}`\n"
-              "- Base : PRE11 SHA vérifié.\n"
-              "- Archive ZIP/JAR : OK ; aucun doublon d'entrée.\n"
-              "- Aucun fichier PRE11 supprimé.\n"
-              "- Nouveau bridge dynamique Skin Layers + mixin TRansition optionnel.\n"
-              "- Renderer expérimental PRE10/PRE11 neutralisé sans toucher à son hook appelant.\n"
-              "- Cheveux longs 01..05 : pixels dupliqués sur le torse de base supprimés ; surcouche conservée.\n"
-              "- Cheveux longs 06..08 strictement inchangés.\n"
-              "- `UnifiedPilositySupport`, sauvegarde PRE8, barbes, layout et renderer cosmétique appelant strictement inchangés.\n"
-              "- Version : `1.0.0-beta.12+hc.1.21.11`.\n",
-              encoding="utf-8"
-          )
-          print("PRE12",size,sha)
-          PY
-
-      - name: Validate compatibility bytecode
-        shell: bash
-        run: |
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-
-          echo "=== mixin target ==="
-          javap -classpath "$OUT:/tmp/sponge-mixin.jar" -p -v             net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin             | grep -E 'dev\.tr7zw\.transition\.mc\.PlayerUtil|getPlayerSkin|Pseudo|require'
-
-          echo "=== fallback mapping ==="
-          cat >/tmp/NexusPre12Probe.java <<'JAVA'
-          public final class NexusPre12Probe {
-              public static void main(String[] args) throws Exception {
-                  Class<?> c=Class.forName("net.tompsen.nexuscharacters.LongHair3DRenderSupport");
-                  var m=c.getMethod("hairAssetName",int.class);
-                  expect(m,6,"hair_long_01.png");
-                  expect(m,8,"hair_long_03.png");
-                  expect(m,10,"hair_long_05.png");
-                  expect(m,13,"hair_long_08.png");
-                  System.out.println("PRE12 full-hair fallback mapping OK");
-              }
-              private static void expect(java.lang.reflect.Method m,int i,String expected) throws Exception {
-                  String actual=(String)m.invoke(null,i);
-                  if(!expected.equals(actual)) throw new AssertionError(i+": "+actual);
-              }
-          }
-          JAVA
-          javac -cp "$OUT" /tmp/NexusPre12Probe.java
-          java -cp "$OUT:/tmp" NexusPre12Probe
-
-          echo "=== PRE9 crash ABI retained ==="
-          javap -classpath "$OUT" -p net.tompsen.nexuscharacters.UnifiedPilositySupport             | grep -F 'public static boolean allowsPilosity(java.lang.Object);'
-
-      - name: Publish PRE12 through Git LFS
-        shell: bash
-        run: |
-          git lfs install --local
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar
-
-          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar             mods/nexuscharacters/reference/BETA-1.0-PRE12/SHA256SUMS.txt             mods/nexuscharacters/reference/BETA-1.0-PRE12/VALIDATION.md
-
-          if git diff --cached --quiet; then
-            echo "No PRE12 artifacts to publish."
-            exit 0
-          fi
-
-          git commit -m "nexus: publish BETA 1.0 PRE12 Skin Layers compatibility"
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
-
-          jar tf /tmp/sponge-mixin.jar | grep -q '^org/spongepowered/asm/mixin/injection/Coerce.class
-      - name: Compile PRE12 sources and asset tool
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          mkdir -p /tmp/pre12-classes /tmp/pre12-tools
-
-          javac -cp "$BASE"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersDynamicSkinBridge.java             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/LongHair3DRenderSupport.java
-
-          javac -cp "$BASE:/tmp/pre12-classes:/tmp/sponge-mixin.jar"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersPlayerUtilCompatMixin.java
-
-          javac -d /tmp/pre12-tools             mods/nexuscharacters/reference/BETA-1.0-PRE12/tools/SeparateLongHairFromBody.java
-
-          test -f /tmp/pre12-classes/net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class
-          test -f /tmp/pre12-classes/net/tompsen/nexuscharacters/LongHair3DRenderSupport.class
-          test -f /tmp/pre12-classes/net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class
-
-      - name: Prepare corrected long-hair assets
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          HAIR=/tmp/pre12-assets/assets/nexuscharacters/appearance_parts_v064/hair
-          BEFORE=/tmp/pre12-before
-          mkdir -p "$HAIR" "$BEFORE"
-
-          for i in 01 02 03 04 05; do
-            unzip -p "$BASE"               "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}.png"               > "$HAIR/hair_long_${i}.png"
-            cp "$HAIR/hair_long_${i}.png" "$BEFORE/hair_long_${i}.png"
-          done
-
-          java -cp /tmp/pre12-tools SeparateLongHairFromBody "$HAIR"
-
-      - name: Assemble PRE12
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-
-          cp "$BASE" "$OUT"
-
-          jar uf "$OUT"             -C /tmp/pre12-classes net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class             -C /tmp/pre12-classes net/tompsen/nexuscharacters/LongHair3DRenderSupport.class             -C /tmp/pre12-classes net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class             -C /tmp/pre12-assets assets/nexuscharacters/appearance_parts_v064/hair
-
-          mkdir -p /tmp/pre12-json
-          unzip -p "$OUT" nexuscharacters.client.mixins.json > /tmp/pre12-json/nexuscharacters.client.mixins.json
-          python - <<'PY'
-          from pathlib import Path
-          import json
-
-          p=Path("/tmp/pre12-json/nexuscharacters.client.mixins.json")
-          data=json.loads(p.read_text(encoding="utf-8"))
-          client=data.setdefault("client", [])
-          name="SkinLayersPlayerUtilCompatMixin"
-          if name not in client:
-              client.append(name)
-          if client.count(name) != 1:
-              raise SystemExit("SkinLayersPlayerUtilCompatMixin duplicate")
-          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-          PY
-          jar uf "$OUT" -C /tmp/pre12-json nexuscharacters.client.mixins.json
-
-          mkdir -p /tmp/pre12-meta
-          unzip -p "$OUT" fabric.mod.json > /tmp/pre12-meta/fabric.mod.json
-          python - <<'PY'
-          from pathlib import Path
-          import json
-          p=Path("/tmp/pre12-meta/fabric.mod.json")
-          data=json.loads(p.read_text(encoding="utf-8"))
-          data["version"]="1.0.0-beta.12+hc.1.21.11"
-          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-          PY
-          jar uf "$OUT" -C /tmp/pre12-meta fabric.mod.json
-
-      - name: Validate long-hair pixel separation
-        shell: bash
-        run: |
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-          mkdir -p /tmp/pre12-after
-          for i in 01 02 03 04 05; do
-            unzip -p "$OUT"               "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}.png"               > "/tmp/pre12-after/hair_long_${i}.png"
-          done
-
-          cat >/tmp/VerifyPre12Hair.java <<'JAVA'
-          import java.awt.image.BufferedImage;
-          import java.io.File;
-          import javax.imageio.ImageIO;
-
-          public final class VerifyPre12Hair {
-              public static void main(String[] args) throws Exception {
-                  for (int i=1;i<=5;i++) {
-                      File beforeFile=new File(String.format("/tmp/pre12-before/hair_long_%02d.png",i));
-                      File afterFile=new File(String.format("/tmp/pre12-after/hair_long_%02d.png",i));
-                      BufferedImage before=ImageIO.read(beforeFile);
-                      BufferedImage after=ImageIO.read(afterFile);
-                      if(before==null||after==null||before.getWidth()!=64||before.getHeight()!=64
-                              ||after.getWidth()!=64||after.getHeight()!=64) {
-                          throw new AssertionError("bad PNG dimensions for "+i);
-                      }
-
-                      int baseBefore=0,baseAfter=0,outerBefore=0,outerAfter=0;
-                      for(int y=0;y<64;y++) for(int x=0;x<64;x++) {
-                          int b=before.getRGB(x,y);
-                          int a=after.getRGB(x,y);
-                          boolean inBase=x>=16&&x<40&&y>=16&&y<32;
-                          boolean inOuter=x>=16&&x<40&&y>=32&&y<48;
-                          if(inBase&&((b>>>24)&255)!=0) baseBefore++;
-                          if(inBase&&((a>>>24)&255)!=0) baseAfter++;
-                          if(inOuter&&((b>>>24)&255)!=0) outerBefore++;
-                          if(inOuter&&((a>>>24)&255)!=0) outerAfter++;
-
-                          if(!inBase && b!=a) {
-                              throw new AssertionError("pixel outside base torso changed: hair "+i+" @ "+x+","+y);
-                          }
-                      }
-
-                      if(baseAfter!=0) {
-                          throw new AssertionError("base torso hair still present for "+i+": "+baseAfter);
-                      }
-                      if(outerBefore<=0||outerAfter!=outerBefore) {
-                          throw new AssertionError("outer torso changed for "+i+": "+outerBefore+" -> "+outerAfter);
-                      }
-                      System.out.println("hair "+i+": base "+baseBefore+" -> 0; outer "+outerAfter+" preserved");
-                  }
-              }
-          }
-          JAVA
-          javac /tmp/VerifyPre12Hair.java
-          java -cp /tmp VerifyPre12Hair
-
-      - name: Validate PRE12 structure and preserved fixes
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-          unzip -t "$OUT" >/dev/null
-
-          python - <<'PY'
-          from pathlib import Path
-          import hashlib,json,zipfile
-
-          base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar")
-          out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar")
-
-          allowed_hair={
-              f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png"
-              for i in range(1,6)
-          }
-          required_added={
-              "net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class",
-              "net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class",
-          }
-          required_changed={
-              "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
-              "nexuscharacters.client.mixins.json",
-              "fabric.mod.json",
-          }
-
-          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
-              n0=z0.namelist()
-              n1=z1.namelist()
-
-              if len(n1)!=len(set(n1)):
-                  dup=sorted({n for n in n1 if n1.count(n)>1})
-                  raise SystemExit(f"Duplicate ZIP entries: {dup}")
-
-              added=set(n1)-set(n0)
-              removed=set(n0)-set(n1)
-              if removed:
-                  raise SystemExit(f"PRE12 removed entries: {sorted(removed)}")
-              if added!=required_added:
-                  raise SystemExit(f"Unexpected added entries: {sorted(added ^ required_added)}")
-
-              changed={
-                  name for name in set(n0)&set(n1)
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest()
-              }
-
-              if not required_changed.issubset(changed):
-                  raise SystemExit(f"Required changed entries missing: {sorted(required_changed-changed)}")
-
-              unexpected=changed-required_changed-allowed_hair
-              if unexpected:
-                  raise SystemExit(f"Unexpected changed entries: {sorted(unexpected)}")
-
-              # At least one hair texture must actually change; 01/02/04/05 are
-              # known to contain duplicate base pixels in PRE11.
-              changed_hair=changed & allowed_hair
-              for expected in (
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_01.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_02.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_04.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_05.png",
-              ):
-                  if expected not in changed_hair:
-                      raise SystemExit(f"Expected cleaned hair asset did not change: {expected}")
-
-              # Long hair 06..08 were never torso-bearing and must remain untouched.
-              for i in range(6,9):
-                  name=f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png"
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
-                      raise SystemExit(f"Non-torso long hair changed: {name}")
-
-              # Critical stabilisations inherited from PRE8/PRE9/PRE11.
-              for name in (
-                  "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
-                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
-                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
-                  "net/tompsen/nexuscharacters/NexusCharacters.class",
-                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
-                  "net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class",
-                  "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
-              ):
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
-                      raise SystemExit(f"Preserved class changed unexpectedly: {name}")
-
-              client=json.loads(z1.read("nexuscharacters.client.mixins.json"))
-              entries=client.get("client",[])
-              if entries.count("SkinLayersPlayerUtilCompatMixin")!=1:
-                  raise SystemExit("PRE12 compatibility mixin missing or duplicated")
-
-              mod=json.loads(z1.read("fabric.mod.json"))
-              if mod.get("version")!="1.0.0-beta.12+hc.1.21.11":
-                  raise SystemExit(f"Wrong version: {mod.get('version')}")
-
-          raw=out.read_bytes()
-          sha=hashlib.sha256(raw).hexdigest()
-          size=len(raw)
-          ref=Path("mods/nexuscharacters/reference/BETA-1.0-PRE12")
-          (ref/"SHA256SUMS.txt").write_text(f"{sha}  {out.name}\n",encoding="utf-8")
-          (ref/"VALIDATION.md").write_text(
-              "# Validation BETA 1.0 PRE12\n\n"
-              f"- JAR : `{out.name}`\n"
-              f"- Taille : **{size} octets**\n"
-              f"- SHA-256 : `{sha}`\n"
-              "- Base : PRE11 SHA vérifié.\n"
-              "- Archive ZIP/JAR : OK ; aucun doublon d'entrée.\n"
-              "- Aucun fichier PRE11 supprimé.\n"
-              "- Nouveau bridge dynamique Skin Layers + mixin TRansition optionnel.\n"
-              "- Renderer expérimental PRE10/PRE11 neutralisé sans toucher à son hook appelant.\n"
-              "- Cheveux longs 01..05 : pixels dupliqués sur le torse de base supprimés ; surcouche conservée.\n"
-              "- Cheveux longs 06..08 strictement inchangés.\n"
-              "- `UnifiedPilositySupport`, sauvegarde PRE8, barbes, layout et renderer cosmétique appelant strictement inchangés.\n"
-              "- Version : `1.0.0-beta.12+hc.1.21.11`.\n",
-              encoding="utf-8"
-          )
-          print("PRE12",size,sha)
-          PY
-
-      - name: Validate compatibility bytecode
-        shell: bash
-        run: |
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-
-          echo "=== mixin target ==="
-          javap -classpath "$OUT:/tmp/sponge-mixin.jar" -p -v             net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin             | grep -E 'dev\.tr7zw\.transition\.mc\.PlayerUtil|getPlayerSkin|Pseudo|require'
-
-          echo "=== fallback mapping ==="
-          cat >/tmp/NexusPre12Probe.java <<'JAVA'
-          public final class NexusPre12Probe {
-              public static void main(String[] args) throws Exception {
-                  Class<?> c=Class.forName("net.tompsen.nexuscharacters.LongHair3DRenderSupport");
-                  var m=c.getMethod("hairAssetName",int.class);
-                  expect(m,6,"hair_long_01.png");
-                  expect(m,8,"hair_long_03.png");
-                  expect(m,10,"hair_long_05.png");
-                  expect(m,13,"hair_long_08.png");
-                  System.out.println("PRE12 full-hair fallback mapping OK");
-              }
-              private static void expect(java.lang.reflect.Method m,int i,String expected) throws Exception {
-                  String actual=(String)m.invoke(null,i);
-                  if(!expected.equals(actual)) throw new AssertionError(i+": "+actual);
-              }
-          }
-          JAVA
-          javac -cp "$OUT" /tmp/NexusPre12Probe.java
-          java -cp "$OUT:/tmp" NexusPre12Probe
-
-          echo "=== PRE9 crash ABI retained ==="
-          javap -classpath "$OUT" -p net.tompsen.nexuscharacters.UnifiedPilositySupport             | grep -F 'public static boolean allowsPilosity(java.lang.Object);'
-
-      - name: Publish PRE12 through Git LFS
-        shell: bash
-        run: |
-          git lfs install --local
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar
-
-          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar             mods/nexuscharacters/reference/BETA-1.0-PRE12/SHA256SUMS.txt             mods/nexuscharacters/reference/BETA-1.0-PRE12/VALIDATION.md
-
-          if git diff --cached --quiet; then
-            echo "No PRE12 artifacts to publish."
-            exit 0
-          fi
-
-          git commit -m "nexus: publish BETA 1.0 PRE12 Skin Layers compatibility"
-          git fetch origin main
-          git rebase origin/main
-          git push origin HEAD:main
-
-
-      - name: Compile PRE12 sources and asset tool
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          mkdir -p /tmp/pre12-classes /tmp/pre12-tools
-
-          javac -cp "$BASE"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersDynamicSkinBridge.java             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/LongHair3DRenderSupport.java
-
-          javac -cp "$BASE:/tmp/pre12-classes:/tmp/sponge-mixin.jar"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersPlayerUtilCompatMixin.java
-
-          javac -d /tmp/pre12-tools             mods/nexuscharacters/reference/BETA-1.0-PRE12/tools/SeparateLongHairFromBody.java
-
-          test -f /tmp/pre12-classes/net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class
-          test -f /tmp/pre12-classes/net/tompsen/nexuscharacters/LongHair3DRenderSupport.class
-          test -f /tmp/pre12-classes/net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class
-
-      - name: Prepare corrected long-hair assets
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          HAIR=/tmp/pre12-assets/assets/nexuscharacters/appearance_parts_v064/hair
-          BEFORE=/tmp/pre12-before
-          mkdir -p "$HAIR" "$BEFORE"
-
-          for i in 01 02 03 04 05; do
-            unzip -p "$BASE"               "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}.png"               > "$HAIR/hair_long_${i}.png"
-            cp "$HAIR/hair_long_${i}.png" "$BEFORE/hair_long_${i}.png"
-          done
-
-          java -cp /tmp/pre12-tools SeparateLongHairFromBody "$HAIR"
-
-      - name: Assemble PRE12
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-
-          cp "$BASE" "$OUT"
-
-          jar uf "$OUT"             -C /tmp/pre12-classes net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class             -C /tmp/pre12-classes net/tompsen/nexuscharacters/LongHair3DRenderSupport.class             -C /tmp/pre12-classes net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class             -C /tmp/pre12-assets assets/nexuscharacters/appearance_parts_v064/hair
-
-          mkdir -p /tmp/pre12-json
-          unzip -p "$OUT" nexuscharacters.client.mixins.json > /tmp/pre12-json/nexuscharacters.client.mixins.json
-          python - <<'PY'
-          from pathlib import Path
-          import json
-
-          p=Path("/tmp/pre12-json/nexuscharacters.client.mixins.json")
-          data=json.loads(p.read_text(encoding="utf-8"))
-          client=data.setdefault("client", [])
-          name="SkinLayersPlayerUtilCompatMixin"
-          if name not in client:
-              client.append(name)
-          if client.count(name) != 1:
-              raise SystemExit("SkinLayersPlayerUtilCompatMixin duplicate")
-          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-          PY
-          jar uf "$OUT" -C /tmp/pre12-json nexuscharacters.client.mixins.json
-
-          mkdir -p /tmp/pre12-meta
-          unzip -p "$OUT" fabric.mod.json > /tmp/pre12-meta/fabric.mod.json
-          python - <<'PY'
-          from pathlib import Path
-          import json
-          p=Path("/tmp/pre12-meta/fabric.mod.json")
-          data=json.loads(p.read_text(encoding="utf-8"))
-          data["version"]="1.0.0-beta.12+hc.1.21.11"
-          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-          PY
-          jar uf "$OUT" -C /tmp/pre12-meta fabric.mod.json
-
-      - name: Validate long-hair pixel separation
-        shell: bash
-        run: |
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-          mkdir -p /tmp/pre12-after
-          for i in 01 02 03 04 05; do
-            unzip -p "$OUT"               "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${i}.png"               > "/tmp/pre12-after/hair_long_${i}.png"
-          done
-
-          cat >/tmp/VerifyPre12Hair.java <<'JAVA'
-          import java.awt.image.BufferedImage;
-          import java.io.File;
-          import javax.imageio.ImageIO;
-
-          public final class VerifyPre12Hair {
-              public static void main(String[] args) throws Exception {
-                  for (int i=1;i<=5;i++) {
-                      File beforeFile=new File(String.format("/tmp/pre12-before/hair_long_%02d.png",i));
-                      File afterFile=new File(String.format("/tmp/pre12-after/hair_long_%02d.png",i));
-                      BufferedImage before=ImageIO.read(beforeFile);
-                      BufferedImage after=ImageIO.read(afterFile);
-                      if(before==null||after==null||before.getWidth()!=64||before.getHeight()!=64
-                              ||after.getWidth()!=64||after.getHeight()!=64) {
-                          throw new AssertionError("bad PNG dimensions for "+i);
-                      }
-
-                      int baseBefore=0,baseAfter=0,outerBefore=0,outerAfter=0;
-                      for(int y=0;y<64;y++) for(int x=0;x<64;x++) {
-                          int b=before.getRGB(x,y);
-                          int a=after.getRGB(x,y);
-                          boolean inBase=x>=16&&x<40&&y>=16&&y<32;
-                          boolean inOuter=x>=16&&x<40&&y>=32&&y<48;
-                          if(inBase&&((b>>>24)&255)!=0) baseBefore++;
-                          if(inBase&&((a>>>24)&255)!=0) baseAfter++;
-                          if(inOuter&&((b>>>24)&255)!=0) outerBefore++;
-                          if(inOuter&&((a>>>24)&255)!=0) outerAfter++;
-
-                          if(!inBase && b!=a) {
-                              throw new AssertionError("pixel outside base torso changed: hair "+i+" @ "+x+","+y);
-                          }
-                      }
-
-                      if(baseAfter!=0) {
-                          throw new AssertionError("base torso hair still present for "+i+": "+baseAfter);
-                      }
-                      if(outerBefore<=0||outerAfter!=outerBefore) {
-                          throw new AssertionError("outer torso changed for "+i+": "+outerBefore+" -> "+outerAfter);
-                      }
-                      System.out.println("hair "+i+": base "+baseBefore+" -> 0; outer "+outerAfter+" preserved");
-                  }
-              }
-          }
-          JAVA
-          javac /tmp/VerifyPre12Hair.java
-          java -cp /tmp VerifyPre12Hair
-
-      - name: Validate PRE12 structure and preserved fixes
-        shell: bash
-        run: |
-          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-          unzip -t "$OUT" >/dev/null
-
-          python - <<'PY'
-          from pathlib import Path
-          import hashlib,json,zipfile
-
-          base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar")
-          out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar")
-
-          allowed_hair={
-              f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png"
-              for i in range(1,6)
-          }
-          required_added={
-              "net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class",
-              "net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class",
-          }
-          required_changed={
-              "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
-              "nexuscharacters.client.mixins.json",
-              "fabric.mod.json",
-          }
-
-          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
-              n0=z0.namelist()
-              n1=z1.namelist()
-
-              if len(n1)!=len(set(n1)):
-                  dup=sorted({n for n in n1 if n1.count(n)>1})
-                  raise SystemExit(f"Duplicate ZIP entries: {dup}")
-
-              added=set(n1)-set(n0)
-              removed=set(n0)-set(n1)
-              if removed:
-                  raise SystemExit(f"PRE12 removed entries: {sorted(removed)}")
-              if added!=required_added:
-                  raise SystemExit(f"Unexpected added entries: {sorted(added ^ required_added)}")
-
-              changed={
-                  name for name in set(n0)&set(n1)
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest()
-              }
-
-              if not required_changed.issubset(changed):
-                  raise SystemExit(f"Required changed entries missing: {sorted(required_changed-changed)}")
-
-              unexpected=changed-required_changed-allowed_hair
-              if unexpected:
-                  raise SystemExit(f"Unexpected changed entries: {sorted(unexpected)}")
-
-              # At least one hair texture must actually change; 01/02/04/05 are
-              # known to contain duplicate base pixels in PRE11.
-              changed_hair=changed & allowed_hair
-              for expected in (
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_01.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_02.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_04.png",
-                  "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_05.png",
-              ):
-                  if expected not in changed_hair:
-                      raise SystemExit(f"Expected cleaned hair asset did not change: {expected}")
-
-              # Long hair 06..08 were never torso-bearing and must remain untouched.
-              for i in range(6,9):
-                  name=f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}.png"
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
-                      raise SystemExit(f"Non-torso long hair changed: {name}")
-
-              # Critical stabilisations inherited from PRE8/PRE9/PRE11.
-              for name in (
-                  "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
-                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
-                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
-                  "net/tompsen/nexuscharacters/NexusCharacters.class",
-                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
-                  "net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class",
-                  "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
-              ):
-                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
-                      raise SystemExit(f"Preserved class changed unexpectedly: {name}")
-
-              client=json.loads(z1.read("nexuscharacters.client.mixins.json"))
-              entries=client.get("client",[])
-              if entries.count("SkinLayersPlayerUtilCompatMixin")!=1:
-                  raise SystemExit("PRE12 compatibility mixin missing or duplicated")
-
-              mod=json.loads(z1.read("fabric.mod.json"))
-              if mod.get("version")!="1.0.0-beta.12+hc.1.21.11":
-                  raise SystemExit(f"Wrong version: {mod.get('version')}")
-
-          raw=out.read_bytes()
-          sha=hashlib.sha256(raw).hexdigest()
-          size=len(raw)
-          ref=Path("mods/nexuscharacters/reference/BETA-1.0-PRE12")
-          (ref/"SHA256SUMS.txt").write_text(f"{sha}  {out.name}\n",encoding="utf-8")
-          (ref/"VALIDATION.md").write_text(
-              "# Validation BETA 1.0 PRE12\n\n"
-              f"- JAR : `{out.name}`\n"
-              f"- Taille : **{size} octets**\n"
-              f"- SHA-256 : `{sha}`\n"
-              "- Base : PRE11 SHA vérifié.\n"
-              "- Archive ZIP/JAR : OK ; aucun doublon d'entrée.\n"
-              "- Aucun fichier PRE11 supprimé.\n"
-              "- Nouveau bridge dynamique Skin Layers + mixin TRansition optionnel.\n"
-              "- Renderer expérimental PRE10/PRE11 neutralisé sans toucher à son hook appelant.\n"
-              "- Cheveux longs 01..05 : pixels dupliqués sur le torse de base supprimés ; surcouche conservée.\n"
-              "- Cheveux longs 06..08 strictement inchangés.\n"
-              "- `UnifiedPilositySupport`, sauvegarde PRE8, barbes, layout et renderer cosmétique appelant strictement inchangés.\n"
-              "- Version : `1.0.0-beta.12+hc.1.21.11`.\n",
-              encoding="utf-8"
-          )
-          print("PRE12",size,sha)
-          PY
-
-      - name: Validate compatibility bytecode
-        shell: bash
-        run: |
-          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
-
-          echo "=== mixin target ==="
-          javap -classpath "$OUT:/tmp/sponge-mixin.jar" -p -v             net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin             | grep -E 'dev\.tr7zw\.transition\.mc\.PlayerUtil|getPlayerSkin|Pseudo|require'
-
-          echo "=== fallback mapping ==="
-          cat >/tmp/NexusPre12Probe.java <<'JAVA'
-          public final class NexusPre12Probe {
-              public static void main(String[] args) throws Exception {
-                  Class<?> c=Class.forName("net.tompsen.nexuscharacters.LongHair3DRenderSupport");
-                  var m=c.getMethod("hairAssetName",int.class);
-                  expect(m,6,"hair_long_01.png");
-                  expect(m,8,"hair_long_03.png");
-                  expect(m,10,"hair_long_05.png");
-                  expect(m,13,"hair_long_08.png");
-                  System.out.println("PRE12 full-hair fallback mapping OK");
-              }
-              private static void expect(java.lang.reflect.Method m,int i,String expected) throws Exception {
-                  String actual=(String)m.invoke(null,i);
-                  if(!expected.equals(actual)) throw new AssertionError(i+": "+actual);
-              }
-          }
-          JAVA
-          javac -cp "$OUT" /tmp/NexusPre12Probe.java
-          java -cp "$OUT:/tmp" NexusPre12Probe
-
-          echo "=== PRE9 crash ABI retained ==="
-          javap -classpath "$OUT" -p net.tompsen.nexuscharacters.UnifiedPilositySupport             | grep -F 'public static boolean allowsPilosity(java.lang.Object);'
-
-      - name: Publish PRE12 through Git LFS
-        shell: bash
-        run: |
-          git lfs install --local
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar
-
+          git rm -f --ignore-unmatch mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar
           git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar             mods/nexuscharacters/reference/BETA-1.0-PRE12/SHA256SUMS.txt             mods/nexuscharacters/reference/BETA-1.0-PRE12/VALIDATION.md
 
           if git diff --cached --quiet; then
