@@ -16,7 +16,7 @@ public final class NexusCapitaleFirstSpawnBridge implements ModInitializer {
     private static final Map<UUID, Integer> PENDING_NEW_CHARACTERS = new ConcurrentHashMap<>();
     private static final Map<UUID, Path> NEW_VAULTS = new ConcurrentHashMap<>();
     private static final int DELAY_TICKS = 3;
-    private static final String PROLOGUE_FUNCTION = "function capitale:spawn/character_first_join_to_prologue_start_self";
+    private static final String PROLOGUE_FUNCTION = "function capitale:spawn/first_join_to_prologue_start_self";
 
     public static void markNewAuthoritativeVault(UUID owner, Path vault) {
         if (owner == null) {
@@ -47,7 +47,7 @@ public final class NexusCapitaleFirstSpawnBridge implements ModInitializer {
 
         ServerTickEvents.END_SERVER_TICK.register(NexusCapitaleFirstSpawnBridge::tickPending);
 
-        System.out.println("[NexusCapitaleBridge] 1.0.0 initialized: exact new-vault -> Capitale prologue hook.");
+        System.out.println("[NexusCapitaleBridge] 1.0.1 initialized: exact new-vault -> Capitale prologue hook (Nexus identity authoritative).");
     }
 
     private static void tickPending(MinecraftServer server) {
@@ -70,6 +70,15 @@ public final class NexusCapitaleFirstSpawnBridge implements ModInitializer {
 
             try {
                 String username = player.getNameForScoreboard();
+                server.getCommandManager().parseAndExecute(
+                        server.getCommandSource(),
+                        "execute as " + username + " at @s run tag @s remove capitale_identity_mandatory");
+                server.getCommandManager().parseAndExecute(
+                        server.getCommandSource(),
+                        "execute as " + username + " at @s run tag @s remove capitale_identity_open_pending");
+                server.getCommandManager().parseAndExecute(
+                        server.getCommandSource(),
+                        "execute as " + username + " at @s run tag @s remove capitale_identity_menu_opened");
                 server.getCommandManager().parseAndExecute(
                         server.getCommandSource(),
                         "execute as " + username + " at @s run " + PROLOGUE_FUNCTION);
