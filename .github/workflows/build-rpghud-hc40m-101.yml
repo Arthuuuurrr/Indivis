@@ -1,4 +1,4 @@
-name: Build and test RPG-HUD HC40M 1.0.1 # retry 5
+name: Build and test RPG-HUD HC40M 1.0.1 # retry 6
 
 on:
   push:
@@ -66,6 +66,11 @@ jobs:
           set -e
 
           cat /tmp/rpghud-client-test.log | tail -n 180
+          if ls run/crash-reports/crash-*-client.txt >/dev/null 2>&1; then
+            echo '===== Minecraft crash report ====='
+            cat run/crash-reports/crash-*-client.txt
+            echo '===== End crash report ====='
+          fi
 
           if [ "$CODE" -ne 0 ] && [ "$CODE" -ne 124 ]; then
             echo "Client terminated unexpectedly with code $CODE"
