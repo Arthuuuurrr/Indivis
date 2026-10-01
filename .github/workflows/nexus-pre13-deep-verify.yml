@@ -1,0 +1,70 @@
+name: Nexus PRE13 deep verify
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre13-deep-verify.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Verify final PRE13 bytecode and assets
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          test "$(sha256sum "$J" | awk '{print $1}')" = "6bd38c303fd4c27d44cc9039a031b3930a7bc16cdd5b4fb2bdcf0181848cc1a3"
+          unzip -t "$J" >/dev/null
+
+          echo "=== LONG HAIR RENDER BYTECODE ==="
+          javap -classpath "$J" -p -c net.tompsen.nexuscharacters.LongHair3DRenderSupport
+
+          echo "=== EXISTING RENDER HOOK ==="
+          javap -classpath "$J" -p -c net.tompsen.nexuscharacters.CharacterCosmeticFeatureRenderer             | grep -A4 -B4 'LongHair3DRenderSupport.render'
+
+          echo "=== DYNAMIC HAIR ASSET HOOK ==="
+          javap -classpath "$J" -p -c net.tompsen.nexuscharacters.DynamicAppearanceSupport             | grep -A5 -B5 'LongHair3DRenderSupport.hairAssetName'
+
+          mkdir -p /tmp/pre13
+          for raw in $(seq 1 13); do
+            n=$(printf "%02d" "$raw")
+            unzip -p "$J" "assets/nexuscharacters/textures/cosmetic/hair_3d/hair_${n}.png" > "/tmp/pre13/hair_${n}.png"
+          done
+
+          cat >/tmp/FaceAudit.java <<'JAVA'
+          import java.awt.image.BufferedImage;
+          import java.io.File;
+          import javax.imageio.ImageIO;
+
+          public final class FaceAudit {
+              static int count(BufferedImage i,int x0,int y0,int x1,int y1){
+                  int c=0; for(int y=y0;y<y1;y++) for(int x=x0;x<x1;x++) if(((i.getRGB(x,y)>>>24)&255)!=0)c++; return c;
+              }
+              public static void main(String[] args)throws Exception{
+                  for(int h=6;h<=10;h++){
+                      BufferedImage i=ImageIO.read(new File(String.format("/tmp/pre13/hair_%02d.png",h)));
+                      int top=count(i,20,32,28,36);
+                      int bottom=count(i,28,32,36,36);
+                      int right=count(i,16,36,20,48);
+                      int front=count(i,20,36,28,48);
+                      int left=count(i,28,36,32,48);
+                      int back=count(i,32,36,40,48);
+                      int total=top+bottom+right+front+left+back;
+                      System.out.printf("hair_%02d body faces: top=%d bottom=%d right=%d front=%d left=%d back=%d total=%d%n",
+                          h,top,bottom,right,front,left,back,total);
+                  }
+              }
+          }
+          JAVA
+          javac /tmp/FaceAudit.java
+          java -cp /tmp FaceAudit
