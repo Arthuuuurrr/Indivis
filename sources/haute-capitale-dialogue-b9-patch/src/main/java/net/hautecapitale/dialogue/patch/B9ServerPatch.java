@@ -57,7 +57,7 @@ public final class B9ServerPatch implements ModInitializer {
 
         Box area = player.getBoundingBox().expand(MAX_RANGE);
         List<LivingEntity> candidates =
-                player.getWorld().getEntitiesByClass(
+                player.getServerWorld().getEntitiesByClass(
                         LivingEntity.class,
                         area,
                         entity ->
@@ -72,9 +72,8 @@ public final class B9ServerPatch implements ModInitializer {
 
         LivingEntity target =
                 candidates.stream()
-                        .min(Comparator
-                                .comparingDouble(entity -> cameraTargetScore(player, entity))
-                                .thenComparingDouble(player::squaredDistanceTo)
+                        .min(Comparator.<LivingEntity>comparingDouble(entity -> cameraTargetScore(player, entity))
+                                .thenComparingDouble(entity -> player.squaredDistanceTo(entity))
                                 .thenComparingInt(LivingEntity::getId))
                         .orElse(null);
 
