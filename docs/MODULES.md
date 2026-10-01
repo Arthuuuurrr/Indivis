@@ -7,7 +7,7 @@ La source de vérité est désormais séparée en deux notions :
 
 | Module | Déployé confirmé | Source Git / référence | Suivi |
 |---|---|---|---|
-| capitale_core | dossier présent, version exacte à confirmer | 1.5.6-RC9AO partiel | #57, #72 |
+| capitale_core | **1.5.6-RC9BB** testé le 01/10 (interpellations HCD réparées) | **1.5.6-RC9BC** candidat : continuité `[Je vous écoute.]` pour Althéon/Aurèle/Roch ; ZIP SHA-256 `f860bb8d27e541d0292286629a53cf7308f09306a3dfc4bedd16c6991f137c9d` | #57, #72 |
 | capitale_skills | dossier présent, version exacte à confirmer | 0.10.19 RC2F partiel | #53, #72 |
 | capitale_creatures_biomes | **BETA 0.10** | BETA 0.12 complet, non confirmé en prod | inventaire runtime |
 | NexusCharacters HC | 0.8.0-alpha1.1 | patch/source de référence importé | #58 |
@@ -22,7 +22,7 @@ La source de vérité est désormais séparée en deux notions :
 | Witcher Class HC | Footwork RC1 | binaire hashé | #53 |
 | capitale_heraldry | **0.1.7** | source exacte 0.1.7 encore à importer | #72 |
 | MMO Music Zones | **1.2.7 indivis-dungeon-biome-FULL** | source exacte à importer | #60, #72 |
-| Dialogue/caméra NPC (`haute_capitale_dialogue`) | **b9** (serveur, log du 01/10) | b7 dans #104 ; b8 backup ; **b10 DATAPACK-COMMAND-HOTFIX** construit le 01/10 depuis b9 (SHA-256 `a2c21f24889f96880c472d168ea55cf65e84ff154ee1bbcc22dbeaa9df1d4057`) ; correctif source complet b9 à importer | #59, #104, #72 |
+| Dialogue/caméra NPC (`haute_capitale_dialogue`) | **serveur b10 / client b7** observés dans les logs du 01/10 | b7 dans #104 ; b8 backup ; **b10 DATAPACK-COMMAND-HOTFIX** construit le 01/10 depuis b9 (SHA-256 `a2c21f24889f96880c472d168ea55cf65e84ff154ee1bbcc22dbeaa9df1d4057`) ; correctif source complet b9 à importer | #59, #104, #72 |
 | Journal de quêtes (`haute_capitale_quetes`) | serveur b3 / client b2 (relevé du 22/09) | b5 construit (système de montures, #30) ; sources à importer | #30, #72 |
 | Haute Capitale Pirates | serveur b4 / client b2 (relevé du 22/09) | b4 construit ; sources à importer | #72 |
 | Moteur d'instances `dungeonz` | non déployé | b23 construit, source à importer (listé `dungeon2-hc` dans #72) | #32, #72 |
