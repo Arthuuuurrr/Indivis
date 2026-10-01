@@ -43,11 +43,11 @@ jobs:
       - name: Fetch compile-only Mixin API
         shell: bash
         run: |
-          curl -fsSL             https://maven.fabricmc.net/net/fabricmc/fabric-loader/0.19.5/fabric-loader-0.19.5.jar             -o /tmp/fabric-loader.jar
-          test -s /tmp/fabric-loader.jar
-          jar tf /tmp/fabric-loader.jar | grep -q '^org/spongepowered/asm/mixin/Mixin.class$'
-          jar tf /tmp/fabric-loader.jar | grep -q '^org/spongepowered/asm/mixin/Pseudo.class$'
-          jar tf /tmp/fabric-loader.jar | grep -q '^org/spongepowered/asm/mixin/injection/Coerce.class$'
+          curl -fsSL             https://maven.fabricmc.net/net/fabricmc/fabric-loader/0.19.5/fabric-loader-0.19.5.jar             -o /tmp/sponge-mixin.jar
+          test -s /tmp/sponge-mixin.jar
+          jar tf /tmp/sponge-mixin.jar | grep -q '^org/spongepowered/asm/mixin/Mixin.class$'
+          jar tf /tmp/sponge-mixin.jar | grep -q '^org/spongepowered/asm/mixin/Pseudo.class$'
+          jar tf /tmp/sponge-mixin.jar | grep -q '^org/spongepowered/asm/mixin/injection/Coerce.class$'
 
       - name: Compile PRE12 sources and asset tool
         shell: bash
@@ -57,7 +57,7 @@ jobs:
 
           javac -cp "$BASE"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersDynamicSkinBridge.java             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/LongHair3DRenderSupport.java
 
-          javac -cp "$BASE:/tmp/pre12-classes:/tmp/fabric-loader.jar"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersPlayerUtilCompatMixin.java
+          javac -cp "$BASE:/tmp/pre12-classes:/tmp/sponge-mixin.jar"             -d /tmp/pre12-classes             mods/nexuscharacters/reference/BETA-1.0-PRE12/sources/SkinLayersPlayerUtilCompatMixin.java
 
           javac -d /tmp/pre12-tools             mods/nexuscharacters/reference/BETA-1.0-PRE12/tools/SeparateLongHairFromBody.java
 
@@ -301,7 +301,7 @@ jobs:
           OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
 
           echo "=== mixin target ==="
-          javap -classpath "$OUT:/tmp/fabric-loader.jar" -p -v             net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin             | grep -E 'dev\.tr7zw\.transition\.mc\.PlayerUtil|getPlayerSkin|Pseudo|require'
+          javap -classpath "$OUT:/tmp/sponge-mixin.jar" -p -v             net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin             | grep -E 'dev\.tr7zw\.transition\.mc\.PlayerUtil|getPlayerSkin|Pseudo|require'
 
           echo "=== fallback mapping ==="
           cat >/tmp/NexusPre12Probe.java <<'JAVA'
