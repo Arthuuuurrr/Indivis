@@ -1,0 +1,284 @@
+name: Build Nexus BETA 1.0 PRE14
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/reference/BETA-1.0-PRE14/**"
+      - ".github/workflows/nexus-pre14-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with LFS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Verify PRE13 base
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          test -s "$BASE"
+          unzip -t "$BASE" >/dev/null
+          ACTUAL="$(sha256sum "$BASE" | awk '{print $1}')"
+          EXPECTED="6bd38c303fd4c27d44cc9039a031b3930a7bc16cdd5b4fb2bdcf0181848cc1a3"
+          test "$ACTUAL" = "$EXPECTED" || {
+            echo "PRE13 SHA mismatch: $ACTUAL"
+            exit 1
+          }
+
+      - name: Compile PRE14 sources
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          mkdir -p /tmp/pre14-classes /tmp/pre14-tools
+          javac -cp "$BASE" -d /tmp/pre14-classes             mods/nexuscharacters/reference/BETA-1.0-PRE14/sources/LongHair3DRenderSupport.java
+          javac -d /tmp/pre14-tools             mods/nexuscharacters/reference/BETA-1.0-PRE14/tools/GeneratePre14TintedHair.java
+          test -f /tmp/pre14-classes/net/tompsen/nexuscharacters/LongHair3DRenderSupport.class
+
+      - name: Generate exact compositor-matched 3D hair colours
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          SRC="/tmp/pre14-source"
+          OUTROOT="/tmp/pre14-add/assets/nexuscharacters/textures/cosmetic/hair_3d_tinted"
+          mkdir -p "$SRC" "$OUTROOT"
+
+          for raw in $(seq 1 13); do
+            n=$(printf "%02d" "$raw")
+            unzip -p "$BASE"               "assets/nexuscharacters/textures/cosmetic/hair_3d/hair_${n}.png"               > "$SRC/hair_${n}.png"
+          done
+
+          java -cp /tmp/pre14-tools GeneratePre14TintedHair "$SRC" "$OUTROOT"
+
+          test "$(find "$OUTROOT/v69" -type f -name '*.png' | wc -l)" -eq 156
+          test "$(find "$OUTROOT/legacy" -type f -name '*.png' | wc -l)" -eq 91
+
+      - name: Assemble PRE14
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
+          cp "$BASE" "$OUT"
+
+          jar uf "$OUT"             -C /tmp/pre14-classes net/tompsen/nexuscharacters/LongHair3DRenderSupport.class             -C /tmp/pre14-add assets/nexuscharacters/textures/cosmetic/hair_3d_tinted
+
+          mkdir -p /tmp/pre14-meta
+          unzip -p "$OUT" fabric.mod.json > /tmp/pre14-meta/fabric.mod.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("/tmp/pre14-meta/fabric.mod.json")
+          data=json.loads(p.read_text(encoding="utf-8"))
+          data["version"]="1.0.0-beta.14+hc.1.21.11"
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          jar uf "$OUT" -C /tmp/pre14-meta fabric.mod.json
+
+      - name: Validate PRE14 colour parity
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
+          rm -rf /tmp/pre14-check
+          mkdir -p /tmp/pre14-check/orig /tmp/pre14-check/tinted
+
+          for raw in $(seq 1 13); do
+            n=$(printf "%02d" "$raw")
+            unzip -p "$OUT"               "assets/nexuscharacters/textures/cosmetic/hair_3d/hair_${n}.png"               > "/tmp/pre14-check/orig/hair_${n}.png"
+          done
+
+          for family in v69 legacy; do
+            max=12
+            [ "$family" = "legacy" ] && max=7
+            for rawc in $(seq 1 $max); do
+              c=$(printf "%02d" "$rawc")
+              mkdir -p "/tmp/pre14-check/tinted/$family/hc$c"
+              for rawh in $(seq 1 13); do
+                h=$(printf "%02d" "$rawh")
+                unzip -p "$OUT"                   "assets/nexuscharacters/textures/cosmetic/hair_3d_tinted/$family/hc$c/hair_${h}.png"                   > "/tmp/pre14-check/tinted/$family/hc$c/hair_${h}.png"
+              done
+            done
+          done
+
+          cat >/tmp/VerifyPre14Tint.java <<'JAVA'
+          import java.awt.image.BufferedImage;
+          import java.io.File;
+          import javax.imageio.ImageIO;
+
+          public final class VerifyPre14Tint {
+              private static final int[] V69 = {
+                  0,
+                  0xFF1B1717, 0xFF563622, 0xFF7A5135, 0xFFD4B36A,
+                  0xFFE7D59B, 0xFF9B783E, 0xFFA94D2D, 0xFFD96526,
+                  0xFF7E3428, 0xFF817A75, 0xFFE4DED1, 0xFFC8CCD0
+              };
+              private static final int[] LEGACY = {
+                  0,
+                  0xFF1B1717, 0xFF563622, 0xFF7A5135, 0xFFD4B36A,
+                  0xFFA94D2D, 0xFFE4DED1, 0xFF817A75
+              };
+
+              public static void main(String[] args) throws Exception {
+                  verify("v69", V69);
+                  verify("legacy", LEGACY);
+              }
+
+              private static void verify(String family, int[] palette) throws Exception {
+                  for(int color=1;color<palette.length;color++){
+                      for(int hair=1;hair<=13;hair++){
+                          BufferedImage src=ImageIO.read(new File(String.format(
+                                  "/tmp/pre14-check/orig/hair_%02d.png",hair)));
+                          BufferedImage got=ImageIO.read(new File(String.format(
+                                  "/tmp/pre14-check/tinted/%s/hc%02d/hair_%02d.png",
+                                  family,color,hair)));
+                          if(src==null||got==null) throw new AssertionError("missing image");
+                          for(int y=0;y<64;y++) for(int x=0;x<64;x++){
+                              int expected=tint(src.getRGB(x,y),palette[color]);
+                              if(got.getRGB(x,y)!=expected){
+                                  throw new AssertionError(
+                                      family+" hc"+color+" hair"+hair+" mismatch @ "+x+","+y);
+                              }
+                          }
+                      }
+                  }
+                  System.out.println(family+" exact tint parity OK");
+              }
+
+              private static int tint(int argb,int target){
+                  int a=(argb>>>24)&255;
+                  if(a==0)return 0;
+                  int r=(argb>>>16)&255,g=(argb>>>8)&255,b=argb&255;
+                  int lum=(r*30+g*59+b*11)/100;
+                  int tr=(target>>>16)&255,tg=(target>>>8)&255,tb=target&255;
+                  double factor=0.38+((double)lum/255.0)*0.92;
+                  return (a<<24)|(clamp((int)Math.round(tr*factor))<<16)
+                      |(clamp((int)Math.round(tg*factor))<<8)
+                      |clamp((int)Math.round(tb*factor));
+              }
+
+              private static int clamp(int v){ return Math.max(0,Math.min(255,v)); }
+          }
+          JAVA
+          javac /tmp/VerifyPre14Tint.java
+          java -cp /tmp VerifyPre14Tint
+
+      - name: Validate PRE14 structure and regression scope
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
+          unzip -t "$OUT" >/dev/null
+
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,zipfile
+
+          base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar")
+          out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar")
+
+          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
+              n0=z0.namelist()
+              n1=z1.namelist()
+              if len(n1)!=len(set(n1)):
+                  raise SystemExit("duplicate ZIP entries")
+              if set(n0)-set(n1):
+                  raise SystemExit("PRE14 removed an existing PRE13 entry")
+
+              added=set(n1)-set(n0)
+              files=[n for n in added if n.endswith(".png")]
+              if len(files)!=247:
+                  raise SystemExit(f"expected 247 tinted PNGs, got {len(files)}")
+              if any(not n.startswith("assets/nexuscharacters/textures/cosmetic/hair_3d_tinted/") for n in files):
+                  raise SystemExit("unexpected added PNG path")
+              if any(
+                  not n.startswith("assets/nexuscharacters/textures/cosmetic/hair_3d_tinted/")
+                  for n in added
+              ):
+                  raise SystemExit(f"unexpected added entry: {sorted(added)[:20]}")
+
+              changed={
+                  n for n in set(n0)&set(n1)
+                  if hashlib.sha256(z0.read(n)).digest()!=hashlib.sha256(z1.read(n)).digest()
+              }
+              expected={
+                  "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
+                  "fabric.mod.json",
+              }
+              if changed!=expected:
+                  raise SystemExit(f"unexpected changed entries: {sorted(changed)}")
+
+              for name in (
+                  "net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class",
+                  "net/tompsen/nexuscharacters/DynamicAppearanceSupport.class",
+                  "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
+                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
+                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
+                  "net/tompsen/nexuscharacters/NexusCharacters.class",
+                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
+                  "net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class",
+                  "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
+              ):
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                      raise SystemExit(f"preserved class changed: {name}")
+
+              mod=json.loads(z1.read("fabric.mod.json"))
+              if mod.get("version")!="1.0.0-beta.14+hc.1.21.11":
+                  raise SystemExit("wrong PRE14 version")
+
+          raw=out.read_bytes()
+          sha=hashlib.sha256(raw).hexdigest()
+          size=len(raw)
+          ref=Path("mods/nexuscharacters/reference/BETA-1.0-PRE14")
+          (ref/"SHA256SUMS.txt").write_text(f"{sha}  {out.name}\n",encoding="utf-8")
+          (ref/"VALIDATION.md").write_text(
+              "# Validation BETA 1.0 PRE14\n\n"
+              f"- JAR : `{out.name}`\n"
+              f"- Taille : **{size} octets**\n"
+              f"- SHA-256 : `{sha}`\n"
+              "- Base PRE13 SHA vérifiée.\n"
+              "- 247 textures 3D teintées : 156 V69 + 91 legacy.\n"
+              "- Chaque pixel teinté a été recomputé et comparé à la formule HAIR de DynamicAppearanceSupport : exact.\n"
+              "- Le retrait de la surcouche plate est désormais conditionné à la construction réelle du mesh injecté.\n"
+              "- Géométrie, offsets et 13+5 meshes PRE13 inchangés.\n"
+              "- CharacterCosmeticFeatureRenderer et DynamicAppearanceSupport byte-identiques à PRE13.\n"
+              "- Sauvegarde PRE8, ABI PRE9, barbes, layout et bridge PRE12 inchangés.\n"
+              "- Version : `1.0.0-beta.14+hc.1.21.11`.\n",
+              encoding="utf-8"
+          )
+          print("PRE14",size,sha)
+          PY
+
+          javap -classpath "$OUT" -p -c net.tompsen.nexuscharacters.LongHair3DRenderSupport             | grep -E 'rendererReadyFor|hair_3d_tinted|PRE14 dedicated 3D hair mesh active'
+
+      - name: Publish PRE14 and clean temporary verification files
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE7.jar             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE5.jar             .github/workflows/nexus-pre13-deep-verify.yml             .github/workflows/nexus-pre13-color-audit.yml             .github/workflows/nexus-pre13-hair-audit.yml             .github/workflows/nexus-pre13-inspect.yml
+
+          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar             mods/nexuscharacters/reference/BETA-1.0-PRE14
+
+          if git diff --cached --quiet; then
+            echo "No PRE14 artifacts to publish."
+            exit 0
+          fi
+
+          git commit -m "nexus: publish BETA 1.0 PRE14 verified 3D hair renderer"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
