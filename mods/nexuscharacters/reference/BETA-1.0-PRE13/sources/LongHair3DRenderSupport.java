@@ -48,13 +48,14 @@ public final class LongHair3DRenderSupport {
      */
     public static String hairAssetName(int hairIndex) {
         if (hairIndex <= 5) {
-            return String.format(Locale.ROOT, "hair_short_%02d.png", hairIndex);
+            return String.format(Locale.ROOT,
+                    skinLayersAvailable() ? "hair_short_%02d_pre13.png" : "hair_short_%02d.png",
+                    hairIndex);
         }
         int longIndex = hairIndex - 5;
-        if (longIndex >= 1 && longIndex <= 5 && skinLayersAvailable()) {
-            return String.format(Locale.ROOT, "hair_long_%02d_pre13.png", longIndex);
-        }
-        return String.format(Locale.ROOT, "hair_long_%02d.png", longIndex);
+        return String.format(Locale.ROOT,
+                skinLayersAvailable() ? "hair_long_%02d_pre13.png" : "hair_long_%02d.png",
+                longIndex);
     }
 
     /**
