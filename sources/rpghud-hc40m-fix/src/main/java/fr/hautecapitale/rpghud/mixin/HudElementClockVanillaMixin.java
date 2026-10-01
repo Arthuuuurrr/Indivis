@@ -40,10 +40,10 @@ public abstract class HudElementClockVanillaMixin {
         method = {"getTime", "getClockColor"},
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/class_1937;method_8532()J",
-            remap = false
+            target = "Lnet/minecraft/world/World;getTimeOfDay()J",
+            remap = true
         ),
-        remap = false,
+        remap = true,
         require = 1
     )
     private long hc$useSmoothedTimeOfDay(World world) {
