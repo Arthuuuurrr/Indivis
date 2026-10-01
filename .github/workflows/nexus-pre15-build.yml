@@ -1,0 +1,430 @@
+name: Build Nexus BETA 1.0 PRE15
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/reference/BETA-1.0-PRE15/**"
+      - ".github/workflows/nexus-pre15-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository with LFS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Verify PRE14 base
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
+          test -s "$BASE"
+          unzip -t "$BASE" >/dev/null
+          ACTUAL="$(sha256sum "$BASE" | awk '{print $1}')"
+          EXPECTED="d63ac9ac90ebe9e71eee3e4ca77f34fca12e32c90a645bb07f97fed3adaa8034"
+          test "$ACTUAL" = "$EXPECTED" || {
+            echo "PRE14 SHA mismatch: $ACTUAL"
+            exit 1
+          }
+
+      - name: Compile PRE15 renderer
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
+          mkdir -p /tmp/pre15-classes
+          javac -cp "$BASE" -d /tmp/pre15-classes             mods/nexuscharacters/reference/BETA-1.0-PRE15/sources/LongHair3DRenderSupport.java
+
+          MAIN=/tmp/pre15-classes/net/tompsen/nexuscharacters/LongHair3DRenderSupport.class
+          test -f "$MAIN"
+
+          echo "=== generated LongHair3DRenderSupport class files ==="
+          find /tmp/pre15-classes/net/tompsen/nexuscharacters -maxdepth 1             -name 'LongHair3DRenderSupport*.class' -print | sort
+
+          # PRE14 failed because HairParts was a second class file omitted from the JAR.
+          # PRE15 intentionally compiles to exactly one class file.
+          COUNT="$(find /tmp/pre15-classes/net/tompsen/nexuscharacters -maxdepth 1             -name 'LongHair3DRenderSupport*.class' | wc -l)"
+          test "$COUNT" -eq 1 || {
+            echo "Unexpected PRE15 companion classes: $COUNT"
+            exit 1
+          }
+
+          if strings "$MAIN" | grep -F 'LongHair3DRenderSupport$HairParts'; then
+            echo "PRE15 still references the missing PRE14 HairParts companion."
+            exit 1
+          fi
+
+      - name: Assemble PRE15
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar"
+
+          cp "$BASE" "$OUT"
+          jar uf "$OUT"             -C /tmp/pre15-classes net/tompsen/nexuscharacters/LongHair3DRenderSupport.class
+
+          mkdir -p /tmp/pre15-meta
+          unzip -p "$OUT" fabric.mod.json > /tmp/pre15-meta/fabric.mod.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          p=Path("/tmp/pre15-meta/fabric.mod.json")
+          data=json.loads(p.read_text(encoding="utf-8"))
+          data["version"]="1.0.0-beta.15+hc.1.21.11"
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          jar uf "$OUT" -C /tmp/pre15-meta fabric.mod.json
+
+      - name: Verify official runtime dependencies
+        shell: bash
+        run: |
+          curl -fL --retry 3             "https://github.com/tr7zw/3d-Skin-Layers/releases/download/1.10.2/skinlayers3d-fabric-1.10.2-mc1.21.11.jar"             -o /tmp/skinlayers.jar
+          echo "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756  /tmp/skinlayers.jar"             | sha256sum -c -
+
+          echo "=== exact 3D Skin Layers API ==="
+          javap -classpath /tmp/skinlayers.jar -p dev.tr7zw.skinlayers.api.MeshHelper             | grep -F 'create3DMesh'
+          javap -classpath /tmp/skinlayers.jar -p dev.tr7zw.skinlayers.accessor.ModelPartInjector             | grep -F 'setInjectedMesh'
+          javap -classpath /tmp/skinlayers.jar -p dev.tr7zw.skinlayers.api.OffsetProvider             | grep -E 'HEAD|BODY|applyOffset'
+
+          # The user's client also has EntityCulling 1.10.2, which supplies a
+          # newer TRansition (1.0.19) at runtime. Verify that actual stack too.
+          curl -fL --retry 3             "https://github.com/tr7zw/EntityCulling/releases/download/1.10.2/entityculling-fabric-1.10.2-mc1.21.11.jar"             -o /tmp/entityculling.jar
+          echo "01cdfc8021e7f59eeb5d0d1131b782d242ee677ddc53dc62484a06a1379fec59  /tmp/entityculling.jar"             | sha256sum -c -
+
+          TRANSITION_ENTRY="$(jar tf /tmp/entityculling.jar | grep -Ei 'META-INF/jars/TRansition-1\.0\.19.*\.jar$' | head -n1)"
+          test -n "$TRANSITION_ENTRY"
+          unzip -p /tmp/entityculling.jar "$TRANSITION_ENTRY" > /tmp/transition-1.0.19.jar
+          javap -classpath /tmp/transition-1.0.19.jar -p -s dev.tr7zw.transition.mc.PlayerUtil             | grep -A2 -F 'getPlayerSkin(net.minecraft.class_11890)'
+
+      - name: Run PRE15 3D renderer integration harness
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar"
+          ST=/tmp/pre15-stubs
+          CLS=/tmp/pre15-stub-classes
+          mkdir -p             "$ST/net/minecraft"             "$ST/dev/tr7zw/skinlayers/api"             "$ST/dev/tr7zw/skinlayers/accessor"             "$ST/net/tompsen/nexuscharacters"
+
+          cat > "$ST/net/minecraft/class_1011.java" <<'JAVA'
+          package net.minecraft;
+          import java.io.InputStream;
+          public class class_1011 implements AutoCloseable {
+              public static class_1011 method_4309(InputStream in) { return new class_1011(); }
+              public void close() {}
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_4587.java" <<'JAVA'
+          package net.minecraft;
+          import java.util.ArrayList;
+          import java.util.List;
+          public class class_4587 {
+              public final List<float[]> scales = new ArrayList<>();
+              public int pushes;
+              public int pops;
+              public void method_22903() { pushes++; }
+              public void method_22909() { pops++; }
+              public void method_22905(float x,float y,float z) { scales.add(new float[]{x,y,z}); }
+          }
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/api/Mesh.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.api;
+          public interface Mesh {}
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/api/OffsetProvider.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.api;
+          import net.minecraft.class_4587;
+          public interface OffsetProvider {
+              void applyOffset(class_4587 stack, Mesh mesh);
+              OffsetProvider HEAD = (stack,mesh) -> {};
+              OffsetProvider BODY = (stack,mesh) -> {};
+          }
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/api/MeshHelper.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.api;
+          import net.minecraft.class_1011;
+          public interface MeshHelper {
+              Mesh create3DMesh(class_1011 image,int width,int height,int depth,int textureU,int textureV,boolean topPivot,float rotation);
+          }
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/api/SkinLayersAPI.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.api;
+          public final class SkinLayersAPI {
+              private static final MeshHelper HELPER =
+                  (image,width,height,depth,u,v,topPivot,rotation) -> new Mesh(){};
+              public static MeshHelper getMeshHelper() { return HELPER; }
+          }
+          JAVA
+
+          cat > "$ST/dev/tr7zw/skinlayers/accessor/ModelPartInjector.java" <<'JAVA'
+          package dev.tr7zw.skinlayers.accessor;
+          import dev.tr7zw.skinlayers.api.Mesh;
+          import dev.tr7zw.skinlayers.api.OffsetProvider;
+          public interface ModelPartInjector {
+              void setInjectedMesh(Mesh mesh, OffsetProvider offset);
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_630.java" <<'JAVA'
+          package net.minecraft;
+          import dev.tr7zw.skinlayers.api.Mesh;
+          import dev.tr7zw.skinlayers.api.OffsetProvider;
+          import dev.tr7zw.skinlayers.accessor.ModelPartInjector;
+          public class class_630 implements ModelPartInjector {
+              public Mesh injectedMesh;
+              public OffsetProvider injectedOffset;
+              public void setInjectedMesh(Mesh mesh, OffsetProvider offset) {
+                  this.injectedMesh=mesh;
+                  this.injectedOffset=offset;
+              }
+              public void method_22703(class_4587 stack) {}
+          }
+          JAVA
+
+          cat > "$ST/net/tompsen/nexuscharacters/BeardVoxelModelFactory.java" <<'JAVA'
+          package net.tompsen.nexuscharacters;
+          public final class BeardVoxelModelFactory {
+              public static Object bake() { return new net.minecraft.class_630(); }
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_2960.java" <<'JAVA'
+          package net.minecraft;
+          public final class class_2960 {
+              private final String id;
+              private class_2960(String id){this.id=id;}
+              public static class_2960 method_60655(String namespace,String path){
+                  return new class_2960(namespace+":"+path);
+              }
+              public static class_2960 of(String id){ return new class_2960(id); }
+              public String toString(){ return id; }
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_12249.java" <<'JAVA'
+          package net.minecraft;
+          public final class class_12249 {
+              public final class_2960 texture;
+              private class_12249(class_2960 texture){this.texture=texture;}
+              public static class_12249 method_75982(class_2960 texture){
+                  return new class_12249(texture);
+              }
+          }
+          JAVA
+
+          cat > "$ST/net/minecraft/class_922.java" <<'JAVA'
+          package net.minecraft;
+          public final class class_922 {
+              public static int method_23622(Object state,float tickDelta){ return 0; }
+          }
+          JAVA
+
+          javac -d "$CLS" $(find "$ST" -name '*.java')
+
+          cat > /tmp/Pre15Harness.java <<'JAVA'
+          import net.minecraft.class_12249;
+          import net.minecraft.class_2960;
+          import net.minecraft.class_4587;
+          import net.minecraft.class_630;
+
+          public final class Pre15Harness {
+              public static final class SkinSet {
+                  private final Skin skin = new Skin();
+                  public Skin comp_1626(){ return skin; }
+              }
+              public static final class Skin {
+                  public class_2960 comp_3627(){
+                      return class_2960.of("nexuscharacters:dynamic/appearance/player_v69_b1_e1_ec0_ey2_h07_hc02_s05_o20_fh0_fc00_mk0_mc0");
+                  }
+              }
+              public static final class State {
+                  public boolean field_53333=false;
+                  public SkinSet field_53520=new SkinSet();
+              }
+              public static final class Model {
+                  public class_630 field_3398=new class_630();
+                  public class_630 field_3394=new class_630();
+              }
+              public static final class Renderer {
+                  private final Model model=new Model();
+                  public Model method_17165(){ return model; }
+              }
+              public static final class Queue {
+                  public int submits;
+                  public void method_73492(
+                          class_630 part,
+                          class_4587 matrices,
+                          class_12249 layer,
+                          int light,
+                          int overlay,
+                          Object sprite,
+                          int tint,
+                          Object outline) {
+                      if(part.injectedMesh==null) throw new AssertionError("mesh not injected");
+                      if(part.injectedOffset==null) throw new AssertionError("offset not injected");
+                      part.injectedOffset.applyOffset(matrices,part.injectedMesh);
+                      submits++;
+                  }
+              }
+
+              public static void main(String[] args) throws Exception {
+                  Class<?> c=Class.forName("net.tompsen.nexuscharacters.LongHair3DRenderSupport");
+
+                  var hairName=c.getMethod("hairAssetName",int.class);
+                  Object mapped=hairName.invoke(null,7);
+                  if(!"hair_long_02_pre13.png".equals(mapped)){
+                      throw new AssertionError("3D preflight did not succeed: "+mapped);
+                  }
+
+                  Renderer renderer=new Renderer();
+                  class_4587 matrices=new class_4587();
+                  Queue queue=new Queue();
+                  State state=new State();
+
+                  c.getMethod("render",Object.class,Object.class,Object.class,int.class,Object.class)
+                    .invoke(null,renderer,matrices,queue,15728880,state);
+
+                  if(queue.submits!=2) throw new AssertionError("expected HEAD+BODY submits, got "+queue.submits);
+                  if(matrices.pushes!=2||matrices.pops!=2)
+                      throw new AssertionError("unbalanced matrices "+matrices.pushes+"/"+matrices.pops);
+                  if(matrices.scales.size()!=2)
+                      throw new AssertionError("expected two offset scales, got "+matrices.scales.size());
+
+                  float[] body=matrices.scales.get(1);
+                  if(Math.abs(body[0]-1.16f)>0.0001f
+                          ||Math.abs(body[1]-1.02f)>0.0001f
+                          ||Math.abs(body[2]-1.45f)>0.0001f) {
+                      throw new AssertionError(
+                          "wrong BODY separation "+body[0]+","+body[1]+","+body[2]);
+                  }
+
+                  System.out.println("PRE15 harness OK: renderer initialised; HEAD+BODY submitted; BODY offset 1.16/1.02/1.45.");
+              }
+          }
+          JAVA
+
+          javac -cp "$CLS:$OUT" /tmp/Pre15Harness.java
+          java -cp "$CLS:$OUT:/tmp" Pre15Harness
+
+      - name: Validate PRE15 regression scope
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar"
+          unzip -t "$OUT" >/dev/null
+
+          # The actual JAR must not contain/refer to the missing PRE14 companion.
+          if jar tf "$OUT" | grep -F 'LongHair3DRenderSupport$HairParts.class'; then
+            echo "PRE15 still contains HairParts companion"
+            exit 1
+          fi
+          if unzip -p "$OUT" net/tompsen/nexuscharacters/LongHair3DRenderSupport.class             | strings | grep -F 'LongHair3DRenderSupport$HairParts'; then
+            echo "PRE15 still references HairParts companion"
+            exit 1
+          fi
+
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,zipfile
+
+          base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar")
+          out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar")
+
+          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
+              n0=z0.namelist()
+              n1=z1.namelist()
+              if len(n1)!=len(set(n1)):
+                  raise SystemExit("duplicate ZIP entries")
+              if set(n0)!=set(n1):
+                  raise SystemExit("PRE15 unexpectedly changed JAR entry set")
+
+              changed={
+                  n for n in n0
+                  if hashlib.sha256(z0.read(n)).digest()!=hashlib.sha256(z1.read(n)).digest()
+              }
+              expected={
+                  "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
+                  "fabric.mod.json",
+              }
+              if changed!=expected:
+                  raise SystemExit(f"unexpected PRE15 changed entries: {sorted(changed)}")
+
+              for name in (
+                  "net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class",
+                  "net/tompsen/nexuscharacters/DynamicAppearanceSupport.class",
+                  "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
+                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
+                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
+                  "net/tompsen/nexuscharacters/NexusCharacters.class",
+                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
+                  "net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class",
+                  "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
+              ):
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                      raise SystemExit(f"preserved class changed: {name}")
+
+              mod=json.loads(z1.read("fabric.mod.json"))
+              if mod.get("version")!="1.0.0-beta.15+hc.1.21.11":
+                  raise SystemExit("wrong PRE15 version")
+
+          raw=out.read_bytes()
+          sha=hashlib.sha256(raw).hexdigest()
+          size=len(raw)
+          ref=Path("mods/nexuscharacters/reference/BETA-1.0-PRE15")
+          (ref/"SHA256SUMS.txt").write_text(f"{sha}  {out.name}\n",encoding="utf-8")
+          (ref/"VALIDATION.md").write_text(
+              "# Validation BETA 1.0 PRE15\n\n"
+              f"- JAR : `{out.name}`\n"
+              f"- Taille : **{size} octets**\n"
+              f"- SHA-256 : `{sha}`\n"
+              "- Base PRE14 SHA vérifiée.\n"
+              "- Cause du log PRE14 corrigée : aucune référence/entrée `LongHair3DRenderSupport$HairParts`.\n"
+              "- Le compilateur produit exactement un seul fichier LongHair3DRenderSupport.class.\n"
+              "- Harness d'intégration : preflight 3D OK, 2 soumissions HEAD+BODY, offsets appliqués, matrices équilibrées.\n"
+              "- BODY extra = 1.16 / 1.02 / 1.45.\n"
+              "- ABI officielle 3D Skin Layers 1.10.2 vérifiée.\n"
+              "- TRansition 1.0.19 du runtime EntityCulling vérifié pour getPlayerSkin(Avatar).\n"
+              "- Assets et 247 textures teintées PRE14 strictement inchangés.\n"
+              "- Tous les systèmes Nexus hors LongHair3DRenderSupport strictement inchangés.\n"
+              "- Version : `1.0.0-beta.15+hc.1.21.11`.\n",
+              encoding="utf-8"
+          )
+          print("PRE15",size,sha)
+          PY
+
+      - name: Publish PRE15 through Git LFS
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar
+
+          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar             mods/nexuscharacters/reference/BETA-1.0-PRE15/SHA256SUMS.txt             mods/nexuscharacters/reference/BETA-1.0-PRE15/VALIDATION.md
+
+          if git diff --cached --quiet; then
+            echo "No PRE15 artifacts to publish."
+            exit 0
+          fi
+
+          git commit -m "nexus: publish BETA 1.0 PRE15 3D hair runtime fix"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
