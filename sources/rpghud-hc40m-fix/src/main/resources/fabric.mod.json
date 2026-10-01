@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "hc_rpghud_hc40m_fix",
+  "version": "${version}",
+  "name": "Haute Capitale — RPG-HUD HC40M Fix",
+  "description": "Client-side clock smoothing compatibility for RPG-HUD 3.13 and the Haute Capitale 40-minute day/night cycle.",
+  "authors": ["Haute Capitale"],
+  "environment": "client",
+  "mixins": [
+    "hc_rpghud_hc40m_fix.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "=1.21.11",
+    "java": ">=21",
+    "fabric-api": "*",
+    "rpg-hud": "*"
+  }
+}
