@@ -1,0 +1,29 @@
+name: Nexus PRE16 dynamic texture audit
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre16-dynamic-texture.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Decompile dynamic texture support
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar"
+          curl -fsSL https://www.benf.org/other/cfr/cfr-0.152.jar -o /tmp/cfr.jar
+          rm -rf /tmp/d && mkdir -p /tmp/d
+          java -jar /tmp/cfr.jar "$J" --outputdir /tmp/d --silent true >/dev/null 2>&1
+          cat /tmp/d/net/tompsen/nexuscharacters/DynamicAppearanceSupport.java
