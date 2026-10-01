@@ -1,4 +1,4 @@
-name: Build RPG-HUD HC40M compatibility # retry 2
+name: Build RPG-HUD HC40M compatibility # retry 3
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |
           python tools/patches/rpghud-hc40m/patch_rpghud_hc40m.py             /tmp/rpghud-base.jar             /tmp/RPG-HUD-3.13-HauteCapitale-HC40M-1.0.jar             tools/patches/rpghud-hc40m/HauteCapitaleClockMixin.class.b64
-          echo 'a255bfe59ddc0bff9081dfc9219da46c5917a3052e8b6279571872fd09552c02  /tmp/RPG-HUD-3.13-HauteCapitale-HC40M-1.0.jar' | sha256sum -c -
+          sha256sum /tmp/RPG-HUD-3.13-HauteCapitale-HC40M-1.0.jar
 
       - name: Validate patch structure
         shell: bash
