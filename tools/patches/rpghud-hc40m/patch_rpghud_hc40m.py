@@ -28,9 +28,20 @@ def main(base: Path, out: Path, mixin_b64: Path):
 
 Base SHA-256: ab2dec0daf697af037c294c50ba7a8dc5251048294d5f88229bc14d832a02b00
 
-Only RPG-HUD clock reads are smoothed to 0.5x using gameTime as the stable clock.
-Small backward server time corrections are ignored; real /time/sleep/world changes
-resynchronize immediately. Frozen day cycle and resume are handled.
+Problem:
+- RPG-HUD reads ClientWorld#getTimeOfDay directly.
+- The client predicts that value at vanilla speed between server sync packets.
+- HauteCapitale-DayCycle runs the authoritative cycle at 0.5x.
+- Result before this patch: the HUD clock advances, then visibly jumps backwards after sync.
+
+Fix:
+- only RPG-HUD clock reads are redirected through HauteCapitaleClockMixin;
+- display time is anchored to gameTime (which stays 1.0x) and advances at 0.5x;
+- small backward server corrections are ignored;
+- /time/sleep/world changes re-anchor immediately;
+- frozen day cycle and resume are handled;
+- getClockColor uses the same smoothed time as the text clock.
+
 No gameplay time, gamerule, tick rate, world state or other RPG-HUD element is modified.
 """.encode()
         additions = {
