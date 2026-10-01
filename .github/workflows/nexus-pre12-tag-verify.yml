@@ -1,0 +1,31 @@
+name: Nexus PRE12 tag verify
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre12-tag-verify.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Find all Nexus skin-tag readers and writers
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
+          curl -fsSL https://www.benf.org/other/cfr/cfr-0.152.jar -o /tmp/cfr.jar
+          mkdir -p /tmp/d
+          java -jar /tmp/cfr.jar "$J" --outputdir /tmp/d --silent true >/dev/null 2>&1
+          grep -Rni -C 8 'nexuscharacters\.skin\.' /tmp/d/net/tompsen/nexuscharacters || true
+          echo "=== CharacterDto skin marker setters / tag mutators ==="
+          grep -RniE -C 6 'method_5780|method_5781|addCommandTag|removeCommandTag|skinUsername\(' /tmp/d/net/tompsen/nexuscharacters | head -n 1600 || true
