@@ -1,0 +1,55 @@
+name: Nexus PRE13 color audit
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre13-color-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Compare mesh tint brightness with compositor
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          mkdir -p /tmp/h
+          for raw in $(seq 1 13); do
+            n=$(printf "%02d" "$raw")
+            unzip -p "$J" "assets/nexuscharacters/textures/cosmetic/hair_3d/hair_${n}.png" > "/tmp/h/hair_${n}.png"
+          done
+          cat >/tmp/ColorAudit.java <<'JAVA'
+          import java.awt.image.BufferedImage;
+          import java.io.File;
+          import javax.imageio.ImageIO;
+          public final class ColorAudit {
+            public static void main(String[] args)throws Exception{
+              for(int h=1;h<=13;h++){
+                BufferedImage i=ImageIO.read(new File(String.format("/tmp/h/hair_%02d.png",h)));
+                long lum=0; int n=0;
+                for(int y=0;y<64;y++)for(int x=0;x<64;x++){
+                  int p=i.getRGB(x,y), a=(p>>>24)&255; if(a==0)continue;
+                  int r=(p>>>16)&255,g=(p>>>8)&255,b=p&255;
+                  lum+=(r*30+g*59+b*11)/100; n++;
+                }
+                double avg=n==0?0:(double)lum/n;
+                double direct=avg/255.0;
+                double compositor=0.38+avg/255.0*0.92;
+                System.out.printf("hair_%02d pixels=%d avgLum=%.2f directFactor=%.3f compositorFactor=%.3f%n",
+                    h,n,avg,direct,compositor);
+              }
+            }
+          }
+          JAVA
+          javac /tmp/ColorAudit.java
+          java -cp /tmp ColorAudit
