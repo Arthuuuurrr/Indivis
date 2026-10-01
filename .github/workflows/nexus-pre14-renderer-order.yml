@@ -1,0 +1,29 @@
+name: Nexus PRE14 renderer-order audit
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre14-renderer-order.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Decompile renderer and show render method
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
+          curl -fsSL https://www.benf.org/other/cfr/cfr-0.152.jar -o /tmp/cfr.jar
+          mkdir -p /tmp/d
+          java -jar /tmp/cfr.jar "$J" --outputdir /tmp/d --silent true >/dev/null 2>&1
+          nl -ba /tmp/d/net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.java | sed -n '45,115p'
