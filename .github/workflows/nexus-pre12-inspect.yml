@@ -1,0 +1,44 @@
+name: Nexus PRE12 inspect
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre12-inspect.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Inspect PRE11 appearance identity and texture registration
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
+          curl -fsSL https://www.benf.org/other/cfr/cfr-0.152.jar -o /tmp/cfr.jar
+          mkdir -p /tmp/decomp
+          java -jar /tmp/cfr.jar "$J" --outputdir /tmp/decomp --silent true >/dev/null 2>&1
+
+          echo "=== DynamicAppearanceSupport ==="
+          cat /tmp/decomp/net/tompsen/nexuscharacters/DynamicAppearanceSupport.java
+          echo "=== Appearance69Support ==="
+          cat /tmp/decomp/net/tompsen/nexuscharacters/Appearance69Support.java
+          echo "=== PresetSkinSupport ==="
+          cat /tmp/decomp/net/tompsen/nexuscharacters/PresetSkinSupport.java
+          echo "=== PreviewDummyPlayerManager ==="
+          cat /tmp/decomp/net/tompsen/nexuscharacters/PreviewDummyPlayerManager.java
+
+          echo "=== texture registration / dynamic ids refs ==="
+          grep -RniE 'method_4616|method_4617|method_4619|register|DynamicTexture|NativeImage|class_1043|class_1060|nexuscharacters/appearance|appearance_'             /tmp/decomp/net/tompsen/nexuscharacters | head -n 2000 || true
+
+          echo "=== calls to DynamicAppearanceSupport ==="
+          grep -Rni 'DynamicAppearanceSupport' /tmp/decomp/net/tompsen/nexuscharacters | head -n 500 || true
