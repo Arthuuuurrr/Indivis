@@ -1,0 +1,28 @@
+name: Nexus PRE12 feature inspect
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre12-feature-inspect.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Decompile CharacterCosmeticFeatureRenderer
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
+          curl -fsSL https://www.benf.org/other/cfr/cfr-0.152.jar -o /tmp/cfr.jar
+          unzip -p "$J" net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class >/tmp/x.class
+          java -jar /tmp/cfr.jar /tmp/x.class --silent true 2>/dev/null
