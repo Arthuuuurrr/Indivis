@@ -29,9 +29,9 @@ public final class SeparateLongHairFromBody {
 
             int baseBefore = countOpaque(image, 16, 16, 40, 32);
             int outerBefore = countOpaque(image, 16, 32, 40, 48);
-            if (baseBefore <= 0 || outerBefore <= 0) {
+            if (outerBefore <= 0) {
                 throw new IllegalStateException(
-                        "Expected both base and outer torso hair before PRE12 for " + file
+                        "Expected outer torso hair before PRE12 for " + file
                                 + " (base=" + baseBefore + ", outer=" + outerBefore + ")");
             }
 
