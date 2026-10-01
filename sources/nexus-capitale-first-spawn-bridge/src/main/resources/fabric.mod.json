@@ -3,7 +3,7 @@
   "id": "nexus_capitale_first_spawn_bridge",
   "version": "${version}",
   "name": "Nexus Capitale First Spawn Bridge",
-  "description": "Restores the Haute Capitale prologue hook for newly-created NexusCharacters server vaults.",
+  "description": "Restores the Haute Capitale prologue hook for new NexusCharacters vaults without reopening the legacy RP-HUD identity menu.",
   "environment": "server",
   "entrypoints": {
     "main": [
