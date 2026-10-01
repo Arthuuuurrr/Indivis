@@ -1,0 +1,31 @@
+name: Nexus PRE16 SkinLayers field audit
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre16-skinlayers-fields.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Inspect exact 1.10.2 compiled names
+        shell: bash
+        run: |
+          curl -fL --retry 3             "https://github.com/tr7zw/3d-Skin-Layers/releases/download/1.10.2/skinlayers3d-fabric-1.10.2-mc1.21.11.jar"             -o /tmp/sl.jar
+          echo "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756  /tmp/sl.jar" | sha256sum -c -
+          echo "=== SkinUtil signatures ==="
+          javap -classpath /tmp/sl.jar -p -s dev.tr7zw.skinlayers.SkinUtil
+          echo "=== PlayerModelMixin fields and setupAnim ==="
+          javap -classpath /tmp/sl.jar -p -c -s dev.tr7zw.skinlayers.mixin.PlayerModelMixin
+          echo "=== PlayerEntityModelAccessor ==="
+          javap -classpath /tmp/sl.jar -p -s dev.tr7zw.skinlayers.accessor.PlayerEntityModelAccessor
+          echo "=== PlayerSettings ==="
+          javap -classpath /tmp/sl.jar -p -s dev.tr7zw.skinlayers.accessor.PlayerSettings
