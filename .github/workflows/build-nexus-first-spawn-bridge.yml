@@ -36,12 +36,12 @@ jobs:
           jar tf "$JAR" | grep -F 'fr/hautecapitale/nexusbridge/NexusCapitaleFirstSpawnBridge.class'
           jar tf "$JAR" | grep -F 'fr/hautecapitale/nexusbridge/mixin/ServerAuthorityV080Mixin.class'
           sha256sum "$JAR" | tee nexus-first-spawn-bridge.sha256
-          cp "$JAR" nexus-capitale-first-spawn-bridge-1.0.0+mc1.21.11.jar
+          cp "$JAR" nexus-capitale-first-spawn-bridge-1.0.1+mc1.21.11.jar
 
       - uses: actions/upload-artifact@v4
         with:
-          name: nexus-capitale-first-spawn-bridge-1.0.0
+          name: nexus-capitale-first-spawn-bridge-1.0.1
           path: |
-            nexus-capitale-first-spawn-bridge-1.0.0+mc1.21.11.jar
+            nexus-capitale-first-spawn-bridge-1.0.1+mc1.21.11.jar
             nexus-first-spawn-bridge.sha256
           if-no-files-found: error
