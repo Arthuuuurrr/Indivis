@@ -31,7 +31,33 @@ jobs:
       - name: Extract and inspect bundled transition
         shell: bash
         run: |
-          NESTED="$(jar tf /tmp/skinlayers.jar | grep -E '(^|/)transition[^/]*\.jar$' | head -n1 || true)"
+          NESTED="$(jar tf /tmp/skinlayers.jar | grep -Ei '(^|/)transition[^/]*\.jar
+          echo "NESTED=$NESTED"
+          if [ -n "$NESTED" ]; then
+            unzip -p /tmp/skinlayers.jar "$NESTED" > /tmp/transition.jar
+            jar tf /tmp/transition.jar | grep 'dev/tr7zw/transition/mc/PlayerUtil.class'
+            javap -classpath /tmp/transition.jar -p -c -s dev.tr7zw.transition.mc.PlayerUtil
+          else
+            # Some release builds shade Transition classes directly.
+            jar tf /tmp/skinlayers.jar | grep 'dev/tr7zw/transition/mc/PlayerUtil.class'
+            javap -classpath /tmp/skinlayers.jar -p -c -s dev.tr7zw.transition.mc.PlayerUtil
+          fi
+
+      - name: Inspect PRE14 bridge
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
+          echo "=== mixin config entries ==="
+          unzip -p "$J" nexuscharacters.mixins.json | grep -n -C 2 'SkinLayersDynamicSkinBridge' || true
+          unzip -p "$J" nexuscharacters.client.mixins.json | grep -n -C 2 'SkinLayersDynamicSkinBridge' || true
+
+          echo "=== bridge bytecode ==="
+          javap -classpath "$J" -p -c -s net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin || true
+          javap -classpath "$J" -p -c -s net.tompsen.nexuscharacters.SkinLayersDynamicSkinBridge || true
+
+          echo "=== all strings/references around transition ==="
+          unzip -p "$J" net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class             | strings | grep -E 'PlayerUtil|getPlayerSkin|method_|nexuscharacters|dynamic' || true
+ | head -n1 || true)"
           echo "NESTED=$NESTED"
           if [ -n "$NESTED" ]; then
             unzip -p /tmp/skinlayers.jar "$NESTED" > /tmp/transition.jar
