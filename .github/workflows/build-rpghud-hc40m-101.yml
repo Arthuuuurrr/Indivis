@@ -1,4 +1,4 @@
-name: Build and test RPG-HUD HC40M 1.0.1 # retry 6
+name: Build and test RPG-HUD HC40M 1.0.1 # retry 7
 
 on:
   push:
