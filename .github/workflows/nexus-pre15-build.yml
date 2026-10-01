@@ -200,7 +200,8 @@ jobs:
           cat > "$ST/net/tompsen/nexuscharacters/BeardVoxelModelFactory.java" <<'JAVA'
           package net.tompsen.nexuscharacters;
           public final class BeardVoxelModelFactory {
-              public static Object bake() { return new net.minecraft.class_630(); }
+              public static final class Cuboid {}
+              public static Object bake(Cuboid... cuboids) { return new net.minecraft.class_630(); }
           }
           JAVA
 
@@ -328,6 +329,9 @@ jobs:
           BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
           OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE15.jar"
           unzip -t "$OUT" >/dev/null
+
+          # Existing BeardVoxelModelFactory varargs ABI used by the renderer must be present.
+          jar tf "$OUT" | grep -F 'net/tompsen/nexuscharacters/BeardVoxelModelFactory$Cuboid.class'
 
           # The actual JAR must not contain/refer to the missing PRE14 companion.
           if jar tf "$OUT" | grep -F 'LongHair3DRenderSupport$HairParts.class'; then
