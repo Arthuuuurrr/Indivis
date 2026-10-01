@@ -1,4 +1,4 @@
-name: Build and test RPG-HUD HC40M 1.0.1 # retry 4
+name: Build and test RPG-HUD HC40M 1.0.1 # retry 5
 
 on:
   push:
@@ -34,6 +34,9 @@ jobs:
           mkdir -p sources/rpghud-hc40m-fix/libs
           curl -L --fail --retry 3             'https://cdn.modrinth.com/data/EC41AOIq/versions/MBR7kJNW/%5B1.21.11%5D%5BFabric%5D%20RPG-HUD-3.13.jar'             -o sources/rpghud-hc40m-fix/libs/rpg-hud-base.jar
           echo 'ab2dec0daf697af037c294c50ba7a8dc5251048294d5f88229bc14d832a02b00  sources/rpghud-hc40m-fix/libs/rpg-hud-base.jar' | sha256sum -c -
+          mkdir -p sources/rpghud-hc40m-fix/run/mods
+          cp sources/rpghud-hc40m-fix/libs/rpg-hud-base.jar sources/rpghud-hc40m-fix/run/mods/rpg-hud-base.jar
+          curl -L --fail --retry 3 'https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/0.141.6+1.21.11/fabric-api-0.141.6+1.21.11.jar' -o sources/rpghud-hc40m-fix/run/mods/fabric-api.jar
 
       - name: Compile real Fabric Mixin with Loom
         working-directory: sources/rpghud-hc40m-fix
