@@ -22,7 +22,7 @@ La source de vérité est désormais séparée en deux notions :
 | Witcher Class HC | Footwork RC1 | binaire hashé | #53 |
 | capitale_heraldry | **0.1.7** | source exacte 0.1.7 encore à importer | #72 |
 | MMO Music Zones | **1.2.7 indivis-dungeon-biome-FULL** | source exacte à importer | #60, #72 |
-| Dialogue/caméra NPC (`haute_capitale_dialogue`) | **b7** (serveur, relevé du 22/09) | b7 dans #104, recompilé = contenu identique au JAR b7 ; b8 (baguette Easy NPC reconnue) construit, pas encore versionné | #59, #104, #72 |
+| Dialogue/caméra NPC (`haute_capitale_dialogue`) | **b9** (serveur, log du 01/10) | b7 dans #104 ; b8 backup ; **b10 DATAPACK-COMMAND-HOTFIX** construit le 01/10 depuis b9 (SHA-256 `a2c21f24889f96880c472d168ea55cf65e84ff154ee1bbcc22dbeaa9df1d4057`) ; correctif source complet b9 à importer | #59, #104, #72 |
 | Journal de quêtes (`haute_capitale_quetes`) | serveur b3 / client b2 (relevé du 22/09) | b5 construit (système de montures, #30) ; sources à importer | #30, #72 |
 | Haute Capitale Pirates | serveur b4 / client b2 (relevé du 22/09) | b4 construit ; sources à importer | #72 |
 | Moteur d'instances `dungeonz` | non déployé | b23 construit, source à importer (listé `dungeon2-hc` dans #72) | #32, #72 |
