@@ -1,4 +1,4 @@
-name: Build RPG-HUD HC40M compatibility
+name: Build RPG-HUD HC40M compatibility # retry 2
 
 on:
   push:
