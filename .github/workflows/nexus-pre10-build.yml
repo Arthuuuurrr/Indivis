@@ -124,6 +124,7 @@ jobs:
           }
           expected_added={
               "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
+              "assets/nexuscharacters/textures/cosmetic/long_hair_body/",
               *new_assets,
           }
 
