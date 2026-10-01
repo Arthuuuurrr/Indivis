@@ -48,3 +48,5 @@ identifiées comme démarrage/interception de quête.
 
 Le `fabric.mod.json` final passe en b9 et retire la mention `ARR`, sans ajouter une licence de
 remplacement.
+
+Build branch: `fix/dialogue-b9-interpellations`.
