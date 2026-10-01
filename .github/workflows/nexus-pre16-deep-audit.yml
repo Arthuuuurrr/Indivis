@@ -1,0 +1,87 @@
+name: Nexus PRE16 deep visual audit
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre16-deep-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify PRE16 jar and inspect hair alpha topology
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE16.jar"
+          echo "59e85a002bc03ed5c251f8531e0667474fd5f92894ebd3f27e14529666ecb44a  $J" | sha256sum -c -
+          python -m pip install --disable-pip-version-check --quiet pillow
+          rm -rf /tmp/pre16 && mkdir -p /tmp/pre16
+          cd /tmp/pre16
+          jar xf "$GITHUB_WORKSPACE/$J"
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          import hashlib
+
+          root=Path("/tmp/pre16/assets/nexuscharacters/textures/cosmetic/hair_3d")
+          print("STYLE headAlpha bodyAlpha bbox")
+          body_styles=[]
+          for i in range(1,14):
+              p=root/f"hair_{i:02d}.png"
+              im=Image.open(p).convert("RGBA")
+              assert im.size==(64,64), (i,im.size)
+              a=im.getchannel("A")
+              # vanilla head outer UV sheet: x 32..63, y 0..15
+              head=sum(1 for y in range(0,16) for x in range(32,64) if a.getpixel((x,y))>0)
+              # vanilla jacket UV box generated from create3DMesh(8,12,4,u=16,v=32):
+              # complete unfolded footprint lies in x=16..39, y=32..47.
+              body=sum(1 for y in range(32,48) for x in range(16,40) if a.getpixel((x,y))>0)
+              bbox=a.getbbox()
+              print(f"{i:02d} {head} {body} {bbox}")
+              if body: body_styles.append(i)
+              assert head>0, f"h{i:02d} has no HEAD pixels"
+          print("BODY_STYLES",body_styles)
+
+          tinted=Path("/tmp/pre16/assets/nexuscharacters/textures/cosmetic/hair_3d_tinted")
+          checked=0
+          for p in tinted.rglob("hair_*.png"):
+              im=Image.open(p).convert("RGBA")
+              assert im.size==(64,64), (p,im.size)
+              i=int(p.stem.split("_")[1])
+              base=Image.open(root/f"hair_{i:02d}.png").convert("RGBA")
+              # tint may alter RGB only; alpha topology must remain exact.
+              assert list(im.getchannel("A").getdata()) == list(base.getchannel("A").getdata()), p
+              checked += 1
+          print("TINTED_ALPHA_MATCH",checked)
+          assert checked==247, checked
+          PY
+
+      - name: Bytecode audit PRE16 preview hooks
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE16.jar"
+          javap -classpath "$J" -p -c net.tompsen.nexuscharacters.WorldlessHairWidgetRenderer > /tmp/hair.txt
+          javap -classpath "$J" -p -c net.tompsen.nexuscharacters.WorldlessSkinLayersPreviewSupport > /tmp/outer.txt
+          javap -classpath "$J" -p -c net.tompsen.nexuscharacters.BeardPreviewVisibilitySupport > /tmp/hook.txt
+          javap -classpath "$J" -p -c net.tompsen.nexuscharacters.LongHair3DRenderSupport > /tmp/base.txt
+
+          grep -F 'LongHair3DRenderSupport.previewParts' /tmp/hair.txt
+          grep -F 'WorldlessHairWidgetRenderer.render' /tmp/hook.txt
+          grep -F 'WorldlessBeardWidgetRenderer.render' /tmp/hook.txt
+          grep -F 'WorldlessSkinLayersPreviewSupport.apply' <(javap -classpath "$J" -p -c net.tompsen.nexuscharacters.WorldlessCosmeticPreview)
+          grep -F 'dev/tr7zw/skinlayers/SkinUtil' /tmp/outer.txt
+          grep -F 'dev/tr7zw/skinlayers/api/SkinLayersAPI' /tmp/outer.txt
+
+          echo "=== Worldless hair body field ==="
+          grep -n -C 3 'field_3391' /tmp/hair.txt || true
+          echo "=== Normal renderer body field ==="
+          grep -n -C 3 'field_3394' /tmp/base.txt || true
