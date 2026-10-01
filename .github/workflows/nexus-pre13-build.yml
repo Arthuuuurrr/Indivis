@@ -1,0 +1,470 @@
+name: Build Nexus BETA 1.0 PRE13
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/reference/BETA-1.0-PRE13/**"
+      - ".github/workflows/nexus-pre13-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository with LFS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Verify PRE12 base
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
+          test -s "$BASE"
+          unzip -t "$BASE" >/dev/null
+          ACTUAL="$(sha256sum "$BASE" | awk '{print $1}')"
+          EXPECTED="6523b83eb38b4686b8255dfda40e3f5ad2ff39169eaa67a6bf62d4559c648276"
+          test "$ACTUAL" = "$EXPECTED" || {
+            echo "PRE12 SHA mismatch: $ACTUAL"
+            exit 1
+          }
+
+      - name: Finalize PRE13 source and build tooling
+        shell: bash
+        run: |
+          SRC="mods/nexuscharacters/reference/BETA-1.0-PRE13/sources/LongHair3DRenderSupport.java"
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("mods/nexuscharacters/reference/BETA-1.0-PRE13/sources/LongHair3DRenderSupport.java")
+          s=p.read_text(encoding="utf-8")
+          old='''        if (hairIndex <= 5) {
+                      return String.format(Locale.ROOT, "hair_short_%02d.png", hairIndex);
+                  }
+                  int longIndex = hairIndex - 5;
+                  if (longIndex >= 1 && longIndex <= 5 && skinLayersAvailable()) {
+                      return String.format(Locale.ROOT, "hair_long_%02d_pre13.png", longIndex);
+                  }
+                  return String.format(Locale.ROOT, "hair_long_%02d.png", longIndex);'''
+          new='''        if (hairIndex <= 5) {
+                      return String.format(Locale.ROOT,
+                              skinLayersAvailable() ? "hair_short_%02d_pre13.png" : "hair_short_%02d.png",
+                              hairIndex);
+                  }
+                  int longIndex = hairIndex - 5;
+                  return String.format(Locale.ROOT,
+                          skinLayersAvailable() ? "hair_long_%02d_pre13.png" : "hair_long_%02d.png",
+                          longIndex);'''
+          if old not in s:
+              raise SystemExit("Expected PRE13 hairAssetName source block not found")
+          p.write_text(s.replace(old,new),encoding="utf-8")
+          PY
+
+          mkdir -p mods/nexuscharacters/reference/BETA-1.0-PRE13/tools
+          cat > mods/nexuscharacters/reference/BETA-1.0-PRE13/tools/PreparePre13HairAssets.java <<'JAVA'
+          import java.awt.image.BufferedImage;
+          import java.io.File;
+          import javax.imageio.ImageIO;
+
+          public final class PreparePre13HairAssets {
+              public static void main(String[] args) throws Exception {
+                  if (args.length != 3) {
+                      throw new IllegalArgumentException("usage: PreparePre13HairAssets <source-dir> <composite-dir> <mesh-dir>");
+                  }
+                  File srcDir = new File(args[0]);
+                  File compositeDir = new File(args[1]);
+                  File meshDir = new File(args[2]);
+                  compositeDir.mkdirs();
+                  meshDir.mkdirs();
+
+                  for (int hairIndex = 1; hairIndex <= 13; hairIndex++) {
+                      boolean shortHair = hairIndex <= 5;
+                      int local = shortHair ? hairIndex : hairIndex - 5;
+                      String inputName = String.format(shortHair ? "hair_short_%02d.png" : "hair_long_%02d.png", local);
+                      BufferedImage input = ImageIO.read(new File(srcDir, inputName));
+                      if (input == null || input.getWidth() != 64 || input.getHeight() != 64) {
+                          throw new IllegalStateException("Expected 64x64 PNG: " + inputName);
+                      }
+
+                      BufferedImage mesh = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
+
+                      // Promote base-head hair to the equivalent outer-head UVs.
+                      for (int y = 0; y < 16; y++) {
+                          for (int x = 0; x < 32; x++) {
+                              int px = input.getRGB(x, y);
+                              if (((px >>> 24) & 255) != 0) mesh.setRGB(x + 32, y, px);
+                          }
+                      }
+                      // Preserve authored outer-head detail over the promoted copy.
+                      for (int y = 0; y < 16; y++) {
+                          for (int x = 32; x < 64; x++) {
+                              int px = input.getRGB(x, y);
+                              if (((px >>> 24) & 255) != 0) mesh.setRGB(x, y, px);
+                          }
+                      }
+
+                      // Long styles 01..05 currently contain the torso hair.
+                      if (!shortHair && local <= 5) {
+                          for (int y = 32; y < 48; y++) {
+                              for (int x = 16; x < 40; x++) {
+                                  int px = input.getRGB(x, y);
+                                  if (((px >>> 24) & 255) != 0) mesh.setRGB(x, y, px);
+                              }
+                          }
+                      }
+
+                      // Composite fallback with only base-head hair left in the
+                      // ordinary skin. Outer hair is exclusively the PRE13 mesh.
+                      BufferedImage composite = copy(input);
+                      clear(composite, 32, 0, 64, 16);
+                      if (!shortHair && local <= 5) clear(composite, 16, 32, 40, 48);
+
+                      String compositeName = String.format(
+                              shortHair ? "hair_short_%02d_pre13.png" : "hair_long_%02d_pre13.png",
+                              local);
+                      ImageIO.write(composite, "PNG", new File(compositeDir, compositeName));
+                      ImageIO.write(mesh, "PNG", new File(meshDir, String.format("hair_%02d.png", hairIndex)));
+                  }
+              }
+
+              private static void clear(BufferedImage img, int x0, int y0, int x1, int y1) {
+                  for (int y = y0; y < y1; y++) {
+                      for (int x = x0; x < x1; x++) img.setRGB(x, y, 0);
+                  }
+              }
+
+              private static BufferedImage copy(BufferedImage src) {
+                  BufferedImage out = new BufferedImage(64, 64, BufferedImage.TYPE_INT_ARGB);
+                  for (int y = 0; y < 64; y++) {
+                      for (int x = 0; x < 64; x++) out.setRGB(x, y, src.getRGB(x, y));
+                  }
+                  return out;
+              }
+          }
+          JAVA
+
+          cat > mods/nexuscharacters/reference/BETA-1.0-PRE13/README.md <<'EOF'
+          # NexusCharacters — BETA 1.0 PRE13
+
+          Base exacte : BETA 1.0 PRE12.
+
+          PRE12 laissait les cheveux dans les UVs vanilla du jacket. 3D Skin Layers
+          pouvait donc les traiter seulement comme une partie du même mesh que la tenue,
+          sans séparation géométrique propre.
+
+          PRE13 crée une passe 3D hair-only dédiée via le MeshHelper public de
+          3D Skin Layers :
+          - styles 1..13 : mesh HEAD dédié ;
+          - styles longs 01..05 : mesh BODY dédié ;
+          - le mesh BODY est séparé davantage de la tenue (X 1.08 / Y 1.01 / Z 1.24) ;
+          - les pixels de cheveux de la surcouche vanilla sont retirés du skin composé
+            quand Skin Layers est présent, pour éviter le double rendu et le z-fighting ;
+          - sans Skin Layers, les assets PRE12 complets restent le fallback.
+
+          Le hook existant de CharacterCosmeticFeatureRenderer couvre l'aperçu de
+          création et le rendu en jeu.
+          EOF
+
+      - name: Compile PRE13 renderer and tool
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
+          mkdir -p /tmp/pre13-classes /tmp/pre13-tools
+          javac -cp "$BASE" -d /tmp/pre13-classes             mods/nexuscharacters/reference/BETA-1.0-PRE13/sources/LongHair3DRenderSupport.java
+          javac -d /tmp/pre13-tools             mods/nexuscharacters/reference/BETA-1.0-PRE13/tools/PreparePre13HairAssets.java
+          test -f /tmp/pre13-classes/net/tompsen/nexuscharacters/LongHair3DRenderSupport.class
+
+      - name: Generate PRE13 hair assets
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
+          SRC=/tmp/pre13-source
+          COMPOSITE=/tmp/pre13-add/assets/nexuscharacters/appearance_parts_v064/hair
+          MESH=/tmp/pre13-add/assets/nexuscharacters/textures/cosmetic/hair_3d
+          mkdir -p "$SRC" "$COMPOSITE" "$MESH"
+
+          for raw in $(seq 1 5); do
+            n=$(printf "%02d" "$raw")
+            unzip -p "$BASE" "assets/nexuscharacters/appearance_parts_v064/hair/hair_short_${n}.png" > "$SRC/hair_short_${n}.png"
+          done
+          for raw in $(seq 1 8); do
+            n=$(printf "%02d" "$raw")
+            unzip -p "$BASE" "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${n}.png" > "$SRC/hair_long_${n}.png"
+          done
+
+          java -cp /tmp/pre13-tools PreparePre13HairAssets "$SRC" "$COMPOSITE" "$MESH"
+
+      - name: Assemble PRE13
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          cp "$BASE" "$OUT"
+
+          jar uf "$OUT"             -C /tmp/pre13-classes net/tompsen/nexuscharacters/LongHair3DRenderSupport.class             -C /tmp/pre13-add assets/nexuscharacters/appearance_parts_v064/hair             -C /tmp/pre13-add assets/nexuscharacters/textures/cosmetic/hair_3d
+
+          mkdir -p /tmp/pre13-meta
+          unzip -p "$OUT" fabric.mod.json > /tmp/pre13-meta/fabric.mod.json
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("/tmp/pre13-meta/fabric.mod.json")
+          data=json.loads(p.read_text(encoding="utf-8"))
+          data["version"]="1.0.0-beta.13+hc.1.21.11"
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+          jar uf "$OUT" -C /tmp/pre13-meta fabric.mod.json
+
+      - name: Validate PRE13 assets
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          rm -rf /tmp/pre13-verify
+          mkdir -p /tmp/pre13-verify/orig /tmp/pre13-verify/composite /tmp/pre13-verify/mesh
+
+          for raw in $(seq 1 5); do
+            n=$(printf "%02d" "$raw")
+            unzip -p "$OUT" "assets/nexuscharacters/appearance_parts_v064/hair/hair_short_${n}.png" > "/tmp/pre13-verify/orig/short_${n}.png"
+            unzip -p "$OUT" "assets/nexuscharacters/appearance_parts_v064/hair/hair_short_${n}_pre13.png" > "/tmp/pre13-verify/composite/short_${n}.png"
+          done
+          for raw in $(seq 1 8); do
+            n=$(printf "%02d" "$raw")
+            unzip -p "$OUT" "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${n}.png" > "/tmp/pre13-verify/orig/long_${n}.png"
+            unzip -p "$OUT" "assets/nexuscharacters/appearance_parts_v064/hair/hair_long_${n}_pre13.png" > "/tmp/pre13-verify/composite/long_${n}.png"
+          done
+          for raw in $(seq 1 13); do
+            n=$(printf "%02d" "$raw")
+            unzip -p "$OUT" "assets/nexuscharacters/textures/cosmetic/hair_3d/hair_${n}.png" > "/tmp/pre13-verify/mesh/hair_${n}.png"
+          done
+
+          cat >/tmp/VerifyPre13Hair.java <<'JAVA'
+          import java.awt.image.BufferedImage;
+          import java.io.File;
+          import javax.imageio.ImageIO;
+
+          public final class VerifyPre13Hair {
+              static boolean opaque(int p){ return ((p>>>24)&255)!=0; }
+              static int count(BufferedImage i,int x0,int y0,int x1,int y1){
+                  int c=0; for(int y=y0;y<y1;y++) for(int x=x0;x<x1;x++) if(opaque(i.getRGB(x,y)))c++; return c;
+              }
+              public static void main(String[] args)throws Exception{
+                  for(int h=1;h<=13;h++){
+                      boolean shortHair=h<=5;
+                      int local=shortHair?h:h-5;
+                      String k=shortHair?"short":"long";
+                      BufferedImage o=ImageIO.read(new File(String.format("/tmp/pre13-verify/orig/%s_%02d.png",k,local)));
+                      BufferedImage c=ImageIO.read(new File(String.format("/tmp/pre13-verify/composite/%s_%02d.png",k,local)));
+                      BufferedImage m=ImageIO.read(new File(String.format("/tmp/pre13-verify/mesh/hair_%02d.png",h)));
+                      if(o==null||c==null||m==null) throw new AssertionError("missing image "+h);
+
+                      int meshHead=count(m,32,0,64,16);
+                      if(meshHead==0) throw new AssertionError("empty 3D head mesh "+h);
+
+                      for(int y=0;y<64;y++) for(int x=0;x<64;x++){
+                          boolean headOuter=x>=32&&x<64&&y>=0&&y<16;
+                          boolean torsoOuter=x>=16&&x<40&&y>=32&&y<48;
+                          boolean remove=headOuter||(!shortHair&&local<=5&&torsoOuter);
+                          if(remove){
+                              if(opaque(c.getRGB(x,y))) throw new AssertionError("composite outer pixel remains "+h+" @ "+x+","+y);
+                          }else if(c.getRGB(x,y)!=o.getRGB(x,y)){
+                              throw new AssertionError("composite changed outside target "+h+" @ "+x+","+y);
+                          }
+
+                          boolean meshAllowed=headOuter||(!shortHair&&local<=5&&torsoOuter);
+                          if(!meshAllowed&&opaque(m.getRGB(x,y))){
+                              throw new AssertionError("mesh leak "+h+" @ "+x+","+y);
+                          }
+                      }
+
+                      int body=count(m,16,32,40,48);
+                      if(!shortHair&&local<=5){
+                          int expected=count(o,16,32,40,48);
+                          if(body!=expected||body==0) throw new AssertionError("body mesh mismatch "+h+": "+body+"/"+expected);
+                      }else if(body!=0){
+                          throw new AssertionError("unexpected body mesh "+h+": "+body);
+                      }
+                      System.out.println("hair "+h+" head="+meshHead+" body="+body+" OK");
+                  }
+              }
+          }
+          JAVA
+          javac /tmp/VerifyPre13Hair.java
+          java -cp /tmp VerifyPre13Hair
+
+      - name: Validate PRE13 structure and fallback mapping
+        shell: bash
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          unzip -t "$OUT" >/dev/null
+
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,zipfile
+
+          base=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar")
+          out=Path("mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar")
+
+          added=set()
+          for i in range(1,6):
+              added.add(f"assets/nexuscharacters/appearance_parts_v064/hair/hair_short_{i:02d}_pre13.png")
+          for i in range(1,9):
+              added.add(f"assets/nexuscharacters/appearance_parts_v064/hair/hair_long_{i:02d}_pre13.png")
+          added.add("assets/nexuscharacters/textures/cosmetic/hair_3d/")
+          for i in range(1,14):
+              added.add(f"assets/nexuscharacters/textures/cosmetic/hair_3d/hair_{i:02d}.png")
+
+          with zipfile.ZipFile(base) as z0, zipfile.ZipFile(out) as z1:
+              n0=z0.namelist(); n1=z1.namelist()
+              if len(n1)!=len(set(n1)): raise SystemExit("duplicate ZIP entries")
+              actual_added=set(n1)-set(n0)
+              if actual_added!=added:
+                  raise SystemExit(f"unexpected added entries: {sorted(actual_added ^ added)}")
+              if set(n0)-set(n1):
+                  raise SystemExit("PRE13 removed existing JAR entries")
+
+              changed={
+                  n for n in set(n0)&set(n1)
+                  if hashlib.sha256(z0.read(n)).digest()!=hashlib.sha256(z1.read(n)).digest()
+              }
+              expected_changed={
+                  "net/tompsen/nexuscharacters/LongHair3DRenderSupport.class",
+                  "fabric.mod.json",
+              }
+              if changed!=expected_changed:
+                  raise SystemExit(f"unexpected changed entries: {sorted(changed)}")
+
+              for name in (
+                  "net/tompsen/nexuscharacters/UnifiedPilositySupport.class",
+                  "net/tompsen/nexuscharacters/ProfileStateBridge.class",
+                  "net/tompsen/nexuscharacters/PuffishSkillsBridge.class",
+                  "net/tompsen/nexuscharacters/NexusCharacters.class",
+                  "net/tompsen/nexuscharacters/LongBeardModelSupport.class",
+                  "net/tompsen/nexuscharacters/CharacterCosmeticFeatureRenderer.class",
+                  "net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class",
+                  "net/tompsen/nexuscharacters/SkinLayersDynamicSkinBridge.class",
+              ):
+                  if hashlib.sha256(z0.read(name)).digest()!=hashlib.sha256(z1.read(name)).digest():
+                      raise SystemExit(f"preserved class changed: {name}")
+
+              mod=json.loads(z1.read("fabric.mod.json"))
+              if mod.get("version")!="1.0.0-beta.13+hc.1.21.11":
+                  raise SystemExit("wrong PRE13 version")
+
+          raw=out.read_bytes()
+          sha=hashlib.sha256(raw).hexdigest()
+          size=len(raw)
+          ref=Path("mods/nexuscharacters/reference/BETA-1.0-PRE13")
+          (ref/"SHA256SUMS.txt").write_text(f"{sha}  {out.name}\n",encoding="utf-8")
+          (ref/"VALIDATION.md").write_text(
+              "# Validation BETA 1.0 PRE13\n\n"
+              f"- JAR : `{out.name}`\n"
+              f"- Taille : **{size} octets**\n"
+              f"- SHA-256 : `{sha}`\n"
+              "- Base PRE12 SHA vérifiée.\n"
+              "- 13 meshes HEAD hair-only générés.\n"
+              "- 5 meshes BODY pour les coiffures longues 01..05.\n"
+              "- 13 variantes de composition PRE13 retirent la surcouche de cheveux vanilla pour éviter le double rendu.\n"
+              "- Les assets PRE12 originaux sont conservés byte-identiques comme fallback sans Skin Layers.\n"
+              "- Le renderer existant CharacterCosmeticFeatureRenderer reste byte-identique.\n"
+              "- Sauvegarde PRE8, ABI PRE9, barbes, layout et bridge PRE12 strictement inchangés.\n"
+              "- Version : `1.0.0-beta.13+hc.1.21.11`.\n",
+              encoding="utf-8"
+          )
+          print("PRE13",size,sha)
+          PY
+
+          # Fallback branch: without Skin Layers on the build classpath.
+          cat >/tmp/ProbeFallback.java <<'JAVA'
+          public final class ProbeFallback {
+              public static void main(String[] args) throws Exception {
+                  Class<?> c=Class.forName("net.tompsen.nexuscharacters.LongHair3DRenderSupport");
+                  var m=c.getMethod("hairAssetName",int.class);
+                  if(!"hair_short_01.png".equals(m.invoke(null,1))) throw new AssertionError();
+                  if(!"hair_long_01.png".equals(m.invoke(null,6))) throw new AssertionError();
+                  if(!"hair_long_08.png".equals(m.invoke(null,13))) throw new AssertionError();
+                  System.out.println("PRE13 no-SkinLayers fallback OK");
+              }
+          }
+          JAVA
+          javac -cp "$OUT" /tmp/ProbeFallback.java
+          java -cp "$OUT:/tmp" ProbeFallback
+
+      - name: Validate Skin Layers-present asset mapping
+        shell: bash
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar"
+          mkdir -p /tmp/stubs/dev/tr7zw/skinlayers/api /tmp/stubs/dev/tr7zw/skinlayers/accessor
+          cat >/tmp/stubs/dev/tr7zw/skinlayers/api/Mesh.java <<'JAVA'
+          package dev.tr7zw.skinlayers.api; public interface Mesh {}
+          JAVA
+          cat >/tmp/stubs/dev/tr7zw/skinlayers/api/MeshHelper.java <<'JAVA'
+          package dev.tr7zw.skinlayers.api; public interface MeshHelper {}
+          JAVA
+          cat >/tmp/stubs/dev/tr7zw/skinlayers/api/OffsetProvider.java <<'JAVA'
+          package dev.tr7zw.skinlayers.api;
+          public interface OffsetProvider {
+              OffsetProvider HEAD=null;
+              OffsetProvider BODY=null;
+          }
+          JAVA
+          cat >/tmp/stubs/dev/tr7zw/skinlayers/api/SkinLayersAPI.java <<'JAVA'
+          package dev.tr7zw.skinlayers.api;
+          public final class SkinLayersAPI {
+              public static MeshHelper getMeshHelper(){ return null; }
+          }
+          JAVA
+          cat >/tmp/stubs/dev/tr7zw/skinlayers/accessor/ModelPartInjector.java <<'JAVA'
+          package dev.tr7zw.skinlayers.accessor;
+          import dev.tr7zw.skinlayers.api.Mesh;
+          import dev.tr7zw.skinlayers.api.OffsetProvider;
+          public interface ModelPartInjector { void setInjectedMesh(Mesh mesh, OffsetProvider offset); }
+          JAVA
+          javac -d /tmp/stubs-classes $(find /tmp/stubs -name '*.java')
+
+          cat >/tmp/ProbePresent.java <<'JAVA'
+          public final class ProbePresent {
+              public static void main(String[] args) throws Exception {
+                  Class<?> c=Class.forName("net.tompsen.nexuscharacters.LongHair3DRenderSupport");
+                  var m=c.getMethod("hairAssetName",int.class);
+                  if(!"hair_short_01_pre13.png".equals(m.invoke(null,1))) throw new AssertionError(m.invoke(null,1));
+                  if(!"hair_long_01_pre13.png".equals(m.invoke(null,6))) throw new AssertionError(m.invoke(null,6));
+                  if(!"hair_long_08_pre13.png".equals(m.invoke(null,13))) throw new AssertionError(m.invoke(null,13));
+                  System.out.println("PRE13 SkinLayers-present mapping OK");
+              }
+          }
+          JAVA
+          javac -cp "$OUT:/tmp/stubs-classes" /tmp/ProbePresent.java
+          java -cp "$OUT:/tmp/stubs-classes:/tmp" ProbePresent
+
+          javap -classpath "$OUT" -p -c net.tompsen.nexuscharacters.LongHair3DRenderSupport             | grep -E 'method_73492|BODY_EXTRA_Z|hair_short_%02d_pre13|hair_long_%02d_pre13'
+
+      - name: Publish PRE13 through Git LFS
+        shell: bash
+        run: |
+          git lfs install --local
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git rm -f --ignore-unmatch             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE12.jar
+
+          git add             mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE13.jar             mods/nexuscharacters/reference/BETA-1.0-PRE13
+
+          if git diff --cached --quiet; then
+            echo "No PRE13 artifacts to publish."
+            exit 0
+          fi
+
+          git commit -m "nexus: publish BETA 1.0 PRE13 dedicated 3D hair meshes"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
