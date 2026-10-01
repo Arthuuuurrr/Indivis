@@ -15,71 +15,39 @@ jobs:
       - uses: actions/checkout@v4
         with:
           lfs: true
+
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "21"
+
       - name: Download exact Skin Layers release
         shell: bash
         run: |
-          curl -fL --retry 3             "https://github.com/tr7zw/3d-Skin-Layers/releases/download/1.10.2/skinlayers3d-fabric-1.10.2-mc1.21.11.jar"             -o /tmp/skinlayers.jar
-          test "$(sha256sum /tmp/skinlayers.jar | awk '{print $1}')" =             "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756"
-          jar tf /tmp/skinlayers.jar | grep -i transition || true
-          unzip -p /tmp/skinlayers.jar fabric.mod.json > /tmp/sl-fabric.json
-          cat /tmp/sl-fabric.json
+          curl -fL --retry 3 "https://github.com/tr7zw/3d-Skin-Layers/releases/download/1.10.2/skinlayers3d-fabric-1.10.2-mc1.21.11.jar" -o /tmp/skinlayers.jar
+          test "$(sha256sum /tmp/skinlayers.jar | awk '{print $1}')" = "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756"
+          unzip -p /tmp/skinlayers.jar "META-INF/jars/TRansition-1.0.13-1.21.11-fabric-SNAPSHOT.jar" > /tmp/transition.jar
+          test -s /tmp/transition.jar
 
-      - name: Extract and inspect bundled transition
+      - name: Inspect exact bundled PlayerUtil
         shell: bash
         run: |
-          NESTED="$(jar tf /tmp/skinlayers.jar | grep -Ei '(^|/)transition[^/]*\.jar
-          echo "NESTED=$NESTED"
-          if [ -n "$NESTED" ]; then
-            unzip -p /tmp/skinlayers.jar "$NESTED" > /tmp/transition.jar
-            jar tf /tmp/transition.jar | grep 'dev/tr7zw/transition/mc/PlayerUtil.class'
-            javap -classpath /tmp/transition.jar -p -c -s dev.tr7zw.transition.mc.PlayerUtil
-          else
-            # Some release builds shade Transition classes directly.
-            jar tf /tmp/skinlayers.jar | grep 'dev/tr7zw/transition/mc/PlayerUtil.class'
-            javap -classpath /tmp/skinlayers.jar -p -c -s dev.tr7zw.transition.mc.PlayerUtil
-          fi
+          jar tf /tmp/transition.jar | grep 'dev/tr7zw/transition/mc/PlayerUtil.class'
+          javap -classpath /tmp/transition.jar -p -c -s dev.tr7zw.transition.mc.PlayerUtil
 
-      - name: Inspect PRE14 bridge
+      - name: Inspect PRE14 bridge and mixin registration
         shell: bash
         run: |
           J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
-          echo "=== mixin config entries ==="
-          unzip -p "$J" nexuscharacters.mixins.json | grep -n -C 2 'SkinLayersDynamicSkinBridge' || true
-          unzip -p "$J" nexuscharacters.client.mixins.json | grep -n -C 2 'SkinLayersDynamicSkinBridge' || true
+          echo "=== mixin JSON files ==="
+          for f in $(jar tf "$J" | grep -E 'mixins.*json$|\.mixins\.json$'); do
+            echo "FILE=$f"
+            unzip -p "$J" "$f" | grep -n -C 3 -E 'SkinLayers|PlayerUtilCompat' || true
+          done
+
+          echo "=== bridge class candidates ==="
+          jar tf "$J" | grep -E 'SkinLayers.*(class|json)$|PlayerUtil.*class$' || true
 
           echo "=== bridge bytecode ==="
           javap -classpath "$J" -p -c -s net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin || true
           javap -classpath "$J" -p -c -s net.tompsen.nexuscharacters.SkinLayersDynamicSkinBridge || true
-
-          echo "=== all strings/references around transition ==="
-          unzip -p "$J" net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class             | strings | grep -E 'PlayerUtil|getPlayerSkin|method_|nexuscharacters|dynamic' || true
- | head -n1 || true)"
-          echo "NESTED=$NESTED"
-          if [ -n "$NESTED" ]; then
-            unzip -p /tmp/skinlayers.jar "$NESTED" > /tmp/transition.jar
-            jar tf /tmp/transition.jar | grep 'dev/tr7zw/transition/mc/PlayerUtil.class'
-            javap -classpath /tmp/transition.jar -p -c -s dev.tr7zw.transition.mc.PlayerUtil
-          else
-            # Some release builds shade Transition classes directly.
-            jar tf /tmp/skinlayers.jar | grep 'dev/tr7zw/transition/mc/PlayerUtil.class'
-            javap -classpath /tmp/skinlayers.jar -p -c -s dev.tr7zw.transition.mc.PlayerUtil
-          fi
-
-      - name: Inspect PRE14 bridge
-        shell: bash
-        run: |
-          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE14.jar"
-          echo "=== mixin config entries ==="
-          unzip -p "$J" nexuscharacters.mixins.json | grep -n -C 2 'SkinLayersDynamicSkinBridge' || true
-          unzip -p "$J" nexuscharacters.client.mixins.json | grep -n -C 2 'SkinLayersDynamicSkinBridge' || true
-
-          echo "=== bridge bytecode ==="
-          javap -classpath "$J" -p -c -s net.tompsen.nexuscharacters.mixin.client.SkinLayersPlayerUtilCompatMixin || true
-          javap -classpath "$J" -p -c -s net.tompsen.nexuscharacters.SkinLayersDynamicSkinBridge || true
-
-          echo "=== all strings/references around transition ==="
-          unzip -p "$J" net/tompsen/nexuscharacters/mixin/client/SkinLayersPlayerUtilCompatMixin.class             | strings | grep -E 'PlayerUtil|getPlayerSkin|method_|nexuscharacters|dynamic' || true
