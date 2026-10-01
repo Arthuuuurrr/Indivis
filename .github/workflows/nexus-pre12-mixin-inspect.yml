@@ -1,0 +1,30 @@
+name: Nexus PRE12 mixin inspect
+
+on:
+  push:
+    paths:
+      - ".github/workflows/nexus-pre12-mixin-inspect.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Inspect PRE11 mixins
+        shell: bash
+        run: |
+          J="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE11.jar"
+          echo "=== MIXIN JSON ==="
+          for p in $(jar tf "$J" | grep -E 'mixins?\.json$'); do
+            echo "--- $p"
+            unzip -p "$J" "$p"
+          done
+          echo "=== MIXIN CLASSES ==="
+          jar tf "$J" | grep -E 'mixin/.+\.class$' | sort
+          echo "=== PLAYER/MODEL TARGET STRINGS ==="
+          unzip -p "$J" | strings | grep -E 'class_591|class_572|setupAnim|method_2819|PlayerEntityModel' | sort -u | head -n 500 || true
