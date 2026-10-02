@@ -1,0 +1,53 @@
+name: Preserve NexusCharacters PRE23 verified binary
+on:
+  push:
+    branches: [fix/nexus-pre23-voxel-poses]
+    paths:
+      - mods/nexuscharacters/reference/BETA-1.0-PRE23/compiled-patches.zip.b64
+      - .github/workflows/build-nexus-pre23.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Assemble the exact binary verified in Minecraft
+        run: |
+          task_root=mods/nexuscharacters/reference/BETA-1.0-PRE23
+          base_jar=mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE22.jar
+          git lfs pull --include="$base_jar" --exclude=""
+          python - "$task_root" <<'PY'
+          import sys,base64,hashlib,json,zipfile,io
+          from pathlib import Path
+          root=Path(sys.argv[1]);meta=json.loads((root/'build-manifest.json').read_text())
+          data=base64.b64decode((root/'compiled-patches.zip.b64').read_bytes())
+          assert hashlib.sha256(data).hexdigest()==meta['compiled_archive_sha256']
+          with zipfile.ZipFile(io.BytesIO(data)) as z:
+              for name in z.namelist():
+                  assert name.endswith('.class') and name.startswith('net/tompsen/nexuscharacters/') and '..' not in name
+                  body=z.read(name);assert hashlib.sha256(body).hexdigest()==meta['class_sha256'][name]
+                  p=root/'classes'/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(body)
+          for name,sha in meta['source_sha256'].items():
+              assert hashlib.sha256((root/'sources'/name).read_bytes()).hexdigest()==sha
+          PY
+          python "$task_root/assemble.py" "$base_jar" artifacts/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE23.jar
+          echo '08de58a256525ec46b1362f8ab86eb4d3990a051a18f905b43127d28d498079d  artifacts/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE23.jar' | sha256sum -c -
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NexusCharacters-PRE23
+          path: artifacts/*.jar
+          retention-days: 90
+      - name: Preserve verified JAR on the correction branch
+        run: |
+          cp artifacts/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE23.jar mods/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE23.jar
+          if ! git diff --cached --quiet; then
+            git commit -m 'Store exact verified PRE23 binary'
+            git push origin HEAD:fix/nexus-pre23-voxel-poses
+          fi
