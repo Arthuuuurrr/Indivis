@@ -1,0 +1,1 @@
+POSE_AUDIT_PASS true-overlap+contained-triangle+shared-edge+small-adjacent-triangle

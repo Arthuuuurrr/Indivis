@@ -1,0 +1,62 @@
+TEST_MOD_VERSION 1.0.0-beta.25+hc.1.21.11
+[LibGui] Initializing Client...
+[NexusCharacters][NativeLayers23] PREPARED path=preview basePaint=1401 outerVoxels=1418 hair=318 classicBeard=0
+REPORTED_CAPTURE world=false case=0 angle=0 drawnOuter=6
+HAIR_REAR_DEPTH faces=83 minPixels=1.3499999 clothingEnvelope=0.29999995 required=1.15
+POSE_GEOMETRY_RESULT faces=2853 coplanar=0 crossings=0 pairs={}
+HAIR_REAR_DEPTH faces=83 minPixels=1.3499999 clothingEnvelope=0.29999995 required=1.15
+POSE_GEOMETRY_RESULT faces=2806 coplanar=0 crossings=0 pairs={}
+REPORTED_CAPTURE world=false case=0 angle=1 drawnOuter=66
+REPORTED_CAPTURE world=false case=0 angle=2 drawnOuter=138
+HAIR_REAR_RASTER_SEAM_PASS samples=41 exposedClothing=0
+[NexusCharacters][NativeLayers23] PREPARED path=preview basePaint=1444 outerVoxels=1477 hair=318 classicBeard=0
+REPORTED_CAPTURE world=false case=1 angle=0 drawnOuter=186
+HAIR_REAR_DEPTH faces=83 minPixels=1.3499999 clothingEnvelope=0.29999995 required=1.15
+POSE_GEOMETRY_RESULT faces=2481 coplanar=0 crossings=0 pairs={}
+HAIR_REAR_DEPTH faces=83 minPixels=1.3499999 clothingEnvelope=0.29999995 required=1.15
+POSE_GEOMETRY_RESULT faces=2449 coplanar=0 crossings=0 pairs={}
+REPORTED_CAPTURE world=false case=1 angle=1 drawnOuter=252
+REPORTED_CAPTURE world=false case=1 angle=2 drawnOuter=324
+[NexusCharacters][NativeLayers23] PREPARED path=preview basePaint=1436 outerVoxels=1445 hair=302 classicBeard=18
+REPORTED_CAPTURE world=false case=2 angle=0 drawnOuter=378
+POSE_GEOMETRY_RESULT faces=2664 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=2646 coplanar=0 crossings=0 pairs={}
+REPORTED_CAPTURE world=false case=2 angle=1 drawnOuter=444
+REPORTED_CAPTURE world=false case=2 angle=2 drawnOuter=516
+[NexusCharacters][NativeLayers23] PREPARED path=preview basePaint=1434 outerVoxels=1443 hair=312 classicBeard=6
+REPORTED_CAPTURE world=false case=3 angle=0 drawnOuter=582
+POSE_GEOMETRY_RESULT faces=2585 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=2567 coplanar=0 crossings=0 pairs={}
+REPORTED_CAPTURE world=false case=3 angle=1 drawnOuter=654
+REPORTED_CAPTURE world=false case=3 angle=2 drawnOuter=726
+ACTUAL_START_WORLD
+[capitale_rp_hud] BETA_1_1_48-preview-ui-live-skin FORCE_RENDER_SKIN mode=minecraft_account raceId=1 idx=0 previewContext=false
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=minecraft:textures/entity/player/slim/ari.png
+[capitale_rp_hud] BETA_1_2_2-root-grounding-race-tuned: scale=1.0/1.0/1.0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1401 outerVoxels=1418 hair=318 classicBeard=0
+REPORTED_CAPTURE world=true case=0 angle=0 drawnOuter=762
+HAIR_REAR_DEPTH faces=83 minPixels=1.3499999 clothingEnvelope=0.29999995 required=1.15
+POSE_GEOMETRY_RESULT faces=4131 coplanar=0 crossings=0 pairs={}
+REPORTED_CAPTURE world=true case=0 angle=1 drawnOuter=810
+REPORTED_CAPTURE world=true case=0 angle=2 drawnOuter=864
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1444 outerVoxels=1477 hair=318 classicBeard=0
+REPORTED_CAPTURE world=true case=1 angle=0 drawnOuter=906
+HAIR_REAR_DEPTH faces=83 minPixels=1.3499999 clothingEnvelope=0.29999995 required=1.15
+POSE_GEOMETRY_RESULT faces=3829 coplanar=0 crossings=0 pairs={}
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=minecraft:textures/entity/player/slim/ari.png
+REPORTED_CAPTURE world=true case=1 angle=1 drawnOuter=948
+REPORTED_CAPTURE world=true case=1 angle=2 drawnOuter=996
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1436 outerVoxels=1445 hair=302 classicBeard=18
+REPORTED_CAPTURE world=true case=2 angle=0 drawnOuter=1038
+POSE_GEOMETRY_RESULT faces=4193 coplanar=0 crossings=0 pairs={}
+REPORTED_CAPTURE world=true case=2 angle=1 drawnOuter=1080
+REPORTED_CAPTURE world=true case=2 angle=2 drawnOuter=1122
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1434 outerVoxels=1443 hair=312 classicBeard=6
+[capitale_rp_hud] BETA_1_1_48-preview-ui-live-skin FORCE_RENDER_SKIN mode=minecraft_account raceId=1 idx=0 previewContext=false
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=minecraft:textures/entity/player/slim/ari.png
+REPORTED_CAPTURE world=true case=3 angle=0 drawnOuter=1164
+POSE_GEOMETRY_RESULT faces=4114 coplanar=0 crossings=0 pairs={}
+REPORTED_CAPTURE world=true case=3 angle=1 drawnOuter=1200
+REPORTED_CAPTURE world=true case=3 angle=2 drawnOuter=1242
+REPORTED_PREVIEW_PASS captures=24 overlaps=0 wide+slim=true
+ACTUAL_PLAYER_REGRESSION_PASS reported menu previews

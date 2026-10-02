@@ -1,0 +1,620 @@
+TEST_MOD_VERSION 1.0.0-beta.25+hc.1.21.11
+ACTUAL_REGRESSION_INITIALIZED version=24.1
+[LibGui] Initializing Client...
+DYNAMIC_CATALOG_PASS hair=15 facial=8 outfits=34
+ACTUAL_START_WORLD compatibility=false
+[capitale_rp_hud] BETA_1_1_48-preview-ui-live-skin FORCE_RENDER_SKIN mode=minecraft_account raceId=1 idx=0 previewContext=false
+ACCOUNT_SKIN_PASS cached-network+preview+actual-player+render-state+temporary-default+stale-snapshot
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=minecraft:textures/entity/player/slim/ari.png
+ACTUAL_WORLD_TICK 20
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1401 outerVoxels=1418 hair=318 classicBeard=0
+[capitale_rp_hud] BETA_1_2_2-root-grounding-race-tuned: scale=1.0/1.0/1.0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1401 outerVoxels=1418 hair=318 classicBeard=0
+ACTUAL_WORLD_TICK 40
+POSE_GEOMETRY_RESULT faces=4111 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=0 part=4 texels=18 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=0 part=5 texels=18 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=0 part=6 texels=9 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=0 part=7 texels=9 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=0 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4207 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=0 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 60
+POSE_GEOMETRY_RESULT faces=5028 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=0 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4325 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=0 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 80
+POSE_GEOMETRY_RESULT faces=4937 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=0 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=0 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1444 outerVoxels=1477 hair=318 classicBeard=0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1444 outerVoxels=1477 hair=318 classicBeard=0
+ACTUAL_WORLD_TICK 100
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=nexuscharacters:dynamic/appearance/player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o24_fh0_fc00_mk0_mc0
+POSE_GEOMETRY_RESULT faces=3579 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=1 part=4 texels=18 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=1 part=5 texels=18 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=1 part=6 texels=9 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=1 part=7 texels=9 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=1 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=3580 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=1 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 120
+POSE_GEOMETRY_RESULT faces=4467 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=1 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=3982 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=1 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 140
+POSE_GEOMETRY_RESULT faces=4179 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=1 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=1 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1436 outerVoxels=1445 hair=302 classicBeard=18
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1436 outerVoxels=1445 hair=302 classicBeard=18
+ACTUAL_WORLD_TICK 160
+POSE_GEOMETRY_RESULT faces=3758 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=2 part=4 texels=16 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=2 part=5 texels=16 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=2 part=6 texels=8 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=2 part=7 texels=8 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=2 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=3944 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=2 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 180
+POSE_GEOMETRY_RESULT faces=4475 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=2 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4195 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=2 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 200
+[capitale_rp_hud] BETA_1_1_48-preview-ui-live-skin FORCE_RENDER_SKIN mode=minecraft_account raceId=1 idx=0 previewContext=false
+POSE_GEOMETRY_RESULT faces=4470 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=2 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=2 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=nexuscharacters:dynamic/appearance/player_v69_b1_e1_ec0_ey2_h08_hc02_s05_o01_fh1_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1434 outerVoxels=1443 hair=312 classicBeard=6
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1434 outerVoxels=1443 hair=312 classicBeard=6
+ACTUAL_WORLD_TICK 220
+POSE_GEOMETRY_RESULT faces=3678 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=3 part=4 texels=16 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=3 part=5 texels=16 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=3 part=6 texels=8 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=3 part=7 texels=8 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=3 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=3869 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=3 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 240
+POSE_GEOMETRY_RESULT faces=4397 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=3 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4065 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=3 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 260
+POSE_GEOMETRY_RESULT faces=4351 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=3 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=3 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1434 outerVoxels=1443 hair=318 classicBeard=0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1434 outerVoxels=1443 hair=318 classicBeard=0
+ACTUAL_WORLD_TICK 280
+POSE_GEOMETRY_RESULT faces=3624 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=4 part=4 texels=16 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=4 part=5 texels=16 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=4 part=6 texels=8 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=4 part=7 texels=8 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=4 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=3620 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=4 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 300
+POSE_GEOMETRY_RESULT faces=4503 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=4 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=nexuscharacters:dynamic/appearance/player_v69_b1_e1_ec0_ey2_h07_hc02_s05_o01_fh0_fc00_mk0_mc0
+POSE_GEOMETRY_RESULT faces=4045 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=4 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 320
+POSE_GEOMETRY_RESULT faces=4268 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=4 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=4 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1103 outerVoxels=1112 hair=313 classicBeard=0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1103 outerVoxels=1112 hair=313 classicBeard=0
+ACTUAL_WORLD_TICK 340
+POSE_GEOMETRY_RESULT faces=3005 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=5 part=4 texels=2 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=5 part=5 texels=2 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=5 part=6 texels=0 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=5 part=7 texels=1 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=5 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=3275 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=5 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 360
+POSE_GEOMETRY_RESULT faces=3882 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=5 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=3445 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=5 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 380
+POSE_GEOMETRY_RESULT faces=3419 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=5 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=5 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+PAL_ACTIVE_ANIMATION_STARTED
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1534 outerVoxels=1543 hair=312 classicBeard=0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1534 outerVoxels=1543 hair=312 classicBeard=0
+ACTUAL_WORLD_TICK 400
+[capitale_rp_hud] BETA_1_1_48-preview-ui-live-skin FORCE_RENDER_SKIN mode=minecraft_account raceId=1 idx=0 previewContext=false
+POSE_GEOMETRY_RESULT faces=5806 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=6 part=4 texels=20 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=6 part=5 texels=20 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=6 part=6 texels=10 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=6 part=7 texels=10 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=6 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=nexuscharacters:dynamic/appearance/player_v69_b1_e1_ec0_ey2_h08_hc02_s05_o20_fh0_fc00_mk0_mc0
+POSE_GEOMETRY_RESULT faces=5806 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=6 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 420
+POSE_GEOMETRY_RESULT faces=6684 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=6 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=5806 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=6 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 440
+POSE_GEOMETRY_RESULT faces=6067 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=6 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=6 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1558 outerVoxels=1568 hair=310 classicBeard=26
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1558 outerVoxels=1568 hair=310 classicBeard=26
+ACTUAL_WORLD_TICK 460
+POSE_GEOMETRY_RESULT faces=4034 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=7 part=4 texels=20 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=7 part=5 texels=20 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=7 part=6 texels=10 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=7 part=7 texels=10 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=7 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4266 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=7 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 480
+POSE_GEOMETRY_RESULT faces=5044 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=7 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4500 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=7 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 500
+POSE_GEOMETRY_RESULT faces=4862 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=7 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=7 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1558 outerVoxels=1562 hair=293 classicBeard=43
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1558 outerVoxels=1562 hair=293 classicBeard=43
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=nexuscharacters:dynamic/appearance/player_v69_b1_e1_ec0_ey2_h10_hc02_s05_o20_fh5_fc04_mk0_mc0
+ACTUAL_WORLD_TICK 520
+POSE_GEOMETRY_RESULT faces=3953 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=8 part=4 texels=20 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=8 part=5 texels=20 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=8 part=6 texels=10 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=8 part=7 texels=10 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=8 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4292 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=8 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 540
+POSE_GEOMETRY_RESULT faces=4852 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=8 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4520 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=8 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 560
+POSE_GEOMETRY_RESULT faces=4758 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=8 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=8 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=994 outerVoxels=1002 hair=322 classicBeard=0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=994 outerVoxels=1002 hair=322 classicBeard=0
+ACTUAL_WORLD_TICK 580
+POSE_GEOMETRY_RESULT faces=3290 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=9 part=4 texels=5 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=9 part=5 texels=5 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=9 part=6 texels=2 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=9 part=7 texels=2 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=9 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=3582 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=9 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 600
+[capitale_rp_hud] BETA_1_1_48-preview-ui-live-skin FORCE_RENDER_SKIN mode=minecraft_account raceId=1 idx=0 previewContext=false
+POSE_GEOMETRY_RESULT faces=3946 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=9 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=3633 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=9 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=nexuscharacters:dynamic/appearance/player_v69_b4_e1_ec0_ey2_h01_hc03_s01_o16_fh4_fc04_mk0_mc0
+ACTUAL_WORLD_TICK 620
+POSE_GEOMETRY_RESULT faces=3794 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=9 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=9 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ASSET_RELOAD_REQUESTED
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1554 outerVoxels=1563 hair=289 classicBeard=43
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1554 outerVoxels=1563 hair=289 classicBeard=43
+ACTUAL_WORLD_TICK 640
+POSE_GEOMETRY_RESULT faces=3970 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=10 part=4 texels=20 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=10 part=5 texels=20 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=10 part=6 texels=10 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=10 part=7 texels=10 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=10 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4258 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=10 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 660
+POSE_GEOMETRY_RESULT faces=4825 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=10 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4497 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=10 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 680
+POSE_GEOMETRY_RESULT faces=4716 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=10 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=10 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[NexusCharacters][NativeLayers23] PREPARED path=first-person basePaint=1556 outerVoxels=1556 hair=322 classicBeard=12
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1556 outerVoxels=1556 hair=322 classicBeard=12
+ACTUAL_WORLD_TICK 700
+POSE_GEOMETRY_RESULT faces=4061 coplanar=0 crossings=0 pairs={}
+FIRST_PERSON_CLOTHING_GRID_PASS case=11 part=4 texels=20 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=11 part=5 texels=20 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=11 part=6 texels=10 maxDisplacementPixels=0.0
+FIRST_PERSON_CLOTHING_GRID_PASS case=11 part=7 texels=10 maxDisplacementPixels=0.0
+ACTUAL_FINAL_MESH case=11 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4361 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=11 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=nexuscharacters:dynamic/appearance/player_v69_b1_e1_ec0_ey2_h1006_hc03_s01_o39_fh9_fc04_mk0_mc0
+ACTUAL_WORLD_TICK 720
+POSE_GEOMETRY_RESULT faces=4993 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=11 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+POSE_GEOMETRY_RESULT faces=4457 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=11 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 740
+POSE_GEOMETRY_RESULT faces=4807 coplanar=0 crossings=0 pairs={}
+ACTUAL_FINAL_MESH case=11 part=field_3394 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3483 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3482 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3479 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3484 mesh=NexusPosed23[outer]
+ACTUAL_FINAL_MESH case=11 part=field_3486 mesh=NexusPosed23[outer]
+ACTUAL_NATIVE_NULL_RESULT missing=0
+ACTUAL_WORLD_TICK 760
+ACTUAL_WORLD_TICK 780
+ACTUAL_WORLD_TICK 800
+[capitale_rp_hud] BETA_1_1_48-preview-ui-live-skin FORCE_RENDER_SKIN mode=minecraft_account raceId=1 idx=0 previewContext=false
+ACTUAL_WORLD_TICK 820
+[capitale_rp_hud] BETA_1_1_48-first-person-arm-fallback FIRST_PERSON_RENDERER_ARM_SKIN_NULL arm=right-renderer-fallback original=preview_harness:account_skin.png
+ACTUAL_WORLD_TICK 840
+SURFACE_PERFORMANCE recomputes=480 meanMs=14.1952056875 maxMs=247.630319
+FIRST_PERSON_RENDER_PASS draws=25
+ACTUAL_PLAYER_REGRESSION_PASS cases=12 captures=36 missing=0 overlaps=0

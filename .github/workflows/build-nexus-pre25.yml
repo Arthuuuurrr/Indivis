@@ -1,0 +1,55 @@
+name: Preserve verified NexusCharacters PRE25
+on:
+  push:
+    branches: [fix/nexus-pre25-hair-clearance]
+    paths:
+      - mods/nexuscharacters/reference/BETA-1.0-PRE25/compiled-patches.zip.b64
+      - .github/workflows/build-nexus-pre25.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Assemble the exact binary tested in Minecraft
+        run: |
+          task_root=mods/nexuscharacters/reference/BETA-1.0-PRE25
+          base_jar=mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE24.jar
+          git lfs pull --include="$base_jar" --exclude=""
+          python - "$task_root" <<'PYCODE'
+          import sys,base64,hashlib,json,zipfile,io
+          from pathlib import Path
+          root=Path(sys.argv[1]);meta=json.loads((root/'build-manifest.json').read_text())
+          data=base64.b64decode((root/'compiled-patches.zip.b64').read_bytes())
+          assert hashlib.sha256(data).hexdigest()==meta['compiled_archive_sha256']
+          with zipfile.ZipFile(io.BytesIO(data)) as z:
+              for name in z.namelist():
+                  assert name.endswith('.class') and name.startswith('net/tompsen/nexuscharacters/') and '..' not in name
+                  body=z.read(name);assert hashlib.sha256(body).hexdigest()==meta['class_sha256'][name]
+                  p=root/'classes'/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(body)
+          PYCODE
+          mkdir -p artifacts
+          python "$task_root/assemble.py" "$base_jar" artifacts/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE25.jar
+          python "$task_root/final_check.py" artifacts/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE25.jar
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NexusCharacters-PRE25
+          path: artifacts/*.jar
+          retention-days: 90
+      - name: Preserve verified JAR and delivery ZIP
+        run: |
+          cp artifacts/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE25.jar mods/
+          python - <<'PYCODE'
+          import zipfile
+          with zipfile.ZipFile('mods/NexusCharacters-PRE25.zip','w',compression=zipfile.ZIP_DEFLATED) as z:
+              z.write('mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE25.jar','NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE25.jar')
+          PYCODE
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE25.jar mods/NexusCharacters-PRE25.zip
+          git commit -m 'Store exact verified PRE25 downloads'
+          git push origin HEAD:fix/nexus-pre25-hair-clearance

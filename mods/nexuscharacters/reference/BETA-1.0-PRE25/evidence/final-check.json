@@ -1,0 +1,19 @@
+{
+  "jar_sha256": "d22c2af2b91133a2fb7215b8fc1df3e4f6954bfc89cc57e9bee68ca0245af419",
+  "catalog_configurations": 91,
+  "catalog_poses": 273,
+  "actual_poses": 60,
+  "menu_geometry_checks": 12,
+  "total_geometry_checks": 345,
+  "first_person_clothing_checks": 48,
+  "hair_depth_checks": 6,
+  "rear_raster_samples": 41,
+  "original_assets_unchanged": 4958,
+  "pure_regressions": [
+    "HairProfileRegression",
+    "ClothingProfileRegression",
+    "SurfaceSeamRegression",
+    "SurfaceGeometryRegression",
+    "PoseAuditRegression"
+  ]
+}
