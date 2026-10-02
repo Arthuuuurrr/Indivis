@@ -1,0 +1,88 @@
+name: Build Nexus BETA 1.0 PRE19
+
+on:
+  push:
+    paths:
+      - "mods/nexuscharacters/reference/BETA-1.0-PRE19/**"
+      - ".github/workflows/nexus-pre19-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with LFS
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Verify exact PRE17 base
+        run: |
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE17.jar"
+          test -s "$BASE"
+          unzip -t "$BASE" >/dev/null
+          echo "c24927630d01771bbe45080794cf4428f2af15a2f737b2a4fd382746dd505ab2  $BASE" | sha256sum -c -
+
+      - name: Compile and patch PRE19
+        run: |
+          ROOT="mods/nexuscharacters/reference/BETA-1.0-PRE19"
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE17.jar"
+          mkdir -p /tmp/pre19/classes /tmp/pre19/tools /tmp/pre19/deps
+          curl -fL --retry 3 \
+            "https://maven.fabricmc.net/net/fabricmc/sponge-mixin/0.17.4+mixin.0.8.7/sponge-mixin-0.17.4+mixin.0.8.7.jar" \
+            -o /tmp/pre19/deps/mixin.jar
+          javac -proc:none -cp /tmp/pre19/deps/mixin.jar -d /tmp/pre19/classes "$ROOT"/sources/*.java
+          for CLASS in DynamicAppearanceSupport Appearance69Support OutfitCatalogSupport CosmeticsPack1Support FacialHairRaceSupport UnifiedPilositySupport; do
+            unzip -p "$BASE" "net/tompsen/nexuscharacters/$CLASS.class" \
+              > "/tmp/pre19/classes/net/tompsen/nexuscharacters/$CLASS.class"
+          done
+          unzip -p "$BASE" net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class \
+            > /tmp/pre19/classes/net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class
+          javac -proc:none \
+            --add-exports java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED \
+            --add-exports java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED \
+            -d /tmp/pre19/tools "$ROOT/tools/PatchPre19.java"
+          java \
+            --add-exports java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED \
+            --add-exports java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED \
+            -cp /tmp/pre19/tools PatchPre19 /tmp/pre19/classes
+
+      - name: Assemble and verify PRE19
+        run: |
+          ROOT="mods/nexuscharacters/reference/BETA-1.0-PRE19"
+          BASE="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE17.jar"
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE19.jar"
+          python "$ROOT/tools/assemble.py" "$BASE" /tmp/pre19/classes "$OUT"
+          unzip -t "$OUT" >/dev/null
+          unzip -p "$OUT" fabric.mod.json | grep -F '1.0.0-beta.19+hc.1.21.11'
+          unzip -p "$OUT" nexuscharacters.client.mixins.json | grep -F 'GenericPlayerLayersMixin'
+          unzip -p "$OUT" nexuscharacters.client.mixins.json | grep -F 'GenericLayerReloadMixin'
+          sha256sum "$OUT"
+
+      - name: Upload validated JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE19
+          path: mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE19.jar
+          if-no-files-found: error
+
+      - name: Publish JAR to this branch
+        run: |
+          OUT="mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE19.jar"
+          git lfs install
+          git add "$OUT"
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "build(nexuscharacters): publish PRE19 jar"
+          git push
