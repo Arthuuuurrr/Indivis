@@ -37,8 +37,8 @@ public final class RealGeometryTest {
      for(int q=0;q<data.length;q+=23)for(int v=0;v<4;v++){
        float x=data[q+3+v*5]*16f,y=data[q+4+v*5]*16f;
        if(part==1){float depth=base?0.30f:0.70f;check(x>=-4f-depth-0.0001f&&x<=4f+depth+0.0001f,"Torso exceeds jacket bounds");check(y<12f,"Torso bottom is coplanar with base");}
-       if(part==2)check(x>=-2.0001f,"Left leg enters right leg");
-       if(part==3)check(x<=2.0001f,"Right leg enters left leg");
+       if(part==2)check(x+1.9f>0,"Left leg enters right leg at vanilla pivot");
+       if(part==3)check(x-1.9f<0,"Right leg enters left leg at vanilla pivot");
        if(part==4)check(x>=-2.0001f,"Left sleeve enters torso");
        if(part==5)check(x<=2.0001f,"Right sleeve enters torso");
        if(part==6)check(x>=-1.5001f,"Slim left sleeve enters torso");
