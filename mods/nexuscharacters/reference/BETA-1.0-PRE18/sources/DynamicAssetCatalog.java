@@ -15,24 +15,29 @@ public final class DynamicAssetCatalog {
     private static final List<String> DEFAULT_FACIAL=List.of("stubble.png","moustache_short.png","moustache_thick.png",
             "moustache_user_01.png","beard_light.png","beard_light_02.png");
     private static final int[] DEFAULT_OUTFITS={1,3,4,5,6,7,10,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38};
-    private static final Pattern SHORT=Pattern.compile("hair_short_[0-9]+\\.png");
-    private static final Pattern LONG=Pattern.compile("hair_long_[0-9]+\\.png");
+    private static final Pattern HAIR_NUMBER=Pattern.compile("hair_([0-9]+)\\.png");
+    private static final Pattern FACIAL_NUMBER=Pattern.compile("(?:facial|beard|moustache|stubble)_([0-9]+)\\.png");
     private static final Pattern OUTFIT=Pattern.compile("outfit_([0-9]+)\\.png");
-    private static volatile List<String> hair,facial;
+    private static volatile Map<Integer,String> hair,facial;
     private static volatile int[] outfits;
 
     private DynamicAssetCatalog() {}
 
     public static int hairCount(){return hairs().size();}
     public static int hairChoiceCount(){return hairCount()+1;}
-    public static String hairAssetName(int index){List<String> a=hairs();return index>0&&index<=a.size()?a.get(index-1):a.get(0);}
+    public static int nextHair(int index){ArrayList<Integer> ids=new ArrayList<>(hairs().keySet());ids.add(0,0);int at=ids.indexOf(index);return ids.get((at<0?0:at+1)%ids.size());}
+    public static int normalizeHair(int index){return index==0||hairs().containsKey(index)?index:0;}
+    public static String hairAssetName(int index){return hairs().getOrDefault(index,DEFAULT_HAIR.get(0));}
     public static int facialHairCount(){return facials().size();}
     public static int facialHairChoiceCount(){return facialHairCount()+1;}
-    public static String facialHairName(int index){List<String> a=facials();return index>0&&index<=a.size()?a.get(index-1):a.get(0);}
+    public static int normalizeFacialIndex(int value){return value==0||facials().containsKey(value)?value:0;}
+    public static int lastFacialHairId(){return Collections.max(facials().keySet());}
+    public static int nextFacialIndex(int value){ArrayList<Integer> ids=new ArrayList<>(facials().keySet());ids.add(0,0);int at=ids.indexOf(value);return ids.get((at<0?0:at+1)%ids.size());}
+    public static String facialHairName(int index){return facials().getOrDefault(index,DEFAULT_FACIAL.get(0));}
     public static String facialHairLabel(int index){
         if(index==0)return "Aucune";
         String[] known={"Barbe de trois jours","Moustache courte","Moustache épaisse","Moustache mince","Barbe mince 1","Barbe mince 2"};
-        if(index<=known.length)return known[index-1];
+        if(index>0&&index<=known.length)return known[index-1];
         return title(facialHairName(index));
     }
     public static String pilosityLabel(int index,String modeledStyle){
@@ -51,10 +56,10 @@ public final class DynamicAssetCatalog {
     public static int normalizeFacialHair(Object race,int value){
         String name=race instanceof Enum<?> e?e.name():"";
         if(!name.equals("HUMAN")&&!name.equals("NORDIC"))return 0;
-        return Math.max(0,Math.min(facialHairCount(),value));
+        return normalizeFacialIndex(value);
     }
     public static int nextFacialHair(Object race,int value){
-        int n=normalizeFacialHair(race,value);return normalizeFacialHair(race,(n+1)%facialHairChoiceCount());
+        int n=normalizeFacialHair(race,value);return normalizeFacialHair(race,nextFacialIndex(n));
     }
 
     public static String withOutfit(String marker,int outfit){
@@ -70,32 +75,39 @@ public final class DynamicAssetCatalog {
         return "__capitale_preset__:"+String.format(Locale.ROOT,
                 "player_v69_b%d_e%d_ec%d_ey%d_h%02d_hc%02d_s%02d_o%02d_fh%d_fc%02d_mk%d_mc%d",
                 clamp(body,1,4),clamp(eye,1,8),clamp(eyeColor,0,7),clamp(eyeDrop,0,4),
-                clamp(hairIndex,0,hairCount()),clamp(hairColor,0,12),clamp(tone,1,16),outfit,
-                clamp(facialIndex,0,facialHairCount()),clamp(facialColor,0,12),clamp(marking,0,8),clamp(markingColor,0,12));
+                normalizeHair(hairIndex),clamp(hairColor,0,12),clamp(tone,1,16),outfit,
+                normalizeFacialHair(race,facialIndex),clamp(facialColor,0,12),clamp(marking,0,8),clamp(markingColor,0,12));
     }
 
     public static synchronized void clear(){hair=null;facial=null;outfits=null;}
 
-    private static List<String> hairs(){
-        List<String> value=hair;if(value!=null)return value;
+    private static Map<Integer,String> hairs(){
+        Map<Integer,String> value=hair;if(value!=null)return value;
         synchronized(DynamicAssetCatalog.class){
             if(hair!=null)return hair;
             Set<String> names=resourceNames("appearance_parts_v064/hair");
-            List<String> shortHair=names.stream().filter(n->SHORT.matcher(n).matches()).sorted().toList();
-            List<String> longHair=names.stream().filter(n->LONG.matcher(n).matches()).sorted().toList();
-            ArrayList<String> all=new ArrayList<>(shortHair);all.addAll(longHair);
-            hair=List.copyOf(all.isEmpty()?DEFAULT_HAIR:all);return hair;
+            LinkedHashMap<Integer,String> all=new LinkedHashMap<>();for(int i=0;i<DEFAULT_HAIR.size();i++)all.put(i+1,DEFAULT_HAIR.get(i));
+            for(String name:names){
+                if(DEFAULT_HAIR.contains(name))continue;Matcher numbered=HAIR_NUMBER.matcher(name);
+                if(numbered.matches()){int id=Integer.parseInt(numbered.group(1));if(id>=14)all.putIfAbsent(id,name);continue;}
+                Matcher longHair=Pattern.compile("hair_long_([0-9]+)\\.png").matcher(name);
+                if(longHair.matches()){int n=Integer.parseInt(longHair.group(1));if(n>8)all.putIfAbsent(5+n,name);continue;}
+                Matcher shortHair=Pattern.compile("hair_short_([0-9]+)\\.png").matcher(name);
+                if(shortHair.matches()){int n=Integer.parseInt(shortHair.group(1));if(n>5)all.putIfAbsent(1000+n,name);}
+            }
+            hair=Collections.unmodifiableMap(new TreeMap<>(all));return hair;
         }
     }
-    private static List<String> facials(){
-        List<String> value=facial;if(value!=null)return value;
+    private static Map<Integer,String> facials(){
+        Map<Integer,String> value=facial;if(value!=null)return value;
         synchronized(DynamicAssetCatalog.class){
             if(facial!=null)return facial;
             Set<String> names=resourceNames("appearance_parts_v068/facial_hair");
-            ArrayList<String> all=new ArrayList<>();
-            for(String known:DEFAULT_FACIAL)if(names.isEmpty()||names.contains(known))all.add(known);
-            names.stream().filter(n->n.endsWith(".png")&&!DEFAULT_FACIAL.contains(n)).sorted().forEach(all::add);
-            facial=List.copyOf(all.isEmpty()?DEFAULT_FACIAL:all);return facial;
+            LinkedHashMap<Integer,String> all=new LinkedHashMap<>();for(int i=0;i<DEFAULT_FACIAL.size();i++)all.put(i+1,DEFAULT_FACIAL.get(i));
+            ArrayList<String> unnumbered=new ArrayList<>();
+            for(String name:names){if(DEFAULT_FACIAL.contains(name)||!name.endsWith(".png"))continue;Matcher m=FACIAL_NUMBER.matcher(name);if(m.matches()&&Integer.parseInt(m.group(1))>=7)all.putIfAbsent(Integer.parseInt(m.group(1)),name);else unnumbered.add(name);}
+            Collections.sort(unnumbered);int next=7;for(String name:unnumbered){while(all.containsKey(next))next++;all.put(next++,name);}
+            facial=Collections.unmodifiableMap(new TreeMap<>(all));return facial;
         }
     }
     private static int[] outfitIds(){

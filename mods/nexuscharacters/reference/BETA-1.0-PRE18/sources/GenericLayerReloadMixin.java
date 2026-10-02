@@ -11,4 +11,8 @@ import net.tompsen.nexuscharacters.GenericSkinLayerSupport;
 public abstract class GenericLayerReloadMixin {
     @Inject(method="method_1521()Ljava/util/concurrent/CompletableFuture;",at=@At("HEAD"),require=1,remap=false)
     private void nexus$reloadLayers(CallbackInfoReturnable<CompletableFuture<Void>> ci){GenericSkinLayerSupport.clearCaches();}
+    @Inject(method="method_1521()Ljava/util/concurrent/CompletableFuture;",at=@At("RETURN"),require=1,remap=false)
+    private void nexus$afterReloadLayers(CallbackInfoReturnable<CompletableFuture<Void>> ci){
+        ci.getReturnValue().thenRun(GenericSkinLayerSupport::clearCaches);
+    }
 }

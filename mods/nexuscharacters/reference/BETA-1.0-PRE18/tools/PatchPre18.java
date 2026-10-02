@@ -70,27 +70,51 @@ public final class PatchPre18 {
         write(root,"net/tompsen/nexuscharacters/FacialHairRaceSupport",facial);
 
         ClassNode unified=read(root,"net/tompsen/nexuscharacters/UnifiedPilositySupport");
+        int normalizations=0,cycles=0,cycleLimits=0;
         for(MethodNode m:unified.methods){
             if(m.name.equals("currentLabel")){delegate(m,"pilosityLabel");continue;}
             if(!m.name.equals("fix")&&!m.name.equals("cycle")&&!m.name.equals("syncColor"))continue;
             for(AbstractInsnNode n:m.instructions.toArray())if(n instanceof IntInsnNode i && i.getOpcode()==Opcodes.BIPUSH){
-                String target=i.operand==6?"facialHairCount":i.operand==7?"facialHairChoiceCount":null;
-                if(target!=null)m.instructions.set(i,new MethodInsnNode(Opcodes.INVOKESTATIC,CATALOG,target,"()I",false));
+                if(i.operand!=6)continue;
+                AbstractInsnNode next=nextCode(i),previous=previousCode(i);
+                if(next instanceof MethodInsnNode call && call.name.equals("clamp") && previous.getOpcode()==Opcodes.ICONST_0){
+                    m.instructions.remove(previous);m.instructions.remove(i);
+                    m.instructions.set(call,new MethodInsnNode(Opcodes.INVOKESTATIC,CATALOG,"normalizeFacialIndex","(I)I",false));normalizations++;
+                }else if(next.getOpcode()==Opcodes.IF_ICMPGE){
+                    m.instructions.set(i,new MethodInsnNode(Opcodes.INVOKESTATIC,CATALOG,"lastFacialHairId","()I",false));cycleLimits++;
+                }else throw new IllegalStateException("Unexpected facial-hair limit in "+m.name);
+            }
+            if(m.name.equals("cycle"))for(AbstractInsnNode n:m.instructions.toArray())if(n instanceof IincInsnNode i && i.var==5 && i.incr==1){
+                InsnList cycle=new InsnList();cycle.add(new VarInsnNode(Opcodes.ILOAD,5));
+                cycle.add(new MethodInsnNode(Opcodes.INVOKESTATIC,CATALOG,"nextFacialIndex","(I)I",false));
+                cycle.add(new VarInsnNode(Opcodes.ISTORE,5));m.instructions.insertBefore(i,cycle);m.instructions.remove(i);cycles++;
             }
         }
+        if(normalizations!=3||cycles!=1||cycleLimits!=1)throw new IllegalStateException("Unexpected PRE17 pilosity shape");
         write(root,"net/tompsen/nexuscharacters/UnifiedPilositySupport",unified);
 
         ClassNode ui=read(root,"net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin");
-        for(MethodNode m:ui.methods)for(AbstractInsnNode n:m.instructions.toArray()){
-            if(n instanceof IntInsnNode i && i.operand==14 && nextOpcode(i)==Opcodes.IREM)
-                m.instructions.set(i,new MethodInsnNode(Opcodes.INVOKESTATIC,CATALOG,"hairChoiceCount","()I",false));
-            else if(n instanceof LdcInsnNode l && l.cst instanceof String s && s.contains("/13"))l.cst=s.replace("/13","");
+        for(MethodNode m:ui.methods){
+            if(m.name.equals("lambda$nexuscharacters$install$2")){
+                m.instructions.clear();m.tryCatchBlocks.clear();if(m.localVariables!=null)m.localVariables.clear();
+                m.instructions.add(new VarInsnNode(Opcodes.ALOAD,0));m.instructions.add(new VarInsnNode(Opcodes.ALOAD,0));
+                m.instructions.add(new FieldInsnNode(Opcodes.GETFIELD,ui.name,"nexuscharacters$hair","I"));
+                m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,CATALOG,"nextHair","(I)I",false));
+                m.instructions.add(new FieldInsnNode(Opcodes.PUTFIELD,ui.name,"nexuscharacters$hair","I"));
+                m.instructions.add(new VarInsnNode(Opcodes.ALOAD,0));
+                m.instructions.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,ui.name,"nexuscharacters$changed","()V",false));
+                m.instructions.add(new InsnNode(Opcodes.RETURN));continue;
+            }
+            for(AbstractInsnNode n:m.instructions.toArray()){
+            if(n instanceof LdcInsnNode l && l.cst instanceof String s && s.contains("/13"))l.cst=s.replace("/13","");
             else if(n instanceof InvokeDynamicInsnNode d)for(int x=0;x<d.bsmArgs.length;x++)if(d.bsmArgs[x] instanceof String s && s.contains("/13"))d.bsmArgs[x]=s.replace("/13","");
+            }
         }
         write(root,"net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin",ui);
     }
 
-    private static int nextOpcode(AbstractInsnNode n){do{n=n.getNext();}while(n!=null&&n.getOpcode()<0);return n==null?-1:n.getOpcode();}
+    private static AbstractInsnNode nextCode(AbstractInsnNode n){do{n=n.getNext();}while(n!=null&&n.getOpcode()<0);return n;}
+    private static AbstractInsnNode previousCode(AbstractInsnNode n){do{n=n.getPrevious();}while(n!=null&&n.getOpcode()<0);return n;}
     private static void delegate(MethodNode m,String helper){
         m.instructions.clear();m.tryCatchBlocks.clear();if(m.localVariables!=null)m.localVariables.clear();
         Type[] args=Type.getArgumentTypes(m.desc);int slot=0;
