@@ -1,0 +1,19 @@
+{
+  "titre": "Potion jetable de la tortue II",
+  "metier": "alchimiste",
+  "niveau": 50,
+  "xp": 162.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:bolbos", "quantite": 3, "nom": "Bolbos" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" },
+    { "id": "minecraft:gunpowder", "quantite": 1, "nom": "Poudre à canon" }
+  ],
+  "cout": 5,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:splash_potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:strong_turtle_master" } }
+  }
+}

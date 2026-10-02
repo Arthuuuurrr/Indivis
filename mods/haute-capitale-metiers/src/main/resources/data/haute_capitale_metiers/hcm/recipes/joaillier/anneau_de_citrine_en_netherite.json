@@ -1,0 +1,13 @@
+{
+  "titre": "Anneau de citrine en netherite",
+  "metier": "joaillier",
+  "niveau": 36,
+  "xp": 120.0,
+  "ingredients": [
+    { "id": "jewelry:citrine", "quantite": 1, "nom": "Citrine" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "jewelry:netherite_citrine_ring", "quantite": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "metier": "mineur",
+  "niveau": 15,
+  "xp": 57,
+  "bloc_plein": "minecraft:gold_ore",
+  "bloc_vide": "minecraft:stone",
+  "loot": [
+    { "id": "minecraft:raw_gold", "min": 1, "max": 2 }
+  ],
+  "respawn": 420,
+  "coups": 4,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon d'or"
+}

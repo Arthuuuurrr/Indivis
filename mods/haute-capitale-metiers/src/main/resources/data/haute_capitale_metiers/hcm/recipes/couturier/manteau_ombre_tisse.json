@@ -1,0 +1,13 @@
+{
+  "titre": "Manteau ombre-tissé",
+  "metier": "couturier",
+  "niveau": 38,
+  "xp": 126.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 5, "nom": "Tissu de soie" },
+    { "id": "hazennstuff:shadow_scale", "quantite": 3, "nom": "Écaille d'ombre" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "mmo_accessories:shadowweave_cloak", "quantite": 1 }
+}

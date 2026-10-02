@@ -1,0 +1,13 @@
+{
+  "titre": "Traitement de fourrure",
+  "metier": "travailleur_du_cuir",
+  "niveau": 23,
+  "xp": 81.0,
+  "ingredients": [
+    { "tag": "haute_capitale_metiers:fourrures/communes", "quantite": 4, "nom": "Fourrure commune" },
+    { "tag": "haute_capitale_metiers:tanin", "quantite": 2, "nom": "Écorce" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:fourrure_travaillee", "quantite": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "titre": "Collier d'argent au saphir",
+  "metier": "joaillier",
+  "niveau": 24,
+  "xp": 84.0,
+  "ingredients": [
+    { "id": "jewelry:sapphire", "quantite": 1, "nom": "Saphir" },
+    { "id": "minecraft:iron_ingot", "quantite": 2, "nom": "Lingot de fer" },
+    { "id": "minecraft:gold_nugget", "quantite": 4, "nom": "Pépite d'or" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "mmo_accessories:silver_sapphire_necklace", "quantite": 1 }
+}

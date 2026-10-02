@@ -1,0 +1,21 @@
+{
+  "pose": "rifle", "magazine": 2, "reload_ticks": 30, "fire_mode": "semi",
+  "stats": { "damage": 22, "projectile_count": 8, "bullet_speed": 11, "spread": 7, "fire_delay": 1, "blowback": 0.4, "gravity": 0.06, "range": 40, "knockback": 0.5 },
+  "recoil": { "magnitude": 30, "horizontal_ratio": 0.35, "frequency": 2.0, "seed": 999 },
+  "muzzle_flash": { "distance": 2.0, "types": ["large"] },
+  "adjuster": "double_hammer",
+  "aim_offset": [ -4.0, 1.4, 1.0 ], "aim_fov": 0.85,
+  "sounds": {
+    "shoot": { "id": "haute_capitale_fusils:tromblon.tir", "volume": 1.0, "pitch_min": 0.9, "pitch_max": 1.1 },
+    "echo": { "id": "haute_capitale_fusils:arme.echo_poudre", "volume": 1.0, "pitch_min": 0.65, "pitch_max": 0.85 },
+    "dry": { "id": "haute_capitale_fusils:arme.a_vide", "volume": 0.75, "pitch_min": 1.4, "pitch_max": 1.6 },
+    "equip": { "id": "haute_capitale_fusils:tromblon.ferme", "volume": 0.75, "pitch_min": 0.9, "pitch_max": 1.1 },
+    "reload_cues": [
+      { "at": 0.25, "sound": { "id": "haute_capitale_fusils:tromblon.ouvre", "volume": 1.25, "pitch_min": 0.9, "pitch_max": 1.1 } },
+      { "at": 0.9, "sound": { "id": "haute_capitale_fusils:tromblon.charge", "volume": 1.25, "pitch_min": 0.9, "pitch_max": 1.1 } },
+      { "at": 1.15, "sound": { "id": "haute_capitale_fusils:arme.chien", "volume": 1.25, "pitch_min": 1.1, "pitch_max": 1.3 } },
+      { "at": 1.27, "sound": { "id": "haute_capitale_fusils:tromblon.ferme", "volume": 1.25, "pitch_min": 0.9, "pitch_max": 1.1 } }
+    ]
+  },
+  "assets": { "model": "haute_capitale_fusils:item/tromblon", "texture": "haute_capitale_fusils:textures/item/tromblon.png", "animation": "haute_capitale_fusils:item/tromblon" }
+}

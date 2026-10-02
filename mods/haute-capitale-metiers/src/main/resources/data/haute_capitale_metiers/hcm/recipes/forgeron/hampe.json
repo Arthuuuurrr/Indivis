@@ -1,0 +1,13 @@
+{
+  "titre": "Hampe",
+  "metier": "forgeron",
+  "niveau": 4,
+  "xp": 24.0,
+  "ingredients": [
+    { "id": "minecraft:stick", "quantite": 3, "nom": "Bâton" },
+    { "id": "magistuarmory:leather_strip", "quantite": 1, "nom": "Lanière de cuir" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "magistuarmory:pole", "quantite": 1 }
+}

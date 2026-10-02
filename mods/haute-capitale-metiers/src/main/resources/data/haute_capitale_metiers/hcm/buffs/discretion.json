@@ -1,0 +1,8 @@
+{
+  "titre": "Pas feutrés",
+  "attribut": "puffish_attributes:stealth",
+  "operation": "pourcent_base",
+  "valeur": 0.05,
+  "duree": 900,
+  "commentaire": "Rouleaux de poisson et d'algue : la discrétion."
+}

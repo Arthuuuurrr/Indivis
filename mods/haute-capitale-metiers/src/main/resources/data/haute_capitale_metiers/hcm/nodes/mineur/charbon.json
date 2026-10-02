@@ -1,0 +1,14 @@
+{
+  "metier": "mineur",
+  "niveau": 3,
+  "xp": 21,
+  "bloc_plein": "minecraft:coal_ore",
+  "bloc_vide": "minecraft:stone",
+  "loot": [
+    { "id": "minecraft:coal", "min": 1, "max": 3 }
+  ],
+  "respawn": 180,
+  "coups": 3,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon de charbon"
+}

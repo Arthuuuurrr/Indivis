@@ -1,0 +1,16 @@
+{
+  "titre": "Pâtes à l'encre de seiche",
+  "metier": "cuisinier",
+  "niveau": 34,
+  "xp": 114.0,
+  "ingredients": [
+    { "tag": "c:foods/safe_raw_fish", "quantite": 1, "nom": "Poisson cru" },
+    { "tag": "c:foods/pasta", "quantite": 1, "nom": "Pâtes" },
+    { "tag": "c:crops/tomato", "quantite": 1, "nom": "Tomate" },
+    { "id": "minecraft:ink_sac", "quantite": 1, "nom": "Poche d'encre" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 3,
+  "repas": { "buff": "haute_capitale_metiers:distance", "valeur": 0.084 },
+  "resultat": { "id": "farmersdelight:squid_ink_pasta", "quantite": 1 }
+}

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "farmersdelight:netherite_knife", "required": false },
+    { "id": "landsoficaria:orichalcum_dagger", "required": false }
+  ]
+}

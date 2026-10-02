@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 9,
+  "xp": 39,
+  "bloc_plein": "farmersdelight:brown_mushroom_colony",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "minecraft:brown_mushroom", "min": 2, "max": 4 }
+  ],
+  "respawn": 240,
+  "coups": 1,
+  "titre": "Colonie de champignons bruns",
+  "commentaire": "Le riz aux champignons du Cuisinier. Farmer s Delight requis."
+}

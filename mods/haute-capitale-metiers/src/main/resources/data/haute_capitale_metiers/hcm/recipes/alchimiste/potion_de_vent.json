@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de vent",
+  "metier": "alchimiste",
+  "niveau": 45,
+  "xp": 147.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:blue_stormcotton", "quantite": 2, "nom": "Coton d'orage bleu" },
+    { "id": "landsoficaria:purple_stormcotton", "quantite": 1, "nom": "Coton d'orage pourpre" }
+  ],
+  "cout": 4,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:wind_charged" } }
+  }
+}

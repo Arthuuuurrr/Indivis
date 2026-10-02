@@ -1,0 +1,13 @@
+{
+  "titre": "Traitement de fourrure épaisse",
+  "metier": "travailleur_du_cuir",
+  "niveau": 31,
+  "xp": 105.0,
+  "ingredients": [
+    { "tag": "haute_capitale_metiers:fourrures/epaisses", "quantite": 3, "nom": "Fourrure épaisse" },
+    { "tag": "haute_capitale_metiers:tanin", "quantite": 2, "nom": "Écorce" }
+  ],
+  "cout": 3,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:fourrure_travaillee", "quantite": 1 }
+}

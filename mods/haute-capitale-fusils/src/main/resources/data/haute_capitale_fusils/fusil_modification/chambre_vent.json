@@ -1,0 +1,3 @@
+{ "category": "mecanisme", "name": { "translate": "item.haute_capitale_fusils.chambre_vent" }, "item": "haute_capitale_fusils:chambre_vent",
+  "description": [ { "text": "Chambre à air comprimé : tir stable en plein saut, souffle doublé." } ],
+  "stats": { "blowback": { "op": "mul", "value": 0.5 }, "in_air_penalty": { "op": "mul", "value": -0.5 } } }

@@ -1,0 +1,13 @@
+{
+  "titre": "Aimant à butin",
+  "metier": "ingenieur",
+  "niveau": 12,
+  "xp": 48.0,
+  "ingredients": [
+    { "id": "minecraft:iron_ingot", "quantite": 4, "nom": "Lingot de fer" },
+    { "id": "minecraft:redstone", "quantite": 2, "nom": "Redstone" },
+    { "id": "minecraft:copper_ingot", "quantite": 2, "nom": "Lingot de cuivre" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "haute_capitale_metiers:aimant_a_butin", "quantite": 1 }
+}

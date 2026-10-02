@@ -1,0 +1,12 @@
+{
+  "titre": "Jambes de pantalon en coton",
+  "metier": "couturier",
+  "niveau": 14,
+  "xp": 54.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_coton", "quantite": 3, "nom": "Tissu de coton" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:jambe_de_coton", "quantite": 2 }
+}

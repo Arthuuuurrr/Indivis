@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 40,
+  "xp": 132,
+  "bloc_plein": "landsoficaria:mondanos",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:mondanos", "min": 1, "max": 1 }
+  ],
+  "respawn": 900,
+  "coups": 2,
+  "titre": "Mondanos",
+  "commentaire": "La rare fleur de la chance. Icaria requis."
+}

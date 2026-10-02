@@ -1,0 +1,13 @@
+{
+  "titre": "Jambières d'exosquelette",
+  "metier": "ingenieur",
+  "niveau": 39,
+  "xp": 129.0,
+  "ingredients": [
+    { "id": "minecraft:iron_leggings", "quantite": 1, "nom": "Jambières de fer" },
+    { "id": "magistuarmory:steel_ingot", "quantite": 5, "nom": "Lingot d'acier" },
+    { "id": "minecraft:redstone", "quantite": 2, "nom": "Redstone" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "haute_capitale_metiers:exosquelette_jambieres", "quantite": 1 }
+}

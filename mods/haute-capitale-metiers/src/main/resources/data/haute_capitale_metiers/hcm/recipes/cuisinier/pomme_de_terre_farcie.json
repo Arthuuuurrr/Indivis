@@ -1,0 +1,14 @@
+{
+  "titre": "Pomme de terre farcie",
+  "metier": "cuisinier",
+  "niveau": 19,
+  "xp": 69.0,
+  "ingredients": [
+    { "id": "minecraft:baked_potato", "quantite": 1, "nom": "Pomme de terre cuite" },
+    { "tag": "c:foods/cooked_beef", "quantite": 1, "nom": "Bœuf cuit" },
+    { "tag": "c:drinks/milk", "quantite": 1, "nom": "Lait" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:vigueur", "valeur": 0.050 },
+  "resultat": { "id": "farmersdelight:stuffed_potato", "quantite": 1 }
+}

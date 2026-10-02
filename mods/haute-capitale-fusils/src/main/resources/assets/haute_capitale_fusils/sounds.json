@@ -1,0 +1,56 @@
+{
+  "arme.tir_generique": { "subtitle": "sound.haute_capitale_fusils.tir", "sounds": [
+    { "name": "minecraft:entity.generic.explode", "type": "event", "volume": 0.55, "pitch": 1.75 },
+    { "name": "minecraft:entity.firework_rocket.blast", "type": "event", "volume": 1.0, "pitch": 0.7 } ] },
+  "arme.echo": { "sounds": [ { "name": "minecraft:entity.generic.explode", "type": "event", "volume": 0.35, "pitch": 0.55 } ] },
+  "arme.echo_poudre": { "sounds": [ { "name": "minecraft:entity.generic.explode", "type": "event", "volume": 0.45, "pitch": 0.45 } ] },
+  "arme.a_vide": { "sounds": [ { "name": "minecraft:block.lever.click", "type": "event", "volume": 0.8, "pitch": 1.5 } ] },
+  "arme.chien": { "sounds": [ { "name": "minecraft:block.iron_trapdoor.close", "type": "event", "volume": 0.5, "pitch": 1.8 } ] },
+  "arme.cuir": { "sounds": [ { "name": "minecraft:item.armor.equip_leather", "type": "event", "volume": 0.7, "pitch": 1.1 } ] },
+  "balle.impact": { "subtitle": "sound.haute_capitale_fusils.impact", "sounds": [ { "name": "minecraft:entity.arrow.hit", "type": "event", "volume": 0.9, "pitch": 1.3 } ] },
+  "balle.ricochet": { "sounds": [ { "name": "minecraft:block.anvil.land", "type": "event", "volume": 0.35, "pitch": 1.9 } ] },
+  "chasseur.marque": { "sounds": [ { "name": "minecraft:block.note_block.bell", "type": "event", "volume": 0.8, "pitch": 1.6 } ] },
+  "chasseur.charge_munition": { "sounds": [ { "name": "minecraft:block.enchantment_table.use", "type": "event", "volume": 0.6, "pitch": 1.4 },
+    { "name": "minecraft:item.crossbow.loading_end", "type": "event", "volume": 0.8, "pitch": 1.2 } ] },
+
+  "pistolet_silex.tir": { "subtitle": "sound.haute_capitale_fusils.tir", "sounds": [
+    { "name": "minecraft:entity.generic.explode", "type": "event", "volume": 0.5, "pitch": 1.9 },
+    { "name": "minecraft:entity.firework_rocket.blast", "type": "event", "volume": 0.9, "pitch": 0.9 } ] },
+  "pistolet_silex.equip": { "sounds": [ { "name": "minecraft:item.armor.equip_leather", "type": "event", "volume": 0.6, "pitch": 1.3 },
+    { "name": "minecraft:block.iron_trapdoor.close", "type": "event", "volume": 0.3, "pitch": 1.9 } ] },
+  "pistolet_silex.insert": { "sounds": [ { "name": "minecraft:item.crossbow.loading_start", "type": "event", "volume": 0.9, "pitch": 1.3 } ] },
+  "pistolet_silex.bourre": { "sounds": [ { "name": "minecraft:item.crossbow.loading_middle", "type": "event", "volume": 0.9, "pitch": 1.1 } ] },
+
+  "mousquet.tir": { "subtitle": "sound.haute_capitale_fusils.tir", "sounds": [
+    { "name": "minecraft:entity.generic.explode", "type": "event", "volume": 0.65, "pitch": 1.5 },
+    { "name": "minecraft:entity.firework_rocket.large_blast", "type": "event", "volume": 1.0, "pitch": 0.75 } ] },
+  "mousquet.equip": { "sounds": [ { "name": "minecraft:item.armor.equip_leather", "type": "event", "volume": 0.7, "pitch": 0.9 } ] },
+
+  "arquebuse.tir": { "subtitle": "sound.haute_capitale_fusils.tir", "sounds": [
+    { "name": "minecraft:entity.generic.explode", "type": "event", "volume": 0.55, "pitch": 1.65 },
+    { "name": "minecraft:entity.firework_rocket.blast", "type": "event", "volume": 0.9, "pitch": 0.8 } ] },
+  "arquebuse.ouvre_culasse": { "sounds": [ { "name": "minecraft:block.iron_trapdoor.open", "type": "event", "volume": 0.6, "pitch": 1.4 } ] },
+  "arquebuse.ferme_culasse": { "sounds": [ { "name": "minecraft:block.iron_trapdoor.close", "type": "event", "volume": 0.6, "pitch": 1.3 } ] },
+  "arquebuse.charge_chambre": { "sounds": [ { "name": "minecraft:item.crossbow.loading_middle", "type": "event", "volume": 0.7, "pitch": 1.5 } ] },
+
+  "tromblon.tir": { "subtitle": "sound.haute_capitale_fusils.tir", "sounds": [
+    { "name": "minecraft:entity.generic.explode", "type": "event", "volume": 0.8, "pitch": 1.25 },
+    { "name": "minecraft:entity.firework_rocket.large_blast", "type": "event", "volume": 1.0, "pitch": 0.6 } ] },
+  "tromblon.ouvre": { "sounds": [ { "name": "minecraft:block.iron_trapdoor.open", "type": "event", "volume": 0.7, "pitch": 1.0 } ] },
+  "tromblon.ferme": { "sounds": [ { "name": "minecraft:block.iron_trapdoor.close", "type": "event", "volume": 0.7, "pitch": 1.0 } ] },
+  "tromblon.charge": { "sounds": [ { "name": "minecraft:item.crossbow.loading_start", "type": "event", "volume": 0.9, "pitch": 0.9 } ] },
+
+  "fusil_rouages.tir": { "subtitle": "sound.haute_capitale_fusils.tir", "sounds": [
+    { "name": "minecraft:entity.generic.explode", "type": "event", "volume": 0.4, "pitch": 2.0 },
+    { "name": "minecraft:block.piston.extend", "type": "event", "volume": 0.6, "pitch": 1.9 } ] },
+  "fusil_rouages.ejecte": { "sounds": [ { "name": "minecraft:block.piston.contract", "type": "event", "volume": 0.8, "pitch": 1.4 },
+    { "name": "minecraft:block.chain.break", "type": "event", "volume": 0.5, "pitch": 1.6 } ] },
+  "fusil_rouages.insere": { "sounds": [ { "name": "minecraft:block.piston.extend", "type": "event", "volume": 0.8, "pitch": 1.3 },
+    { "name": "minecraft:block.iron_trapdoor.close", "type": "event", "volume": 0.5, "pitch": 1.7 } ] },
+  "fusil_rouages.equip": { "sounds": [ { "name": "minecraft:block.chain.place", "type": "event", "volume": 0.5, "pitch": 1.5 } ] },
+
+  "canon_main.tir": { "subtitle": "sound.haute_capitale_fusils.tir", "sounds": [
+    { "name": "minecraft:entity.generic.explode", "type": "event", "volume": 1.0, "pitch": 1.0 },
+    { "name": "minecraft:entity.firework_rocket.large_blast", "type": "event", "volume": 1.0, "pitch": 0.5 } ] },
+  "canon_main.charge": { "sounds": [ { "name": "minecraft:item.crossbow.loading_start", "type": "event", "volume": 1.0, "pitch": 0.7 } ] }
+}

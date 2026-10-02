@@ -1,0 +1,12 @@
+{
+  "titre": "Dague de chert",
+  "metier": "forgeron",
+  "niveau": 1,
+  "xp": 15.0,
+  "ingredients": [
+    { "id": "landsoficaria:chert", "quantite": 2, "nom": "Chert" },
+    { "id": "minecraft:stick", "quantite": 1, "nom": "Bâton" }
+  ],
+  "cout": 0,
+  "resultat": { "id": "landsoficaria:chert_dagger", "quantite": 1 }
+}

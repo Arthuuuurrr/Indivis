@@ -1,0 +1,15 @@
+{
+  "titre": "Ragoût de catoblepas",
+  "metier": "cuisinier",
+  "niveau": 39,
+  "xp": 129.0,
+  "ingredients": [
+    { "id": "landsoficaria:raw_catoblepas_meat", "quantite": 2, "nom": "Viande de catoblepas" },
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" },
+    { "tag": "c:crops/potato", "quantite": 1, "nom": "Pomme de terre" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 3,
+  "repas": { "buff": "haute_capitale_metiers:feu", "valeur": 0.095 },
+  "resultat": { "id": "landsoficaria:catoblepas_stew", "quantite": 1 }
+}

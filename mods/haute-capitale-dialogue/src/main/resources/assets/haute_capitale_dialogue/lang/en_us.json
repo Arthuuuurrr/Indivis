@@ -1,0 +1,21 @@
+{
+  "hcd.ecran.quitter": "Esc · leave",
+  "hcd.ecran.continuer": "Continue ▸",
+  "hcd.ecran.choisir": "1–9 · choose",
+  "hcd.ecran.historique": "H · previously",
+  "hcd.ecran.precedemment": "PREVIOUSLY",
+  "hcd.ecran.verrouille": "Requirement not met",
+  "hcd.raison.score": "%s %s %s required",
+  "hcd.raison.objet": "Item required: %s",
+  "hcd.raison.progres": "Advancement required",
+  "hcd.raison.niveau": "Level %s %s required",
+  "hcd.raison.statut": "Status required",
+  "hcd.raison.equipe": "Team required",
+  "hcd.raison.limite": "Already done",
+  "hcd.raison.sante": "Not enough health",
+  "hcd.raison.autre": "Requirement not met",
+  "hcd.session.exclusif": "%s is already talking with someone.",
+  "hcd.session.en_mouvement": "%s cannot talk to you while under way.",
+  "key.haute_capitale_dialogue.debug": "Dialogue: debug overlay",
+  "key.categories.haute_capitale_dialogue": "Haute Capitale — Dialogue"
+}

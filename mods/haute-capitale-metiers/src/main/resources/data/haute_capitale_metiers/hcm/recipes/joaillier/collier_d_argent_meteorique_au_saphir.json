@@ -1,0 +1,13 @@
+{
+  "titre": "Collier d'argent météorique au saphir",
+  "metier": "joaillier",
+  "niveau": 35,
+  "xp": 117.0,
+  "ingredients": [
+    { "id": "mmo_accessories:silver_sapphire_necklace", "quantite": 1, "nom": "Collier d'argent au saphir" },
+    { "id": "minecraft:ender_pearl", "quantite": 2, "nom": "Perle de l'Ender" },
+    { "id": "minecraft:amethyst_shard", "quantite": 2, "nom": "Éclat d'améthyste" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "mmo_accessories:meteorite_silver_sapphire_necklace", "quantite": 1 }
+}

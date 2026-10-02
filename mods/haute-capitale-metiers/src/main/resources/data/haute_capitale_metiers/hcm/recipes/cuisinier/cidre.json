@@ -1,0 +1,14 @@
+{
+  "titre": "Cidre",
+  "metier": "cuisinier",
+  "niveau": 17,
+  "xp": 63.0,
+  "ingredients": [
+    { "id": "minecraft:apple", "quantite": 2, "nom": "Pomme" },
+    { "id": "minecraft:sugar", "quantite": 1, "nom": "Sucre" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:magie", "valeur": 0.046 },
+  "resultat": { "id": "farmersdelight:apple_cider", "quantite": 1 }
+}

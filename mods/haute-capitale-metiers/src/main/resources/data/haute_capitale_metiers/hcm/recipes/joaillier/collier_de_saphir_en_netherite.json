@@ -1,0 +1,14 @@
+{
+  "titre": "Collier de saphir en netherite",
+  "metier": "joaillier",
+  "niveau": 44,
+  "xp": 144.0,
+  "ingredients": [
+    { "id": "jewelry:sapphire", "quantite": 1, "nom": "Saphir" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "jewelry:netherite_sapphire_necklace", "quantite": 1 }
+}

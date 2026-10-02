@@ -1,0 +1,13 @@
+{
+  "titre": "Fond de tarte",
+  "metier": "cuisinier",
+  "niveau": 20,
+  "xp": 72.0,
+  "ingredients": [
+    { "tag": "c:crops/wheat", "quantite": 3, "nom": "Blé" },
+    { "tag": "c:drinks/milk", "quantite": 1, "nom": "Lait" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "farmersdelight:pie_crust", "quantite": 1 }
+}

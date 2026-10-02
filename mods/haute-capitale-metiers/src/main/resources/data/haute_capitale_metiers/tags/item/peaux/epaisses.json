@@ -1,0 +1,6 @@
+{
+  "values": [
+    "haute_capitale_metiers:peau_epaisse",
+    { "id": "hmobs:brown_bear_hide", "required": false }
+  ]
+}

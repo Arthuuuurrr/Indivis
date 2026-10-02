@@ -1,0 +1,8 @@
+{
+  "titre": "Festin",
+  "attribut": "minecraft:max_health",
+  "operation": "pourcent_base",
+  "valeur": 0.10,
+  "duree": 1800,
+  "commentaire": "Festins de groupe : posés au sol, ils servent plusieurs joueurs — chaque portion cuisinée porte le buff."
+}

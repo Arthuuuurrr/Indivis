@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "depeceur",
+  "titre": "Maître dépeceur",
+  "accueil": "Un bon couteau, une main sûre, et rien ne se perd.",
+  "peut_enseigner": true
+}

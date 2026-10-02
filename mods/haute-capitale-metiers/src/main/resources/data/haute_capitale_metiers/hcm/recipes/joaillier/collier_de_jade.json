@@ -1,0 +1,13 @@
+{
+  "titre": "Collier de jade",
+  "metier": "joaillier",
+  "niveau": 20,
+  "xp": 72.0,
+  "ingredients": [
+    { "id": "jewelry:jade", "quantite": 1, "nom": "Jade" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "jewelry:jade_necklace", "quantite": 1 }
+}

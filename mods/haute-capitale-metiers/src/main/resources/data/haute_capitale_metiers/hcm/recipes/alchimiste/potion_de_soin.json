@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de soin",
+  "metier": "alchimiste",
+  "niveau": 1,
+  "xp": 15.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "minecraft:dandelion", "quantite": 2, "nom": "Pissenlit" },
+    { "id": "minecraft:poppy", "quantite": 1, "nom": "Coquelicot" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:healing" } }
+  }
+}

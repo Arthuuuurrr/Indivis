@@ -1,0 +1,14 @@
+{
+  "titre": "Balise de rappel",
+  "metier": "ingenieur",
+  "niveau": 28,
+  "xp": 96.0,
+  "ingredients": [
+    { "id": "minecraft:ender_pearl", "quantite": 2, "nom": "Perle de l'Ender" },
+    { "id": "minecraft:iron_ingot", "quantite": 4, "nom": "Lingot de fer" },
+    { "id": "minecraft:redstone", "quantite": 2, "nom": "Redstone" },
+    { "id": "minecraft:compass", "quantite": 1, "nom": "Boussole" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "haute_capitale_metiers:balise_de_rappel", "quantite": 1 }
+}

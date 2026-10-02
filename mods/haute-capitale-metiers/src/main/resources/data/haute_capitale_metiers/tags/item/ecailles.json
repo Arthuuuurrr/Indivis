@@ -1,0 +1,7 @@
+{
+  "values": [
+    { "id": "landsoficaria:myrmeke_scales", "required": false },
+    { "id": "landsoficaria:slug_scales", "required": false },
+    { "id": "hazennstuff:shadow_scale", "required": false }
+  ]
+}

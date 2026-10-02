@@ -1,0 +1,13 @@
+{
+  "titre": "Collier de tanzanite",
+  "metier": "joaillier",
+  "niveau": 34,
+  "xp": 114.0,
+  "ingredients": [
+    { "id": "jewelry:tanzanite", "quantite": 1, "nom": "Tanzanite" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "jewelry:tanzanite_necklace", "quantite": 1 }
+}

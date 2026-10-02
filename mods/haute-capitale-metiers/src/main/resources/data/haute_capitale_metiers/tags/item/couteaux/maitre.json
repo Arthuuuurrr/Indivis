@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "farmersdelight:diamond_knife", "required": false },
+    { "id": "farmersdelight:netherite_knife", "required": false },
+    { "id": "landsoficaria:vanadiumsteel_dagger", "required": false },
+    { "id": "landsoficaria:orichalcum_dagger", "required": false }
+  ]
+}

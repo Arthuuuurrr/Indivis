@@ -1,0 +1,12 @@
+{
+  "titre": "Manches longues de laine",
+  "metier": "couturier",
+  "niveau": 16,
+  "xp": 60.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_laine", "quantite": 3, "nom": "Tissu de laine" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:manche_longue_de_laine", "quantite": 2 }
+}

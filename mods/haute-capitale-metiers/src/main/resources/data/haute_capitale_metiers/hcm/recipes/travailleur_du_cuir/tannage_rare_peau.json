@@ -1,0 +1,14 @@
+{
+  "titre": "Tannage rare (peau)",
+  "commentaire": "Le cuir rare se tire d'une peau rare ou d'une fourrure rare : deux recettes, un même résultat.",
+  "metier": "travailleur_du_cuir",
+  "niveau": 45,
+  "xp": 147.0,
+  "ingredients": [
+    { "tag": "haute_capitale_metiers:peaux/rares", "quantite": 3, "nom": "Peau rare" },
+    { "tag": "haute_capitale_metiers:tanin", "quantite": 3, "nom": "Écorce" }
+  ],
+  "cout": 5,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:cuir_rare", "quantite": 1 }
+}

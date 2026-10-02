@@ -1,0 +1,18 @@
+{
+  "titre": "Poulet rôti (festin)",
+  "metier": "cuisinier",
+  "niveau": 35,
+  "xp": 117.0,
+  "ingredients": [
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" },
+    { "tag": "minecraft:eggs", "quantite": 1, "nom": "Œuf" },
+    { "tag": "c:foods/bread", "quantite": 1, "nom": "Pain" },
+    { "tag": "c:crops/carrot", "quantite": 2, "nom": "Carotte" },
+    { "id": "minecraft:cooked_chicken", "quantite": 1, "nom": "Poulet cuit" },
+    { "id": "minecraft:baked_potato", "quantite": 2, "nom": "Pomme de terre cuite" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 3,
+  "repas": { "buff": "haute_capitale_metiers:festin", "valeur": 0.100 },
+  "resultat": { "id": "farmersdelight:roast_chicken", "quantite": 4 }
+}

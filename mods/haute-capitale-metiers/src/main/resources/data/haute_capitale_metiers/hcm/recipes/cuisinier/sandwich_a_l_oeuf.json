@@ -1,0 +1,13 @@
+{
+  "titre": "Sandwich à l'œuf",
+  "metier": "cuisinier",
+  "niveau": 9,
+  "xp": 39.0,
+  "ingredients": [
+    { "tag": "c:foods/bread", "quantite": 1, "nom": "Pain" },
+    { "tag": "c:foods/cooked_egg", "quantite": 2, "nom": "Œuf cuit" }
+  ],
+  "cout": 0,
+  "repas": { "buff": "haute_capitale_metiers:endurance", "valeur": 0.030 },
+  "resultat": { "id": "farmersdelight:egg_sandwich", "quantite": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Chapeau de mage",
+  "metier": "couturier",
+  "niveau": 23,
+  "xp": 81.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_coton", "quantite": 3, "nom": "Tissu de coton" },
+    { "id": "minecraft:blue_dye", "quantite": 1, "nom": "Teinture bleue" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "accents:wizard_hat", "quantite": 1 }
+}

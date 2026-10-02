@@ -1,0 +1,16 @@
+{
+  "titre": "Riz aux champignons",
+  "metier": "cuisinier",
+  "niveau": 18,
+  "xp": 66.0,
+  "ingredients": [
+    { "id": "minecraft:brown_mushroom", "quantite": 1, "nom": "Champignon brun" },
+    { "id": "minecraft:red_mushroom", "quantite": 1, "nom": "Champignon rouge" },
+    { "tag": "c:crops/rice", "quantite": 1, "nom": "Riz" },
+    { "id": "minecraft:carrot", "quantite": 1, "nom": "Carotte" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:vigueur", "valeur": 0.048 },
+  "resultat": { "id": "farmersdelight:mushroom_rice", "quantite": 1 }
+}

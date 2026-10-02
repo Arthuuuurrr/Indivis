@@ -1,0 +1,13 @@
+{
+  "titre": "Anneau d'acier sombre au jade",
+  "metier": "joaillier",
+  "niveau": 36,
+  "xp": 120.0,
+  "ingredients": [
+    { "id": "mmo_accessories:steel_jade_ring", "quantite": 1, "nom": "Anneau d'acier au jade" },
+    { "id": "minecraft:netherite_scrap", "quantite": 1, "nom": "Débris de netherite" },
+    { "id": "minecraft:black_dye", "quantite": 1, "nom": "Teinture noire" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "mmo_accessories:dark_steel_jade_ring", "quantite": 1 }
+}

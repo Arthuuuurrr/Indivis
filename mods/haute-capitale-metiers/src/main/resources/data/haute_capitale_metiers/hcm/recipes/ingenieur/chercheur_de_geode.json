@@ -1,0 +1,13 @@
+{
+  "titre": "Chercheur de géode",
+  "metier": "ingenieur",
+  "niveau": 22,
+  "xp": 78.0,
+  "ingredients": [
+    { "id": "minecraft:amethyst_shard", "quantite": 4, "nom": "Éclat d'améthyste" },
+    { "id": "minecraft:copper_ingot", "quantite": 2, "nom": "Lingot de cuivre" },
+    { "id": "minecraft:compass", "quantite": 1, "nom": "Boussole" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "haute_capitale_metiers:chercheur_de_geode", "quantite": 1 }
+}

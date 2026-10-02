@@ -1,0 +1,22 @@
+{
+  "commentaire": "Petit gibier de forêt.",
+  "categorie": "animal",
+  "rarete": "commune",
+  "chasseur": {
+    "niveau": 3,
+    "xp": 21
+  },
+  "depecage": {
+    "niveau": 3,
+    "xp": 32,
+    "duree_carcasse": 60,
+    "canalisation": 2,
+    "matiere": {
+      "id": "minecraft:rabbit_hide"
+    }
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 8,
+  "xp": 36,
+  "bloc_plein": "landsoficaria:jasper_crystal",
+  "bloc_vide": "landsoficaria:budding_jasper",
+  "loot": [
+    { "id": "landsoficaria:jasper_shard", "min": 1, "max": 2 }
+  ],
+  "respawn": 420,
+  "coups": 3,
+  "outil": "minecraft:pickaxes",
+  "titre": "Cristal de jaspe",
+  "commentaire": "Les éclats que le Joaillier taille en jaspe (niveau 8). Le bourgeon reste quand le cristal est cueilli. Icaria requis."
+}

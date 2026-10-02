@@ -1,0 +1,35 @@
+{
+  "commentaire": "Cervidé commun, premier vrai gibier du Chasseur (niveau 6, table §30 de l'audit). Les matières de dépeçage passeront aux peaux du mod à l'étape 8.",
+  "categorie": "animal",
+  "rarete": "commune",
+  "chasseur": {
+    "niveau": 6,
+    "xp": 30
+  },
+  "depecage": {
+    "niveau": 6,
+    "xp": 45,
+    "duree_carcasse": 60,
+    "canalisation": 3,
+    "matiere": {
+      "id": "fleshz:hide",
+      "min": 1,
+      "max": 2
+    },
+    "secondaires": [
+      {
+        "id": "minecraft:bone",
+        "chance": 0.3
+      }
+    ]
+  },
+  "viande": {
+    "id": "cubeanimals:raw_venison",
+    "min": 1,
+    "max": 2
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

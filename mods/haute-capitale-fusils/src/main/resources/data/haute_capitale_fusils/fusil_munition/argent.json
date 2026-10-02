@@ -1,0 +1,2 @@
+{ "name": { "translate": "munition.haute_capitale_fusils.argent", "fallback": "Balle d'argent" }, "color": 15330805, "default_shots": 1, "item": "haute_capitale_fusils:balle_argent",
+  "effects": [ { "type": "haute_capitale_fusils:bonus_vs_tag", "tag": "haute_capitale_fusils:vulnerable_argent", "multiplier": 1.5 } ] }

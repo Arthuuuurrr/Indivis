@@ -1,0 +1,15 @@
+{
+  "titre": "Sandwich au poulet",
+  "metier": "cuisinier",
+  "niveau": 15,
+  "xp": 57.0,
+  "ingredients": [
+    { "tag": "c:foods/bread", "quantite": 1, "nom": "Pain" },
+    { "tag": "c:foods/cooked_chicken", "quantite": 1, "nom": "Poulet cuit" },
+    { "tag": "c:foods/leafy_green", "quantite": 1, "nom": "Feuilles vertes" },
+    { "tag": "c:crops/carrot", "quantite": 1, "nom": "Carotte" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:endurance", "valeur": 0.041 },
+  "resultat": { "id": "farmersdelight:chicken_sandwich", "quantite": 1 }
+}

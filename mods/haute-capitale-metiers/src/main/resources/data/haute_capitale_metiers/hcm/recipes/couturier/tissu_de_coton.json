@@ -1,0 +1,12 @@
+{
+  "titre": "Tissu de coton",
+  "metier": "couturier",
+  "niveau": 6,
+  "xp": 30.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:bobine_de_coton", "quantite": 6, "nom": "Bobine de coton" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:tissu_de_coton", "quantite": 1 }
+}

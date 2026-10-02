@@ -1,0 +1,12 @@
+{
+  "titre": "Pantalon de soie",
+  "metier": "couturier",
+  "niveau": 30,
+  "xp": 102.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:jambe_de_soie", "quantite": 2, "nom": "Jambe de soie" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "haute_capitale_metiers:pantalon_de_soie", "quantite": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Résonateur de cristal",
+  "metier": "ingenieur",
+  "niveau": 26,
+  "xp": 90.0,
+  "ingredients": [
+    { "id": "minecraft:amethyst_shard", "quantite": 6, "nom": "Éclat d'améthyste" },
+    { "id": "minecraft:diamond", "quantite": 1, "nom": "Diamant" },
+    { "id": "minecraft:copper_ingot", "quantite": 2, "nom": "Lingot de cuivre" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "haute_capitale_metiers:resonateur_de_cristal", "quantite": 1 }
+}

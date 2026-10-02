@@ -1,0 +1,14 @@
+{
+  "titre": "Rouleaux de chou",
+  "metier": "cuisinier",
+  "niveau": 17,
+  "xp": 63.0,
+  "ingredients": [
+    { "tag": "c:crops/cabbage", "quantite": 1, "nom": "Chou" },
+    { "tag": "c:foods/raw_meat", "quantite": 1, "nom": "Viande crue" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:vigueur", "valeur": 0.046 },
+  "resultat": { "id": "farmersdelight:cabbage_rolls", "quantite": 1 }
+}

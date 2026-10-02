@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de soin II",
+  "metier": "alchimiste",
+  "niveau": 18,
+  "xp": 66.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:namdrake", "quantite": 3, "nom": "Namdrake" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:strong_healing" } }
+  }
+}

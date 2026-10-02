@@ -1,0 +1,6 @@
+{
+  "values": [
+    "haute_capitale_metiers:fourrure_commune",
+    { "id": "more_rpg_classes:wolf_fur", "required": false }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de chute lente prolongée",
+  "metier": "alchimiste",
+  "niveau": 39,
+  "xp": 129.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:dathulla", "quantite": 3, "nom": "Dathulla" },
+    { "id": "minecraft:redstone", "quantite": 1, "nom": "Redstone" }
+  ],
+  "cout": 3,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:long_slow_falling" } }
+  }
+}

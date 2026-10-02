@@ -1,0 +1,11 @@
+{
+  "titre": "Anneau d'or",
+  "metier": "joaillier",
+  "niveau": 6,
+  "xp": 30.0,
+  "ingredients": [
+    { "id": "minecraft:gold_ingot", "quantite": 4, "nom": "Lingot d'or" }
+  ],
+  "cout": 0,
+  "resultat": { "id": "jewelry:gold_ring", "quantite": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Collier de malachite",
+  "metier": "joaillier",
+  "niveau": 26,
+  "xp": 90.0,
+  "ingredients": [
+    { "id": "mmo_accessories:malachite", "quantite": 1, "nom": "Malachite" },
+    { "id": "minecraft:copper_ingot", "quantite": 2, "nom": "Lingot de cuivre" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "mmo_accessories:malachite_necklace", "quantite": 1 }
+}

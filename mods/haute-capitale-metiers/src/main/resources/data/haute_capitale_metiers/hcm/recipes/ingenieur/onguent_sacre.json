@@ -1,0 +1,14 @@
+{
+  "titre": "Onguent sacré",
+  "metier": "ingenieur",
+  "niveau": 24,
+  "xp": 84.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:sel_sacre", "quantite": 2, "nom": "Sel sacré" },
+    { "id": "minecraft:honey_bottle", "quantite": 1, "nom": "Fiole de miel" },
+    { "id": "minecraft:amethyst_shard", "quantite": 1, "nom": "Éclat d'améthyste" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:onguent_sacre", "quantite": 2 }
+}

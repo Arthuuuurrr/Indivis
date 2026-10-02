@@ -1,0 +1,16 @@
+{
+  "titre": "Ragoût de morue au four",
+  "metier": "cuisinier",
+  "niveau": 28,
+  "xp": 96.0,
+  "ingredients": [
+    { "tag": "c:foods/raw_cod", "quantite": 1, "nom": "Morue crue" },
+    { "tag": "c:crops/potato", "quantite": 1, "nom": "Pomme de terre" },
+    { "tag": "minecraft:eggs", "quantite": 1, "nom": "Œuf" },
+    { "tag": "c:crops/tomato", "quantite": 1, "nom": "Tomate" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:distance", "valeur": 0.071 },
+  "resultat": { "id": "farmersdelight:baked_cod_stew", "quantite": 1 }
+}

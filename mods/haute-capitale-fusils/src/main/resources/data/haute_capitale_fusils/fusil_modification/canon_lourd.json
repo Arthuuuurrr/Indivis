@@ -1,0 +1,3 @@
+{ "category": "canon", "name": { "translate": "item.haute_capitale_fusils.canon_lourd" }, "item": "haute_capitale_fusils:canon_lourd",
+  "description": [ { "text": "Fonte épaisse : la balle cogne." } ],
+  "stats": { "bullet_speed": { "op": "mul", "value": -0.1 }, "knockback": 0.5, "damage": { "op": "mul", "value": 0.1 }, "recoil_multiplier": { "op": "mul", "value": 0.1 } } }

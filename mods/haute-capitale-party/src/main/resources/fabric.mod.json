@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "haute_capitale_party",
+  "version": "${version}",
+  "name": "Haute Capitale — Party",
+  "description": "Systeme de groupe du serveur Haute Capitale : groupes, chef, roles, invitations, chat de groupe, tir ami desactive entre membres, verification de preparation, compte a rebours, vote d'exclusion, et HUD de groupe. Tout sauf le HUD fonctionne sur un client vanilla.",
+  "authors": ["Haute Capitale"],
+  "license": "ARR",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["net.hautecapitale.party.HauteCapitaleParty"],
+    "client": ["net.hautecapitale.party.client.PartyClient"]
+  },
+  "mixins": [
+    "haute_capitale_party.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "haute_capitale_rpg": "*",
+    "puffish_skills": "*"
+  }
+}

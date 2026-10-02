@@ -1,0 +1,9 @@
+{
+  "commentaire": "Orc de base. Pas une proie du Chasseur (exclu à l'audit) : seulement le butin en Martins, table vide chez le mod d'origine.",
+  "categorie": "orc",
+  "rarete": "commune",
+  "loot_combat": [
+    { "id": "capitale_currency:martin_dor", "min": 3, "max": 8, "chance": 0.7 }
+  ],
+  "origines_xp": ["naturelle", "spawn_mmo"]
+}

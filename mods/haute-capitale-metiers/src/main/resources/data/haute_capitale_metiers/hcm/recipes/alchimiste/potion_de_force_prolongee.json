@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de force prolongée",
+  "metier": "alchimiste",
+  "niveau": 32,
+  "xp": 108.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:firehilt", "quantite": 3, "nom": "Garde-de-feu" },
+    { "id": "minecraft:redstone", "quantite": 1, "nom": "Redstone" }
+  ],
+  "cout": 3,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:long_strength" } }
+  }
+}

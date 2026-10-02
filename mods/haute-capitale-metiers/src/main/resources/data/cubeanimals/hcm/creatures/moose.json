@@ -1,0 +1,42 @@
+{
+  "commentaire": "Grand cervidé.",
+  "categorie": "animal",
+  "rarete": "rare",
+  "chasseur": {
+    "niveau": 26,
+    "xp": 90
+  },
+  "depecage": {
+    "niveau": 26,
+    "xp": 135,
+    "duree_carcasse": 90,
+    "canalisation": 5,
+    "outil": "haute_capitale_metiers:couteaux/expert",
+    "matiere": {
+      "id": "haute_capitale_metiers:peau_epaisse",
+      "min": 1,
+      "max": 2
+    },
+    "secondaires": [
+      {
+        "id": "haute_capitale_metiers:tendon",
+        "chance": 0.35
+      },
+      {
+        "id": "minecraft:bone",
+        "min": 1,
+        "max": 2,
+        "chance": 0.5
+      }
+    ]
+  },
+  "viande": {
+    "id": "cubeanimals:raw_venison",
+    "min": 2,
+    "max": 4
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

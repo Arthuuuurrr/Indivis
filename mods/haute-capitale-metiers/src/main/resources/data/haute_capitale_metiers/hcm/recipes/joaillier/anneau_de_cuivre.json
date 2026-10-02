@@ -1,0 +1,11 @@
+{
+  "titre": "Anneau de cuivre",
+  "metier": "joaillier",
+  "niveau": 1,
+  "xp": 15.0,
+  "ingredients": [
+    { "id": "minecraft:copper_ingot", "quantite": 4, "nom": "Lingot de cuivre" }
+  ],
+  "cout": 0,
+  "resultat": { "id": "jewelry:copper_ring", "quantite": 1 }
+}

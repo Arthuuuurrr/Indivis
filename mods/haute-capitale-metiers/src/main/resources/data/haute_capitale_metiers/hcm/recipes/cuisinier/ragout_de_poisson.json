@@ -1,0 +1,15 @@
+{
+  "titre": "Ragoût de poisson",
+  "metier": "cuisinier",
+  "niveau": 24,
+  "xp": 84.0,
+  "ingredients": [
+    { "tag": "c:foods/safe_raw_fish", "quantite": 1, "nom": "Poisson cru" },
+    { "id": "farmersdelight:tomato_sauce", "quantite": 1, "nom": "Sauce tomate" },
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:distance", "valeur": 0.062 },
+  "resultat": { "id": "farmersdelight:fish_stew", "quantite": 1 }
+}

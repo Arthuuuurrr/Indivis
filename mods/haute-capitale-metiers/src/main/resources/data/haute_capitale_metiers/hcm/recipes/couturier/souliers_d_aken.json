@@ -1,0 +1,14 @@
+{
+  "titre": "Souliers d'Aken",
+  "metier": "couturier",
+  "niveau": 36,
+  "xp": 120.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 2, "nom": "Tissu de soie" },
+    { "id": "minecraft:ender_pearl", "quantite": 1, "nom": "Perle de l'Ender" },
+    { "id": "minecraft:leather", "quantite": 1, "nom": "Cuir" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "forcemaster_rpg:aken_feet", "quantite": 1 }
+}

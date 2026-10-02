@@ -1,0 +1,12 @@
+{
+  "titre": "Pain d'épeautre",
+  "metier": "cuisinier",
+  "niveau": 4,
+  "xp": 24.0,
+  "ingredients": [
+    { "id": "landsoficaria:spelt_flour", "quantite": 3, "nom": "Farine d'épeautre" }
+  ],
+  "cout": 0,
+  "repas": { "buff": "haute_capitale_metiers:endurance", "valeur": 0.030 },
+  "resultat": { "id": "landsoficaria:spelt_bread", "quantite": 1 }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "haute_capitale_metiers:block/cotonnier_jeune"
+  }
+}

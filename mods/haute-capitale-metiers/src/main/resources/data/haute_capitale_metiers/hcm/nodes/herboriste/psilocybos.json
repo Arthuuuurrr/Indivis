@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 45,
+  "xp": 147,
+  "bloc_plein": "landsoficaria:psilocybos",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:psilocybos", "min": 1, "max": 2 }
+  ],
+  "respawn": 600,
+  "coups": 2,
+  "titre": "Psilocybos",
+  "commentaire": "Le champignon qui rend une potion persistante. Icaria requis."
+}

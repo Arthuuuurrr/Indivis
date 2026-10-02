@@ -1,0 +1,13 @@
+{
+  "titre": "Bobine de jean",
+  "metier": "couturier",
+  "niveau": 16,
+  "xp": 60.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:bobine_de_coton", "quantite": 4, "nom": "Bobine de coton" },
+    { "id": "minecraft:blue_dye", "quantite": 1, "nom": "Teinture bleue" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:bobine_de_jean", "quantite": 1 }
+}

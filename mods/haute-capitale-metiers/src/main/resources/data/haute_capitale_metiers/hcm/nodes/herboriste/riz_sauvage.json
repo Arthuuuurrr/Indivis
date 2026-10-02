@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 14,
+  "xp": 54,
+  "bloc_plein": "farmersdelight:wild_rice",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "farmersdelight:rice", "min": 1, "max": 3 }
+  ],
+  "respawn": 240,
+  "coups": 1,
+  "titre": "Riz sauvage",
+  "commentaire": "Le riz du Cuisinier. Farmer s Delight requis."
+}

@@ -1,0 +1,12 @@
+{
+  "titre": "Base de haut en soie",
+  "metier": "couturier",
+  "niveau": 28,
+  "xp": 96.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 4, "nom": "Tissu de soie" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:base_de_haut_en_soie", "quantite": 1 }
+}

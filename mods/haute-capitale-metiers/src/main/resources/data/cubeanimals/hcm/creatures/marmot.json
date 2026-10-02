@@ -1,0 +1,27 @@
+{
+  "commentaire": "Petit gibier de départ, avec le lapin.",
+  "categorie": "animal",
+  "rarete": "commune",
+  "chasseur": {
+    "niveau": 1,
+    "xp": 15
+  },
+  "depecage": {
+    "niveau": 1,
+    "xp": 23,
+    "duree_carcasse": 60,
+    "canalisation": 2,
+    "matiere": {
+      "id": "minecraft:rabbit_hide"
+    }
+  },
+  "viande": {
+    "id": "minecraft:rabbit",
+    "min": 1,
+    "max": 1
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

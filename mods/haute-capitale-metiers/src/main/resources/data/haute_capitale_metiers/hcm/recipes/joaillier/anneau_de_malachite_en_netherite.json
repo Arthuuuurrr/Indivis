@@ -1,0 +1,12 @@
+{
+  "titre": "Anneau de malachite en netherite",
+  "metier": "joaillier",
+  "niveau": 41,
+  "xp": 135.0,
+  "ingredients": [
+    { "id": "mmo_accessories:malachite_ring", "quantite": 1, "nom": "Anneau de malachite" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "mmo_accessories:netherite_malachite_ring", "quantite": 1 }
+}

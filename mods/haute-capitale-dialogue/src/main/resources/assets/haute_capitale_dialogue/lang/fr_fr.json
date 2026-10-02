@@ -1,0 +1,21 @@
+{
+  "hcd.ecran.quitter": "Échap · quitter",
+  "hcd.ecran.continuer": "Continuer ▸",
+  "hcd.ecran.choisir": "1–9 · choisir",
+  "hcd.ecran.historique": "H · précédemment",
+  "hcd.ecran.precedemment": "PRÉCÉDEMMENT",
+  "hcd.ecran.verrouille": "Condition requise",
+  "hcd.raison.score": "%s %s %s requis",
+  "hcd.raison.objet": "Objet requis : %s",
+  "hcd.raison.progres": "Progrès requis",
+  "hcd.raison.niveau": "Niveau %s %s requis",
+  "hcd.raison.statut": "Statut requis",
+  "hcd.raison.equipe": "Équipe requise",
+  "hcd.raison.limite": "Déjà fait",
+  "hcd.raison.sante": "Santé insuffisante",
+  "hcd.raison.autre": "Condition requise",
+  "hcd.session.exclusif": "%s est déjà en conversation avec quelqu'un.",
+  "hcd.session.en_mouvement": "%s ne peut pas vous parler en route.",
+  "key.haute_capitale_dialogue.debug": "Dialogue : overlay de debug",
+  "key.categories.haute_capitale_dialogue": "Haute Capitale — Dialogue"
+}

@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 6,
+  "xp": 30,
+  "bloc_plein": "minecraft:sweet_berry_bush[age=3]",
+  "bloc_vide": "minecraft:dead_bush",
+  "loot": [
+    { "id": "minecraft:sweet_berries", "min": 2, "max": 4 }
+  ],
+  "respawn": 240,
+  "coups": 1,
+  "titre": "Buisson de baies",
+  "commentaire": "Récolté, il ne reste qu'un buisson sec ; le buisson mûr (age=3) revient à la repousse. Un buisson dépouillé (age=1) aurait remûri tout seul aux ticks aléatoires, hors du registre."
+}

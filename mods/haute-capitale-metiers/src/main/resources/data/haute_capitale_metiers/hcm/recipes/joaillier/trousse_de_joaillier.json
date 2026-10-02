@@ -1,0 +1,15 @@
+{
+  "titre": "Trousse de joaillier",
+  "metier": "joaillier",
+  "niveau": 5,
+  "xp": 27.0,
+  "ingredients": [
+    { "id": "minecraft:copper_ingot", "quantite": 1, "nom": "Lingot de cuivre" },
+    { "id": "minecraft:iron_ingot", "quantite": 1, "nom": "Lingot de fer" },
+    { "id": "minecraft:gold_ingot", "quantite": 1, "nom": "Lingot d'or" },
+    { "tag": "minecraft:planks", "quantite": 3, "nom": "Planches" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "jewelry:jewelers_kit", "quantite": 1 }
+}

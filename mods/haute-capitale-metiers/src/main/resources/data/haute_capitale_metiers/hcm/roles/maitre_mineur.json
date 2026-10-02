@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "mineur",
+  "titre": "Maître mineur",
+  "accueil": "Je peux t'apprendre à lire la roche.",
+  "peut_enseigner": true
+}

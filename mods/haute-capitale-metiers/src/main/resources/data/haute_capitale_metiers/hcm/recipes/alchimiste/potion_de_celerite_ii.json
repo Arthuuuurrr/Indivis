@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de célérité II",
+  "metier": "alchimiste",
+  "niveau": 20,
+  "xp": 72.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:sunkettle", "quantite": 3, "nom": "Bouilloire solaire" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:strong_swiftness" } }
+  }
+}

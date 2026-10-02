@@ -1,0 +1,13 @@
+{
+  "titre": "Tannage exotique",
+  "metier": "travailleur_du_cuir",
+  "niveau": 38,
+  "xp": 126.0,
+  "ingredients": [
+    { "tag": "haute_capitale_metiers:peaux/exotiques", "quantite": 3, "nom": "Peau fantasy" },
+    { "tag": "haute_capitale_metiers:tanin", "quantite": 3, "nom": "Écorce" }
+  ],
+  "cout": 4,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:cuir_exotique", "quantite": 1 }
+}

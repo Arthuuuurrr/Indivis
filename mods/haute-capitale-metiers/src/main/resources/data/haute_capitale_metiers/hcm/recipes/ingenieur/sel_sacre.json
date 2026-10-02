@@ -1,0 +1,14 @@
+{
+  "titre": "Sel sacré",
+  "metier": "ingenieur",
+  "niveau": 6,
+  "xp": 30.0,
+  "ingredients": [
+    { "id": "minecraft:bone_meal", "quantite": 2, "nom": "Poudre d'os" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" },
+    { "id": "minecraft:sugar", "quantite": 1, "nom": "Sucre" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:sel_sacre", "quantite": 4 }
+}

@@ -1,0 +1,12 @@
+{
+  "titre": "Aiguille",
+  "metier": "couturier",
+  "niveau": 2,
+  "xp": 18.0,
+  "ingredients": [
+    { "id": "minecraft:iron_nugget", "quantite": 2, "nom": "Pépite de fer" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:aiguille", "quantite": 2 }
+}

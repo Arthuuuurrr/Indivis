@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "farmersdelight:flint_knife", "required": false },
+    { "id": "farmersdelight:iron_knife", "required": false },
+    { "id": "farmersdelight:golden_knife", "required": false },
+    { "id": "farmersdelight:diamond_knife", "required": false },
+    { "id": "farmersdelight:netherite_knife", "required": false },
+    { "id": "landsoficaria:chert_dagger", "required": false },
+    { "id": "landsoficaria:chalkos_dagger", "required": false },
+    { "id": "landsoficaria:kassiteros_dagger", "required": false },
+    { "id": "landsoficaria:sideros_dagger", "required": false },
+    { "id": "landsoficaria:molybdenumsteel_dagger", "required": false },
+    { "id": "landsoficaria:vanadiumsteel_dagger", "required": false },
+    { "id": "landsoficaria:orichalcum_dagger", "required": false },
+    { "id": "hmobs:lion_fang_knife", "required": false }
+  ]
+}

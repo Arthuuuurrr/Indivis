@@ -1,0 +1,18 @@
+{
+  "titre": "Citrouille farcie (festin)",
+  "metier": "cuisinier",
+  "niveau": 42,
+  "xp": 138.0,
+  "ingredients": [
+    { "tag": "c:crops/rice", "quantite": 1, "nom": "Riz" },
+    { "tag": "c:crops/onion", "quantite": 1, "nom": "Oignon" },
+    { "id": "minecraft:brown_mushroom", "quantite": 1, "nom": "Champignon brun" },
+    { "tag": "c:crops/potato", "quantite": 1, "nom": "Pomme de terre" },
+    { "tag": "c:foods/berry", "quantite": 1, "nom": "Baies" },
+    { "tag": "c:foods/vegetable", "quantite": 1, "nom": "Légume" },
+    { "id": "minecraft:pumpkin", "quantite": 1, "nom": "Citrouille" }
+  ],
+  "cout": 5,
+  "repas": { "buff": "haute_capitale_metiers:festin", "valeur": 0.100 },
+  "resultat": { "id": "farmersdelight:stuffed_pumpkin", "quantite": 4 }
+}

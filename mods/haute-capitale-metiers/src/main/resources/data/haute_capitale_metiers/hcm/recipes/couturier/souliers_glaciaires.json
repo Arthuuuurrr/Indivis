@@ -1,0 +1,13 @@
+{
+  "titre": "Souliers glaciaires",
+  "metier": "couturier",
+  "niveau": 29,
+  "xp": 99.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 2, "nom": "Tissu de soie" },
+    { "id": "hazennstuff:permafrost_fragment", "quantite": 1, "nom": "Fragment de permafrost" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "armory_rpgs:glacier_robe_feet", "quantite": 1 }
+}

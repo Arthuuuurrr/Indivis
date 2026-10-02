@@ -1,0 +1,2 @@
+{ "name": { "translate": "munition.haute_capitale_fusils.barbelee", "fallback": "Balle barbelée" }, "color": 11740202,
+  "effects": [ { "type": "haute_capitale_fusils:bleed", "ticks": 100, "period": 20, "damage_per_tick": 1.0 } ] }

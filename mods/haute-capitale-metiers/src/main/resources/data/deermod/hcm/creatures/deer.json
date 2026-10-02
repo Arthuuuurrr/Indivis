@@ -1,0 +1,39 @@
+{
+  "commentaire": "Cerf de Deer Mod ; sa venaison est la sienne, pas celle de Cube Animals.",
+  "categorie": "animal",
+  "rarete": "commune",
+  "chasseur": {
+    "niveau": 8,
+    "xp": 36
+  },
+  "depecage": {
+    "niveau": 8,
+    "xp": 54,
+    "duree_carcasse": 60,
+    "canalisation": 3,
+    "matiere": {
+      "id": "fleshz:hide",
+      "min": 1,
+      "max": 2
+    },
+    "secondaires": [
+      {
+        "id": "deermod:antlers",
+        "chance": 0.25
+      },
+      {
+        "id": "minecraft:bone",
+        "chance": 0.3
+      }
+    ]
+  },
+  "viande": {
+    "id": "deermod:venison",
+    "min": 1,
+    "max": 2
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

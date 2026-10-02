@@ -1,0 +1,12 @@
+{
+  "titre": "Anneau de tanzanite",
+  "metier": "joaillier",
+  "niveau": 31,
+  "xp": 105.0,
+  "ingredients": [
+    { "id": "jewelry:tanzanite", "quantite": 1, "nom": "Tanzanite" },
+    { "id": "minecraft:gold_ingot", "quantite": 3, "nom": "Lingot d'or" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "jewelry:tanzanite_ring", "quantite": 1 }
+}

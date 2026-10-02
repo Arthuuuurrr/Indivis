@@ -1,0 +1,14 @@
+{
+  "titre": "Baume sacré",
+  "metier": "ingenieur",
+  "niveau": 34,
+  "xp": 114.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:onguent_sacre", "quantite": 2, "nom": "Onguent sacré" },
+    { "id": "minecraft:golden_carrot", "quantite": 1, "nom": "Carotte dorée" },
+    { "id": "minecraft:amethyst_shard", "quantite": 2, "nom": "Éclat d'améthyste" }
+  ],
+  "cout": 3,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:baume_sacre", "quantite": 1 }
+}

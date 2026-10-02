@@ -1,0 +1,14 @@
+{
+  "titre": "Cape royale",
+  "metier": "couturier",
+  "niveau": 40,
+  "xp": 132.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 6, "nom": "Tissu de soie" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:red_dye", "quantite": 2, "nom": "Teinture rouge" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "mmo_accessories:royal_cape", "quantite": 1 }
+}

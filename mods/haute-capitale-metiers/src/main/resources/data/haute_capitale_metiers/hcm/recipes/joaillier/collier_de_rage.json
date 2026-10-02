@@ -1,0 +1,14 @@
+{
+  "titre": "Collier de rage",
+  "metier": "joaillier",
+  "niveau": 34,
+  "xp": 114.0,
+  "ingredients": [
+    { "id": "jewelry:ruby", "quantite": 1, "nom": "Rubis" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:blaze_powder", "quantite": 2, "nom": "Poudre de blaze" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "mmo_accessories:rage_necklace", "quantite": 1 }
+}

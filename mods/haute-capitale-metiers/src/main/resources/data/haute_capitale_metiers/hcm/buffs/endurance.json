@@ -1,0 +1,8 @@
+{
+  "titre": "Endurance",
+  "attribut": "puffish_attributes:stamina",
+  "operation": "pourcent_base",
+  "valeur": 0.05,
+  "duree": 900,
+  "commentaire": "Pains, sandwichs et rations."
+}

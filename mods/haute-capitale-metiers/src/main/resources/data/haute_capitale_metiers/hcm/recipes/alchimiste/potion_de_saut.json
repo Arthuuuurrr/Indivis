@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de saut",
+  "metier": "alchimiste",
+  "niveau": 5,
+  "xp": 27.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:speardrops", "quantite": 2, "nom": "Larmes de lance" },
+    { "id": "landsoficaria:clover", "quantite": 1, "nom": "Trèfle" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:leaping" } }
+  }
+}

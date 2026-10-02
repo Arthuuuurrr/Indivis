@@ -1,0 +1,12 @@
+{
+  "titre": "Dague d'\''orichalque",
+  "metier": "forgeron",
+  "niveau": 41,
+  "xp": 135.0,
+  "ingredients": [
+    { "id": "landsoficaria:orichalcum_ingot", "quantite": 2, "nom": "Lingot d'orichalque" },
+    { "id": "magistuarmory:hilt", "quantite": 1, "nom": "Garde d'arme" }
+  ],
+  "cout": 4,
+  "resultat": { "id": "landsoficaria:orichalcum_dagger", "quantite": 1 }
+}

@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de la tortue II",
+  "metier": "alchimiste",
+  "niveau": 42,
+  "xp": 138.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:bolbos", "quantite": 3, "nom": "Bolbos" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" }
+  ],
+  "cout": 4,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:strong_turtle_master" } }
+  }
+}

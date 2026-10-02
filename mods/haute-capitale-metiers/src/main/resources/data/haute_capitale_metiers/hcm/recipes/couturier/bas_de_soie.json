@@ -1,0 +1,12 @@
+{
+  "titre": "Bas de soie",
+  "metier": "couturier",
+  "niveau": 26,
+  "xp": 90.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 2, "nom": "Tissu de soie" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "haute_capitale_metiers:bas_de_soie", "quantite": 1 }
+}

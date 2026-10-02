@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "ingenieur",
+  "titre": "Maître ingénieur",
+  "accueil": "Regarde la carte autrement, et elle te parlera.",
+  "peut_enseigner": true
+}

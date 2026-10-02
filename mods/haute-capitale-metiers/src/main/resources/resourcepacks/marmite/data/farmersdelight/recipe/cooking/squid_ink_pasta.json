@@ -1,0 +1,7 @@
+{
+  "type": "farmersdelight:cooking",
+  "fabric:load_conditions": [ { "condition": "fabric:not", "value": { "condition": "fabric:true" } } ],
+  "ingredients": [ "minecraft:bowl" ],
+  "result": { "id": "farmersdelight:squid_ink_pasta" },
+  "commentaire": "Retirée de la marmite par Haute Capitale — Métiers : ce plat est une recette de Cuisinier de niveau 20 ou plus."
+}

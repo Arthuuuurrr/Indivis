@@ -1,0 +1,29 @@
+{
+  "pose": "rifle", "magazine": 4, "reload_ticks": 50, "fire_mode": "semi",
+  "top_load": { "loop_start": 0.75, "loop_end": 1.75, "loop_duration": 0.33 },
+  "stats": { "damage": 12, "bullet_speed": 14, "spread": 1, "fire_delay": 20, "gravity": 0.05, "range": 96, "crit_chance": 0.1 },
+  "recoil": { "magnitude": 30, "horizontal_ratio": 0.45, "frequency": -1.9, "seed": 222 },
+  "muzzle_flash": { "distance": 2.0, "types": ["large"] },
+  "adjuster": "lower_hammer",
+  "aim_offset": [ -4.0, 1.2, 1.0 ], "aim_fov": 0.75,
+  "sounds": {
+    "shoot": { "id": "haute_capitale_fusils:arquebuse.tir", "volume": 1.0, "pitch_min": 0.9, "pitch_max": 1.1 },
+    "echo": { "id": "haute_capitale_fusils:arme.echo", "volume": 1.0, "pitch_min": 1.4, "pitch_max": 1.6 },
+    "dry": { "id": "haute_capitale_fusils:arme.a_vide", "volume": 0.75, "pitch_min": 1.4, "pitch_max": 1.6 },
+    "equip": { "id": "haute_capitale_fusils:arquebuse.ferme_culasse", "volume": 0.5, "pitch_min": 0.9, "pitch_max": 1.1 },
+    "reload_cues": [
+      { "at": 0.0, "sound": { "id": "haute_capitale_fusils:arquebuse.ouvre_culasse", "volume": 1.25, "pitch_min": 0.95, "pitch_max": 1.05 } },
+      { "at": 0.6, "sound": { "id": "haute_capitale_fusils:arquebuse.charge_chambre", "volume": 1.25, "pitch_min": 0.9, "pitch_max": 1.1 } },
+      { "at": 0.95, "sound": { "id": "haute_capitale_fusils:arquebuse.charge_chambre", "volume": 1.25, "pitch_min": 0.9, "pitch_max": 1.1 } },
+      { "at": 1.3, "sound": { "id": "haute_capitale_fusils:arquebuse.charge_chambre", "volume": 1.25, "pitch_min": 0.9, "pitch_max": 1.1 } },
+      { "at": 1.65, "sound": { "id": "haute_capitale_fusils:arquebuse.charge_chambre", "volume": 1.25, "pitch_min": 0.9, "pitch_max": 1.1 } },
+      { "at": 2.13, "sound": { "id": "haute_capitale_fusils:arme.chien", "volume": 1.25, "pitch_min": 1.0, "pitch_max": 1.1 } },
+      { "at": 2.5, "sound": { "id": "haute_capitale_fusils:arquebuse.ferme_culasse", "volume": 1.25, "pitch_min": 0.95, "pitch_max": 1.1 } }
+    ],
+    "fire_cycle_cues": [
+      { "at": 0.33, "sound": { "id": "haute_capitale_fusils:arquebuse.ouvre_culasse", "volume": 1.0, "pitch_min": 0.9, "pitch_max": 1.1 } },
+      { "at": 0.8, "sound": { "id": "haute_capitale_fusils:arquebuse.ferme_culasse", "volume": 1.0, "pitch_min": 0.9, "pitch_max": 1.1 } }
+    ]
+  },
+  "assets": { "model": "haute_capitale_fusils:item/arquebuse", "texture": "haute_capitale_fusils:textures/item/arquebuse.png", "animation": "haute_capitale_fusils:item/arquebuse" }
+}

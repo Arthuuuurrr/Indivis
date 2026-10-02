@@ -1,0 +1,14 @@
+{
+  "titre": "Coiffe de troubadour",
+  "metier": "couturier",
+  "niveau": 37,
+  "xp": 123.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 2, "nom": "Tissu de soie" },
+    { "id": "haute_capitale_metiers:tissu_de_jean", "quantite": 1, "nom": "Tissu de jean" },
+    { "id": "minecraft:purple_dye", "quantite": 1, "nom": "Teinture violette" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "bards_rpg:troubadour_garb_head", "quantite": 1 }
+}

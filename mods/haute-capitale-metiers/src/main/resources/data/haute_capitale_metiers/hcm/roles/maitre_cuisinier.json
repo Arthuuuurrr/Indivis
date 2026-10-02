@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "cuisinier",
+  "titre": "Maître cuisinier",
+  "accueil": "On ne nourrit bien que ce qu'on respecte.",
+  "peut_enseigner": true
+}

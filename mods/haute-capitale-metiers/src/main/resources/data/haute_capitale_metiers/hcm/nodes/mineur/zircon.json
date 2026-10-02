@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 30,
+  "xp": 102,
+  "bloc_plein": "landsoficaria:zircon_crystal",
+  "bloc_vide": "landsoficaria:budding_zircon",
+  "loot": [
+    { "id": "landsoficaria:zircon_shard", "min": 1, "max": 2 }
+  ],
+  "respawn": 600,
+  "coups": 4,
+  "outil": "minecraft:pickaxes",
+  "titre": "Cristal de zircon",
+  "commentaire": "Les éclats que le Joaillier taille en zircon (niveau 32). Icaria requis."
+}

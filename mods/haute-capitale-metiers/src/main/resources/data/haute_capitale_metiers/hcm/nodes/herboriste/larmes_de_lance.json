@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 4,
+  "xp": 24,
+  "bloc_plein": "landsoficaria:speardrops",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:speardrops", "min": 1, "max": 2 }
+  ],
+  "respawn": 150,
+  "coups": 1,
+  "titre": "Larmes de lance",
+  "commentaire": "La plante du saut. Icaria requis."
+}

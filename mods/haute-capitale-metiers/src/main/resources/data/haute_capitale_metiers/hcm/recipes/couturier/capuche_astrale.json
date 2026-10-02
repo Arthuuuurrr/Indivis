@@ -1,0 +1,13 @@
+{
+  "titre": "Capuche astrale",
+  "metier": "couturier",
+  "niveau": 34,
+  "xp": 114.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 3, "nom": "Tissu de soie" },
+    { "id": "minecraft:amethyst_shard", "quantite": 2, "nom": "Éclat d'améthyste" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "armory_rpgs:astral_robe_head", "quantite": 1 }
+}

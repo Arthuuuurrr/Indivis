@@ -1,0 +1,19 @@
+{
+  "pose": "rifle", "magazine": 8, "reload_ticks": 30, "fire_mode": "semi", "allow_auto": true,
+  "stats": { "damage": 6, "bullet_speed": 12, "spread": 2, "fire_delay": 6, "blowback": 0.05, "gravity": 0.05, "range": 80, "crit_chance": 0.05 },
+  "recoil": { "magnitude": 7.5, "horizontal_ratio": 0.35, "frequency": 0.6, "seed": 6969 },
+  "muzzle_flash": { "distance": 2.0, "types": ["triangle", "etoile"] },
+  "adjuster": "magazine_slide",
+  "aim_offset": [ -4.0, 1.2, 1.0 ], "aim_fov": 0.8,
+  "sounds": {
+    "shoot": { "id": "haute_capitale_fusils:fusil_rouages.tir", "volume": 1.0, "pitch_min": 0.9, "pitch_max": 1.1 },
+    "echo": { "id": "haute_capitale_fusils:arme.echo", "volume": 0.8, "pitch_min": 0.9, "pitch_max": 1.1 },
+    "dry": { "id": "haute_capitale_fusils:arme.a_vide", "volume": 0.75, "pitch_min": 1.4, "pitch_max": 1.6 },
+    "equip": { "id": "haute_capitale_fusils:fusil_rouages.equip", "volume": 0.75, "pitch_min": 0.9, "pitch_max": 1.1 },
+    "reload_cues": [
+      { "at": 0.38, "sound": { "id": "haute_capitale_fusils:fusil_rouages.ejecte", "volume": 1.25, "pitch_min": 0.9, "pitch_max": 1.1 } },
+      { "at": 1.04, "sound": { "id": "haute_capitale_fusils:fusil_rouages.insere", "volume": 1.25, "pitch_min": 0.9, "pitch_max": 1.1 } }
+    ]
+  },
+  "assets": { "model": "haute_capitale_fusils:item/fusil_rouages", "texture": "haute_capitale_fusils:textures/item/fusil_rouages.png", "animation": "haute_capitale_fusils:item/fusil_rouages" }
+}

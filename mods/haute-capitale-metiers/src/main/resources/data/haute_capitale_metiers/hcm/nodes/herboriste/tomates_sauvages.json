@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 10,
+  "xp": 42,
+  "bloc_plein": "farmersdelight:wild_tomatoes",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "farmersdelight:tomato", "min": 1, "max": 3 }
+  ],
+  "respawn": 240,
+  "coups": 1,
+  "titre": "Tomates sauvages",
+  "commentaire": "La sauce tomate et les pâtes du Cuisinier. Farmer s Delight requis."
+}

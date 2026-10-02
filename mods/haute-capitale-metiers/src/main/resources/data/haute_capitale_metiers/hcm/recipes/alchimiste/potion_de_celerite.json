@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de célérité",
+  "metier": "alchimiste",
+  "niveau": 3,
+  "xp": 21.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:sunkettle", "quantite": 2, "nom": "Bouilloire solaire" },
+    { "id": "minecraft:sugar", "quantite": 1, "nom": "Sucre" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:swiftness" } }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "titre": "Œuf au plat",
+  "metier": "cuisinier",
+  "niveau": 3,
+  "xp": 21.0,
+  "ingredients": [
+    { "tag": "minecraft:eggs", "quantite": 1, "nom": "Œuf" }
+  ],
+  "cout": 0,
+  "repas": { "buff": "haute_capitale_metiers:endurance", "valeur": 0.030 },
+  "resultat": { "id": "farmersdelight:fried_egg", "quantite": 1 }
+}

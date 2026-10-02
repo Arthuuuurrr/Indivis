@@ -1,0 +1,13 @@
+{
+  "titre": "Assemblage de chutes",
+  "commentaire": "Trois petites peaux cousues bout à bout font une peau commune. Sans écorce : c'est de la couture, pas du tannage.",
+  "metier": "travailleur_du_cuir",
+  "niveau": 1,
+  "xp": 15.0,
+  "ingredients": [
+    { "tag": "haute_capitale_metiers:peaux/petites", "quantite": 3, "nom": "Petite peau" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "fleshz:hide", "quantite": 1 }
+}

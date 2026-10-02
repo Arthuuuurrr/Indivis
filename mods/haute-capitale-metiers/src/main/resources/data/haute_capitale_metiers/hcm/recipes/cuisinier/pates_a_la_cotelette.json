@@ -1,0 +1,15 @@
+{
+  "titre": "Pâtes à la côtelette de mouton",
+  "metier": "cuisinier",
+  "niveau": 31,
+  "xp": 105.0,
+  "ingredients": [
+    { "tag": "c:foods/raw_mutton", "quantite": 1, "nom": "Mouton cru" },
+    { "tag": "c:foods/pasta", "quantite": 1, "nom": "Pâtes" },
+    { "id": "farmersdelight:tomato_sauce", "quantite": 1, "nom": "Sauce tomate" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 3,
+  "repas": { "buff": "haute_capitale_metiers:melee", "valeur": 0.077 },
+  "resultat": { "id": "farmersdelight:pasta_with_mutton_chop", "quantite": 1 }
+}

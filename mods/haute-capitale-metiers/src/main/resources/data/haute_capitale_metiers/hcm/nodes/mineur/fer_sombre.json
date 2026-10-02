@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 24,
+  "xp": 84,
+  "bloc_plein": "witcher_rpg:dark_iron_ore",
+  "bloc_vide": "minecraft:stone",
+  "loot": [
+    { "id": "witcher_rpg:raw_dark_iron", "min": 1, "max": 2 }
+  ],
+  "respawn": 420,
+  "coups": 4,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon de fer sombre",
+  "commentaire": "Le fer sombre du Sorceleur. Witcher requis."
+}

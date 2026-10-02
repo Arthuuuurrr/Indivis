@@ -1,0 +1,20 @@
+{
+  "titre": "Potion persistante de régénération II",
+  "metier": "alchimiste",
+  "niveau": 48,
+  "xp": 156.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:chameomile", "quantite": 3, "nom": "Chaméomille" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" },
+    { "id": "landsoficaria:psilocybos", "quantite": 2, "nom": "Psilocybos" },
+    { "id": "landsoficaria:moth_agaric", "quantite": 1, "nom": "Agaric des mites" }
+  ],
+  "cout": 5,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:lingering_potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:strong_regeneration" } }
+  }
+}

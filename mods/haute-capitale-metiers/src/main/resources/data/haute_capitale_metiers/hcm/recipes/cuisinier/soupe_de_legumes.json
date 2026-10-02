@@ -1,0 +1,16 @@
+{
+  "titre": "Soupe de légumes",
+  "metier": "cuisinier",
+  "niveau": 14,
+  "xp": 54.0,
+  "ingredients": [
+    { "tag": "c:crops/carrot", "quantite": 1, "nom": "Carotte" },
+    { "tag": "c:crops/potato", "quantite": 1, "nom": "Pomme de terre" },
+    { "tag": "c:crops/beetroot", "quantite": 1, "nom": "Betterave" },
+    { "tag": "c:foods/leafy_green", "quantite": 1, "nom": "Feuilles vertes" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:regeneration", "valeur": 0.039 },
+  "resultat": { "id": "farmersdelight:vegetable_soup", "quantite": 1 }
+}

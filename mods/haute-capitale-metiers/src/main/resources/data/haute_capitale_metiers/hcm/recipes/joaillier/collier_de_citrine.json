@@ -1,0 +1,13 @@
+{
+  "titre": "Collier de citrine",
+  "metier": "joaillier",
+  "niveau": 18,
+  "xp": 66.0,
+  "ingredients": [
+    { "id": "jewelry:citrine", "quantite": 1, "nom": "Citrine" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "jewelry:citrine_necklace", "quantite": 1 }
+}

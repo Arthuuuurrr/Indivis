@@ -1,0 +1,18 @@
+{
+  "titre": "Potion de vision nocturne prolongée",
+  "metier": "alchimiste",
+  "niveau": 26,
+  "xp": 90.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:blindweed", "quantite": 3, "nom": "Herbe aveugle" },
+    { "id": "minecraft:redstone", "quantite": 1, "nom": "Redstone" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:long_night_vision" } }
+  }
+}

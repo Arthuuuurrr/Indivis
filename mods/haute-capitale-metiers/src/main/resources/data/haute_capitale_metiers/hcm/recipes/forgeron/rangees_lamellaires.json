@@ -1,0 +1,13 @@
+{
+  "titre": "Rangées lamellaires",
+  "metier": "forgeron",
+  "niveau": 18,
+  "xp": 66.0,
+  "ingredients": [
+    { "id": "magistuarmory:small_steel_plate", "quantite": 6, "nom": "Petite plaque d'acier" },
+    { "id": "magistuarmory:leather_strip", "quantite": 3, "nom": "Lanière de cuir" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "magistuarmory:lamellar_rows", "quantite": 1 }
+}

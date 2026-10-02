@@ -1,0 +1,12 @@
+{
+  "titre": "Taille du zircon",
+  "metier": "joaillier",
+  "niveau": 32,
+  "xp": 108.0,
+  "ingredients": [
+    { "id": "landsoficaria:zircon_shard", "quantite": 4, "nom": "Éclat de zircon" }
+  ],
+  "cout": 3,
+  "qualite": false,
+  "resultat": { "id": "landsoficaria:zircon", "quantite": 1 }
+}

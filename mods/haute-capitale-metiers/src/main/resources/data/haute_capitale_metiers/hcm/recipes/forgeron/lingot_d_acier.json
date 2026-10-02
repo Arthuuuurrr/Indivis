@@ -1,0 +1,13 @@
+{
+  "titre": "Lingot d'\''acier",
+  "metier": "forgeron",
+  "niveau": 8,
+  "xp": 36.0,
+  "ingredients": [
+    { "id": "minecraft:iron_ingot", "quantite": 2, "nom": "Lingot de fer" },
+    { "id": "minecraft:coal", "quantite": 2, "nom": "Charbon" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "magistuarmory:steel_ingot", "quantite": 1 }
+}

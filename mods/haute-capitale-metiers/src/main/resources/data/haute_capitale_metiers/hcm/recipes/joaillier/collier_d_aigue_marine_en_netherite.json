@@ -1,0 +1,12 @@
+{
+  "titre": "Collier d'aigue-marine en netherite",
+  "metier": "joaillier",
+  "niveau": 44,
+  "xp": 144.0,
+  "ingredients": [
+    { "id": "mmo_accessories:aquamarine_necklace", "quantite": 1, "nom": "Collier d'aigue-marine" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "mmo_accessories:netherite_aquamarine_necklace", "quantite": 1 }
+}

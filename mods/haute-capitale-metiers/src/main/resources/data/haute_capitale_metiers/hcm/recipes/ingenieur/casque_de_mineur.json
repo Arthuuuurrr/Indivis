@@ -1,0 +1,13 @@
+{
+  "titre": "Casque de mineur",
+  "metier": "ingenieur",
+  "niveau": 10,
+  "xp": 42.0,
+  "ingredients": [
+    { "id": "minecraft:iron_helmet", "quantite": 1, "nom": "Casque de fer" },
+    { "id": "minecraft:torch", "quantite": 4, "nom": "Torche" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" }
+  ],
+  "cout": 0,
+  "resultat": { "id": "haute_capitale_metiers:casque_de_mineur", "quantite": 1 }
+}

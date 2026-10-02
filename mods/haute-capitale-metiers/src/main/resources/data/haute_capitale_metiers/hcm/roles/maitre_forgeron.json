@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "forgeron",
+  "titre": "Maître forgeron",
+  "accueil": "Le fer ne pardonne pas la hâte.",
+  "peut_enseigner": true
+}

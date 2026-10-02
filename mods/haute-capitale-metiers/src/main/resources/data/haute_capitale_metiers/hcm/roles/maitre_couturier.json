@@ -1,0 +1,7 @@
+{
+  "interface": "formation",
+  "metier": "couturier",
+  "titre": "Maître couturier",
+  "accueil": "Tout commence par un fil.",
+  "peut_enseigner": true
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Cape de soie",
+  "metier": "couturier",
+  "niveau": 31,
+  "xp": 105.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 5, "nom": "Tissu de soie" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" },
+    { "id": "minecraft:gold_ingot", "quantite": 1, "nom": "Lingot d'or" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "haute_capitale_metiers:cape_de_soie", "quantite": 1 }
+}

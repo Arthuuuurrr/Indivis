@@ -1,0 +1,13 @@
+{
+  "titre": "Broyeur automatique",
+  "metier": "ingenieur",
+  "niveau": 15,
+  "xp": 57.0,
+  "ingredients": [
+    { "id": "minecraft:iron_ingot", "quantite": 3, "nom": "Lingot de fer" },
+    { "id": "minecraft:flint", "quantite": 3, "nom": "Silex" },
+    { "id": "minecraft:redstone", "quantite": 2, "nom": "Redstone" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "haute_capitale_metiers:broyeur_automatique", "quantite": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "titre": "Vêtement d'Avatar",
+  "metier": "couturier",
+  "niveau": 46,
+  "xp": 150.0,
+  "ingredients": [
+    { "id": "hazennstuff:cloth_of_the_flamebearer", "quantite": 2, "nom": "Étoffe du Porte-Flamme" },
+    { "id": "hazennstuff:storm_weave", "quantite": 1, "nom": "Tissage d'orage" },
+    { "id": "hazennstuff:nether_star_fragment", "quantite": 1, "nom": "Fragment d'étoile du Nether" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "armory_rpgs:avatar_robe_chest", "quantite": 1 }
+}

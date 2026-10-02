@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 46,
+  "xp": 150,
+  "bloc_plein": "landsoficaria:moth_agaric",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:moth_agaric", "min": 1, "max": 1 }
+  ],
+  "respawn": 900,
+  "coups": 2,
+  "titre": "Agaric des mites",
+  "commentaire": "Le champignon qui rend une potion persistante. Icaria requis."
+}

@@ -1,0 +1,2 @@
+{ "name": { "translate": "munition.haute_capitale_fusils.perforante", "fallback": "Balle perforante" }, "color": 11184810, "muzzle_tint": 13421772,
+  "effects": [ { "type": "haute_capitale_fusils:armor_pierce", "fraction": 0.4, "piercing": 1 }, { "type": "haute_capitale_fusils:stat", "stat": "bullet_speed", "op": "mul", "value": 0.15 } ] }

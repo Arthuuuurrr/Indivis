@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 35,
+  "xp": 117,
+  "bloc_plein": "minecraft:deepslate_diamond_ore",
+  "bloc_vide": "minecraft:deepslate",
+  "loot": [
+    { "id": "minecraft:diamond", "min": 1, "max": 1 }
+  ],
+  "respawn": 900,
+  "coups": 5,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon de diamant",
+  "commentaire": "Rare et lent : un seul diamant, un quart d'heure de repousse."
+}

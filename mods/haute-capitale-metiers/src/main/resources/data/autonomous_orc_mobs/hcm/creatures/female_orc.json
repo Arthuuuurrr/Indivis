@@ -1,0 +1,9 @@
+{
+  "commentaire": "Civil : quelques Martins, rarement (table de loot §30 de l'audit).",
+  "categorie": "orc",
+  "rarete": "commune",
+  "loot_combat": [
+    { "id": "capitale_currency:martin_dor", "min": 1, "max": 3, "chance": 0.5 }
+  ],
+  "origines_xp": ["naturelle", "spawn_mmo"]
+}

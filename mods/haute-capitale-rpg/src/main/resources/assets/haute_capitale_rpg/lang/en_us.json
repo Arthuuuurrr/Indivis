@@ -1,0 +1,20 @@
+{
+  "rpgclass.haute_capitale_rpg.sorcier": "Wizard",
+  "rpgclass.haute_capitale_rpg.sorcier_elementaire": "Elemental Wizard",
+  "rpgclass.haute_capitale_rpg.sorceleur": "Witcher",
+  "rpgclass.haute_capitale_rpg.paladin": "Paladin",
+  "rpgclass.haute_capitale_rpg.pretre": "Priest",
+  "rpgclass.haute_capitale_rpg.chevalier_de_la_mort": "Death Knight",
+  "rpgclass.haute_capitale_rpg.berserker": "Berserker",
+  "rpgclass.haute_capitale_rpg.voleur": "Rogue",
+  "rpgclass.haute_capitale_rpg.forcemaster": "Forcemaster",
+  "rpgclass.haute_capitale_rpg.chasseur": "Hunter",
+  "rpgclass.haute_capitale_rpg.barde": "Bard",
+  "rpgclass.haute_capitale_rpg.necromancien": "Necromancer",
+  "key.categories.haute_capitale_rpg.camera": "Haute Capitale — Camera",
+  "key.haute_capitale_rpg.camera.epaule": "Swap shoulder",
+  "key.haute_capitale_rpg.camera.eloigner": "Move camera away",
+  "key.haute_capitale_rpg.camera.rapprocher": "Move camera closer",
+  "key.haute_capitale_rpg.camera.bascule": "Toggle RPG camera",
+  "key.haute_capitale_rpg.camera.debug": "Show camera state"
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Anneau d'argent au saphir",
+  "metier": "joaillier",
+  "niveau": 16,
+  "xp": 60.0,
+  "ingredients": [
+    { "id": "jewelry:sapphire", "quantite": 1, "nom": "Saphir" },
+    { "id": "minecraft:iron_ingot", "quantite": 2, "nom": "Lingot de fer" },
+    { "id": "minecraft:gold_nugget", "quantite": 4, "nom": "Pépite d'or" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "mmo_accessories:silver_sapphire_ring", "quantite": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "titre": "Corned-beef",
+  "metier": "cuisinier",
+  "niveau": 23,
+  "xp": 81.0,
+  "ingredients": [
+    { "tag": "c:foods/raw_beef", "quantite": 2, "nom": "Bœuf cru" },
+    { "tag": "c:crops/potato", "quantite": 1, "nom": "Pomme de terre" },
+    { "id": "minecraft:iron_nugget", "quantite": 1, "nom": "Pépite de fer" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": { "id": "hazennstuff:corn_beef", "quantite": 1 }
+}

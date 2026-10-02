@@ -1,0 +1,13 @@
+{
+  "titre": "Compresseur de poche",
+  "metier": "ingenieur",
+  "niveau": 18,
+  "xp": 66.0,
+  "ingredients": [
+    { "id": "minecraft:piston", "quantite": 1, "nom": "Piston" },
+    { "id": "minecraft:iron_ingot", "quantite": 4, "nom": "Lingot de fer" },
+    { "id": "minecraft:redstone", "quantite": 2, "nom": "Redstone" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "haute_capitale_metiers:compresseur_de_poche", "quantite": 1 }
+}

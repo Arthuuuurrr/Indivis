@@ -1,0 +1,1 @@
+{ "model": { "type": "minecraft:special", "base": "haute_capitale_fusils:item/pistolet_silex", "model": { "type": "geckolib:geckolib" } } }

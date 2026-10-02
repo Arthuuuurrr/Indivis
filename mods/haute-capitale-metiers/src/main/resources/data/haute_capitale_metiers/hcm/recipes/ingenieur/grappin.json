@@ -1,0 +1,13 @@
+{
+  "titre": "Grappin",
+  "metier": "ingenieur",
+  "niveau": 20,
+  "xp": 72.0,
+  "ingredients": [
+    { "id": "minecraft:iron_ingot", "quantite": 3, "nom": "Lingot de fer" },
+    { "id": "minecraft:string", "quantite": 4, "nom": "Ficelle" },
+    { "id": "minecraft:tripwire_hook", "quantite": 1, "nom": "Crochet" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "haute_capitale_metiers:grappin", "quantite": 1 }
+}

@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 2,
+  "xp": 18,
+  "bloc_plein": "landsoficaria:clover",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "landsoficaria:clover", "min": 1, "max": 2 }
+  ],
+  "respawn": 120,
+  "coups": 1,
+  "titre": "Trèfle",
+  "commentaire": "Porte-bonheur de la potion de chance. Icaria requis."
+}

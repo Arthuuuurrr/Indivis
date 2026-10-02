@@ -1,0 +1,16 @@
+{
+  "titre": "Côtelettes de mouton rôties",
+  "metier": "cuisinier",
+  "niveau": 28,
+  "xp": 96.0,
+  "ingredients": [
+    { "id": "farmersdelight:cooked_mutton_chops", "quantite": 1, "nom": "Côtelettes de mouton cuites" },
+    { "tag": "c:crops/beetroot", "quantite": 1, "nom": "Betterave" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" },
+    { "id": "farmersdelight:cooked_rice", "quantite": 1, "nom": "Riz cuit" },
+    { "tag": "c:crops/tomato", "quantite": 1, "nom": "Tomate" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:melee", "valeur": 0.071 },
+  "resultat": { "id": "farmersdelight:roasted_mutton_chops", "quantite": 1 }
+}

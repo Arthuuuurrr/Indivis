@@ -1,0 +1,13 @@
+{
+  "titre": "Robe Terra",
+  "metier": "couturier",
+  "niveau": 24,
+  "xp": 84.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_laine", "quantite": 5, "nom": "Tissu de laine" },
+    { "id": "minecraft:pointed_dripstone", "quantite": 2, "nom": "Stalactite" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "elemental_wizards_rpg:dripstone_chest", "quantite": 1 }
+}

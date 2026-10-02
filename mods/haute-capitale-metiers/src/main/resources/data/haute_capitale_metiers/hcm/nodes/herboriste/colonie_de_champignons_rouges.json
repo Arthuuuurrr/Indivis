@@ -1,0 +1,14 @@
+{
+  "metier": "herboriste",
+  "niveau": 11,
+  "xp": 45,
+  "bloc_plein": "farmersdelight:red_mushroom_colony",
+  "bloc_vide": "minecraft:air",
+  "loot": [
+    { "id": "minecraft:red_mushroom", "min": 2, "max": 4 }
+  ],
+  "respawn": 240,
+  "coups": 1,
+  "titre": "Colonie de champignons rouges",
+  "commentaire": "Pour le Cuisinier. Farmer s Delight requis."
+}

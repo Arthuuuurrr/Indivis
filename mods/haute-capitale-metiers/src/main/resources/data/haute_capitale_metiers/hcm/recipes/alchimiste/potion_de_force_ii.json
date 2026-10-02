@@ -1,0 +1,19 @@
+{
+  "titre": "Potion de force II",
+  "metier": "alchimiste",
+  "niveau": 24,
+  "xp": 84.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:firehilt", "quantite": 3, "nom": "Garde-de-feu" },
+    { "id": "landsoficaria:lionfangs", "quantite": 1, "nom": "Crocs de lion" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" }
+  ],
+  "cout": 2,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:strong_strength" } }
+  }
+}

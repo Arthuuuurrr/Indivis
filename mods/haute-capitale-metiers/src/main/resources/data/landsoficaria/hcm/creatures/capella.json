@@ -1,0 +1,31 @@
+{
+  "commentaire": "Bête d'Icaria, premier palier.",
+  "categorie": "animal",
+  "rarete": "commune",
+  "chasseur": {
+    "niveau": 11,
+    "xp": 45
+  },
+  "depecage": {
+    "niveau": 11,
+    "xp": 68,
+    "duree_carcasse": 60,
+    "canalisation": 3,
+    "outil": "haute_capitale_metiers:couteaux/compagnon",
+    "matiere": {
+      "id": "fleshz:hide",
+      "min": 1,
+      "max": 2
+    },
+    "secondaires": [
+      {
+        "id": "landsoficaria:capella_horn",
+        "chance": 0.2
+      }
+    ]
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

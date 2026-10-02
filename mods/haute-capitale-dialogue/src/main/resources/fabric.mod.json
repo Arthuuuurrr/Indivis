@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "haute_capitale_dialogue",
+  "version": "${version}",
+  "name": "Haute Capitale — Dialogue",
+  "description": "Dialogues immersifs pour le serveur Haute Capitale : caméra qui cadre le personnage, texte et réponses en bas de l'écran, au-dessus d'Easy NPC qui reste le cœur des PNJ.",
+  "authors": [
+    "Haute Capitale"
+  ],
+  "license": "ARR",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.hautecapitale.dialogue.HauteCapitaleDialogue"
+    ],
+    "client": [
+      "net.hautecapitale.dialogue.client.HauteCapitaleDialogueClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*",
+    "haute_capitale_rpg": ">=0.3.0"
+  },
+  "suggests": {
+    "easy_npc": ">=7.8.0"
+  }
+}

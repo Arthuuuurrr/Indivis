@@ -1,0 +1,13 @@
+{
+  "titre": "Jambières de sorcier",
+  "metier": "couturier",
+  "niveau": 27,
+  "xp": 93.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 4, "nom": "Tissu de soie" },
+    { "id": "minecraft:purple_dye", "quantite": 1, "nom": "Teinture violette" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "wizards:wizard_robe_legs", "quantite": 1 }
+}

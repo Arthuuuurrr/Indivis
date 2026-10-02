@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "haute_capitale_fusils",
+	"version": "${version}",
+	"name": "Haute Capitale — Fusils du Chasseur",
+	"description": "Armes à poudre noire et d'artificier pour la branche Fusil du Chasseur : pistolet à silex, mousquet, arquebuse, tromblon, fusil à rouages, canon à main. Statistiques, munitions spéciales et modifications pilotées par données. Système original écrit pour le serveur Haute Capitale (Fabric 1.21.11) ; aucun asset ni code d'Iron's Arms 'n Artifice n'est réutilisé.",
+	"authors": [
+		"Haute Capitale"
+	],
+	"contact": {},
+	"license": "All Rights Reserved",
+	"icon": "assets/haute_capitale_fusils/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.hautecapitale.fusils.HauteCapitaleFusils"
+		],
+		"client": [
+			"net.hautecapitale.fusils.client.FusilsClient"
+		]
+	},
+	"mixins": [
+		"haute_capitale_fusils.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*",
+		"geckolib": ">=5.4.0"
+	}
+}

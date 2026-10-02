@@ -1,0 +1,18 @@
+{
+  "titre": "Potion d'invisibilité prolongée",
+  "metier": "alchimiste",
+  "niveau": 37,
+  "xp": 123.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:voidlily", "quantite": 3, "nom": "Lys du vide" },
+    { "id": "minecraft:redstone", "quantite": 1, "nom": "Redstone" }
+  ],
+  "cout": 3,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:long_invisibility" } }
+  }
+}

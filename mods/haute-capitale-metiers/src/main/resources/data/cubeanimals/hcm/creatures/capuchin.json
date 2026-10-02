@@ -1,0 +1,22 @@
+{
+  "commentaire": "Pas de viande : on ne mange pas les singes sur Haute Capitale.",
+  "categorie": "animal",
+  "rarete": "commune",
+  "chasseur": {
+    "niveau": 5,
+    "xp": 27
+  },
+  "depecage": {
+    "niveau": 5,
+    "xp": 41,
+    "duree_carcasse": 60,
+    "canalisation": 2,
+    "matiere": {
+      "id": "minecraft:rabbit_hide"
+    }
+  },
+  "origines_xp": [
+    "naturelle",
+    "spawn_mmo"
+  ]
+}

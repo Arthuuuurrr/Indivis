@@ -1,0 +1,15 @@
+{
+  "titre": "Drone minier",
+  "metier": "ingenieur",
+  "niveau": 40,
+  "xp": 132.0,
+  "ingredients": [
+    { "id": "minecraft:iron_ingot", "quantite": 6, "nom": "Lingot de fer" },
+    { "id": "minecraft:redstone", "quantite": 4, "nom": "Redstone" },
+    { "id": "minecraft:ender_pearl", "quantite": 1, "nom": "Perle de l'Ender" },
+    { "id": "minecraft:glass", "quantite": 2, "nom": "Verre" },
+    { "id": "minecraft:diamond", "quantite": 1, "nom": "Diamant" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "haute_capitale_metiers:drone_minier", "quantite": 1 }
+}

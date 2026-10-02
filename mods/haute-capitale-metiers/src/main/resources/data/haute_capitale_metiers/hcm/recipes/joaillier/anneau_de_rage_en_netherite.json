@@ -1,0 +1,12 @@
+{
+  "titre": "Anneau de rage en netherite",
+  "metier": "joaillier",
+  "niveau": 44,
+  "xp": 144.0,
+  "ingredients": [
+    { "id": "mmo_accessories:rage_ring", "quantite": 1, "nom": "Anneau de rage" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "mmo_accessories:netherite_rage_ring", "quantite": 1 }
+}

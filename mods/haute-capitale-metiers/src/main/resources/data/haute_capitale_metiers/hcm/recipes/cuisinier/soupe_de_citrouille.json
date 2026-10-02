@@ -1,0 +1,16 @@
+{
+  "titre": "Soupe de citrouille",
+  "metier": "cuisinier",
+  "niveau": 12,
+  "xp": 48.0,
+  "ingredients": [
+    { "id": "farmersdelight:pumpkin_slice", "quantite": 1, "nom": "Tranche de citrouille" },
+    { "tag": "c:foods/leafy_green", "quantite": 1, "nom": "Feuilles vertes" },
+    { "tag": "c:foods/raw_pork", "quantite": 1, "nom": "Porc cru" },
+    { "tag": "c:drinks/milk", "quantite": 1, "nom": "Lait" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:regeneration", "valeur": 0.034 },
+  "resultat": { "id": "farmersdelight:pumpkin_soup", "quantite": 1 }
+}

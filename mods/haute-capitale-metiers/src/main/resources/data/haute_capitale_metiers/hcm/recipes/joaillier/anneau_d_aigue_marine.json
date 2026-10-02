@@ -1,0 +1,12 @@
+{
+  "titre": "Anneau d'aigue-marine",
+  "metier": "joaillier",
+  "niveau": 23,
+  "xp": 81.0,
+  "ingredients": [
+    { "id": "mmo_accessories:aquamarine", "quantite": 1, "nom": "Aigue-marine" },
+    { "id": "minecraft:gold_ingot", "quantite": 3, "nom": "Lingot d'or" }
+  ],
+  "cout": 2,
+  "resultat": { "id": "mmo_accessories:aquamarine_ring", "quantite": 1 }
+}

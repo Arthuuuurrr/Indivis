@@ -1,0 +1,15 @@
+{
+  "titre": "Salade mixte",
+  "metier": "cuisinier",
+  "niveau": 5,
+  "xp": 27.0,
+  "ingredients": [
+    { "tag": "c:foods/leafy_green", "quantite": 1, "nom": "Feuilles vertes" },
+    { "tag": "c:crops/tomato", "quantite": 1, "nom": "Tomate" },
+    { "tag": "c:crops/beetroot", "quantite": 1, "nom": "Betterave" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 0,
+  "repas": { "buff": "haute_capitale_metiers:celerite", "valeur": 0.030 },
+  "resultat": { "id": "farmersdelight:mixed_salad", "quantite": 1 }
+}

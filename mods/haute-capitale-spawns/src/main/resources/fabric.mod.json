@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "haute_capitale_spawns",
+  "version": "${version}",
+  "name": "Haute Capitale — Spawns MMO",
+  "description": "Gestionnaire universel des spawns fixes du monde ouvert : un point = un mob controle, respawn MMO, leash, zones/camps, profils, tags de quete, evenements et commandes pour Easy NPC. Ne touche ni aux spawns naturels ni aux donjons instancies.",
+  "authors": ["Haute Capitale"],
+  "license": "ARR",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["net.hautecapitale.spawns.HauteCapitaleSpawns"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "haute_capitale_party": "*",
+    "easy_npc": "*"
+  }
+}

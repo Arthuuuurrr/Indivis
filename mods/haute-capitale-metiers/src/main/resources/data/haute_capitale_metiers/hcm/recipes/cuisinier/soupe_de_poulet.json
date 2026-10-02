@@ -1,0 +1,16 @@
+{
+  "titre": "Soupe de poulet",
+  "metier": "cuisinier",
+  "niveau": 16,
+  "xp": 60.0,
+  "ingredients": [
+    { "tag": "c:foods/raw_chicken", "quantite": 1, "nom": "Poulet cru" },
+    { "tag": "c:crops/carrot", "quantite": 1, "nom": "Carotte" },
+    { "tag": "c:foods/leafy_green", "quantite": 1, "nom": "Feuilles vertes" },
+    { "tag": "c:foods/vegetable", "quantite": 1, "nom": "Légume" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:regeneration", "valeur": 0.044 },
+  "resultat": { "id": "farmersdelight:chicken_soup", "quantite": 1 }
+}

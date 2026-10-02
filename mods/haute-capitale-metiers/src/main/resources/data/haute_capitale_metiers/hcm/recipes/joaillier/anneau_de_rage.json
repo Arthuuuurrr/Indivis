@@ -1,0 +1,13 @@
+{
+  "titre": "Anneau de rage",
+  "metier": "joaillier",
+  "niveau": 32,
+  "xp": 108.0,
+  "ingredients": [
+    { "id": "jewelry:ruby", "quantite": 1, "nom": "Rubis" },
+    { "id": "minecraft:gold_ingot", "quantite": 3, "nom": "Lingot d'or" },
+    { "id": "minecraft:blaze_powder", "quantite": 2, "nom": "Poudre de blaze" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "mmo_accessories:rage_ring", "quantite": 1 }
+}

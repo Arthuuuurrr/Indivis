@@ -1,0 +1,14 @@
+{
+  "titre": "Collier de jade en netherite",
+  "metier": "joaillier",
+  "niveau": 42,
+  "xp": 138.0,
+  "ingredients": [
+    { "id": "jewelry:jade", "quantite": 1, "nom": "Jade" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "jewelry:netherite_jade_necklace", "quantite": 1 }
+}

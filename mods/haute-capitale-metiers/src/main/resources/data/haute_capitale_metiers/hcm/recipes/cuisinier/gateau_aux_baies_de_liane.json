@@ -1,0 +1,15 @@
+{
+  "titre": "Gâteau aux baies de liane",
+  "metier": "cuisinier",
+  "niveau": 18,
+  "xp": 66.0,
+  "ingredients": [
+    { "id": "landsoficaria:vineberries", "quantite": 4, "nom": "Baies de liane" },
+    { "tag": "c:crops/wheat", "quantite": 3, "nom": "Blé" },
+    { "id": "minecraft:sugar", "quantite": 2, "nom": "Sucre" },
+    { "id": "minecraft:egg", "quantite": 1, "nom": "Œuf" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "landsoficaria:vine_berry_cake", "quantite": 1 }
+}

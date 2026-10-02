@@ -1,0 +1,13 @@
+{
+  "titre": "Tunique de l'Appel de la Mort",
+  "metier": "couturier",
+  "niveau": 33,
+  "xp": 111.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_soie", "quantite": 4, "nom": "Tissu de soie" },
+    { "id": "hazennstuff:shadow_scale", "quantite": 2, "nom": "Écaille d'ombre" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "death_knights:initiate_armor_chest", "quantite": 1 }
+}

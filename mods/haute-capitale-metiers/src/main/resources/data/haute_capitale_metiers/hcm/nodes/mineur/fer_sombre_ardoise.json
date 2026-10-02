@@ -1,0 +1,15 @@
+{
+  "metier": "mineur",
+  "niveau": 26,
+  "xp": 90,
+  "bloc_plein": "witcher_rpg:deepslate_dark_iron_ore",
+  "bloc_vide": "minecraft:deepslate",
+  "loot": [
+    { "id": "witcher_rpg:raw_dark_iron", "min": 1, "max": 2 }
+  ],
+  "respawn": 480,
+  "coups": 4,
+  "outil": "minecraft:pickaxes",
+  "titre": "Filon de fer sombre (ardoise)",
+  "commentaire": "Le même fer sombre, dans les profondeurs. Witcher requis."
+}

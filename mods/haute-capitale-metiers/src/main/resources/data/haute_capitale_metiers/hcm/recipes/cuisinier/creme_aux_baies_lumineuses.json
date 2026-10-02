@@ -1,0 +1,16 @@
+{
+  "titre": "Crème aux baies lumineuses",
+  "metier": "cuisinier",
+  "niveau": 27,
+  "xp": 93.0,
+  "ingredients": [
+    { "id": "minecraft:glow_berries", "quantite": 1, "nom": "Baies lumineuses" },
+    { "tag": "c:drinks/milk", "quantite": 1, "nom": "Lait" },
+    { "tag": "minecraft:eggs", "quantite": 1, "nom": "Œuf" },
+    { "id": "minecraft:sugar", "quantite": 1, "nom": "Sucre" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:magie", "valeur": 0.068 },
+  "resultat": { "id": "farmersdelight:glow_berry_custard", "quantite": 1 }
+}

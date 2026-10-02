@@ -1,0 +1,13 @@
+{
+  "titre": "Anneau d'argent météorique au saphir",
+  "metier": "joaillier",
+  "niveau": 33,
+  "xp": 111.0,
+  "ingredients": [
+    { "id": "mmo_accessories:silver_sapphire_ring", "quantite": 1, "nom": "Anneau d'argent au saphir" },
+    { "id": "minecraft:ender_pearl", "quantite": 2, "nom": "Perle de l'Ender" },
+    { "id": "minecraft:amethyst_shard", "quantite": 2, "nom": "Éclat d'améthyste" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "mmo_accessories:meteorite_silver_sapphire_ring", "quantite": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Plastron d'exosquelette",
+  "metier": "ingenieur",
+  "niveau": 37,
+  "xp": 123.0,
+  "ingredients": [
+    { "id": "minecraft:iron_chestplate", "quantite": 1, "nom": "Plastron de fer" },
+    { "id": "magistuarmory:steel_ingot", "quantite": 6, "nom": "Lingot d'acier" },
+    { "id": "minecraft:redstone", "quantite": 3, "nom": "Redstone" }
+  ],
+  "cout": 3,
+  "resultat": { "id": "haute_capitale_metiers:exosquelette_plastron", "quantite": 1 }
+}

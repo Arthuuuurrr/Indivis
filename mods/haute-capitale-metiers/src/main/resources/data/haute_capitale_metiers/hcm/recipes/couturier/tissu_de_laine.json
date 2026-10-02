@@ -1,0 +1,12 @@
+{
+  "titre": "Tissu de laine",
+  "metier": "couturier",
+  "niveau": 8,
+  "xp": 36.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:bobine_de_laine", "quantite": 6, "nom": "Bobine de laine" }
+  ],
+  "cout": 0,
+  "qualite": false,
+  "resultat": { "id": "haute_capitale_metiers:tissu_de_laine", "quantite": 1 }
+}

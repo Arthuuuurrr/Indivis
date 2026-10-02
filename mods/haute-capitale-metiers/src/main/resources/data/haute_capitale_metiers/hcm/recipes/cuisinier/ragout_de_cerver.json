@@ -1,0 +1,15 @@
+{
+  "titre": "Ragoût de cerver",
+  "metier": "cuisinier",
+  "niveau": 33,
+  "xp": 111.0,
+  "ingredients": [
+    { "id": "landsoficaria:raw_cerver_meat", "quantite": 2, "nom": "Viande de cerver" },
+    { "tag": "c:crops/carrot", "quantite": 1, "nom": "Carotte" },
+    { "tag": "c:crops/potato", "quantite": 1, "nom": "Pomme de terre" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 3,
+  "repas": { "buff": "haute_capitale_metiers:nature", "valeur": 0.082 },
+  "resultat": { "id": "landsoficaria:cerver_stew", "quantite": 1 }
+}

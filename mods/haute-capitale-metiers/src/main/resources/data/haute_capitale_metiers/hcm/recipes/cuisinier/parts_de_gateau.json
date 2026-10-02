@@ -1,0 +1,12 @@
+{
+  "titre": "Parts de gâteau",
+  "metier": "cuisinier",
+  "niveau": 15,
+  "xp": 57.0,
+  "ingredients": [
+    { "id": "minecraft:cake", "quantite": 1, "nom": "Gâteau" }
+  ],
+  "cout": 1,
+  "repas": { "buff": "haute_capitale_metiers:magie", "valeur": 0.041 },
+  "resultat": { "id": "farmersdelight:cake_slice", "quantite": 7 }
+}

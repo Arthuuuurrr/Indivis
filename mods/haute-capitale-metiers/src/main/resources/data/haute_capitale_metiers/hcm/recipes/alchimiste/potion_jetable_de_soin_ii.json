@@ -1,0 +1,19 @@
+{
+  "titre": "Potion jetable de soin II",
+  "metier": "alchimiste",
+  "niveau": 36,
+  "xp": 120.0,
+  "ingredients": [
+    { "id": "minecraft:glass_bottle", "quantite": 1, "nom": "Fiole" },
+    { "id": "landsoficaria:namdrake", "quantite": 3, "nom": "Namdrake" },
+    { "id": "minecraft:glowstone_dust", "quantite": 1, "nom": "Poudre lumineuse" },
+    { "id": "minecraft:gunpowder", "quantite": 1, "nom": "Poudre à canon" }
+  ],
+  "cout": 3,
+  "qualite": false,
+  "resultat": {
+    "id": "minecraft:splash_potion",
+    "quantite": 1,
+    "composants": { "minecraft:potion_contents": { "potion": "minecraft:strong_healing" } }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "titre": "Collier de topaze en netherite",
+  "metier": "joaillier",
+  "niveau": 45,
+  "xp": 147.0,
+  "ingredients": [
+    { "id": "jewelry:topaz", "quantite": 1, "nom": "Topaze" },
+    { "id": "minecraft:gold_ingot", "quantite": 2, "nom": "Lingot d'or" },
+    { "id": "minecraft:netherite_ingot", "quantite": 1, "nom": "Lingot de netherite" },
+    { "id": "minecraft:string", "quantite": 2, "nom": "Ficelle" }
+  ],
+  "cout": 5,
+  "resultat": { "id": "jewelry:netherite_topaz_necklace", "quantite": 1 }
+}

@@ -1,0 +1,11 @@
+{
+  "titre": "Anneau de fer",
+  "metier": "joaillier",
+  "niveau": 3,
+  "xp": 21.0,
+  "ingredients": [
+    { "id": "minecraft:iron_ingot", "quantite": 4, "nom": "Lingot de fer" }
+  ],
+  "cout": 0,
+  "resultat": { "id": "jewelry:iron_ring", "quantite": 1 }
+}

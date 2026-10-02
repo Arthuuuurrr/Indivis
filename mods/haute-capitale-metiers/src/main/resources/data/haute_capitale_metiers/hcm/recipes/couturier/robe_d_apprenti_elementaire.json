@@ -1,0 +1,13 @@
+{
+  "titre": "Robe d'apprenti élémentaire",
+  "metier": "couturier",
+  "niveau": 19,
+  "xp": 69.0,
+  "ingredients": [
+    { "id": "haute_capitale_metiers:tissu_de_coton", "quantite": 6, "nom": "Tissu de coton" },
+    { "id": "haute_capitale_metiers:bobine_de_coton", "quantite": 3, "nom": "Bobine de coton" },
+    { "id": "haute_capitale_metiers:aiguille_enfilee", "quantite": 1, "nom": "Aiguille enfilée" }
+  ],
+  "cout": 1,
+  "resultat": { "id": "elemental_wizards_rpg:elemental_chest", "quantite": 1 }
+}

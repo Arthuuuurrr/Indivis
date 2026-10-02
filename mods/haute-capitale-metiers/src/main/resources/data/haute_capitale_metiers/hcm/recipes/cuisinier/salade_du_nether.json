@@ -1,0 +1,14 @@
+{
+  "titre": "Salade du Nether",
+  "metier": "cuisinier",
+  "niveau": 27,
+  "xp": 93.0,
+  "ingredients": [
+    { "id": "minecraft:crimson_fungus", "quantite": 1, "nom": "Champignon carmin" },
+    { "id": "minecraft:warped_fungus", "quantite": 1, "nom": "Champignon biscornu" },
+    { "id": "minecraft:bowl", "quantite": 1, "nom": "Bol" }
+  ],
+  "cout": 2,
+  "repas": { "buff": "haute_capitale_metiers:resistance", "valeur": 0.068 },
+  "resultat": { "id": "farmersdelight:nether_salad", "quantite": 1 }
+}

@@ -1,0 +1,13 @@
+{
+  "titre": "Tannage simple",
+  "metier": "travailleur_du_cuir",
+  "niveau": 9,
+  "xp": 39.0,
+  "ingredients": [
+    { "tag": "haute_capitale_metiers:peaux/communes", "quantite": 3, "nom": "Peau commune" },
+    { "tag": "haute_capitale_metiers:tanin", "quantite": 1, "nom": "Écorce" }
+  ],
+  "cout": 1,
+  "qualite": false,
+  "resultat": { "id": "minecraft:leather", "quantite": 1 }
+}
