@@ -1,0 +1,16 @@
+PRE21 — résultats du JAR livré, 2026-10-02
+SHA-256: 44845c16f6e61849fc30b18305f4eb728f0e26a2fff06b0109a14cbc4885c018
+Taille: 21564075 octets
+Minecraft 1.21.11 / Java 21 / Fabric Loader 0.19.5
+Skin Layers 1.10.2 / Sodium 0.8.7 / ImmediatelyFast 1.14.2 / Mesa logiciel
+
+Mode natif: PASS — 8 apparences, 24 captures, 0 mesh manquant, 0 recouvrement coplanaire de surface positive en pose neutre.
+Mode de compatibilité: PASS — 8 apparences, 24 captures, 0 mesh manquant, 0 recouvrement coplanaire de surface positive en pose neutre.
+Première personne: PASS dans les deux modes, compteur de soumission des meshes extérieurs vérifié.
+UV des 36 faces inférieures et UV Sodium: identiques aux originaux. Restauration des cubes originaux: PASS.
+Audit: 1 496 combinaisons distinctes, bras larges/fins, deux représentations géométriques; 7 431 704 sommets / 1 857 926 faces examinés par exécution.
+Ajouts de coiffure, coiffure HD, tenue, barbe et moustache: catalogue et rendu vérifiés sans ajout de code au mod.
+Assets PRE17 préservés: 4958 fichiers byte-identiques.
+Assemblage GitHub Actions: succès, SHA-256 de sortie identique au JAR testé.
+
+Portée: client réel dans un banc réduit, pas le modpack utilisateur complet. Contrôle de raccords en pose neutre, captures sous trois angles; aucune validation de tous les shaders ou animations externes.
