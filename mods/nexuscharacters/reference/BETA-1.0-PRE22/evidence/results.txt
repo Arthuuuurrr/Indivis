@@ -1,0 +1,23 @@
+PRE22 — vérification finale du JAR livré
+Version: 1.0.0-beta.22+hc.1.21.11
+SHA-256: 6876ffd02b93399defae6b58b53b86e6b494b9581f647098f06bdcd614da7f78
+Taille: 21 570 737 octets
+
+Minecraft 1.21.11 / Java 21 / Fabric Loader 0.19.5
+Skin Layers 1.10.2 / Sodium 0.8.7 / ImmediatelyFast 1.14.2
+EntityCulling 1.10.2 / TRender 1.0.13 / TRansition 1.0.19
+Capitale RP HUD 1.3.3-beta.1+race-health-modifier-compat
+
+Contrôle négatif du JAR PRE21 livré: FAIL — 148 recouvrements sur quatre apparences.
+PRE22 natif: PASS — 12 apparences, 36 captures, 0 mesh manquant, 0 recouvrement coplanaire, première personne contrôlée.
+PRE22 compatibilité: PASS — mêmes 12 apparences, 36 captures, 0 mesh manquant, 0 recouvrement coplanaire, positions/UV/masques Sodium des faces découpées conformes.
+Aperçus Nexus natifs: PASS — 4 apparences, 3 angles, 2 contextes (widget sans monde + entité en monde), 24 captures; bras larges/fins.
+Aperçus Nexus compatibilité: PASS — mêmes contrôles et 24 captures.
+Total scènes: 120 captures, hors captures supplémentaires de première/troisième personne.
+Audit: 748 configurations dans deux modes = 1 496 cas; 11 293 352 sommets / 2 823 338 faces par exécution.
+UV du modèle inférieur et restauration des cubes originaux: PASS.
+Catalogue d'ajouts sans modification du code: PASS — coiffure, coiffure HD, tenue, barbe, moustache.
+Assets PRE17: 4 958 fichiers identiques octet par octet.
+GitHub Actions 37038141109: SUCCESS — même SHA-256.
+
+Portée: client réel sous Mesa logiciel avec les dépendances de rendu listées; pas l'ensemble du modpack Windows/NVIDIA. Géométrie contrôlée en poses neutres, captures sous trois angles, sans shader Iris.
