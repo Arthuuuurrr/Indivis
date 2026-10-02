@@ -48,7 +48,22 @@ public final class RealGeometryTest {
   int[] future=new int[4096];int[][] uv={{40,8},{20,36},{4,36},{4,52},{44,36},{52,52}};
   for(int[] xy:uv)future[xy[1]*64+xy[0]]=0xffabcdef;
   Object[] set=meshes(future);for(int i=0;i<8;i++)check(render(set[i])>0,"Future part missing "+i);
-  check(LongHair3DRenderSupport.hairAssetName(99).equals("hair_long_94.png"),"Future hair asset name was clamped");
+  // Simulate resources added after PRE18: catalog, marker and parser must expand
+  // without patching a numeric maximum in any of those consumers.
+  Field hairField=DynamicAssetCatalog.class.getDeclaredField("hair");hairField.setAccessible(true);
+  Field facialField=DynamicAssetCatalog.class.getDeclaredField("facial");facialField.setAccessible(true);
+  Field outfitsField=DynamicAssetCatalog.class.getDeclaredField("outfits");outfitsField.setAccessible(true);
+  List<String> futureHair=new ArrayList<>();for(int i=1;i<=5;i++)futureHair.add(String.format("hair_short_%02d.png",i));for(int i=1;i<=9;i++)futureHair.add(String.format("hair_long_%02d.png",i));
+  hairField.set(null,List.copyOf(futureHair));
+  facialField.set(null,List.of("stubble.png","moustache_short.png","moustache_thick.png","moustache_user_01.png","beard_light.png","beard_light_02.png","future_beard.png"));
+  int[] futureOutfits=new int[34];int at=0;for(int i:new int[]{1,3,4,5,6,7,10,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39})futureOutfits[at++]=i;outfitsField.set(null,futureOutfits);
+  check(DynamicAssetCatalog.hairCount()==14 && DynamicAssetCatalog.facialHairCount()==7 && DynamicAssetCatalog.outfitCount()==34,"Future catalog counts were clamped");
+  check(LongHair3DRenderSupport.hairAssetName(14).equals("hair_long_09.png"),"Future hair was not addressable");
+  String futureMarker=DynamicAssetCatalog.withOutfit(Appearance69Support.marker(CharacterRace.HUMAN,2000,1,2,2,1,14,7,4,0,0,1),39);
+  check(Appearance69Support.isId(Appearance69Support.markerId(futureMarker)),"Expanded marker was rejected");
+  Appearance69Support.Params futureParams=Appearance69Support.parse(Appearance69Support.markerId(futureMarker));
+  check(futureParams.hair()==14 && futureParams.facialHair()==7 && futureParams.outfit()==39,"Expanded marker was not preserved");
+  DynamicAssetCatalog.clear();
   // Exercise actual patched composition, independently colored hair/beard and existing catalog.
   for(int hair=0;hair<=13;hair++)for(int beard=0;beard<=6;beard++){
    String marker=String.format("player_v69_b1_e1_ec2_ey0_h%02d_hc03_s01_o01_fh%d_fc04_mk0_mc0",hair,beard);

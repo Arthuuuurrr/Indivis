@@ -7,9 +7,11 @@ Skin Layers composition path. It promotes:
 - classic facial-hair textures (modeled dwarf/cultural beards stay unchanged);
 - outfit base pixels on torso, arms and legs, plus pre-existing outer pixels.
 
-Assets are detected by their resource path rather than an index whitelist.
-Consequently, a future asset referenced by the appearance catalog uses the same
-3D pipeline without adding another renderer or another hard-coded range.
+Assets and their selection ranges are detected from the active resources rather
+than an index whitelist. New `hair_short_NN.png`, `hair_long_NN.png`,
+`outfit_NN.png`, or facial-hair PNG files therefore join the UI cycle, marker
+serialization, composition and 3D pipeline without another code change. Resource
+pack additions are included and the catalog is rebuilt on resource reload.
 
 ## Exact environment checked
 
@@ -33,14 +35,17 @@ resource-reload cache invalidation.
 Final result:
 
 ```text
-REAL_GEOMETRY_PASS hairs=13 classicBeards=6 outfits=33 checks=2923240 vertices=973992
+REAL_GEOMETRY_PASS hairs=13 classicBeards=6 outfits=33 checks=2923243 vertices=973992
 ```
 
 The transformed Fabric client was also checked to ensure the PRE18 player-model
 callback executes after Skin Layers' callback. A real off-screen client rendered
-the worldless preview from the front, side and rear. This catches mixin order,
-texture upload, render-queue and widget/model integration errors that unit stubs
-cannot detect.
+the worldless preview from the front, side and rear, then opened an integrated
+world and exercised the world renderer. A test resource mod added hair 14,
+classic beard 7 and outfit 39; all three were discovered, serialized, composed
+and rendered without altering Nexus code (`DYNAMIC_CATALOG_PASS`). This catches
+mixin order, texture upload, resource discovery, render-queue and widget/model
+integration errors that unit stubs cannot detect.
 
 ## Deliberate compatibility behavior
 
@@ -58,5 +63,5 @@ cannot detect.
 SHA-256 of the validated JAR:
 
 ```text
-7751608b3f9d92e087802fe570b154251651f6150fecd49d71833ba6e375d270
+ced7a702b11d7e2548c926b7e60686c4484a007d7d2d7e4be6974c74e5e6de4d
 ```

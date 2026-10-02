@@ -262,6 +262,7 @@ public final class GenericSkinLayerSupport {
 
     public static void clearCaches() {
         PLANS.clear();MESHES.clear();ASSETS.clear();PENDING.clear();LOGGED.clear();
+        DynamicAssetCatalog.clear();
         try {
             Class<?> c=Class.forName("net.tompsen.nexuscharacters.DynamicAppearanceSupport");
             for(String f:new String[]{"SKINS","IDS"})((Map<?,?>)field(c,f)).clear();

@@ -42,8 +42,12 @@ jobs:
             "https://maven.fabricmc.net/net/fabricmc/sponge-mixin/0.17.4+mixin.0.8.7/sponge-mixin-0.17.4+mixin.0.8.7.jar" \
             -o /tmp/pre18/deps/mixin.jar
           javac -proc:none -cp /tmp/pre18/deps/mixin.jar -d /tmp/pre18/classes "$ROOT"/sources/*.java
-          unzip -p "$BASE" net/tompsen/nexuscharacters/DynamicAppearanceSupport.class \
-            > /tmp/pre18/classes/net/tompsen/nexuscharacters/DynamicAppearanceSupport.class
+          for CLASS in DynamicAppearanceSupport Appearance69Support OutfitCatalogSupport CosmeticsPack1Support FacialHairRaceSupport UnifiedPilositySupport; do
+            unzip -p "$BASE" "net/tompsen/nexuscharacters/$CLASS.class" \
+              > "/tmp/pre18/classes/net/tompsen/nexuscharacters/$CLASS.class"
+          done
+          unzip -p "$BASE" net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class \
+            > /tmp/pre18/classes/net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin.class
           javac -proc:none \
             --add-exports java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED \
             --add-exports java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED \

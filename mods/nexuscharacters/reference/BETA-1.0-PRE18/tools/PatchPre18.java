@@ -6,6 +6,7 @@ import jdk.internal.org.objectweb.asm.tree.*;
 public final class PatchPre18 {
     private static final String OWNER="net/tompsen/nexuscharacters/DynamicAppearanceSupport";
     private static final String HELPER="net/tompsen/nexuscharacters/GenericSkinLayerSupport";
+    private static final String CATALOG="net/tompsen/nexuscharacters/DynamicAssetCatalog";
     public static void main(String[] args)throws Exception {
         Path root=Path.of(args[0]);Path file=root.resolve(OWNER+".class");
         ClassNode c=new ClassNode();new ClassReader(Files.readAllBytes(file)).accept(c,0);
@@ -35,6 +36,68 @@ public final class PatchPre18 {
         load.instructions.add(new TypeInsnNode(Opcodes.CHECKCAST,"net/minecraft/class_1011"));load.instructions.add(new InsnNode(Opcodes.ARETURN));
         load.maxStack=1;load.maxLocals=1;
         ClassWriter w=new ClassWriter(ClassWriter.COMPUTE_MAXS);c.accept(w);Files.write(file,w.toByteArray());
-        System.out.println("PRE18 compositor hooks=2; original tint/blend bytecode retained");
+        patchCatalogUsers(root);
+        System.out.println("PRE18 compositor hooks=2; dynamic hair/beard/outfit catalog installed");
     }
+
+    private static void patchCatalogUsers(Path root)throws Exception {
+        ClassNode appearance=read(root,"net/tompsen/nexuscharacters/Appearance69Support");
+        for(MethodNode m:appearance.methods){
+            if(m.name.equals("marker"))delegate(m,"marker");
+            if(m.name.equals("<clinit>"))for(AbstractInsnNode n:m.instructions.toArray())if(n instanceof LdcInsnNode l
+                    && l.cst instanceof String s && s.startsWith("player_v69_b("))
+                l.cst="player_v69_b([1-4])_e([1-8])_ec([0-7])_ey([0-4])_h([0-9]{1,4})_hc(0[0-9]|1[0-2])_s(0[1-9]|1[0-6])_o([0-9]{1,4})_fh([0-9]{1,4})_fc(0[0-9]|1[0-2])_mk([0-8])_mc([0-9]|1[0-2])";
+        }
+        write(root,"net/tompsen/nexuscharacters/Appearance69Support",appearance);
+
+        ClassNode outfits=read(root,"net/tompsen/nexuscharacters/OutfitCatalogSupport");
+        for(MethodNode m:outfits.methods)switch(m.name){
+            case "count"->delegate(m,"outfitCount");case "isAllowed"->delegate(m,"outfitAllowed");
+            case "normalize"->delegate(m,"normalizeOutfit");case "next"->delegate(m,"nextOutfit");
+            case "position"->delegate(m,"outfitPosition");case "label"->delegate(m,"outfitLabel");default->{}
+        }
+        write(root,"net/tompsen/nexuscharacters/OutfitCatalogSupport",outfits);
+
+        ClassNode cosmetics=read(root,"net/tompsen/nexuscharacters/CosmeticsPack1Support");
+        for(MethodNode m:cosmetics.methods)switch(m.name){
+            case "withOutfit"->delegate(m,"withOutfit");case "facialHairLabel"->delegate(m,"facialHairLabel");
+            case "facialHairName"->delegate(m,"facialHairName");default->{}
+        }
+        write(root,"net/tompsen/nexuscharacters/CosmeticsPack1Support",cosmetics);
+
+        ClassNode facial=read(root,"net/tompsen/nexuscharacters/FacialHairRaceSupport");
+        for(MethodNode m:facial.methods)if(m.name.equals("normalize"))delegate(m,"normalizeFacialHair");else if(m.name.equals("next"))delegate(m,"nextFacialHair");
+        write(root,"net/tompsen/nexuscharacters/FacialHairRaceSupport",facial);
+
+        ClassNode unified=read(root,"net/tompsen/nexuscharacters/UnifiedPilositySupport");
+        for(MethodNode m:unified.methods){
+            if(m.name.equals("currentLabel")){delegate(m,"pilosityLabel");continue;}
+            if(!m.name.equals("fix")&&!m.name.equals("cycle")&&!m.name.equals("syncColor"))continue;
+            for(AbstractInsnNode n:m.instructions.toArray())if(n instanceof IntInsnNode i && i.getOpcode()==Opcodes.BIPUSH){
+                String target=i.operand==6?"facialHairCount":i.operand==7?"facialHairChoiceCount":null;
+                if(target!=null)m.instructions.set(i,new MethodInsnNode(Opcodes.INVOKESTATIC,CATALOG,target,"()I",false));
+            }
+        }
+        write(root,"net/tompsen/nexuscharacters/UnifiedPilositySupport",unified);
+
+        ClassNode ui=read(root,"net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin");
+        for(MethodNode m:ui.methods)for(AbstractInsnNode n:m.instructions.toArray()){
+            if(n instanceof IntInsnNode i && i.operand==14 && nextOpcode(i)==Opcodes.IREM)
+                m.instructions.set(i,new MethodInsnNode(Opcodes.INVOKESTATIC,CATALOG,"hairChoiceCount","()I",false));
+            else if(n instanceof LdcInsnNode l && l.cst instanceof String s && s.contains("/13"))l.cst=s.replace("/13","");
+            else if(n instanceof InvokeDynamicInsnNode d)for(int x=0;x<d.bsmArgs.length;x++)if(d.bsmArgs[x] instanceof String s && s.contains("/13"))d.bsmArgs[x]=s.replace("/13","");
+        }
+        write(root,"net/tompsen/nexuscharacters/mixin/client/CharacterCreationAppearance65Mixin",ui);
+    }
+
+    private static int nextOpcode(AbstractInsnNode n){do{n=n.getNext();}while(n!=null&&n.getOpcode()<0);return n==null?-1:n.getOpcode();}
+    private static void delegate(MethodNode m,String helper){
+        m.instructions.clear();m.tryCatchBlocks.clear();if(m.localVariables!=null)m.localVariables.clear();
+        Type[] args=Type.getArgumentTypes(m.desc);int slot=0;
+        for(Type arg:args){m.instructions.add(new VarInsnNode(arg.getOpcode(Opcodes.ILOAD),slot));slot+=arg.getSize();}
+        m.instructions.add(new MethodInsnNode(Opcodes.INVOKESTATIC,CATALOG,helper,m.desc.replace("Lnet/tompsen/nexuscharacters/CharacterRace;","Ljava/lang/Object;"),false));
+        m.instructions.add(new InsnNode(Type.getReturnType(m.desc).getOpcode(Opcodes.IRETURN)));m.maxLocals=slot;
+    }
+    private static ClassNode read(Path root,String name)throws Exception{ClassNode c=new ClassNode();new ClassReader(Files.readAllBytes(root.resolve(name+".class"))).accept(c,0);return c;}
+    private static void write(Path root,String name,ClassNode c)throws Exception{ClassWriter w=new ClassWriter(ClassWriter.COMPUTE_MAXS);c.accept(w);Files.write(root.resolve(name+".class"),w.toByteArray());}
 }
