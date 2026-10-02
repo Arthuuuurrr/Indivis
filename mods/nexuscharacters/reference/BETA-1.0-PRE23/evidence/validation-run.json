@@ -1,0 +1,39 @@
+{
+  "jar_sha256": "2d10761e7242b29b6ed1faba2c3dc5456c0b2111e64692018bf72a8cf1d4dbce",
+  "catalog": {
+    "configurations": 57,
+    "poses": 171,
+    "coplanar": 0,
+    "crossings": 0
+  },
+  "actual_player": {
+    "configurations": 12,
+    "poses": 60,
+    "captures": 36,
+    "missing_meshes": 0,
+    "coplanar": 0,
+    "crossings": 0
+  },
+  "menu_previews": {
+    "geometry_checks": 12,
+    "captures": 24,
+    "overlaps": 0,
+    "wide_and_slim": true
+  },
+  "new_assets": {
+    "hair": 2,
+    "classic_beards": 2,
+    "outfits": 1
+  },
+  "account_skin": "cached fixture: network entry, preview, actual player, render state, temporary default, stale saved snapshot",
+  "first_person": true,
+  "resource_cache_reload": true,
+  "active_player_animation_library": true,
+  "negative_pre22_overlap_count": 8227,
+  "logs_sha256": {
+    "catalog-final.log": "003b0a2188f734d022587902c9ce8c0b4f6028e991b127487ddbb1e40205d0cf",
+    "actual-final.log": "226f19146eed17811280aed216496e47a9c7668facbcf2cf8f5f1f92a2d6c536",
+    "preview-final.log": "9a39d3013ed6f59396f42330159df068289e83522179bbd040df0ae8c6a8b08a",
+    "pre22-rejected-final-tests.log": "7d99f7f730f211c3e85b6e711120802b574abf7f658254ea042efdb68bc7dcf6"
+  }
+}

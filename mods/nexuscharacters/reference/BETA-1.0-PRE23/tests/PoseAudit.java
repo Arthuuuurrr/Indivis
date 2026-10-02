@@ -3,6 +3,7 @@ import dev.tr7zw.skinlayers.api.*;
 import java.lang.reflect.*;
 import java.util.*;
 import net.minecraft.*;
+import org.joml.Matrix3f;
 import org.joml.Vector3f;
 
 /** Measures submitted polygons with their real rotations and scales. */
@@ -64,6 +65,16 @@ public final class PoseAudit {
           if (aa != null && bb != null && Math.min(aa[1], bb[1]) - Math.max(aa[0], bb[0]) > EPS) {
             crossing++;
             pairs.merge(a.owner + " <> " + b.owner, 1, Integer::sum);
+            if (crossing <= 16)
+              System.out.println(
+                  "POSE_CROSSING parts="
+                      + a.owner
+                      + ","
+                      + b.owner
+                      + " a="
+                      + Arrays.deepToString(a.p)
+                      + " b="
+                      + Arrays.deepToString(b.p));
           }
         }
       }
@@ -106,7 +117,7 @@ public final class PoseAudit {
       for (int q = 0; q < data.length; q += 23) {
         double[][] p = new double[4][3];
         for (int v = 0; v < 4; v++) for (int a = 0; a < 3; a++) p[v][a] = data[q + 3 + v * 5 + a];
-        append(faces, name, p, stack);
+        append(faces, name, p, stack, new Vector3f(data[q], data[q + 1], data[q + 2]));
       }
       cubes(faces, name, (List<?>) SubmittedGeometryAudit.field(mesh, "cubes"), stack);
       stack.method_22909();
@@ -129,11 +140,21 @@ public final class PoseAudit {
                                 .invoke(vs[v]))
                         .doubleValue()
                     / 16;
-        append(faces, name, p, stack);
+        Object normal = poly.getClass().getMethod("comp_3185").invoke(poly);
+        append(
+            faces,
+            name,
+            p,
+            stack,
+            new Vector3f(
+                ((Number) normal.getClass().getMethod("x").invoke(normal)).floatValue(),
+                ((Number) normal.getClass().getMethod("y").invoke(normal)).floatValue(),
+                ((Number) normal.getClass().getMethod("z").invoke(normal)).floatValue()));
       }
   }
 
-  static void append(List<Face> faces, String name, double[][] p, class_4587 stack) {
+  static void append(
+      List<Face> faces, String name, double[][] p, class_4587 stack, Vector3f localNormal) {
     double[] lo = {Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY},
         hi = {-lo[0], -lo[1], -lo[2]};
     for (int i = 0; i < 4; i++) {
@@ -149,10 +170,23 @@ public final class PoseAudit {
         hi[a] = Math.max(hi[a], p[i][a]);
       }
     }
-    double[] n = cross(sub(p[1], p[0]), sub(p[3], p[0]));
-    double len = Math.sqrt(dot(n, n));
-    if (len < EPS * EPS) return;
-    for (int a = 0; a < 3; a++) n[a] /= len;
+    double[] geometric = cross(sub(p[1], p[0]), sub(p[3], p[0]));
+    if (Math.sqrt(dot(geometric, geometric)) < EPS * EPS) return;
+    // Deriving a normal from a very narrow clipped triangle amplifies the
+    // float vertex rounding. Audit the actual submitted normal and verify
+    // independently that every vertex lies on that plane.
+    Vector3f normal =
+        new Matrix3f(stack.method_23760().method_23761())
+            .invert()
+            .transpose()
+            .transform(localNormal)
+            .normalize();
+    double[] n = {normal.x, normal.y, normal.z};
+    double plane = dot(n, p[0]);
+    for (double[] point : p)
+      if (Math.abs(dot(n, point) - plane) > 0.00005)
+        throw new AssertionError(
+            "Submitted polygon not planar " + name + " points=" + Arrays.deepToString(p));
     faces.add(new Face(name, p, n, dot(n, p[0]), lo, hi));
   }
 
@@ -200,12 +234,15 @@ public final class PoseAudit {
     for (int edge = 0; edge < 4 && !poly.isEmpty(); edge++) {
       double[] x = {b.p[edge][u], b.p[edge][v]},
           y = {b.p[(edge + 1) % 4][u], b.p[(edge + 1) % 4][v]};
+      double length = Math.hypot(y[0] - x[0], y[1] - x[1]);
+      if (length < 1e-10) continue;
       List<double[]> next = new ArrayList<>();
       for (int i = 0; i < poly.size(); i++) {
         double[] p = poly.get(i), q = poly.get((i + 1) % poly.size());
-        double d = side(x, y, p) * sense, e = side(x, y, q) * sense;
-        if (d >= -EPS) next.add(p);
-        if ((d > EPS && e < -EPS) || (d < -EPS && e > EPS)) {
+        double d = side(x, y, p) * sense / length, e = side(x, y, q) * sense / length;
+        boolean inside = d >= -1e-8, nextInside = e >= -1e-8;
+        if (inside) next.add(p);
+        if (inside != nextInside) {
           double t = d / (d - e);
           next.add(new double[] {p[0] + t * (q[0] - p[0]), p[1] + t * (q[1] - p[1])});
         }

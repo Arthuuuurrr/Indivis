@@ -110,14 +110,14 @@ public final class SurfaceGeometry {
     for (int i = 0; i < poly.size(); i++) {
       Vertex a = poly.get(i), b = poly.get((i + 1) % poly.size());
       float d = box.distance(a, plane) * sense, e = box.distance(b, plane) * sense;
-      boolean ia = d > EPS, ib = e > EPS;
-      if (!outside) {
-        ia = d >= -EPS;
-        ib = e >= -EPS;
-      }
+      // A shared boundary must partition both fragments consistently. Keeping
+      // an epsilon band on both sides creates tiny intersecting sliver faces.
+      float boundary = outside ? EPS / 10 : -EPS / 10;
+      boolean ia = outside ? d > boundary : d >= boundary,
+          ib = outside ? e > boundary : e >= boundary;
       if (ia) out.add(a);
       if (ia != ib) {
-        float t = d / (d - e);
+        float t = (d - boundary) / (d - e);
         if (Float.isFinite(t)) out.add(a.mix(b, java.lang.Math.max(0, java.lang.Math.min(1, t))));
       }
     }

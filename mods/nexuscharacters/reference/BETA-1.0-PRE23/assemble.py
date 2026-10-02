@@ -1,7 +1,7 @@
 import hashlib,json,zipfile,sys
 from pathlib import Path
 root=Path(__file__).resolve().parent
-if len(sys.argv)<2:raise SystemExit('Usage: python assemble.py PRE23.jar [output.jar]')
+if len(sys.argv)<2:raise SystemExit('Usage: python assemble.py PRE22.jar [output.jar]')
 base=Path(sys.argv[1])
 assert hashlib.sha256(base.read_bytes()).hexdigest()=='6876ffd02b93399defae6b58b53b86e6b494b9581f647098f06bdcd614da7f78'
 out=Path(sys.argv[2]) if len(sys.argv)>2 else root/'NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE23.jar'

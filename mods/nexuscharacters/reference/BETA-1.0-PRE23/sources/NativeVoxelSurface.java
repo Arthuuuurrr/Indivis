@@ -147,8 +147,7 @@ public final class NativeVoxelSurface {
         Vector3f lo = shrink.transformPosition(new Vector3f(b.lo)),
             hi = shrink.transformPosition(new Vector3f(b.hi));
         resized.add(
-            new Bounds(
-                new float[] {lo.x, lo.y, lo.z}, new float[] {hi.x, hi.y, hi.z}, rank + ordinal++));
+            new Bounds(new float[] {lo.x, lo.y, lo.z}, new float[] {hi.x, hi.y, hi.z}, b.rank()));
       }
       boxes = resized;
     }

@@ -1,6 +1,6 @@
 {
-  "jar_sha256": "08de58a256525ec46b1362f8ab86eb4d3990a051a18f905b43127d28d498079d",
-  "compiled_archive_sha256": "7d06289766346c8f3f3a3d46a3a42d13ba6798acd70a646d8bc57977ab847246",
+  "jar_sha256": "2d10761e7242b29b6ed1faba2c3dc5456c0b2111e64692018bf72a8cf1d4dbce",
+  "compiled_archive_sha256": "e002bec47edddcbf2aa3bc3c7817e6096e71eaf1fe9e221b9a5a543b7be90b58",
   "source_sha256": {
     "AccountSkinSupport.java": "f93fe39374b237fd46886df12987f5c990a645d3c00ecedd4e78ccf51d35f96d",
     "CoplanarSurfaceSupport.java": "a5f8feebf7e8c28b79afaa11811aa56dc2bc9c513500cc04ce21273058a6cc1d",
@@ -8,11 +8,11 @@
     "GenericPlayerLayersMixin.java": "088cf239f23ca244d723f51a6341995a5385f8d3408dba24d615607236bd1cef",
     "GenericSkinLayerSupport.java": "bbbf8583c2a32308c62632e2bf71ae4a5bf3b8398f2925ef2e418c7920526636",
     "LowerJointSupport.java": "43033fe0720d0a65a8bfeb6fa550965b2171dcae74b81db72f878d5425f2d387",
-    "NativeVoxelSurface.java": "98db99bb8a9b0c18c3638188a2b5b688dabbd2d130e8dcfafdfe495eac8fc42d",
+    "NativeVoxelSurface.java": "58681f709b7202cac6bbcf2f840d4c3d4822b0474a397b872c4c12849e5e7fa1",
     "PosedSurfaceSupport.java": "a423a1c9364d1b264136782ff77897f1890372ad460bdc22281457487cb68af5",
     "PreviewDummyPlayerManager.java": "2f1cbd9f79cb5acfc6c4f9676e2e27e670ea3529c7910d0f49918914f9d3dbb7",
     "RemoteAppearanceSupport.java": "b07de0288cd3ade5cd743b985eaf01d5345a220eb3e16a9b8e3e5f5ba60178e7",
-    "SurfaceGeometry.java": "9668b27857c6a9c7050c298fb70d3a0f995e579c19daaa2fec9b80547f6e744e"
+    "SurfaceGeometry.java": "672706c8645377fda781f408e0b3e14ce6337d3419de535f050d94d396060669"
   },
   "class_sha256": {
     "net/tompsen/nexuscharacters/AccountSkinSupport.class": "e9d6dddcadcde9249e672ea6239a03698b0a133407cd4e5659f0b5fcf3ebf2cc",
@@ -29,7 +29,7 @@
     "net/tompsen/nexuscharacters/LowerJointSupport.class": "4a8d25eb9c6a96d89d0497025fbc4327bcff64c6c9eff30a3a70292c1beef804",
     "net/tompsen/nexuscharacters/NativeVoxelSurface$Bounds.class": "b9a488580516637ead22168dc8915fb04a79619839dbb393d629f41b27898651",
     "net/tompsen/nexuscharacters/NativeVoxelSurface$Shape.class": "0efddcbc98e2c6b2c79c2411e13805ecddfca3470ba1b259990ae46417f450b0",
-    "net/tompsen/nexuscharacters/NativeVoxelSurface.class": "1b51951798966fabcf99a0249c2fc62f789306f7f568de689b38d33192f968a5",
+    "net/tompsen/nexuscharacters/NativeVoxelSurface.class": "ecbe39afec21397f132b5a482de9dc578a64a1b36156f12ddba5d81f51526544",
     "net/tompsen/nexuscharacters/PosedSurfaceSupport$Grid.class": "b57974357fb12f823259793929092881d1a706d3361bed47b789c2f6c1355ffe",
     "net/tompsen/nexuscharacters/PosedSurfaceSupport$Prepared.class": "47f05f011a93cc0a70875cba5c0ff90c164e648e26791fd1db9c6675f691a372",
     "net/tompsen/nexuscharacters/PosedSurfaceSupport$State$1.class": "c0698d2c0ad832d3f5bdec307434c9495bd4f72fd2c22a4d4031b7658d9d4c07",
@@ -41,7 +41,17 @@
     "net/tompsen/nexuscharacters/SurfaceGeometry$Box.class": "71d81141814baa1c694a20ee7a1d6f49c81325fafad83490bb762b0dd857fe14",
     "net/tompsen/nexuscharacters/SurfaceGeometry$Polygon.class": "c5da3bfe34a5795c55b6cec1782933dee91368fa04703d086f55c413e5348282",
     "net/tompsen/nexuscharacters/SurfaceGeometry$Vertex.class": "b0b658796cc69738d3cdb42ed88b457abd8e86b15c6027e3424d43c7ca55551b",
-    "net/tompsen/nexuscharacters/SurfaceGeometry.class": "f311e2a6063d0002530826cee5634eced827bb18aa1787c4e115f7085c4eb6b6",
+    "net/tompsen/nexuscharacters/SurfaceGeometry.class": "7c4c4db39af24fce182e068d423481de8e36b5cd369e91b5a25c5d75bc594ec6",
     "net/tompsen/nexuscharacters/mixin/client/GenericPlayerLayersMixin.class": "dc21a4c3a1b7c3a515ce490e80ec9531bd5c09bf4973730eb25003a4f35eec6d"
+  },
+  "tests_sha256": {
+    "AccountSkinRegression.java": "a89ab7827f19730f114b1920cb70be44112ead4144a3ae5ef1f9706b83ac74ba",
+    "ActualPlayerRegression.java": "fa5cf20b3b3832983da28acf5cba97e8675e3adac657cf8f98b2d01d78260823",
+    "CatalogRegression.java": "6f61817a2ba97cda1a6fffedb7484ce15706a16ff7fcfc806c95887863d228cc",
+    "PoseAudit.java": "ab986ccd9b9b57496b1c5e6ea94aba2faecc13e868f76ac3bdf8e3d6574c8af7",
+    "PoseAuditRegression.java": "d1f07900bc134f34a8eadc785ce61e0ada734f8f8da8e9ef76e3f56a13101bfb",
+    "ReportedRegression.java": "c3d0706817ada3717449658a33ca05acbbe0d0ed584378024f7ecd80e54dfc14",
+    "SubmittedGeometryAudit.java": "5e7e47310f5ca81a361cacc454184bf4443809a5467f8cc9bb262521494d185c",
+    "SurfaceGeometryRegression.java": "9f6f504c056184e9d6ac99e8b62a58cdf7b166c15f98a124ce39f95d354e78be"
   }
 }

@@ -55,6 +55,8 @@ public class CatalogRegression implements ClientModInitializer {
               configs.add(new int[] {9, (Integer) b, 20});
             int poses = 0;
             for (int[] config : configs) {
+              if (System.getenv("CATALOG_ONLY_OUTFIT") != null
+                  && config[2] != Integer.parseInt(System.getenv("CATALOG_ONLY_OUTFIT"))) continue;
               String id =
                   String.format(
                       Locale.ROOT,

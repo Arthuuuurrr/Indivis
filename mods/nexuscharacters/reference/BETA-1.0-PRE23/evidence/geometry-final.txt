@@ -1,0 +1,2 @@
+POSE_AUDIT_PASS true-overlap+contained-triangle+shared-edge+small-adjacent-triangle
+SURFACE_GEOMETRY_PASS rotated-subtraction=36 area+uv+corner-triangle+priority
