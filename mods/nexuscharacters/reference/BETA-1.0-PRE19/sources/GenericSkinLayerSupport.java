@@ -312,8 +312,10 @@ public final class GenericSkinLayerSupport {
             if(high && p>hi[axis]-1f)p+=depth*Math.max(0f,p-(hi[axis]-1f));
             // A capped face must also avoid the flat base face. The two
             // sleeves begin at the jacket's raised side, not inside it.
-            if(axis==0 && !low)p=Math.max(p,lo[axis]+(part>=4?depth:0.015f));
-            if(axis==0 && !high)p=Math.min(p,hi[axis]-(part>=4?depth:0.015f));
+            // Vanilla leg pivots are +/-1.9, so a local +/-2 cap would
+            // still leave 0.2 pixels of overlap between the two legs.
+            if(axis==0 && !low)p=Math.max(p,lo[axis]+(part>=4?depth:0.115f));
+            if(axis==0 && !high)p=Math.min(p,hi[axis]-(part>=4?depth:0.115f));
             if(axis==1 && !low)p=Math.max(p,lo[axis]+0.015f);
             if(axis==1 && !high)p=Math.min(p,hi[axis]-0.015f);
             return p;
