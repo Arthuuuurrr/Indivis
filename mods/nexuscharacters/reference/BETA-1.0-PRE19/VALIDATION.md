@@ -62,5 +62,5 @@ Les conventions et conditions d'ajout sont dans [ADDING_ASSETS.md](ADDING_ASSETS
 
 SHA-256 du JAR :
 ```text
-ec30531fdc56585f15190528a53efefe96f1a665e7ee1bbaf9bf3da5b4d233c5
+99a1129b4d38b09d9073a13180cb86332c7d58718a104bfa89a29e034605090e
 ```
