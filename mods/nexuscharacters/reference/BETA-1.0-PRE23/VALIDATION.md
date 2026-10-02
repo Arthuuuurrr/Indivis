@@ -1,3 +1,7 @@
+# Validation visuelle retirée
+
+Le retour sur la planche de rendu signale des défauts sur les vêtements. Les contrôles géométriques ci-dessous ne valident pas leur fidélité visuelle. La PRE23 ne doit plus être présentée comme une version visuellement validée. Le correctif reprend ce point et compare le résultat aux textures et au renderer natif de Skin Layers.
+
 # PRE23 — correctif et vérification du rendu
 
 Le JAR livré est `NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE23.jar`, version interne `1.0.0-beta.23+hc.1.21.11`.
