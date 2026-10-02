@@ -17,6 +17,7 @@ jobs:
           sparse-checkout: |
             /.gitattributes
             /mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE19.jar
+            /mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE20.jar
             /mods/nexuscharacters/reference/BETA-1.0-PRE20/
           sparse-checkout-cone-mode: false
           lfs: false
@@ -43,6 +44,8 @@ jobs:
           cp artifacts/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE20.jar mods/
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE20.jar
-          git commit -m 'Store verified NexusCharacters PRE20 binary'
-          git push origin HEAD:fix/nexus-pre20-native-voxel-render
+          git add --sparse mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE20.jar
+          if ! git diff --cached --quiet; then
+            git commit -m 'Store verified NexusCharacters PRE20 binary'
+            git push origin HEAD:fix/nexus-pre20-native-voxel-render
+          fi
