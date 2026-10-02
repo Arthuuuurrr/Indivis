@@ -1,0 +1,52 @@
+name: Build NexusCharacters PRE22
+on:
+  push:
+    branches: [fix/nexus-pre22-coplanar-surfaces]
+    paths:
+      - mods/nexuscharacters/reference/BETA-1.0-PRE22/sources/**
+      - mods/nexuscharacters/reference/BETA-1.0-PRE22/assemble.py
+      - .github/workflows/build-nexus-pre21.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            /.gitattributes
+            /mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE21.jar
+            /mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE22.jar
+            /mods/nexuscharacters/reference/BETA-1.0-PRE22/
+          sparse-checkout-cone-mode: false
+          lfs: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile renderer and verify exact tested binary
+        run: |
+          task_root=mods/nexuscharacters/reference/BETA-1.0-PRE22
+          base_jar=mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE21.jar
+          git lfs pull --include="$base_jar" --exclude=""
+          mkdir -p "$task_root/classes"
+          javac -proc:none -cp "$base_jar" -d "$task_root/classes" "$task_root/sources/GenericSkinLayerSupport.java" "$task_root/sources/GenericLayerPixels.java" "$task_root/sources/LowerJointSupport.java" "$task_root/sources/CoplanarSurfaceSupport.java"
+          python "$task_root/assemble.py" "$base_jar" artifacts/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE22.jar
+          echo '6876ffd02b93399defae6b58b53b86e6b494b9581f647098f06bdcd614da7f78  artifacts/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE22.jar' | sha256sum -c -
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NexusCharacters-PRE22
+          path: artifacts/*.jar
+          retention-days: 90
+      - name: Preserve binary on correction branch
+        run: |
+          cp artifacts/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE22.jar mods/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --sparse mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE22.jar
+          if ! git diff --cached --quiet; then
+            git commit -m 'Store NexusCharacters PRE22 exact binary'
+            git push origin HEAD:fix/nexus-pre22-coplanar-surfaces
+          fi
