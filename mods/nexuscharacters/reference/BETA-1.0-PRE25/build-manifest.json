@@ -1,0 +1,46 @@
+{
+  "base_sha256": "abeb2a1135f9df7fc723adf24c97d2dce589267a420e375aff6148f3d9597f82",
+  "jar_sha256": "d22c2af2b91133a2fb7215b8fc1df3e4f6954bfc89cc57e9bee68ca0245af419",
+  "changed_entries": [
+    "fabric.mod.json",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Mask.class",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Pending.class",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Plan.class",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class",
+    "net/tompsen/nexuscharacters/HairVoxelSurface.class"
+  ],
+  "original_assets_unchanged": 4958,
+  "compiled_archive_sha256": "a0ab826ed5d6419fbc9739eaa584c8b0bd54ace2487d96e17e69a53c5c5273e2",
+  "class_sha256": {
+    "net/tompsen/nexuscharacters/SurfaceGeometry$Vertex.class": "b0b658796cc69738d3cdb42ed88b457abd8e86b15c6027e3424d43c7ca55551b",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport$State.class": "36554b3f82029e84a1b91cd6f59fe7e1571291c6b7f2f9a78581ced292d8dbe2",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport$State$1.class": "c0698d2c0ad832d3f5bdec307434c9495bd4f72fd2c22a4d4031b7658d9d4c07",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Mask.class": "2fffaacf40eaf912f9e3ef99e2df41becdfd45fa2678e760a9ea4b0e34b11bd1",
+    "net/tompsen/nexuscharacters/SurfaceGeometry.class": "f396dc1b211ec047ff5638f3f9acc25fe5841ba3016e65898a1d514d60177ef4",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Plan.class": "a57bf8be70618a01077544f76ce563a1ac25776f0d65640510ef9b9263956fb2",
+    "net/tompsen/nexuscharacters/SurfaceGeometry$Box.class": "71d81141814baa1c694a20ee7a1d6f49c81325fafad83490bb762b0dd857fe14",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Pending.class": "8d25f5f40b840f17a0e8ce8143c4d776ff77ab09f98a99413cf6af032884f3f8",
+    "net/tompsen/nexuscharacters/SurfaceGeometry$Polygon.class": "c5da3bfe34a5795c55b6cec1782933dee91368fa04703d086f55c413e5348282",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class": "0c4d11c4bd906c81a310ad843af0db42f07301f38f9af837090d9a8d728cd39c",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport$Grid.class": "b57974357fb12f823259793929092881d1a706d3361bed47b789c2f6c1355ffe",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class": "2ee63c578f157ff377ccdf692c3f0d23e4bd4383e0e1021be63eed51f1d496a5",
+    "net/tompsen/nexuscharacters/HairVoxelSurface.class": "678839b3e874c05c8560c57fc6cdc332249d361934effa62de86c5b3cc69a35b",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$1.class": "744e03d1e825b25b0e84e05f3cae9f159e6dda393508883b6df09ef6a47f83dc",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport$Prepared.class": "47f05f011a93cc0a70875cba5c0ff90c164e648e26791fd1db9c6675f691a372"
+  },
+  "source_sha256": {
+    "RemoteAppearanceSupport.java": "1257353bfd561761e7f84a247582f361f650ac86c6de404bfa66871ad0a7c10f",
+    "GenericPlayerLayersMixin.java": "4027ee8cd2c3d5f217330d9ead974d346ef83685e59e7bdade9d1ed97d32b54c",
+    "GenericSkinLayerSupport.java": "2326c5d79a0d8074b315b74053a12181af9965f1655cb5b144128933d43b8d5f",
+    "CoplanarSurfaceSupport.java": "b22e1d4b5ec0acdb0d4db1d9e950819b863d503ccb735138c06088ccf7587898",
+    "ClothingVoxelSurface.java": "847e792076130fe18ff92441848566e36617424716e991fb760d77e8d55acf19",
+    "AccountSkinSupport.java": "43495d7d25a3ac5e2f5cbf0101cc9aed071bf83b13981d279b779b81c13c9f54",
+    "HairVoxelSurface.java": "02badc6dc9701b7b0a22cced3de7b1d8ac617d7603651edec644d09a7ba802a0",
+    "GenericLayerPixels.java": "06f5eda0441dabedcf67467799726ad93e88b09e486b30b4376c06e5f48c20b9",
+    "NativeVoxelSurface.java": "8250cab4bd7ae768e8fdabfe1b0fa80c8407cafcd6a525aae9a0a606a0f0da4b",
+    "PosedSurfaceSupport.java": "105634ad09422372554d5b1a1ccac6ba2c626a26884044f1f20d64d364ffdff0",
+    "PreviewDummyPlayerManager.java": "3c5a16580830aeab13471f18f55394a17566784510596c74ba1251b4ecf6c12a",
+    "SurfaceGeometry.java": "3751a2b452282868256d367f5fc9740ef8bbcee32f5aa5d935344af5a0415d67",
+    "LowerJointSupport.java": "ea650796eda5522ed10fbd0654f5ef02f5ef6609f034bf99ef4cefac34b897de"
+  }
+}

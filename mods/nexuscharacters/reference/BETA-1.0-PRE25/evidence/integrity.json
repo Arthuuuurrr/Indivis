@@ -1,0 +1,16 @@
+{
+  "jar_sha256": "d22c2af2b91133a2fb7215b8fc1df3e4f6954bfc89cc57e9bee68ca0245af419",
+  "size": 21605158,
+  "original_assets_unchanged": 4958,
+  "changed_entries": [
+    "fabric.mod.json",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Mask.class",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Pending.class",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Plan.class",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class",
+    "net/tompsen/nexuscharacters/HairVoxelSurface.class",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class",
+    "net/tompsen/nexuscharacters/SurfaceGeometry.class"
+  ],
+  "reassembled_identical": true
+}

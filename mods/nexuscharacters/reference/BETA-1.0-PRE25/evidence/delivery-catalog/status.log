@@ -1,0 +1,462 @@
+TEST_MOD_VERSION 1.0.0-beta.25+hc.1.21.11
+[LibGui] Initializing Client...
+ACTUAL_START_WORLD catalog
+[capitale_rp_hud] BETA_1_1_48-preview-ui-live-skin FORCE_RENDER_SKIN mode=minecraft_account raceId=1 idx=0 previewContext=false
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1452 outerVoxels=1463 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3866 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3815 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4783 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o01_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1434 outerVoxels=1443 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3799 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3624 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4503 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o01_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1482 outerVoxels=1493 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4125 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4030 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4990 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o03_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1464 outerVoxels=1472 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4061 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3834 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4688 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o03_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=960 outerVoxels=1037 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=2961 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=2829 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3582 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o04_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=942 outerVoxels=1018 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=2894 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=2644 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3346 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o04_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1602 outerVoxels=1459 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4149 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4129 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5110 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o05_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1584 outerVoxels=1438 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4099 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3954 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4798 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o05_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1528 outerVoxels=1395 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3871 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3762 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4601 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o06_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1510 outerVoxels=1374 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3794 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3588 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4353 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o06_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1436 outerVoxels=1461 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4363 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4306 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5433 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o07_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1418 outerVoxels=1440 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4270 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4102 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5068 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o07_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1436 outerVoxels=1461 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4319 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4296 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5435 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o10_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1418 outerVoxels=1440 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4281 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4100 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5084 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o10_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1458 outerVoxels=1469 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4070 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4026 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5079 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o13_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1440 outerVoxels=1448 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3992 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3841 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4760 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o13_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1238 outerVoxels=1327 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3807 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3604 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4759 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o14_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1220 outerVoxels=1311 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3772 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3431 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4478 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o14_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1044 outerVoxels=1117 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3219 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3009 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3922 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o15_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1026 outerVoxels=1096 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3160 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=2820 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3647 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o15_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1008 outerVoxels=1111 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3547 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3505 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4383 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o16_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=990 outerVoxels=1095 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3466 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3338 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4108 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o16_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1008 outerVoxels=1111 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3547 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3505 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4383 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o17_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=990 outerVoxels=1095 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3466 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3338 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4108 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o17_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1020 outerVoxels=1123 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3594 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3588 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4456 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o18_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1002 outerVoxels=1107 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3517 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3412 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4165 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o18_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1126 outerVoxels=1161 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3465 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3213 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4198 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o19_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1108 outerVoxels=1141 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3409 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3037 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3921 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o19_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1558 outerVoxels=1569 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4199 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4090 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5188 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o20_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1540 outerVoxels=1548 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4159 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3903 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4910 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o20_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1384 outerVoxels=1396 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4137 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4122 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4999 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o21_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1366 outerVoxels=1375 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4063 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3931 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4781 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o21_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1419 outerVoxels=1435 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4093 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4298 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5342 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o22_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1401 outerVoxels=1418 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4050 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4111 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5028 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o22_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1351 outerVoxels=1362 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3905 coplanar=0 crossings=0 pairs={}
+[capitale_rp_hud] BETA_1_1_48-preview-ui-live-skin FORCE_RENDER_SKIN mode=minecraft_account raceId=1 idx=0 previewContext=false
+POSE_GEOMETRY_RESULT faces=3949 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4845 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o23_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1333 outerVoxels=1341 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3805 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3713 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4501 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1462 outerVoxels=1496 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3839 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3745 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4752 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o24_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1444 outerVoxels=1477 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3798 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3579 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4467 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o24_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1450 outerVoxels=1463 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4225 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4339 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5469 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o25_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1432 outerVoxels=1442 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4166 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4153 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5187 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o25_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1471 outerVoxels=1482 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4342 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4364 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5296 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o26_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1453 outerVoxels=1461 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4274 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4138 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5036 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o26_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=884 outerVoxels=1041 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3268 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3084 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4081 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o27_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=866 outerVoxels=1041 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3286 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=2939 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3819 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o27_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1351 outerVoxels=1392 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4352 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4147 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5353 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o28_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1333 outerVoxels=1371 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4257 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3928 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5051 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o28_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1506 outerVoxels=1527 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3856 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3765 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4769 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o29_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1488 outerVoxels=1506 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3818 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3605 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4494 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o29_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1510 outerVoxels=1525 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3855 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3759 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4764 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o30_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1492 outerVoxels=1504 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3814 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3595 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4486 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o30_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1584 outerVoxels=1595 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3935 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3828 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4956 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o31_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1566 outerVoxels=1574 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3898 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3667 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4710 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o31_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1452 outerVoxels=1463 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4075 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4061 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4976 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o32_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1434 outerVoxels=1442 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4031 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3876 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4707 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o32_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1520 outerVoxels=1531 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3871 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3764 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4767 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o33_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1502 outerVoxels=1510 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3834 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3603 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4512 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o33_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1580 outerVoxels=1593 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4441 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4417 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5493 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o34_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1562 outerVoxels=1572 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4419 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4250 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5298 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o34_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1584 outerVoxels=1595 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=3935 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3828 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4956 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o35_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1566 outerVoxels=1574 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3898 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3667 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4710 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o35_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1544 outerVoxels=1573 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4112 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4273 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5241 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o36_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1526 outerVoxels=1552 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4027 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4064 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4965 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o36_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1584 outerVoxels=1595 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4012 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4167 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5226 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o37_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1566 outerVoxels=1574 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3976 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3966 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4938 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o37_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1412 outerVoxels=1427 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4174 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4087 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5034 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o38_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1394 outerVoxels=1416 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4120 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3891 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4733 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o38_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1558 outerVoxels=1569 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4199 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4090 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5188 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o39_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1540 outerVoxels=1548 hair=318 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4159 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3903 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4910 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o39_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1337 outerVoxels=1337 hair=322 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3923 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3894 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4501 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h01_hc02_s02_o23_fh0_fc00_mk0_mc0
+[capitale_rp_hud] BETA_1_1_48-preview-ui-live-skin FORCE_RENDER_SKIN mode=minecraft_account raceId=1 idx=0 previewContext=false
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1309 outerVoxels=1319 hair=294 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3773 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3725 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4297 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h02_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1314 outerVoxels=1319 hair=299 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3918 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3855 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4508 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h03_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1317 outerVoxels=1326 hair=302 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3994 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3950 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4630 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h04_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1328 outerVoxels=1335 hair=313 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3866 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3840 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4397 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h05_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1329 outerVoxels=1340 hair=314 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3832 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3878 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4720 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h06_hc02_s02_o23_fh0_fc00_mk0_mc0
+POSE_GEOMETRY_RESULT faces=3805 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3713 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4501 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h07_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1327 outerVoxels=1336 hair=312 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3833 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3764 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4298 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h08_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1329 outerVoxels=1337 hair=314 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3845 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3789 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4569 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h09_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1313 outerVoxels=1317 hair=298 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3799 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3762 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4321 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h10_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1216 outerVoxels=1231 hair=201 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3702 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3601 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4225 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h11_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1250 outerVoxels=1250 hair=235 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3526 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3432 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4097 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h12_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1105 outerVoxels=1108 hair=90 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3424 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3335 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3988 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h13_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1327 outerVoxels=1336 hair=312 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3833 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3764 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4298 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h14_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1337 outerVoxels=1337 hair=322 classicBeard=0
+POSE_GEOMETRY_RESULT faces=3923 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3894 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4501 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h1006_hc02_s02_o23_fh0_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1544 outerVoxels=1552 hair=304 classicBeard=18
+POSE_GEOMETRY_RESULT faces=4162 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4032 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5055 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h09_hc02_s02_o20_fh1_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1542 outerVoxels=1550 hair=314 classicBeard=6
+POSE_GEOMETRY_RESULT faces=4105 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3973 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4971 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h09_hc02_s02_o20_fh2_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1548 outerVoxels=1556 hair=314 classicBeard=12
+POSE_GEOMETRY_RESULT faces=4119 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3987 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4985 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h09_hc02_s02_o20_fh3_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1536 outerVoxels=1552 hair=314 classicBeard=0
+POSE_GEOMETRY_RESULT faces=4125 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3993 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4991 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h09_hc02_s02_o20_fh4_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1558 outerVoxels=1566 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4163 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4027 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5097 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h09_hc02_s02_o20_fh5_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1558 outerVoxels=1568 hair=310 classicBeard=26
+POSE_GEOMETRY_RESULT faces=4174 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4034 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5044 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h09_hc02_s02_o20_fh6_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1558 outerVoxels=1566 hair=293 classicBeard=43
+POSE_GEOMETRY_RESULT faces=4163 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4027 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=5097 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h09_hc02_s02_o20_fh7_fc00_mk0_mc0
+[NexusCharacters][NativeLayers23] PREPARED path=world basePaint=1548 outerVoxels=1556 hair=314 classicBeard=12
+POSE_GEOMETRY_RESULT faces=4119 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=3987 coplanar=0 crossings=0 pairs={}
+POSE_GEOMETRY_RESULT faces=4985 coplanar=0 crossings=0 pairs={}
+CATALOG_CASE_PASS player_v69_b1_e1_ec0_ey2_h09_hc02_s02_o20_fh9_fc00_mk0_mc0
+CATALOG_RENDERER_PASS configurations=91 poses=273
+ACTUAL_PLAYER_REGRESSION_PASS catalog

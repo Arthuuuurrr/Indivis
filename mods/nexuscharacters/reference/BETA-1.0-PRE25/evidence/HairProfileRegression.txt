@@ -1,0 +1,1 @@
+HAIR_PROFILE_PASS rear=1.15 detail=1.35 normalGrid=1x1 adaptiveClearance=true head=.65

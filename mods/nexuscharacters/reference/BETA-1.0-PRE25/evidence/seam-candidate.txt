@@ -1,0 +1,2 @@
+STRAND_SEAM_AREA 2.0
+STRAND_SEAM_PASS exact shared partition
