@@ -1,0 +1,1 @@
+PRE24_FINAL_CHECK_PASS 243 poses; 48 arm profiles; 96 comparative captures with three distinct angles; 4958 original assets; exact delivery SHA

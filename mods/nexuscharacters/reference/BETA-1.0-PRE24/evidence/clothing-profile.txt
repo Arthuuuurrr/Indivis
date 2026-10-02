@@ -1,0 +1,1 @@
+CLOTHING_PROFILE_PASS fixed-texel-grid + closed-height-step + detail-hole + stable-fabric-depth + slim-arm + source-pixel-sides
