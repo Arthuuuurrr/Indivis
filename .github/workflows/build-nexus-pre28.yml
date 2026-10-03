@@ -1,0 +1,40 @@
+name: Preserve verified NexusCharacters PRE28
+on:
+  push:
+    branches: [fix/nexus-pre28-menu-readability]
+    paths:
+      - mods/nexuscharacters/reference/BETA-1.0-PRE28/compiled-patches.zip.b64
+      - mods/nexuscharacters/reference/BETA-1.0-PRE28/assemble.py
+      - .github/workflows/build-nexus-pre28.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Reproduce the exact runtime-tested candidate
+        run: python mods/nexuscharacters/reference/BETA-1.0-PRE28/assemble.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NexusCharacters-PRE28
+          path: mods/NexusCharacters-Indivis-1.21.11-BETA-1.0-PRE28.jar
+          retention-days: 90
+      - name: Preserve JAR and delivery ZIP
+        run: |
+          python - <<'PYCODE'
+          import zipfile
+          from pathlib import Path
+          jar=Path('mods/NexusCharacters-Indivis-1.21.11-BETA-1.0-PRE28.jar')
+          with zipfile.ZipFile('mods/NexusCharacters-PRE28.zip','w',compression=zipfile.ZIP_DEFLATED) as z:
+              z.write(jar,jar.name)
+          PYCODE
+          git lfs install
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add mods/NexusCharacters-Indivis-1.21.11-BETA-1.0-PRE28.jar mods/NexusCharacters-PRE28.zip
+          git commit -m 'Store runtime-tested PRE28 downloads'
+          git push origin HEAD:fix/nexus-pre28-menu-readability

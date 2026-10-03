@@ -1,0 +1,6 @@
+PRE28_ORIGINAL_BYTES_PRESERVED
+Original class files unchanged: 223
+Original asset files unchanged: 4962
+Only modified entries: fabric.mod.json, nexuscharacters.client.mixins.json
+Added entries: assets/nexuscharacters/textures/gui/indivis/capitals/dwarf.png, assets/nexuscharacters/textures/gui/indivis/capitals/high_elf.png, assets/nexuscharacters/textures/gui/indivis/capitals/nordic.png, assets/nexuscharacters/textures/gui/indivis/capitals/wood_elf.png, net/tompsen/nexuscharacters/IndivisReadability$1.class, net/tompsen/nexuscharacters/IndivisReadability.class, net/tompsen/nexuscharacters/mixin/client/IndivisBannerMixin.class, net/tompsen/nexuscharacters/mixin/client/IndivisControlsReadabilityMixin.class, net/tompsen/nexuscharacters/mixin/client/IndivisNameFieldContrastMixin.class, net/tompsen/nexuscharacters/mixin/client/IndivisTextContrastMixin.class, net/tompsen/nexuscharacters/mixin/client/IndivisWorldlessViewportMixin.class
+SHA256: 32247a901654df15cdfad011c85e3cf16ccb02848f893c342029581a81c43574
