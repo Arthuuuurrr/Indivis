@@ -10,7 +10,8 @@ public final class MenuRegression implements ClientModInitializer {
     static int tick, scene = -1, captures, checks;
     static boolean ready;
     static final CharacterRace[] RACES = {CharacterRace.HUMAN, CharacterRace.DWARF, CharacterRace.WOOD_ELF, CharacterRace.HIGH_ELF, CharacterRace.NORDIC};
-    static final Path OUT = Path.of("pre28/qa/evidence");
+    static final boolean WORLD = Boolean.getBoolean("pre28.world");
+    static final Path OUT = Path.of(WORLD ? "pre28/qa/world-evidence" : "pre28/qa/evidence");
     static void check(boolean condition, String message) { checks++; if (!condition) throw new AssertionError(message); }
     static class_11909 mouse(double x, double y) { return new class_11909(x, y, new class_11910(0, 0)); }
     static void click(class_437 s, class_339 w) {
@@ -41,7 +42,15 @@ public final class MenuRegression implements ClientModInitializer {
                 NexusCharacters.DATA_FILE_MANAGER.characterList.clear();
                 for (CharacterRace r : RACES) NexusCharacters.DATA_FILE_MANAGER.characterList.add(dto(r));
                 System.out.println("PRE28_MENU_TEST_STARTED");
+                if (WORLD) {
+                    NexusCharacters.selectedCharacter = dto(RACES[0]);
+                    NexusCharacters.DATA_FILE_MANAGER.save();
+                    c.method_41735().method_57784("pre28-menu-test", () -> {});
+                    return;
+                }
             }
+            if (WORLD && c.field_1724 == null) return;
+            if (WORLD) c.method_1566().method_2000();
             int nextScene = tick / 24, phase = tick % 24;
             if (nextScene >= 23) {
                 System.out.println("PRE28_MENU_PASS captures=" + captures + " checks=" + checks);
@@ -81,15 +90,17 @@ public final class MenuRegression implements ClientModInitializer {
                 IndivisMenus.State state = IndivisMenus.state(s);
                 Field f = CharacterPreviewRenderer.class.getDeclaredField("skinWidget"); f.setAccessible(true);
                 class_339 widget = (class_339)f.get(null);
-                check(widget != null, "No rendered avatar");
-                check(widget.method_25368() == state.pw, "Avatar width clipped: " + widget.method_25368() + " expected=" + state.pw);
-                check(widget.method_46426() == state.px - state.pw / 2, "Avatar center changed");
-                check(widget.method_25364() <= state.pb - state.pt, "Avatar too tall");
-                check(widget.method_46427() >= state.pt, "Avatar exceeds preview top");
+                if (!WORLD) {
+                    check(widget != null, "No rendered avatar");
+                    check(widget.method_25368() == state.pw, "Avatar width clipped: " + widget.method_25368() + " expected=" + state.pw);
+                    check(widget.method_46426() == state.px - state.pw / 2, "Avatar center changed");
+                    check(widget.method_25364() <= state.pb - state.pt, "Avatar too tall");
+                    check(widget.method_46427() >= state.pt, "Avatar exceeds preview top");
+                } else check(c.field_1724 != null && c.field_1687 != null, "World disappeared");
                 CharacterRace r = RACES[scene < 15 ? scene % 5 : scene < 20 ? scene - 15 : 1];
                 check(IndivisReadability.currentRace() == r, "Banner race mismatch");
                 check(c.method_1478().method_14486(IndivisReadability.banner(r)).isPresent(), "Banner missing " + r);
-                System.out.println("PRE28_SCENE " + scene + " race=" + r + " viewport=" + state.pw + " height=" + widget.method_25364() + " banner=" + IndivisReadability.banner(r));
+                System.out.println("PRE28_SCENE " + scene + " race=" + r + " viewport=" + state.pw + " world=" + WORLD + " banner=" + IndivisReadability.banner(r));
                 final int index = scene;
                 class_318.method_1663(c.method_1522(), im -> { try {
                     im.method_4314(OUT.resolve(String.format("menu-%02d.png", index))); captures++;
