@@ -1,0 +1,7 @@
+Assets and all other classes unchanged from PRE28.
+Changed entries:
+fabric.mod.json
+net/tompsen/nexuscharacters/IndivisReadability$1.class
+net/tompsen/nexuscharacters/IndivisReadability.class
+net/tompsen/nexuscharacters/mixin/client/IndivisNameFieldContrastMixin.class
+net/tompsen/nexuscharacters/mixin/client/IndivisWorldlessViewportMixin.class
