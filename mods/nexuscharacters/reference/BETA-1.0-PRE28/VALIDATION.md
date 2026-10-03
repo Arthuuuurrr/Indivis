@@ -18,7 +18,7 @@ Minecraft 1.21.11; Java 21; Fabric Loader 0.19.5; Fabric API 0.141.6; 3D Skin La
 - With a copied, isolated test world and Puffish Skills 0.19.0: `PRE28_MENU_PASS captures=23 checks=573`.
 - Creation: all five playable races at GUI scales 2, 3 and 4, maximum permitted height/build, actual race-button and name-color-button clicks, black first name plus white last name.
 - Selection: all five race fixtures.
-- Rotation: additional dwarf captures at 0°, 90° and 180°.
+- Rotation: a separate post-initialization test verifies the actual widget yaw at 0°, 90° and 180°: `PRE28_MENU_PASS captures=3 checks=93`. Front, side and back captures visually inspected. The original broad fixture requested yaw before widget creation; the separate test avoids this timing issue.
 - Actual click/release checks for height, build and eye-height sliders, scrolling into view at larger GUI scales.
 - Banner resources present and selected race association asserted on every scene.
 - Width, centering and vertical worldless preview bounds asserted after real renders.

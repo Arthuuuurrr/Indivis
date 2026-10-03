@@ -5,6 +5,7 @@ WORK = ROOT / 'pre28'
 RT = ROOT / 'runtime'
 world = '--world' in sys.argv
 baseline = '--baseline' in sys.argv
+rotation = '--rotation' in sys.argv
 GAME = WORK / ('qa/world-game' if world else 'qa/baseline-game' if baseline else 'qa/game')
 MODS = GAME / 'mods'
 MODS.mkdir(parents=True, exist_ok=True)
@@ -36,7 +37,8 @@ env = os.environ.copy()
 env.update(LD_LIBRARY_PATH=str(RT / 'osmesa/usr/lib/x86_64-linux-gnu') + ':' + str(RT / 'natives'), LIBGL_ALWAYS_SOFTWARE='true', ALSOFT_DRIVERS='null')
 cmd = [str(WORK / 'jdk/bin/java'), '-Xmx1800M', '--add-exports=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED', '-javaagent:' + str(ROOT / 'pre21/headless-agent.jar'), '-Dorg.lwjgl.opengl.explicitInit=true', '-Dmixin.debug.export=true', '-Djava.library.path=' + str(RT / 'natives'), '-Dorg.lwjgl.opengl.libname=' + str(RT / 'osmesa/usr/lib/x86_64-linux-gnu/libOSMesa.so.8'), '-Dfabric.gameMappingNamespace=intermediary', '-Dfabric.runtimeMappingNamespace=intermediary', '-Dfabric.gameJarPath=' + str(RT / 'client-intermediary.jar'), '-cp', cp, 'net.fabricmc.loader.impl.launch.knot.KnotClient', '--gameDir', str(GAME), '--assetsDir', str(RT / 'assets'), '--assetIndex', '29', '--version', '1.21.11', '--username', 'PRE28Test', '--uuid', '00000000000000000000000000000001', '--accessToken', 'offline', '--width', '1920', '--height', '1080']
 if world: cmd.insert(1, '-Dpre28.world=true')
-logfile = WORK / ('qa/world-render.log' if world else 'qa/baseline-render.log' if baseline else 'qa/render.log')
+if rotation: cmd.insert(1, '-Dpre28.rotation=true')
+logfile = WORK / ('qa/world-render.log' if world else 'qa/baseline-render.log' if baseline else 'qa/rotation-render.log' if rotation else 'qa/render.log')
 with logfile.open('w') as log:
     result = subprocess.run(cmd, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
 logtext = logfile.read_text()

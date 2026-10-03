@@ -11,7 +11,8 @@ public final class MenuRegression implements ClientModInitializer {
     static boolean ready;
     static final CharacterRace[] RACES = {CharacterRace.HUMAN, CharacterRace.DWARF, CharacterRace.WOOD_ELF, CharacterRace.HIGH_ELF, CharacterRace.NORDIC};
     static final boolean WORLD = Boolean.getBoolean("pre28.world");
-    static final Path OUT = Path.of(WORLD ? "pre28/qa/world-evidence" : "pre28/qa/evidence");
+    static final boolean ROTATION = Boolean.getBoolean("pre28.rotation");
+    static final Path OUT = Path.of(WORLD ? "pre28/qa/world-evidence" : ROTATION ? "pre28/qa/rotation-evidence" : "pre28/qa/evidence");
     static void check(boolean condition, String message) { checks++; if (!condition) throw new AssertionError(message); }
     static class_11909 mouse(double x, double y) { return new class_11909(x, y, new class_11910(0, 0)); }
     static void click(class_437 s, class_339 w) {
@@ -51,7 +52,7 @@ public final class MenuRegression implements ClientModInitializer {
             }
             if (WORLD && c.field_1724 == null) return;
             if (WORLD) c.method_1566().method_2000();
-            int nextScene = tick / 24, phase = tick % 24;
+            int nextScene = tick / 24 + (ROTATION ? 20 : 0), phase = tick % 24;
             if (nextScene >= 23) {
                 System.out.println("PRE28_MENU_PASS captures=" + captures + " checks=" + checks);
                 Files.writeString(OUT.resolve("result.txt"), "PRE28_MENU_PASS captures=" + captures + " checks=" + checks + "\n");
@@ -85,6 +86,7 @@ public final class MenuRegression implements ClientModInitializer {
                     IndivisMenus.yaw(0f);
                 }
             }
+            if (phase == 4 && scene >= 20) IndivisMenus.yaw((scene - 20) * 90f);
             if (phase == 12) {
                 class_437 s = c.field_1755;
                 IndivisMenus.State state = IndivisMenus.state(s);
@@ -96,6 +98,7 @@ public final class MenuRegression implements ClientModInitializer {
                     check(widget.method_46426() == state.px - state.pw / 2, "Avatar center changed");
                     check(widget.method_25364() <= state.pb - state.pt, "Avatar too tall");
                     check(widget.method_46427() >= state.pt, "Avatar exceeds preview top");
+                    if (ROTATION) check(Math.abs(((Number)IndivisMenus.get(widget, "field_46006")).floatValue() - (30 + (scene - 20) * 90)) < .01, "Rendered widget yaw was not updated");
                 } else check(c.field_1724 != null && c.field_1687 != null, "World disappeared");
                 CharacterRace r = RACES[scene < 15 ? scene % 5 : scene < 20 ? scene - 15 : 1];
                 check(IndivisReadability.currentRace() == r, "Banner race mismatch");
