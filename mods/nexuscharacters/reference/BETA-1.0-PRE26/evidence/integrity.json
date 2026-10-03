@@ -1,0 +1,12 @@
+{
+  "changed_entries": [
+    "fabric.mod.json",
+    "net/tompsen/nexuscharacters/ArmUvLayout.class",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Mask.class",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Pending.class",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport$Plan.class",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class"
+  ],
+  "original_assets_unchanged": 4958,
+  "hair_clothing_geometry_classes_unchanged": true
+}
