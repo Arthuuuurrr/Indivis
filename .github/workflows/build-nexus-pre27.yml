@@ -1,0 +1,42 @@
+name: Preserve verified NexusCharacters PRE27
+on:
+  push:
+    branches: [fix/nexus-pre27-indivis-ui]
+    paths:
+      - mods/nexuscharacters/reference/BETA-1.0-PRE27/compiled-patches.zip.b64
+      - mods/nexuscharacters/reference/BETA-1.0-PRE27/assemble.py
+      - .github/workflows/build-nexus-pre27.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Assemble the exact runtime-tested candidate
+        run: |
+          base_jar=mods/NexusCharacters-HauteCapitale-1.21.11-BETA-1.0-PRE26.jar
+          git lfs pull --include="$base_jar" --exclude=""
+          python mods/nexuscharacters/reference/BETA-1.0-PRE27/assemble.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NexusCharacters-PRE27
+          path: mods/NexusCharacters-Indivis-1.21.11-BETA-1.0-PRE27.jar
+          retention-days: 90
+      - name: Preserve JAR and delivery ZIP
+        run: |
+          python - <<'PYCODE'
+          import zipfile
+          from pathlib import Path
+          jar=Path('mods/NexusCharacters-Indivis-1.21.11-BETA-1.0-PRE27.jar')
+          with zipfile.ZipFile('mods/NexusCharacters-PRE27.zip','w',compression=zipfile.ZIP_DEFLATED) as z:
+              z.write(jar,jar.name)
+          PYCODE
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add mods/NexusCharacters-Indivis-1.21.11-BETA-1.0-PRE27.jar mods/NexusCharacters-PRE27.zip
+          git commit -m 'Store tested PRE27 menu downloads'
+          git push origin HEAD:fix/nexus-pre27-indivis-ui
