@@ -1,0 +1,2 @@
+a6d2944deceb90b795d96abbc08d8c4d138c27898dde3e2a5f4eff144437c928  accessories_compat_layer-fabric-0.1.13.b1+1.21.11.jar
+5134c271aa455c6fd71ad71d7bdcb3379ffdd921364b8709f7847516094802c8  accessories_compat_layer-fabric-0.1.13.b1+1.21.11-HC-NULLCAP-GUARD1.jar
