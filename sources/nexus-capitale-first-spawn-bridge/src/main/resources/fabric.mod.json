@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "nexus_capitale_first_spawn_bridge",
+  "version": "${version}",
+  "name": "Nexus Capitale First Spawn Bridge",
+  "description": "Restores the Haute Capitale prologue hook for new NexusCharacters vaults without reopening the legacy RP-HUD identity menu.",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "fr.hautecapitale.nexusbridge.NexusCapitaleFirstSpawnBridge"
+    ]
+  },
+  "mixins": [
+    "nexus_capitale_first_spawn_bridge.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "1.21.11",
+    "fabric-api": "*"
+  }
+}
