@@ -1,0 +1,68 @@
+HAUTE CAPITALE — ARMOR40 FIRST BALANCE PASS
+Date: 2026-09-23
+
+Artifact
+--------
+capitale_armor_balance-0.1.1+1.21.11-ARMOR40-X2-FORMULA.jar
+SHA-256: 53b63960901f9f17f64cf6fb8a1eb9a1a128c2762fddaf90e7bccfd8c34e2571
+
+Goal
+----
+First proportional pass for the 40-armor scale:
+- modded armor points x2;
+- vanilla armor unchanged;
+- preserve old relative ranking between modded sets;
+- do not touch toughness, max health, knockback resistance, spell power or other attributes.
+
+Component rule
+--------------
+Only modifiers matching ALL conditions are scaled:
+1. item registry namespace != minecraft;
+2. attribute == generic ARMOR;
+3. operation == ADD_VALUE;
+4. slot == FEET, LEGS, CHEST, HEAD, ARMOR or BODY.
+
+Therefore accessories/hand items using ANY/MAINHAND/OFFHAND are not accidentally doubled.
+Multiplicative ARMOR modifiers are preserved unchanged.
+
+ARMOR40 formula audit
+---------------------
+Previous HUD 1.3.2 ARMOR40 code only:
+- raised the EntityAttribute clamp/max to 40;
+- rendered a second armor HUD row.
+It did NOT change DamageUtil's vanilla 20-point mitigation ceiling.
+
+The balance module remaps DamageUtil.method_5496 to a true 0..40 scale:
+- intermediate damage input x2;
+- armor clamp 20 -> 40;
+- mitigation divisor 25 -> 50;
+- final damage result x0.5.
+
+For an old modded armor value A and the new doubled value 2A, this is algebraically equivalent to the old protection curve, including toughness. It avoids flattening high-tier modded sets at the vanilla 20-point cap.
+Vanilla armor values are intentionally not doubled and therefore occupy lower positions in the new 40-point progression.
+
+Harness
+-------
+PASS:
+- modded chest ARMOR 8 -> 16;
+- toughness 3 stays 3;
+- modded chest ARMOR 5 -> 10 while MAX_HEALTH +4 stays +4;
+- minecraft diamond chest ARMOR 8 stays 8;
+- accessory ANY-slot ARMOR +2 stays +2;
+- multiplicative ARMOR stays unchanged.
+
+Formula equivalence PASS across representative damage/armor/toughness cases:
+old(A,T,D) == new(2A,T,D).
+
+Runtime diagnostics
+-------------------
+At startup the module logs each scaled item as:
+[capitale_armor_balance] x2 ARMOR <namespace:item> [old->new]
+This provides an exhaustive runtime list of modded items actually caught by the pass.
+
+Installation
+------------
+Client + server. Add this JAR; do not replace individual armor-mod JARs.
+Requires the existing HUD ARMOR40 attribute-cap support.
+
+Status: STATIC/HARNESS PASS; startup and representative combat validation required.

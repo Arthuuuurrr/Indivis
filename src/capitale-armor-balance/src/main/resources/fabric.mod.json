@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "capitale_armor_balance",
+  "version": "0.1.2+1.21.11-armor40-x2-safe",
+  "name": "Haute Capitale — Armor Balance",
+  "description": "ARMOR40 pass 1.2 SAFE: x2 ARMOR only on actual non-vanilla EQUIPPABLE armor items; weapons never enter DefaultItemComponentEvents modification. 0..40 mitigation formula preserved.",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "fr.hautecapitale.armorbalance.CapitaleArmorBalance"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "fabric-api": "*",
+    "minecraft": "~1.21.11",
+    "java": ">=21"
+  },
+  "mixins": [
+    "capitale_armor_balance.mixins.json"
+  ]
+}
