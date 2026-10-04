@@ -1,0 +1,56 @@
+uuid;name;story;safe;all_known;seen_2026_09_30;latest_backup_date;tags;source
+25e76fad-6b84-40d3-8e14-7d2d383d0aff;.;;;yes;;2026-09-21;hcq_anselin,hcq_corps;backup_2026-09-21
+30eb7ff9-00e4-4384-9086-5fd7f61ec70c;.;;;yes;;2026-09-21;hcq_corps;backup_2026-09-21
+40b70474-13db-4917-b1cf-a3bfd009f0b1;.;;yes;yes;yes;2026-09-21;hcq_epave_capitaine,hcq_corps;log_2026-09-30
+586c5caf-4aa8-41e2-9391-bc19239c230d;.;;yes;yes;yes;2026-09-21;hcq_corps;log_2026-09-30
+7233e42b-c9a0-47b3-b8d1-691d49fd5e65;.;;;yes;;2026-09-21;hcq_corps;backup_2026-09-21
+7cc26fea-7e45-44a9-8485-b0f44529ec1f;.;;yes;yes;yes;;;log_2026-09-30
+864b6488-f8c7-406d-ad54-638cb5b6ff32;.;;;yes;;2026-09-21;hcq_corps,hcq_brieuc;backup_2026-09-21
+c12e754a-1b85-44a2-aa22-d091ab6d9b7e;.;;;yes;;2026-09-21;hcq_corps;backup_2026-09-21
+c4c1f5ce-b488-4843-ad9b-c3913a98eca0;.;;;yes;;2026-09-21;hcq_corps;backup_2026-09-21
+efb57def-1e1b-430a-86d6-5df7b8cfcac2;[Capitaine] Althéon Brumeforge;yes;yes;yes;;2026-09-22;;backup_2026-09-22
+3e9353d9-e290-4929-80eb-4d940c1c4528;[Quartier Maitre] Géraud Rivet;yes;yes;yes;;2026-09-22;;backup_2026-09-22
+17dd810e-1ebd-48e5-aab4-c9dee8d32bde;Agent de quai;;yes;yes;yes;2026-09-22;;log_2026-09-30
+3cdba822-f22f-45cc-b622-81da59f96be6;Aldren le Traqueur;;;yes;;2026-09-27;;backup_2026-09-27
+0e86a88c-1bd1-4293-927e-719130d6d8f3;Aldric;;yes;yes;yes;2026-09-22;;log_2026-09-30
+cf02fe83-0a43-4f04-82aa-78970a46a233;Anselme Kerrec;yes;yes;yes;;2026-09-27;hc_dialogue,hcq_pnj_anselme,hcq_pnj;backup_2026-09-27
+e04cf2b1-3903-49d1-a5ef-fddddce33ae8;Armurier;;;yes;;2026-09-22;;backup_2026-09-22
+be07dec2-5f9f-48fb-a6c4-b3f757e27525;Aurèle Bonnaire;yes;yes;yes;;2026-09-27;hcq_pnj_aurele,hc_dialogue,hcq_pnj;backup_2026-09-27
+2f5966f5-cfa0-4af7-b568-8c44463db60c;Aurèle Veyrane;yes;yes;yes;yes;2026-09-22;npc_aurele_veyrane;log_2026-09-30
+6c67c7cd-837e-4282-96df-2f4964a9aea0;Automate I;;yes;yes;yes;2026-09-22;;log_2026-09-30
+021541e4-c064-4a53-9102-570db81215ad;Bandit;;yes;yes;yes;2026-09-22;;log_2026-09-30
+2e001c3b-c151-4d17-bdf6-b9501355eadc;Bandit;;yes;yes;yes;2026-09-22;;log_2026-09-30
+6395a2f7-7222-4d52-9206-5aee54185ce7;Bandit;;yes;yes;yes;2026-09-22;;log_2026-09-30
+be123058-da59-47d0-84ce-9ea4554d86c0;Banquier;;yes;yes;yes;2026-09-22;;log_2026-09-30
+c823cc05-aac3-4674-b015-f9caa489985e;Bartholomé Quenaud;yes;yes;yes;;2026-09-21;hc_dialogue,hcq_pnj,hcq_pnj_bartholome;backup_2026-09-21
+8108c9ac-a722-4bc0-9e28-c171e935f04e;Bibliothécaire;;yes;yes;yes;2026-09-22;;log_2026-09-30
+edc2436e-1266-4474-bbb6-94588b6073c9;Blaise Morvan;yes;yes;yes;;2026-09-27;hc_dialogue,hcq_pnj_morvan,hcq_pnj;backup_2026-09-27
+2348ccd8-93c2-4bd0-95e0-c8d551533ff2;Boucher;;yes;yes;yes;2026-09-22;;log_2026-09-30
+6e3a163f-0970-4ab3-8e42-ab8a9c7ff9c4;Brasseur du Port;;;yes;;2026-09-22;;backup_2026-09-22
+e763bf0e-b9f4-46c8-b953-6c57c918461a;Capitaine Isaure Delmas;yes;yes;yes;;2026-09-27;hc_dialogue,hcq_pnj,hcq_pnj_isaure;backup_2026-09-27
+7b22664c-77cd-4af6-a294-151c68021841;Capitaine Loc Mesmer;;yes;yes;yes;2026-09-22;;log_2026-09-30
+75e07541-d273-4f38-8a90-ce0c62af59da;Clerc des Bordereaux;;yes;yes;yes;2026-09-22;;log_2026-09-30
+3a0830d7-f28c-4761-a9fc-0ed190f2c07e;Colin Bonnaire;yes;yes;yes;;2026-09-27;hcq_pnj_colin,hc_dialogue,hcq_pnj;backup_2026-09-27
+67127f0d-6ad8-48bf-a939-3b324dccb3e2;Colin Bonnaire;yes;yes;yes;;2026-09-21;hcq_pnj_colin,hc_dialogue,hcq_pnj;backup_2026-09-21
+57cfc655-9020-4a60-9c02-0b96aa3810c7;Colin Férand;yes;yes;yes;yes;2026-09-22;npc_colin_ferand;log_2026-09-30
+51ee7387-6cfb-4f71-8dda-7f4604045418;Commis des Messageries;;yes;yes;yes;2026-09-22;;log_2026-09-30
+5c75295d-ad71-488f-9c0c-5945751a413f;Commis du Port;;yes;yes;yes;2026-09-22;;log_2026-09-30
+c892a81a-ed5f-4b99-af4b-3b376bdd02a6;Cornelius Van Ravensmoke;;yes;yes;yes;;;log_2026-09-30
+53714115-082f-4491-b064-87aceba01b7a;Corvin Nautilus;;yes;yes;yes;2026-09-22;;log_2026-09-30
+2a5e3100-3f2e-4a7f-953b-1794186a541f;Dame Hersende Malaury;yes;yes;yes;;2026-09-27;hc_dialogue,hcq_pnj_hersende,hcq_pnj;backup_2026-09-27
+b2002663-ee73-4afd-a6ee-a6ca7f599491;Dame Yselle de Verceuil;;yes;yes;yes;;;log_2026-09-30
+6cbd99d9-a883-44ff-9066-ca4ddd9d004f;Dame Éléonore de Vaudrec;yes;yes;yes;yes;2026-09-22;;log_2026-09-30
+4391d950-168f-4c3c-9002-c59f08250455;Débardeur des Quais;;yes;yes;yes;2026-09-22;;log_2026-09-30
+d5aec807-afee-49fc-8085-3be7277500bd;Elias Ferbois;yes;yes;yes;yes;;;log_2026-09-30
+290ea879-3b62-4942-90e3-0aec4ed415ca;Employé de la Banque;;yes;yes;yes;2026-09-22;;log_2026-09-30
+e86c8be9-a840-47ae-b66b-ed6d2d425fba;Enfant;;yes;yes;yes;;;log_2026-09-30
+6b3afc40-97f5-4ca6-bfcb-5ba0d2eb9c71;Ewen Tanguy;yes;yes;yes;;2026-09-27;hcq_pnj_tanguy,hc_dialogue,hcq_pnj;backup_2026-09-27
+8a620dfe-15bb-48ee-8d9e-ac5ab75071a0;Fernand Trois-Dents;;;yes;;2026-09-22;;backup_2026-09-22
+1cc0e49b-e8ad-43a5-bb3b-8168592c8dee;Fier Agriculteur;;yes;yes;yes;2026-09-22;;log_2026-09-30
+0ab8fb3f-86d6-4a75-aa21-923946466e65;Garde des Profondeurs;;yes;yes;yes;2026-09-22;;log_2026-09-30
+0e24fae5-18ed-41a8-8669-a5d93a6147e0;Garde des Profondeurs;;yes;yes;yes;2026-09-22;;log_2026-09-30
+2029e18e-c143-4f15-a46e-cc245827ae5c;Garde des Profondeurs;;yes;yes;yes;2026-09-22;;log_2026-09-30
+28aa95ea-541e-4cdb-bf5a-f010e268db54;Garde des Profondeurs;;yes;yes;yes;2026-09-22;;log_2026-09-30
+299e0bdb-033d-4bf3-b26e-8701233e8958;Garde des Profondeurs;;yes;yes;yes;2026-09-22;;log_2026-09-30
+2dfab796-78fa-44b3-96c6-850b09449247;Garde des Profondeurs;;yes;yes;yes;2026-09-22;;log_2026-09-30
+3af56bc5-7dcb-4a16-8044-1de44c7b4aba;Garde des Profondeurs;;yes;yes;yes;2026-09-22;;log_2026-09-30

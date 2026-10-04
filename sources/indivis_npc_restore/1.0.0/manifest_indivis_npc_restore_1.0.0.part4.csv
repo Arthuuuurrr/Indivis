@@ -1,0 +1,55 @@
+uuid;name;story;safe;all_known;seen_2026_09_30;latest_backup_date;tags;source
+f3b7a270-a2f6-4d3c-b40b-99cc75463f2b;Lanterne;;yes;yes;yes;2026-09-22;;log_2026-09-30
+f63487d4-4e86-4cd5-bc68-51860af41d2d;Lanterne;;yes;yes;yes;2026-09-22;;log_2026-09-30
+29527e21-4d01-46d8-8f8c-f8b01d48ec5d;Leovic;yes;yes;yes;;2026-09-22;npc_leovic_registre_port;backup_2026-09-22
+4e37dc47-9350-47f8-812a-d274c93c2d1f;Libraire;;yes;yes;yes;2026-09-22;;log_2026-09-30
+e6013c08-6964-463e-8c09-97482a4631ed;Lysandre;yes;yes;yes;;2026-09-22;;backup_2026-09-22
+c0b05b49-b2ef-4c73-ae0a-e0f4ff896baf;Magistrat des Profondeurs;;yes;yes;yes;2026-09-22;;log_2026-09-30
+7e22d1dc-c641-4cdd-91e6-5e96a522d321;Magistrat du Port;;yes;yes;yes;2026-09-22;;log_2026-09-30
+15f8b5cb-e0d4-4daa-a598-d1b4d214ca92;Mannequin;;yes;yes;yes;;;log_2026-09-30
+43bf27ba-903e-4aa1-9fbc-df06df0493d2;Mannequin;;yes;yes;yes;;;log_2026-09-30
+722c89d8-cc96-4b66-bea0-cf7e96c1f921;Mannequin;;yes;yes;yes;;;log_2026-09-30
+73491627-2b96-477c-9a04-4e28b1fc27aa;Mannequin;;yes;yes;yes;;;log_2026-09-30
+8b5254d7-0633-45a8-9106-68ca91ca859d;Mannequin;;yes;yes;yes;;;log_2026-09-30
+9b3218a9-6aab-434c-9c1b-d1576e10f068;Mannequin;;yes;yes;yes;;;log_2026-09-30
+9c3dd030-8702-4eb2-8ce8-360e09ef8f83;Mannequin;;yes;yes;yes;;;log_2026-09-30
+ab01aa20-743a-4c1e-8527-bd85124dcaa1;Mannequin;;yes;yes;yes;;;log_2026-09-30
+e7e136f7-3acd-4f47-82a6-3939335deb70;Mannequin;;yes;yes;yes;;;log_2026-09-30
+e8cac15e-63b3-42cd-8fdd-75de3d523ac6;Mannequin;;yes;yes;yes;;;log_2026-09-30
+83ca22c9-52c6-4f25-8227-c6f8f42b6390;Marchand;;yes;yes;yes;2026-09-22;;log_2026-09-30
+afc806fc-b266-4de8-ae6d-d1f9dcb7f242;Marchand;;yes;yes;yes;2026-09-22;;log_2026-09-30
+a29cd3e8-e84c-4122-ad2b-f139a7517fd9;Marchand d'Artefacts;;;yes;;2026-09-22;;backup_2026-09-22
+80ac53b8-c457-492c-8b3b-b2116cdc108e;Marinière des Quais;;yes;yes;yes;2026-09-22;;log_2026-09-30
+969bc6b2-330d-4f89-bc05-9edf81ad3a11;Maëlle Ravenel;yes;yes;yes;;2026-09-27;hc_dialogue,hcq_pnj_maelle,hcq_pnj;backup_2026-09-27
+6cecb9e4-c1f9-4d91-8ac5-c1d047301a8d;Maître d'écurie;yes;yes;yes;;2026-09-29;hcq_pnj_ecurie,hc_dialogue,hcq_pnj;backup_2026-09-29
+3c32e567-aeb6-4029-b7fd-bcd7df9f412e;Maître Lucain Perrin;;yes;yes;yes;2026-09-22;;log_2026-09-30
+56bd5ec5-3df1-4dc3-b89f-702bdcf3d245;Mira;yes;yes;yes;yes;2026-09-22;npc_mira_q01;log_2026-09-30
+37d1b401-ea5a-4928-812e-26a885b7b36d;Odon de Varenne;;yes;yes;yes;2026-09-22;;log_2026-09-30
+1f549876-97f7-4a61-8e0c-893f82d35cb4;Pipin Soupape;;;yes;;2026-09-22;;backup_2026-09-22
+74ba290e-7a4d-4b31-9fd4-3388819f51ad;PNJ Basique;;yes;yes;yes;2026-09-22;;log_2026-09-30
+93b2137b-762c-408c-8921-9b7548505955;PNJ Basique;;yes;yes;yes;2026-09-22;;log_2026-09-30
+a0ed772f-1f85-49bb-9a73-020886f32a76;Prince de .....;;;yes;;2026-09-22;;backup_2026-09-22
+7d3c5e56-04d5-416d-ab57-1ec46710ba2e;Relais Énergetique;;yes;yes;yes;2026-09-22;;log_2026-09-30
+cc77f241-e2ae-45d2-a4fd-c08c9920e240;Relais Énergetique;;yes;yes;yes;2026-09-22;;log_2026-09-30
+e4cba07b-70f6-4f43-b7eb-d6adfa5079e5;Relais Énergetique;;yes;yes;yes;2026-09-22;;log_2026-09-30
+16d2f319-eef4-4421-b337-d4bf1dc945ff;Riche;;yes;yes;yes;;;log_2026-09-30
+1bb7f8af-8e95-42c4-a448-145a8f4746d9;Riche;;yes;yes;yes;2026-09-22;;log_2026-09-30
+34451e82-aacd-4512-9591-fe2ea5dddd65;Riche;;yes;yes;yes;;;log_2026-09-30
+44b3b5bc-272e-450a-92d4-03f77beb1c3c;Riche;;yes;yes;yes;;;log_2026-09-30
+656003c0-8583-40fb-84f4-ae35ff2895ac;Riche;;yes;yes;yes;2026-09-22;;log_2026-09-30
+6d39a1fe-0198-4281-bcb6-29f724874d25;Riche;;yes;yes;yes;2026-09-22;;log_2026-09-30
+72b2a584-d25d-4c00-9dcc-286ff6d476da;Riche;;yes;yes;yes;;;log_2026-09-30
+7a0b2785-6345-47ce-b762-44326549d77b;Riche;;yes;yes;yes;;;log_2026-09-30
+916899c8-251f-46b4-b0da-60ad20a65ba5;Riche;;yes;yes;yes;;;log_2026-09-30
+b2694e19-60cb-4c3e-8566-160d951b749c;Riche;;yes;yes;yes;2026-09-22;;log_2026-09-30
+fdaf9e9f-5df5-44be-8368-7cf3c0e5b780;RICHE;;yes;yes;yes;2026-09-22;;log_2026-09-30
+df7d9b75-fdf5-4bcd-9468-96cadf7c542b;Roch Vallet;yes;yes;yes;yes;2026-09-22;npc_roch_vallet;log_2026-09-30
+0bca299f-6cf3-4c7a-a3a9-fea4541d1404;Rosalinde Vauquelin;yes;yes;yes;;2026-09-27;hcq_pnj_rosalinde,hc_dialogue,hcq_pnj;backup_2026-09-27
+77098610-9041-4868-a04f-ae35e7b5acec;Technicienne du Coeur;;yes;yes;yes;2026-09-22;;log_2026-09-30
+a7d5052b-5624-4d28-9ee9-3a97763fd4c4;Tenancier;;yes;yes;yes;2026-09-22;;log_2026-09-30
+7d8f939e-3cee-44c7-8f8c-eabcad36c63e;Tobie Lescure;yes;yes;yes;;2026-09-27;hc_dialogue,hcq_pnj_tobie,hcq_pnj;backup_2026-09-27
+6a4b6605-6e2e-4949-baa5-290473d2931c;Unnamed Preset;;;yes;;2026-09-22;;backup_2026-09-22
+6b204435-7ff9-424f-9015-2b78a8cf4485;Unnamed Preset;;;yes;;2026-09-21;;backup_2026-09-21
+4c437906-a865-4365-8702-d2d31134e54d;Veilleuse des Profondeurs;;yes;yes;yes;2026-09-22;;log_2026-09-30
+97e84184-2bfa-4f81-8684-000b57958492;Vieux Bastien;;;yes;;2026-09-27;;backup_2026-09-27
+0c5a8616-91e8-4ef6-9c59-cd391925bca9;Vétéran du Coeur;;yes;yes;yes;2026-09-22;;log_2026-09-30
