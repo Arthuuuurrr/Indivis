@@ -1,0 +1,50 @@
+name: Build Capitale Heraldry 0.1.11
+on:
+  push:
+    branches:
+      - build/capitale-heraldry-0.1.11
+    paths:
+      - "dev/capitale_heraldry/**"
+      - ".github/workflows/capitale-heraldry-build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Validate source presence
+        shell: bash
+        run: |
+          test -f dev/capitale_heraldry/gradlew || { echo "::error::Sources du mod manquantes : dev/capitale_heraldry/gradlew"; exit 1; }
+          test -f dev/capitale_heraldry/src/main/java/fr/hautecapitale/heraldry/CapitaleHeraldry.java || { echo "::error::Le code Java du mod est absent."; exit 1; }
+      - name: Build Fabric mod
+        working-directory: dev/capitale_heraldry
+        shell: bash
+        run: |
+          chmod +x gradlew
+          ./gradlew clean remapJar --no-daemon --stacktrace
+      - name: Check built JAR
+        working-directory: dev/capitale_heraldry
+        shell: bash
+        run: |
+          ls -lah build/libs
+          find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*sources*' ! -name '*dev*' -print -quit | grep -q .
+      - name: Publish build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: capitale-heraldry-0.1.11-fabric-1.21.11
+          path: dev/capitale_heraldry/build/libs/*.jar
+          if-no-files-found: error
+          retention-days: 30
