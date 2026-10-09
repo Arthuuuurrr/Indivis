@@ -1,0 +1,105 @@
+name: Build Capitale Heraldry 0.1.11
+
+on:
+  push:
+    branches:
+      - build/capitale-heraldry-0.1.11
+    paths:
+      - 'heraldry-build/**'
+      - '.github/workflows/build-capitale-heraldry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout project transfer
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Verify transfer archive and restore source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p heraldry_source
+          cat heraldry-build/v0.1.11/source/part-*.bin > /tmp/capitale_heraldry_0.1.11_build.zip
+          echo "0b834bbf6c320d16084e114a1c014b2c71fe8ed83e4f62c8dcbef637bed33d4d  /tmp/capitale_heraldry_0.1.11_build.zip" | sha256sum -c -
+          unzip -q /tmp/capitale_heraldry_0.1.11_build.zip -d heraldry_source
+          test -f heraldry_source/build.gradle
+          test -f heraldry_source/src/main/resources/fabric.mod.json
+          echo "Archive restored successfully."
+
+      - name: Reproduce identical item textures
+        shell: bash
+        run: |
+          set -euo pipefail
+          TEX=heraldry_source/src/main/resources/assets/capitale_heraldry/textures
+          mkdir -p "$TEX/item"
+          cp "$TEX/banner/"*.png "$TEX/item/"
+          python3 - <<'PY'
+          import pathlib, hashlib, struct
+          base = pathlib.Path("heraldry_source/src/main/resources/assets/capitale_heraldry/textures")
+          banners = sorted((base/"banner").glob("*.png"))
+          assert len(banners) == 17, f"Expected 17 designs, got {len(banners)}"
+          for p in banners:
+              raw = p.read_bytes()
+              assert raw[:8] == b"\x89PNG\r\n\x1a\n", p
+              w,h = struct.unpack(">II", raw[16:24])
+              assert (w,h) == (2048,2048), (p,w,h)
+              assert hashlib.sha256(raw).digest() == hashlib.sha256((base/"item"/p.name).read_bytes()).digest()
+          print("Verified 17 banners and 17 identical item textures.")
+          PY
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle 9.5.0
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 9.5.0
+          cache-read-only: false
+
+      - name: Compile Fabric 1.21.11 mod
+        working-directory: heraldry_source
+        run: gradle --no-daemon clean build --stacktrace
+
+      - name: Identify and validate runnable JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p heraldry_dist
+          mapfile -t jars < <(find heraldry_source/build/libs -maxdepth 1 -name 'capitale_heraldry-*.jar' ! -name '*-sources.jar' ! -name '*-dev.jar' | sort)
+          if [ "${#jars[@]}" -ne 1 ]; then
+            echo "Expected exactly one remapped runtime JAR; found ${#jars[@]}."
+            ls -lah heraldry_source/build/libs || true
+            exit 1
+          fi
+          cp "${jars[0]}" "heraldry_dist/capitale_heraldry-0.1.11+1.21.11.jar"
+          unzip -tq "heraldry_dist/capitale_heraldry-0.1.11+1.21.11.jar"
+          sha256sum heraldry_dist/*.jar | tee heraldry_dist/SHA256SUMS.txt
+
+      - name: Upload compilable JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: capitale_heraldry-0.1.11-fabric-1.21.11
+          path: heraldry_dist/
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Upload build diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: capitale_heraldry-0.1.11-build-diagnostics
+          path: |
+            heraldry_source/build/reports/
+            heraldry_source/build/tmp/
+          if-no-files-found: ignore
