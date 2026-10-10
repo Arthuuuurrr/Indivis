@@ -1,0 +1,1 @@
+BYTECODE32_PASS preserved_methods=57 hooks=3 world_clipping_and_old_first_person_oracle_unchanged=true

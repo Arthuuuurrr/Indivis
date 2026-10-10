@@ -1,0 +1,54 @@
+[13:17:30] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 1 model=2092215561 [missing-world-state]
+[13:17:32] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=0 sample=5 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:32] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=0 sample=10 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:33] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=0 sample=15 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:35] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=1 sample=5 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:35] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=1 sample=10 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:36] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=1 sample=15 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:37] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=2 sample=5 {playerCalls=4, previewCalls=0, firstPersonCalls=0, applyCount=4, recomputeCount=2, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:37] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=2 sample=10 {playerCalls=4, previewCalls=0, firstPersonCalls=0, applyCount=4, recomputeCount=2, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:38] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=2 sample=15 {playerCalls=4, previewCalls=0, firstPersonCalls=0, applyCount=4, recomputeCount=2, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:39] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=3 sample=5 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:40] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=3 sample=10 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:40] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=3 sample=15 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:41] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 2 model=2092215561 [template:4, template:5]
+[13:17:41] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=4 sample=5 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:42] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=4 sample=10 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:42] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=4 sample=15 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:44] [Render thread/INFO]: [STDOUT]: PRE30_ACTUAL_RESOURCE_RELOAD_START
+[13:17:47] [Render thread/INFO]: [STDOUT]: PRE30_ACTUAL_RESOURCE_RELOAD_DONE
+[13:17:48] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=5 sample=5 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:48] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=5 sample=10 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:49] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=5 sample=15 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:50] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 3 model=1968710694 [template:4, template:5]
+[13:17:50] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=6 sample=5 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:50] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=6 sample=10 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:51] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=6 sample=15 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:52] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=7 sample=5 {playerCalls=0, previewCalls=0, firstPersonCalls=0, applyCount=0, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:53] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=7 sample=10 {playerCalls=0, previewCalls=0, firstPersonCalls=0, applyCount=0, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:53] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=7 sample=15 {playerCalls=0, previewCalls=0, firstPersonCalls=0, applyCount=0, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:55] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 4 model=1968710694 [template:4, template:5]
+[13:17:55] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 5 model=1968710694 [template:4, template:5]
+[13:17:55] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 6 model=1968710694 [template:4, template:5]
+[13:17:55] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 7 model=1968710694 [template:4, template:5]
+[13:17:55] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 8 model=1968710694 [template:4, template:5]
+[13:17:55] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 9 model=1968710694 [template:4, template:5]
+[13:17:55] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=8 sample=5 {playerCalls=1, previewCalls=0, firstPersonCalls=1, applyCount=2, recomputeCount=2, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:55] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 10 model=1968710694 [template:4, template:5]
+[13:17:55] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 11 model=1968710694 [template:4, template:5]
+[13:17:55] [Render thread/INFO]: [STDOUT]: PRE32_BASELINE_HAND_INVALIDATION 12 model=1968710694 [template:4, template:5]
+[13:17:56] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=8 sample=10 {playerCalls=1, previewCalls=0, firstPersonCalls=1, applyCount=2, recomputeCount=2, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:56] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=8 sample=15 {playerCalls=1, previewCalls=0, firstPersonCalls=1, applyCount=2, recomputeCount=2, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:58] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=9 sample=5 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:59] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=9 sample=10 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:17:59] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=9 sample=15 {playerCalls=0, previewCalls=0, firstPersonCalls=1, applyCount=1, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:18:00] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=10 sample=5 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:18:01] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=10 sample=10 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:18:01] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=10 sample=15 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:18:02] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=11 sample=5 {playerCalls=0, previewCalls=0, firstPersonCalls=2, applyCount=2, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:18:03] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=11 sample=10 {playerCalls=0, previewCalls=0, firstPersonCalls=2, applyCount=2, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:18:03] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=11 sample=15 {playerCalls=0, previewCalls=0, firstPersonCalls=2, applyCount=2, recomputeCount=0, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:18:05] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=12 sample=5 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:18:05] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=12 sample=10 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:18:06] [Render thread/INFO]: [STDOUT]: PRE32_FRAME_COUNTS scene=12 sample=15 {playerCalls=2, previewCalls=0, firstPersonCalls=0, applyCount=2, recomputeCount=1, methodResolutionScans=0, fieldHierarchyScans=0}
+[13:18:07] [Render thread/INFO]: [STDOUT]: PRE32_WORLD_PASS checks=78 frames=454 diagnostics={enabled=1, methodHits=21107, methodMisses=27, methodResolutionScans=27, fieldHits=38560, fieldMisses=41, fieldHierarchyScans=50, playerCalls=493, previewCalls=0, firstPersonCalls=275, applyCount=768, applyNanos=7854142534, applyMaxNanos=383164219, recomputeCount=275, recomputeNanos=7756351664, recomputeMaxNanos=362368483, activeModelStates=1}

@@ -1,0 +1,15 @@
+{
+  "base_sha256": "d0d725337353dcc7328b86a46ace83ca82b66b7680416a8b555900de764fe203",
+  "candidate_sha256": "203fb5e54098836c34a375723a8ce234c5aa884739f4a41113120db5a5465032",
+  "patch_sha256": "1b0b257a1dea04e9bd6e05273d1d56950f716ab114f94ee9a9fae408443e1be0",
+  "patch_entries": {
+    "net/tompsen/nexuscharacters/FirstPersonSurfaceSupport$Arm.class": "7e49628b3421820330b0f0b71ced3d42b7d4da897236d29e9fcf2d7f6e04c4df",
+    "net/tompsen/nexuscharacters/FirstPersonSurfaceSupport$Prepared.class": "14dc2caaa64723b6319338a3214d7a471ad4319392a010f0e302f20b5b8bec22",
+    "net/tompsen/nexuscharacters/FirstPersonSurfaceSupport$State.class": "e67ddc6c3cfb5caaeb0879e00f65cd74ade122228a69285d2fbe98e5584c215c",
+    "net/tompsen/nexuscharacters/FirstPersonSurfaceSupport.class": "dccbf46b0d42a207016c06e254b60b11d6a8251038618e46cafddaa365d37fd9",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class": "9be092afbbf445fc45f5c633f988d51f92f31cccbd160da54613a3bbf9b15960",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class": "d73bef29b006af71afaaeabbc41af3fc7d0638928a1743fe0e1dcb2bef552712"
+  },
+  "version": "1.0.0-beta.32+indivis.1.21.11",
+  "description": "Indivis PRE32: independent per-arm first-person 3D surface cache; unchanged world geometry."
+}

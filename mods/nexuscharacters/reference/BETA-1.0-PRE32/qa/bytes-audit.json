@@ -1,0 +1,19 @@
+{
+  "base_sha256": "d0d725337353dcc7328b86a46ace83ca82b66b7680416a8b555900de764fe203",
+  "candidate_sha256": "203fb5e54098836c34a375723a8ce234c5aa884739f4a41113120db5a5465032",
+  "size_bytes": 28160436,
+  "unchanged_entries": 5210,
+  "unchanged_assets": 4966,
+  "changed": [
+    "fabric.mod.json",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class"
+  ],
+  "added": [
+    "net/tompsen/nexuscharacters/FirstPersonSurfaceSupport$Arm.class",
+    "net/tompsen/nexuscharacters/FirstPersonSurfaceSupport$Prepared.class",
+    "net/tompsen/nexuscharacters/FirstPersonSurfaceSupport$State.class",
+    "net/tompsen/nexuscharacters/FirstPersonSurfaceSupport.class"
+  ],
+  "removed": []
+}
