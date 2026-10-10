@@ -1,0 +1,11 @@
+baseline.log: [10:49:50] [Render thread/INFO]: [STDOUT]: PRE30_RENDER_PASS checks=893 geometry_states=320 recompute=11902
+baseline.log: [10:49:50] [Render thread/INFO]: [STDOUT]: PRE30_MENU_PASS captures=23 checks=688
+render.log: [10:51:41] [Render thread/INFO]: [STDOUT]: PRE30_RENDER_PASS checks=2337 geometry_states=320 recompute=11902
+render.log: [10:51:41] [Render thread/INFO]: [STDOUT]: PRE30_MENU_PASS captures=23 checks=688
+future.log: [10:52:26] [Render thread/INFO]: [STDOUT]: PRE30_FUTURE_ASSETS_PASS checks=19 hair=930 beard=930 outfit=930 body=2 classic+slim
+world.log: [10:56:28] [Render thread/INFO]: [STDOUT]: PRE30_ACTUAL_RESOURCE_RELOAD_DONE
+world.log: [10:56:33] [Render thread/INFO]: [STDOUT]: PRE31_WORLD_PASS checks=52 frames=346 diagnostics={enabled=1, methodHits=4503, methodMisses=27, methodResolutionScans=27, fieldHits=30431, fieldMisses=39, fieldHierarchyScans=48, playerCalls=422, previewCalls=0, firstPersonCalls=226, applyCount=648, applyNanos=4889682522, applyMaxNanos=303023599, recomputeCount=158, recomputeNanos=4827471977, recomputeMaxNanos=296442601, activeModelStates=1}
+steady-baseline.log: [10:54:44] [Render thread/INFO]: [STDOUT]: STEADY_PASS warmup=100000 samples=9 iterations=20000
+steady-baseline.log: [10:54:44] [Render thread/INFO]: [STDOUT]: PRE30_MENU_PASS captures=1 checks=31
+steady-candidate.log: [10:55:26] [Render thread/INFO]: [STDOUT]: STEADY_PASS warmup=100000 samples=9 iterations=20000
+steady-candidate.log: [10:55:26] [Render thread/INFO]: [STDOUT]: PRE30_MENU_PASS captures=1 checks=31
