@@ -1,0 +1,188 @@
+{
+  "geometry": {
+    "geometry.csv": {
+      "identical": true,
+      "states": 320,
+      "sha256": "523cd6cba01950fd8f081092c32cca9e16b66353d867953ddab8764587d7e2aa"
+    },
+    "pose-geometry.csv": {
+      "identical": true,
+      "states": 91,
+      "sha256": "c945e524b51ad6b04667dff1e64266e327400334d2c650949b473587ad776376"
+    }
+  },
+  "menu_images": {
+    "menu-00.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-01.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-02.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-03.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-04.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-05.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-06.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-07.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-08.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-09.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-10.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-11.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-12.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-13.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-14.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-15.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-16.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-17.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-18.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-19.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-20.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-21.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu-22.png": {
+      "identical_pixels": true,
+      "size": [
+        1920,
+        1080
+      ]
+    }
+  },
+  "world": {
+    "baseline-world-evidence": {
+      "pass": "PRE33_WORLD_PASS checks=138 frames=593 diagnostics={enabled=1, methodHits=11681, methodMisses=27, methodResolutionScans=27, fieldHits=39497, fieldMisses=42, fieldHierarchyScans=51, playerCalls=670, previewCalls=0, firstPersonCalls=314, applyCount=675, applyNanos=9063175210, applyMaxNanos=375864776, recomputeCount=327, recomputeNanos=9005407247, recomputeMaxNanos=364112080, activeModelStates=1}",
+      "uncached_clipping_matches": 5
+    },
+    "world-evidence": {
+      "pass": "PRE33_WORLD_PASS checks=138 frames=560 diagnostics={enabled=1, methodHits=13545, methodMisses=27, methodResolutionScans=27, fieldHits=64689, fieldMisses=42, fieldHierarchyScans=51, playerCalls=687, previewCalls=0, firstPersonCalls=293, applyCount=692, applyNanos=8971757085, applyMaxNanos=395329219, recomputeCount=329, recomputeNanos=8856139159, recomputeMaxNanos=384682247, activeModelStates=1} hands=293 prepared=3 hits=290",
+      "uncached_clipping_matches": 5
+    }
+  },
+  "future_assets": "PRE30_FUTURE_ASSETS_PASS checks=23 hair=930 beard=930 outfit=930 body=2 classic+slim"
+}

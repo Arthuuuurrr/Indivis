@@ -1,0 +1,12 @@
+{
+  "base_sha256": "f12179dd3f10d6870d28ad864e01f0e16bd5c9ef5156a346c77f3e10809de145",
+  "candidate_sha256": "ad50aa33f2767be60ff517d7c7b965961c4392dae29a13c03b3ea5404ee6adab",
+  "patch_sha256": "3786aca13d866fe4de8e4f379c675aae19b2a82abbea319828170024fcfbffe6",
+  "patch_entries": {
+    "fr/arthur/capitale/rphud/CapitaleRpHudClient.class": "b4cb08d96ce22ca3bf34f299f50910e40a9bae6f0bcfd82a8c6b66bc41e00e4a",
+    "fr/arthur/capitale/rphud/NoArgMethodCache$1.class": "a3ba3fdb888add88db663edeb2e942c9ea3f2853d4e2d30d9b63addccc1cc540",
+    "fr/arthur/capitale/rphud/NoArgMethodCache.class": "13fd2bb0bb2f5952159df8fb10378904680427a4b431c76c7710d023d30fff1c"
+  },
+  "version": "1.3.3-beta.1+race-health-modifier-compat.opt1",
+  "description": "BETA 1.3.3: race health owns MAX_HEALTH base only; equipment/effect modifiers and health above the racial base are preserved. Keeps 1.3.2 Nexus authority and armor40 HUD fixes."
+}
