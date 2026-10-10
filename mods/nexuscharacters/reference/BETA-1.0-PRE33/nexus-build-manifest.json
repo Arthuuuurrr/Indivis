@@ -1,0 +1,18 @@
+{
+  "base_sha256": "203fb5e54098836c34a375723a8ce234c5aa884739f4a41113120db5a5465032",
+  "candidate_sha256": "98bd9018e05c5cd072bf62885f58a20602e81c664551dac807e5358cb365fcc6",
+  "patch_sha256": "5e90d1e5ea7d789f7ee7446daba7d2fbad2031b48422595969ecd7328da1ffb0",
+  "patch_entries": {
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class": "a1d1cb499474c9e02ee1d3bf53d9aec2dbc103414bf5894dbb0b69563f588e3c",
+    "net/tompsen/nexuscharacters/LowerJointFieldAccess$1.class": "81bbb670a5a05b685d6fab9c76f044559c1e033fba8806573306bffa3060f6e5",
+    "net/tompsen/nexuscharacters/LowerJointFieldAccess.class": "9bc2c319ba9b67416fd3bc922e78ef8d7f8b979f0ba9e34f0d87abe210615683",
+    "net/tompsen/nexuscharacters/LowerJointSupport.class": "2eeb77001218be8afdf08e846b04d474171d1419af1fb49255d709e40b1b4d0f",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class": "c3f09162dff4b3fa94c787ea7d6706569ae704084e6a845837df1ecff72f7974",
+    "net/tompsen/nexuscharacters/PreparedSurfaceCache$Frame.class": "3f855b27adacd0ef07768735b64dfe45233ac942dd4d7839f160dd52dfa81c34",
+    "net/tompsen/nexuscharacters/PreparedSurfaceCache$Local.class": "44278bf394118fb40e2ac4d3bc42ccc21ddd82cf10c995387493028449fc2857",
+    "net/tompsen/nexuscharacters/PreparedSurfaceCache$Pool.class": "5263c1a0229105fd4e627cdb42790da923d93df25952c690778a3d4045f7e66c",
+    "net/tompsen/nexuscharacters/PreparedSurfaceCache.class": "831ef068d3bcef2222af1a7d2006d77c0925da8aeafb28d886778bfed2acfaa9"
+  },
+  "version": "1.0.0-beta.33+indivis.1.21.11",
+  "description": "Indivis PRE33: exact full-model surface reuse and cached optional field lookup."
+}

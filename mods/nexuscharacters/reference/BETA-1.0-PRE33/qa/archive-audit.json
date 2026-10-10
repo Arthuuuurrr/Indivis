@@ -1,0 +1,38 @@
+{
+  "nexus": {
+    "base_sha256": "203fb5e54098836c34a375723a8ce234c5aa884739f4a41113120db5a5465032",
+    "candidate_sha256": "98bd9018e05c5cd072bf62885f58a20602e81c664551dac807e5358cb365fcc6",
+    "identical_entries": 5213,
+    "identical_assets": 4966,
+    "changed_entries": [
+      "fabric.mod.json",
+      "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class",
+      "net/tompsen/nexuscharacters/LowerJointSupport.class",
+      "net/tompsen/nexuscharacters/PosedSurfaceSupport.class"
+    ],
+    "added_entries": [
+      "net/tompsen/nexuscharacters/LowerJointFieldAccess$1.class",
+      "net/tompsen/nexuscharacters/LowerJointFieldAccess.class",
+      "net/tompsen/nexuscharacters/PreparedSurfaceCache$Frame.class",
+      "net/tompsen/nexuscharacters/PreparedSurfaceCache$Local.class",
+      "net/tompsen/nexuscharacters/PreparedSurfaceCache$Pool.class",
+      "net/tompsen/nexuscharacters/PreparedSurfaceCache.class"
+    ],
+    "removed_entries": []
+  },
+  "hud": {
+    "base_sha256": "f12179dd3f10d6870d28ad864e01f0e16bd5c9ef5156a346c77f3e10809de145",
+    "candidate_sha256": "ad50aa33f2767be60ff517d7c7b965961c4392dae29a13c03b3ea5404ee6adab",
+    "identical_entries": 148,
+    "identical_assets": 34,
+    "changed_entries": [
+      "fabric.mod.json",
+      "fr/arthur/capitale/rphud/CapitaleRpHudClient.class"
+    ],
+    "added_entries": [
+      "fr/arthur/capitale/rphud/NoArgMethodCache$1.class",
+      "fr/arthur/capitale/rphud/NoArgMethodCache.class"
+    ],
+    "removed_entries": []
+  }
+}

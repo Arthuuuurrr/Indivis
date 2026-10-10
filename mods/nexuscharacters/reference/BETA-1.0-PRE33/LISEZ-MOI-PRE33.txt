@@ -1,0 +1,11 @@
+INDIVIS — PRE33 + HUD OPT1 — Minecraft 1.21.11 Fabric
+
+1. Remplacer le JAR NexusCharacters PRE32 par NexusCharacters-Indivis-1.21.11-BETA-1.0-PRE33.jar.
+2. Remplacer capitale_rp_hud_BETA_1_3_3_RACE_HEALTH_MODIFIER_COMPAT.jar par capitale_rp_hud_BETA_1_3_3_OPT1_1.21.11.jar sur le client.
+3. Conserver un seul JAR pour chaque mod. Les dépendances habituelles restent nécessaires.
+
+Le correctif Nexus étend la réutilisation exacte des surfaces 3D du modèle complet. Le HUD mémorise les recherches de méthodes valides et absentes. Aucun fichier de configuration supplémentaire n'est nécessaire.
+
+Les assets, le calcul des surfaces, les menus, les messages réseau et les fonctions serveur sont préservés. Le HUD côté serveur peut rester sur la 1.3.3 actuelle : les identifiants et les formats réseau sont identiques.
+
+Voir PRE33-verifications.md pour les contrôles, les mesures et leur portée. Cette archive ne contient pas le modpack de test.
