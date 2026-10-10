@@ -1,0 +1,13 @@
+{
+  "same": 5209,
+  "same_assets": 4966,
+  "changed": [
+    "fabric.mod.json",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class",
+    "net/tompsen/nexuscharacters/SurfaceGeometry.class"
+  ],
+  "added": [
+    "net/tompsen/nexuscharacters/PrimitiveSurfaceWriter.class"
+  ],
+  "removed": []
+}

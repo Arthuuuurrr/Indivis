@@ -1,0 +1,46 @@
+{
+  "baseline": {
+    "static": {
+      "cpu_ns": 3084.9689,
+      "wall_ns": 3083.6143,
+      "allocated_bytes": 0.0
+    },
+    "preview": {
+      "cpu_ns": 28572.6024,
+      "wall_ns": 28572.8595,
+      "allocated_bytes": 18992.0
+    },
+    "animated": {
+      "cpu_ns": 71984698.52,
+      "wall_ns": 73543917.83,
+      "allocated_bytes": 105348118.4
+    },
+    "first-animated": {
+      "cpu_ns": 368804.9735,
+      "wall_ns": 377898.054,
+      "allocated_bytes": 2143280.0
+    }
+  },
+  "candidate": {
+    "static": {
+      "cpu_ns": 3791.2894,
+      "wall_ns": 3789.675,
+      "allocated_bytes": 0.0
+    },
+    "preview": {
+      "cpu_ns": 29631.3402,
+      "wall_ns": 29633.2852,
+      "allocated_bytes": 18992.0
+    },
+    "animated": {
+      "cpu_ns": 71905791.35,
+      "wall_ns": 72420970.12,
+      "allocated_bytes": 101370811.52
+    },
+    "first-animated": {
+      "cpu_ns": 2514.698,
+      "wall_ns": 2514.0545,
+      "allocated_bytes": 0.0
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "base_sha256": "1c164be6dc8eef9372120ae384b65c5d2be8ebaa7fed67461b986726a5cff922",
+  "candidate_sha256": "d0d725337353dcc7328b86a46ace83ca82b66b7680416a8b555900de764fe203",
+  "patch_sha256": "5d1654add4b0fe80c1c52a2f61e0ef4c9b978499d43223bc3741b095affbb0d8",
+  "patch_entries": {
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class": "0ef849a7dd86a47de012a05317ca55edb82c82a2e5600334a8b0d9451c47b95c",
+    "net/tompsen/nexuscharacters/PrimitiveSurfaceWriter.class": "0ca9fe34b6bf7a3f7162e4509429746b8ca3062a1737bc272f48622bf8b270b3",
+    "net/tompsen/nexuscharacters/SurfaceGeometry.class": "73a12c15cd735f11b45d1f6165f8db8d7f3d1dd0efec4650032bab5d5c3748f7"
+  },
+  "version": "1.0.0-beta.31+indivis.1.21.11",
+  "description": "Indivis PRE31: primitive surface serialization and first-person local geometry reuse."
+}
