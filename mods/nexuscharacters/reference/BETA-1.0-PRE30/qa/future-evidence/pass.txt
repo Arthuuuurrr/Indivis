@@ -1,0 +1,1 @@
+PRE30_FUTURE_ASSETS_PASS checks=19 hair=930 beard=930 outfit=930 body=2 classic+slim

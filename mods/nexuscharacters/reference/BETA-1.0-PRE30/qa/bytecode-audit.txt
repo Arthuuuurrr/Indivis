@@ -1,0 +1,1 @@
+BYTECODE_PASS unchangedMethods=59 including SurfaceGeometry math, PRE29 legacy lookup and mesh clear
