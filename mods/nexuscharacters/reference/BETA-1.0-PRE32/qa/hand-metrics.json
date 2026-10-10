@@ -1,0 +1,56 @@
+{
+  "baseline": {
+    "eight-arm-relative-poses": {
+      "cpu_ns": 5615248.21875,
+      "wall_ns": 5682786.5,
+      "allocated_bytes": 8707141.0
+    },
+    "non-arm-relative-change": {
+      "cpu_ns": 45585727.84375,
+      "wall_ns": 46691828.40625,
+      "allocated_bytes": 64581755.75
+    },
+    "unique-arm-relative-change": {
+      "cpu_ns": 6631944.84375,
+      "wall_ns": 6676046.71875,
+      "allocated_bytes": 8670456.25
+    },
+    "warm-arm": {
+      "cpu_ns": 3420.9429,
+      "wall_ns": 3420.9765,
+      "allocated_bytes": 0.0
+    },
+    "world-model-clear": {
+      "cpu_ns": 57006806.8125,
+      "wall_ns": 58512357.96875,
+      "allocated_bytes": 79439360.0
+    }
+  },
+  "candidate": {
+    "eight-arm-relative-poses": {
+      "cpu_ns": 2780.6875,
+      "wall_ns": 2771.59375,
+      "allocated_bytes": 0.0
+    },
+    "non-arm-relative-change": {
+      "cpu_ns": 1214.625,
+      "wall_ns": 1173.3125,
+      "allocated_bytes": 0.0
+    },
+    "unique-arm-relative-change": {
+      "cpu_ns": 7210631.09375,
+      "wall_ns": 7911065.6875,
+      "allocated_bytes": 8526088.25
+    },
+    "warm-arm": {
+      "cpu_ns": 2361.9733,
+      "wall_ns": 3268.2795,
+      "allocated_bytes": 0.0
+    },
+    "world-model-clear": {
+      "cpu_ns": 1662.78125,
+      "wall_ns": 1667.46875,
+      "allocated_bytes": 0.0
+    }
+  }
+}
