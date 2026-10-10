@@ -1,0 +1,21 @@
+{
+  "base_sha256": "b09135fd42719bcf0e4753db22615db3bce4c8ff31783ff01a5ad8fdf202e96c",
+  "candidate_sha256": "1c164be6dc8eef9372120ae384b65c5d2be8ebaa7fed67461b986726a5cff922",
+  "unchanged_asset_entries": 4966,
+  "changed_entries": [
+    "fabric.mod.json",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport$State.class",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class",
+    "net/tompsen/nexuscharacters/SurfaceGeometry.class"
+  ],
+  "added_entries": [
+    "net/tompsen/nexuscharacters/PoseScratch$Workspace.class",
+    "net/tompsen/nexuscharacters/PoseScratch.class",
+    "net/tompsen/nexuscharacters/Pre30Diagnostics.class",
+    "net/tompsen/nexuscharacters/ReflectionAccess$1.class",
+    "net/tompsen/nexuscharacters/ReflectionAccess$Members.class",
+    "net/tompsen/nexuscharacters/ReflectionAccess.class"
+  ],
+  "unchanged_entries": 5201
+}

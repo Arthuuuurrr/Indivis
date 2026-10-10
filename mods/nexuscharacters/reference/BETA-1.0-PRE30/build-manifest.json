@@ -1,0 +1,17 @@
+{
+  "base_sha256": "b09135fd42719bcf0e4753db22615db3bce4c8ff31783ff01a5ad8fdf202e96c",
+  "candidate_sha256": "1c164be6dc8eef9372120ae384b65c5d2be8ebaa7fed67461b986726a5cff922",
+  "compiled_archive_sha256": "e469eb03fecb78ac043fbe525752e1ff632ce11de725beafc02abb5a038f0684",
+  "class_sha256": {
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class": "f7b141f26cadc5fe802fd5e137835af7168b2e6fb1935b3f0aa42c3a621f7a8f",
+    "net/tompsen/nexuscharacters/PoseScratch$Workspace.class": "2ba06dbdd070eeeda7a5a4e9a7a90771950b7e28197c9aacc53b20b89a23ee23",
+    "net/tompsen/nexuscharacters/PoseScratch.class": "d1d0cdb35bc214573bc2a8121a40d5ca5e8764d3cfdba6a64f38d3675516f6ba",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport$State.class": "6add545954de47b1ad814d0a8775924821127b3b4d1b10c48b6b1c2265ab40ea",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class": "0dc69e2c8820a43279937a7924a892595713896597818de537d498dcc147ba5b",
+    "net/tompsen/nexuscharacters/Pre30Diagnostics.class": "3d7fb7b3e0ba8b73280440612b668392af93a077bdcc133709f94d03b7745b31",
+    "net/tompsen/nexuscharacters/ReflectionAccess$1.class": "152fa1218e6dc43474ad7d3345e23130e2af39943a685776426d81b225e6d40d",
+    "net/tompsen/nexuscharacters/ReflectionAccess$Members.class": "984c824d5401633df193445de9941a8787fab010a9fd8a6884c0819d1a5bfb1b",
+    "net/tompsen/nexuscharacters/ReflectionAccess.class": "21bc5bb753c0e834be5748076ad86411640c2458afa5ae746e39d76a8f70fa57",
+    "net/tompsen/nexuscharacters/SurfaceGeometry.class": "4c231ad72e1f200629de669e00c4644abd0052c71190f6c2e6cb6f962f0de54f"
+  }
+}

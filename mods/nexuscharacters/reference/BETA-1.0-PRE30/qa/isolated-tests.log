@@ -1,0 +1,3 @@
+REFLECTION_PASS checks=50031 methodHits=50010 methodMisses=8 fieldHits=10003 fieldMisses=4
+LOADER_PASS distinctClassIdentity+classloaderGC+instanceGC
+SCRATCH_PASS checks=3001 realMinecraftTransforms=300 nonuniformScale+rotation+translation+slim+hideHead+snapshotIsolation+reentrancy+weakStateGC
