@@ -1,9 +1,9 @@
 Extrait du lancement Fabric standard local, 19/10/2026.
-Monde vide sans datapacks de quêtes, aucun joueur, pas de test audio client.
+Monde neutre sans datapacks de quêtes, aucun joueur, pas de test audio client.
 Identité du JAR Voices vérifiée identique au build livré.
 
-[04:46:05] [Server thread/INFO]: Done (3.202s)! For help, type "help"
-[04:46:05] [Server thread/INFO]: Voices : pont b10 prêt ; contrôle d'identité Nexus actif
-[04:46:05] [Server thread/INFO]: Indivis Voices prologue-fr-demo-1 : 8 prises, sans remplacement des quêtes
-[04:46:07] [Server thread/INFO]: /hcd_interpellation nearest_named <name>
-[04:46:07] [Server thread/INFO]: Stopping server
+[05:02:33] [Server thread/INFO]: Done (0.403s)! For help, type "help"
+[05:02:34] [Server thread/INFO]: Voices : pont b10 prêt ; contrôle d'identité Nexus actif
+[05:02:34] [Server thread/INFO]: Indivis Voices prologue-fr-demo-1 : 8 prises, sans remplacement des quêtes
+[05:02:36] [Server thread/INFO]: /hcd_interpellation nearest_named <name>
+[05:02:36] [Server thread/INFO]: Stopping server

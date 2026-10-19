@@ -8,7 +8,7 @@ import net.indivis.voices.IndivisVoices;
 
 final class VoiceOptions {
     boolean enabled = true;
-    boolean subtitles = true;
+    boolean subtitles = false;
     float volume = 1;
     static final Gson JSON = new GsonBuilder().setPrettyPrinting().create();
     static final Path PATH = FabricLoader.getInstance().getConfigDir().resolve("indivis-voices.json");

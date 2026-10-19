@@ -30,8 +30,9 @@ prises OGG dans `demo-resourcepack/`. Aucun audio n'est inclus dans le JAR.
 
 Commandes client, sans privilège serveur : `/ivvoices on`, `/ivvoices off`,
 `/ivvoices volume 70`, `/ivvoices subtitles on|off`. Les sous-titres supplémentaires
-de Voices peuvent être masqués ; le texte et les choix indispensables de b10
-restent affichés. Options persistées dans `config/indivis-voices.json`.
+de Voices sont facultatifs et désactivés par défaut. Le texte et les choix de
+b10 assurent l'affichage normal pendant la voix. Options persistées dans
+`config/indivis-voices.json`.
 Le volume Voices agit par source, sans modifier les volumes des autres sons.
 Les réglages master/catégorie voix de Minecraft restent applicables.
 

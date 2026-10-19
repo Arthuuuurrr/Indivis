@@ -39,8 +39,8 @@ PRE34 ciblant un nom intermédiaire sans refmap. Cet essai ne constitue pas un
 Fabric standard, avec le namespace de production, plutôt que de modifier Nexus.
 
 Le test Fabric standard a ensuite atteint `Done` et s'est arrêté proprement
-(15.22 s pour le démarrage, les commandes de contrôle et l'arrêt). Dossier de
-test vide, écoute uniquement `127.0.0.1:25587`, aucun joueur. Pile : Voices,
+(dernier essai : 12.71 s pour le lancement, les commandes de contrôle et l'arrêt).
+Monde neutre de test, écoute uniquement `127.0.0.1:25587`, aucun joueur. Pile : Voices,
 EasyNPC Core 7.16, b10, journal b6, Nexus PRE34, RPG RC3, Spell Engine HC RC17,
 Spell Power HC RC9, Cloth Config 21.11.153, Player Animation Library
 1.1.10+mc.1.21.11, API 0.141.6 et Loader 0.19.5. Les JAR existants sont inchangés.

@@ -17,14 +17,14 @@
     "booted": true,
     "stop_sent": true,
     "exit_code": 0,
-    "elapsed_seconds": 15.22
+    "elapsed_seconds": 12.71
   },
   "gameplay_prologue_tested": false,
   "two_player_audio_tested": false,
   "fps_mspt_measured": false,
   "artifacts_sha256": {
-    "build/libs/indivis-voices-0.1.0+1.21.11.jar": "8ed89c265c70f4663c9bc3eeafb75b7f90ba8ca29a34af13cf76ae963d83ba48",
-    "build/libs/indivis-voices-0.1.0+1.21.11-sources.jar": "eca0215781087d65ade7926e3945051923c1c267bca0549f433589eff0fbe622",
+    "build/libs/indivis-voices-0.1.0+1.21.11.jar": "c412ece8d30a15064cf9c5db477641485e302276fbfc033e0aa69d3fbad76061",
+    "build/libs/indivis-voices-0.1.0+1.21.11-sources.jar": "ca5b0c95f3689f23f2163d0aa1289e313c2e46079471c01df291ff6f06581499",
     "build/distributions/indivis-voices-prologue-fr-demo-1.zip": "b232760f707fc13a0a80949e1db9accf391db723c8fc865c05aa0c4caacf8d02"
   }
 }
