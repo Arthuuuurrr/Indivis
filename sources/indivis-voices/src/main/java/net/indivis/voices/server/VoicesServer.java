@@ -6,6 +6,7 @@ import net.indivis.voices.catalog.*;
 import net.indivis.voices.compat.DialogueBridge;
 import net.indivis.voices.network.VoicePackets;
 import net.indivis.voices.session.PlaybackLease;
+import net.indivis.voices.IndivisVoices;
 import net.minecraft.scoreboard.ScoreboardObjective;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -18,6 +19,7 @@ public final class VoicesServer {
         long generation, lastHelloMs = Long.MIN_VALUE / 2;
         PlaybackLease playing;
         Pending pending;
+        boolean helloLogged;
     }
     private record Pending(VoiceLine line, DialogueBridge.Session session) {}
     private final VoiceCatalog catalog;
@@ -37,7 +39,12 @@ public final class VoicesServer {
         }
         var available = new HashSet<String>();
         for (var id : hello.available()) if (catalog.line(id) != null) available.add(id);
+        boolean changed = !state.available.equals(available);
         state.available = Set.copyOf(available);
+        if (!state.helloLogged || changed) {
+            IndivisVoices.LOG.info("Voices serveur : client {} : {}/{} prises annoncées, catalogue {}", player.getName().getString(), state.available.size(), catalog.lines().size(), catalog.revision());
+            state.helloLogged = true;
+        }
         if (state.pending != null && !state.available.contains(state.pending.line.id())) state.pending = null;
         if (state.playing != null && !state.available.contains(state.playing.line.id())) cancel(player, state, true);
     }

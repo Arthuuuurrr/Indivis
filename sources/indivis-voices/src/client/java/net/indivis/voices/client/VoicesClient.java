@@ -17,9 +17,14 @@ import net.indivis.voices.network.VoicePackets;
 import net.indivis.voices.session.PlaybackLease;
 import net.indivis.voices.client.mixin.*;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.sound.PositionedSoundInstance;
+import net.minecraft.client.sound.SoundInstance;
+import net.minecraft.client.sound.SoundSystem;
 import net.minecraft.resource.*;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.random.Random;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.*;
 
@@ -34,6 +39,10 @@ public final class VoicesClient implements ClientModInitializer {
     private NpcVoiceSound sound, fading;
     private long beganNanos;
     private boolean heard;
+    private SoundInstance preview;
+    private long previewBegan;
+    private boolean previewHeard;
+    private String lastDiagnostic = "aucune lecture demandée";
     private long lastFadeUpdate;
     private int captionWidth = -1;
     private List<net.minecraft.text.OrderedText> caption = List.of();
@@ -59,9 +68,16 @@ public final class VoicesClient implements ClientModInitializer {
                 clear(true, PlaybackLease.End.MISSING);
                 helloDirty = true;
                 // Disk reads / SHA-256 only on the worker, never in render or tick.
-                CompletableFuture.supplyAsync(() -> verify(manager)).thenAccept(lines ->
+                CompletableFuture.supplyAsync(() -> verify(manager)).exceptionally(failure -> {
+                    IndivisVoices.LOG.warn("Voices client : vérification audio impossible, chemin texte conservé", failure);
+                    return Set.of();
+                }).thenAccept(lines ->
                     MinecraftClient.getInstance().execute(() -> {
-                        if (generation == packGeneration) { available = lines; helloDirty = true; }
+                        if (generation == packGeneration) {
+                            available = lines; helloDirty = true;
+                            IndivisVoices.LOG.info("Voices client : banque {} : {}/{} prises vérifiées", IndivisVoices.CATALOG.revision(), available.size(), IndivisVoices.CATALOG.lines().size());
+                            if (available.isEmpty()) IndivisVoices.LOG.warn("Voices client : aucun audio valide chargé ; vérifier le JAR Voices ou une surcharge de ressources");
+                        }
                     }));
             }
         });
@@ -95,6 +111,7 @@ public final class VoicesClient implements ClientModInitializer {
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registry) -> {
             dispatcher.register(literal("ivvoices")
                 .executes(c -> status(c.getSource()))
+                .then(literal("test").executes(c -> preview(c.getSource())))
                 .then(literal("on").executes(c -> { options.enabled = true; changed(); return status(c.getSource()); }))
                 .then(literal("off").executes(c -> { options.enabled = false; clear(true, PlaybackLease.End.CANCEL); changed(); return status(c.getSource()); }))
                 .then(literal("volume").then(argument("percent", IntegerArgumentType.integer(0, 100)).executes(c -> {
@@ -108,17 +125,54 @@ public final class VoicesClient implements ClientModInitializer {
         });
     }
     private int status(FabricClientCommandSource source) {
+        var client = MinecraftClient.getInstance();
         source.sendFeedback(Text.literal("Indivis Voices : " + (options.enabled ? "actif" : "désactivé") +
             ", volume " + Math.round(options.volume * 100) + " %, prises vérifiées " + available.size() +
-            ". /ivvoices on|off|volume <0..100>|subtitles on|off"));
+            "/" + IndivisVoices.CATALOG.lines().size() + ", pont b10 " + (bridge.available() ? "prêt" : "indisponible") +
+            ", canal serveur " + (ClientPlayNetworking.canSend(VoicePackets.Hello.ID) ? "présent" : "absent") +
+            ", Minecraft général " + Math.round(client.options.getSoundVolume(SoundCategory.MASTER) * 100) +
+            " %, voix " + Math.round(client.options.getSoundVolume(SoundCategory.VOICE) * 100) + " %. " + lastDiagnostic +
+            ". /ivvoices test|on|off|volume <0..100>|subtitles on|off"));
         return 1;
+    }
+    /** Local audio check: no server packet, NPC, camera, scoreboard or quest action. */
+    private int preview(FabricClientCommandSource source) {
+        if (speaking() || bridge.capturing()) {
+            source.sendError(Text.literal("Fermez le dialogue avant de tester la voix.")); return 0;
+        }
+        String id = "prologue.geraud.reveil.01";
+        if (!available.contains(id) || !options.enabled || options.volume <= 0) {
+            source.sendError(Text.literal("Test indisponible : activer Voices et vérifier que la première prise est chargée. /ivvoices")); return 0;
+        }
+        var client = MinecraftClient.getInstance();
+        if (client.options.getSoundVolume(SoundCategory.MASTER) <= 0 || client.options.getSoundVolume(SoundCategory.VOICE) <= 0) {
+            source.sendError(Text.literal("Le volume général ou Narrator/Voice de Minecraft est à zéro.")); return 0;
+        }
+        stopPreview();
+        preview = new PositionedSoundInstance(Identifier.of("indivis_voices", IndivisVoices.CATALOG.line(id).sound()),
+            SoundCategory.VOICE, options.volume, 1f, Random.create(), false, 0, SoundInstance.AttenuationType.NONE, 0, 0, 0, true);
+        var result = client.getSoundManager().play(preview);
+        previewBegan = System.nanoTime(); previewHeard = false;
+        lastDiagnostic = "test audio : " + result;
+        IndivisVoices.LOG.info("Voices client : {}", lastDiagnostic);
+        if (result != SoundSystem.PlayResult.STARTED) {
+            stopPreview(); source.sendError(Text.literal(lastDiagnostic)); return 0;
+        }
+        source.sendFeedback(Text.literal("Test local : première réplique de Géraud, sans progression de quête."));
+        return 1;
+    }
+    private void stopPreview() {
+        if (preview != null) MinecraftClient.getInstance().getSoundManager().stop(preview);
+        preview = null;
     }
     private void changed() { options.save(); helloDirty = true; }
     private Set<String> verify(ResourceManager manager) {
         var verified = new HashSet<String>();
         for (var line : IndivisVoices.CATALOG.lines()) {
             var resource = manager.getResource(Identifier.of("indivis_voices", "sounds/" + line.asset()));
-            if (resource.isEmpty()) continue;
+            if (resource.isEmpty()) {
+                IndivisVoices.LOG.warn("Voices client : audio absent : {}", line.id()); continue;
+            }
             try (var stream = resource.get().getInputStream()) {
                 var hash = MessageDigest.getInstance("SHA-256");
                 byte[] buffer = new byte[16_384]; int read; long size = 0;
@@ -127,7 +181,10 @@ public final class VoicesClient implements ClientModInitializer {
                     hash.update(buffer, 0, read);
                 }
                 if (HexFormat.of().formatHex(hash.digest()).equals(line.sha256())) verified.add(line.id());
-            } catch (IOException | NoSuchAlgorithmException ignored) { /* Individual text fallback. */ }
+                else IndivisVoices.LOG.warn("Voices client : empreinte audio différente du catalogue : {}", line.id());
+            } catch (IOException | NoSuchAlgorithmException e) {
+                IndivisVoices.LOG.warn("Voices client : audio illisible : {}", line.id(), e);
+            }
         }
         return Set.copyOf(verified);
     }
@@ -136,16 +193,21 @@ public final class VoicesClient implements ClientModInitializer {
         if (epoch != null && !epoch.equals(token.epoch()) || token.generation() <= highestGeneration) return;
         epoch = token.epoch(); highestGeneration = token.generation();
         clear(false, null);
-        if (!enabled() || !available.contains(token.line()) || !bridge.matches(token.session(), packet.npc())) {
-            send(packet, PlaybackLease.End.MISSING); return;
-        }
+        if (!enabled()) { reject(packet, "voix désactivées ou pont b10 indisponible"); return; }
+        if (!available.contains(token.line())) { reject(packet, "audio absent ou empreinte différente"); return; }
+        if (!bridge.matches(token.session(), packet.npc())) { reject(packet, "session b10 différente ou inactive"); return; }
         if (!bridge.focus(IndivisVoices.CATALOG.line(token.line()), MinecraftClient.getInstance().currentScreen)) {
-            send(packet, PlaybackLease.End.MISSING); return;
+            reject(packet, "écran b10 ou réplique capturée indisponible"); return;
         }
         pending = packet;
         beginPending();
     }
     private boolean enabled() { return options.enabled && options.volume > 0 && bridge.available(); }
+    private void reject(VoicePackets.Start packet, String reason) {
+        lastDiagnostic = packet.token().line() + " : " + reason;
+        IndivisVoices.LOG.warn("Voices client : retour texte : {}", lastDiagnostic);
+        send(packet, PlaybackLease.End.MISSING);
+    }
     private boolean speaking() { return active != null || pending != null; }
     private void beginPending() {
         if (pending == null || fading != null) return;
@@ -155,10 +217,22 @@ public final class VoicesClient implements ClientModInitializer {
         sound = new NpcVoiceSound(line.sound(), active.npc(), active.entityId());
         var result = MinecraftClient.getInstance().getSoundManager().play(sound);
         beganNanos = System.nanoTime(); heard = false;
-        if (result != net.minecraft.client.sound.SoundSystem.PlayResult.STARTED) clear(true, PlaybackLease.End.MISSING);
+        lastDiagnostic = active.token().line() + " : " + result;
+        IndivisVoices.LOG.info("Voices client : lecture {}", lastDiagnostic);
+        if (result != SoundSystem.PlayResult.STARTED) clear(true, PlaybackLease.End.MISSING);
     }
     private void tick(MinecraftClient client) {
         long now = System.nanoTime();
+        if (preview != null) {
+            boolean playing = client.getSoundManager().isPlaying(preview);
+            previewHeard |= playing;
+            long elapsed = (now - previewBegan) / 1_000_000;
+            if (!playing && elapsed > 500 || elapsed > IndivisVoices.CATALOG.line("prologue.geraud.reveil.01").durationMs() + 3000L) {
+                lastDiagnostic = previewHeard ? "test audio : source terminée" : "test audio : aucune source active observée";
+                IndivisVoices.LOG.info("Voices client : {}", lastDiagnostic);
+                stopPreview();
+            }
+        }
         pumpFade();
         beginPending();
         if (helloDirty && now - lastHelloNanos > 600_000_000L && ClientPlayNetworking.canSend(VoicePackets.Hello.ID)) {
@@ -187,6 +261,7 @@ public final class VoicesClient implements ClientModInitializer {
         clear(true, PlaybackLease.End.SKIP);
     }
     private void clear(boolean notify, PlaybackLease.End reason) {
+        stopPreview();
         if (pending != null && notify && reason != null) send(pending, reason);
         pending = null;
         if (active != null && notify && reason != null) send(active, reason);

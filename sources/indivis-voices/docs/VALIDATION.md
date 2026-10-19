@@ -2,6 +2,14 @@
 
 Date : 19 octobre 2026. Base et empreintes : [AUDIT.md](AUDIT.md).
 
+Le tableau et le lancement isolé ci-dessous décrivent les vérifications
+initiales de **0.1.0**. Le correctif **0.1.1** ajoute l'audio au JAR et un test
+local hors quêtes ; voir [SILENCE_AUDIO_0_1_1.md](SILENCE_AUDIO_0_1_1.md).
+Sa compilation propre, ses 17 tests et son contrôle de JAR ont réussi ;
+empreintes et limites dans [verification-0.1.1.json](verification-0.1.1.json).
+Le test utilisateur avec 0.1.0 confirme les sessions et le parcours textuel,
+mais l'absence de banque chargée ne permet pas de valider la lecture vocale.
+
 ## Vérifications automatisées
 
 | Vérification | État | Portée de la preuve |
@@ -66,6 +74,7 @@ récompense doit rester unique. Ne pas faire ces essais sur la production.
 | Essai | Résultat attendu | État |
 | --- | --- | --- |
 | Géraud : 3 prises puis objectif | Texte lisible pendant chaque voix, enchaînement automatique, objectif une fois | Non exécuté en jeu |
+| 0.1.1 sans ZIP externe : `/ivvoices`, puis `/ivvoices test` hors dialogue | 8/8 prises, voix locale de Géraud, aucune progression modifiée | À vérifier en jeu |
 | Althéon : 3 prises puis choix | Caméra b10 préservée ; menu attendu après la troisième prise ; aucun choix automatique | Non exécuté en jeu |
 | Léovic : offre / acceptation | Proposition et escorte inchangées, `QuestChoix` du bon owner, `near_distance` intact | Non exécuté en jeu |
 | Suite Aurèle → Roch (#62) | Répliques non doublées encore textuelles ; progression/reprise/récompenses intactes | Non exécuté en jeu |

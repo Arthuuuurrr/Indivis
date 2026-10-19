@@ -1,4 +1,4 @@
-# Indivis Voices — prototype prologue 0.1.0
+# Indivis Voices — prototype prologue 0.1.1
 
 Référence : [issue #167](https://github.com/Arthuuuurrr/Indivis/issues/167).
 Mod Fabric **indépendant**, côté serveur et client, pour Minecraft 1.21.11,
@@ -8,27 +8,35 @@ Loader 0.19.5, Fabric API 0.141.6+1.21.11, Java 21. Adaptateur ciblé sur
 
 Le premier périmètre est **8 répliques** : réveil Géraud (3), introduction
 Althéon (3), proposition et départ Léovic (2). Les autres répliques restent
-textuelles. Le pack est une démonstration technique synthétique française,
+textuelles. La banque est une démonstration technique synthétique française,
 **pas un casting approuvé**. Les masters FLAC sont dans `demo-masters/` et les
-prises OGG dans `demo-resourcepack/`. Aucun audio n'est inclus dans le JAR.
+prises OGG dans `demo-resourcepack/`. **Depuis 0.1.1, les huit OGG et leur index
+sonore sont inclus dans le JAR et chargés automatiquement. Aucun pack séparé
+n'est nécessaire.** Le ZIP audio reste un export facultatif pour les outils.
+Ce choix remplace, à la demande d'Arthur le 19 octobre, la distribution séparée
+initialement prévue dans #167 ; les masters restent hors du mod.
 
 ## Essai sur une installation de test
 
 1. Garder la pile actuelle : EasyNPC Core/Config UI 7.16, dialogue b10, RPG RC3,
    journal b6, Nexus PRE34, core 1.5.7 et hc_quetes b21. Ne remplacer aucun de ces
    fichiers par les anciennes versions de main.
-2. Ajouter `build/libs/indivis-voices-0.1.0+1.21.11.jar` aux **mods du serveur de
-   test et du client**. Ajouter le ZIP `build/distributions/indivis-voices-prologue-fr-demo-1.zip`
-   aux resourcepacks du client et l'activer. Aucun datapack d'intégration en plus.
-3. Vérifier `/ivvoices` : 8 prises vérifiées, voix actives. Une prise manquante,
-   modifiée ou non chargée reste textuelle. Un joueur sans Voices/pack garde
+2. Remplacer l'ancien JAR Voices par `build/libs/indivis-voices-0.1.1+1.21.11.jar`
+   dans les **mods du serveur de test et du client**, puis redémarrer les deux.
+   Ne garder qu'un seul JAR Voices. Aucun pack à télécharger ou activer ; les
+   sons font partie des ressources du mod. Aucun datapack d'intégration en plus.
+3. Vérifier `/ivvoices` : **8/8 prises vérifiées**, voix actives, pont b10 prêt,
+   canal serveur présent et volumes Minecraft non nuls. Hors dialogue,
+   `/ivvoices test` joue la première réplique de Géraud localement, sans PNJ,
+   caméra, paquet de progression ni action de quête ; pas besoin d'un personnage neuf.
+   Une prise manquante ou modifiée reste textuelle. Un joueur sans Voices garde
    le dialogue natif ; un client Voices sur un serveur sans Voices aussi.
 4. Jouer le prologue par ses déclenchements habituels avec un personnage de test.
    Les répliques couvertes s'enchaînent à la fin de l'audio ; les choix restent
    ceux de b10 et du datapack. Clic gauche/droit, espace ou entrée pour passer.
    ESC, historique, touches de choix et caméras restent gérés par b10.
 
-Commandes client, sans privilège serveur : `/ivvoices on`, `/ivvoices off`,
+Commandes client, sans privilège serveur : `/ivvoices test`, `/ivvoices on`, `/ivvoices off`,
 `/ivvoices volume 70`, `/ivvoices subtitles on|off`. Les sous-titres supplémentaires
 de Voices sont facultatifs et désactivés par défaut. Le texte et les choix de
 b10 assurent l'affichage normal pendant la voix. Options persistées dans
@@ -49,7 +57,9 @@ python3 tools/verify_abi.py --dialogue /chemin/dialogue-b10.jar --nexus /chemin/
 ```
 
 `build` compile et remappe le JAR client/serveur, exécute les tests d'autorité et
-les tests réels des codecs, vérifie la banque et produit le pack indépendant.
+les tests réels des codecs, vérifie la banque et son inclusion dans le **JAR
+remappé livré** (huit OGG, SHA-256 et index sonore), puis produit aussi le ZIP
+audio facultatif. Les masters WAV/FLAC ne sont pas embarqués.
 La vérification `--core` exige exactement le ZIP audité puis contrôle chaque
 texte et sa séquence, le retrait natif du timer et le dispatch. `verify_abi`
 lit les signatures des classes **dans les JAR réels**, sans initialiser les mods.
@@ -116,8 +126,10 @@ python3 tools/build_voice_bank.py --masters /chemin/prises \
 Le script encode les masters sans pertes en OGG Vorbis mono cible 64 kb/s, mesure
 les durées avec ffprobe et renouvelle les hashes. Une prise dont le master, la
 version et l'OGG sont inchangés est conservée sans réencodage. Le texte exact
-et les IDs restent en place. Distribuer ensemble le nouveau JAR/catalogue et le
-nouveau pack : une ancienne révision ne déclenche aucune attente serveur.
+et les IDs restent en place. Distribuer le nouveau JAR/catalogue avec les voix
+incluses aux clients et au serveur : une ancienne révision ne déclenche aucune
+attente serveur. Un resource pack externe peut toujours surcharger les ressources
+du mod ; si ses fichiers ne correspondent plus aux hashes, la prise reste textuelle.
 Les fichiers audio peuvent partager le même asset quand l'enregistrement est
 réellement identique. Ne jamais réencoder un OGG en guise de master.
 
@@ -129,7 +141,7 @@ les données nécessaires et les essais à mener, sans inventer positions ni rou
 Les comparatifs FPS/MSPT et le parcours Géraud → Roch à deux joueurs restent
 des critères de recette, pas des résultats déduits d'une compilation.
 
-Retour arrière : retirer seulement Voices et son pack sur l'environnement de
+Retour arrière : retirer seulement Voices sur l'environnement de
 test. Aucun fichier de quête, ID, permission EasyNPC ou progression sauvegardée
 propre à Voices n'a été ajouté. Le dernier bail natif expire en au plus deux ticks
 de core si le mod disparaît ; un arrêt normal restaure les délais texte.

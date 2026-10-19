@@ -1,3 +1,19 @@
+# 0.1.1 — 19 octobre 2026
+
+* Les huit voix de démonstration et `sounds.json` sont désormais inclus dans le
+  JAR : aucun pack séparé, téléchargement serveur ou activation à effectuer.
+* Correction de la distribution à l'origine du silence du test : le mod était
+  installé des deux côtés mais aucune banque audio n'était chargée sur le client.
+* `/ivvoices test` joue Géraud localement hors dialogue, sans progression de
+  quête. Le test s'arrête à la déconnexion, au rechargement des ressources,
+  à la désactivation ou au démarrage d'une réplique serveur.
+* `/ivvoices` affiche les prises vérifiées, le pont b10, la présence du canal
+  serveur, les volumes Minecraft et le dernier diagnostic. Les logs distinguent
+  absence d'audio, hash différent, pont/session/écran indisponible et refus de lecture.
+* La compilation vérifie l'audio à l'intérieur du JAR remappé livré ; les
+  masters restent externes. Le ZIP reste disponible comme export facultatif.
+* Quêtes, protocole v1, timer natif, caméras, choix et dépendances inchangés.
+
 # 0.1.0 — 19 octobre 2026
 
 * Premier mod Fabric indépendant Indivis Voices, Minecraft 1.21.11.

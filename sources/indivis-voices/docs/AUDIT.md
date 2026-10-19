@@ -3,6 +3,12 @@
 Base Git : `9799badc75e8921e543caa18027e5acac0a91486` (`main`). Travail sur
 `feat/167-indivis-voices-prologue`. Ni fusion ni déploiement de production.
 
+Mise à jour du même jour : à la demande d'Arthur, la distribution **0.1.1**
+inclut les OGG dans le mod. Le pack séparé décrit par la spécification initiale
+reste un export facultatif. Le diagnostic des deux nouveaux journaux et les
+limites de cette correction sont dans [SILENCE_AUDIO_0_1_1.md](SILENCE_AUDIO_0_1_1.md).
+Les versions de dépendances et les interfaces auditées ci-dessous sont inchangées.
+
 ## Versions vérifiées
 
 | Composant | Preuve actuelle | SHA-256 de l'artefact inspecté |

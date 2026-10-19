@@ -19,7 +19,10 @@ final class ClientDialogueBridge {
     ClientDialogueBridge() {
         var loader = FabricLoader.getInstance();
         var container = loader.getModContainer("haute_capitale_dialogue");
-        if (container.isEmpty() || !container.get().getMetadata().getVersion().getFriendlyString().equals("0.1.0+1.21.11.b10")) return;
+        if (container.isEmpty() || !container.get().getMetadata().getVersion().getFriendlyString().equals("0.1.0+1.21.11.b10")) {
+            IndivisVoices.LOG.warn("Voices client : dialogue b10 absent ou version non auditée, chemin texte conservé");
+            return;
+        }
         try {
             var state = Class.forName("net.hautecapitale.dialogue.client.DialogueClientState");
             session = state.getMethod("sessionId"); capture = state.getMethod("captureActive"); npc = state.getMethod("pnjUuid");
@@ -34,6 +37,7 @@ final class ClientDialogueBridge {
             advance = p.getMethod("avancer");
             page = p.getMethod("page"); pages = p.getMethod("pages"); history = p.getMethod("historiqueVisible");
             available = true;
+            IndivisVoices.LOG.info("Voices client : pont dialogue b10 prêt");
         } catch (ReflectiveOperationException | LinkageError e) { fail(e); }
     }
     boolean available() { return available; }

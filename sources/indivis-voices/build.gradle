@@ -30,6 +30,11 @@ processResources {
     inputs.property 'version', project.version
     filesMatching('fabric.mod.json') { expand version: project.version }
 }
+// Fabric loads assets in the mod automatically. Keep a single source of audio
+// files shared with the optional export, and never ship the lossless masters.
+tasks.named('processClientResources') {
+    from('demo-resourcepack/assets') { into 'assets' }
+}
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
     options.release = 21
@@ -51,3 +56,8 @@ tasks.register('demoPack', Zip) {
 }
 tasks.named('check') { dependsOn 'verifyVoiceBank' }
 tasks.named('assemble') { dependsOn 'demoPack' }
+tasks.register('verifyBundledVoices', Exec) {
+    dependsOn tasks.named('remapJar')
+    commandLine 'python3', 'tools/verify_distribution.py', tasks.named('remapJar').get().archiveFile.get().asFile
+}
+tasks.named('check') { dependsOn 'verifyBundledVoices' }
