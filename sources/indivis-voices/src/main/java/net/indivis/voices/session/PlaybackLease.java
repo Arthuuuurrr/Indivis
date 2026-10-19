@@ -1,6 +1,7 @@
 package net.indivis.voices.session;
 
 import java.util.UUID;
+import java.util.OptionalInt;
 import net.indivis.voices.catalog.VoiceLine;
 
 /** Pure authority/state logic; no quest commands, no audio callbacks with mutable captures. */
@@ -44,5 +45,10 @@ public final class PlaybackLease {
         return end == End.NATURAL || end == End.SKIP ? Release.ADVANCE : Release.TEXT;
     }
     public boolean expired(long nowMs) { return nowMs - startedMs > line.durationMs() + 5_000L; }
+    /** Standalone reminders/invitations have no ownership of the native timer. */
+    public OptionalInt releasedTimer(Release release) {
+        if (!line.sequenced() || release == Release.NONE) return OptionalInt.empty();
+        return OptionalInt.of(release == Release.ADVANCE ? 0 : textTimer);
+    }
     public void invalidate() { terminal = true; }
 }

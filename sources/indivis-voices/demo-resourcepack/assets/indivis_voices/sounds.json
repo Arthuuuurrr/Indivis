@@ -70,5 +70,113 @@
         "attenuation_distance": 20
       }
     ]
+  },
+  "prologue.geraud.rappel.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_ger_005",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.invitation.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_001",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.invitation.02": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_002",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.invitation.03": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_003",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.questions.decouverte.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_010",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.questions.decouverte.02": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_023",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.questions.mission.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_011",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.questions.mission.02": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_024",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.questions.avaleiv.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_008",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.questions.capitale.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_009",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.questions.capitale.02": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_022",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.questions.amnesie.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:production/p01_alt_007",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
   }
 }

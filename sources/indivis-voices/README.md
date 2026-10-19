@@ -1,4 +1,4 @@
-# Indivis Voices — prototype prologue 0.1.1
+# Indivis Voices — prototype prologue 0.2.0
 
 Référence : [issue #167](https://github.com/Arthuuuurrr/Indivis/issues/167).
 Mod Fabric **indépendant**, côté serveur et client, pour Minecraft 1.21.11,
@@ -6,13 +6,20 @@ Loader 0.19.5, Fabric API 0.141.6+1.21.11, Java 21. Adaptateur ciblé sur
 `haute_capitale_dialogue 0.1.0+1.21.11.b10`, EasyNPC 7.16.0, Nexus PRE34 et le
 **core 1.5.7 fourni**, identifié par hash dans [l'audit](docs/AUDIT.md).
 
-Le premier périmètre est **8 répliques** : réveil Géraud (3), introduction
-Althéon (3), proposition et départ Léovic (2). Les autres répliques restent
-textuelles. La banque est une démonstration technique synthétique française,
-**pas un casting approuvé**. Les masters FLAC sont dans `demo-masters/` et les
-prises OGG dans `demo-resourcepack/`. **Depuis 0.1.1, les huit OGG et leur index
-sonore sont inclus dans le JAR et chargés automatiquement. Aucun pack séparé
-n'est nécessaire.** Le ZIP audio reste un export facultatif pour les outils.
+Le JAR couvre **20 répliques : 18 prises humaines d'Arthur pour Géraud et Althéon,
+et 2 démonstrations synthétiques pour Léovic**. Le réveil, le rappel, les trois
+invitations du capitaine, son introduction et les huit réponses aux questions
+avant l'accostage disposent des prises humaines. Les autres répliques restent
+textuelles. [La table de correspondance](docs/INTEGRATION_HUMAINE_LOT1.md) donne
+chaque code du PDF, son fichier, son texte et sa séquence native. Pour
+`P01-GER-005`, la première prise est utilisée ; les trois variantes restent
+dans l'archive de préparation.
+
+**Les 20 OGG et leur index sonore sont inclus dans le JAR et chargés
+automatiquement. Aucun pack séparé n'est nécessaire.** Les OGG sont conservés
+dans `demo-resourcepack/` pour partager les mêmes fichiers avec l'export
+facultatif. Les masters humains restent dans l'archive sans pertes déjà fournie,
+hors du mod ; `demo-masters/` conserve uniquement les masters synthétiques.
 Ce choix remplace, à la demande d'Arthur le 19 octobre, la distribution séparée
 initialement prévue dans #167 ; les masters restent hors du mod.
 
@@ -21,12 +28,14 @@ initialement prévue dans #167 ; les masters restent hors du mod.
 1. Garder la pile actuelle : EasyNPC Core/Config UI 7.16, dialogue b10, RPG RC3,
    journal b6, Nexus PRE34, core 1.5.7 et hc_quetes b21. Ne remplacer aucun de ces
    fichiers par les anciennes versions de main.
-2. Remplacer l'ancien JAR Voices par `build/libs/indivis-voices-0.1.1+1.21.11.jar`
+2. Remplacer l'ancien JAR Voices par `build/libs/indivis-voices-0.2.0+1.21.11.jar`
    dans les **mods du serveur de test et du client**, puis redémarrer les deux.
    Ne garder qu'un seul JAR Voices. Aucun pack à télécharger ou activer ; les
    sons font partie des ressources du mod. Aucun datapack d'intégration en plus.
-3. Vérifier `/ivvoices` : **8/8 prises vérifiées**, voix actives, pont b10 prêt,
+3. Vérifier `/ivvoices` : **20/20 prises vérifiées**, voix actives, pont b10 prêt,
    canal serveur présent et volumes Minecraft non nuls. Hors dialogue,
+   `/ivvoices test P01-ALT-010` joue la première réponse sur la découverte.
+   Chaque code de la table peut être testé ainsi ; le texte attendu est affiché.
    `/ivvoices test` joue la première réplique de Géraud localement, sans PNJ,
    caméra, paquet de progression ni action de quête ; pas besoin d'un personnage neuf.
    Une prise manquante ou modifiée reste textuelle. Un joueur sans Voices garde
@@ -58,7 +67,7 @@ python3 tools/verify_abi.py --dialogue /chemin/dialogue-b10.jar --nexus /chemin/
 
 `build` compile et remappe le JAR client/serveur, exécute les tests d'autorité et
 les tests réels des codecs, vérifie la banque et son inclusion dans le **JAR
-remappé livré** (huit OGG, SHA-256 et index sonore), puis produit aussi le ZIP
+remappé livré** (20 OGG, SHA-256, codes de production et index sonore), puis produit aussi le ZIP
 audio facultatif. Les masters WAV/FLAC ne sont pas embarqués.
 La vérification `--core` exige exactement le ZIP audité puis contrôle chaque
 texte et sa séquence, le retrait natif du timer et le dispatch. `verify_abi`
@@ -78,12 +87,17 @@ Le serveur reconnaît un `tellraw` exact envoyé au joueur via
 **après** le texte par la fonction. Il faut une session b10 réelle, le personnage
 Nexus actif, le monde attendu et un client disposant de la prise vérifiée.
 
-Pendant la lecture validée, il renouvelle CAP_QSEQ_TIMER à 2 avant le tick du
+Pour les répliques séquencées, il renouvelle CAP_QSEQ_TIMER à 2 avant le tick du
 core. Ce dernier continue de retirer 1 et reste l'unique propriétaire du dispatch.
 Une fin naturelle admissible ou un clic met le timer à 0 ; le core enchaîne.
 Une ressource absente ou un timeout rétablit le délai texte capturé. Un changement
 de séquence/personnage/monde annule le jeton, sans écrire dans la nouvelle
 progression. Aucune récompense ni fonction de quête n'est appelée par Voices.
+Les trois invitations et le rappel de Géraud sont autonomes : CAP_QSEQ doit
+rester à 0 et Voices n'écrit jamais leur timer, même en fin de voix ou sur échec.
+Un choix natif qui change la séquence annule leur lecture. Le client attend au
+plus une seconde l'écran b10 et la capture du texte exact avant de démarrer ;
+il revient au texte si cette association n'est pas disponible.
 
 Protocole v1 : capacités bornées (32 prises pour ce MVP), epoch de connexion,
 session b10, génération et ID stable de réplique. Réponses périmées/dupliquées
@@ -114,8 +128,10 @@ takeVersion et SHA-256. Le manifeste du pack reprend ce catalogue. Ne pas change
 un ID quand une interprétation est remplacée. Les textes ne sont pas normalisés
 approximativement : une réécriture du lore nécessite une nouvelle validation.
 
-Fournir un WAV ou FLAC par ID, avec autorisation de diffusion de l'interprète :
-les huit noms et textes sont regroupés dans [le script d'enregistrement](docs/RECORDING_SCRIPT.md).
+Fournir un WAV ou FLAC par ID, avec autorisation de diffusion de l'interprète.
+La [table du lot humain](docs/INTEGRATION_HUMAINE_LOT1.md) fait foi pour les
+18 codes reçus ; le [script initial](docs/RECORDING_SCRIPT.md) conserve les
+huit textes du prototype et les deux textes de Léovic restant à enregistrer.
 
 ```sh
 python3 tools/build_voice_bank.py --masters /chemin/prises \
@@ -132,6 +148,10 @@ attente serveur. Un resource pack externe peut toujours surcharger les ressource
 du mod ; si ses fichiers ne correspondent plus aux hashes, la prise reste textuelle.
 Les fichiers audio peuvent partager le même asset quand l'enregistrement est
 réellement identique. Ne jamais réencoder un OGG en guise de master.
+Pour une prise humaine remplacée, mettre aussi à jour sa provenance dans
+`human-takes.json` : les contrôles refusent un échange d'audio non documenté.
+Les six anciens masters synthétiques remplacés sont archivés dans
+`demo-masters/original-synthetic/`, hors du chemin de reconstruction courant.
 
 ## Périmètre restant et retour arrière
 

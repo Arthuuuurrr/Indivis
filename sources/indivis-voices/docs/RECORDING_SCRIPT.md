@@ -1,6 +1,12 @@
-# Texte des huit prises de démonstration / futur casting
+# Script initial des huit prises du prototype
 
-Textes issus sans réécriture du core 1.5.7 fourni. Les intentions, voix, accents et prononciations sont à définir par Arthur. Fournir WAV ou FLAC sans pertes, un fichier par ID, avec autorisation de diffusion. Les voix synthétiques actuelles servent uniquement aux essais techniques.
+Textes issus sans réécriture du core 1.5.7 fourni. Depuis 0.2.0, les six prises
+Géraud et Althéon de cette table utilisent les enregistrements humains d'Arthur.
+Seules les deux prises Léovic restent synthétiques. La liste complète des
+18 prises humaines, dont les questions du capitaine, est dans
+[INTEGRATION_HUMAINE_LOT1.md](INTEGRATION_HUMAINE_LOT1.md).
+Pour les prochains enregistrements, fournir WAV ou FLAC sans pertes, un fichier
+par ID, avec autorisation de diffusion.
 
 | Fichier WAV ou FLAC | Personnage | Texte exact à dire |
 | --- | --- | --- |

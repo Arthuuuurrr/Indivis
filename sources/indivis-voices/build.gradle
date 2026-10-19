@@ -29,6 +29,7 @@ dependencies {
 processResources {
     inputs.property 'version', project.version
     filesMatching('fabric.mod.json') { expand version: project.version }
+    from('human-takes.json') { into 'indivis-voices' }
 }
 // Fabric loads assets in the mod automatically. Keep a single source of audio
 // files shared with the optional export, and never ship the lossless masters.
@@ -50,7 +51,8 @@ tasks.register('verifyVoiceBank', Exec) {
     commandLine 'python3', 'tools/verify_inputs.py'
 }
 tasks.register('demoPack', Zip) {
-    archiveFileName = 'indivis-voices-prologue-fr-demo-1.zip'
+    def catalog = new groovy.json.JsonSlurper().parse(file('src/main/resources/indivis-voices/catalog.json'))
+    archiveFileName = "indivis-voices-${catalog.revision}.zip"
     destinationDirectory = layout.buildDirectory.dir('distributions')
     from 'demo-resourcepack'
 }

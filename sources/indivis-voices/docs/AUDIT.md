@@ -92,7 +92,8 @@ Il manque toujours les sources b10 complètes et un monde de test avec les PNJ,
 routes, positions et configurations. Le prototype de rencontres ne doit
 pas inventer ces positions ni les signatures de navigation EasyNPC.
 Les voix de démonstration synthétiques éventuelles sont du matériel technique,
-pas un casting approuvé. Les prises humaines restent à fournir par Arthur.
+pas un casting approuvé. Les 18 prises humaines reçues d'Arthur sont intégrées
+en 0.2.0 ; voir [leurs correspondances](INTEGRATION_HUMAINE_LOT1.md).
 Les validations en jeu #62, #59, #115, #159 et deux joueurs doivent être tracées
 séparément ; ne jamais les annoncer acquises après un simple build.
 

@@ -65,4 +65,28 @@ class PlaybackLeaseTest {
         assertTrue(fade.finished(150_000_000));
         assertEquals(0, fade.gain(Long.MAX_VALUE / 2));
     }
+    @Test void standaloneLinesCannotWriteOrReleaseAQuestTimerForAnyCompletionReason() {
+        var idle = VoiceCatalog.load().lookup("P01-ALT-001");
+        assertFalse(idle.sequenced());
+        for (var reason : PlaybackLease.End.values()) {
+            var p = new PlaybackLease(epoch, 7, 42, idle, character, "minecraft:overworld", npc, 123, 20, 1000);
+            assertTrue(p.context(7, character, 0, npc));
+            assertFalse(p.context(7, character, 101, npc));
+            var release = p.finish(reason, 1000 + idle.durationMs());
+            assertTrue(p.releasedTimer(release).isEmpty(), reason.toString());
+            assertTrue(p.releasedTimer(PlaybackLease.Release.TEXT).isEmpty());
+        }
+    }
+    @Test void standaloneRemindersStillRejectAnotherCharacterNpcOrSession() {
+        var idle = VoiceCatalog.load().lookup("P01-GER-005");
+        var p = new PlaybackLease(epoch, 7, 42, idle, character, "minecraft:overworld", npc, 123, 0, 1000);
+        assertFalse(p.context(8, character, 0, npc));
+        assertFalse(p.context(7, UUID.randomUUID(), 0, npc));
+        assertFalse(p.context(7, character, 0, UUID.randomUUID()));
+    }
+    @Test void sequencedLinesReleaseOnlyTheirNativeTimer() {
+        assertEquals(0, lease().releasedTimer(PlaybackLease.Release.ADVANCE).orElseThrow());
+        assertEquals(20, lease().releasedTimer(PlaybackLease.Release.TEXT).orElseThrow());
+        assertTrue(lease().releasedTimer(PlaybackLease.Release.NONE).isEmpty());
+    }
 }

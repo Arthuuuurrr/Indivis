@@ -62,7 +62,9 @@ def build(args):
     (PACK / "assets/indivis_voices/sounds.json").write_text(json.dumps(events, ensure_ascii=False, indent=2) + "\n")
     (PACK / "voice-manifest.json").write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n")
     # 1.21.11 client resource format, independently from data pack format 94.1.
-    (PACK / "pack.mcmeta").write_text(json.dumps({"pack": {"description": "Indivis Voices — DEMO TECHNIQUE FR, casting non définitif", "min_format": 75, "max_format": 75}}, ensure_ascii=False, indent=2) + "\n")
+    human_count = sum(bool(line.get('productionId')) for line in doc['lines'])
+    description = f"Indivis Voices FR — {human_count} prises humaines, {len(doc['lines']) - human_count} démonstrations"
+    (PACK / "pack.mcmeta").write_text(json.dumps({"pack": {"description": description, "min_format": 75, "max_format": 75}}, ensure_ascii=False, indent=2) + "\n")
     out = ROOT / "build/distributions"
     out.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(out / f"indivis-voices-{args.revision}.zip", "w", zipfile.ZIP_DEFLATED) as z:

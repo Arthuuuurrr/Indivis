@@ -1,3 +1,20 @@
+# 0.2.0 — 19 octobre 2026
+
+* Intégration de 18 prises humaines d'Arthur, avec code du PDF, source WAV,
+  bornes de coupe, empreintes et correspondance au texte natif dans
+  `human-takes.json`. Les OGG préparés sont copiés sans nouvel encodage.
+* Remplacement des six voix synthétiques Géraud/introduction Althéon ; ajout
+  du rappel de Géraud, des trois invitations et des huit réponses d'Althéon.
+  Les deux voix Léovic restent des démonstrations synthétiques.
+* Les répliques autonomes ne prennent pas possession du timer de quête.
+  Les réponses aux questions utilisent les séquences et choix du core existant.
+* Attente bornée de l'écran et du texte exact b10 avant la lecture ; aucune
+  substitution de réplique si la capture manque.
+* `/ivvoices test <code du PDF ou ID>` permet d'écouter chaque prise hors quête.
+  La première variante de P01-GER-005 est retenue, les autres restent archivées.
+* 20 OGG embarqués dans le JAR, aucun pack externe requis. Identifiants des
+  huit lignes existantes, protocole v1 et dépendances conservés.
+
 # 0.1.1 — 19 octobre 2026
 
 * Les huit voix de démonstration et `sounds.json` sont désormais inclus dans le

@@ -2,6 +2,16 @@
 
 Date : 19 octobre 2026. Base et empreintes : [AUDIT.md](AUDIT.md).
 
+La version **0.2.0** ajoute 18 prises humaines et porte le catalogue à 20 lignes.
+Sa compilation propre, ses **22 tests (0 échec)** et le contrôle des 20 fichiers
+dans le JAR ont réussi. Les correspondances exactes ont aussi été confrontées
+au core 1.5.7 fourni : texte, fonction et séquence, y compris les quatre lignes
+autonomes. Détails et empreintes : [verification-0.2.0.json](verification-0.2.0.json)
+et [INTEGRATION_HUMAINE_LOT1.md](INTEGRATION_HUMAINE_LOT1.md).
+Cette version n'a pas encore fait l'objet d'une écoute client ou d'un parcours
+multijoueur sur le monde de test. Les caméras, le choix pendant une invitation,
+les changements de personnage et les mesures FPS/MSPT restent à recetter.
+
 Le tableau et le lancement isolé ci-dessous décrivent les vérifications
 initiales de **0.1.0**. Le correctif **0.1.1** ajoute l'audio au JAR et un test
 local hors quêtes ; voir [SILENCE_AUDIO_0_1_1.md](SILENCE_AUDIO_0_1_1.md).
@@ -10,7 +20,7 @@ empreintes et limites dans [verification-0.1.1.json](verification-0.1.1.json).
 Le test utilisateur avec 0.1.0 confirme les sessions et le parcours textuel,
 mais l'absence de banque chargée ne permet pas de valider la lecture vocale.
 
-## Vérifications automatisées
+## Vérifications automatisées initiales (0.1.0)
 
 | Vérification | État | Portée de la preuve |
 | --- | --- | --- |

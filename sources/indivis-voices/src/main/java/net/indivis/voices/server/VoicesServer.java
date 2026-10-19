@@ -68,7 +68,7 @@ public final class VoicesServer {
             if (!valid(player, playing)) { cancel(player, state, true); continue; }
             if (playing.expired(now())) { release(player, state, PlaybackLease.Release.TEXT); continue; }
             // Short renewable lease: core/tick subtracts one, then does its normal dispatch.
-            set(player, TIMER, 2);
+            if (playing.line.sequenced()) set(player, TIMER, 2);
             bridge.keepAlive(player, server.getTicks());
         }
     }
@@ -81,7 +81,8 @@ public final class VoicesServer {
             if (pending == null || !state.available.contains(pending.line.id())) continue;
             var session = bridge.session(player);
             if (session == null || !session.equals(pending.session) ||
-                score(player, SEQUENCE) != pending.line.nextSequence() || score(player, TIMER) <= 0) continue;
+                score(player, SEQUENCE) != pending.line.nextSequence() ||
+                pending.line.sequenced() && score(player, TIMER) <= 0) continue;
             cancel(player, state, false);
             var playing = new PlaybackLease(state.epoch, session.id(), ++state.generation,
                 pending.line, session.character(), dimension(player), session.npc(), session.entityId(), score(player, TIMER), now());
@@ -105,14 +106,14 @@ public final class VoicesServer {
     private void release(ServerPlayerEntity player, PlayerState state, PlaybackLease.Release release) {
         if (release == PlaybackLease.Release.NONE || state.playing == null) return;
         var lease = state.playing;
-        set(player, TIMER, release == PlaybackLease.Release.ADVANCE ? 0 : lease.textTimer);
+        lease.releasedTimer(release).ifPresent(value -> set(player, TIMER, value));
         cancel(player, state, false);
     }
     private void cancel(ServerPlayerEntity player, PlayerState state, boolean restore) {
         var lease = state.playing;
         state.playing = null;
         if (lease == null) return;
-        if (restore && lease.dimension.equals(dimension(player)) && lease.character.equals(bridge.character(player)) &&
+        if (restore && lease.line.sequenced() && lease.dimension.equals(dimension(player)) && lease.character.equals(bridge.character(player)) &&
             score(player, SEQUENCE) == lease.line.nextSequence()) {
             set(player, TIMER, lease.textTimer);
         }

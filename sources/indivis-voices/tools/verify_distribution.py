@@ -5,11 +5,13 @@ import json
 from pathlib import Path
 import sys
 import zipfile
+from verify_inputs import verify_human_mappings
 
 
 def verify(jar):
     with zipfile.ZipFile(jar) as archive:
         catalog = json.loads(archive.read('indivis-voices/catalog.json'))
+        verify_human_mappings(catalog, json.loads(archive.read('indivis-voices/human-takes.json')))
         sounds = json.loads(archive.read('assets/indivis_voices/sounds.json'))
         assert not any(name.endswith(('.wav', '.flac')) for name in archive.namelist()), 'Lossless masters must stay outside the mod'
         for line in catalog['lines']:

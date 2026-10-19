@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only check of supplied core 1.5.7 + demo pack. No patching or server access."""
+"""Read-only check of the voice bank, actor mappings and supplied core 1.5.7."""
 import argparse
 import hashlib
 import json
@@ -11,6 +11,20 @@ ROOT = Path(__file__).resolve().parents[1]
 CORE_SHA = "9b9c20bbc0a28d85384d7bb5e7d00199fee87af795fc081a24e3f0971c61e9df"
 
 
+def verify_human_mappings(doc, provenance):
+    assert doc['revision'] == provenance['revision']
+    references = {r['productionId']: r for r in provenance['lines']}
+    assert len(references) == len(provenance['lines']) == 18
+    human = [r for r in doc['lines'] if r.get('productionId')]
+    assert len(human) == 18 and len({r['productionId'] for r in human}) == 18
+    for line in human:
+        ref = references[line['productionId']]
+        assert (line['id'], line['asset'], line['sound'], line['sha256'], line['masterSha256']) == (ref['lineId'], ref['asset'], ref['sound'], ref['oggSha256'], ref['masterSha256']), line['productionId']
+        assert (line['text'], line['wireText'], line['sourceFunction'], line['nextSequence']) == (ref['text'], ref['wireText'], ref['sourceFunction'], ref['nextSequence']), line['productionId']
+        assert line['takeVersion'] == 'arthur-20261019-lot1-v1'
+    assert references['P01-GER-005']['selectedTake'] == 1
+
+
 def verify(core=None):
     doc = json.loads((ROOT / "src/main/resources/indivis-voices/catalog.json").read_text())
     manifest = json.loads((ROOT / "demo-resourcepack/voice-manifest.json").read_text())
@@ -18,6 +32,7 @@ def verify(core=None):
     assert len({l["id"] for l in doc["lines"]}) == len(doc["lines"])
     assert len({l["wireText"] for l in doc["lines"]}) == len(doc["lines"])
     sounds = json.loads((ROOT / "demo-resourcepack/assets/indivis_voices/sounds.json").read_text())
+    verify_human_mappings(doc, json.loads((ROOT / 'human-takes.json').read_text()))
     for line in doc["lines"]:
         asset = ROOT / "demo-resourcepack/assets/indivis_voices/sounds" / line["asset"]
         assert hashlib.sha256(asset.read_bytes()).hexdigest() == line["sha256"], asset
@@ -32,10 +47,18 @@ def verify(core=None):
             for line in doc["lines"]:
                 source = line["sourceFunction"].removeprefix("capitale:")
                 text = z.read(f"data/capitale/function/{source}.mcfunction").decode()
-                messages = [json.loads(l.removeprefix("tellraw @s ")) for l in text.splitlines() if l.startswith("tellraw @s [{")]
+                messages = [json.JSONDecoder().raw_decode(l.split('tellraw @s ', 1)[1])[0] for l in text.splitlines() if 'tellraw @s [{' in l]
                 assert any("".join(c.get("text", "") for c in m) == line["wireText"] for m in messages), source
-                assert f"scoreboard players set @s CAP_QSEQ {line['nextSequence']}\n" in text, source
-                assert "scoreboard players set @s CAP_QSEQ_TIMER 20" in text, source
+                if line['nextSequence'] > 0:
+                    assert f"scoreboard players set @s CAP_QSEQ {line['nextSequence']}\n" in text, source
+                    assert "scoreboard players set @s CAP_QSEQ_TIMER 20" in text, source
+                elif line['productionId'] == 'P01-GER-005':
+                    assert 'CAP_QSEQ' not in text
+                    assert 'if score @s QUEST_SPAWN matches 10..39 run tellraw @s' in text
+                else:
+                    assert line['productionId'] in ('P01-ALT-001', 'P01-ALT-002', 'P01-ALT-003')
+                    assert 'scoreboard players set @s CAP_QSEQ 0' in text
+                    assert 'scoreboard players set @s CAP_QSEQ_TIMER 0' in text
             tick = z.read("data/capitale/function/core/tick.mcfunction").decode()
             assert "scoreboard players remove @a[scores={CAP_QSEQ_TIMER=1..}] CAP_QSEQ_TIMER 1" in tick
             assert "execute as @a[scores={CAP_QSEQ=1..,CAP_QSEQ_TIMER=0}] run function capitale:quest/dialogue/sequence/dispatch_self" in tick
