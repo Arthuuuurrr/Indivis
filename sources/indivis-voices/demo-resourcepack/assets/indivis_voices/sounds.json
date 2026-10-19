@@ -1,0 +1,74 @@
+{
+  "prologue.geraud.reveil.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:prologue/geraud/reveil/01",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.geraud.reveil.02": {
+    "sounds": [
+      {
+        "name": "indivis_voices:prologue/geraud/reveil/02",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.geraud.reveil.03": {
+    "sounds": [
+      {
+        "name": "indivis_voices:prologue/geraud/reveil/03",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.intro.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:prologue/altheon/intro/01",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.intro.02": {
+    "sounds": [
+      {
+        "name": "indivis_voices:prologue/altheon/intro/02",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.altheon.intro.03": {
+    "sounds": [
+      {
+        "name": "indivis_voices:prologue/altheon/intro/03",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.leovic.inscription.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:prologue/leovic/inscription/01",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "prologue.leovic.accompagnement.01": {
+    "sounds": [
+      {
+        "name": "indivis_voices:prologue/leovic/accompagnement/01",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  }
+}

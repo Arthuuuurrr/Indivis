@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-19",
+  "minecraft": "1.21.11",
+  "loader": "0.19.5",
+  "fabric_api": "0.141.6+1.21.11",
+  "java": "21",
+  "gradle": "9.5.1",
+  "loom": "1.17.20",
+  "yarn": "1.21.11+build.6",
+  "tests": 17,
+  "failures": 0,
+  "errors": 0,
+  "voiced_lines": 8,
+  "catalog_revision": "prologue-fr-demo-1",
+  "reproducible_jar_and_pack": true,
+  "isolated_server": {
+    "booted": true,
+    "stop_sent": true,
+    "exit_code": 0,
+    "elapsed_seconds": 15.22
+  },
+  "gameplay_prologue_tested": false,
+  "two_player_audio_tested": false,
+  "fps_mspt_measured": false,
+  "artifacts_sha256": {
+    "build/libs/indivis-voices-0.1.0+1.21.11.jar": "8ed89c265c70f4663c9bc3eeafb75b7f90ba8ca29a34af13cf76ae963d83ba48",
+    "build/libs/indivis-voices-0.1.0+1.21.11-sources.jar": "eca0215781087d65ade7926e3945051923c1c267bca0549f433589eff0fbe622",
+    "build/distributions/indivis-voices-prologue-fr-demo-1.zip": "b232760f707fc13a0a80949e1db9accf391db723c8fc865c05aa0c4caacf8d02"
+  }
+}

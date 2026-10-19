@@ -1,0 +1,41 @@
+name: Indivis Voices prototype
+
+on:
+  pull_request:
+    paths:
+      - 'sources/indivis-voices/**'
+      - '.github/workflows/indivis-voices.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          sparse-checkout: sources/indivis-voices
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+      - name: Compile, remap, test and verify the voice bank
+        working-directory: sources/indivis-voices
+        run: bash gradlew --no-daemon clean build
+      - name: Checksums
+        working-directory: sources/indivis-voices
+        run: sha256sum build/libs/*.jar build/distributions/*.zip > build/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: indivis-voices-prototype
+          path: |
+            sources/indivis-voices/build/libs/*.jar
+            sources/indivis-voices/build/distributions/*.zip
+            sources/indivis-voices/build/SHA256SUMS.txt
+            sources/indivis-voices/build/reports/tests/test/**
+            sources/indivis-voices/build/test-results/test/*.xml
