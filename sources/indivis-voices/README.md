@@ -1,4 +1,4 @@
-# Indivis Voices — prototype prologue 0.2.0
+# Indivis Voices — prototype prologue 0.2.1
 
 Référence : [issue #167](https://github.com/Arthuuuurrr/Indivis/issues/167).
 Mod Fabric **indépendant**, côté serveur et client, pour Minecraft 1.21.11,
@@ -28,7 +28,7 @@ initialement prévue dans #167 ; les masters restent hors du mod.
 1. Garder la pile actuelle : EasyNPC Core/Config UI 7.16, dialogue b10, RPG RC3,
    journal b6, Nexus PRE34, core 1.5.7 et hc_quetes b21. Ne remplacer aucun de ces
    fichiers par les anciennes versions de main.
-2. Remplacer l'ancien JAR Voices par `build/libs/indivis-voices-0.2.0+1.21.11.jar`
+2. Remplacer l'ancien JAR Voices par `build/libs/indivis-voices-0.2.1+1.21.11.jar`
    dans les **mods du serveur de test et du client**, puis redémarrer les deux.
    Ne garder qu'un seul JAR Voices. Aucun pack à télécharger ou activer ; les
    sons font partie des ressources du mod. Aucun datapack d'intégration en plus.
@@ -80,6 +80,15 @@ Ce lancement de développement n'embarque pas les mods privés ni le monde du
 serveur. Il ne valide donc pas à lui seul la compatibilité du prologue.
 
 ## Synchronisation et progression
+
+**Correctif 0.2.1 :** le dispatcher du core 1.5.7 fourni permettait à plusieurs
+branches de s'exécuter dans le même appel : après la première voix de Géraud,
+les deux textes suivants et l'objectif étaient traversés avant le prochain tick.
+Voices corrige la compilation de cette seule fonction, identifiée par son ID
+et une empreinte stricte, pour retourner après la première branche exécutée.
+Le datapack sur disque, les textes, les ID, les choix et les récompenses restent
+inchangés. Aucune correction n'est appliquée à une autre version de la fonction.
+Voir [le diagnostic et la recette](docs/ENCHAINEMENT_0_2_1.md).
 
 Le serveur reconnaît un `tellraw` exact envoyé au joueur via
 `ServerPlayerEntity.sendMessageToClient(Text, boolean)` — appel vérifié dans
@@ -165,4 +174,6 @@ Retour arrière : retirer seulement Voices sur l'environnement de
 test. Aucun fichier de quête, ID, permission EasyNPC ou progression sauvegardée
 propre à Voices n'a été ajouté. Le dernier bail natif expire en au plus deux ticks
 de core si le mod disparaît ; un arrêt normal restaure les délais texte.
-Pas de migration, pas de remplacement du core et pas de déploiement automatique.
+Pas de migration, pas de remplacement du core sur disque et pas de déploiement
+automatique. Retirer Voices retire aussi sa garde de compilation ; le défaut
+d'enchaînement du core original réapparaît alors jusqu'à sa correction native.

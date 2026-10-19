@@ -63,7 +63,10 @@ uniquement ; aucun remplacement de b10 ni redistribution de ses classes.
 
 Chaîne réelle : EasyNPC → fonctions `capitale:quest/...` → tellraw privé `@s` +
 CAP_QSEQ / CAP_QSEQ_TIMER → `core/tick` →
-`quest/dialogue/sequence/dispatch_self`. Ce dispatch a un verrou anti-cascade.
+`quest/dialogue/sequence/dispatch_self`. Ce dispatch possède CAP_FLAG, mais
+le test utilisateur a révélé que ce verrou n'empêche pas les cascades. Le
+correctif 0.2.1 et la nouvelle preuve sont décrits dans
+[ENCHAINEMENT_0_2_1.md](ENCHAINEMENT_0_2_1.md).
 `QuestChoix`, CAP_QDIALOG_OWNER et CAP_QDIALOG_KEEP ne doivent pas être réécrits.
 Les fichiers `hc_quetes` de Clément ne participent pas à ce pont.
 

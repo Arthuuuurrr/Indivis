@@ -30,7 +30,11 @@ jobs:
       - name: Checksums
         working-directory: sources/indivis-voices
         run: sha256sum build/libs/*.jar build/distributions/*.zip > build/SHA256SUMS.txt
+      - name: Execute native dispatcher in isolated Fabric server
+        working-directory: sources/indivis-voices
+        run: python3 tools/smoke_sequence_guard.py
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: indivis-voices-prototype
           path: |
@@ -39,3 +43,5 @@ jobs:
             sources/indivis-voices/build/SHA256SUMS.txt
             sources/indivis-voices/build/reports/tests/test/**
             sources/indivis-voices/build/test-results/test/*.xml
+            sources/indivis-voices/build/sequence-guard-smoke.*
+            sources/indivis-voices/build/smoke-server/logs/latest.log

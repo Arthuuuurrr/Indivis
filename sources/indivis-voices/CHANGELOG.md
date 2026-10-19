@@ -1,3 +1,15 @@
+# 0.2.1 — 19 octobre 2026
+
+* Correction de l'enchaînement : le verrou du dispatcher core 1.5.7 laissait
+  exécuter plusieurs branches dans un appel. Après Géraud 01, les textes 02,
+  03 et l'objectif étaient traversés avant que Voices puisse les prendre.
+* Garde à la compilation de la seule fonction auditée, avec ID et SHA-256
+  stricts : `return run function` termine l'appel après sa première branche.
+  Les 38 cibles, les textes et les quêtes ne sont pas réécrits sur disque.
+* Régression reproduite à partir du dispatcher fourni ; tests de chaque
+  branche, d'idempotence et d'isolation, plus banc Fabric sans monde de quête.
+* Banque des 20 prises, codes, correspondances et protocole v1 inchangés.
+
 # 0.2.0 — 19 octobre 2026
 
 * Intégration de 18 prises humaines d'Arthur, avec code du PDF, source WAV,

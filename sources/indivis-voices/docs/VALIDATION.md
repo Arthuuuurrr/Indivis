@@ -2,6 +2,14 @@
 
 Date : 19 octobre 2026. Base et empreintes : [AUDIT.md](AUDIT.md).
 
+La version **0.2.1** corrige le dispatcher après le test utilisateur de 0.2.0 :
+la première prise se jouait, puis la cascade traversait les lignes suivantes.
+Sept tests de régression et un banc Fabric d'exécution des 38 branches
+complètent les contrôles existants. Le diagnostic, le périmètre exact et les
+résultats CI sont référencés dans [ENCHAINEMENT_0_2_1.md](ENCHAINEMENT_0_2_1.md).
+Les rapports 0.2.0 restent des résultats historiques et ne prouvaient pas
+l'absence de cascade dans le dispatcher.
+
 La version **0.2.0** ajoute 18 prises humaines et porte le catalogue à 20 lignes.
 Sa compilation propre, ses **22 tests (0 échec)** et le contrôle des 20 fichiers
 dans le JAR ont réussi. Les correspondances exactes ont aussi été confrontées

@@ -14,6 +14,7 @@ def verify(jar):
         verify_human_mappings(catalog, json.loads(archive.read('indivis-voices/human-takes.json')))
         sounds = json.loads(archive.read('assets/indivis_voices/sounds.json'))
         assert not any(name.endswith(('.wav', '.flac')) for name in archive.namelist()), 'Lossless masters must stay outside the mod'
+        assert not any(name.endswith('.mcfunction') for name in archive.namelist()), 'Test fixtures and quest functions must not be shipped'
         for line in catalog['lines']:
             asset = 'assets/indivis_voices/sounds/' + line['asset']
             assert hashlib.sha256(archive.read(asset)).hexdigest() == line['sha256'], asset
