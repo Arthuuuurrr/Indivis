@@ -1,0 +1,18 @@
+{
+  "original_1.5.7": {
+    "available": 141,
+    "missing": [
+      "capitale:currency/bank/issue_1_self",
+      "capitale:currency/bank/issue_10_self",
+      "capitale:currency/bank/issue_64_self",
+      "capitale:currency/bank/issue_100_self",
+      "capitale:currency/bank/issue_500_self",
+      "capitale:currency/bank/issue_1000_self",
+      "capitale:currency/convert/legacy_all_self"
+    ]
+  },
+  "si1": {
+    "available": 148,
+    "missing": []
+  }
+}
