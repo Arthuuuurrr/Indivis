@@ -2,6 +2,14 @@
 
 Date : 19 octobre 2026. Base et empreintes : [AUDIT.md](AUDIT.md).
 
+Mise à jour du **20 octobre 2026 — 0.2.3** : transition voix vers texte,
+traces de fin et niveau de lecture ×6. Six tests de transition et un test du
+bail de Léovic sont ajoutés. Le banc Fabric exécute 14 fonctions natives de
+Léovic avec 12 contrôles spécifiques ; services du monde et escorte remplacés
+par des compteurs de test. Le banc OpenAL vérifie ×6 et son rapport ×2 à la
+0.2.2. Voir [LEOVIC_VOLUME_0_2_3.md](LEOVIC_VOLUME_0_2_3.md) : la coupure réseau
+du log ne permet pas d'affirmer que le seul affichage explique tout le signalement.
+
 Mise à jour du **20 octobre 2026 — 0.2.2** : augmentation du volume à la lecture,
 avec fichiers audio inchangés. Six tests de politique de volume et un banc
 OpenAL natif complètent les contrôles de 0.2.1. Le banc natif utilise la

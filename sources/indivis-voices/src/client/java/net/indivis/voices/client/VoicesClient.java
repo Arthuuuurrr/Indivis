@@ -257,7 +257,10 @@ public final class VoicesClient implements ClientModInitializer {
             ClientPlayNetworking.send(new VoicePackets.Hello(VoicePackets.PROTOCOL, IndivisVoices.CATALOG.revision(), enabled(), List.copyOf(available)));
             lastHelloNanos = now; helloDirty = false;
         }
-        if (active == null) return;
+        if (active == null) {
+            if (pending == null) bridge.continueText(client.currentScreen);
+            return;
+        }
         if (!enabled() || !bridge.matches(active.token().session(), active.npc()) ||
             !bridge.screen(client.currentScreen) || client.world == null) {
             clear(true, PlaybackLease.End.CANCEL); return;
@@ -282,10 +285,17 @@ public final class VoicesClient implements ClientModInitializer {
         stopPreview();
         if (pending != null && notify && reason != null) send(pending, reason);
         pending = null;
+        if (active != null && reason != null) {
+            lastDiagnostic = "fin " + active.token().line() + " : " + reason + " après " +
+                (System.nanoTime() - beganNanos) / 1_000_000 + " ms";
+            IndivisVoices.LOG.info("Voices client : {}", lastDiagnostic);
+        }
+        boolean consumed = active != null && IndivisVoices.CATALOG.line(active.token().line()).sequenced() &&
+            (reason == PlaybackLease.End.NATURAL || reason == PlaybackLease.End.SKIP);
         if (active != null && notify && reason != null) send(active, reason);
         active = null;
         bridge.finishFocus(reason == PlaybackLease.End.MISSING || reason == PlaybackLease.End.CANCEL,
-            MinecraftClient.getInstance().currentScreen);
+            consumed, MinecraftClient.getInstance().currentScreen);
         if (sound != null) {
             if (fading != null) fading.stopNow();
             fading = sound; sound = null; fading.fade.begin(System.nanoTime());
@@ -312,6 +322,7 @@ public final class VoicesClient implements ClientModInitializer {
     }
     private void reset() {
         clear(false, null);
+        bridge.cancelContinuation();
         if (fading != null) { fading.stopNow(); fading = null; }
         epoch = null; highestGeneration = 0; helloDirty = false; lastHelloNanos = 0;
     }

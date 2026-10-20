@@ -4,6 +4,7 @@ import java.lang.reflect.*;
 import java.util.UUID;
 import java.util.List;
 import net.indivis.voices.catalog.VoiceLine;
+import net.indivis.voices.session.DialogueContinuation;
 import net.minecraft.text.Text;
 import net.fabricmc.loader.api.FabricLoader;
 import net.indivis.voices.IndivisVoices;
@@ -14,6 +15,8 @@ final class ClientDialogueBridge {
     private Method session, capture, npc, typewriterEnabled, typewriterSpeed, typewriter, choiceAt, advance, page, pages, history;
     private Field paragraphs, pageReset, captureVersion, captureUntil, panel;
     private List<Text> beforeFocus;
+    private Text focusedParagraph;
+    private DialogueContinuation<Text> continuation;
     private int focusedVersion;
     private boolean available;
     ClientDialogueBridge() {
@@ -61,6 +64,8 @@ final class ClientDialogueBridge {
             var last = lines.getLast(); String text = last.getString().strip();
             if (!text.equals(line.wireText()) && !text.equals(": " + line.text()) && !text.equals(line.text())) return false;
             beforeFocus = List.copyOf(lines);
+            continuation = null;
+            focusedParagraph = last;
             lines.clear(); lines.add(last);
             pageReset.setBoolean(null, true);
             captureVersion.setInt(null, captureVersion.getInt(null) + 1);
@@ -70,7 +75,7 @@ final class ClientDialogueBridge {
             return true;
         } catch (ReflectiveOperationException e) { fail(e); return false; }
     }
-    void finishFocus(boolean fallback, Screen screen) {
+    void finishFocus(boolean fallback, boolean consumed, Screen screen) {
         if (beforeFocus == null) return;
         try {
             if (fallback && captureVersion.getInt(null) == focusedVersion) {
@@ -79,10 +84,37 @@ final class ClientDialogueBridge {
                 pageReset.setBoolean(null, true);
                 captureVersion.setInt(null, focusedVersion + 1);
             }
+            if (consumed && available) {
+                continuation = new DialogueContinuation<>(focusedParagraph, (int) session.invoke(null),
+                    (UUID) npc.invoke(null), System.nanoTime() / 1_000_000L);
+            }
         } catch (ReflectiveOperationException e) { fail(e); }
         beforeFocus = null;
+        focusedParagraph = null;
         restoreTypewriter(screen);
     }
+    /** b10 appends unvoiced replies without resetting the page. Remove only our
+     * already spoken paragraph; native history, new text and choices stay intact. */
+    void continueText(Screen screen) {
+        if (continuation == null) return;
+        if (!screen(screen) || !capturing()) { continuation = null; return; }
+        try {
+            @SuppressWarnings("unchecked") var lines = (List<Text>) paragraphs.get(null);
+            var p = panel.get(screen);
+            if (p == null) return;
+            var next = continuation.poll((int) session.invoke(null), (UUID) npc.invoke(null), lines,
+                System.nanoTime() / 1_000_000L, (boolean) history.invoke(p));
+            if (next.isPresent()) {
+                lines.clear(); lines.addAll(next.get());
+                pageReset.setBoolean(null, true);
+                captureVersion.setInt(null, captureVersion.getInt(null) + 1);
+                IndivisVoices.LOG.info("Voices client : suite textuelle native affichée (session #{}, {} paragraphes)",
+                    session.invoke(null), lines.size());
+            }
+            if (continuation.finished()) continuation = null;
+        } catch (ReflectiveOperationException e) { fail(e); continuation = null; }
+    }
+    void cancelContinuation() { continuation = null; }
     void keepVisible() {
         if (!available) return;
         try {

@@ -9,6 +9,7 @@ import shutil
 import signal
 import subprocess
 import sys
+import leovic_smoke_cases
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -51,15 +52,17 @@ def prepare():
     for target, outcome in targets.items():
         function(target, f'scoreboard players add @s IV_CALLS 1\nscoreboard players set @s CAP_QSEQ {outcome}\n'
             f'scoreboard players set @s CAP_QSEQ_TIMER {20 if outcome else 0}\n')
-    load = ['scoreboard objectives add ' + name + ' dummy' for name in
-        ['CAP_FLAG', 'CAP_QSEQ', 'CAP_QSEQ_TIMER', 'IV_CALLS']]
-    load += ['forceload add 0 0', 'schedule function iv_voice_smoke:run 10t replace']
-    function('iv_voice_smoke:load', '\n'.join(load) + '\n')
     tag = pack / 'data/minecraft/tags/function/load.json'
     tag.parent.mkdir(parents=True, exist_ok=True)
     tag.write_text(json.dumps({'values': ['iv_voice_smoke:load']}))
     a = '@e[type=minecraft:marker,tag=iv_voice_a,limit=1]'
     b = '@e[type=minecraft:marker,tag=iv_voice_b,limit=1]'
+    leovic_commands, leovic_expected = leovic_smoke_cases.install(function, a, b)
+    load = ['scoreboard objectives add ' + name + ' dummy' for name in
+        ['CAP_FLAG', 'CAP_QSEQ', 'CAP_QSEQ_TIMER', 'IV_CALLS'] + leovic_smoke_cases.OBJECTIVES]
+    load += ['scoreboard objectives add QuestChoix trigger']
+    load += ['forceload add 0 0', 'schedule function iv_voice_smoke:run 10t replace']
+    function('iv_voice_smoke:load', '\n'.join(load) + '\n')
     commands = ['summon minecraft:marker 0 80 0 {Tags:["iv_voice_a","iv_voice_all"]}',
         'summon minecraft:marker 1 80 0 {Tags:["iv_voice_b","iv_voice_all"]}']
     expected = []
@@ -84,6 +87,8 @@ def prepare():
         commands += [f'execute as {a} run function capitale:quest/dialogue/sequence/dispatch_self',
             f'execute as {a} if score @s IV_CALLS matches {call} if score @s CAP_QSEQ matches {sequence} '
             f'if score @s CAP_QSEQ_TIMER matches {20 if sequence else 0} run say {token}']
+    commands += leovic_commands
+    expected += leovic_expected
     commands += ['say IV_VOICES_SMOKE_FINISHED', 'stop']
     expected.append('IV_VOICES_SMOKE_FINISHED')
     function('iv_voice_smoke:run', '\n'.join(commands) + '\n')
@@ -110,7 +115,8 @@ def main():
     ready = 'garde anti-cascade du core 1.5.7 active' in text
     result = {'success': code == 0 and not missing and ready, 'exit_code': code, 'guard_active': ready,
         'checks': len(expected) - 1, 'missing_checks': missing,
-        'scope': 'Fabric development server, audited dispatcher, synthetic marker sources and counting stubs; no player audio or actual quest world'}
+        'leovic_native_checks': sum(token.startswith('IV_VOICES_LEOVIC_') for token in expected),
+        'scope': 'Fabric development server, audited dispatcher and 14 native Leovic functions; marker sources, instrumented branch entries and stubbed private/world services; no player, client rendering or real escort'}
     (ROOT / 'build/sequence-guard-smoke.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, ensure_ascii=False))
     if not result['success']:

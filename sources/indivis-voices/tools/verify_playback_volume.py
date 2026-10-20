@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Test x3 source volume and the output limiter with Minecraft's exact Linux OpenAL library.
+"""Test x6 source volume and the output limiter with Minecraft's exact Linux OpenAL library.
 
 Uses a private loopback context: no audio device, player, global mixer or recording is modified.
 """
@@ -77,7 +77,7 @@ def render(a, amplitude, gain):
         limiter = C.c_int()
         a.alcGetIntegerv(device, 0x199A, 1, C.byref(limiter))
         assert limiter.value == 1 and a.alIsExtensionPresent(b'AL_SOFT_gain_clamp_ex')
-        assert a.alGetFloat(0x200E) >= 3
+        assert a.alGetFloat(0x200E) >= 6
         version = a.alGetString(0xB002).decode()
         source, other, buffer = C.c_uint(), C.c_uint(), C.c_uint()
         a.alGenSources(1, C.byref(source)); a.alGenSources(1, C.byref(other))
@@ -115,13 +115,16 @@ def render(a, amplitude, gain):
 def main():
     a = native_library(); configure(a)
     normal = render(a, .02, 1)
-    boosted = render(a, .02, 3)
-    loud = render(a, .9, 3)
+    previous = render(a, .02, 3)
+    boosted = render(a, .02, 6)
+    loud = render(a, .9, 6)
     ratio = boosted['rms'] / normal['rms']
-    assert 2.98 <= ratio <= 3.02, ratio
+    assert 5.98 <= ratio <= 6.02, ratio
+    relative = boosted['rms'] / previous['rms']
+    assert 1.99 <= relative <= 2.01, relative
     assert loud['peak'] <= 1.0001, loud
     report = {'success': True, 'openal': normal['version'], 'natives_sha256': NATIVES_SHA256,
-        'quiet_signal_rms_ratio': ratio, 'loud_signal_peak': loud['peak'], 'output_limiter_active': True,
+        'quiet_signal_rms_ratio': ratio, 'relative_to_0_2_2': relative, 'requested_multiplier': 6, 'loud_signal_peak': loud['peak'], 'output_limiter_active': True,
         'other_source_unchanged': True, 'source_ceiling_restored': True,
         'scope': 'Minecraft Linux OpenAL 3.3.3 natives, private loopback context; no Minecraft client listening test'}
     (ROOT / 'build/playback-volume-check.json').write_text(json.dumps(report, indent=2) + '\n')

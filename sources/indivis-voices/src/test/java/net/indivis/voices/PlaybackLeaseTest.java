@@ -89,4 +89,18 @@ class PlaybackLeaseTest {
         assertEquals(20, lease().releasedTimer(PlaybackLease.Release.TEXT).orElseThrow());
         assertTrue(lease().releasedTimer(PlaybackLease.Release.NONE).isEmpty());
     }
+    @Test void leovicCompletionHandsBackToTheNativeMenuAndMissingAudioCannotFreezeIt() {
+        var leovic = VoiceCatalog.load().lookup("prologue.leovic.inscription.01");
+        assertEquals(502, leovic.nextSequence());
+        for (var end : PlaybackLease.End.values()) {
+            var p = new PlaybackLease(epoch, 3, 42, leovic, character, "minecraft:overworld", npc, 123, 19, 1000);
+            var outcome = p.finish(end, 1000 + leovic.durationMs());
+            assertEquals(end == PlaybackLease.End.NATURAL || end == PlaybackLease.End.SKIP ? 0 : 19,
+                p.releasedTimer(outcome).orElseThrow());
+            assertEquals(PlaybackLease.Release.NONE, p.finish(end, 1001 + leovic.durationMs()));
+        }
+        var silentClient = new PlaybackLease(epoch, 3, 42, leovic, character, "minecraft:overworld", npc, 123, 19, 1000);
+        assertTrue(silentClient.expired(1001 + leovic.durationMs() + 5000));
+        assertEquals(19, silentClient.releasedTimer(PlaybackLease.Release.TEXT).orElseThrow());
+    }
 }

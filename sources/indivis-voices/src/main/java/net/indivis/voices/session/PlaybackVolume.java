@@ -2,7 +2,7 @@ package net.indivis.voices.session;
 
 /** Playback-only amplification; never edits an audio buffer or another sound's volume. */
 public final class PlaybackVolume {
-    public static final float REQUESTED = 3f;
+    public static final float REQUESTED = 6f;
     private PlaybackVolume() {}
 
     public static float allowed(boolean extendedGain, boolean outputLimiter, float implementationLimit) {

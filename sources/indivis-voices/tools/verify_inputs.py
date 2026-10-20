@@ -67,6 +67,12 @@ def verify(core=None):
             assert dispatch.splitlines() == fixture.splitlines(), 'Core dispatcher differs from the regression fixture'
             assert hashlib.sha256('\n'.join(dispatch.splitlines()).encode()).hexdigest() == '7c2fa10c295379b9bab0ac4e5157ebe916a42a30d070408d7f57a3859acc6b4a'
             assert len(re.findall(r'^execute if score @s CAP_FLAG matches 1 if score @s CAP_QSEQ matches \d+ run function capitale:', dispatch, re.M)) == 38
+            leovic = json.loads((ROOT / 'src/test/resources/core-1.5.7-leovic.json').read_text())
+            assert leovic['coreSha256'] == CORE_SHA and len(leovic['functions']) == 14
+            for function, entry in leovic['functions'].items():
+                native = z.read('data/capitale/function/' + function.removeprefix('capitale:') + '.mcfunction')
+                assert hashlib.sha256(native).hexdigest() == entry['sha256'], function
+                assert native == entry['source'].encode(), function
     print(f"OK : {len(doc['lines'])} textes, IDs, assets, SHA-256, durées et liens" + (" ; core 1.5.7 exact, timer natif et fixture des 38 branches vérifiés (exécution testée séparément)" if core else ""))
 
 

@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlaybackVolumeTest {
-    @Test void enablesThreeTimesPlaybackOnlyWhenProtectedAndSupported() {
-        assertEquals(3f, PlaybackVolume.allowed(true, true, Float.MAX_VALUE));
+    @Test void enablesSixTimesPlaybackOnlyWhenProtectedAndSupported() {
+        assertEquals(6f, PlaybackVolume.allowed(true, true, Float.MAX_VALUE));
         assertEquals(1f, PlaybackVolume.allowed(false, true, Float.MAX_VALUE));
         assertEquals(1f, PlaybackVolume.allowed(true, false, Float.MAX_VALUE));
     }
@@ -18,6 +18,8 @@ class PlaybackVolumeTest {
         assertEquals(0f, PlaybackVolume.apply(0, 3));
         assertEquals(.75f, PlaybackVolume.apply(.25f, 3));
         assertEquals(3f, PlaybackVolume.apply(1, 3));
+        assertEquals(3f, PlaybackVolume.apply(.5f, 6), "50% restores the previous x3 level");
+        assertEquals(6f, PlaybackVolume.apply(1, 6));
     }
     @Test void preservesFadeShapeThroughTheNativeVolumeRange() {
         assertEquals(1.5f, PlaybackVolume.apply(.5f, 3));
@@ -33,7 +35,7 @@ class PlaybackVolumeTest {
         assertEquals(0f, PlaybackVolume.apply(Float.NaN, 3));
         assertEquals(0f, PlaybackVolume.apply(1, Float.POSITIVE_INFINITY));
         assertEquals(0f, PlaybackVolume.apply(-1, 3));
-        assertEquals(3f, PlaybackVolume.apply(9, 9));
+        assertEquals(6f, PlaybackVolume.apply(9, 9));
         assertEquals(.5f, PlaybackVolume.apply(.5f, 1));
     }
 }

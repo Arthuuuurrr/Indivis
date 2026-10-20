@@ -1,3 +1,17 @@
+# 0.2.3 — 20 octobre 2026
+
+* Transition client d'une voix vers la suite native non doublée : retirer le
+  seul paragraphe déjà parlé quand b10 y ajoute du texte. Historique et choix
+  conservés ; attente bornée et identité de session/PNJ/objet vérifiées.
+* Fin de voix et progression native observées dans les logs, sans nouvelle
+  commande de quête ni changement de protocole. Une déconnexion est présente
+  avant la fin de Léovic dans les logs reçus ; sa cause reste non établie.
+* Niveau de lecture ×6 au lieu de ×3, avec les mêmes contrôles de moteur et de
+  limiteur. Les 20 OGG, le catalogue et les enregistrements restent identiques.
+* Six tests de transition, un test de bail Léovic et douze contrôles Fabric de
+  ses fonctions natives complètent les vérifications existantes. Escorte réelle,
+  rendu b10 et parcours sur le monde d'Arthur restent à vérifier en jeu.
+
 # 0.2.2 — 20 octobre 2026
 
 * Niveau de lecture des voix multiplié par 3 côté client, sans modification

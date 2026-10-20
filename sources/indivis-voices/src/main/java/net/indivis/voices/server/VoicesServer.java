@@ -18,10 +18,12 @@ public final class VoicesServer {
         Set<String> available = Set.of();
         long generation, lastHelloMs = Long.MIN_VALUE / 2;
         PlaybackLease playing;
+        Followup followup;
         Pending pending;
-        boolean helloLogged;
+        boolean helloLogged, earlyEndLogged;
     }
     private record Pending(VoiceLine line, DialogueBridge.Session session) {}
+    private record Followup(PlaybackLease lease, long deadlineMs) {}
     private final VoiceCatalog catalog;
     private final DialogueBridge bridge = new DialogueBridge();
     private final Map<UUID, PlayerState> players = new HashMap<>();
@@ -66,7 +68,11 @@ public final class VoicesServer {
             if (state == null || state.playing == null) continue;
             var playing = state.playing;
             if (!valid(player, playing)) { cancel(player, state, true); continue; }
-            if (playing.expired(now())) { release(player, state, PlaybackLease.Release.TEXT); continue; }
+            if (playing.expired(now())) {
+                IndivisVoices.LOG.warn("Voices serveur : délai vocal dépassé, retour texte {} (session #{}, séquence {}, timer {})",
+                    playing.line.id(), playing.session, score(player, SEQUENCE), score(player, TIMER));
+                release(player, state, PlaybackLease.Release.TEXT); continue;
+            }
             // Short renewable lease: core/tick subtracts one, then does its normal dispatch.
             if (playing.line.sequenced()) set(player, TIMER, 2);
             bridge.keepAlive(player, server.getTicks());
@@ -76,6 +82,7 @@ public final class VoicesServer {
         for (var player : server.getPlayerManager().getPlayerList()) {
             var state = players.get(player.getUuid());
             if (state == null) continue;
+            observeFollowup(player, state);
             if (state.playing != null && !valid(player, state.playing)) cancel(player, state, true);
             var pending = state.pending; state.pending = null;
             if (pending == null || !state.available.contains(pending.line.id())) continue;
@@ -87,6 +94,9 @@ public final class VoicesServer {
             var playing = new PlaybackLease(state.epoch, session.id(), ++state.generation,
                 pending.line, session.character(), dimension(player), session.npc(), session.entityId(), score(player, TIMER), now());
             state.playing = playing;
+            state.earlyEndLogged = false;
+            IndivisVoices.LOG.info("Voices serveur : début {} (session #{}, séquence {}, timer texte {})",
+                playing.line.id(), playing.session, playing.line.nextSequence(), playing.textTimer);
             ServerPlayNetworking.send(player, new VoicePackets.Start(token(playing), playing.npc, playing.entityId));
         }
     }
@@ -96,7 +106,16 @@ public final class VoicesServer {
         var lease = state.playing; var t = packet.token();
         if (!lease.matches(t.epoch(), t.session(), t.generation(), t.line())) return;
         if (!valid(player, lease)) { cancel(player, state, true); return; }
-        release(player, state, lease.finish(packet.reason(), now()));
+        var outcome = lease.finish(packet.reason(), now());
+        if (outcome == PlaybackLease.Release.NONE && !state.earlyEndLogged) {
+            IndivisVoices.LOG.warn("Voices serveur : fin prématurée ignorée {} (session #{}, {} après {} ms)",
+                lease.line.id(), lease.session, packet.reason(), now() - lease.startedMs);
+            state.earlyEndLogged = true;
+        } else if (outcome != PlaybackLease.Release.NONE) {
+            IndivisVoices.LOG.info("Voices serveur : fin {} (session #{}, {} après {} ms, suite {})",
+                lease.line.id(), lease.session, packet.reason(), now() - lease.startedMs, outcome);
+        }
+        release(player, state, outcome);
     }
     private boolean valid(ServerPlayerEntity player, PlaybackLease lease) {
         var s = bridge.session(player);
@@ -107,12 +126,34 @@ public final class VoicesServer {
         if (release == PlaybackLease.Release.NONE || state.playing == null) return;
         var lease = state.playing;
         lease.releasedTimer(release).ifPresent(value -> set(player, TIMER, value));
+        if (lease.line.sequenced()) state.followup = new Followup(lease, now() + 5_000);
         cancel(player, state, false);
+    }
+    /** Observation only: never drive the quest or restore a previous character's state. */
+    private void observeFollowup(ServerPlayerEntity player, PlayerState state) {
+        var followup = state.followup;
+        if (followup == null) return;
+        var lease = followup.lease;
+        if (!lease.character.equals(bridge.character(player)) || !lease.dimension.equals(dimension(player))) {
+            state.followup = null; return;
+        }
+        int sequence = score(player, SEQUENCE), timer = score(player, TIMER);
+        if (sequence != lease.line.nextSequence()) {
+            IndivisVoices.LOG.info("Voices serveur : suite native {} (session #{}, séquence {} → {}, timer {})",
+                lease.line.id(), lease.session, lease.line.nextSequence(), sequence, timer);
+            state.followup = null;
+        } else if (now() > followup.deadlineMs) {
+            IndivisVoices.LOG.warn("Voices serveur : séquence native inchangée après libération {} (session #{}, séquence {}, timer {})",
+                lease.line.id(), lease.session, sequence, timer);
+            state.followup = null;
+        }
     }
     private void cancel(ServerPlayerEntity player, PlayerState state, boolean restore) {
         var lease = state.playing;
         state.playing = null;
         if (lease == null) return;
+        if (restore) IndivisVoices.LOG.info("Voices serveur : lecture annulée {} (session #{}, séquence actuelle {}, timer {})",
+            lease.line.id(), lease.session, score(player, SEQUENCE), score(player, TIMER));
         if (restore && lease.line.sequenced() && lease.dimension.equals(dimension(player)) && lease.character.equals(bridge.character(player)) &&
             score(player, SEQUENCE) == lease.line.nextSequence()) {
             set(player, TIMER, lease.textTimer);
@@ -122,6 +163,9 @@ public final class VoicesServer {
     }
     public void disconnect(ServerPlayerEntity player) {
         var state = players.remove(player.getUuid());
+        if (state != null && state.playing != null) IndivisVoices.LOG.info(
+            "Voices serveur : déconnexion pendant {} (session #{}, après {} ms)",
+            state.playing.line.id(), state.playing.session, now() - state.playing.startedMs);
         if (state != null) cancel(player, state, true);
     }
     public void stop(MinecraftServer server) {

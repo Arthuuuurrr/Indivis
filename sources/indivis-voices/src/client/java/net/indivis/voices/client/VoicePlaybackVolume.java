@@ -1,6 +1,7 @@
 package net.indivis.voices.client;
 
 import net.indivis.voices.IndivisVoices;
+import net.indivis.voices.session.PlaybackVolume;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.sound.SoundCategory;
@@ -11,7 +12,7 @@ import net.minecraft.util.math.random.Random;
 public final class VoicePlaybackVolume {
     public interface VoiceSound {}
     public interface SourceControl { void indivisVoices$enableVolume(); }
-    private static volatile String diagnostic = "lecture ×3 en attente de vérification audio";
+    private static volatile String diagnostic = "lecture ×" + PlaybackVolume.REQUESTED + " en attente de vérification audio";
     private VoicePlaybackVolume() {}
 
     public static String diagnostic() { return diagnostic; }
