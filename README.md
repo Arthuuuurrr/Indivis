@@ -23,3 +23,7 @@ Le pilotage quotidien se fait avec les **Issues GitHub**, leurs priorités et le
 ## Binaries
 
 Les JAR sont stockés avec **Git LFS**. Quand les octets exacts sont disponibles, leur SHA-256 est enregistré dans le manifest. Si une version serveur exacte n'est pas disponible, elle reste absente plutôt que d'être remplacée par une version approximative.
+
+## Quêtes en validation
+
+- [Séquence I SI1 — documentation et recette](docs/quests/sequence-i-si1/README.md) : candidat du 20/10/2026, contrôles hors jeu réussis ; validation Minecraft/Fabric restante ([#172](https://github.com/Arthuuuurrr/Indivis/issues/172)).

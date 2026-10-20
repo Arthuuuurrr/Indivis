@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-20",
+  "status": "CANDIDAT_INTEGRE_A_RECETTER_EN_JEU",
+  "checks_passed": 7004,
+  "predicate_truth_cases": 6973,
+  "fabric_server_tested": false,
+  "world_modified": false,
+  "quest_item_identifiers_migrated": 64,
+  "unresolved_internal_functions": [],
+  "unresolved_predicates": [],
+  "checks_details_location": "Archive SI1 : audit/static_validation.json",
+  "static_checks_passed": 7006,
+  "nbt_guard_assertions": 22,
+  "old_si1_nbt_bug_reproduced": true,
+  "corrected_fabric_server_tested": false,
+  "guard_policy_assertions": 4,
+  "guard_binding_assertions": 31,
+  "si1a_guard_policy_failure_reproduced": true
+}

@@ -1,0 +1,6 @@
+target,registration,dimension
+zone:mq_sentinelle_archives,hc_quetes:runtime/register/sentinelle_archives,ENREGISTREE_SUR_PLACE
+zone:mq_scribe_archives,hc_quetes:runtime/register/scribe_archives,ENREGISTREE_SUR_PLACE
+zone:mq_archivaire_couronne,hc_quetes:runtime/register/archivaire_couronne,ENREGISTREE_SUR_PLACE
+zone:mq_altheon_brumeforge,hc_quetes:runtime/register/altheon_brumeforge,ENREGISTREE_SUR_PLACE
+zone:havre_fort_port,hc_quetes:pose/zone/havre_fort_port,ENREGISTREE_SUR_PLACE

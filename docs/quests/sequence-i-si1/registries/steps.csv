@@ -1,0 +1,19 @@
+node,scene,npc,requires,function
+mq01/messager_identite,1,messager_couronne,"{""hcq_mq01"": 0}",hc_quetes:quests/mq01/messager_identite/ouvrir
+mq01/messager_instructions,2,messager_couronne,"{""hcq_mq01"": 0}",hc_quetes:quests/mq01/messager_instructions/ouvrir
+mq01/sentinelle_accueil,3,sentinelle_archives,"{""hcq_mq01"": 10}",hc_quetes:quests/mq01/sentinelle_accueil/ouvrir
+mq01/sentinelle_controle,4,sentinelle_archives,"{""hcq_mq01"": 10}",hc_quetes:quests/mq01/sentinelle_controle/ouvrir
+mq01/sentinelle_sans_pli,5,sentinelle_archives,"{""hcq_mq01"": 10}",hc_quetes:quests/mq01/sentinelle_sans_pli/ouvrir
+mq01/sentinelle_conclusion,6,sentinelle_archives,"{""hcq_mq01"": 10}",hc_quetes:quests/mq01/sentinelle_conclusion/ouvrir
+mq02/scribe_accueil,7,scribe_archives,"{""hcq_mq02"": 10}",hc_quetes:quests/mq02/scribe_accueil/ouvrir
+mq02/scribe_verification,8,scribe_archives,"{""hcq_mq02"": 20}",hc_quetes:quests/mq02/scribe_verification/ouvrir
+mq02/scribe_reference,9,scribe_archives,"{""hcq_mq02"": 30}",hc_quetes:quests/mq02/scribe_reference/ouvrir
+mq02/scribe_limites,10,scribe_archives,"{""hcq_mq02"": 40}",hc_quetes:quests/mq02/scribe_limites/ouvrir
+mq02/archivaire_accueil,11,archivaire_couronne,"{""hcq_mq02"": 50}",hc_quetes:quests/mq02/archivaire_accueil/ouvrir
+mq02/archivaire_copies,12,archivaire_couronne,"{""hcq_mq02"": 60}",hc_quetes:quests/mq02/archivaire_copies/ouvrir
+mq02/archivaire_rapport,13,archivaire_couronne,"{""hcq_mq02"": 70}",hc_quetes:quests/mq02/archivaire_rapport/ouvrir
+mq03/altheon_retrouvailles,14,altheon_brumeforge,"{""hcq_mq03"": 10}",hc_quetes:quests/mq03/altheon_retrouvailles/ouvrir
+mq03/altheon_journal,15,altheon_brumeforge,"{""hcq_mq03"": 20}",hc_quetes:quests/mq03/altheon_journal/ouvrir
+mq03/altheon_consultation,16,altheon_brumeforge,"{""hcq_mq03"": 30}",hc_quetes:quests/mq03/altheon_consultation/ouvrir
+mq03/sentinelle_retour,17,sentinelle_archives,"{""hcq_mq03"": 40}",hc_quetes:quests/mq03/sentinelle_retour/ouvrir
+mq03/archivaire_final,18,archivaire_couronne,"{""hcq_mq03"": 50}",hc_quetes:quests/mq03/archivaire_final/ouvrir

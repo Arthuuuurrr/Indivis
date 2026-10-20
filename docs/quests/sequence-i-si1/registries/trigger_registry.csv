@@ -1,0 +1,66 @@
+objective,value,role,owner,meaning
+hcq_choix,3001,BASE_INTERNE_ENCODEE,mq01/messager_identite,"Oui, c'est moi."
+hcq_choix,3002,BASE_INTERNE_ENCODEE,mq01/messager_identite,Les Archives ? Que me veulent-elles ?
+hcq_choix,3003,BASE_INTERNE_ENCODEE,mq01/messager_instructions,Est-ce une convocation obligatoire ?
+hcq_choix,3004,BASE_INTERNE_ENCODEE,mq01/messager_instructions,Pourquoi ne m'ont-ils pas écrit directement ?
+hcq_choix,3005,BASE_INTERNE_ENCODEE,mq01/messager_instructions,"Très bien, je m'y rendrai."
+hcq_choix,3006,BASE_INTERNE_ENCODEE,mq01/sentinelle_accueil,J'ai reçu cette convocation des Archives.
+hcq_choix,3007,BASE_INTERNE_ENCODEE,mq01/sentinelle_accueil,"J'ai été convoqué, mais je n'ai plus le courrier sur moi."
+hcq_choix,3008,BASE_INTERNE_ENCODEE,mq01/sentinelle_controle,Savez-vous pourquoi on m'a convoqué ?
+hcq_choix,3009,BASE_INTERNE_ENCODEE,mq01/sentinelle_controle,Pourquoi les Archives sont-elles gardées par les Sentinelles du Cœur ?
+hcq_choix,3010,BASE_INTERNE_ENCODEE,mq01/sentinelle_controle,Très bien. Où dois-je me rendre ?
+hcq_choix,3011,BASE_INTERNE_ENCODEE,mq01/sentinelle_sans_pli,Savez-vous pourquoi on m'a convoqué ?
+hcq_choix,3012,BASE_INTERNE_ENCODEE,mq01/sentinelle_sans_pli,Pourquoi les Archives sont-elles gardées par les Sentinelles du Cœur ?
+hcq_choix,3013,BASE_INTERNE_ENCODEE,mq01/sentinelle_sans_pli,Très bien. Où dois-je me rendre ?
+hcq_choix,3014,BASE_INTERNE_ENCODEE,mq01/sentinelle_conclusion,"Entendu, merci."
+hcq_choix,3015,BASE_INTERNE_ENCODEE,mq01/sentinelle_conclusion,Je reviendrai un peu plus tard.
+hcq_choix,3016,BASE_INTERNE_ENCODEE,mq02/scribe_accueil,J'ai reçu une convocation.
+hcq_choix,3017,BASE_INTERNE_ENCODEE,mq02/scribe_accueil,On m'a demandé de me présenter pour une vérification.
+hcq_choix,3018,BASE_INTERNE_ENCODEE,mq02/scribe_accueil,Savez-vous pourquoi les Archives souhaitent me voir ?
+hcq_choix,3019,BASE_INTERNE_ENCODEE,mq02/scribe_verification,Oui. J'ai été recueilli par un dirigeable impérial.
+hcq_choix,3020,BASE_INTERNE_ENCODEE,mq02/scribe_verification,Je ne me souviens de rien avant ce sauvetage.
+hcq_choix,3021,BASE_INTERNE_ENCODEE,mq02/scribe_verification,Pourquoi avez-vous besoin de vérifier cela ?
+hcq_choix,3022,BASE_INTERNE_ENCODEE,mq02/scribe_verification,Très bien. Poursuivez votre vérification.
+hcq_choix,3023,BASE_INTERNE_ENCODEE,mq02/scribe_reference,Antérieur ? De combien de temps ?
+hcq_choix,3024,BASE_INTERNE_ENCODEE,mq02/scribe_reference,Peut-être s'agit-il simplement d'une autre personne.
+hcq_choix,3025,BASE_INTERNE_ENCODEE,mq02/scribe_reference,Cela pourrait-il avoir un rapport avec mon passé ?
+hcq_choix,3026,BASE_INTERNE_ENCODEE,mq02/scribe_reference,Avez-vous trouvé autre chose ?
+hcq_choix,3027,BASE_INTERNE_ENCODEE,mq02/scribe_limites,Est-ce que mon dossier pose un problème ?
+hcq_choix,3028,BASE_INTERNE_ENCODEE,mq02/scribe_limites,Puis-je consulter ce registre moi-même ?
+hcq_choix,3029,BASE_INTERNE_ENCODEE,mq02/scribe_limites,Très bien. Je vais attendre.
+hcq_choix,3030,BASE_INTERNE_ENCODEE,mq02/archivaire_accueil,De quelles correspondances parlez-vous ?
+hcq_choix,3031,BASE_INTERNE_ENCODEE,mq02/archivaire_accueil,Pensez-vous que cela puisse expliquer mon amnésie ?
+hcq_choix,3032,BASE_INTERNE_ENCODEE,mq02/archivaire_accueil,Pourquoi m'avoir convoqué pour une simple erreur de registre ?
+hcq_choix,3033,BASE_INTERNE_ENCODEE,mq02/archivaire_accueil,Comment comptez-vous procéder ?
+hcq_choix,3034,BASE_INTERNE_ENCODEE,mq02/archivaire_copies,En quoi cette personne me ressemble-t-elle ?
+hcq_choix,3035,BASE_INTERNE_ENCODEE,mq02/archivaire_copies,De quand date ce document ?
+hcq_choix,3036,BASE_INTERNE_ENCODEE,mq02/archivaire_copies,Pourquoi mon dossier renvoie-t-il à ces anciennes archives ?
+hcq_choix,3037,BASE_INTERNE_ENCODEE,mq02/archivaire_copies,Vous pensez que j'ai déjà été enregistré ici ?
+hcq_choix,3038,BASE_INTERNE_ENCODEE,mq02/archivaire_copies,Que pouvons-nous faire maintenant ?
+hcq_choix,3039,BASE_INTERNE_ENCODEE,mq02/archivaire_rapport,Qu'indique exactement ce rapport ?
+hcq_choix,3040,BASE_INTERNE_ENCODEE,mq02/archivaire_rapport,Pourquoi n'y a-t-il pas davantage d'informations ?
+hcq_choix,3041,BASE_INTERNE_ENCODEE,mq02/archivaire_rapport,Vous pensez que le capitaine pourrait en savoir davantage ?
+hcq_choix,3042,BASE_INTERNE_ENCODEE,mq02/archivaire_rapport,Je vais essayer de retrouver le capitaine.
+hcq_choix,3043,BASE_INTERNE_ENCODEE,mq03/altheon_retrouvailles,"Plutôt bien, merci."
+hcq_choix,3044,BASE_INTERNE_ENCODEE,mq03/altheon_retrouvailles,Je cherche toujours à comprendre ce qui m'est arrivé.
+hcq_choix,3045,BASE_INTERNE_ENCODEE,mq03/altheon_retrouvailles,Les Archives m'ont envoyé vous poser quelques questions.
+hcq_choix,3046,BASE_INTERNE_ENCODEE,mq03/altheon_journal,Je voudrais savoir précisément où vous m'avez trouvé.
+hcq_choix,3047,BASE_INTERNE_ENCODEE,mq03/altheon_journal,Vous n'avez vraiment rien remarqué d'inhabituel ?
+hcq_choix,3048,BASE_INTERNE_ENCODEE,mq03/altheon_journal,Pourrions-nous consulter votre journal de bord ?
+hcq_choix,3049,BASE_INTERNE_ENCODEE,mq03/altheon_consultation,Vous pourriez me montrer où cela se trouve ?
+hcq_choix,3050,BASE_INTERNE_ENCODEE,mq03/altheon_consultation,Vous souvenez-vous de quelque chose que vous n'avez pas écrit ?
+hcq_choix,3051,BASE_INTERNE_ENCODEE,mq03/altheon_consultation,Pourquoi ne pas avoir consigné ces détails ?
+hcq_choix,3052,BASE_INTERNE_ENCODEE,mq03/altheon_consultation,Je pense avoir de quoi poursuivre mes recherches.
+hcq_choix,3053,BASE_INTERNE_ENCODEE,mq03/sentinelle_retour,J'ai retrouvé le capitaine. Je dois transmettre ses renseignements à l'Archivaire.
+hcq_choix,3054,BASE_INTERNE_ENCODEE,mq03/sentinelle_retour,Vous avez été prévenu de mon retour ?
+hcq_choix,3055,BASE_INTERNE_ENCODEE,mq03/sentinelle_retour,"Très bien, je vais le rejoindre."
+hcq_choix,3056,BASE_INTERNE_ENCODEE,mq03/archivaire_final,Pourquoi Havre-Fort ?
+hcq_choix,3057,BASE_INTERNE_ENCODEE,mq03/archivaire_final,Comment puis-je m'y rendre ?
+hcq_choix,3058,BASE_INTERNE_ENCODEE,mq03/archivaire_final,Et les anciennes références de mon dossier ?
+hcq_choix,3059,BASE_INTERNE_ENCODEE,mq03/archivaire_final,Très bien. Je vais me rendre à Havre-Fort.
+hcq_choix,3060,BASE_INTERNE_ENCODEE,mq_shared,Fermer le dialogue
+hcq_choix,100003001..1999993060,PLAGE_RESEAU_SESSION,mq_shared,wire = nonce * 10000 + base ; nonce 10000..199999 ; base 3001..3060
+hcq_pnj,41,PNJ,scribe_archives,Interaction MQ
+hcq_pnj,42,PNJ,archivaire_couronne,Interaction MQ
+hcq_pnj,43,PNJ,sentinelle_archives,Interaction MQ
+hcq_pnj,44,PNJ,messager_couronne,Interaction MQ

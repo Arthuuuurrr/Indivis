@@ -1,0 +1,18 @@
+test_access_priority_and_removal_preserve_every_durable_source (__main__.NativeTests.test_access_priority_and_removal_preserve_every_durable_source) ... ok
+test_authorization_cancels_only_archives_timer (__main__.NativeTests.test_authorization_cancels_only_archives_timer) ... ok
+test_encoded_click_accepted_only_for_current_character_session (__main__.NativeTests.test_encoded_click_accepted_only_for_current_character_session) ... ok
+test_encoded_close_and_out_of_range_choice_do_not_progress (__main__.NativeTests.test_encoded_close_and_out_of_range_choice_do_not_progress) ... ok
+test_full_inventory_does_not_commit_delivery (__main__.NativeTests.test_full_inventory_does_not_commit_delivery) ... ok
+test_individual_revocation_during_mq_only_removes_that_source (__main__.NativeTests.test_individual_revocation_during_mq_only_removes_that_source) ... ok
+test_judicial_right_survives_quest_source_removal (__main__.NativeTests.test_judicial_right_survives_quest_source_removal) ... ok
+test_native_terminal_commits_and_mq04_opening (__main__.NativeTests.test_native_terminal_commits_and_mq04_opening) ... ok
+test_new_individual_grant_during_mq_is_not_lost (__main__.NativeTests.test_new_individual_grant_during_mq_is_not_lost) ... ok
+test_optional_questions_are_repeatable_without_progression (__main__.NativeTests.test_optional_questions_are_repeatable_without_progression) ... ok
+test_pause_applies_only_to_access_context_for_archives (__main__.NativeTests.test_pause_applies_only_to_access_context_for_archives) ... ok
+test_stale_choice_and_wrong_character_context_cannot_advance (__main__.NativeTests.test_stale_choice_and_wrong_character_context_cannot_advance) ... ok
+test_two_players_converse_without_sharing_progress (__main__.NativeTests.test_two_players_converse_without_sharing_progress) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.303s
+
+OK
