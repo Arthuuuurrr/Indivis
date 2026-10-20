@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-20",
+  "status": "CANDIDAT_INTEGRE_A_RECETTER_EN_JEU",
+  "bundle": {
+    "filename": "Indivis_Sequence_I_SI1_2026-10-20.zip",
+    "bytes": 33372759,
+    "sha256": "1b15484af3562b50cb6546f493b1c9027540b8d2ea3b75aecd6a734e2a1820df"
+  },
+  "runtime_sha256": {
+    "datapacks/hc_quetes_b22_V2_SEQUENCE_I_SI1.zip": "8646fe576612fc0424b612f3584559ff5f7b5fc583f0c4a384d60406102af7b7",
+    "datapacks/capitale_core_1.5.7_V2_SEQUENCE_I_SI1.zip": "dfbc034fa9ea481105c76c461e88911790b733e939401960029653caa4fc482a",
+    "mods/haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I.jar": "caed2e0718172a9c9783bbf00e9ba8cd26dae3fd2b324f03908767101691c4fb",
+    "mods/NexusCharacters-Indivis-1.21.11-PRE34-SI1.jar": "454bd4206b50737bf386d65eb09f4f0e3ad1294a1fd4e6df426f9fe205cb31d0"
+  },
+  "input_sha256": {
+    "capitale_core_1.5.7(3).zip": "9b9c20bbc0a28d85384d7bb5e7d00199fee87af795fc081a24e3f0971c61e9df",
+    "hc_quetes-0.1.0.b21_LIVRES_LORE_v16_1_SYNC-CITOYENNETE-IMPERIALE(2).zip": "d67f3a86b2130f476a5b957261b6e852d14be8227868ed6ea3a887f60f03f5f6",
+    "haute-capitale-quetes-0.1.0+1.21.11.b6(6).jar": "d7585297d672f22019af68efff67762997fe086cb1da59e0c60b0eb838de2ff5",
+    "NexusCharacters-Indivis-1.21.11-BETA-1.0-PRE34(2).jar": "24e68bc46405c8c40de030b192372da2a14bae7df1b28cee3f9db04cfe528e90"
+  },
+  "binaries_uploaded_to_github": false,
+  "server_deployed": false,
+  "fabric_server_tested": false
+}
