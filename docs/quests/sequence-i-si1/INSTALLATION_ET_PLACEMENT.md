@@ -1,8 +1,8 @@
 # Installation et placement individuel
 
-## Mise à jour depuis SI1
+## Mise à jour et gardes existants — SI1b
 
-Lire `CORRECTIF_SI1a.md`. Remplacer le journal et le pack de quêtes seulement ; le core et Nexus sont inchangés. Recapturer le garde, puis reposer les Sentinelles aux postes souhaités. Réenregistrer les coins des Archives et le port s’ils avaient déjà été configurés. Aucun reset de progression.
+Lire `CORRECTIF_SI1b.md`. Remplacer le journal et le pack de quêtes seulement. Lier les gardes déjà présents à moins de trois blocs, un par un. La capture est réservée à la création depuis un modèle lorsque le poste est réellement vide. Aucun reset de progression.
 
 ## Première installation : versions et fichiers
 
@@ -35,8 +35,10 @@ Les permissions administrateur sont nécessaires. Poser chaque personnage à l'i
 
 | Action | Commande |
 |---|---|
+| Lier le premier garde des Archives existant | `/function hc_quetes:liaison/sentinelle_archives_1` |
+| Lier le deuxième garde des Archives existant | `/function hc_quetes:liaison/sentinelle_archives_2` |
+| Examiner les gardes proches | `/function hc_quetes:pose/inspecter_garde` |
 | Capturer un modèle, à huit blocs au plus d'un garde du Cœur statique opérationnel | `/function hc_quetes:pose/reference_garde` |
-| Examiner les gardes proches en cas de refus | `/function hc_quetes:pose/inspecter_garde` |
 | Première Sentinelle, à son poste | `/function hc_quetes:pose/pnj/sentinelle_archives_1` |
 | Deuxième Sentinelle, à son poste | `/function hc_quetes:pose/pnj/sentinelle_archives_2` |
 | Scribe, à son bureau | `/function hc_quetes:pose/pnj/scribe_archives` |
@@ -61,6 +63,10 @@ Le point du port valide le premier objectif MQ04 dans un rayon de 24 blocs ; auc
 Le messager attend que les quatre cibles PNJ, les deux coins et le port soient configurés. Il apparaît ensuite
 près des personnages éligibles, dans les biomes impériaux conservés du core, sur un sol admissible,
 avec deux blocs d'air, hors combat récent, feu, criminalité active et monstres proches.
+
+## Restaurer un garde existant
+
+Avant de retirer SI1b ou déplacer un garde lié, revenir près de lui et exécuter sa fonction `hc_quetes:liaison/liberer_sentinelle_archives_1` ou `_2`. Les actions d’origine sont restaurées sans supprimer le garde. Voir les refus et sauvegardes dans `CORRECTIF_SI1b.md`.
 
 ## Reposer ou déplacer un nouveau PNJ
 

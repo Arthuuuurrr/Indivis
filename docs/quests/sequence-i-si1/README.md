@@ -1,4 +1,4 @@
-# Indivis — Séquence I — SI1a — 20 octobre 2026
+# Indivis — Séquence I — SI1b — 20 octobre 2026
 
 La Séquence I est intégrée aux deux datapacks fournis : MQ01 La Convocation, MQ02 Les Registres,
 MQ03 Le Journal de bord, puis l'ouverture de MQ04 Havre-Fort et son premier objectif.
@@ -10,9 +10,11 @@ Ce lot constitue donc une version modifiée de la 1.5.7, avec journal et Nexus a
 les bancs sont exécutés ; aucun serveur Minecraft/Fabric ni monde de jeu n'était disponible ici.
 La jouabilité, le chargement réel des commandes/NBT et les performances restent à valider en jeu.
 
-## Installation
+## Correctif SI1b et gardes existants
 
-Pour une installation SI1 existante, lire d’abord `docs/CORRECTIF_SI1a.md` : seuls le journal et le pack de quêtes changent. Le core et Nexus restent identiques.
+Lire `docs/CORRECTIF_SI1b.md`. Depuis SI1/SI1a, seuls le journal et le pack de quêtes changent. Lier les gardes des Archives déjà présents avec les deux fonctions `hc_quetes:liaison/sentinelle_archives_1` et `_2`, sans capture préalable ni nouvelle création.
+
+## Installation
 
 `installation/datapacks/` contient les deux ZIP à installer ensemble dans le monde de test.
 `installation/mods/` contient les deux JAR à remplacer ensemble, côté serveur et clients.

@@ -1,0 +1,3 @@
+SI1a_GUARD_POLICY_EXPECTED_FAILURE exit=1
+Exception in thread "main" java.lang.AssertionError: Un dialogue partagé patrol/interact_tellraw ne transforme pas ce garde statique des Archives en patrouille
+	at net.hautecapitale.quetes.sequence.GuardPolicyBench.main(GuardPolicyBench.java:8)

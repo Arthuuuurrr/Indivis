@@ -1,8 +1,8 @@
 # Changements et compatibilité
 
-## Correctif SI1a
+## Correctif SI1b
 
-Lecture NBT non destructive, copie native synchrone et modèle du garde réutilisable. Rayon de capture porté à huit blocs, sélection parmi les gardes admissibles, diagnostic explicite. Seuls le journal et le pack de quêtes changent depuis SI1. Voir `CORRECTIF_SI1a.md`.
+Le filtre ne confond plus un dialogue partagé `patrol/interact_tellraw` avec un circuit mobile. Liaison réversible des gardes existants avec sauvegarde, repli natif, contrôle des doublons et restauration. Seuls le journal et le pack de quêtes changent depuis SI1a. Voir `CORRECTIF_SI1b.md`. Le correctif NBT de SI1a reste inclus.
 
 ## Core et quêtes
 

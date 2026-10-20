@@ -12,5 +12,8 @@
   "static_checks_passed": 7006,
   "nbt_guard_assertions": 22,
   "old_si1_nbt_bug_reproduced": true,
-  "corrected_fabric_server_tested": false
+  "corrected_fabric_server_tested": false,
+  "guard_policy_assertions": 4,
+  "guard_binding_assertions": 31,
+  "si1a_guard_policy_failure_reproduced": true
 }

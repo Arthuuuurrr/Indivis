@@ -1,5 +1,9 @@
 # Recette en jeu et retour arrière
 
+## Gardes existants liés par SI1b
+
+Avant de retirer le pack/JAR SI1b, restaurer chaque garde près de son poste avec `hc_quetes:liaison/liberer_sentinelle_archives_1` et `_2`. La suppression des nouvelles entités ne restaure pas à elle seule les actions des gardes existants. Une sauvegarde complète du monde peut également restaurer ces données.
+
 ## Recette à effectuer sur une copie
 
 Tous les essais ci-dessous portent le statut **non effectué — serveur Fabric** dans cette livraison.

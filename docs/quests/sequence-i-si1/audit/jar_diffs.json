@@ -1,8 +1,8 @@
 {
-  "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1a.jar": {
+  "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b.jar": {
     "source": "haute-capitale-quetes-0.1.0+1.21.11.b6(6).jar",
     "source_sha256": "d7585297d672f22019af68efff67762997fe086cb1da59e0c60b0eb838de2ff5",
-    "output_sha256": "3a43545b0bbd821a8a7f13a93470ad39024e9db64b77c287b34624b1d8133c9f",
+    "output_sha256": "7d17bc58795f47561a873bff7ce07ecbb3838ba521bddc9a9c2bdd7e86eb8665",
     "changed": [
       "fabric.mod.json",
       "net/hautecapitale/quetes/HauteCapitaleQuetes.class",
@@ -11,6 +11,7 @@
     ],
     "added": [
       "indivis_sequence_states.tsv",
+      "net/hautecapitale/quetes/sequence/GuardBindings.class",
       "net/hautecapitale/quetes/sequence/GuardNbt.class",
       "net/hautecapitale/quetes/sequence/LegacyViews$Vector.class",
       "net/hautecapitale/quetes/sequence/LegacyViews.class",

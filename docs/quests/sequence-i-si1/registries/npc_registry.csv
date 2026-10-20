@@ -1,6 +1,6 @@
 npc,mode,function,marker
-sentinelle_archives_1,POSE_DEPUIS_MODELE_GARDE,hc_quetes:pose/pnj/sentinelle_archives_1,?
-sentinelle_archives_2,POSE_DEPUIS_MODELE_GARDE,hc_quetes:pose/pnj/sentinelle_archives_2,?
+sentinelle_archives_1,EXISTANT_A_LIER,hc_quetes:liaison/sentinelle_archives_1,?
+sentinelle_archives_2,EXISTANT_A_LIER,hc_quetes:liaison/sentinelle_archives_2,?
 scribe_archives,POSE_INDIVIDUELLE,hc_quetes:pose/pnj/scribe_archives,?
 archivaire_couronne,POSE_INDIVIDUELLE,hc_quetes:pose/pnj/archivaire_couronne,?
 altheon_brumeforge,EXISTANT_A_LIER,hc_quetes:liaison/altheon,?

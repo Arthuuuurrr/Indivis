@@ -4,6 +4,6 @@ test_copy_failure_restores_both_destinations (__main__.InstallerTests.test_copy_
 test_dry_run_does_not_move_or_copy_any_file (__main__.InstallerTests.test_dry_run_does_not_move_or_copy_any_file) ... ok
 
 ----------------------------------------------------------------------
-Ran 4 tests in 0.027s
+Ran 4 tests in 0.025s
 
 OK
