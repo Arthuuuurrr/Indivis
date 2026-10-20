@@ -19,6 +19,8 @@ Conserver le core `capitale_core_1.5.7_V2_SEQUENCE_I_SI1.zip` et `NexusCharacter
 
 Le mod admin est indépendant de ce placement. L'environnement reste Minecraft **1.21.11**, avec les dépendances déjà utilisées pour SI1, notamment EasyNPC **7.16.0** et son interface de configuration.
 
+**Si une liaison affiche « Unknown function ».** Une fonction présente dans le datapack peut être refusée au chargement si une commande du mod journal manque. Le démarrage serveur transmis le 20 octobre confirme le chargement de `hc_quetes_b22_V2_SEQUENCE_I_SI1b.zip`, mais déclare le journal `0.1.0+1.21.11.b7.SEQUENCE-I.SI1a`. Cette version n'enregistre pas `indivissequence guardlink1` ni `guardlink2` ; Minecraft refuse alors les fonctions de liaison et de restauration. Dans ce cas précis, conserver le datapack SI1b et remplacer le JAR du journal par celui indiqué ci-dessus, puis redémarrer complètement le serveur et les clients concernés. Le journal doit déclarer `0.1.0+1.21.11.b7.SEQUENCE-I.SI1b` au démarrage ; le nom du fichier JAR seul ne prouve pas sa version. Les commandes de placement restent identiques.
+
 ## 2. Règle commune aux commandes de placement
 
 Exécuter les commandes **dans le jeu avec un compte administrateur**, dans la dimension et au poste concernés, avec le chunk chargé. La position enregistrée est celle du joueur ou du PNJ ciblé selon l'action ; il faut donc se déplacer entre les étapes.
