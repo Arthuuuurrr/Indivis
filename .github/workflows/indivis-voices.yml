@@ -33,6 +33,9 @@ jobs:
       - name: Execute native dispatcher in isolated Fabric server
         working-directory: sources/indivis-voices
         run: python3 tools/smoke_sequence_guard.py
+      - name: Verify playback volume with Minecraft OpenAL natives
+        working-directory: sources/indivis-voices
+        run: python3 tools/verify_playback_volume.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -44,4 +47,5 @@ jobs:
             sources/indivis-voices/build/reports/tests/test/**
             sources/indivis-voices/build/test-results/test/*.xml
             sources/indivis-voices/build/sequence-guard-smoke.*
+            sources/indivis-voices/build/playback-volume-check.json
             sources/indivis-voices/build/smoke-server/logs/latest.log

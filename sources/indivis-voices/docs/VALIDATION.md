@@ -2,6 +2,13 @@
 
 Date : 19 octobre 2026. Base et empreintes : [AUDIT.md](AUDIT.md).
 
+Mise à jour du **20 octobre 2026 — 0.2.2** : augmentation du volume à la lecture,
+avec fichiers audio inchangés. Six tests de politique de volume et un banc
+OpenAL natif complètent les contrôles de 0.2.1. Le banc natif utilise la
+bibliothèque Linux distribuée avec Minecraft et un contexte de rendu privé,
+sans périphérique audio. Voir [VOLUME_0_2_2.md](VOLUME_0_2_2.md) pour les preuves
+et les limites : ce banc ne constitue pas une écoute du client d'Arthur.
+
 La version **0.2.1** corrige le dispatcher après le test utilisateur de 0.2.0 :
 la première prise se jouait, puis la cascade traversait les lignes suivantes.
 Sept tests de régression et un banc Fabric d'exécution des 38 branches

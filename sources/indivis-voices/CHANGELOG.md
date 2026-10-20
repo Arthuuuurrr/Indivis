@@ -1,3 +1,18 @@
+# 0.2.2 — 20 octobre 2026
+
+* Niveau de lecture des voix multiplié par 3 côté client, sans modification
+  des 20 OGG, des masters, de la banque ni des correspondances.
+* Le plafond OpenAL est relevé uniquement pour les sources marquées Voices,
+  avec contrôle de l'extension et du limiteur de sortie déjà activé par Minecraft.
+  Le profil est retiré à l'arrêt/fermeture de la source.
+* Les dialogues et `/ivvoices test` partagent ce réglage ; les volumes Minecraft,
+  le curseur Voices et les fondus restent proportionnels. Le profil réellement
+  appliqué est visible dans `/ivvoices` et les logs. Un moteur incompatible
+  conserve le volume normal avec diagnostic, sans toucher à la lecture.
+* Vérification native avec la bibliothèque OpenAL Linux exacte de Minecraft :
+  signal faible ×3, signal fort limité, autre source et remise à zéro contrôlés.
+  Le serveur 0.2.1 reste compatible ; le correctif d'enchaînement est conservé.
+
 # 0.2.1 — 19 octobre 2026
 
 * Correction de l'enchaînement : le verrou du dispatcher core 1.5.7 laissait

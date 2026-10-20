@@ -19,14 +19,12 @@ import net.indivis.voices.network.VoicePackets;
 import net.indivis.voices.session.PlaybackLease;
 import net.indivis.voices.client.mixin.*;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.sound.SoundInstance;
 import net.minecraft.client.sound.SoundSystem;
 import net.minecraft.resource.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.random.Random;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.*;
 
@@ -141,7 +139,7 @@ public final class VoicesClient implements ClientModInitializer {
             "/" + IndivisVoices.CATALOG.lines().size() + ", pont b10 " + (bridge.available() ? "prêt" : "indisponible") +
             ", canal serveur " + (ClientPlayNetworking.canSend(VoicePackets.Hello.ID) ? "présent" : "absent") +
             ", Minecraft général " + Math.round(client.options.getSoundVolume(SoundCategory.MASTER) * 100) +
-            " %, voix " + Math.round(client.options.getSoundVolume(SoundCategory.VOICE) * 100) + " %. " + lastDiagnostic +
+            " %, voix " + Math.round(client.options.getSoundVolume(SoundCategory.VOICE) * 100) + " %. " + VoicePlaybackVolume.diagnostic() + ". " + lastDiagnostic +
             ". /ivvoices test|on|off|volume <0..100>|subtitles on|off"));
         return 1;
     }
@@ -163,8 +161,7 @@ public final class VoicesClient implements ClientModInitializer {
         }
         stopPreview();
         previewLine = line;
-        preview = new PositionedSoundInstance(Identifier.of("indivis_voices", line.sound()),
-            SoundCategory.VOICE, options.volume, 1f, Random.create(), false, 0, SoundInstance.AttenuationType.NONE, 0, 0, 0, true);
+        preview = new VoicePlaybackVolume.Preview(line.sound(), options.volume);
         var result = client.getSoundManager().play(preview);
         previewBegan = System.nanoTime(); previewHeard = false;
         lastDiagnostic = "test audio " + id + " : " + result;

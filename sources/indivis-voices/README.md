@@ -1,4 +1,4 @@
-# Indivis Voices — prototype prologue 0.2.1
+# Indivis Voices — prototype prologue 0.2.2
 
 Référence : [issue #167](https://github.com/Arthuuuurrr/Indivis/issues/167).
 Mod Fabric **indépendant**, côté serveur et client, pour Minecraft 1.21.11,
@@ -28,7 +28,7 @@ initialement prévue dans #167 ; les masters restent hors du mod.
 1. Garder la pile actuelle : EasyNPC Core/Config UI 7.16, dialogue b10, RPG RC3,
    journal b6, Nexus PRE34, core 1.5.7 et hc_quetes b21. Ne remplacer aucun de ces
    fichiers par les anciennes versions de main.
-2. Remplacer l'ancien JAR Voices par `build/libs/indivis-voices-0.2.1+1.21.11.jar`
+2. Remplacer l'ancien JAR Voices par `build/libs/indivis-voices-0.2.2+1.21.11.jar`
    dans les **mods du serveur de test et du client**, puis redémarrer les deux.
    Ne garder qu'un seul JAR Voices. Aucun pack à télécharger ou activer ; les
    sons font partie des ressources du mod. Aucun datapack d'intégration en plus.
@@ -52,6 +52,15 @@ b10 assurent l'affichage normal pendant la voix. Options persistées dans
 `config/indivis-voices.json`.
 Le volume Voices agit par source, sans modifier les volumes des autres sons.
 Les réglages master/catégorie voix de Minecraft restent applicables.
+
+Depuis **0.2.2**, les seules sources Voices utilisent un **niveau de lecture ×3**,
+y compris `/ivvoices test`, avec le limiteur de sortie Minecraft actif. Les
+20 OGG et les masters sont inchangés : aucun gain n'est appliqué aux fichiers.
+`/ivvoices` affiche le profil réellement appliqué après une lecture. Si le
+moteur ne permet pas cette amplification protégée, le volume normal reste
+disponible avec un diagnostic explicite. `/ivvoices volume 33` retrouve environ
+l'ancien niveau à 100 %. Le serveur 0.2.1 reste compatible avec le client 0.2.2.
+[Détails et portée des vérifications](docs/VOLUME_0_2_2.md).
 
 ## Compilation et vérifications
 

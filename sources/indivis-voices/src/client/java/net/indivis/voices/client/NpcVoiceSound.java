@@ -9,7 +9,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.random.Random;
 
-final class NpcVoiceSound extends AbstractSoundInstance implements TickableSoundInstance {
+final class NpcVoiceSound extends AbstractSoundInstance implements TickableSoundInstance, VoicePlaybackVolume.VoiceSound {
     final FadeEnvelope fade = new FadeEnvelope();
     private final UUID npc;
     private final int entityId;
