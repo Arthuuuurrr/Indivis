@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-19",
+  "version": "0.1.1+1.21.11",
+  "base_commit": "3cbfcbe243ba2f7bb89b8915f3ee9e4692dd333f",
+  "minecraft": "1.21.11",
+  "loader": "0.19.5",
+  "fabric_api": "0.141.6+1.21.11",
+  "java": "21.0.12.1+1-LTS",
+  "gradle": "9.5.1",
+  "loom": "1.17.20",
+  "yarn": "1.21.11+build.6",
+  "clean_build_success": true,
+  "junit": {
+    "tests": 17,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "bundled_ogg_files": 8,
+  "bundled_hashes_and_sound_events_verified": true,
+  "lossless_masters_bundled": false,
+  "invalid_archive_checks": {
+    "missing_asset": "rejected",
+    "modified_asset": "rejected"
+  },
+  "catalog_revision": "prologue-fr-demo-1",
+  "quest_logic_changed": false,
+  "network_protocol_changed": false,
+  "old_mods_datapacks_and_permissions_changed": false,
+  "client_audio_listening_tested": false,
+  "quest_audio_in_game_tested": false,
+  "two_player_audio_tested": false,
+  "fps_mspt_measured": false,
+  "isolated_server_boot_this_version": false,
+  "production_deployed": false,
+  "local_build_host_adapter": "Loom Unix socket availability probe reports false; in-memory local agent only, no third-party binary edited, no agent shipped",
+  "artifacts_sha256": {
+    "build/libs/indivis-voices-0.1.1+1.21.11-sources.jar": "de1e8036887ceb4edf5e84bac5166ba44e66bcdbf9d723cbfe0b20b40cede843",
+    "build/libs/indivis-voices-0.1.1+1.21.11.jar": "1ba21fba34c32b80cddfcfc4be2e7bce27647575a2c3b06fea37889c48f16c0d"
+  }
+}

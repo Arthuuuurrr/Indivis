@@ -1,0 +1,65 @@
+plugins {
+    id 'fabric-loom' version "${loom_version}"
+}
+
+version = project.mod_version
+group = 'net.indivis'
+base { archivesName = 'indivis-voices' }
+repositories { mavenCentral() }
+loom {
+    splitEnvironmentSourceSets()
+    mods {
+        indivis_voices {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+    runConfigs {
+        server { runDir 'build/smoke-server' }
+    }
+}
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.11.4'
+}
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') { expand version: project.version }
+    from('human-takes.json') { into 'indivis-voices' }
+}
+// Fabric loads assets in the mod automatically. Keep a single source of audio
+// files shared with the optional export, and never ship the lossless masters.
+tasks.named('processClientResources') {
+    from('demo-resourcepack/assets') { into 'assets' }
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+}
+java { withSourcesJar() }
+jar { from('LICENSE') { rename { 'LICENSE_indivis_voices' } } }
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+test { useJUnitPlatform() }
+tasks.register('verifyVoiceBank', Exec) {
+    commandLine 'python3', 'tools/verify_inputs.py'
+}
+tasks.register('demoPack', Zip) {
+    def catalog = new groovy.json.JsonSlurper().parse(file('src/main/resources/indivis-voices/catalog.json'))
+    archiveFileName = "indivis-voices-${catalog.revision}.zip"
+    destinationDirectory = layout.buildDirectory.dir('distributions')
+    from 'demo-resourcepack'
+}
+tasks.named('check') { dependsOn 'verifyVoiceBank' }
+tasks.named('assemble') { dependsOn 'demoPack' }
+tasks.register('verifyBundledVoices', Exec) {
+    dependsOn tasks.named('remapJar')
+    commandLine 'python3', 'tools/verify_distribution.py', tasks.named('remapJar').get().archiveFile.get().asFile
+}
+tasks.named('check') { dependsOn 'verifyBundledVoices' }

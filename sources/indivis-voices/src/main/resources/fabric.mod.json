@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "indivis_voices",
+  "version": "${version}",
+  "name": "Indivis Voices",
+  "description": "Doublage facultatif du prologue ; progression et caméra conservées.",
+  "authors": ["Indivis"],
+  "environment": "*",
+  "entrypoints": {
+    "main": ["net.indivis.voices.IndivisVoices"],
+    "client": ["net.indivis.voices.client.VoicesClient"]
+  },
+  "mixins": ["indivis-voices.mixins.json", {"config": "indivis-voices.client.mixins.json", "environment": "client"}],
+  "license": "MIT",
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": ">=0.141.6"
+  },
+  "suggests": {"haute_capitale_dialogue": "0.1.0+1.21.11.b10", "easy_npc": "7.16.0"}
+}
