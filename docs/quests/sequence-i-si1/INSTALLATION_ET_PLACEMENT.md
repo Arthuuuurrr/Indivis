@@ -1,8 +1,10 @@
 # Installation et placement individuel
 
-> Document de la livraison SI1 du 20/10/2026, suivi dans [#172](https://github.com/Arthuuuurrr/Indivis/issues/172). Les chemins `installation/`, `tools/`, `sources/` et `audit/` désignent le contenu de l’archive remise à Arthur, sauf lien relatif explicite. Statut : candidat, recette Fabric non effectuée.
+## Mise à jour depuis SI1
 
-## Versions et fichiers
+Lire `CORRECTIF_SI1a.md`. Remplacer le journal et le pack de quêtes seulement ; le core et Nexus sont inchangés. Recapturer le garde, puis reposer les Sentinelles aux postes souhaités. Réenregistrer les coins des Archives et le port s’ils avaient déjà été configurés. Aucun reset de progression.
+
+## Première installation : versions et fichiers
 
 Utiliser une copie complète du serveur avec Minecraft **1.21.11**, Java **21 ou plus**,
 Fabric Loader **0.19.5 ou plus** et Fabric API **0.141.6 ou plus** (exigences du Nexus fourni).
@@ -33,7 +35,8 @@ Les permissions administrateur sont nécessaires. Poser chaque personnage à l'i
 
 | Action | Commande |
 |---|---|
-| Capturer un modèle, à moins de 3 blocs d'un garde du Cœur statique opérationnel | `/function hc_quetes:pose/reference_garde` |
+| Capturer un modèle, à huit blocs au plus d'un garde du Cœur statique opérationnel | `/function hc_quetes:pose/reference_garde` |
+| Examiner les gardes proches en cas de refus | `/function hc_quetes:pose/inspecter_garde` |
 | Première Sentinelle, à son poste | `/function hc_quetes:pose/pnj/sentinelle_archives_1` |
 | Deuxième Sentinelle, à son poste | `/function hc_quetes:pose/pnj/sentinelle_archives_2` |
 | Scribe, à son bureau | `/function hc_quetes:pose/pnj/scribe_archives` |

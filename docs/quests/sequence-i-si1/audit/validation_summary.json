@@ -8,5 +8,9 @@
   "quest_item_identifiers_migrated": 64,
   "unresolved_internal_functions": [],
   "unresolved_predicates": [],
-  "checks_details_location": "Archive SI1 : audit/static_validation.json"
+  "checks_details_location": "Archive SI1 : audit/static_validation.json",
+  "static_checks_passed": 7006,
+  "nbt_guard_assertions": 22,
+  "old_si1_nbt_bug_reproduced": true,
+  "corrected_fabric_server_tested": false
 }

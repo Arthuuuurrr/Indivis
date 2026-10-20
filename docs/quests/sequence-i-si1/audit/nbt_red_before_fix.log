@@ -1,0 +1,5 @@
+OLD_SI1_EXPECTED_FAILURE exit=1
+Exception in thread "main" java.lang.AssertionError: La lecture de coordonnée ne doit supprimer aucune donnée NBT
+	at net.hautecapitale.quetes.sequence.NbtBench.check(NbtBench.java:35)
+	at net.hautecapitale.quetes.sequence.NbtBench.coordinateRead(NbtBench.java:44)
+	at net.hautecapitale.quetes.sequence.NbtBench.main(NbtBench.java:48)

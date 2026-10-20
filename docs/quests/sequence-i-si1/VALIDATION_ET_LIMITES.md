@@ -1,19 +1,19 @@
 # Vérifications effectuées et limites
 
-> Document de la livraison SI1 du 20/10/2026, suivi dans [#172](https://github.com/Arthuuuurrr/Indivis/issues/172). Les chemins `installation/`, `tools/`, `sources/` et `audit/` désignent le contenu de l’archive remise à Arthur, sauf lien relatif explicite. Statut : candidat, recette Fabric non effectuée.
-
 Statut : **candidat intégré, à recetter en jeu**. Aucun monde ni serveur de production n'a été modifié.
 
 | Catégorie | Résultat | Portée |
 |---|---|---|
 | Statique — norme v2 | 70 fiches, 0 erreur | Validateur fourni avec la norme |
-| Statique — intégrité et références | 7004 contrôles réussis | JSON, fonctions, prédicats, scores, items, livres, JAR |
+| Statique — intégrité et références | 7006 contrôles réussis | JSON, fonctions, prédicats, scores, items, livres, JAR |
 | Statique — équivalence des états | 6973 cas réussis | Tous les états historiques effectivement écrits dans les sources |
 | Banc — fonctions natives | 13 tests réussis | Droits, dialogues, sessions périmées, inventaire plein, indépendance de deux joueurs |
 | Banc — installateur | 4 tests réussis | Plan sans écriture, sauvegarde, intégrité et annulation en cas de copie interrompue |
 | Banc — Java livré | BRIDGE_BENCH assertions=8193 legacy_visibility_truth_cases=8160 errors=0; endpoints Minecraft/Nexus doublés | Doubles des points d'API Minecraft/Nexus ; classes d'adaptation réelles |
-| Statique — bytecode | ASM_BASIC_VERIFIER classes=10 methods=133 errors=0 (sans résolution des API Minecraft) | Pas de résolution des API Minecraft |
-| Serveur Fabric | **Non effectué** | Chargement, NBT, PNJ, jeu multijoueur, Xaero, sauvegardes réelles et performances |
+| Statique — bytecode | ASM_BASIC_VERIFIER classes=11 methods=153 errors=0 (sans résolution des API Minecraft) | Pas de résolution des API Minecraft |
+| Banc — NBT livré | NBT_GUARD_BENCH assertions=22 errors=0; API NBT/entités doublées, chargement Minecraft non testé | Contrats Yarn vérifiés ; doubles Minecraft/EasyNPC |
+| Reproduction du défaut précédent | Échec attendu confirmé sur le JAR SI1 | Lecture non destructive ; trace jointe |
+| Serveur Fabric du correctif | **Non effectué** | Chargement, NBT, PNJ, jeu multijoueur, Xaero, sauvegardes réelles et performances |
 
 Les tests natifs interprètent le sous-ensemble des commandes utilisé dans les accès et les transitions des
 dialogues ; les effets du monde, du rendu, du Nexus et de l'inventaire y sont des doubles explicites.

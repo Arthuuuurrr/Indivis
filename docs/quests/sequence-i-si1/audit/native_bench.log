@@ -13,6 +13,6 @@ test_stale_choice_and_wrong_character_context_cannot_advance (__main__.NativeTes
 test_two_players_converse_without_sharing_progress (__main__.NativeTests.test_two_players_converse_without_sharing_progress) ... ok
 
 ----------------------------------------------------------------------
-Ran 13 tests in 0.298s
+Ran 13 tests in 0.243s
 
 OK

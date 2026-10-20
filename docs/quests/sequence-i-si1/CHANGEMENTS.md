@@ -1,6 +1,8 @@
 # Changements et compatibilité
 
-> Document de la livraison SI1 du 20/10/2026, suivi dans [#172](https://github.com/Arthuuuurrr/Indivis/issues/172). Les chemins `installation/`, `tools/`, `sources/` et `audit/` désignent le contenu de l’archive remise à Arthur, sauf lien relatif explicite. Statut : candidat, recette Fabric non effectuée.
+## Correctif SI1a
+
+Lecture NBT non destructive, copie native synchrone et modèle du garde réutilisable. Rayon de capture porté à huit blocs, sélection parmi les gardes admissibles, diagnostic explicite. Seuls le journal et le pack de quêtes changent depuis SI1. Voir `CORRECTIF_SI1a.md`.
 
 ## Core et quêtes
 

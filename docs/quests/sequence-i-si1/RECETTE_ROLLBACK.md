@@ -1,7 +1,5 @@
 # Recette en jeu et retour arrière
 
-> Document de la livraison SI1 du 20/10/2026, suivi dans [#172](https://github.com/Arthuuuurrr/Indivis/issues/172). Les chemins `installation/`, `tools/`, `sources/` et `audit/` désignent le contenu de l’archive remise à Arthur, sauf lien relatif explicite. Statut : candidat, recette Fabric non effectuée.
-
 ## Recette à effectuer sur une copie
 
 Tous les essais ci-dessous portent le statut **non effectué — serveur Fabric** dans cette livraison.
