@@ -1,5 +1,7 @@
-# PQ01-R2 — reconstruction en cours
+# PQ01-R2 — candidat texte livré
 
-Reconstruction après perte du candidat R1 (#176). Les deux datapacks sont générés à partir du core SI1 et des quêtes SI1b fournis. Les dialogues approuvés sont extraits du prompt, les questions sont interactives et les récompenses normales conservées hors attribution prématurée de Visiteur. La relecture sauvegarde les états de PQ01 et la position par compte/personnage Nexus.
+Le paquet `Indivis_PQ01_R2_Candidat_Texte_2026-10-22.zip` est disponible dans la livraison de la conversation, SHA-256 `93ed3787106eae1cf23fcf28f8b2945cdb73ebcebc4a17b0136a0341edd87ee7`. Il contient les deux datapacks modifiés, le guide, les sources et les audits. Voir [la documentation complète](pq01-dirigeable-r2/README.md).
 
-Candidat texte : l’interruption Gautier utilise un repli statique, sans déplacement ni clone de PNJ ; l’animation mobile individuelle du précédent candidat perdu n’est pas reconstruite dans ce lot. Aucun JAR n’est modifié. Les contrôles et la livraison sont encore en cours ; aucune recette Minecraft ni installation serveur.
+95 nœuds et 145 occurrences de dialogue approuvé ; 12 cas de contrôle statique PASS, 931 JSON/pack.mcmeta analysés, 0 référence interne obligatoire manquante. 40 assertions PASS sur la politique V2QuestPolicy du Nexus fourni. Aucun résultat du candidat R1 perdu n'est réutilisé.
+
+**Gautier utilise un repli statique : l'animation individuelle mobile n'est pas implémentée dans R2.** Aucun JAR modifié, aucun test Minecraft/Fabric réel, aucun déploiement ni merge. Les scénarios multijoueur/caméra/profils doivent encore être exécutés en jeu. L'issue #176 reste ouverte pour ces limites.

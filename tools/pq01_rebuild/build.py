@@ -11,7 +11,7 @@ INPUTS={
 FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R2.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R2.zip'}
 PREFIX='quest/spawn_dirigeable_couronne/'
 SCORES=['hch_pq1node','hcf_pq1_a','hcf_pq1_c','hcf_pq1_av','hcf_pq1_gain','hcf_pq1_test','hcf_pq1_ver','hcd_pq1_banter',
- 'hcm_pq1_active','hcm_pq1_node','hcm_pq1_tok','hcm_pq1_pick','hcm_pq1_valid','hcm_pq1_temp','hcm_pq1_voice','hcm_pq1_ttl','hcm_pq1_commit','hcm_pq1_dock','hcm_pq1_role']
+ 'hcm_pq1_active','hcm_pq1_node','hcm_pq1_tok','hcm_pq1_pick','hcm_pq1_valid','hcm_pq1_temp','hcm_pq1_voice','hcm_pq1_ttl','hcm_pq1_commit','hcm_pq1_dock','hcm_pq1_role','hcm_pq1_poll']
 SAVED=['hcq_pq01','QUEST_PROLOGUE','CAP_QUETEACTIVE',*SCORES[:8]]
 def digest(data):return hashlib.sha256(data).hexdigest()
 def load(path):
@@ -72,6 +72,15 @@ def build():
   '$execute unless data storage capitale:pq01_runtime sessions."$(owner)"{character:"$(character)"} run return 0',
   '$data modify storage capitale:pq01_runtime current set from storage capitale:pq01_runtime sessions."$(owner)"',
   'return run '+cmd('session/spatial_macro')+' with storage capitale:pq01_runtime current'])
+ f('session/identity_macro',[
+  '$execute unless data storage capitale:pq01_runtime sessions."$(owner)"{character:"$(character)"} run return 0','return 1'])
+ f('transition/check_self',[
+  'execute store result score @s hcm_pq1_valid run '+cmd('context_self'),
+  'execute unless score @s hcm_pq1_valid matches 1 run return 0',
+  'return run '+cmd('session/identity_macro')+' with storage hc_quetes:session current'])
+ f('transition/abort_self',[
+  'scoreboard players set @s CAP_QSEQ 0','scoreboard players set @s CAP_QSEQ_TIMER 0',
+  tell('[PQ01] Transition arrêtée : contexte de personnage changé. Reprenez auprès du capitaine, ou de Géraud si vous êtes déjà au quai.','gold')])
  f('session/spatial_macro',[
   '$execute unless dimension $(dimension) run return 0',
   '$execute positioned $(x) $(y) $(z) unless entity @s[distance=..10] run return 0','return 1'])
@@ -87,6 +96,9 @@ def build():
  f('session/tick_self',[
   'scoreboard players remove @s hcm_pq1_ttl 1',
   'execute if score @s hcm_pq1_voice matches 1.. run scoreboard players remove @s hcm_pq1_voice 1',
+  'scoreboard players add @s hcm_pq1_poll 1',
+  'execute if score @s hcm_pq1_poll matches ..4 run return 0',
+  'scoreboard players set @s hcm_pq1_poll 0',
   'execute store result score @s hcm_pq1_valid run '+cmd('session/check_self'),
   'execute unless score @s hcm_pq1_valid matches 1 run '+cmd('close_self')])
  f('voice/play_macro',['$playsound $(sound) voice @s ~ ~ ~ 1 1','$scoreboard players set @s hcm_pq1_voice $(ticks)',
@@ -98,7 +110,7 @@ def build():
  f('close_self',[
   cmd('voice/stop_self'),
   'execute if score @s CAP_QDIALOG_OWNER matches 91..96 run function capitale:quest/dialogue/clear_self',
-  *['scoreboard players set @s '+s+' 0' for s in ('hcm_pq1_active','hcm_pq1_tok','hcm_pq1_pick','hcm_pq1_node','hcm_pq1_voice','hcm_pq1_ttl','hcm_pq1_role')]])
+  *['scoreboard players set @s '+s+' 0' for s in ('hcm_pq1_active','hcm_pq1_tok','hcm_pq1_pick','hcm_pq1_node','hcm_pq1_voice','hcm_pq1_ttl','hcm_pq1_role','hcm_pq1_poll')]])
  # Jeton neuf à chaque affichage. Aucun ancien bouton ne partage le même bloc de seize valeurs.
  f('buttons_self',[
   'execute store result score #nonce hcm_pq1_temp run data get storage capitale:pq01_runtime nonce',
@@ -163,6 +175,7 @@ def build():
   'execute if score @s CAP_QDIALOG_OWNER matches 2..90 run return 0',
   cmd('session/save_macro')+' with storage hc_quetes:session current',
   'scoreboard players set @s hcm_pq1_active 1','scoreboard players set @s CAP_QDIALOG_KEEP 1',
+  'scoreboard players set @s hcm_pq1_poll 0',
   'execute store result score @s hcm_pq1_ttl run data get storage capitale:pq01_config timeout_ticks',
   'execute unless score @s hcm_pq1_ttl matches 200..12000 run scoreboard players set @s hcm_pq1_ttl 3600']
  for role,owner in OWNERS.items():
@@ -260,6 +273,13 @@ def build():
  p=function_path(PREFIX+'sequence/arrivee_tp_self')
  assert b'spawnpoint @s 93 228 82' in core[p]
  core[p]=core[p].replace(b'spawnpoint @s 93 228 82',b'execute unless score @s hcf_pq1_test matches 1 run spawnpoint @s 93 228 82')
+ for stage,state in (('arrivee_prepare_self','10..39'),('arrivee_tp_self','10..39'),('arrivee_objectif_self','40..99')):
+  p=function_path(PREFIX+'sequence/'+stage)
+  guard=[
+   'execute store result score @s hcm_pq1_valid run '+cmd('transition/check_self'),
+   'execute unless score @s hcm_pq1_valid matches 1 run return run '+cmd('transition/abort_self'),
+   'execute unless score @s hcq_pq01 matches '+state+' run return run '+cmd('transition/abort_self')]
+  core[p]=('\n'.join(guard)+'\n').encode()+core[p]
  # Sauvegarde de relecture : compte ET personnage Nexus. Rien d'autre n'est réinitialisé.
  admin_pre=['execute store result score @s hcm_pq1_valid run '+cmd('context_self'),
   'execute unless score @s hcm_pq1_valid matches 1 run return 0',
@@ -279,6 +299,8 @@ def build():
   tell('[PQ01 — test] Relecture activée pour ce personnage. Retour : /function capitale:pq01/admin/test_fin.','gold'),
   'indivissequence refresh'])
  f('test/already_self',[tell('[PQ01 — test] Une sauvegarde existe déjà pour ce personnage. Terminez la relecture avant d’en commencer une autre.','red')])
+ f('error/character_self',[tell('[PQ01] Sélectionnez un personnage Nexus et attendez la fin de son chargement.','red')])
+ f('error/busy_self',[tell('[PQ01] Fermez la conversation en cours et attendez la fin de la transition avant cette commande.','red')])
  f('admin/test_fin',[
   'execute store result score @s hcm_pq1_valid run '+cmd('context_self'),
   'execute unless score @s hcm_pq1_valid matches 1 run return 0',
@@ -321,6 +343,14 @@ def build():
     *['execute store result storage hc_quetes:lieux pq01_'+name+'.'+axis+' int 1 run data get entity @s Pos['+str(i)+']' for i,axis in enumerate('xyz')],
     'data modify storage hc_quetes:lieux pq01_'+name+'.dimension set from storage hc_quetes:session current.dimension',
     tell('[PQ01] Point '+ROLES[role]+' ('+phase+') enregistré à votre position. Configurez séparément le PNJ existant dans EasyNPC.','gold')])
+ # Les refus administrateur sont explicites ; les hooks near restent silencieux lorsqu'un autre dialogue occupe le joueur.
+ for admin in ('admin/test_debut','admin/test_fin','admin/reparer_scene_gautier'):
+  path=function_path('pq01/'+admin)
+  s=core[path].decode()
+  s=s.replace('execute unless score @s hcm_pq1_valid matches 1 run return 0','execute unless score @s hcm_pq1_valid matches 1 run return run '+cmd('error/character_self'))
+  for condition in ('unless score @s CAP_QSEQ matches 0','if score @s CAP_QSEQ matches 1..','if score @s CAP_QDIALOG_OWNER matches 1..','if score @s CAP_QDIALOG_OWNER matches 1..90'):
+   s=s.replace('execute '+condition+' run return 0','execute '+condition+' run return run '+cmd('error/busy_self'))
+  core[path]=s.encode()
  # Catalogue de Clément : identifiant public inchangé, aucun changement aux 69 autres fiches.
  cat='data/hc_quetes/hcq_quests/pq_01_sous_pavillon_couronne.json'
  catalog=json.loads(quests[cat]);catalog['rewards']=[v for v in catalog['rewards'] if v.get('text')!='Rang de Visiteur']
