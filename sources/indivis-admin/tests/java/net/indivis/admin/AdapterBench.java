@@ -36,7 +36,17 @@ public final class AdapterBench {
     public Optional<String> method_12905(class_2960 id){return id.toString().equals("capitale:rank/set_30_self")?Optional.of(id.toString()):Optional.empty();}
     public void method_12904(String f,Source s){called=f;source=s;s.player.scores.put("CAP_RANGSOCIAL",30);}
   }
-  public static final class Commands {public final List<String> commands=new ArrayList<>();public void method_44252(Source source,String command){commands.add(command);}}
+  public static final class Commands {
+    public final List<String> commands=new ArrayList<>();public final List<Source> sources=new ArrayList<>();
+    public void method_44252(Source source,String command){
+      if(command.startsWith("dialog ")||command.startsWith("tellraw ")){
+        String selector=command.split(" ")[command.startsWith("dialog ")?2:1];
+        if(!selector.equals("@s"))throw new IllegalArgumentException("Only players may be affected by this command, but the provided selector includes entities");
+        if(source.player==null)throw new IllegalArgumentException("Player context missing");
+      }
+      commands.add(command);sources.add(source);
+    }
+  }
   public static final class Server {
     public final Players players=new Players();public final Board board=new Board();public final Functions functions=new Functions();public final Commands commands=new Commands();
     public Players method_3760(){return players;}public Board method_3845(){return board;}
@@ -58,8 +68,14 @@ public final class AdapterBench {
     admin.op=false;check(!p.authorized(),"deop relu");denied=false;try{p.invoke(t,"capitale:rank/set_30_self");}catch(IllegalStateException e){denied=true;}check(denied,"deop bloque invocation");admin.op=true;
     target.scores.put("CAP_PROFILE_LOCK",1);check(!p.find(target.id).ready(),"verrou Nexus lu");target.scores.put("CAP_PROFILE_LOCK",0);
     target.character=null;check(!p.find(target.id).ready()&&p.find(target.id).nexus(),"aucun personnage ne bascule pas sur le compte");
-    p.show(Map.of("type","minecraft:multi_action","title","Test \" échappé"));check(server.commands.commands.get(0).startsWith("dialog show "+admin.id+" {"),"dialogue limité à l’administrateur");
-    p.close();check(server.commands.commands.get(1).equals("dialog clear "+admin.id),"fermeture ciblée");
+    p.show(Map.of("type","minecraft:multi_action","title","Test \" échappé"));check(server.commands.commands.get(0).startsWith("dialog show @s {"),"sélecteur joueur pour le dialogue");
+    check(server.commands.sources.get(0).player==admin,"@s est l’administrateur pour le menu");
+    p.close();check(server.commands.commands.get(1).equals("dialog clear @s"),"fermeture ciblée");
+    check(server.commands.sources.get(1).player==admin,"@s est l’administrateur pour la fermeture");
+    p.notify("Bouton expiré");check(server.commands.commands.get(2).startsWith("tellraw @s "),"sélecteur joueur pour les messages");
+    check(server.commands.sources.get(2).player==admin,"notification à l’administrateur uniquement");
+    boolean selectorRejected=false;try{server.commands.method_44252(server.method_3739(),"dialog show "+admin.id+" {}");}catch(IllegalArgumentException e){selectorRejected=true;}
+    check(selectorRejected,"ancienne commande reproduit le refus du log (sélecteur modélisé)");
     System.out.println("ADAPTER_BENCH assertions="+assertions+" errors=0; API Minecraft/Nexus doublées, serveur non testé");
   }
 }

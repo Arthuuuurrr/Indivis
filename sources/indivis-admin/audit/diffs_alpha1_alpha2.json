@@ -1,0 +1,17 @@
+{
+  "changed": [
+    "fabric.mod.json",
+    "net/indivis/admin/FabricRuntime.class",
+    "net/indivis/admin/MinecraftPort.class"
+  ],
+  "added": [
+    "data/indivis_admin/function/profile/before_save_self.mcfunction",
+    "data/indivis_admin/function/profile/load.mcfunction",
+    "data/minecraft/tags/function/load.json",
+    "indivis_admin.mixins.json",
+    "net/indivis/admin/mixin/NexusProfileSaveMixin.class"
+  ],
+  "removed": [],
+  "original_sha256": "7a5569943a410529a37665f967c6592cfc2112184bee403f4d800fef231a2932",
+  "output_sha256": "7cb899c39eb9968d59bed3c93ec459fa5a378a72a7773a2145ac236255f3244f"
+}

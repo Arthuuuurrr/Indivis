@@ -1,8 +1,8 @@
 {
-  "filename": "indivis-admin-0.1.0-alpha.1+1.21.11.jar",
-  "bytes": 36273,
-  "sha256": "7a5569943a410529a37665f967c6592cfc2112184bee403f4d800fef231a2932",
+  "filename": "indivis-admin-0.1.0-alpha.2+1.21.11.jar",
+  "bytes": 38400,
+  "sha256": "7cb899c39eb9968d59bed3c93ec459fa5a378a72a7773a2145ac236255f3244f",
   "minecraft": "1.21.11",
-  "status": "CANDIDAT_A_TESTER_EN_JEU",
+  "status": "CANDIDAT_CORRECTIF_A_TESTER_EN_JEU",
   "runtime_tested": false
 }

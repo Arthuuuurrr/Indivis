@@ -52,10 +52,13 @@ final class MinecraftPort implements AdminController.Port {
     }
     return available;
   }
-  private void command(String command){Reflect.call(Reflect.call(server,"method_3734"),"method_44252",Reflect.call(server,"method_3739"),command);}
-  @Override public void show(Map<String,Object> dialog){command("dialog show "+id(administrator)+" "+Json.encode(dialog));}
-  @Override public void close(){command("dialog clear "+id(administrator));}
-  @Override public void notify(String message){command("tellraw "+id(administrator)+" "+Json.encode(Map.of("text","[Indivis Admin] "+message,"color","yellow")));}
+  private void command(String command){
+    Object source=Reflect.call(Reflect.call(server,"method_3739"),"method_9232",administrator);
+    Reflect.call(Reflect.call(server,"method_3734"),"method_44252",source,command);
+  }
+  @Override public void show(Map<String,Object> dialog){command("dialog show @s "+Json.encode(dialog));}
+  @Override public void close(){command("dialog clear @s");}
+  @Override public void notify(String message){command("tellraw @s "+Json.encode(Map.of("text","[Indivis Admin] "+message,"color","yellow")));}
   @Override public void invoke(AdminController.Person target,String function) {
     if(!authorized())throw new IllegalStateException("Droits opérateur retirés");
     Object p=player(target.id());if(p==null||!target.same(person(p))||!person(p).ready())throw new IllegalStateException("Personnage cible modifié");
