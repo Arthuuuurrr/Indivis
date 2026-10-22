@@ -1,0 +1,1507 @@
+{
+  "nodes": 95,
+  "approved_dialogue_lines": 145,
+  "graph": {
+    "a1": {
+      "role": "geraud",
+      "lines": [
+        "Ah ! Vous voilà enfin sur vos jambes. Doucement, tout de même. Vous nous avez fait une sacrée frayeur."
+      ],
+      "choices": [
+        {
+          "label": "Où suis-je ?",
+          "target": "a2"
+        }
+      ],
+      "effect": null,
+      "resume": "a1"
+    },
+    "a2": {
+      "role": "geraud",
+      "lines": [
+        "À bord d'un dirigeable de la Couronne. On vous a récupéré sur un rocher, inconscient. Quant à savoir comment vous avez atterri là... ça, c'est une autre histoire."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "a3"
+        }
+      ],
+      "effect": null,
+      "resume": "a2"
+    },
+    "a3": {
+      "role": "gautier",
+      "lines": [
+        "Quartier-maître ! Le capitaine a demandé que notre passager lui soit présenté avant l'arrivée. Nous devrions peut-être..."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "a4"
+        }
+      ],
+      "effect": null,
+      "resume": "a4"
+    },
+    "a4": {
+      "role": "geraud",
+      "lines": [
+        "Matelot !"
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "a5"
+        }
+      ],
+      "effect": null,
+      "resume": "a4"
+    },
+    "a5": {
+      "role": "geraud",
+      "lines": [
+        "Je connais les ordres du capitaine. Retournez à votre poste et laissez-moi faire mon travail."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "a6"
+        }
+      ],
+      "effect": null,
+      "resume": "a5"
+    },
+    "a6": {
+      "role": "gautier",
+      "lines": [
+        "Bien, quartier-maître !"
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "a7"
+        }
+      ],
+      "effect": null,
+      "resume": "a7"
+    },
+    "a7": {
+      "role": "geraud",
+      "lines": [
+        "Enfin... pour une fois qu'il prend une initiative, il aurait pu choisir un meilleur moment."
+      ],
+      "choices": [
+        {
+          "label": "Le capitaine veut me voir ?",
+          "target": "a8"
+        }
+      ],
+      "effect": null,
+      "resume": "a7"
+    },
+    "a8": {
+      "role": "geraud",
+      "lines": [
+        "En effet. Mais vous venez à peine de vous réveiller. Prenez une minute pour retrouver vos esprits, puis allez le rejoindre. Sa cabine est à l'arrière, sous le poste du timonier."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "ga_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "a8"
+    },
+    "ga_menu": {
+      "role": "geraud",
+      "lines": [
+        "Vous avez besoin d'autre chose ? Faites vite, j'ai encore du travail avant notre arrivée."
+      ],
+      "choices": [
+        {
+          "label": "Vous étiez là quand on m'a retrouvé ?",
+          "target": "ga_12"
+        },
+        {
+          "label": "Quel est votre rôle sur ce dirigeable ?",
+          "target": "ga_14"
+        },
+        {
+          "label": "Vous connaissez le capitaine depuis longtemps ?",
+          "target": "ga_16"
+        },
+        {
+          "label": "Le matelot avait pourtant raison, non ?",
+          "target": "ga_18"
+        },
+        {
+          "label": "Je vais rejoindre le capitaine.",
+          "target": "ga_20"
+        }
+      ],
+      "effect": "intro_a_done",
+      "resume": "ga_menu"
+    },
+    "ga_12": {
+      "role": "geraud",
+      "lines": [
+        "Oui. Pas tous les jours qu'on interrompt un retour de mission pour récupérer quelqu'un sur un rocher. Vous ne répondiez à rien. On vous a installé à bord et on a fait ce qu'on pouvait."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "ga_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "ga_12"
+    },
+    "ga_14": {
+      "role": "geraud",
+      "lines": [
+        "Quartier-maître. Je m'assure que le matériel soit à sa place, que les hommes fassent leur travail et que le capitaine n'ait pas à régler chaque petit problème lui-même. Croyez-moi, ça en fait déjà suffisamment."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "ga_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "ga_14"
+    },
+    "ga_16": {
+      "role": "geraud",
+      "lines": [
+        "Assez pour savoir quand il vaut mieux le laisser travailler. C'est un bon officier. Exigeant, oui, mais il n'envoie pas ses hommes faire ce qu'il refuserait lui-même."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "ga_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "ga_16"
+    },
+    "ga_18": {
+      "role": "geraud",
+      "lines": [
+        "Sur les ordres ? Oui. Sur le moment de venir me les rappeler ? Beaucoup moins. Il apprendra."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "ga_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "ga_18"
+    },
+    "ga_20": {
+      "role": "geraud",
+      "lines": [
+        "Bonne idée. Et ne vous sentez pas obligé de vous mettre au garde-à-vous : vous êtes notre passager, pas une nouvelle recrue."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "ga_20"
+    },
+    "gautier_menu": {
+      "role": "gautier",
+      "lines": [
+        "Ah, vous voilà. Je crains de ne pas avoir choisi le meilleur moment pour intervenir tout à l'heure."
+      ],
+      "choices": [
+        {
+          "label": "Géraud avait l'air furieux.",
+          "target": "gautier_23"
+        },
+        {
+          "label": "Vous avez peur de lui ?",
+          "target": "gautier_25"
+        },
+        {
+          "label": "Vous travaillez sur ce dirigeable depuis longtemps ?",
+          "target": "gautier_27"
+        },
+        {
+          "label": "Vous tenez beaucoup à votre carrière.",
+          "target": "gautier_29"
+        },
+        {
+          "label": "Où puis-je trouver le capitaine ?",
+          "target": "gautier_31"
+        },
+        {
+          "label": "Je vous laisse reprendre votre service.",
+          "target": "gautier_33"
+        }
+      ],
+      "effect": null,
+      "resume": "gautier_menu"
+    },
+    "gautier_23": {
+      "role": "gautier",
+      "lines": [
+        "Furieux ? Non, je ne crois pas. Enfin... il a connu de meilleurs moments pour me voir. Je pensais simplement respecter les consignes."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "gautier_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "gautier_23"
+    },
+    "gautier_25": {
+      "role": "gautier",
+      "lines": [
+        "Peur ? Certainement pas ! C'est un excellent quartier-maître. Mais je préférerais éviter qu'il ait à me reprendre une deuxième fois aujourd'hui."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "gautier_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "gautier_25"
+    },
+    "gautier_27": {
+      "role": "gautier",
+      "lines": [
+        "Suffisamment pour connaître mon service. J'espère d'ailleurs obtenir davantage de responsabilités. J'ai déjà pris certaines dispositions pour... Enfin, cela ne vous intéresse probablement pas."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "gautier_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "gautier_27"
+    },
+    "gautier_29": {
+      "role": "gautier",
+      "lines": [
+        "Évidemment. On n'obtient pas un avancement en attendant que les choses arrivent toutes seules. Encore faut-il se faire remarquer pour les bonnes raisons."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "gautier_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "gautier_29"
+    },
+    "gautier_31": {
+      "role": "gautier",
+      "lines": [
+        "À l'arrière, sous le poste du timonier. Présentez-vous directement à sa cabine. Vous ne pouvez pas vous tromper."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "gautier_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "gautier_31"
+    },
+    "gautier_33": {
+      "role": "gautier",
+      "lines": [
+        "Merci. Et... j'espère que vous vous remettrez rapidement."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "gautier_33"
+    },
+    "hugues_menu": {
+      "role": "hugues",
+      "lines": [
+        "Trois fois qu'on me fait recompter les mêmes caisses... Ah, pardon. Vous cherchiez quelque chose ?"
+      ],
+      "choices": [
+        {
+          "label": "Qu'est-ce que vous transportiez ?",
+          "target": "hugues_36"
+        },
+        {
+          "label": "Pourquoi avoir livré des canons à Avaleiv ?",
+          "target": "hugues_38"
+        },
+        {
+          "label": "Vous n'aimez pas votre travail ?",
+          "target": "hugues_40"
+        },
+        {
+          "label": "Vous connaissiez déjà Avaleiv ?",
+          "target": "hugues_42"
+        },
+        {
+          "label": "Vous étiez là lorsqu'on m'a secouru ?",
+          "target": "hugues_44"
+        },
+        {
+          "label": "Écouter leur échange sur les procédures.",
+          "target": "banter_start"
+        },
+        {
+          "label": "Je vous laisse à vos caisses.",
+          "target": "hugues_46"
+        }
+      ],
+      "effect": null,
+      "resume": "hugues_menu"
+    },
+    "hugues_36": {
+      "role": "hugues",
+      "lines": [
+        "Des canons. Enfin, nous les avons livrés à Avaleiv. C'est déjà ça de moins à surveiller. Vous auriez vu le temps qu'il nous a fallu pour les faire décharger..."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "hugues_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "hugues_36"
+    },
+    "hugues_38": {
+      "role": "hugues",
+      "lines": [
+        "Parce qu'on nous en a donné l'ordre. Quant à savoir ce qui s'est négocié là-bas, il faudrait demander à ceux qui signent les papiers. Moi, je m'occupe de ce qu'ils nous font transporter."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "hugues_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "hugues_38"
+    },
+    "hugues_40": {
+      "role": "hugues",
+      "lines": [
+        "Si je le détestais vraiment, je ne serais plus là. Et puis, il y a pire comme équipage. Ne répétez pas ça à Géraud, il finirait par se croire indispensable."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "hugues_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "hugues_40"
+    },
+    "hugues_42": {
+      "role": "hugues",
+      "lines": [
+        "J'y ai accosté plus d'une fois. C'est un beau pays, du peu que j'en ai vu. Mais entre les cargaisons et les ordres de départ, on ne nous laisse pas vraiment le temps de jouer les touristes."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "hugues_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "hugues_42"
+    },
+    "hugues_44": {
+      "role": "hugues",
+      "lines": [
+        "Oui. J'ai vu qu'on vous remontait à bord. Vous ne donniez pas franchement l'impression d'avoir passé une bonne journée. Enfin, regardez-vous : vous tenez debout et vous posez des questions. C'est encourageant."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "hugues_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "hugues_44"
+    },
+    "hugues_46": {
+      "role": "hugues",
+      "lines": [
+        "Ah, ne m'en parlez plus, de ces fichues caisses ! Bonne continuation."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "hugues_46"
+    },
+    "anselme_menu": {
+      "role": "anselme",
+      "lines": [
+        "Un instant... Un instant... Voilà. Excusez-moi. Vous vouliez quelque chose ?"
+      ],
+      "choices": [
+        {
+          "label": "C'est difficile de piloter un dirigeable ?",
+          "target": "anselme_49"
+        },
+        {
+          "label": "Vous semblez aimer votre métier.",
+          "target": "anselme_51"
+        },
+        {
+          "label": "Vous avez aperçu l'endroit où l'on m'a retrouvé ?",
+          "target": "anselme_53"
+        },
+        {
+          "label": "Comment fonctionne ce dirigeable ?",
+          "target": "anselme_55"
+        },
+        {
+          "label": "Votre appareil semble compliqué.",
+          "target": "anselme_57"
+        },
+        {
+          "label": "Je vais vous laisser piloter.",
+          "target": "anselme_59"
+        }
+      ],
+      "effect": null,
+      "resume": "anselme_menu"
+    },
+    "anselme_49": {
+      "role": "anselme",
+      "lines": [
+        "Difficile ? Tout dépend de ce que vous appelez piloter. Maintenir un cap par temps clair, n'importe quel apprenti convenablement formé peut y parvenir. Mais lorsque les vents changent et que le bâtiment commence à dériver... Ah ! Là, vous voyez ce que vaut réellement un timonier."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "anselme_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "anselme_49"
+    },
+    "anselme_51": {
+      "role": "anselme",
+      "lines": [
+        "Aimer ? C'est bien peu dire. Il n'y a rien de comparable à la sensation d'un bâtiment qui répond exactement à vos commandes. Enfin... lorsque la mécanique ne décide pas de vous contrarier."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "anselme_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "anselme_51"
+    },
+    "anselme_53": {
+      "role": "anselme",
+      "lines": [
+        "Pas assez pour vous en donner une position exacte. Nous avons quitté notre trajectoire habituelle pour procéder au sauvetage, mais j'avais autre chose à surveiller que le paysage. Le capitaine pourra vous en dire davantage."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "anselme_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "anselme_53"
+    },
+    "anselme_55": {
+      "role": "anselme",
+      "lines": [
+        "Vous voulez une explication courte ou une explication exacte ? Parce que ce n'est pas tout à fait la même chose. Pour simplifier : il faut contrôler la sustentation, la propulsion et la direction. Et aucun de ces trois éléments n'a la politesse de rester parfaitement stable."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "anselme_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "anselme_55"
+    },
+    "anselme_57": {
+      "role": "anselme",
+      "lines": [
+        "Notre bâtiment, si vous permettez. Et il est complexe, oui, ce qui n'est pas exactement la même chose. Enfin, je suppose que vous ne pouviez pas le savoir."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "anselme_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "anselme_57"
+    },
+    "anselme_59": {
+      "role": "anselme",
+      "lines": [
+        "Sage décision. Nous approchons et je préfère avoir les yeux sur mes instruments. Bonne visite à bord."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "anselme_59"
+    },
+    "perrin_menu": {
+      "role": "perrin",
+      "lines": [
+        "Ah, c'est donc vous, notre fameux rescapé ! Excusez-moi, mais depuis votre arrivée, vous avez suscité quelques conversations à bord. Comment vous sentez-vous ?"
+      ],
+      "choices": [
+        {
+          "label": "Vous parlez souvent de moi ?",
+          "target": "perrin_62"
+        },
+        {
+          "label": "Vous savez ce qui m'est arrivé ?",
+          "target": "perrin_64"
+        },
+        {
+          "label": "Vous connaissez bien la Haute Capitale ?",
+          "target": "perrin_66"
+        },
+        {
+          "label": "Comment sont les habitants de la Capitale ?",
+          "target": "perrin_68"
+        },
+        {
+          "label": "On m'a parlé d'un enregistrement à mon arrivée.",
+          "target": "perrin_70"
+        },
+        {
+          "label": "Je préfère continuer ma visite.",
+          "target": "perrin_72"
+        }
+      ],
+      "effect": null,
+      "resume": "perrin_menu"
+    },
+    "perrin_62": {
+      "role": "perrin",
+      "lines": [
+        "Oh, pas constamment ! Mais avouez que ce n'est pas tous les jours qu'on recueille quelqu'un dans de pareilles circonstances. Certains se demandaient même si vous alliez vous réveiller avant notre arrivée."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "perrin_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "perrin_62"
+    },
+    "perrin_64": {
+      "role": "perrin",
+      "lines": [
+        "J'aimerais bien ! J'aurais une sacrée histoire à raconter. Mais non, malheureusement. À part ce qu'on vous a probablement déjà dit, je n'en sais pas plus."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "perrin_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "perrin_64"
+    },
+    "perrin_66": {
+      "role": "perrin",
+      "lines": [
+        "Plutôt, oui ! Les quais, surtout. Si vous aimez les endroits tranquilles, ce n'est peut-être pas le meilleur quartier pour commencer. Mais pour rencontrer du monde, vous serez servi."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "perrin_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "perrin_66"
+    },
+    "perrin_68": {
+      "role": "perrin",
+      "lines": [
+        "Il y a de tout. Des marchands qui vous vendraient leur propre chapeau, des soldats qui prennent leur uniforme très au sérieux et des gens parfaitement charmants. Vous finirez bien par vous y faire quelques connaissances."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "perrin_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "perrin_68"
+    },
+    "perrin_70": {
+      "role": "perrin",
+      "lines": [
+        "Ah oui, les registres ! On n'y échappe pas facilement. Mais ne vous inquiétez pas, on vous expliquera comment procéder. Ce serait tout de même malheureux de vous perdre dans les bureaux après vous avoir retrouvé en pleine nature."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "perrin_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "perrin_70"
+    },
+    "perrin_72": {
+      "role": "perrin",
+      "lines": [
+        "Faites donc ! Et bonne chance avec le capitaine. Il a l'air sévère au premier abord, mais c'est un brave homme. Enfin, ne lui répétez pas que je l'ai dit comme ça."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "perrin_72"
+    },
+    "b0": {
+      "role": "gautier",
+      "lines": [
+        "Vous avez terminé le contrôle du matériel ?"
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "b1"
+        }
+      ],
+      "effect": null,
+      "resume": "b0"
+    },
+    "b1": {
+      "role": "hugues",
+      "lines": [
+        "Oui."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "b2"
+        }
+      ],
+      "effect": null,
+      "resume": "b1"
+    },
+    "b2": {
+      "role": "gautier",
+      "lines": [
+        "Et vous avez signé le registre ?"
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "b3"
+        }
+      ],
+      "effect": null,
+      "resume": "b2"
+    },
+    "b3": {
+      "role": "hugues",
+      "lines": [
+        "Pas encore."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "b4"
+        }
+      ],
+      "effect": null,
+      "resume": "b3"
+    },
+    "b4": {
+      "role": "gautier",
+      "lines": [
+        "Alors le contrôle n'est pas terminé."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "b5"
+        }
+      ],
+      "effect": null,
+      "resume": "b4"
+    },
+    "b5": {
+      "role": "hugues",
+      "lines": [
+        "Vous savez, un jour, vous découvrirez qu'une caisse ne disparaît pas simplement parce qu'on a oublié de signer un papier."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "b6"
+        }
+      ],
+      "effect": null,
+      "resume": "b5"
+    },
+    "b6": {
+      "role": "gautier",
+      "lines": [
+        "Ce n'est pas une raison pour négliger les procédures."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "b7"
+        }
+      ],
+      "effect": null,
+      "resume": "b6"
+    },
+    "b7": {
+      "role": "hugues",
+      "lines": [
+        "Et voilà. Je savais que j'aurais dû me contenter de vous dire bonjour."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "hugues_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "b7"
+    },
+    "c0": {
+      "role": "altheon",
+      "lines": [],
+      "choices": [
+        {
+          "label": "Je vous écoute.",
+          "target": "c1"
+        }
+      ],
+      "effect": null,
+      "resume": "c0"
+    },
+    "c1": {
+      "role": "altheon",
+      "lines": [
+        "Entrez, je vous prie. Vous êtes donc notre rescapé. Je suis Althéon Brumeforge, capitaine de ce bâtiment."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "c2"
+        }
+      ],
+      "effect": null,
+      "resume": "c1"
+    },
+    "c2": {
+      "role": "altheon",
+      "lines": [
+        "Je suis heureux de vous voir remis. Lorsque nous vous avons trouvé, votre état était préoccupant."
+      ],
+      "choices": [
+        {
+          "label": "Vous savez ce qui m'est arrivé ?",
+          "target": "c3"
+        }
+      ],
+      "effect": null,
+      "resume": "c2"
+    },
+    "c3": {
+      "role": "altheon",
+      "lines": [
+        "C'est précisément ce que j'espérais vous demander."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "c4"
+        }
+      ],
+      "effect": null,
+      "resume": "c3"
+    },
+    "c4": {
+      "role": "altheon",
+      "lines": [
+        "Vous souvenez-vous de ce qui vous a conduit là-bas ?"
+      ],
+      "choices": [
+        {
+          "label": "Non. Je ne me souviens de rien avant votre sauvetage.",
+          "target": "c5"
+        }
+      ],
+      "effect": null,
+      "resume": "c4"
+    },
+    "c5": {
+      "role": "altheon",
+      "lines": [
+        "Je vois..."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "c6"
+        }
+      ],
+      "effect": null,
+      "resume": "c5"
+    },
+    "c6": {
+      "role": "altheon",
+      "lines": [
+        "Dans ce cas, je crains de ne pouvoir vous donner toutes les réponses que vous espérez. Mais je peux au moins vous expliquer ce que nous savons."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "c6"
+    },
+    "c_menu": {
+      "role": "altheon",
+      "lines": [],
+      "choices": [
+        {
+          "label": "Où m'avez-vous trouvé ?",
+          "target": "ca1"
+        },
+        {
+          "label": "Quelle était votre mission ?",
+          "target": "cb1"
+        },
+        {
+          "label": "Qu'est-ce qu'Avaleiv ?",
+          "target": "cc1",
+          "condition": "av"
+        },
+        {
+          "label": "Que devrais-je savoir de la Haute Capitale ?",
+          "target": "cd1"
+        },
+        {
+          "label": "Pensez-vous que je puisse retrouver la mémoire ?",
+          "target": "ce1"
+        },
+        {
+          "label": "Merci, capitaine. J'en sais assez pour le moment.",
+          "target": "cx1"
+        }
+      ],
+      "effect": "intro_c_done",
+      "resume": "c_menu"
+    },
+    "ca1": {
+      "role": "altheon",
+      "lines": [
+        "Notre vigie vous a aperçu sur un relief rocheux, exposé aux vents, à l'écart de notre trajectoire. Vous étiez seul et ne sembliez pas en état de nous appeler à l'aide."
+      ],
+      "choices": [
+        {
+          "label": "Vous avez pu déterminer de quel endroit il s'agissait ?",
+          "target": "ca2"
+        },
+        {
+          "label": "Revenir aux questions.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "ca1"
+    },
+    "ca2": {
+      "role": "altheon",
+      "lines": [
+        "Pas avec certitude. Nous avons interrompu notre route pour vous porter secours, sans entreprendre de reconnaissance des environs."
+      ],
+      "choices": [
+        {
+          "label": "Pourquoi ne pas avoir examiné les lieux ?",
+          "target": "ca3"
+        },
+        {
+          "label": "Revenir aux questions.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "ca2"
+    },
+    "ca3": {
+      "role": "altheon",
+      "lines": [
+        "Vous étiez inconscient. Ma priorité était de vous mettre en sécurité, pas de satisfaire ma curiosité."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "ca3"
+    },
+    "cb1": {
+      "role": "altheon",
+      "lines": [
+        "Nous avions pour ordre de livrer plusieurs pièces d'artillerie à Avaleiv. La cargaison remise à ses destinataires, nous avons repris la route de la Haute Capitale. C'est au retour que nous vous avons découvert."
+      ],
+      "choices": [
+        {
+          "label": "Pourquoi l'Empire livre-t-il des canons à Avaleiv ?",
+          "target": "cb2"
+        },
+        {
+          "label": "Revenir aux questions.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": "av",
+      "resume": "cb1"
+    },
+    "cb2": {
+      "role": "altheon",
+      "lines": [
+        "Les relations entre États ne se limitent pas au commerce des étoffes et des denrées. Certaines livraisons relèvent d'accords dont je ne négocie pas les termes. Mon devoir était d'assurer le transport."
+      ],
+      "choices": [
+        {
+          "label": "Vous ne connaissez pas les raisons de cette livraison ?",
+          "target": "cb3"
+        },
+        {
+          "label": "Revenir aux questions.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "cb2"
+    },
+    "cb3": {
+      "role": "altheon",
+      "lines": [
+        "J'en connais la destination et le caractère officiel. Pour le reste, je préfère ne pas vous présenter des suppositions comme des certitudes."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "cb3"
+    },
+    "cc1": {
+      "role": "altheon",
+      "lines": [
+        "Une principauté elfique indépendante. Elle entretient des relations commerciales avec l'Empire, mais ne relève pas de l'autorité de la Couronne."
+      ],
+      "choices": [
+        {
+          "label": "Vous y allez souvent ?",
+          "target": "cc2"
+        },
+        {
+          "label": "Revenir aux questions.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "cc1"
+    },
+    "cc2": {
+      "role": "altheon",
+      "lines": [
+        "Suffisamment pour connaître certaines routes et les usages des ports que nous fréquentons. Mais je n'aurais pas la prétention de connaître la principauté dans son ensemble."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "cc2"
+    },
+    "cd1": {
+      "role": "altheon",
+      "lines": [
+        "C'est le centre de l'Empire et le siège de la Couronne. Vous y trouverez de quoi vous loger, travailler et, je l'espère, obtenir de l'aide pour vos recherches."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "cd2"
+        }
+      ],
+      "effect": null,
+      "resume": "cd1"
+    },
+    "cd2": {
+      "role": "altheon",
+      "lines": [
+        "Mais vous devrez d'abord faire enregistrer votre arrivée. C'est une formalité à laquelle les autorités accordent beaucoup d'importance."
+      ],
+      "choices": [
+        {
+          "label": "Et si je ne connais pas mon passé ?",
+          "target": "cd3"
+        },
+        {
+          "label": "La Capitale est-elle accueillante envers les étrangers ?",
+          "target": "cd4"
+        },
+        {
+          "label": "Revenir aux questions.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "cd2"
+    },
+    "cd3": {
+      "role": "altheon",
+      "lines": [
+        "Dites-le. Vous avez été recueilli par un bâtiment impérial, et notre rapport en attestera. Je ne vois aucune raison de vous demander d'inventer ce que vous ignorez."
+      ],
+      "choices": [
+        {
+          "label": "La Capitale est-elle accueillante envers les étrangers ?",
+          "target": "cd4"
+        },
+        {
+          "label": "Revenir aux questions.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "cd3"
+    },
+    "cd4": {
+      "role": "altheon",
+      "lines": [
+        "C'est une ville où se croisent de nombreux peuples. Vous y rencontrerez des gens de toutes dispositions. Je ne vous promettrai pas qu'ils seront tous aimables, mais vous n'avez pas à vous présenter comme un intrus pour autant."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "cd4"
+    },
+    "ce1": {
+      "role": "altheon",
+      "lines": [
+        "Je ne suis pas médecin, et je me garderais bien de vous en faire la promesse."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "ce2"
+        }
+      ],
+      "effect": null,
+      "resume": "ce1"
+    },
+    "ce2": {
+      "role": "altheon",
+      "lines": [
+        "Mais ne concluez pas trop vite que votre passé est définitivement perdu. Vous avez peut-être laissé des traces quelque part, même si vous ne vous en souvenez pas."
+      ],
+      "choices": [
+        {
+          "label": "Vous croyez vraiment que je pourrai découvrir quelque chose ?",
+          "target": "ce3"
+        },
+        {
+          "label": "Revenir aux questions.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "ce2"
+    },
+    "ce3": {
+      "role": "altheon",
+      "lines": [
+        "Je crois surtout qu'il serait prématuré de renoncer."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "c_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "ce3"
+    },
+    "cx1": {
+      "role": "altheon",
+      "lines": [
+        "Très bien. Nous approchons des quais. Vous pouvez rester ici pendant la manœuvre ; Géraud vous retrouvera une fois l'amarrage terminé."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "cx2"
+        }
+      ],
+      "effect": null,
+      "resume": "cx1"
+    },
+    "cx2": {
+      "role": "altheon",
+      "lines": [
+        "Et une dernière chose..."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "cx3"
+        }
+      ],
+      "effect": null,
+      "resume": "cx2"
+    },
+    "cx3": {
+      "role": "altheon",
+      "lines": [
+        "Ne vous reprochez pas de ne pas avoir de réponses aujourd'hui. Nous ignorons encore bien des choses sur les circonstances de votre découverte."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "cx4"
+        }
+      ],
+      "effect": null,
+      "resume": "cx3"
+    },
+    "cx4": {
+      "role": "altheon",
+      "lines": [
+        "Pour l'instant, tâchez simplement de reprendre pied. Nous verrons ensuite ce que l'avenir vous réserve."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "dock"
+        }
+      ],
+      "effect": null,
+      "resume": "cx4"
+    },
+    "e1": {
+      "role": "geraud",
+      "lines": [
+        "Ah, vous voilà ! Bienvenue dans la Haute Capitale. Enfin... sur ses quais, pour commencer."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "e2"
+        }
+      ],
+      "effect": null,
+      "resume": "e1"
+    },
+    "e2": {
+      "role": "geraud",
+      "lines": [
+        "Vous pouvez descendre. Mais avant de vous laisser partir, il y a deux ou trois choses que vous feriez bien de savoir."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "e_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "e2"
+    },
+    "e_menu": {
+      "role": "geraud",
+      "lines": [],
+      "choices": [
+        {
+          "label": "Que dois-je faire maintenant ?",
+          "target": "e_127"
+        },
+        {
+          "label": "Je risque d'avoir des ennuis avec les gardes ?",
+          "target": "e_129"
+        },
+        {
+          "label": "Je peux circuler librement dans la Capitale ?",
+          "target": "e_131"
+        },
+        {
+          "label": "Vous allez repartir bientôt ?",
+          "target": "e_133"
+        },
+        {
+          "label": "Merci de m'avoir aidé.",
+          "target": "e_135"
+        },
+        {
+          "label": "Je vais y aller.",
+          "target": "ex1"
+        }
+      ],
+      "effect": null,
+      "resume": "e_menu"
+    },
+    "e_127": {
+      "role": "geraud",
+      "lines": [
+        "Commencez par vous faire enregistrer. Cherchez Léovic sur les quais, il saura vous indiquer la marche à suivre. Après ça, vous pourrez vous occuper de trouver un toit et de découvrir la ville."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "e_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "e_127"
+    },
+    "e_129": {
+      "role": "geraud",
+      "lines": [
+        "Tant que vous ne leur donnez pas de raison d'en chercher, ça devrait aller. Ils pourront vous demander d'où vous venez. Dites que vous avez été recueilli par le capitaine Brumeforge."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "e_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "e_129"
+    },
+    "e_131": {
+      "role": "geraud",
+      "lines": [
+        "Dans les quartiers ouverts au public, oui. Pour le reste, il y a des contrôles. Et croyez-moi, certains gardes prennent leur travail aussi à cœur que notre jeune matelot."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "e_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "e_131"
+    },
+    "e_133": {
+      "role": "geraud",
+      "lines": [
+        "Pas immédiatement. Il faut vérifier le bâtiment, régler les formalités de retour et préparer les prochaines affectations. On ne termine pas un voyage simplement parce qu'on a posé les amarres."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "e_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "e_133"
+    },
+    "e_135": {
+      "role": "geraud",
+      "lines": [
+        "Bah, on n'allait tout de même pas vous laisser sur votre rocher. Et maintenant que vous tenez debout, tâchez de le rester."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "e_menu"
+        }
+      ],
+      "effect": null,
+      "resume": "e_135"
+    },
+    "ex1": {
+      "role": "geraud",
+      "lines": [
+        "Bon. Je crois que je vous ai dit l'essentiel."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "ex2"
+        }
+      ],
+      "effect": null,
+      "resume": "ex1"
+    },
+    "ex2": {
+      "role": "geraud",
+      "lines": [
+        "Allez trouver Léovic, et ne vous laissez pas impressionner par toute cette agitation. On finit par s'y habituer."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "ex3"
+        }
+      ],
+      "effect": null,
+      "resume": "ex2"
+    },
+    "ex3": {
+      "role": "geraud",
+      "lines": [
+        "Prenez soin de vous, surtout. J'aimerais autant que la prochaine fois qu'on se croise, vous soyez en meilleure forme que lors de notre première rencontre."
+      ],
+      "choices": [
+        {
+          "label": "Je ferai de mon mieux.",
+          "target": "ex4"
+        }
+      ],
+      "effect": null,
+      "resume": "ex3"
+    },
+    "ex4": {
+      "role": "geraud",
+      "lines": [
+        "Voilà qui me suffit. Allez, filez. J'ai un équipage à remettre au travail, moi."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "complete"
+        }
+      ],
+      "effect": null,
+      "resume": "ex4"
+    },
+    "f_altheon": {
+      "role": "altheon",
+      "lines": [
+        "Vous avez pu parler à Géraud ? Bien. J'espère que vous trouverez vos repères dans la Capitale. Quant à moi, j'ai encore quelques rapports à terminer."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "f_altheon"
+    },
+    "f_gautier": {
+      "role": "gautier",
+      "lines": [
+        "La passerelle est en place et les opérations de débarquement sont autorisées. Vous pouvez rejoindre les quais. Bonne continuation !"
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "f_gautier"
+    },
+    "f_hugues": {
+      "role": "hugues",
+      "lines": [
+        "À peine rentrés et voilà déjà les inventaires qui recommencent. Ah, vous partez ? Profitez-en. Vous, au moins, personne ne vous réclamera un relevé des soutes."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "f_hugues"
+    },
+    "f_anselme": {
+      "role": "anselme",
+      "lines": [
+        "Un amarrage parfaitement convenable, malgré ce vent de travers. J'aurais préféré une approche un peu plus... Enfin, vous n'avez pas à vous soucier de ces détails. Bonne continuation."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "f_anselme"
+    },
+    "f_perrin": {
+      "role": "perrin",
+      "lines": [
+        "Alors, prêt à découvrir la Capitale ? Ne passez pas toute votre première journée dans les bureaux, tout de même. Il y a bien des choses à voir ici !"
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "f_perrin"
+    },
+    "f_geraud": {
+      "role": "geraud",
+      "lines": [
+        "La passerelle reste libre. Le Port est devant vous ; bonne route à terre."
+      ],
+      "choices": [
+        {
+          "label": "Continuer.",
+          "target": "close"
+        }
+      ],
+      "effect": null,
+      "resume": "f_geraud"
+    }
+  }
+}
