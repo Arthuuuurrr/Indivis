@@ -16,6 +16,7 @@ public final class Pq01Bridge {
   private static final Set<String> ERRORS=new HashSet<>();
   private static long clock; private static boolean initialized,teamReady;
   private static final String[] ROLES={"geraud","altheon","gautier","hugues","anselme","perrin"};
+  private static final List<String> POINTS=List.of("gautier_poste","gautier_approche","hugues_charge","anselme_instruments","perrin_a","perrin_b","gautier_poste_quai","hugues_charge_quai","anselme_instruments_quai","perrin_a_quai","perrin_b_quai");
   private static final Map<String,String> NAMES=Map.of("geraud","Géraud Rivet","altheon","Althéon Brumeforge","gautier","Gautier","hugues","Hugues","anselme","Anselme","perrin","Perrin");
   private Pq01Bridge(){}
   static Class<?> type(String n){try{return Class.forName(n);}catch(ClassNotFoundException e){throw new IllegalStateException(n,e);}}
@@ -41,7 +42,8 @@ public final class Pq01Bridge {
   static Object child(Object n,String key){return n==null?null:GuardNbt.read(n,key);}
   static String str(Object n,String key,String fallback){return n==null?fallback:(String)call(n,"method_68564",key,fallback);}
   static int integer(Object n,String key,int fallback){return n==null?fallback:((Number)call(n,"method_68083",key,fallback)).intValue();}
-  static Object setup(Object p){Object id=stat("net.minecraft.class_2960","method_60654",STORAGE);return call(call(server(p),"method_22827"),"method_22546",id);}
+  static Object storage(Object p,String name){Object id=stat("net.minecraft.class_2960","method_60654",name);return call(call(server(p),"method_22827"),"method_22546",id);}
+  static Object setup(Object p){return storage(p,STORAGE);}
   static Object rootCopy(Object p){return GuardNbt.copy(setup(p));}
   static void save(Object p,Object n){GuardNbt.save(server(p),STORAGE,n);}
   static Pq01Motion.Point point(Object n){
@@ -55,7 +57,11 @@ public final class Pq01Bridge {
     Object b=binding(p,key);if(b==null||!dimension(world(p)).equals(str(b,"dimension","")))return null;
     String id=str(b,"uuid","");return id.isEmpty()?null:call(world(p),"method_66347",UUID.fromString(id));
   }
-  static Pq01Motion.Point configuredPoint(Object p,String key,Pq01Motion.Point fallback){Object n=child(child(setup(p),"points"),key);return n==null?fallback:point(n);}
+  static Pq01Motion.Point configuredPoint(Object p,String key,Pq01Motion.Point fallback){
+    String scoped=phase(p).equals("quai")?key+"_quai":key;
+    Object n=child(child(setup(p),"points"),scoped);if(n==null)return fallback;
+    Pq01Motion.Point found=point(n);return found.dimension().equals(dimension(world(p)))?found:fallback;
+  }
   static boolean same(View v,Object p){return available(p)&&v.account.equals(uuid(p))&&v.character.equals(character(p))&&v.world==world(p);}
   static boolean dialogue(Object p){return available(p)&&score(p,"hcm_pq1_active")==1&&score(p,"CAP_QDIALOG_OWNER")>=91&&score(p,"CAP_QDIALOG_OWNER")<=96;}
   static boolean alive(Actor a){return a!=null&&!(Boolean)call(a.entity,"method_31481");}
@@ -66,7 +72,7 @@ public final class Pq01Bridge {
   }
   private static final class View {
     final UUID account,character;final Object player,world;final Map<String,Actor> actors=new HashMap<>();final Set<UUID> hidden=new HashSet<>();
-    String phase,cameraRole;Object pendingCamera,camera;long cameraAt;boolean scene,banter;int waitingNode;Pq01Motion.Point approach;
+    String phase,cameraRole;Object pendingCamera,camera,captureSession;long cameraAt;boolean scene,banter;int waitingNode;Pq01Motion.Point approach;
     View(Object p,String phase){account=uuid(p);character=character(p);player=p;world=world(p);this.phase=phase;}
   }
   public static void init(){
@@ -76,7 +82,7 @@ public final class Pq01Bridge {
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopping","SERVER_STOPPING",a->{for(View v:new ArrayList<>(VIEWS.values()))close(v.player,true);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{VIEWS.clear();ACTORS.clear();GRACE.clear();SUPPRESS.clear();Pq01Actors.reset();clock=0;teamReady=false;return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents$Load","ENTITY_LOAD",a->{if(actor(a[0])&&!ACTORS.contains(uuid(a[0])))call(a[0],"method_31472");return null;});
-    stat(DM,"onFermeture",(BiConsumer<Object,Object>)(p,s)->{if(!SUPPRESS.contains(uuid(p))&&dialogue(p)){close(p,false);run(p,"function capitale:pq01/close_self");}});
+    stat(DM,"onFermeture",(BiConsumer<Object,Object>)(p,s)->{View v=VIEWS.get(uuid(p));if(v!=null&&v.captureSession==s&&!SUPPRESS.contains(uuid(p))){close(p,false);if(dialogue(p))run(p,"function capitale:pq01/close_self");}});
     stat(DM,"sondeMouvement",(Function<Object,Optional<Boolean>>)e->actor(e)?Optional.of(false):Optional.empty());
   }
   interface EventHandler{Object run(Object[] a)throws Throwable;}
@@ -94,7 +100,7 @@ public final class Pq01Bridge {
     Object root=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal","indivispq01");
     List<String> actions=new ArrayList<>(List.of("approach","return","close","banter","status","cleanup"));
     for(String r:ROLES){actions.add("camera_"+r);for(String phase:List.of("large","quai")){for(String op:List.of("bind_","unbind_","place_"))actions.add(op+r+"_"+phase);}}
-    for(String p:List.of("gautier_poste","gautier_approche","hugues_charge","anselme_instruments","perrin_a","perrin_b"))actions.add("point_"+p);
+    for(String p:POINTS)actions.add("point_"+p);
     for(String action:actions){
       Object node=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal",action);
       if(action.startsWith("bind_")||action.startsWith("unbind_")||action.startsWith("point_")||action.startsWith("place_")||action.equals("status")||action.equals("cleanup")){
@@ -152,13 +158,16 @@ public final class Pq01Bridge {
     Object after=child(eventSet(GuardNbt.entity(npc)),name);
     if(!Objects.equals(String.valueOf(after),String.valueOf(value)))throw new IllegalStateException("Écriture EasyNPC non confirmée : "+name);
   }
+  static void editable(Object p,Object npc){
+    if(stat(DM,"pnjOccupe",uuid(npc),uuid(p)).equals(true)||VIEWS.values().stream().anyMatch(v->v.hidden.contains(uuid(npc))))throw new IllegalStateException("Ce PNJ participe à une scène ou un dialogue. Fermer les scènes avant de le modifier.");
+  }
   static int bind(Object p,String key){
     String[] split=key.split("_");String role=split[0],phase=split[1];Object npc=nearest(p),snapshot=GuardNbt.entity(npc),events=eventSet(snapshot),old=child(events,"ON_INTERACTION");
+    editable(p,npc);
     Object previous=binding(p,key);
     if(previous!=null&&!str(previous,"uuid","").equals(uuid(npc).toString()))throw new IllegalStateException("Cette liaison existe déjà. La libérer avant de choisir un autre PNJ.");
     for(String r:ROLES)for(String ph:List.of("large","quai")){String other=r+"_"+ph;Object b=binding(p,other);if(!other.equals(key)&&b!=null&&str(b,"uuid","").equals(uuid(npc).toString()))throw new IllegalStateException("Ce PNJ est déjà lié à "+other);}
     String command=hook(role,phase);if(!safeInteraction(old,command))throw new IllegalStateException("Interaction personnalisée/multiple : liaison refusée pour conserver ses actions. Inspecter ce PNJ dans EasyNPC.");
-    if(stat(DM,"pnjOccupe",uuid(npc),uuid(p)).equals(true))throw new IllegalStateException("Ce PNJ est occupé par un autre joueur.");
     Object root=rootCopy(p),bindings=GuardNbt.childOrCreate(root,"bindings"),record=previous==null?GuardNbt.compound():GuardNbt.copy(previous);
     if(previous==null){
       GuardNbt.string(record,"uuid",uuid(npc).toString());GuardNbt.string(record,"dimension",dimension(world(p)));GuardNbt.string(record,"type",String.valueOf(call(npc,"getEntityTypeId")));
@@ -167,12 +176,16 @@ public final class Pq01Bridge {
       for(String n:List.of("CustomName","custom_name")){Object name=child(snapshot,n);if(name!=null){GuardNbt.string(record,"name_key",n);GuardNbt.put(record,"original_name",GuardNbt.copy(name));break;}}
       GuardNbt.integer(record,"added_role_tag",tags(npc).contains("hcq_pnj_"+role)?0:1);
     }
-    Object linked=action(command);GuardNbt.put(record,"linked_interaction",GuardNbt.copy(linked));GuardNbt.put(bindings,key,record);save(p,root); // sauvegarder avant toute mutation
-    mutateEvent(p,npc,"ON_INTERACTION",linked);
-    if((role.equals("geraud")||role.equals("altheon"))&&child(events,"ON_DISTANCE_NEAR")==null){
-      Object near=action("function capitale:quest/spawn_dirigeable_couronne/"+(role.equals("geraud")?"geraud_large_start_self":"capitaine_large/near_self"));
-      if(phase.equals("large")){GuardNbt.put(record,"linked_near",GuardNbt.copy(near));mutateEvent(p,npc,"ON_DISTANCE_NEAR",near);}
+    Object linked=action(command);GuardNbt.put(record,"linked_interaction",GuardNbt.copy(linked));
+    Object newNear=null;
+    if(phase.equals("large")&&(role.equals("geraud")||role.equals("altheon"))&&child(events,"ON_DISTANCE_NEAR")==null){
+      newNear=action("function capitale:quest/spawn_dirigeable_couronne/"+(role.equals("geraud")?"geraud_large_start_self":"capitaine_large/near_self"));
+      GuardNbt.put(record,"linked_near",GuardNbt.copy(newNear));
     }
+    GuardNbt.string(record,"linked_name_text",NAMES.get(role));
+    GuardNbt.put(bindings,key,record);save(p,root); // sauvegarder avant toute mutation
+    mutateEvent(p,npc,"ON_INTERACTION",linked);
+    if(newNear!=null)mutateEvent(p,npc,"ON_DISTANCE_NEAR",newNear);
     call(npc,"method_5780","hcq_pnj_"+role);call(npc,"method_5665",stat("net.minecraft.class_2561","method_43470",NAMES.get(role)));
     Object named=GuardNbt.entity(npc);for(String k:List.of("CustomName","custom_name"))if(child(named,k)!=null){GuardNbt.string(record,"linked_name_key",k);GuardNbt.put(record,"linked_name",GuardNbt.copy(child(named,k)));}
     GuardNbt.put(record,"post",pointNbt(pos(npc,world(p))));GuardNbt.put(bindings,key,record);save(p,root);
@@ -182,6 +195,7 @@ public final class Pq01Bridge {
   static Object waypoint(Pq01Motion.Point at){Object n=pointNbt(at);GuardNbt.integer(n,"r",3);return n;}
   static int unbind(Object p,String key){
     Object record=binding(p,key),npc=source(p,key);if(record==null||npc==null)throw new IllegalStateException("PNJ lié non chargé dans cette dimension.");
+    editable(p,npc);
     if(pos(npc,world(p)).distance2(pos(p,world(p)))>64)throw new IllegalStateException("Rapprochez-vous à huit blocs du PNJ lié.");
     Object events=eventSet(GuardNbt.entity(npc));
     for(String ev:List.of("interaction","near")){
@@ -192,7 +206,10 @@ public final class Pq01Bridge {
     if(child(record,"linked_near")!=null)mutateEvent(p,npc,"ON_DISTANCE_NEAR",child(record,"original_near"));
     String role=key.split("_")[0];if(integer(record,"added_role_tag",0)==1)run(p,"tag "+uuid(npc)+" remove hcq_pnj_"+role);
     String nameKey=str(record,"linked_name_key","");Object current=GuardNbt.entity(npc);
-    if(!nameKey.isEmpty()&&Objects.equals(String.valueOf(child(current,nameKey)),String.valueOf(child(record,"linked_name")))){
+    Object currentName=call(npc,"method_5797");
+    boolean interruptedNameWrite=nameKey.isEmpty()&&currentName!=null&&str(record,"linked_name_text","").equals(call(currentName,"getString"));
+    if(interruptedNameWrite)nameKey=child(current,"CustomName")!=null?"CustomName":"custom_name";
+    if(interruptedNameWrite||!nameKey.isEmpty()&&Objects.equals(String.valueOf(child(current,nameKey)),String.valueOf(child(record,"linked_name")))){
       Object old=child(record,"original_name");String oldKey=str(record,"name_key",nameKey);
       run(p,old==null?"data remove entity "+uuid(npc)+" "+nameKey:"data modify entity "+uuid(npc)+" "+oldKey+" set value "+old);
     }
@@ -220,6 +237,7 @@ public final class Pq01Bridge {
   }
   static Actor spawn(View v,String role,Pq01Motion.Point start){
     Actor old=v.actors.get(role);if(alive(old))return old;
+    if(old!=null)discard(v,role);
     Object src=source(v.player,role+"_"+v.phase);if(src==null)throw new IllegalStateException("Liaison "+role+"_"+v.phase+" absente/non chargée.");
     Pq01Motion.Point origin=pos(src,v.world);if(start==null)start=origin;
     if(!origin.dimension().equals(start.dimension())||origin.distance2(start)>24*24)throw new IllegalStateException("Point d'activité hors portée du PNJ source.");
@@ -231,24 +249,25 @@ public final class Pq01Bridge {
     Object events=GuardNbt.childOrCreate(GuardNbt.childOrCreate(template,"ActionData"),"ActionEventSet");GuardNbt.put(events,"ON_INTERACTION",action(hook(role,v.phase)));
     UUID fresh=UUID.randomUUID();String ints="[I;"+(int)(fresh.getMostSignificantBits()>>>32)+","+(int)fresh.getMostSignificantBits()+","+(int)(fresh.getLeastSignificantBits()>>>32)+","+(int)fresh.getLeastSignificantBits()+"]";
     String text=template.toString();text=text.substring(0,text.length()-1)+",UUID:"+ints+"}";
-    ACTORS.add(fresh);v.hidden.add(uuid(src));Object e=null;
+    ACTORS.add(fresh);v.hidden.add(uuid(src));Object e=null,g=null,t=null;
     try{
       run(v.player,"summon "+call(src,"getEntityTypeId")+" "+coords(start)+" "+text);
       e=call(v.world,"method_66347",fresh);if(e==null)throw new IllegalStateException("Création de l'acteur non confirmée.");
       call(e,"method_5665",stat("net.minecraft.class_2561","method_43470",NAMES.get(role)));
       configureActor(e,role.equals("gautier")||role.equals("perrin"));
-      Object g=call(e,"getEntityGoalSelector"),t=call(e,"getEntityTargetSelector");Pq01Actors.protect(g);Pq01Actors.protect(t);
+      Object yaw=call(src,"method_36454"),pitch=call(src,"method_36455");call(e,"method_36456",yaw);call(e,"method_36457",pitch);call(e,"method_5847",yaw);call(e,"method_5636",yaw);
+      g=call(e,"getEntityGoalSelector");t=call(e,"getEntityTargetSelector");Pq01Actors.protect(g);Pq01Actors.protect(t);
       call(g,"method_35113",(Predicate<Object>)goal->true);call(t,"method_35113",(Predicate<Object>)goal->true);
       if(!teamReady){run(v.player,"team add indivis_pq01");run(v.player,"team modify indivis_pq01 collisionRule never");teamReady=true;}
       run(v.player,"team join indivis_pq01 "+fresh);
       Actor a=new Actor(role,e,src,g,t,start);v.actors.put(role,a);refresh(v.player);return a;
-    }catch(Throwable failure){ACTORS.remove(fresh);v.hidden.remove(uuid(src));if(e!=null)call(e,"method_31472");refresh(v.player);throw failure;}
+    }catch(Throwable failure){ACTORS.remove(fresh);v.hidden.remove(uuid(src));if(g!=null)Pq01Actors.forget(g);if(t!=null)Pq01Actors.forget(t);if(e!=null)call(e,"method_31472");refresh(v.player);throw failure;}
   }
   static void configureActor(Object e,boolean mobile){
     Object provider=call(e,"getEasyNPCAttributeData"),attributes=call(provider,"getEntityAttributes");
     Object copy=make("de.markusbordihn.easynpc.data.attribute.EntityAttributes",GuardNbt.copy(call(attributes,"createTag")));
     Object move=call(copy,"getMovementAttributes");
-    move=call(move,"withIsImmovable",!mobile);move=call(move,"withCanOpenDoor",false);move=call(move,"withCanCloseDoor",false);move=call(move,"withCanUseNetherPortal",false);
+    move=call(move,"withIsImmovable",!mobile);move=call(move,"withCanJump",mobile);move=call(move,"withCanOpenDoor",false);move=call(move,"withCanCloseDoor",false);move=call(move,"withCanUseNetherPortal",false);
     move=call(move,"withNavigationType",en("de.markusbordihn.easynpc.data.attribute.NavigationType","GROUND"));
     call(copy,"setMovementAttributes",move);
     Object inventory=call(copy,"getInventoryAttributes");if(inventory==null)inventory=en("de.markusbordihn.easynpc.data.attribute.InventoryAttributes","EMPTY");inventory=call(inventory,"withDropOnDeath",false);inventory=call(inventory,"withPickUpItems",false);call(copy,"setInventoryAttributes",inventory);
@@ -271,7 +290,8 @@ public final class Pq01Bridge {
   static int camera(Object p,String role){
     if(score(p,"CAP_QDIALOG_OWNER")!=91+Arrays.asList(ROLES).indexOf(role))return 0;
     View v=view(p);Object src=source(p,role+"_"+v.phase);if(src==null)return 0;
-    Object focus=src;
+    if(v.cameraRole!=null)return 1;
+    Object focus=src;boolean resumed=false;
     boolean intro=role.equals("geraud")&&v.phase.equals("large")&&score(p,"hcf_pq1_a")==0;
     if(intro){
       v.scene=true;v.approach=configuredPoint(p,"gautier_approche",null);
@@ -280,8 +300,13 @@ public final class Pq01Bridge {
         if(v.approach!=null&&pos(geraud.entity,v.world).distance2(v.approach)>16)throw new IllegalStateException("Le point d'approche doit être à quatre blocs de Géraud.");
         Object gsource=source(p,"gautier_large");if(gsource==null)throw new IllegalStateException("Lier Gautier au large.");
         Pq01Motion.Point post=configuredPoint(p,"gautier_poste",pos(gsource,v.world));
-        int resume=score(p,"hch_pq1node");Pq01Motion.Point start=resume>=Pq01Ids.id("a4")&&resume<=Pq01Ids.id("a6")&&v.approach!=null?v.approach:post;
-        spawn(v,"gautier",start);
+        int resume=score(p,"hch_pq1node");Actor ga=spawn(v,"gautier",post);
+        if(resume>=Pq01Ids.id("a4")&&resume<=Pq01Ids.id("a6")&&v.approach!=null&&pos(ga.entity,v.world).distance2(v.approach)>0.64){
+          resumed=true;
+          String resumeKey="a"+resume;v.waitingNode=resume;
+          run(p,"scoreboard players set @s hcm_pq1_node "+resume);run(p,"scoreboard players set @s hcm_pq1_wait 1");run(p,"function capitale:pq01/scene/resume_wait_self");
+          travel(v,ga,v.approach,()->{face(ga,pos(geraud.entity,v.world));face(geraud,pos(ga.entity,v.world));advance(v,resumeKey);},reason->{say(p,"Reprise mobile interrompue : "+reason);discard(v,"gautier");refresh(p);advance(v,resumeKey);});
+        }
       }catch(Throwable e){report(e);say(p,"Scène mobile en repli : "+e.getMessage());}
     }else{
       Actor a=v.actors.get(role);
@@ -289,22 +314,23 @@ public final class Pq01Bridge {
       else if(stat(DM,"pnjOccupe",uuid(src),uuid(p)).equals(true))focus=spawn(v,role,null).entity;
     }
     Actor a=v.actors.get(role);if(a!=null){if(a.motion!=null){a.motion.cancel();a.motion=null;}stop(a);}
-    v.cameraRole=role;v.pendingCamera=focus;v.cameraAt=clock+1;return 1;
+    v.cameraRole=role;v.pendingCamera=focus;v.cameraAt=clock+1;return resumed?2:1;
   }
   static void openCamera(View v,Object focus){
-    SUPPRESS.add(v.account);try{stat(DM,"ouvrir",v.player,focus,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));v.camera=focus;}
+    SUPPRESS.add(v.account);try{v.captureSession=stat(DM,"ouvrir",v.player,focus,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));v.camera=focus;}
     finally{SUPPRESS.remove(v.account);}
   }
   static void close(Object p,boolean closeCamera){
     View v=VIEWS.remove(uuid(p));if(v==null)return;
     v.waitingNode=0;GRACE.put(v.account,clock+40);
-    if(closeCamera&&v.camera!=null){SUPPRESS.add(v.account);try{stat(DM,"fermer",p,en("net.hautecapitale.dialogue.session.CloseReason","REMPLACEE"));}finally{SUPPRESS.remove(v.account);}}
+    if(closeCamera&&v.captureSession!=null&&((Optional<?>)stat(DM,"session",p)).orElse(null)==v.captureSession){SUPPRESS.add(v.account);try{stat(DM,"fermer",p,en("net.hautecapitale.dialogue.session.CloseReason","REMPLACEE"));}finally{SUPPRESS.remove(v.account);}}
     for(String role:new ArrayList<>(v.actors.keySet()))try{discard(v,role);}catch(Throwable e){report(e);}
     run(p,"scoreboard players set @s hcm_pq1_wait 0");refresh(p);
   }
   static int moveScene(Object p,boolean returning){
     String expected=returning?"a6":"a2",next=returning?"a7":"a3";
     if(score(p,"hcm_pq1_node")!=Pq01Ids.id(expected))return 0;
+    if(score(p,"hcm_pq1_voice")>0)return 1;
     View v=VIEWS.get(uuid(p));
     if(v==null||!same(v,p)||!v.scene){say(p,"Scène mobile indisponible ; reprise du dialogue sans bloquer la quête.");run(p,"function capitale:pq01/node/"+next);return 1;}
     if(v.waitingNode!=0)return 1;
@@ -323,8 +349,8 @@ public final class Pq01Bridge {
     a.motion=new Pq01Motion(new Pq01Motion.Port(){
       public boolean valid(){return VIEWS.get(v.account)==v&&same(v,v.player)&&alive(a);}
       public Pq01Motion.Point position(){return pos(a.entity,v.world);}
-      public boolean navigate(Pq01Motion.Point t){Object nav=call(a.entity,"getGroundPathNavigation");if(nav==null)return false;return (Boolean)call(nav,"method_6337",t.x(),t.y(),t.z(),0.65d);}
-      public void stop(){Pq01Bridge.stop(a);}
+      public boolean navigate(Pq01Motion.Point t){try{Object nav=call(a.entity,"getGroundPathNavigation");if(nav==null)return false;return (Boolean)call(nav,"method_6337",t.x(),t.y(),t.z(),0.65d);}catch(RuntimeException e){report(e);return false;}}
+      public void stop(){try{Pq01Bridge.stop(a);}catch(RuntimeException e){report(e);}}
       public void arrived(){done.run();}
       public void failed(String reason){failed.accept(reason);}
     },target,integer(setup(v.player),"move_timeout_ticks",300));a.motion.start();
@@ -334,6 +360,7 @@ public final class Pq01Bridge {
     v.waitingNode=0;run(v.player,"scoreboard players set @s hcm_pq1_wait 0");run(v.player,"function capitale:pq01/node/"+node);
   }
   static int banter(Object p){
+    if(integer(storage(p,"capitale:pq01_config"),"allow_banter",0)!=1)return 0;
     View v=view(p);if(!v.phase.equals("large")||score(p,"hcd_pq1_banter")>0||score(p,"hcm_pq1_node")!=Pq01Ids.id("hugues_menu"))return 0;
     @SuppressWarnings("unchecked") List<Object> players=(List<Object>)call(call(server(p),"method_3760"),"method_14571");
     for(Object other:players)if(other!=p&&world(other)==v.world&&pos(other,v.world).distance2(pos(p,v.world))<=256)return 0;
@@ -344,7 +371,7 @@ public final class Pq01Bridge {
   static void status(Object p){
     say(p,"PQ01-R3 : liaisons réelles, scènes personnelles et occupations activées.");
     for(String r:ROLES)for(String ph:List.of("large","quai")){Object b=binding(p,r+"_"+ph);say(p,r+"_"+ph+" : "+(b==null?"À LIER":source(p,r+"_"+ph)==null?"configuré, non chargé dans cette dimension":"chargé"));}
-    for(String name:List.of("gautier_approche","gautier_poste","hugues_charge","anselme_instruments","perrin_a","perrin_b"))say(p,name+" : "+(child(child(setup(p),"points"),name)==null?"à configurer":"configuré"));
+    for(String name:POINTS)say(p,name+" : "+(child(child(setup(p),"points"),name)==null?"à configurer":"configuré"));
   }
   static void tick(Object server){
     clock++;

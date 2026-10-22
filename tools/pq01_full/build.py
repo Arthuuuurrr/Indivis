@@ -35,7 +35,8 @@ def build():
   marker='scoreboard players set @s hcm_pq1_role '+str(owner)+'\n'
   assert s.count(marker)==1
   camera='execute store result score @s hcm_pq1_camera run indivispq01 camera_'+role+'\n'
-  camera+='execute unless score @s hcm_pq1_camera matches 1 run hcd_interpellation nearest_named '+ROLES[role]+'\n'
+  camera+='execute unless score @s hcm_pq1_camera matches 1..2 run hcd_interpellation nearest_named '+ROLES[role]+'\n'
+  if role=='geraud':camera+='execute if score @s hcm_pq1_camera matches 2 run return 0\n'
   core[p]=s.replace(marker,marker+camera).encode()
  for old,new,action in [('a2','a3','approach'),('a6','a7','return')]:
   p=func('choice/'+old);s=core[p].decode();before='function capitale:pq01/node/'+new
@@ -46,6 +47,8 @@ def build():
  s=core[func('dispatch_self')].decode();marker='execute if score @s hcm_pq1_pick matches 15 run return run function capitale:pq01/close_self\n'
  assert marker in s;core[func('dispatch_self')]=s.replace(marker,marker+'execute if score @s hcm_pq1_wait matches 1 run return run function capitale:pq01/scene/wait_self\n').encode()
  f('scene/wait_self',['tellraw @s {"text":"Gautier est en déplacement. Le dialogue reprend à son arrivée ; vous pouvez toujours fermer.","color":"gray"}'])
+ f('scene/resume_wait_self',['function capitale:pq01/buttons_self','function capitale:pq01/scene/wait_self','function capitale:pq01/scene/resume_close_macro with storage capitale:pq01_runtime buttons'])
+ f('scene/resume_close_macro',['$tellraw @s {"text":"[Fermer la scène]","color":"gray","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b15)"}}'])
  f('banter_self',['execute store result score @s hcm_pq1_camera run indivispq01 banter','execute unless score @s hcm_pq1_camera matches 1 run function capitale:pq01/banter_unavailable_self'])
  for role in ROLES:
   for phase in ('large','quai'):
@@ -53,9 +56,12 @@ def build():
    f('liaison/'+key,['indivispq01 bind_'+key])
    f('liaison/liberer_'+key,['indivispq01 unbind_'+key])
    f('pose/placer_'+key,['indivispq01 place_'+key])
- for name in ('gautier_poste','gautier_approche','hugues_charge','anselme_instruments','perrin_a','perrin_b'):f('pose/'+name,['indivispq01 point_'+name])
+ for name in ('gautier_poste','gautier_approche','hugues_charge','anselme_instruments','perrin_a','perrin_b','gautier_poste_quai','hugues_charge_quai','anselme_instruments_quai','perrin_a_quai','perrin_b_quai'):f('pose/'+name,['indivispq01 point_'+name])
  f('admin/nettoyer_scenes',['indivispq01 cleanup'])
  f('admin/status',['indivispq01 status','scoreboard players get @s hcq_pq01','scoreboard players get @s hcf_pq1_test','scoreboard players get @s hcf_pq1_gain'])
+ for path,blob in list(core.items()):
+  if path.endswith('.mcfunction') and b'# PQ01-R2 \xe2\x80\x94 candidat texte, repli statique document\xc3\xa9.' in blob:
+   core[path]=blob.replace(b'# PQ01-R2 \xe2\x80\x94 candidat texte, repli statique document\xc3\xa9.','# PQ01-R3 — dialogues approuvés et scènes personnelles.'.encode())
  for k in ('core','quests'):
   meta=json.loads(packs[k]['pack.mcmeta']);meta['pack']['description']=meta['pack']['description'].split(' — PQ01-R2')[0]+' — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture'
   packs[k]['pack.mcmeta']=(json.dumps(meta,ensure_ascii=False,indent=2)+'\n').encode()
