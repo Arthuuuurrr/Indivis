@@ -1,0 +1,93 @@
+[0.001s][warning][perf,memops] Cannot use file /tmp/hsperfdata_root/5 because it is locked by another process (errno = 11)
+Compiled from "DialogueManager.java"
+public final class net.hautecapitale.dialogue.session.DialogueManager {
+  private static final java.util.Map<java.util.UUID, net.hautecapitale.dialogue.session.DialogueSession> SESSIONS;
+  private static int prochainId;
+  private static final net.minecraft.class_2960 VERROU_VITESSE;
+  private static final net.minecraft.class_2960 VERROU_SAUT;
+  private static final java.util.List<java.util.function.BiConsumer<net.minecraft.class_3222, net.hautecapitale.dialogue.session.DialogueSession>> A_L_OUVERTURE;
+  private static final java.util.List<java.util.function.BiConsumer<net.minecraft.class_3222, net.hautecapitale.dialogue.session.DialogueSession>> A_LA_FERMETURE;
+  private static final java.util.List<java.util.function.Function<net.minecraft.class_1297, java.util.Optional<java.lang.Boolean>>> SONDES_MOUVEMENT;
+  private static java.util.function.Predicate<net.minecraft.class_1703> menuDeDialogue;
+  private static net.hautecapitale.dialogue.session.Rouvreur rouvreur;
+  private static net.hautecapitale.dialogue.session.Descripteur descripteur;
+  private static final java.util.Map<java.util.UUID, net.hautecapitale.dialogue.session.DialogueManager$RepriseEnAttente> REPRISES;
+  private net.hautecapitale.dialogue.session.DialogueManager();
+  public static void init();
+  public static void menuDeDialogue(java.util.function.Predicate<net.minecraft.class_1703>);
+  public static void rouvreur(net.hautecapitale.dialogue.session.Rouvreur);
+  public static void descripteur(net.hautecapitale.dialogue.session.Descripteur);
+  public static java.lang.String decrire(net.minecraft.class_1297, java.util.UUID);
+  public static void onOuverture(java.util.function.BiConsumer<net.minecraft.class_3222, net.hautecapitale.dialogue.session.DialogueSession>);
+  public static void onFermeture(java.util.function.BiConsumer<net.minecraft.class_3222, net.hautecapitale.dialogue.session.DialogueSession>);
+  public static void sondeMouvement(java.util.function.Function<net.minecraft.class_1297, java.util.Optional<java.lang.Boolean>>);
+  public static void retirerSondeMouvement(java.util.function.Function<net.minecraft.class_1297, java.util.Optional<java.lang.Boolean>>);
+  public static java.util.Optional<net.hautecapitale.dialogue.session.DialogueSession> session(net.minecraft.class_1657);
+  public static boolean enSession(net.minecraft.class_1657);
+  public static java.util.Collection<net.hautecapitale.dialogue.session.DialogueSession> toutes();
+  public static boolean pnjOccupe(java.util.UUID, java.util.UUID);
+  static boolean porte(net.minecraft.class_1297);
+  private static java.util.Optional<java.lang.Boolean> sonder(net.minecraft.class_1297);
+  static double vitesseInstantanee(net.minecraft.class_1297);
+  public static boolean enMouvementMaintenant(net.minecraft.class_1297);
+  public static java.util.Optional<net.minecraft.class_2561> refus(net.minecraft.class_3222, net.minecraft.class_1297);
+  private static net.minecraft.class_2561 messageEnRoute(net.minecraft.class_1297);
+  public static net.hautecapitale.dialogue.session.DialogueSession ouvrir(net.minecraft.class_3222, net.minecraft.class_1297, net.hautecapitale.dialogue.session.DialogueMode);
+  public static void fermer(net.minecraft.class_3222, net.hautecapitale.dialogue.session.CloseReason);
+  private static void oublier(net.minecraft.class_3222, net.hautecapitale.dialogue.session.CloseReason);
+  private static void terminer(net.minecraft.class_3222, net.hautecapitale.dialogue.session.DialogueSession, net.hautecapitale.dialogue.session.CloseReason, boolean);
+  public static void onRepriseClient(net.minecraft.class_3222, int);
+  public static void onFinClient(net.minecraft.class_3222, int, net.hautecapitale.dialogue.session.CloseReason);
+  private static void tick(net.minecraft.server.MinecraftServer);
+  private static net.hautecapitale.dialogue.session.CloseReason verifier(net.hautecapitale.dialogue.config.DialogueConfig, long, net.minecraft.class_3222, net.hautecapitale.dialogue.session.DialogueSession);
+  private static net.hautecapitale.dialogue.session.CloseReason surveillerVehicule(net.hautecapitale.dialogue.config.DialogueConfig, net.minecraft.class_3222, net.hautecapitale.dialogue.session.DialogueSession, net.minecraft.class_1297, net.minecraft.class_243);
+  private static void verrouiller(net.minecraft.class_3222, net.hautecapitale.dialogue.session.DialogueSession);
+  private static void deverrouiller(net.minecraft.class_3222, net.hautecapitale.dialogue.session.DialogueSession);
+  private static void modifier(net.minecraft.class_3222, net.minecraft.class_6880<net.minecraft.class_1320>, net.minecraft.class_2960);
+  private static void retirer(net.minecraft.class_3222, net.minecraft.class_6880<net.minecraft.class_1320>, net.minecraft.class_2960);
+  public static void dire(net.minecraft.class_3222, net.minecraft.class_2561);
+  private static void lambda$init$5(net.minecraft.server.MinecraftServer);
+  private static void lambda$init$4(net.minecraft.class_3222, net.minecraft.class_3218, net.minecraft.class_3218);
+  private static void lambda$init$3(net.minecraft.class_3222, net.minecraft.class_3222, boolean);
+  private static void lambda$init$2(net.minecraft.class_3244, net.minecraft.server.MinecraftServer);
+  private static java.lang.String lambda$static$1(net.minecraft.class_1297, java.util.UUID);
+  private static boolean lambda$static$0(net.minecraft.class_1703);
+  static {};
+}
+Compiled from "DialogueMode.java"
+public final class net.hautecapitale.dialogue.session.DialogueMode extends java.lang.Enum<net.hautecapitale.dialogue.session.DialogueMode> {
+  public static final net.hautecapitale.dialogue.session.DialogueMode EASYNPC_MENU;
+  public static final net.hautecapitale.dialogue.session.DialogueMode CAPTURE;
+  public static final net.hautecapitale.dialogue.session.DialogueMode PANNEAU_SEUL;
+  private static final net.hautecapitale.dialogue.session.DialogueMode[] $VALUES;
+  public static net.hautecapitale.dialogue.session.DialogueMode[] values();
+  public static net.hautecapitale.dialogue.session.DialogueMode valueOf(java.lang.String);
+  private net.hautecapitale.dialogue.session.DialogueMode();
+  private static net.hautecapitale.dialogue.session.DialogueMode[] $values();
+  static {};
+}
+Compiled from "CloseReason.java"
+public final class net.hautecapitale.dialogue.session.CloseReason extends java.lang.Enum<net.hautecapitale.dialogue.session.CloseReason> {
+  public static final net.hautecapitale.dialogue.session.CloseReason FERMEE;
+  public static final net.hautecapitale.dialogue.session.CloseReason ECRAN_FERME;
+  public static final net.hautecapitale.dialogue.session.CloseReason ESC;
+  public static final net.hautecapitale.dialogue.session.CloseReason ADIEU;
+  public static final net.hautecapitale.dialogue.session.CloseReason DISTANCE;
+  public static final net.hautecapitale.dialogue.session.CloseReason PNJ_DISPARU;
+  public static final net.hautecapitale.dialogue.session.CloseReason MORT;
+  public static final net.hautecapitale.dialogue.session.CloseReason TELEPORTATION;
+  public static final net.hautecapitale.dialogue.session.CloseReason DIMENSION;
+  public static final net.hautecapitale.dialogue.session.CloseReason CINEMATIQUE;
+  public static final net.hautecapitale.dialogue.session.CloseReason INACTIVITE;
+  public static final net.hautecapitale.dialogue.session.CloseReason ADMIN;
+  public static final net.hautecapitale.dialogue.session.CloseReason DECONNEXION;
+  public static final net.hautecapitale.dialogue.session.CloseReason REMPLACEE;
+  public static final net.hautecapitale.dialogue.session.CloseReason REFUSEE;
+  public static final net.hautecapitale.dialogue.session.CloseReason MOUVEMENT;
+  private static final net.hautecapitale.dialogue.session.CloseReason[] $VALUES;
+  public static net.hautecapitale.dialogue.session.CloseReason[] values();
+  public static net.hautecapitale.dialogue.session.CloseReason valueOf(java.lang.String);
+  private net.hautecapitale.dialogue.session.CloseReason();
+  private static net.hautecapitale.dialogue.session.CloseReason[] $values();
+  static {};
+}

@@ -1,0 +1,38 @@
+Compiled from "MovementAttributeType.java"
+public final class de.markusbordihn.easynpc.data.attribute.MovementAttributeType extends java.lang.Enum<de.markusbordihn.easynpc.data.attribute.MovementAttributeType> implements de.markusbordihn.easynpc.data.attribute.EntityAttributeTypeInterface {
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType CAN_CLOSE_DOOR;
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType CAN_JUMP;
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType CAN_OPEN_DOOR;
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType CAN_PASS_DOOR;
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType CAN_USE_NETHER_PORTAL;
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType HOVER_HEIGHT;
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType IS_IMMOVABLE;
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType MIN_HOVER_HEIGHT;
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType NAVIGATION_TYPE;
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType SWIM_DEPTH_BELOW_SURFACE;
+  public static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType SWIM_HEIGHT_ABOVE_FLOOR;
+  private final java.lang.String tagName;
+  private final java.lang.String attributeName;
+  private static final de.markusbordihn.easynpc.data.attribute.MovementAttributeType[] $VALUES;
+  public static de.markusbordihn.easynpc.data.attribute.MovementAttributeType[] values();
+  public static de.markusbordihn.easynpc.data.attribute.MovementAttributeType valueOf(java.lang.String);
+  private de.markusbordihn.easynpc.data.attribute.MovementAttributeType();
+  public java.lang.String getTagName();
+  public java.lang.String getAttributeName();
+  private static de.markusbordihn.easynpc.data.attribute.MovementAttributeType[] $values();
+  static {};
+}
+Compiled from "AttributeDataCapable.java"
+public interface de.markusbordihn.easynpc.entity.easynpc.data.AttributeDataCapable<E extends net.minecraft.class_1308> extends de.markusbordihn.easynpc.entity.easynpc.EasyNPC<E> {
+  public default void setBaseAttribute(net.minecraft.class_6880<net.minecraft.class_1320>, double);
+  public default double getBaseAttribute(net.minecraft.class_6880<net.minecraft.class_1320>);
+  public default de.markusbordihn.easynpc.data.attribute.EntityAttributes getEntityAttributes();
+  public default void setEntityAttributes(de.markusbordihn.easynpc.data.attribute.EntityAttributes);
+  public default void refreshEntityAttributes();
+  public default boolean getAttributeSilent();
+  public default void setAttributeSilent(boolean);
+  public default void defineSynchedAttributeData(net.minecraft.class_2945$class_9222);
+  public default void addAdditionalAttributeData(net.minecraft.class_11372);
+  public default void handleBlockedVehicleMountingTick();
+  public default void readAdditionalAttributeData(net.minecraft.class_11368);
+}

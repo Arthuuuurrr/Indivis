@@ -267,7 +267,7 @@ public final class Pq01Bridge {
     Object provider=call(e,"getEasyNPCAttributeData"),attributes=call(provider,"getEntityAttributes");
     Object copy=make("de.markusbordihn.easynpc.data.attribute.EntityAttributes",GuardNbt.copy(call(attributes,"createTag")));
     Object move=call(copy,"getMovementAttributes");
-    move=call(move,"withIsImmovable",!mobile);move=call(move,"withCanJump",mobile);move=call(move,"withCanOpenDoor",false);move=call(move,"withCanCloseDoor",false);move=call(move,"withCanUseNetherPortal",false);
+    move=call(move,"withIsImmovable",!mobile);move=call(move,"withCanJump",mobile);move=call(move,"withCanPassDoor",true);move=call(move,"withCanOpenDoor",false);move=call(move,"withCanCloseDoor",false);move=call(move,"withCanUseNetherPortal",false);
     move=call(move,"withNavigationType",en("de.markusbordihn.easynpc.data.attribute.NavigationType","GROUND"));
     call(copy,"setMovementAttributes",move);
     Object inventory=call(copy,"getInventoryAttributes");if(inventory==null)inventory=en("de.markusbordihn.easynpc.data.attribute.InventoryAttributes","EMPTY");inventory=call(inventory,"withDropOnDeath",false);inventory=call(inventory,"withPickUpItems",false);call(copy,"setInventoryAttributes",inventory);
@@ -311,14 +311,18 @@ public final class Pq01Bridge {
     }else{
       Actor a=v.actors.get(role);
       if(alive(a))focus=a.entity;
-      else if(stat(DM,"pnjOccupe",uuid(src),uuid(p)).equals(true))focus=spawn(v,role,null).entity;
+      else if(occupied(v,src))focus=spawn(v,role,null).entity;
     }
     Actor a=v.actors.get(role);if(a!=null){if(a.motion!=null){a.motion.cancel();a.motion=null;}stop(a);}
     v.cameraRole=role;v.pendingCamera=focus;v.cameraAt=clock+1;return resumed?2:1;
   }
   static void openCamera(View v,Object focus){
+    if(!actor(focus)&&occupied(v,focus)){Actor replacement=spawn(v,v.cameraRole,null);v.pendingCamera=replacement.entity;v.cameraAt=clock+1;return;}
     SUPPRESS.add(v.account);try{v.captureSession=stat(DM,"ouvrir",v.player,focus,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));v.camera=focus;}
     finally{SUPPRESS.remove(v.account);}
+  }
+  static boolean occupied(View current,Object entity){
+    return stat(DM,"pnjOccupe",uuid(entity),current.account).equals(true)||VIEWS.values().stream().anyMatch(other->other!=current&&(other.pendingCamera==entity||other.camera==entity&&other.captureSession!=null));
   }
   static void close(Object p,boolean closeCamera){
     View v=VIEWS.remove(uuid(p));if(v==null)return;
@@ -384,7 +388,7 @@ public final class Pq01Bridge {
       if(v.pendingCamera!=null&&clock>=v.cameraAt){Object focus=v.pendingCamera;v.pendingCamera=null;if(dialogue(v.player))openCamera(v,focus);}
       int node=score(v.player,"hcm_pq1_node");
       if(v.scene&&node>=Pq01Ids.id("ga_menu")){
-        v.scene=false;Actor geraud=v.actors.get("geraud");if(geraud!=null){Object original=geraud.source;v.hidden.remove(geraud.sourceId);refresh(v.player);if(dialogue(v.player))openCamera(v,original);discard(v,"geraud");}
+        v.scene=false;Actor geraud=v.actors.get("geraud");if(geraud!=null&&!occupied(v,geraud.source)){Object original=geraud.source;v.hidden.remove(geraud.sourceId);refresh(v.player);if(dialogue(v.player))openCamera(v,original);discard(v,"geraud");}
       }
       if(v.banter&&(node<Pq01Ids.id("b0")||node>Pq01Ids.id("b7")))v.banter=false;
       if(clock%20==0)work(v);

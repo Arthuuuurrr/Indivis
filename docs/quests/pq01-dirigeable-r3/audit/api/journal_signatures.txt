@@ -1,0 +1,97 @@
+Compiled from "SequenceBridge.java"
+public final class net.hautecapitale.quetes.sequence.SequenceBridge {
+  private static final java.util.Map<java.lang.String, java.lang.reflect.Method> METHODS;
+  private static final java.util.Map<java.util.UUID, java.util.UUID> CHARACTERS;
+  private static final java.util.Map<java.util.UUID, java.lang.Integer> SIGNATURES;
+  private static final java.util.Set<java.lang.String> ERRORS;
+  private static boolean initialized;
+  private static int ticks;
+  private net.hautecapitale.quetes.sequence.SequenceBridge();
+  private static java.lang.Class<?> type(java.lang.String);
+  private static java.lang.Class<?> boxed(java.lang.Class<?>);
+  static java.lang.Object call(java.lang.Object, java.lang.String, java.lang.Object...);
+  private static java.lang.Object stat(java.lang.String, java.lang.String, java.lang.Object...);
+  private static void report(java.lang.Throwable);
+  public static void init();
+  private static void watchScores();
+  private static void registerEvent(java.lang.String, java.lang.String, net.hautecapitale.quetes.sequence.SequenceBridge$Handler);
+  private static java.lang.Object objectMethod(java.lang.Object, java.lang.reflect.Method, java.lang.Object[]);
+  private static void registerCommands(java.lang.Object);
+  private static java.lang.Object setup(java.lang.Object);
+  public static java.lang.Object zoneDimension(java.lang.Object);
+  private static java.lang.String dimension(java.lang.Object);
+  private static java.lang.Object child(java.lang.Object, java.lang.String);
+  private static double number(java.lang.Object, java.lang.String);
+  private static boolean validBox(java.lang.Object);
+  private static int insideArchives(java.lang.Object);
+  private static boolean atPort(java.lang.Object);
+  private static boolean guardReference(java.lang.Object);
+  static boolean guardModel(java.lang.String, java.util.Set<java.lang.String>);
+  private static void inspectGuards(java.lang.Object);
+  private static boolean guardPrepare(java.lang.Object);
+  static java.lang.Object server(java.lang.Object);
+  static java.util.UUID uuid(java.lang.Object);
+  private static java.lang.Object character(java.lang.Object);
+  static int score(java.lang.Object, java.lang.String);
+  static void run(java.lang.Object, java.lang.String);
+  static java.lang.String quote(java.lang.String);
+  private static java.lang.String race(java.lang.String);
+  public static boolean context(java.lang.Object);
+  private static void newSession(java.lang.Object);
+  public static boolean visible(java.lang.Object, java.lang.Object);
+  public static java.util.Set<java.lang.String> filteredTags(java.util.Set<java.lang.String>);
+  public static boolean persistentV2(java.lang.String);
+  private static java.lang.Object engine();
+  private static void refresh(java.lang.Object);
+  static java.lang.Object remapJournalRecord(java.lang.Object);
+  private static void migrateJournal(java.lang.Object);
+  private static void track(java.lang.Object, java.lang.String);
+  private static void updatePoints(java.lang.Object);
+  private static void tick(java.lang.Object);
+  private static void cleanupPrivate(java.lang.Object, java.util.List<java.lang.Object>);
+  private static boolean lambda$track$8(java.lang.String);
+  private static boolean lambda$guardModel$7(java.lang.String);
+  private static boolean lambda$guardModel$6(java.lang.String);
+  private static java.lang.Object lambda$registerCommands$5(java.lang.String, java.lang.Object, java.lang.reflect.Method, java.lang.Object[]) throws java.lang.Throwable;
+  private static java.lang.Object lambda$registerEvent$4(net.hautecapitale.quetes.sequence.SequenceBridge$Handler, java.lang.Object, java.lang.reflect.Method, java.lang.Object[]) throws java.lang.Throwable;
+  private static java.lang.Object lambda$init$3(java.lang.Object[]) throws java.lang.Throwable;
+  private static java.lang.Object lambda$init$2(java.lang.Object[]) throws java.lang.Throwable;
+  private static java.lang.Object lambda$init$1(java.lang.Object[]) throws java.lang.Throwable;
+  private static java.lang.Class lambda$call$0(java.lang.Object);
+  static {};
+}
+Compiled from "GuardNbt.java"
+final class net.hautecapitale.quetes.sequence.GuardNbt {
+  private net.hautecapitale.quetes.sequence.GuardNbt();
+  static java.lang.Object read(java.lang.Object, java.lang.String);
+  static java.lang.Object copy(java.lang.Object);
+  static java.lang.Object compound();
+  private static java.lang.Object create(java.lang.String);
+  static void put(java.lang.Object, java.lang.String, java.lang.Object);
+  static void string(java.lang.Object, java.lang.String, java.lang.String);
+  static void integer(java.lang.Object, java.lang.String, int);
+  static java.lang.Object stringValue(java.lang.String);
+  static java.lang.Object list(java.util.Collection<?>);
+  static java.lang.Object entity(java.lang.Object);
+  static void save(java.lang.Object, java.lang.String, java.lang.Object);
+  private static java.lang.Class<?> classFor(java.lang.String);
+  static java.lang.Object childOrCreate(java.lang.Object, java.lang.String);
+  static void replaceInteraction(java.lang.Object);
+}
+Compiled from "QuestVisibility.java"
+public final class net.hautecapitale.quetes.visibility.QuestVisibility {
+  private static final java.util.Set<java.lang.String> WATCHED;
+  private static final java.util.Map<java.util.UUID, java.lang.Integer> SIGNATURES;
+  private net.hautecapitale.quetes.visibility.QuestVisibility();
+  public static boolean isVisibleTo(net.minecraft.class_1297, net.minecraft.class_3222);
+  public static void tick(net.minecraft.server.MinecraftServer);
+  public static void refresh(net.minecraft.class_3222);
+  public static void refreshAll(net.minecraft.server.MinecraftServer);
+  public static void watch(java.lang.String);
+  public static void forget(net.minecraft.class_3222);
+  public static void reset();
+  private static int signature(net.minecraft.class_3222);
+  private static int score(net.minecraft.class_269, net.minecraft.class_3222, java.lang.String);
+  private static int lambda$isVisibleTo$0(net.minecraft.class_269, net.minecraft.class_3222, java.lang.String);
+  static {};
+}
