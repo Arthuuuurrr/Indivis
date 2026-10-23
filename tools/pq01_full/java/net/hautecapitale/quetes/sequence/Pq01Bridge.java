@@ -13,12 +13,17 @@ public final class Pq01Bridge {
   private static final Map<UUID,View> VIEWS=new HashMap<>();
   private static final Set<UUID> ACTORS=new HashSet<>(),SUPPRESS=new HashSet<>();
   private static final Map<UUID,Long> GRACE=new HashMap<>();
+  private static final Map<UUID,NearState> NEAR=new HashMap<>();
   private static final Set<String> ERRORS=new HashSet<>();
   private static long clock; private static boolean initialized,teamReady;
   private static final String[] ROLES={"geraud","altheon","gautier","hugues","anselme","perrin"};
   private static final List<String> POINTS=List.of("gautier_poste","gautier_approche","hugues_charge","anselme_instruments","perrin_a","perrin_b","gautier_poste_quai","hugues_charge_quai","anselme_instruments_quai","perrin_a_quai","perrin_b_quai");
   private static final Map<String,String> NAMES=Map.of("geraud","Géraud Rivet","altheon","Althéon Brumeforge","gautier","Gautier","hugues","Hugues","anselme","Anselme","perrin","Perrin");
   private Pq01Bridge(){}
+  private static final class NearState {
+    final UUID character;final Object world;final Pq01Motion.Point origin;final long readyAt;boolean fired;
+    NearState(Object p){character=character(p);world=world(p);origin=pos(p,world);readyAt=clock+100;}
+  }
   static Class<?> type(String n){try{return Class.forName(n);}catch(ClassNotFoundException e){throw new IllegalStateException(n,e);}}
   static Object stat(String c,String m,Object...a){return call(type(c),m,a);}
   static Object en(String c,String n){try{return type(c).getField(n).get(null);}catch(ReflectiveOperationException e){throw new IllegalStateException(c+"."+n,e);}}
@@ -29,9 +34,9 @@ public final class Pq01Bridge {
       try{return k.newInstance(a);}catch(ReflectiveOperationException e){throw new IllegalStateException(c,e);}
     }throw new IllegalStateException("Constructeur absent : "+c);
   }
-  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF4] "+e);e.printStackTrace(System.err);}}
+  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF5] "+e);e.printStackTrace(System.err);}}
   static void say(Object p,String s){run(p,"tellraw @s "+quote("[PQ01] "+s));}
-  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF4] "+text);}
+  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF5] "+text);}
   static void unavailable(Object p,String reason){diagnostic(p,reason);run(p,"title @s actionbar "+quote("Cette conversation n’est pas disponible pour le moment."));}
   static Object world(Object p){return call(p,"method_51469");}
   static String dimension(Object world){return String.valueOf(call(call(world,"method_27983"),"method_29177"));}
@@ -88,9 +93,9 @@ public final class Pq01Bridge {
     event("net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback","EVENT",a->{register(a[0]);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents$EndTick","END_SERVER_TICK",a->{tick(a[0]);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopping","SERVER_STOPPING",a->{for(View v:new ArrayList<>(VIEWS.values()))close(v.player,true);return null;});
-    event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{VIEWS.clear();ACTORS.clear();GRACE.clear();SUPPRESS.clear();Pq01Actors.reset();clock=0;teamReady=false;return null;});
+    event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{VIEWS.clear();ACTORS.clear();GRACE.clear();NEAR.clear();SUPPRESS.clear();Pq01Actors.reset();clock=0;teamReady=false;return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents$Load","ENTITY_LOAD",a->{if(actor(a[0])&&!ACTORS.contains(uuid(a[0])))call(a[0],"method_31472");return null;});
-    stat(DM,"onFermeture",(BiConsumer<Object,Object>)(p,s)->{View v=VIEWS.get(uuid(p));if(v!=null&&v.captureSession==s&&!SUPPRESS.contains(uuid(p))){close(p,false);if(dialogue(p))run(p,"function capitale:pq01/close_self");}});
+    stat(DM,"onFermeture",(BiConsumer<Object,Object>)Pq01Bridge::captureClosed);
     stat(DM,"sondeMouvement",(Function<Object,Optional<Boolean>>)e->actor(e)?Optional.of(false):Optional.empty());
   }
   interface EventHandler{Object run(Object[] a)throws Throwable;}
@@ -106,19 +111,19 @@ public final class Pq01Bridge {
   static Object objectMethod(Object p,Method m,Object[] a){return switch(m.getName()){case "toString"->"IndivisPQ01";case "hashCode"->System.identityHashCode(p);case "equals"->p==a[0];default->null;};}
   static void register(Object dispatcher){
     Object root=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal","indivispq01");
-    List<String> actions=new ArrayList<>(List.of("approach","return","close","banter","status","cleanup"));
+    List<String> actions=new ArrayList<>(List.of("approach","return","close","banter","status","cleanup","near_geraud","reconcile","rearm_near"));
     for(String r:ROLES){actions.add("camera_"+r);for(String phase:List.of("large","quai")){for(String op:List.of("bind_","unbind_","place_"))actions.add(op+r+"_"+phase);}}
     for(String p:POINTS)actions.add("point_"+p);
     for(String key:Pq01Ids.keys())actions.add("line_"+key);
     for(String action:actions){
       Object node=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal",action);
-      if(action.startsWith("bind_")||action.startsWith("unbind_")||action.startsWith("point_")||action.startsWith("place_")||action.equals("status")||action.equals("cleanup")){
+      if(action.startsWith("bind_")||action.startsWith("unbind_")||action.startsWith("point_")||action.startsWith("place_")||action.equals("status")||action.equals("cleanup")||action.equals("rearm_near")){
         Object permission=en("net.minecraft.class_2170","field_31839");call(node,"requires",stat("net.minecraft.class_2170","method_71774",permission));
       }
       Class<?> command=type("com.mojang.brigadier.Command");
       Object proxy=Proxy.newProxyInstance(command.getClassLoader(),new Class<?>[]{command},(p,m,a)->{
         if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);
-        Object player=null;try{player=call(call(a[0],"getSource"),"method_9207");return execute(player,action);}catch(Throwable failure){report(failure);if(player!=null){if(action.startsWith("camera_")||action.startsWith("line_")||List.of("approach","return","banter").contains(action))diagnostic(player,"Scène indisponible : "+failure.getMessage());else say(player,"Action annulée : "+failure.getMessage());}return 0;}
+        Object player=null;try{player=call(call(a[0],"getSource"),"method_9207");return execute(player,action);}catch(Throwable failure){report(failure);if(player!=null){if(action.startsWith("camera_")||action.startsWith("line_")||List.of("approach","return","banter","near_geraud").contains(action))diagnostic(player,"Scène indisponible : "+failure.getMessage());else say(player,"Action annulée : "+failure.getMessage());}return 0;}
       });call(node,"executes",proxy);call(root,"then",node);
     }call(dispatcher,"register",root);
   }
@@ -126,7 +131,10 @@ public final class Pq01Bridge {
     if(action.equals("close")){close(p,true);return 1;}
     if(action.equals("cleanup")){for(View v:new ArrayList<>(VIEWS.values())){close(v.player,true);if(score(v.player,"hcm_pq1_active")==1)run(v.player,"function capitale:pq01/close_self");}say(p,"Scènes personnelles nettoyées. Les originaux restent en place.");return 1;}
     if(action.equals("status")){status(p);return 1;}
+    if(action.equals("near_geraud"))return nearGeraud(p);
     if(!available(p))throw new IllegalStateException("Sélectionnez un personnage Nexus chargé.");
+    if(action.equals("rearm_near")){NEAR.remove(uuid(p));return 1;}
+    if(action.equals("reconcile"))return reconcile(p);
     if(action.startsWith("bind_"))return bind(p,action.substring(5));
     if(action.startsWith("unbind_"))return unbind(p,action.substring(7));
     if(action.startsWith("place_"))return place(p,action.substring(6));
@@ -163,7 +171,7 @@ public final class Pq01Bridge {
   static void interact(Object p,Object npc,String key,String event){
     Pq01Actions.command(key,event); // Le couple rôle/phase/événement est une liste fermée.
     if(p==null||npc==null||world(p)!=call(npc,"method_73183"))return;
-    double maxDistance=event.equals("near")?16:8;
+    double maxDistance=event.equals("near")?3:8;
     if(pos(npc,world(p)).distance2(pos(p,world(p)))>maxDistance*maxDistance)return;
     String role=key.substring(0,key.lastIndexOf('_'));
     if(actor(npc)){
@@ -174,6 +182,8 @@ public final class Pq01Bridge {
       if(record==null||!uuid(npc).toString().equals(str(record,"uuid",""))||!dimension(world(p)).equals(str(record,"dimension","")))return;
     }
     boolean click=event.equals("interact");
+    if(!click){if(key.equals("geraud_large"))nearGeraud(p);return;}
+    reconcile(p);
     if(click&&!captureInteraction(p,npc))return;
     if(!available(p)){if(click)unavailable(p,"Personnage Nexus pas encore chargé.");return;}
     if(!key.endsWith("_"+phase(p))){
@@ -181,6 +191,29 @@ public final class Pq01Bridge {
       return;
     }
     run(p,Pq01Actions.function(key,event));
+    View v=VIEWS.get(uuid(p));
+    if(v!=null&&dialogue(p)&&v.captureSession==null)v.captureSession=currentSession(p);
+  }
+  static Object currentSession(Object p){return ((Optional<?>)stat(DM,"session",p)).orElse(null);}
+  static void captureClosed(Object p,Object session){
+    View v=VIEWS.get(uuid(p));
+    if(v!=null&&v.captureSession==session&&!SUPPRESS.contains(uuid(p))){close(p,false);if(dialogue(p))run(p,"function capitale:pq01/close_self");}
+  }
+  static int reconcile(Object p){
+    if(!dialogue(p))return 0;
+    View v=VIEWS.get(uuid(p));Object session=currentSession(p);
+    if(v!=null&&same(v,p)&&((v.captureSession!=null&&v.captureSession==session)||(v.captureSession==null&&v.pendingCamera!=null)))return 0;
+    close(p,false);run(p,"function capitale:pq01/close_self");return 1;
+  }
+  static int nearGeraud(Object p){
+    if(!available(p)){NEAR.remove(uuid(p));return 0;}
+    NearState state=NEAR.get(uuid(p));
+    if(state==null||!state.character.equals(character(p))||state.world!=world(p)){state=new NearState(p);NEAR.put(uuid(p),state);}
+    if(state.fired||clock<state.readyAt||score(p,"hcq_pq01")>=40||score(p,"hcf_pq1_a")!=0||score(p,"hch_pq1node")!=0||score(p,"hcm_pq1_active")!=0||score(p,"CAP_QSEQ")!=0||score(p,"CAP_QDIALOG_OWNER")!=0||currentSession(p)!=null||clock<GRACE.getOrDefault(uuid(p),0L))return 0;
+    Pq01Motion.Point here=pos(p,state.world);double dx=here.x()-state.origin.x(),dz=here.z()-state.origin.z();
+    if(dx*dx+dz*dz<0.75*0.75)return 0;
+    Object npc=source(p,"geraud_large");if(npc==null||pos(npc,state.world).distance2(here)>9)return 0;
+    state.fired=true;run(p,"function capitale:pq01/open/geraud_self");return 1;
   }
   static Object nearest(Object p){
     Object box=call(call(p,"method_5829"),"method_1014",3.0d);
@@ -334,7 +367,6 @@ public final class Pq01Bridge {
       v.scene=true;v.approach=configuredPoint(p,"gautier_approche",null);
       try{
         Actor geraud=spawn(v,"geraud",null);focus=geraud.entity;
-        if(v.approach!=null&&pos(geraud.entity,v.world).distance2(v.approach)>16)throw new IllegalStateException("Le point d'approche doit être à quatre blocs de Géraud.");
         Object gsource=source(p,"gautier_large");if(gsource==null)throw new IllegalStateException("Lier Gautier au large.");
         Pq01Motion.Point post=configuredPoint(p,"gautier_poste",pos(gsource,v.world));
         int resume=score(p,"hch_pq1node");Actor ga=spawn(v,"gautier",post);
@@ -357,15 +389,33 @@ public final class Pq01Bridge {
     String role=Pq01Ids.role(key);if(role==null)return 0;
     View v=view(p);Actor a=v.actors.get(role);Object focus=alive(a)?a.entity:source(p,role+"_"+v.phase);
     if(focus==null)return 1; // texte de secours, nom transmis dans la trame client.
-    if(v.pendingCamera==focus){v.pendingNode=key;return 0;}
-    Object session=((Optional<?>)stat(DM,"session",p)).orElse(null);
+    focus=safeFocus(v,focus);if(focus==null){abortCamera(v);return 0;}
+    if(v.pendingCamera==focus){v.cameraRole=role;v.pendingNode=key;return 0;}
+    Object session=currentSession(p);
     if(v.camera==focus&&v.captureSession!=null&&v.captureSession==session){v.cameraRole=role;return 1;}
     v.cameraRole=role;v.pendingCamera=focus;v.pendingNode=key;v.cameraAt=clock+1;return 0;
   }
-  static void openCamera(View v,Object focus){
-    if(!actor(focus)&&occupied(v,focus)){Actor replacement=spawn(v,v.cameraRole,null);v.pendingCamera=replacement.entity;v.cameraAt=clock+1;return;}
-    SUPPRESS.add(v.account);try{v.captureSession=stat(DM,"ouvrir",v.player,focus,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));v.camera=focus;}
+  static Object safeFocus(View v,Object preferred){
+    Object config=stat("net.hautecapitale.dialogue.config.DialogueConfig","get");double radius;
+    try{radius=((Number)config.getClass().getField("distance_ouverture").get(config)).doubleValue();}
+    catch(ReflectiveOperationException e){throw new IllegalStateException("Distance d’ouverture Dialogue b10 introuvable",e);}
+    for(Object candidate:new Object[]{preferred,v.camera,source(v.player,"geraud_"+v.phase)})
+      if(candidate!=null&&!Boolean.TRUE.equals(call(candidate,"method_31481"))&&call(candidate,"method_73183")==v.world&&pos(candidate,v.world).distance2(pos(v.player,v.world))<=radius*radius)return candidate;
+    return null;
+  }
+  static void abortCamera(View v){
+    close(v.player,true);if(dialogue(v.player))run(v.player,"function capitale:pq01/close_self");
+    unavailable(v.player,"Ouverture de caméra refusée ; session PQ01 libérée pour une nouvelle interaction.");
+  }
+  static boolean openCamera(View v,Object focus){
+    focus=safeFocus(v,focus);if(focus==null){abortCamera(v);return false;}
+    if(v.camera==focus&&v.captureSession!=null&&v.captureSession==currentSession(v.player))return true;
+    if(!actor(focus)&&occupied(v,focus)){Actor replacement=spawn(v,v.cameraRole,null);v.pendingCamera=replacement.entity;v.cameraAt=clock+1;return true;}
+    SUPPRESS.add(v.account);try{v.captureSession=stat(DM,"ouvrir",v.player,focus,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));v.camera=v.captureSession==null?null:focus;}
     finally{SUPPRESS.remove(v.account);}
+    if(v.captureSession==null){abortCamera(v);return false;}
+    if(v.waitingNode!=0)run(v.player,"function capitale:pq01/scene/resume_wait_self");
+    return true;
   }
   static boolean occupied(View current,Object entity){
     return stat(DM,"pnjOccupe",uuid(entity),current.account).equals(true)||VIEWS.values().stream().anyMatch(other->other!=current&&(other.pendingCamera==entity||other.camera==entity&&other.captureSession!=null));
@@ -428,12 +478,14 @@ public final class Pq01Bridge {
     clock++;
     @SuppressWarnings("unchecked") List<Object> players=(List<Object>)call(call(server,"method_3760"),"method_14571");
     Set<UUID> online=new HashSet<>();for(Object p:players)online.add(uuid(p));
+    if(clock%20==0)for(Object p:players)try{nearGeraud(p);}catch(RuntimeException e){report(e);}
     if(clock%20==0)for(Object p:players)try{source(p,"anselme_large");source(p,"anselme_quai");}catch(RuntimeException e){report(e);}
     for(View v:new ArrayList<>(VIEWS.values()))try{
       if(!online.contains(v.account)||!same(v,v.player)||!phase(v.player).equals(v.phase)){close(v.player,true);continue;}
+      if(v.captureSession!=null&&v.captureSession!=currentSession(v.player)){close(v.player,false);if(dialogue(v.player))run(v.player,"function capitale:pq01/close_self");continue;}
       for(Actor a:new ArrayList<>(v.actors.values()))if(a.motion!=null&&!a.motion.done())a.motion.tick();
       if(VIEWS.get(v.account)!=v)continue;
-      if(v.pendingCamera!=null&&clock>=v.cameraAt){Object focus=v.pendingCamera;v.pendingCamera=null;if(dialogue(v.player)){openCamera(v,focus);if(v.pendingCamera==null&&v.captureSession!=null){String node=v.pendingNode;v.pendingNode=null;if(node!=null)run(v.player,"function capitale:pq01/node/"+node);}}}
+      if(v.pendingCamera!=null&&clock>=v.cameraAt){Object focus=v.pendingCamera;v.pendingCamera=null;if(dialogue(v.player)){if(!openCamera(v,focus)||VIEWS.get(v.account)!=v)continue;if(v.pendingCamera==null&&v.captureSession!=null){String node=v.pendingNode;v.pendingNode=null;if(node!=null)run(v.player,"function capitale:pq01/node/"+node);}}}
       int node=score(v.player,"hcm_pq1_node");
       if(v.scene&&node>=Pq01Ids.id("ga_menu"))v.scene=false;
       if(v.banter&&(node<Pq01Ids.id("b0")||node>Pq01Ids.id("b7")))v.banter=false;
@@ -449,6 +501,7 @@ public final class Pq01Bridge {
       }
     }catch(Throwable e){report(e);close(p,true);}
     GRACE.keySet().retainAll(online);
+    NEAR.keySet().retainAll(online);
   }
   static void work(View v){
     Object p=v.player;boolean active=dialogue(p);

@@ -1,6 +1,6 @@
-# Installation, configuration et déplacements des PNJ — PQ01-R3-HF4
+# Installation, configuration et déplacements des PNJ — PQ01-R3-HF5
 
-**Mise à jour du 23 octobre : les trois composants passent en HF4.** Remplacer les deux datapacks et le journal sur serveur ; remplacer aussi le journal sur les clients, puis redémarrer. Les liaisons déjà réussies, les points et la progression restent enregistrés ; aucune liaison n’est à refaire pour ce correctif. [Changements et contrôles HF4](../HOTFIX_IMMERSION_R3_HF4.md).
+**Mise à jour du 23 octobre : core et journal HF5, datapack hc_quetes HF4 conservé.** Depuis HF4, remplacer uniquement core et journal ; le journal va sur serveur et clients. Les liaisons, points, apparences et progressions restent enregistrés. Un état de dialogue bloqué sous HF4 est récupéré au prochain clic, sans reset de quête. [Changements et preuves HF5](../HOTFIX_REPRISE_R3_HF5.md).
 
 ## 1. Les trois opérations à distinguer
 
@@ -17,15 +17,15 @@
 
 | Emplacement | Fichier à installer |
 | --- | --- |
-| Datapacks du monde serveur | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF4.zip` |
+| Datapacks du monde serveur | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF5.zip` |
 | Datapacks du monde serveur | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip` |
-| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF4.jar` |
+| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF5.jar` |
 
 Les deux ZIP internes sont les datapacks complets, avec `pack.mcmeta` à leur racine. Le ZIP extérieur de livraison n’est pas lui-même un datapack.
 
 1. Fermer les dialogues, attendre la fin d’un amarrage et terminer les relectures actives avec `/function capitale:pq01/admin/test_fin` si R2/R3 est déjà installé. Sauvegarder ensemble le monde et les profils Nexus.
-2. Arrêter le serveur. Installer les trois composants HF4 du tableau, y compris si HF3 était déjà installé. Retirer la précédente version de chaque composant remplacé.
-3. Installer aussi le journal R3-HF4 dans les clients. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants du serveur. Aucun remplacement de Nexus ou Dialogue n’est fourni.
+2. Arrêter le serveur. Depuis HF4, remplacer core et journal par HF5, et conserver hc_quetes HF4. Pour une première installation, utiliser les trois versions du tableau. Retirer la précédente version de chaque composant remplacé.
+3. Installer aussi le journal R3-HF5 dans les clients. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants du serveur. Aucun remplacement de Nexus ou Dialogue n’est fourni.
 4. Redémarrer. Les commandes suivantes s’exécutent en jeu, par un administrateur avec un personnage Nexus sélectionné et chargé.
 
 Le code de scène fonctionne côté serveur ; le JAR journal contient aussi ses composants clients et mixins. Ce correctif s’ajoute au journal fourni, sans créer un second mod portant le même identifiant.
@@ -64,7 +64,7 @@ La liaison conserve le type, le modèle, le skin, les textures, l’équipement 
 
 `ON_INTERACTION` peut être absent ou contenir un unique déclencheur PQ01 reconnu, seul ou accompagné d’autres actions. La liaison remplace seulement ce déclencheur et conserve l’ordre, les conditions et les autres actions. Les anciennes commandes `function capitale:…`, `/function capitale:…` et les chemins `capitale:…` seuls sont reconnus pour les rôles prévus. Une interaction sans déclencheur PQ01 reconnu, ou avec plusieurs déclencheurs, est refusée et décrite sans écriture. Une liaison existante vers un autre PNJ doit être libérée avant réaffectation. Une modification externe des actions après liaison reste protégée lors d’une nouvelle liaison.
 
-L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal HF4. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud au large, le déclencheur de proximité prévu reste disponible. Le déclencheur PQ01 de proximité du Capitaine devient sans effet : sa conversation commence au clic droit. Un ancien déclencheur PQ01 reconnu est converti et les autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
+L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal HF5. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud au large, la proximité attend cinq secondes après disponibilité du personnage, un déplacement horizontal d’au moins 0,75 bloc et une distance réelle au PNJ de trois blocs maximum. Le clic volontaire reste disponible immédiatement. L’interpellation ne se relance pas automatiquement après fermeture ; la reprise passe par un clic droit. Le déclencheur PQ01 de proximité du Capitaine devient sans effet : sa conversation commence au clic droit. Un ancien déclencheur PQ01 reconnu est converti et les autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
 
 Un PNJ impliqué dans une scène personnelle ou occupé par un autre joueur ne peut pas être lié/libéré/déplacé tant que cette utilisation dure.
 
@@ -90,7 +90,7 @@ Chaque commande ci-dessous enregistre **la position actuelle de l’admin**, san
 | Commande | Se placer à cet endroit |
 | --- | --- |
 | `/function capitale:pq01/pose/gautier_poste` | Poste de surveillance de Gautier, sur le pont du navire au large. |
-| `/function capitale:pq01/pose/gautier_approche` | Point d’arrêt sûr près de Géraud, à quatre blocs maximum de lui. |
+| `/function capitale:pq01/pose/gautier_approche` | Point d’arrêt sûr près de Géraud, sur un sol accessible. |
 | `/function capitale:pq01/pose/hugues_charge` | Point vers lequel Hugues regarde pendant son inspection de cargaison. |
 | `/function capitale:pq01/pose/anselme_instruments` | Instruments ou barre vers lesquels Anselme regarde. |
 | `/function capitale:pq01/pose/perrin_a` | Premier point du service léger de Perrin. |
@@ -182,3 +182,13 @@ Le Capitaine attend un clic droit ; il ne déclenche plus l’interpellation aut
 Le matelot Anselme reçoit un tag réservé PQ01. Les liaisons déjà enregistrées sont mises à jour quand le PNJ est chargé près d’un joueur, sans refaire la liaison. La quête de l’archiviste Anselme Kerrec exclut ce tag ; les autres archivistes gardent leur comportement.
 
 Gautier et Perrin utilisent une création directe d’entité puis une copie contrôlée et une navigation réelle. Le seuil d’arrivée est de 1,25 bloc, compatible avec l’arrêt du chemin vanilla observé à environ 0,97 bloc ; un nouvel échec de recalcul n’annule plus une arrivée déjà atteinte. Les originaux ne sont pas déplacés par une scène.
+
+## 12. Déclenchement et reprise HF5
+
+Après disponibilité du personnage Nexus, Géraud attend au moins cinq secondes, un mouvement horizontal du joueur d’au moins 0,75 bloc et une proximité réelle de trois blocs. La surveillance de proximité ne dépend plus d’un nouvel événement EasyNPC après l’entrée dans son ancien grand rayon. Un clic droit volontaire reste utilisable immédiatement, sans ce délai.
+
+Après fermeture, l’interpellation ne rouvre pas la conversation toute seule. Un clic droit reprend au checkpoint existant. La première caméra est prise en compte avant son éventuel remplacement ; un refus de caméra ou une session disparue libère les seuls états temporaires PQ01. Les autres sessions de dialogue et les scores persistants sont conservés. Cette récupération traite aussi l’état bloqué laissé par HF4.
+
+Le contrôle supplémentaire qui rejetait l’approche de Gautier au-delà de quatre blocs de Géraud est retiré. Les points enregistrés sont réutilisés ; les limites de navigation, de dimension et de délai restent actives. Si un locuteur est hors de la portée d’ouverture de Dialogue, la caméra valide déjà ouverte est conservée et son texte continue avec son nom. Si aucune caméra valide n’existe, la conversation se ferme proprement et peut être relancée au clic.
+
+Le mode volontaire `test_debut` réarme la proximité pour une nouvelle recette, sans modifier ses sauvegardes historiques. Aucune de ces commandes de test n’est exécutée lors de l’installation.

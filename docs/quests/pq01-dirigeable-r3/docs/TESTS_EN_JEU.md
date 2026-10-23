@@ -1,4 +1,4 @@
-# Rejouer PQ01 et effectuer la recette — HF4
+# Rejouer PQ01 et effectuer la recette — HF5
 
 ## Relecture personnelle sans récompenses
 
@@ -20,7 +20,7 @@ Cette commande restaure uniquement la sauvegarde du personnage actif et sa posit
 
 ## Parcours fonctionnel
 
-1. Nouveau personnage/relecture : near de Géraud, bouton « Je vous écoute » sans second clic PNJ, introduction, Gautier quitte son poste, rejoint Géraud, s’arrête et lui fait face. Fermer puis rouvrir après chacune de ses deux répliques : les répliques déjà affichées ne doivent pas être répétées. Une reprise pendant la remontrance rejoint d’abord la position d’échange si nécessaire.
+1. Nouveau personnage/relecture : approcher Géraud à trois blocs après le délai de chargement et un déplacement ; le clic volontaire peut aussi ouvrir immédiatement l’introduction ; Gautier quitte son poste, rejoint Géraud, s’arrête et lui fait face. Fermer puis rouvrir après chacune de ses deux répliques : les répliques déjà affichées ne doivent pas être répétées. Une reprise pendant la remontrance rejoint d’abord la position d’échange si nécessaire.
 2. Après sa réponse, Gautier marche à son poste ; Géraud revient vers le joueur. Vérifier le menu répétable de Géraud et l’objectif vers Althéon.
 3. Gautier, Hugues, Anselme, Perrin : chaque question et sous-question est cliquable ; retour au menu et fermeture possibles. Observer leurs occupations et leur suspension pendant leur dialogue. Aucun item n’est transféré par les gestes d’Hugues.
 4. Althéon au clic droit, sans interpellation automatique : introduction une fois, amnésie canonique explicitement posée avant la conclusion. Toutes les familles A–E et sous-questions restent répétables. Avaleiv se déverrouille après la mission décrite par Althéon, indépendamment des discussions avec les matelots.
@@ -76,3 +76,12 @@ La mise à jour conserve la progression actuelle. Pour revoir le début sur un p
 6. Fermer pendant une marche et changer de personnage : aucune scène personnelle ni choix de l’ancien personnage ne doit continuer. À deux joueurs, vérifier que chacun ne voit que ses acteurs personnels.
 
 Les quatre trajets et la copie d’apparence ont été testés en monde isolé réel. Cette liste couvre ce qui reste à observer avec le rendu, le son et la carte utilisateur. Si un chemin est inaccessible, le diagnostic se trouve dans le log serveur ; il ne doit pas apparaître dans la bouche d’un PNJ.
+
+## Régression Géraud HF5
+
+1. Au spawn, rester immobile plus de cinq secondes : aucune conversation automatique.
+2. Avancer en restant à plus de trois blocs réels de Géraud : aucune conversation automatique.
+3. S’approcher à trois blocs après le délai : l’introduction peut commencer. Un clic droit reste possible avant le délai.
+4. Fermer avec Échap, puis attendre : aucune réouverture automatique. Refaire un clic droit : reprise de la conversation, sans page « … » bloquante. Répéter pendant l’aller, l’interruption et le retour de Gautier.
+5. Reprendre un personnage déjà bloqué sous HF4 : le clic suivant récupère la session temporaire et conserve son checkpoint. Aucun reset manuel des scores.
+6. Lancer volontairement une nouvelle relecture avec `test_debut` : la proximité est réarmée avec le même délai et la même condition de déplacement. Terminer avec `test_fin` comme décrit plus haut.

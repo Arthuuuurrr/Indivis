@@ -9,6 +9,7 @@ import net.tompsen.nexuscharacters.NexusCharacters;
 /** Exécute Pq01Bridge/SequenceBridge du JAR livré. Monde, Nexus et caméra doublés. */
 public final class Pq01InteractionBench {
   public static final List<String> events=new ArrayList<>();
+  public static java.util.function.Consumer<String> commandEffect=c->{};
   static int checks;
   static void check(boolean ok,String message){checks++;if(!ok)throw new AssertionError(message+" "+events);}
   public static final class Store {
@@ -28,18 +29,21 @@ public final class Pq01InteractionBench {
     public Source method_9217(){return this;}
   }
   public static final class Commands {
-    public void method_44252(Object source,String command){events.add("command:"+command);}
+    final Board board;Commands(Board b){board=b;}
+    public void method_44252(Object source,String command){events.add("command:"+command);if(command.equals("function capitale:pq01/close_self")){board.values.put("hcm_pq1_active",0);board.values.put("CAP_QDIALOG_OWNER",0);}commandEffect.accept(command);}
   }
   public static final class Server {
     final Store store=new Store();final Board board=new Board();
     public Store method_22827(){return store;}
     public Board method_3845(){return board;}
     public Source method_3739(){return new Source();}
-    public Commands method_3734(){return new Commands();}
+    public Commands method_3734(){return new Commands(board);}
   }
   public static final class Dimension {public String method_29177(){return "minecraft:overworld";}}
   public static final class World {
     final Server server=new Server();
+    final Map<UUID,Entity> entities=new HashMap<>();
+    public Object method_66347(UUID id){return entities.get(id);}
     public Server method_8503(){return server;}
     public Dimension method_27983(){return new Dimension();}
   }
@@ -49,6 +53,7 @@ public final class Pq01InteractionBench {
     public UUID method_5667(){return id;}
     public World method_73183(){return world;}
     public Set<String> method_5752(){return tags;}
+    public boolean method_31481(){return false;}
     public double method_23317(){return x;}
     public double method_23318(){return 0;}
     public double method_23321(){return 0;}
@@ -60,16 +65,17 @@ public final class Pq01InteractionBench {
   }
   static World world;static Player player;static Entity npc;
   static void reset(){
-    events.clear();DialogueManager.session=null;DialogueManager.blocked=false;DialogueManager.failOpen=false;DialogueManager.opened=0;
+    events.clear();commandEffect=c->{};DialogueManager.session=null;DialogueManager.blocked=false;DialogueManager.failOpen=false;DialogueManager.returnNull=false;DialogueManager.closed=(p,s)->{};DialogueManager.opened=0;
     DialogueConfig.enabled=true;NexusCharacters.selected=true;
     world=new World();player=new Player(world);npc=new Entity(world);
+    world.entities.put(npc.id,npc);
     Object record=GuardNbt.compound();GuardNbt.string(record,"uuid",npc.id.toString());GuardNbt.string(record,"dimension","minecraft:overworld");
     GuardNbt.put(GuardNbt.childOrCreate(world.server.store.nbt,"bindings"),"geraud_large",record);
   }
   static boolean quest(){return events.stream().anyMatch(s->s.equals("command:function capitale:npc/geraud_rivet/interact_self"));}
   static void click(){Pq01Bridge.interact(player,npc,"geraud_large","interact");}
   public static void main(String[] args)throws Exception {
-    check(Pq01Bridge.class.getProtectionDomain().getCodeSource().getLocation().toString().endsWith("PQ01-R3-HF4.jar"),"pont de production HF4");
+    check(Pq01Bridge.class.getProtectionDomain().getCodeSource().getLocation().toString().endsWith("PQ01-R3-HF5.jar"),"pont de production HF5");
     check(SequenceBridge.class.getProtectionDomain().getCodeSource().equals(Pq01Bridge.class.getProtectionDomain().getCodeSource()),"helper historique de production");
     reset();click();check(DialogueManager.opened==1&&quest(),"clic avec joueur non nul ouvre la caméra et appelle la quête");
     check(events.get(0).equals("camera:CAPTURE")&&events.get(1).startsWith("command:function"),"caméra ouverte avant le premier texte");
@@ -81,7 +87,7 @@ public final class Pq01InteractionBench {
     reset();world.server.board.values.put("CAP_PROFILE_LOCK",1);click();check(DialogueManager.opened==1&&!quest(),"profil en chargement : caméra sans exécution de quête");
     check(events.stream().anyMatch(s->s.startsWith("command:title @s actionbar")),"chargement indiqué hors dialogue");
     reset();NexusCharacters.selected=false;click();check(DialogueManager.opened==1&&!quest(),"aucun personnage : caméra sans quête");
-    reset();Pq01Bridge.interact(player,npc,"geraud_large","near");check(DialogueManager.opened==0&&events.equals(List.of("command:function capitale:quest/spawn_dirigeable_couronne/geraud_large_start_self")),"near ne force pas la caméra");
+    reset();Pq01Bridge.interact(player,npc,"geraud_large","near");check(DialogueManager.opened==0&&events.isEmpty(),"near initial attend le chargement et un déplacement");
     reset();GuardNbt.string(Pq01Bridge.binding(player,"geraud_large"),"uuid",UUID.randomUUID().toString());click();check(events.isEmpty(),"autre PNJ refusé avant caméra");
     reset();npc.x=8.01;click();check(events.isEmpty(),"distance de clic contrôlée avant caméra");
     reset();npc.x=8;click();check(quest(),"limite de distance autorisée");
