@@ -1,0 +1,15 @@
+{
+  "minecraft_server_source_url": "https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632ec347938594144943ed/server.jar",
+  "minecraft_server_sha1": "64bb6d763bed0a9f1d632ec347938594144943ed",
+  "java_version": "21.0.12.1 Zulu21.52+203-CA",
+  "tiny_remapper": "0.12.1",
+  "intermediary": "1.21.11:v2",
+  "intermediary-1.21.11-v2.jar": {
+    "bytes": 707972,
+    "sha256": "f45b9530d0becae596fd48743e3ee1733cc2cdc69128cdb7d8d3571de163ab87"
+  },
+  "tiny-remapper-0.12.1-fat.jar": {
+    "bytes": 816542,
+    "sha256": "5ad5f4336b16edab8ba0c8fc919116068a82fcd64ecc82e88b582e345793073d"
+  }
+}

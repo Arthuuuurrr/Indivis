@@ -1,5 +1,7 @@
 # Validations exécutées et limites
 
+Depuis le 23 octobre, le journal courant est **R3-HF2**. [Copies NBT, actions EasyNPC, preuves et limites](../HOTFIX_NBT_R3_HF2.md). Les rapports `hf2_` utilisent des NBT et structures d’actions réels ; ils ne remplacent pas une recette du monde.
+
 Les contrôles R3 ci-dessous ne détectaient pas la mauvaise rétention de `@Mixin` ni la mauvaise forme des points `at`. Le crash réel a conduit au correctif [R3-HF1](../HOTFIX_MIXIN_R3_HF1.md) : reproduction sur les anciens binaires avec le lecteur Mixin de production, absence du défaut sur les nouveaux, code/sélecteurs conservés, contrôles de structure ajoutés aux builds. Les rapports du 23 octobre sont préfixés `hf1_` dans `audit/`. Aucun démarrage complet Fabric n’est revendiqué.
 
 - 12 contrôles des datapacks finaux : JSON, chemins et références internes, périmètre protégé, 145 passages approuvés, choix et amnésie obligatoires, déclenchements de conclusion, récompenses, magistrat, relecture par compte/personnage, jetons/voix/timeout, priorité MQ03 et amarrage avec gardes de contexte.

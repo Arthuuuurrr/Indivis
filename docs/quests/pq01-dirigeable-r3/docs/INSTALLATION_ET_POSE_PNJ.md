@@ -1,6 +1,6 @@
-# Installation, configuration et déplacements des PNJ — PQ01-R3-HF1
+# Installation, configuration et déplacements des PNJ — PQ01-R3-HF2
 
-**Mise à jour du 23 octobre : journal R3-HF1.** Si les deux datapacks R3 sont déjà installés, ce correctif demande seulement de remplacer le journal par `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF1.jar` sur le serveur et les clients, et le mod admin alpha.2 par `indivis-admin-0.1.0-alpha.3+1.21.11.jar` sur le serveur. Redémarrer. Les liaisons et points existants restent utilisables ; les commandes ci-dessous sont inchangées. La section 2 décrit aussi l'installation complète initiale des datapacks R3.
+**Mise à jour du 23 octobre : journal R3-HF2.** Remplacer le journal sur serveur et clients, puis redémarrer. Les deux datapacks R3 et le mod admin alpha.3 restent installés. Les commandes de placement sont inchangées. Pour les liaisons qui ont échoué, fermer le dialogue actif et relancer leur commande : les PNJ existants sont réutilisés. [Cause et contrôles HF2](../HOTFIX_NBT_R3_HF2.md).
 
 ## 1. Les trois opérations à distinguer
 
@@ -19,13 +19,13 @@
 | --- | --- |
 | Datapacks du monde serveur | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3.zip` |
 | Datapacks du monde serveur | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3.zip` |
-| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF1.jar` |
+| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF2.jar` |
 
 Les deux ZIP internes sont les datapacks complets, avec `pack.mcmeta` à leur racine. Le ZIP extérieur de livraison n’est pas lui-même un datapack.
 
 1. Fermer les dialogues, attendre la fin d’un amarrage et terminer les relectures actives avec `/function capitale:pq01/admin/test_fin` si R2/R3 est déjà installé. Sauvegarder ensemble le monde et les profils Nexus.
 2. Arrêter le serveur. Remplacer les deux datapacks et le JAR journal correspondants par les trois fichiers ci-dessus. Retirer les versions précédentes de ces mêmes composants.
-3. Installer aussi le journal R3-HF1 dans les clients. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants du serveur. Aucun remplacement de Nexus ou Dialogue n’est fourni.
+3. Installer aussi le journal R3-HF2 dans les clients. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants du serveur. Aucun remplacement de Nexus ou Dialogue n’est fourni.
 4. Redémarrer. Les commandes suivantes s’exécutent en jeu, par un administrateur avec un personnage Nexus sélectionné et chargé.
 
 Le code de scène fonctionne côté serveur ; le JAR journal contient aussi ses composants clients et mixins. Ce correctif s’ajoute au journal fourni, sans créer un second mod portant le même identifiant.
@@ -56,9 +56,9 @@ Se tenir **à moins de trois blocs du PNJ voulu**, plus près de lui que de tout
 
 La liaison conserve le type, le modèle, le skin, les textures, l’équipement et les autres propriétés EasyNPC. Elle attribue le nom approuvé au PNJ et un tag de rôle si absent ; avant toute écriture, elle sauvegarde son UUID, son interaction, son éventuel événement near, son ancien nom et le fait que le tag était déjà présent. Les autres événements restent en place.
 
-`ON_INTERACTION` doit être absent ou contenir une seule ancienne commande connue d’un de ces six membres d’équipage. Une interaction multiple/personnalisée est refusée, avec message explicite ; elle n’est pas écrasée. Aucun refus ne demande de changer de datapack. Une liaison existante vers un autre PNJ doit être libérée avant réaffectation.
+`ON_INTERACTION` peut être absent ou contenir un unique déclencheur PQ01 reconnu, seul ou accompagné d’autres actions. La liaison remplace seulement ce déclencheur et conserve l’ordre, les conditions et les autres actions. Les anciennes commandes `function capitale:…`, `/function capitale:…` et les chemins `capitale:…` seuls sont reconnus pour les rôles prévus. Une interaction sans déclencheur PQ01 reconnu, ou avec plusieurs déclencheurs, est refusée et décrite sans écriture. Une liaison existante vers un autre PNJ doit être libérée avant réaffectation. Une modification externe des actions après liaison reste protégée lors d’une nouvelle liaison.
 
-L’interaction COMMAND est exécutée comme le joueur, avec permission 2. Pour Géraud/Althéon au large, un `ON_DISTANCE_NEAR` absent reçoit le hook existant du prologue. Un near déjà configuré est préservé : vérifier sa portée et son activation dans EasyNPC. La liaison ne remplace pas les paramètres de détection propres au monde. Le point de waypoint du rôle est également enregistré à la position du PNJ.
+L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal HF2. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud/Althéon au large, un `ON_DISTANCE_NEAR` absent reçoit le déclencheur prévu ; un ancien déclencheur PQ01 reconnu est converti, ses autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
 
 Un PNJ impliqué dans une scène personnelle ou occupé par un autre joueur ne peut pas être lié/libéré/déplacé tant que cette utilisation dure.
 

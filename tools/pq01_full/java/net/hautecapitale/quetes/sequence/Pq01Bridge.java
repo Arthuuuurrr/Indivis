@@ -29,7 +29,7 @@ public final class Pq01Bridge {
       try{return k.newInstance(a);}catch(ReflectiveOperationException e){throw new IllegalStateException(c,e);}
     }throw new IllegalStateException("Constructeur absent : "+c);
   }
-  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3] "+e);e.printStackTrace(System.err);}}
+  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF2] "+e);e.printStackTrace(System.err);}}
   static void say(Object p,String s){run(p,"tellraw @s "+quote("[PQ01] "+s));}
   static Object world(Object p){return call(p,"method_51469");}
   static String dimension(Object world){return String.valueOf(call(call(world,"method_27983"),"method_29177"));}
@@ -44,7 +44,7 @@ public final class Pq01Bridge {
   static int integer(Object n,String key,int fallback){return n==null?fallback:((Number)call(n,"method_68083",key,fallback)).intValue();}
   static Object storage(Object p,String name){Object id=stat("net.minecraft.class_2960","method_60654",name);return call(call(server(p),"method_22827"),"method_22546",id);}
   static Object setup(Object p){return storage(p,STORAGE);}
-  static Object rootCopy(Object p){return GuardNbt.copy(setup(p));}
+  static Object rootCopy(Object p){return Pq01Nbt.copy(setup(p));}
   static void save(Object p,Object n){GuardNbt.save(server(p),STORAGE,n);}
   static Pq01Motion.Point point(Object n){
     if(n==null)return null;
@@ -77,6 +77,7 @@ public final class Pq01Bridge {
   }
   public static void init(){
     if(initialized)return;initialized=true;
+    Pq01Actions.register();
     event("net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback","EVENT",a->{register(a[0]);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents$EndTick","END_SERVER_TICK",a->{tick(a[0]);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopping","SERVER_STOPPING",a->{for(View v:new ArrayList<>(VIEWS.values()))close(v.player,true);return null;});
@@ -135,13 +136,22 @@ public final class Pq01Bridge {
     int i=List.of("gautier","hugues","anselme","perrin").indexOf(role)+1;
     return "function capitale:quest/spawn_dirigeable_couronne/matelots/matelot_0"+i+(phase.equals("quai")?"_quai_self":"_self");
   }
-  static Object action(String command){Object a=GuardNbt.compound();GuardNbt.string(a,"Type","COMMAND");GuardNbt.string(a,"Cmd",command);GuardNbt.integer(a,"PermLevel",2);call(a,"method_10556","ExecAsUser",true);return GuardNbt.list(List.of(a));}
+  static Object action(String key,String event){return Pq01Actions.plan(null,key,event);}
   static Object eventSet(Object snapshot){return child(child(snapshot,"ActionData"),"ActionEventSet");}
-  static boolean safeInteraction(Object list,String expected){
-    if(list==null)return true;
-    if(!(list instanceof List<?> rows)||rows.size()!=1)return false;
-    Object a=rows.get(0);String text=str(a,"Cmd","").strip().replaceFirst("^/","");
-    return str(a,"Type","").equals("COMMAND")&&(text.equals(expected)||Arrays.stream(ROLES).anyMatch(r->List.of("large","quai").stream().anyMatch(ph->text.equals(hook(r,ph)))));
+  static void interact(Object p,Object npc,String key,String event){
+    Pq01Actions.command(key,event); // Le couple rôle/phase/événement est une liste fermée.
+    if(!available(p)||npc==null||world(p)!=call(npc,"method_73183")||!key.endsWith("_"+phase(p)))return;
+    double maxDistance=event.equals("near")?16:8;
+    if(pos(npc,world(p)).distance2(pos(p,world(p)))>maxDistance*maxDistance)return;
+    String role=key.substring(0,key.lastIndexOf('_'));
+    if(actor(npc)){
+      View v=VIEWS.get(uuid(p));Actor a=v==null?null:v.actors.get(role);
+      if(v==null||!same(v,p)||a==null||!a.id.equals(uuid(npc))||!ACTORS.contains(a.id)||!key.endsWith("_"+v.phase)||!event.equals("interact"))return;
+    }else{
+      Object record=binding(p,key);
+      if(record==null||!uuid(npc).toString().equals(str(record,"uuid",""))||!dimension(world(p)).equals(str(record,"dimension","")))return;
+    }
+    run(p,Pq01Actions.function(key,event));
   }
   static Object nearest(Object p){
     Object box=call(call(p,"method_5829"),"method_1014",3.0d);
@@ -152,12 +162,7 @@ public final class Pq01Bridge {
     if(nearby.size()>1){double a=Math.sqrt(pos(nearby.get(0),world(p)).distance2(pos(p,world(p)))),b=Math.sqrt(pos(nearby.get(1),world(p)).distance2(pos(p,world(p))));if(b-a<0.5)throw new IllegalStateException("Sélection ambiguë : rapprochez-vous du seul PNJ à lier.");}
     return nearby.get(0);
   }
-  static void mutateEvent(Object p,Object npc,String name,Object value){
-    String path="ActionData.ActionEventSet."+name;
-    run(p,value==null?"data remove entity "+uuid(npc)+" "+path:"data modify entity "+uuid(npc)+" "+path+" set value "+value);
-    Object after=child(eventSet(GuardNbt.entity(npc)),name);
-    if(!Objects.equals(String.valueOf(after),String.valueOf(value)))throw new IllegalStateException("Écriture EasyNPC non confirmée : "+name);
-  }
+  static void mutateEvent(Object p,Object npc,String name,Object value){Pq01Actions.mutate(npc,name,value);}
   static void editable(Object p,Object npc){
     if(stat(DM,"pnjOccupe",uuid(npc),uuid(p)).equals(true)||VIEWS.values().stream().anyMatch(v->v.hidden.contains(uuid(npc))))throw new IllegalStateException("Ce PNJ participe à une scène ou un dialogue. Fermer les scènes avant de le modifier.");
   }
@@ -166,28 +171,29 @@ public final class Pq01Bridge {
     editable(p,npc);
     Object previous=binding(p,key);
     if(previous!=null&&!str(previous,"uuid","").equals(uuid(npc).toString()))throw new IllegalStateException("Cette liaison existe déjà. La libérer avant de choisir un autre PNJ.");
+    Pq01Actions.assertUnchanged(previous,old,child(events,"ON_DISTANCE_NEAR"));
     for(String r:ROLES)for(String ph:List.of("large","quai")){String other=r+"_"+ph;Object b=binding(p,other);if(!other.equals(key)&&b!=null&&str(b,"uuid","").equals(uuid(npc).toString()))throw new IllegalStateException("Ce PNJ est déjà lié à "+other);}
-    String command=hook(role,phase);if(!safeInteraction(old,command))throw new IllegalStateException("Interaction personnalisée/multiple : liaison refusée pour conserver ses actions. Inspecter ce PNJ dans EasyNPC.");
-    Object root=rootCopy(p),bindings=GuardNbt.childOrCreate(root,"bindings"),record=previous==null?GuardNbt.compound():GuardNbt.copy(previous);
+    Object linked=Pq01Actions.plan(old,key,"interact");
+    Object root=rootCopy(p),bindings=GuardNbt.childOrCreate(root,"bindings"),record=previous==null?GuardNbt.compound():Pq01Nbt.copy(previous);
     if(previous==null){
       GuardNbt.string(record,"uuid",uuid(npc).toString());GuardNbt.string(record,"dimension",dimension(world(p)));GuardNbt.string(record,"type",String.valueOf(call(npc,"getEntityTypeId")));
-      if(old!=null)GuardNbt.put(record,"original_interaction",GuardNbt.copy(old));
-      Object near=child(events,"ON_DISTANCE_NEAR");if(near!=null)GuardNbt.put(record,"original_near",GuardNbt.copy(near));
-      for(String n:List.of("CustomName","custom_name")){Object name=child(snapshot,n);if(name!=null){GuardNbt.string(record,"name_key",n);GuardNbt.put(record,"original_name",GuardNbt.copy(name));break;}}
+      if(old!=null)GuardNbt.put(record,"original_interaction",Pq01Nbt.copy(old));
+      Object near=child(events,"ON_DISTANCE_NEAR");if(near!=null)GuardNbt.put(record,"original_near",Pq01Nbt.copy(near));
+      for(String n:List.of("CustomName","custom_name")){Object name=child(snapshot,n);if(name!=null){GuardNbt.string(record,"name_key",n);GuardNbt.put(record,"original_name",Pq01Nbt.copy(name));break;}}
       GuardNbt.integer(record,"added_role_tag",tags(npc).contains("hcq_pnj_"+role)?0:1);
     }
-    Object linked=action(command);GuardNbt.put(record,"linked_interaction",GuardNbt.copy(linked));
+    GuardNbt.put(record,"linked_interaction",Pq01Nbt.copy(linked));
     Object newNear=null;
-    if(phase.equals("large")&&(role.equals("geraud")||role.equals("altheon"))&&child(events,"ON_DISTANCE_NEAR")==null){
-      newNear=action("function capitale:quest/spawn_dirigeable_couronne/"+(role.equals("geraud")?"geraud_large_start_self":"capitaine_large/near_self"));
-      GuardNbt.put(record,"linked_near",GuardNbt.copy(newNear));
+    if(phase.equals("large")&&(role.equals("geraud")||role.equals("altheon"))){
+      newNear=Pq01Actions.migrateNear(child(events,"ON_DISTANCE_NEAR"),key);
+      if(newNear!=null)GuardNbt.put(record,"linked_near",Pq01Nbt.copy(newNear));
     }
     GuardNbt.string(record,"linked_name_text",NAMES.get(role));
     GuardNbt.put(bindings,key,record);save(p,root); // sauvegarder avant toute mutation
     mutateEvent(p,npc,"ON_INTERACTION",linked);
     if(newNear!=null)mutateEvent(p,npc,"ON_DISTANCE_NEAR",newNear);
     call(npc,"method_5780","hcq_pnj_"+role);call(npc,"method_5665",stat("net.minecraft.class_2561","method_43470",NAMES.get(role)));
-    Object named=GuardNbt.entity(npc);for(String k:List.of("CustomName","custom_name"))if(child(named,k)!=null){GuardNbt.string(record,"linked_name_key",k);GuardNbt.put(record,"linked_name",GuardNbt.copy(child(named,k)));}
+    Object named=GuardNbt.entity(npc);for(String k:List.of("CustomName","custom_name"))if(child(named,k)!=null){GuardNbt.string(record,"linked_name_key",k);GuardNbt.put(record,"linked_name",Pq01Nbt.copy(child(named,k)));}
     GuardNbt.put(record,"post",pointNbt(pos(npc,world(p))));GuardNbt.put(bindings,key,record);save(p,root);
     run(p,"data modify storage hc_quetes:lieux pq01_"+key+" set value "+waypoint(pos(npc,world(p))));
     say(p,"Liaison "+key+" enregistrée ; apparence et autres actions conservées.");return 1;
@@ -200,7 +206,7 @@ public final class Pq01Bridge {
     Object events=eventSet(GuardNbt.entity(npc));
     for(String ev:List.of("interaction","near")){
       Object linked=child(record,"linked_"+ev),actual=child(events,ev.equals("near")?"ON_DISTANCE_NEAR":"ON_INTERACTION");
-      if(linked!=null&&!Objects.equals(String.valueOf(linked),String.valueOf(actual)))throw new IllegalStateException("Actions changées depuis la liaison : aucune restauration forcée.");
+      if(linked!=null&&!Pq01Actions.equivalent(linked,actual))throw new IllegalStateException("Actions changées depuis la liaison : aucune restauration forcée.");
     }
     mutateEvent(p,npc,"ON_INTERACTION",child(record,"original_interaction"));
     if(child(record,"linked_near")!=null)mutateEvent(p,npc,"ON_DISTANCE_NEAR",child(record,"original_near"));
@@ -220,7 +226,7 @@ public final class Pq01Bridge {
     if(score(p,"CAP_QDIALOG_OWNER")!=0||stat(DM,"pnjOccupe",uuid(npc),uuid(p)).equals(true)||VIEWS.values().stream().anyMatch(v->v.hidden.contains(uuid(npc))))throw new IllegalStateException("PNJ utilisé dans une conversation/scène : placement refusé.");
     if(pos(npc,world(p)).distance2(pos(p,world(p)))>64*64)throw new IllegalStateException("Placement limité à 64 blocs, dans la dimension actuelle.");
     Pq01Motion.Point at=pos(p,world(p));run(p,"tp "+uuid(npc)+" "+coords(at)+" "+call(p,"method_36454")+" "+call(p,"method_36455"));
-    Object root=rootCopy(p);GuardNbt.put(GuardNbt.childOrCreate(root,"bindings"),key,GuardNbt.copy(binding(p,key)));GuardNbt.put(child(child(root,"bindings"),key),"post",pointNbt(at));save(p,root);
+    Object root=rootCopy(p);GuardNbt.put(GuardNbt.childOrCreate(root,"bindings"),key,Pq01Nbt.copy(binding(p,key)));GuardNbt.put(child(child(root,"bindings"),key),"post",pointNbt(at));save(p,root);
     run(p,"data modify storage hc_quetes:lieux pq01_"+key+" set value "+waypoint(at));say(p,"PNJ "+key+" placé à votre position. Cette commande d'édition n'est pas un trajet de scène.");return 1;
   }
   static String coords(Pq01Motion.Point p){return p.x()+" "+p.y()+" "+p.z();}
@@ -241,12 +247,12 @@ public final class Pq01Bridge {
     Object src=source(v.player,role+"_"+v.phase);if(src==null)throw new IllegalStateException("Liaison "+role+"_"+v.phase+" absente/non chargée.");
     Pq01Motion.Point origin=pos(src,v.world);if(start==null)start=origin;
     if(!origin.dimension().equals(start.dimension())||origin.distance2(start)>24*24)throw new IllegalStateException("Point d'activité hors portée du PNJ source.");
-    Object template=GuardNbt.copy(GuardNbt.entity(src));
+    Object template=Pq01Nbt.copy(GuardNbt.entity(src));
     for(String field:List.of("UUID","UUIDMost","UUIDLeast","Pos","Motion","Rotation","Passengers","Leash","Brain","Tags","Home","ActionData","ObjectiveData","TradingData"))call(template,"method_10551",field);
     GuardNbt.put(template,"Tags",GuardNbt.list(List.of(Pq01Actors.TAG,"hcm_private","hcm_owner_"+v.account,"hcm_character_"+v.character,"indivis_no_hard_despawn").stream().map(GuardNbt::stringValue).toList()));
     call(template,"method_10556","Invulnerable",true);call(template,"method_10556","Silent",true);call(template,"method_10556","NoAI",!role.equals("gautier")&&!role.equals("perrin"));
     call(template,"method_10556","NoGravity",false);call(template,"method_10556","CanPickUpLoot",false);GuardNbt.string(template,"DeathLootTable","minecraft:empty");
-    Object events=GuardNbt.childOrCreate(GuardNbt.childOrCreate(template,"ActionData"),"ActionEventSet");GuardNbt.put(events,"ON_INTERACTION",action(hook(role,v.phase)));
+    Object events=GuardNbt.childOrCreate(GuardNbt.childOrCreate(template,"ActionData"),"ActionEventSet");GuardNbt.put(events,"ON_INTERACTION",action(role+"_"+v.phase,"interact"));
     UUID fresh=UUID.randomUUID();String ints="[I;"+(int)(fresh.getMostSignificantBits()>>>32)+","+(int)fresh.getMostSignificantBits()+","+(int)(fresh.getLeastSignificantBits()>>>32)+","+(int)fresh.getLeastSignificantBits()+"]";
     String text=template.toString();text=text.substring(0,text.length()-1)+",UUID:"+ints+"}";
     ACTORS.add(fresh);v.hidden.add(uuid(src));Object e=null,g=null,t=null;
@@ -265,7 +271,7 @@ public final class Pq01Bridge {
   }
   static void configureActor(Object e,boolean mobile){
     Object provider=call(e,"getEasyNPCAttributeData"),attributes=call(provider,"getEntityAttributes");
-    Object copy=make("de.markusbordihn.easynpc.data.attribute.EntityAttributes",GuardNbt.copy(call(attributes,"createTag")));
+    Object copy=make("de.markusbordihn.easynpc.data.attribute.EntityAttributes",Pq01Nbt.copy(call(attributes,"createTag")));
     Object move=call(copy,"getMovementAttributes");
     move=call(move,"withIsImmovable",!mobile);move=call(move,"withCanJump",mobile);move=call(move,"withCanPassDoor",true);move=call(move,"withCanOpenDoor",false);move=call(move,"withCanCloseDoor",false);move=call(move,"withCanUseNetherPortal",false);
     move=call(move,"withNavigationType",en("de.markusbordihn.easynpc.data.attribute.NavigationType","GROUND"));
