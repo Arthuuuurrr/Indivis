@@ -12,7 +12,7 @@ public final class Pq01Client implements ClientModInitializer {
   private static final Map<String,String> NAMES=Map.of("geraud","Géraud Rivet","altheon","Althéon Brumeforge","gautier","Gautier","hugues","Hugues","anselme","Anselme","perrin","Perrin");
   private static final Map<String,Field> FIELDS=new HashMap<>();
   private static Pq01Pacing.Frame frame;
-  private static int age,finalPageTicks;private static boolean sent;
+  private static int age,finalPageTicks,retryAt,attempts,pageTicks;
   private static Object voices;private static boolean voicesChecked;
   public void onInitializeClient(){
     Class<?> contract=type("net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents$AllowGame");
@@ -40,7 +40,7 @@ public final class Pq01Client implements ClientModInitializer {
     if(insertion==null||!insertion.startsWith("indivis:pq01:v1:"))return true;
     Pq01Pacing.Frame parsed=Pq01Pacing.parse(insertion);
     if(parsed==null||!Boolean.TRUE.equals(stat(STATE,"captureActive")))return false;
-    frame=parsed;age=0;finalPageTicks=0;sent=false;
+    frame=parsed;age=0;finalPageTicks=0;pageTicks=0;retryAt=0;attempts=0;
     stat(STATE,"onChoixEnvoye",false,""); // remise de page sans réponse fictive dans l'historique.
     state("pnjNom",NAMES.get(frame.role()));
     return false; // trame vide, jamais un texte de PNJ ni une ligne de chat.
@@ -55,10 +55,11 @@ public final class Pq01Client implements ClientModInitializer {
     // Une marche ou une longue voix n'est pas un silence qui ferme la session.
     state("fenetreJusquaMs",System.currentTimeMillis()+2000L);
     boolean last=Boolean.TRUE.equals(call(panel,"dernierePage")),typing=Boolean.TRUE.equals(call(panel,"typewriterActif"));
-    age++;if(last&&!typing)finalPageTicks++;else finalPageTicks=0;
-    if(!sent&&Pq01Pacing.ready(frame,age,finalPageTicks,last,typing,voicePlaying())){
+    boolean speaking=voicePlaying();age++;if(last&&!typing)finalPageTicks++;else finalPageTicks=0;
+    if(!last&&!typing&&!speaking){if(++pageTicks>=40){call(panel,"avancer");pageTicks=0;}}else pageTicks=0;
+    if(attempts<60&&age>=retryAt&&Pq01Pacing.ready(frame,age,finalPageTicks,last,typing,speaking)){
       Object network=call(client,"method_1562");if(network==null)return;
-      sent=true;stat(STATE,"onChoixEnvoye",false,"");call(network,"method_45730","trigger QuestChoix set "+frame.token());
+      attempts++;retryAt=age+20;call(network,"method_45730","trigger QuestChoix set "+frame.token());
     }
   }
   static boolean voicePlaying(){

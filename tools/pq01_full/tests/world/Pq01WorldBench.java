@@ -11,8 +11,9 @@ public final class Pq01WorldBench implements ModInitializer {
   static Object server,world,player,view,source,perrinSource,actor,perrin;
   static Object gaRecord,perrinRecord;static int ticks,stage,checks;static boolean failed;
   static final List<String> evidence=new ArrayList<>();
+  static boolean stairsSeen,slabSeen;
   public void onInitialize(){
-    event("net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback","EVENT",a->{register(a[0]);stub(a[0],"indivissequence");stub(a[0],"hcd_interpellation");return null;});
+    event("net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback","EVENT",a->{register(a[0]);Pq01PipelineBench.registerOverrides(a[0]);stub(a[0],"indivissequence");stub(a[0],"hcd_interpellation");return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStarted","SERVER_STARTED",a->{try{start(a[0]);}catch(Throwable e){fail(e);}return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents$EndTick","END_SERVER_TICK",a->{try{tick();}catch(Throwable e){fail(e);}return null;});
   }
@@ -39,12 +40,23 @@ public final class Pq01WorldBench implements ModInitializer {
     Object options=stat("net.minecraft.class_8791","method_53821");
     player=make("net.minecraft.class_3222",server,world,profile,options);call(player,"method_5814",0.5d,64d,1.5d);
     command("forceload add -16 -16 32 16");command("fill -12 63 -12 20 63 12 minecraft:stone");
+    // Couloir sans contournement : montée, palier, descente puis dalles basses.
+    command("fill -1 64 -1 11 66 -1 minecraft:stone");command("fill -1 64 1 11 66 1 minecraft:stone");
+    command("fill -1 64 -1 -1 66 1 minecraft:stone");command("fill 11 64 -1 11 66 1 minecraft:stone");
+    command("setblock 3 64 0 minecraft:oak_stairs[facing=east,half=bottom]");
+    command("fill 4 64 0 6 64 0 minecraft:oak_planks");
+    command("setblock 7 64 0 minecraft:oak_stairs[facing=west,half=bottom]");
+    command("fill 8 64 0 10 64 0 minecraft:oak_slab[type=bottom]");
     source=npc(0.5,0.5);perrinSource=npc(0.5,4.5);
     Object skin=stat("de.markusbordihn.easynpc.data.skin.SkinDataEntry","createResourceLocationSkin",stat("net.minecraft.class_2960","method_60654","minecraft:textures/entity/player/wide/steve.png"));
     call(call(source,"getEasyNPCSkinData"),"setSkinDataEntry",skin);
     call(call(source,"getEasyNPCModelData"),"setModelPoseName","hf4_copy_probe");
     command("item replace entity "+uuid(source)+" weapon.mainhand with minecraft:stick");
     call(source,"method_5665",stat("net.minecraft.class_2561","method_43470","Gautier source test"));
+    stage=-1;ticks=0;
+  }
+  static void initActors()throws Exception{
+    check(call(world,"method_66347",uuid(source))==source&&call(world,"method_66347",uuid(perrinSource))==perrinSource,"source UUIDs ready after world ticks");
     Object data=GuardNbt.compound(),bindings=GuardNbt.childOrCreate(data,"bindings");
     GuardNbt.put(bindings,"gautier_large",bindingFor(source));GuardNbt.put(bindings,"perrin_large",bindingFor(perrinSource));GuardNbt.save(server,"capitale:pq01_setup",data);
     view=invoke("view",new Class<?>[]{Object.class},player);
@@ -62,31 +74,40 @@ public final class Pq01WorldBench implements ModInitializer {
   static void begin(Object a,Pq01Motion.Point target)throws Exception{
     stage++;ticks=0;
     invoke("travel",new Class<?>[]{view.getClass(),a.getClass(),Pq01Motion.Point.class,Runnable.class,java.util.function.Consumer.class},view,a,target,(Runnable)()->{
-      check(true,"actual navigation leg "+stage+" arrived");ticks=-1000;
-    },(java.util.function.Consumer<String>)reason->{throw new AssertionError("navigation leg "+stage+": "+reason);});
+      if(stage==5)throw new AssertionError("blocked destination must not be reached");
+      check(true,"actual navigation leg "+stage+" arrived");ticks=-20;
+    },(java.util.function.Consumer<String>)reason->{if(stage==5){check(true,"native blocked path ends with bounded failure");check(pos(perrin,world).distance2(target)>1.25*1.25,"blocked actor never teleported through wall");ticks=-20;}else throw new AssertionError("navigation leg "+stage+": "+reason);});
   }
   static void tick()throws Exception{
     if(server==null||failed)return;
+    if(stage==-1){if(++ticks>=20)initActors();return;}
     if(stage==0){if(++ticks>=20){
       Object actions=call(call(actor,"getEasyNPCActionEventData"),"getActionEventSet");Object row=child(child(call(actions,"createTag"),"ActionEventSet"),"ON_INTERACTION");
       check(Pq01Actions.equivalent(row,Pq01Actions.plan(null,"gautier_large","interact")),"actor custom interaction retained after 20 real ticks");
-      begin(gaRecord,new Pq01Motion.Point(dimension(world),8.5,64,0.5));
+      begin(gaRecord,new Pq01Motion.Point(dimension(world),9.5,64.5,0.5));
     }return;}
     Object a=stage<=2?gaRecord:perrinRecord;
+    if(stage==1){Pq01Motion.Point at=pos(actor,world);if(at.x()>3.5&&at.x()<7&&at.y()>64.9&&Math.abs(at.z()-0.5)<0.5)stairsSeen=true;if(at.x()>=8&&Math.abs(at.y()-64.5)<0.1)slabSeen=true;}
     Pq01Motion motion=(Pq01Motion)reflect(a,"motion");if(motion!=null&&!motion.done())motion.tick();
     if(ticks<0){
-      if(stage==1)begin(gaRecord,new Pq01Motion.Point(dimension(world),0.5,64,0.5));
+      if(++ticks<0)return;
+      if(stage==1){check(stairsSeen&&slabSeen,"Gautier actually crossed raised stair deck and fractional slab floor");begin(gaRecord,new Pq01Motion.Point(dimension(world),0.5,64,0.5));}
       else if(stage==2)begin(perrinRecord,new Pq01Motion.Point(dimension(world),8.5,64,4.5));
       else if(stage==3)begin(perrinRecord,new Pq01Motion.Point(dimension(world),0.5,64,4.5));
-      else {
+      else if(stage==4){
+        command("fill 7 64 3 10 67 6 minecraft:stone");Object data=storage(player,"capitale:pq01_setup");
+        data=GuardNbt.copy(data);GuardNbt.integer(data,"move_timeout_ticks",80);GuardNbt.save(server,"capitale:pq01_setup",data);
+        begin(perrinRecord,new Pq01Motion.Point(dimension(world),8.5,64,4.5));
+      }else {
         check(pos(source,world).distance2(new Pq01Motion.Point(dimension(world),0.5,64,0.5))<0.001,"Gautier original never moved");
         check(pos(perrinSource,world).distance2(new Pq01Motion.Point(dimension(world),0.5,64,4.5))<0.001,"Perrin original never moved");
         invoke("close",new Class<?>[]{Object.class,boolean.class},player,false);
         check(Boolean.TRUE.equals(call(actor,"method_31481"))&&Boolean.TRUE.equals(call(perrin,"method_31481")),"actors discarded during production cleanup");
-        Files.writeString(Path.of("world-test-result.txt"),"PASS "+checks+" checks\n"+String.join("\n",evidence)+"\nReal Fabric 1.21.11 world and EasyNPC 7.16.0 navigation. Nexus selection and visibility networking doubled; no real client camera tested.\n");
+        String pipeline=Pq01PipelineBench.runAll(player);
+        Files.writeString(Path.of("world-test-result.txt"),"PASS "+checks+" checks\n"+String.join("\n",evidence)+"\nReal Fabric 1.21.11 world and EasyNPC 7.16.0 navigation (stairs, corridor, slabs, outbound/return). Nexus selection and visibility networking doubled; no real client camera tested.\n"+pipeline);
         failed=true;command("stop");
       }
     }else if(++ticks>400)throw new AssertionError("world test timeout leg "+stage);
   }
-  static void fail(Throwable e){failed=true;e.printStackTrace();try{Files.writeString(Path.of("world-test-result.txt"),"FAIL "+e+"\n"+String.join("\n",evidence));if(server!=null)command("stop");}catch(Throwable ignored){}}
+  static void fail(Throwable e){failed=true;e.printStackTrace();try{java.io.StringWriter trace=new java.io.StringWriter();e.printStackTrace(new java.io.PrintWriter(trace));Files.writeString(Path.of("world-test-result.txt"),"FAIL "+trace+"\n"+String.join("\n",evidence));if(server!=null)command("stop");}catch(Throwable ignored){}}
 }

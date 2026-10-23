@@ -1,13 +1,13 @@
-# PQ01 — Sous pavillon de la Couronne — R3-HF5
+# PQ01 — Sous pavillon de la Couronne — R3-HF6
 
-23 octobre 2026 — Minecraft Fabric 1.21.11, EasyNPC 7.16.0, Dialogue b10.
+23 octobre 2026 — Fabric 1.21.11, EasyNPC 7.16.0, Dialogue b10.
 
-HF5 corrige l’interpellation de Géraud dès le spawn et la conversation impossible à rouvrir après fermeture. La proximité attend cinq secondes après disponibilité du personnage, un mouvement du joueur et une distance de trois blocs. Le clic volontaire reste immédiat. Fermer ne provoque pas de nouvelle ouverture automatique ; le clic suivant reprend au checkpoint enregistré. Les refus de caméra libèrent l’état temporaire, y compris un blocage laissé par HF4.
+Les réponses de Géraud et des matelots gardent directement les questions disponibles. Le Capitaine retrouve ses questions après chaque famille de réponses ; sa conclusion verte reste le choix qui termine l’entretien et lance l’amarrage. Les passages linéaires et leurs pages continuent automatiquement après lecture et voix, sans « Continuer » à répétition. Les choix reçus pendant une voix sont conservés jusqu’à la fin de l’attente ; chaque nouveau passage renouvelle le délai de conversation.
 
-Le rejet supplémentaire du point d’approche de Gautier à plus de quatre blocs est supprimé ; les bornes de navigation restent inchangées. Un interlocuteur hors de la portée de caméra ne provoque plus de remplacement aveugle qui laisse une page vide. Les corrections HF4 (marche, noms, Anselme, questions, conclusion verte et lecture continue) sont conservées.
+Le contrôleur de marche conserve un chemin EasyNPC actif, réessaie un départ transitoirement refusé et prend en compte les points sur dalles. Gautier et Perrin gardent leurs déplacements réels, leur délai de repli et les points déjà enregistrés. Les corrections précédentes restent intégrées : déclenchement proche de Géraud après chargement et déplacement, reprise au clic, nom de Gautier, séparation d’Anselme/Kerrec, Capitaine au clic et suppression des pages vides.
 
-**Depuis HF4 : remplacer uniquement core et journal.** Le journal va sur serveur et clients. Garder `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip`. La pose des PNJ, leurs liaisons, apparences et points restent valables ; aucune commande de placement ou de reset n’est nécessaire.
+**Installer seulement les deux fichiers de `installation/` : core HF6 sur le serveur et journal HF6 sur le serveur et chaque client. Conserver hc_quetes HF4.** Les PNJ et la configuration existante sont réutilisés ; aucune commande de pose ou de reset n’est nécessaire pour cette mise à jour.
 
-[Guide complet de pose](docs/INSTALLATION_ET_POSE_PNJ.md) · [cause, changements et preuves](HOTFIX_REPRISE_R3_HF5.md) · [recette en jeu](docs/TESTS_EN_JEU.md).
+[Guide complet et commandes de pose](docs/INSTALLATION_ET_POSE_PNJ.md) · [demandes reprises, corrections et preuves](HOTFIX_ENCHAINEMENTS_R3_HF6.md) · [relecture et recette en jeu](docs/TESTS_EN_JEU.md).
 
-Les contrôles de régression du pont utilisent un contexte de monde/caméra doublé ; les trajets et le chargement des fonctions sont aussi contrôlés dans un monde Fabric/EasyNPC isolé réel. Le rendu client et le modpack complet restent à recetter. Aucun monde utilisateur ouvert ni déploiement effectué. Sources, documentation et preuves sur la [PR GitHub nº 177](https://github.com/Arthuuuurrr/Indivis/pull/177), conservée en brouillon.
+Les fonctions et choix sont contrôlés sur un serveur Minecraft réel avec la capture Dialogue b10 ; les déplacements sont aussi testés avec EasyNPC réel. La caméra, le rendu et l’écoute audio du modpack complet restent hors de ces essais. La séquence I est conservée et ses références sont contrôlées ; aucun parcours complet n’est revendiqué sur la carte réelle. Sources, documentation et preuves dans la [PR GitHub nº 177](https://github.com/Arthuuuurrr/Indivis/pull/177).

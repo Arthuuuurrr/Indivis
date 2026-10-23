@@ -1,6 +1,8 @@
-# Installation, configuration et déplacements des PNJ — PQ01-R3-HF5
+# Installation, configuration et déplacements des PNJ — PQ01-R3-HF6
 
-**Mise à jour du 23 octobre : core et journal HF5, datapack hc_quetes HF4 conservé.** Depuis HF4, remplacer uniquement core et journal ; le journal va sur serveur et clients. Les liaisons, points, apparences et progressions restent enregistrés. Un état de dialogue bloqué sous HF4 est récupéré au prochain clic, sans reset de quête. [Changements et preuves HF5](../HOTFIX_REPRISE_R3_HF5.md).
+**Mise à jour du 23 octobre : remplacer le core et le journal par HF6.** Le journal doit être remplacé sur le serveur **et les clients**. Conserver le datapack `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip`. La pose actuelle, les liaisons, points, apparences et progressions sont réutilisés : aucune commande de liaison, placement ou reset à refaire pour installer ce correctif.
+
+L’archive contient uniquement les deux composants modifiés. Les sections de pose ci-dessous servent à une configuration initiale ou à un déplacement volontaire du décor. [Corrections et preuves HF6](../HOTFIX_ENCHAINEMENTS_R3_HF6.md).
 
 ## 1. Les trois opérations à distinguer
 
@@ -19,14 +21,16 @@
 | --- | --- |
 | Datapacks du monde serveur | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF5.zip` |
 | Datapacks du monde serveur | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip` |
-| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF5.jar` |
+| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF6.jar` |
 
-Les deux ZIP internes sont les datapacks complets, avec `pack.mcmeta` à leur racine. Le ZIP extérieur de livraison n’est pas lui-même un datapack.
+Le ZIP du core est un datapack complet, avec `pack.mcmeta` à sa racine. Le ZIP extérieur de livraison n’est pas un datapack. Le datapack hc_quetes indiqué dans le tableau est celui déjà installé, conservé sans modification.
 
-1. Fermer les dialogues, attendre la fin d’un amarrage et terminer les relectures actives avec `/function capitale:pq01/admin/test_fin` si R2/R3 est déjà installé. Sauvegarder ensemble le monde et les profils Nexus.
-2. Arrêter le serveur. Depuis HF4, remplacer core et journal par HF5, et conserver hc_quetes HF4. Pour une première installation, utiliser les trois versions du tableau. Retirer la précédente version de chaque composant remplacé.
-3. Installer aussi le journal R3-HF5 dans les clients. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants du serveur. Aucun remplacement de Nexus ou Dialogue n’est fourni.
-4. Redémarrer. Les commandes suivantes s’exécutent en jeu, par un administrateur avec un personnage Nexus sélectionné et chargé.
+1. Fermer les dialogues et attendre la fin d’un amarrage éventuel. Sauvegarder ensemble monde et profils Nexus, puis arrêter le serveur.
+2. Remplacer l’ancien ZIP du core par le core HF6 dans les datapacks du monde, et l’ancien JAR du journal par le journal HF6 dans `mods`. Conserver hc_quetes HF4.
+3. Remplacer aussi le journal sur chaque client. Garder Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants existants.
+4. Redémarrer puis reprendre au clic droit sur le PNJ. Les checkpoints et les sauvegardes de relecture sont conservés. Aucun reset ni commande de pose n’est nécessaire.
+
+Les commandes d’édition des sections suivantes s’exécutent en jeu, avec un personnage Nexus sélectionné et chargé, uniquement si l’on souhaite modifier la configuration.
 
 Le code de scène fonctionne côté serveur ; le JAR journal contient aussi ses composants clients et mixins. Ce correctif s’ajoute au journal fourni, sans créer un second mod portant le même identifiant.
 
@@ -64,7 +68,7 @@ La liaison conserve le type, le modèle, le skin, les textures, l’équipement 
 
 `ON_INTERACTION` peut être absent ou contenir un unique déclencheur PQ01 reconnu, seul ou accompagné d’autres actions. La liaison remplace seulement ce déclencheur et conserve l’ordre, les conditions et les autres actions. Les anciennes commandes `function capitale:…`, `/function capitale:…` et les chemins `capitale:…` seuls sont reconnus pour les rôles prévus. Une interaction sans déclencheur PQ01 reconnu, ou avec plusieurs déclencheurs, est refusée et décrite sans écriture. Une liaison existante vers un autre PNJ doit être libérée avant réaffectation. Une modification externe des actions après liaison reste protégée lors d’une nouvelle liaison.
 
-L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal HF5. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud au large, la proximité attend cinq secondes après disponibilité du personnage, un déplacement horizontal d’au moins 0,75 bloc et une distance réelle au PNJ de trois blocs maximum. Le clic volontaire reste disponible immédiatement. L’interpellation ne se relance pas automatiquement après fermeture ; la reprise passe par un clic droit. Le déclencheur PQ01 de proximité du Capitaine devient sans effet : sa conversation commence au clic droit. Un ancien déclencheur PQ01 reconnu est converti et les autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
+L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal HF6. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud au large, la proximité attend cinq secondes après disponibilité du personnage, un déplacement horizontal d’au moins 0,75 bloc et une distance réelle au PNJ de trois blocs maximum. Le clic volontaire reste disponible immédiatement. L’interpellation ne se relance pas automatiquement après fermeture ; la reprise passe par un clic droit. Le déclencheur PQ01 de proximité du Capitaine devient sans effet : sa conversation commence au clic droit. Un ancien déclencheur PQ01 reconnu est converti et les autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
 
 Un PNJ impliqué dans une scène personnelle ou occupé par un autre joueur ne peut pas être lié/libéré/déplacé tant que cette utilisation dure.
 
@@ -171,9 +175,9 @@ Cette réparation est limitée à PQ01 avant l’entretien achevé du capitaine.
 
 En cas de « unknown function », les adresses ci-dessus correspondent aux fichiers présents dans les ZIP R3 et sont contrôlées dans la livraison. Le journal R3 fournit la commande native `indivispq01` : son absence ou une erreur de chargement se diagnostique dans le log de démarrage, sans reset de profil ni vérification générique des datapacks.
 
-## 11. Dialogues HF4
+## 11. Dialogues et questions HF6
 
-Les pages qui n’offraient que « Continuer. » avancent désormais seules après le temps de lecture, la dernière page et la fin de la voix. Le joueur conserve ses vraies réponses, ses questions et la possibilité de fermer. Un menu de questions ne se valide jamais automatiquement. Aucun texte nouveau de réponse n’a été inventé.
+Les pages qui n’offraient que « Continuer. » avancent seules après le temps de lecture, la dernière page et la fin de la voix. Les pages intermédiaires se tournent aussi automatiquement une fois leur texte révélé. Le joueur conserve ses vraies réponses, ses questions et la possibilité de fermer. Un menu de questions ne se valide jamais automatiquement. Aucun texte nouveau de réponse n’a été inventé.
 
 L’interruption affiche le nom et la caméra du locuteur : **Gautier** pendant ses lignes, **Géraud Rivet** pendant les siennes. La caméra quitte Gautier avant son retour pour que le verrou de dialogue ne bloque pas sa marche. Les menus sans réplique ne montrent plus une page « … » à valider. La première page vide du Capitaine est sautée.
 
@@ -192,3 +196,13 @@ Après fermeture, l’interpellation ne rouvre pas la conversation toute seule. 
 Le contrôle supplémentaire qui rejetait l’approche de Gautier au-delà de quatre blocs de Géraud est retiré. Les points enregistrés sont réutilisés ; les limites de navigation, de dimension et de délai restent actives. Si un locuteur est hors de la portée d’ouverture de Dialogue, la caméra valide déjà ouverte est conservée et son texte continue avec son nom. Si aucune caméra valide n’existe, la conversation se ferme proprement et peut être relancée au clic.
 
 Le mode volontaire `test_debut` réarme la proximité pour une nouvelle recette, sans modifier ses sauvegardes historiques. Aucune de ces commandes de test n’est exécutée lors de l’installation.
+
+## 13. Enchaînements et navigation HF6
+
+Après une réponse de Géraud, Gautier, Hugues, Anselme ou Perrin, les questions sont directement disponibles sous cette réponse. Le Capitaine retrouve aussi ses questions à la fin de chaque famille de réponses ; les sous-questions rédigées restent des choix manuels. Les cinq questions de Géraud au quai restent réutilisables. Il n’est plus nécessaire de fermer puis rouvrir la conversation pour changer de question. La conclusion verte du Capitaine conserve sa fonction de clôture explicite.
+
+Une avance automatique reçue pendant une voix est conservée par le serveur puis traitée quand cette attente se termine. Le client réessaie avec le même jeton jusqu’à la nouvelle page, de façon bornée ; un ancien jeton ne valide pas la page suivante. Une durée audio sans son associé ne provoque plus d’attente. Chaque nouveau passage renouvelle le délai de conversation configuré : le délai de 3 600 ticks ne porte plus sur la durée totale de tout l’entretien.
+
+La marche conserve un chemin natif actif. Elle ne le remplace plus périodiquement par un nouveau calcul susceptible de faire échouer un trajet en cours. Un refus initial bénéficie de nouvelles tentatives pendant la pose au sol ; un point à hauteur fractionnaire peut être proposé au calcul natif à la hauteur de bloc supérieure, sans changer le point sauvegardé ni téléporter l’acteur. Un blocage réel conserve un arrêt/repli borné et son diagnostic serveur.
+
+Les essais exécutés et leurs limites sont décrits dans `HOTFIX_ENCHAINEMENTS_R3_HF6.md` et `audit/validation.json`. La carte réelle et le rendu graphique complet du modpack ne sont pas disponibles dans ce banc.

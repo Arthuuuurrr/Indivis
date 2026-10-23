@@ -7,9 +7,10 @@ public final class Pq01MotionBench {
   static void check(boolean ok,String name){checks++;if(!ok)throw new AssertionError(name);}
   static Point point(double x){return new Point("minecraft:overworld",x,80,0);}
   static final class Port implements Pq01Motion.Port {
-    Point position=point(0),target;boolean valid=true,path=true;int moves,stops,arrivals,failures;String reason="";
+    Point position=point(0),target;boolean valid=true,path=true,navigating;int moves,stops,arrivals,failures;String reason="";
     public boolean valid(){return valid;} public Point position(){return position;}
     public boolean navigate(Point p){moves++;target=p;return path;}
+    public boolean navigating(){return navigating;}
     public void stop(){stops++;}public void arrived(){arrivals++;}public void failed(String r){failures++;reason=r;}
     void at(double x){position=point(x);}
   }
@@ -19,12 +20,14 @@ public final class Pq01MotionBench {
     m.tick();m.start();m.cancel();check(p.arrivals==1&&p.moves==1&&p.stops==1,"aucun callback après fin");cases++;
     p=new Port();m=motion(p,0.5,300);m.start();check(m.done()&&p.moves==0&&p.arrivals==1,"déjà arrivé");cases++;
     p=new Port();m=motion(p,8.5,300);m.start();p.at(7.5279737);p.path=false;m.tick();check(m.done()&&p.arrivals==1&&p.failures==0,"arrêt natif à 0,972 bloc accepté avant replanification");cases++;
-    p=new Port();p.path=false;m=motion(p,6,300);m.start();check(m.done()&&p.failures==1&&p.arrivals==0&&p.reason.contains("aucun chemin"),"chemin refusé");cases++;
+    p=new Port();p.path=false;m=motion(p,6,300);m.start();check(!m.done()&&p.failures==0,"premier refus laisse l’acteur se poser");for(int i=0;i<59;i++)m.tick();check(!m.done(),"trois secondes de grâce avant échec");m.tick();check(m.done()&&p.failures==1&&p.arrivals==0&&p.reason.contains("aucun chemin"),"chemin réellement bloqué après tentatives bornées");cases++;
+    p=new Port();p.path=false;m=motion(p,6,300);m.start();for(int i=0;i<19;i++)m.tick();p.path=true;m.tick();check(!m.done()&&p.moves==2,"refus initial transitoire récupéré");p.at(6);m.tick();check(p.arrivals==1,"arrivée après récupération initiale");cases++;
     p=new Port();p.valid=false;m=motion(p,6,300);m.start();check(m.done()&&p.moves==0&&p.failures==1,"acteur absent avant départ");cases++;
     p=new Port();m=new Pq01Motion(p,new Point("minecraft:the_nether",6,80,0),300);m.start();check(m.done()&&p.moves==0&&p.failures==1,"autre dimension au départ");cases++;
     p=new Port();m=motion(p,24.01,300);m.start();check(m.done()&&p.moves==0&&p.failures==1,"trajet au-delà de 24 blocs");cases++;
     p=new Port();m=motion(p,24,300);m.start();check(!m.done()&&p.moves==1,"borne 24 blocs acceptée");m.cancel();cases++;
-    p=new Port();m=motion(p,6,300);m.start();for(int i=0;i<39;i++)m.tick();check(p.moves==1,"pas de replanification chaque tick");m.tick();check(p.moves==2,"replanification à 40 ticks");p.path=false;for(int i=0;i<40;i++)m.tick();check(m.done()&&p.failures==1&&p.reason.contains("inaccessible"),"chemin coupé");cases++;
+    p=new Port();p.navigating=true;m=motion(p,6,300);m.start();for(int i=0;i<80;i++)m.tick();check(p.moves==1&&!m.done(),"chemin actif conservé au lieu de le remplacer");p.navigating=false;p.path=false;for(int i=0;i<20;i++)m.tick();check(m.done()&&p.failures==1,"chemin devenu inactif et bloqué");cases++;
+    p=new Port();p.path=false;m=motion(p,6,300);m.start();for(int i=0;i<80;i++){p.at(i*0.05);m.tick();}check(!m.done()&&p.moves==5&&p.failures==0,"un refus de recalcul n’annule pas un acteur en déplacement");p.at(6);m.tick();check(p.arrivals==1,"arrivée après recalcul refusé en mouvement");cases++;
     p=new Port();m=motion(p,6,300);m.start();for(int i=0;i<299;i++)m.tick();check(!m.done(),"délai non prématuré");m.tick();check(m.done()&&p.failures==1&&p.reason.contains("délai"),"timeout");cases++;
     p=new Port();m=motion(p,6,1);m.start();for(int i=0;i<19;i++)m.tick();check(!m.done(),"timeout minimum 20");m.tick();check(m.done(),"timeout minimum appliqué");cases++;
     p=new Port();m=motion(p,6,9999);m.start();for(int i=0;i<1199;i++)m.tick();check(!m.done(),"timeout maximum 1200 non prématuré");m.tick();check(m.done(),"timeout maximum appliqué");cases++;

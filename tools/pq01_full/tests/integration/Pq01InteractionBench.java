@@ -75,7 +75,7 @@ public final class Pq01InteractionBench {
   static boolean quest(){return events.stream().anyMatch(s->s.equals("command:function capitale:npc/geraud_rivet/interact_self"));}
   static void click(){Pq01Bridge.interact(player,npc,"geraud_large","interact");}
   public static void main(String[] args)throws Exception {
-    check(Pq01Bridge.class.getProtectionDomain().getCodeSource().getLocation().toString().endsWith("PQ01-R3-HF5.jar"),"pont de production HF5");
+    check(Pq01Bridge.class.getProtectionDomain().getCodeSource().getLocation().toString().endsWith(System.getProperty("indivis.expected.jar","PQ01-R3-HF6.jar")),"pont de production livré");
     check(SequenceBridge.class.getProtectionDomain().getCodeSource().equals(Pq01Bridge.class.getProtectionDomain().getCodeSource()),"helper historique de production");
     reset();click();check(DialogueManager.opened==1&&quest(),"clic avec joueur non nul ouvre la caméra et appelle la quête");
     check(events.get(0).equals("camera:CAPTURE")&&events.get(1).startsWith("command:function"),"caméra ouverte avant le premier texte");

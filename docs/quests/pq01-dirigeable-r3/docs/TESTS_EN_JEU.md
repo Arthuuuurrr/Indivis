@@ -1,4 +1,4 @@
-# Rejouer PQ01 et effectuer la recette — HF5
+# Rejouer PQ01 et effectuer la recette — HF6
 
 ## Relecture personnelle sans récompenses
 
@@ -22,7 +22,7 @@ Cette commande restaure uniquement la sauvegarde du personnage actif et sa posit
 
 1. Nouveau personnage/relecture : approcher Géraud à trois blocs après le délai de chargement et un déplacement ; le clic volontaire peut aussi ouvrir immédiatement l’introduction ; Gautier quitte son poste, rejoint Géraud, s’arrête et lui fait face. Fermer puis rouvrir après chacune de ses deux répliques : les répliques déjà affichées ne doivent pas être répétées. Une reprise pendant la remontrance rejoint d’abord la position d’échange si nécessaire.
 2. Après sa réponse, Gautier marche à son poste ; Géraud revient vers le joueur. Vérifier le menu répétable de Géraud et l’objectif vers Althéon.
-3. Gautier, Hugues, Anselme, Perrin : chaque question et sous-question est cliquable ; retour au menu et fermeture possibles. Observer leurs occupations et leur suspension pendant leur dialogue. Aucun item n’est transféré par les gestes d’Hugues.
+3. Gautier, Hugues, Anselme, Perrin : chaque question et sous-question est cliquable ; questions disponibles directement sous la réponse et fermeture possible, sans fermer/reprendre entre les questions. Observer leurs occupations et leur suspension pendant leur dialogue. Aucun item n’est transféré par les gestes d’Hugues.
 4. Althéon au clic droit, sans interpellation automatique : introduction une fois, amnésie canonique explicitement posée avant la conclusion. Toutes les familles A–E et sous-questions restent répétables. Avaleiv se déverrouille après la mission décrite par Althéon, indépendamment des discussions avec les matelots.
 5. Une question facultative ne déclenche aucun TP. Seule la conclusion verte, explicitement marquée « Terminer l’entretien et lancer l’amarrage. », d’Althéon lance l’amarrage hors champ : sons/effets historiques, TP au navire amarré et objectif Géraud. Aucun nouveau dialogue de manœuvre.
 6. Géraud au quai : cinq questions réutilisables ; seule la conclusion finale complète PQ01. Les autres membres d’équipage ont leurs réponses d’après-amarrage. Althéon garde la priorité MQ03 si elle est active.
@@ -46,7 +46,7 @@ En parcours normal, contrôler séparément sur un personnage de test approprié
 | Deux rondes de Perrin et échange Hugues/Gautier | Rondes indépendantes ; ambiance refusée près d’un autre joueur ; scène obligatoire prioritaire. |
 | Navire amarré | Aucune destination du navire au large réutilisée au quai. Les points suffixés `_quai` sont indépendants. |
 
-Le timeout de dialogue est de 3 600 ticks par défaut, configurable dans `capitale:pq01_config timeout_ticks` entre 200 et 12 000. La distance maximale au point d’ouverture est de dix blocs. Les pages linéaires avancent après lecture, dernière page affichée et fin de voix ; les vraies réponses et les questions attendent le choix du joueur.
+Chaque nouveau passage renouvelle le timeout de dialogue de 3 600 ticks par défaut, configurable dans `capitale:pq01_config timeout_ticks` entre 200 et 12 000. La distance maximale au point d’ouverture est de dix blocs. Les pages linéaires avancent après lecture, dernière page affichée et fin de voix ; les vraies réponses et les questions attendent le choix du joueur.
 
 ## Futurs doublages
 
@@ -77,7 +77,7 @@ La mise à jour conserve la progression actuelle. Pour revoir le début sur un p
 
 Les quatre trajets et la copie d’apparence ont été testés en monde isolé réel. Cette liste couvre ce qui reste à observer avec le rendu, le son et la carte utilisateur. Si un chemin est inaccessible, le diagnostic se trouve dans le log serveur ; il ne doit pas apparaître dans la bouche d’un PNJ.
 
-## Régression Géraud HF5
+## Régression Géraud HF6
 
 1. Au spawn, rester immobile plus de cinq secondes : aucune conversation automatique.
 2. Avancer en restant à plus de trois blocs réels de Géraud : aucune conversation automatique.
@@ -85,3 +85,13 @@ Les quatre trajets et la copie d’apparence ont été testés en monde isolé r
 4. Fermer avec Échap, puis attendre : aucune réouverture automatique. Refaire un clic droit : reprise de la conversation, sans page « … » bloquante. Répéter pendant l’aller, l’interruption et le retour de Gautier.
 5. Reprendre un personnage déjà bloqué sous HF4 : le clic suivant récupère la session temporaire et conserve son checkpoint. Aucun reset manuel des scores.
 6. Lancer volontairement une nouvelle relecture avec `test_debut` : la proximité est réarmée avec le même délai et la même condition de déplacement. Terminer avec `test_fin` comme décrit plus haut.
+
+## Contrôles ciblés HF6
+
+- Géraud : terminer l’introduction, demander le sauvetage, le rocher, sa fonction puis le Capitaine dans la même conversation. Après chaque réponse, les autres questions doivent être visibles immédiatement. Fermer puis rouvrir doit ramener aux questions.
+- Gautier, Hugues, Anselme, Perrin : poser plusieurs questions successives. Pour les réponses de départ, laisser le PNJ terminer sa réplique avant la fermeture automatique.
+- Capitaine : écouter son introduction, parcourir les familles A–E et débloquer Avaleiv en parlant de la mission. Les questions doivent rester disponibles jusqu’au choix vert de conclusion.
+- Géraud au quai : poser les cinq questions avant de prendre la conclusion finale.
+- Conserver une conversation pendant plusieurs questions longues : le timeout repart à chaque nouveau passage. Une voix en cours doit retarder un choix, puis permettre son traitement sans devoir rouvrir.
+
+Les vérifications déjà exécutées figurent dans le rapport HF6. Cette recette supplémentaire concerne uniquement le rendu, la caméra, le son et les chemins de la carte réelle, absents du banc automatisé.

@@ -34,9 +34,9 @@ public final class Pq01Bridge {
       try{return k.newInstance(a);}catch(ReflectiveOperationException e){throw new IllegalStateException(c,e);}
     }throw new IllegalStateException("Constructeur absent : "+c);
   }
-  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF5] "+e);e.printStackTrace(System.err);}}
+  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF6] "+e);e.printStackTrace(System.err);}}
   static void say(Object p,String s){run(p,"tellraw @s "+quote("[PQ01] "+s));}
-  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF5] "+text);}
+  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF6] "+text);}
   static void unavailable(Object p,String reason){diagnostic(p,reason);run(p,"title @s actionbar "+quote("Cette conversation n’est pas disponible pour le moment."));}
   static Object world(Object p){return call(p,"method_51469");}
   static String dimension(Object world){return String.valueOf(call(call(world,"method_27983"),"method_29177"));}
@@ -450,7 +450,8 @@ public final class Pq01Bridge {
     a.motion=new Pq01Motion(new Pq01Motion.Port(){
       public boolean valid(){return VIEWS.get(v.account)==v&&same(v,v.player)&&alive(a);}
       public Pq01Motion.Point position(){return pos(a.entity,v.world);}
-      public boolean navigate(Pq01Motion.Point t){try{Object nav=call(a.entity,"getGroundPathNavigation");if(nav==null)return false;return (Boolean)call(nav,"method_6337",t.x(),t.y(),t.z(),0.65d);}catch(RuntimeException e){report(e);return false;}}
+      public boolean navigating(){Object nav=call(a.entity,"getGroundPathNavigation");return nav!=null&&!Boolean.TRUE.equals(call(nav,"method_6357"));}
+      public boolean navigate(Pq01Motion.Point t){try{Object nav=call(a.entity,"getGroundPathNavigation");if(nav==null)return false;if(Boolean.TRUE.equals(call(nav,"method_6337",t.x(),t.y(),t.z(),0.65d)))return true;return Math.abs(t.y()-Math.ceil(t.y()))>0.01&&Boolean.TRUE.equals(call(nav,"method_6337",t.x(),Math.ceil(t.y()),t.z(),0.65d));}catch(RuntimeException e){report(e);return false;}}
       public void stop(){try{Pq01Bridge.stop(a);}catch(RuntimeException e){report(e);}}
       public void arrived(){done.run();}
       public void failed(String reason){failed.accept(reason);}

@@ -22,7 +22,7 @@ public final class Pq01ClientBench {
     Pq01Pacing.Frame parsed=Pq01Pacing.parse(frame);check(parsed!=null&&parsed.token()==TOKEN,"trame valide");
     for(String bad:Arrays.asList(null,"",frame+":extra",marker("c1","geraud",TOKEN,60,0),marker("missing","altheon",TOKEN,60,0),marker("c1","altheon",1,60,0),marker("c1","altheon",2000000000,60,0),marker("c1","altheon",TOKEN,-1,0),marker("c1","altheon",TOKEN,60,12001)))check(Pq01Pacing.parse(bad)==null,"trame invalide refusée : "+bad);
     check(!Pq01Pacing.ready(parsed,59,80,true,false,false),"délai de lecture respecté");
-    check(!Pq01Pacing.ready(parsed,100,39,true,false,false),"dernière page visible assez longtemps");
+    check(!Pq01Pacing.ready(parsed,100,19,true,false,false),"dernière page visible assez longtemps");
     check(!Pq01Pacing.ready(parsed,100,80,false,false,false),"aucun saut de page");
     check(!Pq01Pacing.ready(parsed,100,80,true,true,false),"machine à écrire attendue");
     check(!Pq01Pacing.ready(parsed,100,80,true,false,true),"voix active attendue");
@@ -31,13 +31,14 @@ public final class Pq01ClientBench {
     check(message("bonjour"),"message ordinaire préservé");check(message(null),"style sans insertion préservé");
     check(!message(frame),"trame technique invisible");check(DialogueClientState.name().equals("Althéon Brumeforge"),"nom de capture mis à jour avant les répliques");
     ticks(c,59);check(c.network.commands.isEmpty(),"aucune commande avant lecture");ticks(c,1);
-    check(c.network.commands.equals(List.of("trigger QuestChoix set "+TOKEN)),"choix nonce envoyé une seule fois");ticks(c,200);check(c.network.commands.size()==1,"aucun double envoi");
+    check(c.network.commands.equals(List.of("trigger QuestChoix set "+TOKEN)),"premier choix nonce envoyé après lecture");int cleared=DialogueClientState.cleared;ticks(c,19);check(c.network.commands.size()==1,"pas de spam entre tentatives");ticks(c,1);check(c.network.commands.size()==2,"absence d’acquittement réessaie le même nonce");check(DialogueClientState.cleared==cleared,"le réessai garde la capture et sa fermeture disponibles");
     check(screen.panneau.name.equals("Althéon Brumeforge")&&!screen.panneau.waiting,"en-tête correct et attente vide masquée");
     check(DialogueClientState.deadline()>System.currentTimeMillis(),"fenêtre caméra maintenue pendant la scène");
-    message(marker("c_menu","altheon",0,60,0));ticks(c,300);check(c.network.commands.size()==1,"menu de questions jamais validé automatiquement");
-    message(frame);screen.panneau.typing=true;ticks(c,100);check(c.network.commands.size()==1,"texte en frappe non sauté");screen.panneau.typing=false;screen.panneau.last=false;ticks(c,100);check(c.network.commands.size()==1,"page intermédiaire non sautée");screen.panneau.last=true;ticks(c,40);check(c.network.commands.size()==2,"validation après dernière page complète");
-    Voices voices=new Voices();field("voices",voices);voices.active=new Object();message(frame);ticks(c,100);check(c.network.commands.size()==2,"lecture audio réelle active bloque l’avance");voices.active=null;voices.pending=new Object();ticks(c,100);check(c.network.commands.size()==2,"chargement audio bloque l’avance");voices.pending=null;voices.fading=new Object();ticks(c,100);check(c.network.commands.size()==2,"fin audio attendue");voices.fading=null;ticks(c,1);check(c.network.commands.size()==3,"avance après fin audio");
-    message(frame);DialogueClientState.active=false;ticks(c,200);check(c.network.commands.size()==3,"fermeture empêche toute commande tardive");
+    message(marker("c_menu","altheon",0,60,0));ticks(c,300);check(c.network.commands.size()==2,"nouveau menu acquitte et arrête les réessais");
+    message(frame);screen.panneau.typing=true;ticks(c,100);check(c.network.commands.size()==2,"texte en frappe non sauté");screen.panneau.typing=false;screen.panneau.last=false;ticks(c,39);check(screen.panneau.pagesAdvanced==0&&c.network.commands.size()==2,"page intermédiaire gardée deux secondes");ticks(c,1);check(screen.panneau.pagesAdvanced==1&&c.network.commands.size()==2,"page intermédiaire avance sans faux choix");ticks(c,20);check(c.network.commands.size()==3,"validation après dernière page complète");
+    Voices voices=new Voices();field("voices",voices);voices.active=new Object();message(frame);ticks(c,100);check(c.network.commands.size()==3,"lecture audio réelle active bloque l’avance");voices.active=null;voices.pending=new Object();ticks(c,100);check(c.network.commands.size()==3,"chargement audio bloque l’avance");voices.pending=null;voices.fading=new Object();ticks(c,100);check(c.network.commands.size()==3,"fin audio attendue");voices.fading=null;ticks(c,1);check(c.network.commands.size()==4,"avance après fin audio");
+    message(frame);DialogueClientState.active=false;ticks(c,200);check(c.network.commands.size()==4,"fermeture empêche toute commande tardive");
+    DialogueClientState.active=true;message(frame);ticks(c,2000);check(c.network.commands.size()==64,"réessais bornés à soixante commandes");
     System.out.println("PASS "+checks+" assertions ; vrais Pq01Client/Pq01Pacing ; UI, réseau et champs de voix doublés. Aucun rendu client réel.");
   }
 }

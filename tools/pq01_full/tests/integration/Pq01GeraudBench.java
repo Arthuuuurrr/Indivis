@@ -24,7 +24,7 @@ public final class Pq01GeraudBench {
   static boolean called(String c){return events.contains("command:"+c);}
   static void bind(String key,Entity e){world.entities.put(e.id,e);Object n=GuardNbt.compound();GuardNbt.string(n,"uuid",e.id.toString());GuardNbt.string(n,"dimension","minecraft:overworld");GuardNbt.put(GuardNbt.childOrCreate(world.server.store.nbt,"bindings"),key,n);}
   public static void main(String[] args)throws Exception {
-    check(Pq01Bridge.class.getProtectionDomain().getCodeSource().getLocation().toString().endsWith("PQ01-R3-HF5.jar"),"pont HF5 du JAR livré");
+    check(Pq01Bridge.class.getProtectionDomain().getCodeSource().getLocation().toString().endsWith(System.getProperty("indivis.expected.jar","PQ01-R3-HF6.jar")),"pont du JAR livré");
     fresh();npc.x=8;check(Pq01Bridge.nearGeraud(player)==0,"spawn : pas de dialogue immédiat");clock(200);check(Pq01Bridge.nearGeraud(player)==0,"immobilité au spawn ne déclenche rien");player.x=4;check(Pq01Bridge.nearGeraud(player)==0,"quatre blocs restent hors portée");player.x=5;check(Pq01Bridge.nearGeraud(player)==1,"approche à trois blocs après chargement");check(called("function capitale:pq01/open/geraud_self"),"ouverture canonique après approche");events.clear();check(Pq01Bridge.nearGeraud(player)==0&&events.isEmpty(),"aucune relance automatique après fermeture");
     fresh();npc.x=1;Pq01Bridge.nearGeraud(player);clock(200);check(Pq01Bridge.nearGeraud(player)==0,"spawn déjà proche attend aussi un déplacement");player.x=0.5;check(Pq01Bridge.nearGeraud(player)==0,"microdéplacement insuffisant");player.x=0.75;check(Pq01Bridge.nearGeraud(player)==1,"mouvement volontaire suffisant");
     check(Pq01Bridge.execute(player,"rearm_near")==1,"relecture volontaire réarme uniquement le near");check(Pq01Bridge.nearGeraud(player)==0,"relecture réarmée attend de nouveau le délai");clock(400);check(Pq01Bridge.nearGeraud(player)==0,"relecture réarmée attend un nouveau déplacement");player.x=1.5;check(Pq01Bridge.nearGeraud(player)==1,"nouvelle approche fonctionne après réarmement");
@@ -54,6 +54,6 @@ public final class Pq01GeraudBench {
     fresh();active();v=view();old=new Object();DialogueManager.session=old;set(v,"captureSession",old);set(v,"camera",npc);npc.x=20;
     check(!(Boolean)invoke("openCamera",v,npc)&&world.server.board.values.get("hcm_pq1_active")==0,"aucun point de caméra valide : fermeture propre et nouvelle tentative possible");
     fresh();active();v=view();set(v,"waitingNode",4);check((Boolean)invoke("openCamera",v,npc),"caméra de reprise ouverte pendant l’approche");check(called("function capitale:pq01/scene/resume_wait_self"),"attente de marche renvoyée après ouverture pour masquer les points de suspension");
-    System.out.println("PASS "+checks+" assertions de régression Géraud sur le vrai pont HF5 ; monde, effets de fonctions, horloge et caméra doublés. Aucun rendu client réel.");
+    System.out.println("PASS "+checks+" assertions de régression Géraud sur le pont livré ; monde, effets de fonctions, horloge et caméra doublés. Aucun rendu client réel.");
   }
 }

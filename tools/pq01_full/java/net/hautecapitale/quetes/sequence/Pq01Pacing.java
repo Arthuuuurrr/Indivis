@@ -13,6 +13,6 @@ final class Pq01Pacing {
     }catch(NumberFormatException e){return null;}
   }
   static boolean ready(Frame f,int age,int finalPageTicks,boolean lastPage,boolean typing,boolean voicePlaying){
-    return f!=null&&f.token()!=0&&!voicePlaying&&lastPage&&!typing&&age>=Math.max(f.readingTicks(),f.voiceTicks()+10)&&finalPageTicks>=Math.min(80,Math.max(40,f.readingTicks()/3));
+    return f!=null&&f.token()!=0&&!voicePlaying&&lastPage&&!typing&&age>=Math.max(f.readingTicks(),f.voiceTicks()+10)&&finalPageTicks>=20;
   }
 }

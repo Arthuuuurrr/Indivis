@@ -1,284 +1,51 @@
 {
   "status": "PASS",
-  "minecraft_runtime_test": false,
-  "datapack_test_cases": 12,
-  "motion_test_cases": 17,
-  "motion_log": "PASS 17 cas, 26 assertions sur Pq01Motion compilé. Aucun test Minecraft réel.",
-  "nexus_policy_assertions": 44,
-  "journal_original_classes_byte_identical": 159,
-  "journal_original_class_patched": "net/hautecapitale/quetes/visibility/QuestVisibility.class",
-  "nodes": 95,
-  "approved_dialogue_occurrences": 145,
-  "candidate_dependencies": {
-    "functions": 13101,
-    "tags": 3,
-    "missing_required": [],
-    "dynamic_macros": [
-      [
-        "data/hc_quetes/function/carrec/demande.mcfunction",
-        3,
-        "hc_quetes:carrec/monde_$(m)"
-      ]
-    ],
-    "external_dependencies": [
-      [
-        "data/capitale/function/reward/skills/core/registre_port_self.mcfunction",
-        2,
-        "capskills:reward/core/registre_port_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/seuil_profondeurs_self.mcfunction",
-        2,
-        "capskills:reward/core/seuil_profondeurs_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/sous_regard_coeur_self.mcfunction",
-        2,
-        "capskills:reward/core/sous_regard_coeur_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/spawn_dirigeable_self.mcfunction",
-        2,
-        "capskills:reward/core/spawn_dirigeable_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/vent_noir_q1_self.mcfunction",
-        2,
-        "capskills:reward/core/vent_noir_q1_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/vent_noir_q2_self.mcfunction",
-        2,
-        "capskills:reward/core/vent_noir_q2_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/vent_noir_q3_self.mcfunction",
-        2,
-        "capskills:reward/core/vent_noir_q3_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/vent_noir_q4_self.mcfunction",
-        2,
-        "capskills:reward/core/vent_noir_q4_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/daily/large_self.mcfunction",
-        1,
-        "capskills:reward/daily/large_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/daily/normal_self.mcfunction",
-        1,
-        "capskills:reward/daily/normal_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/daily/reduced_self.mcfunction",
-        1,
-        "capskills:reward/daily/reduced_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/daily/small_self.mcfunction",
-        1,
-        "capskills:reward/daily/small_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/daily/tiny_self.mcfunction",
-        1,
-        "capskills:reward/daily/tiny_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/banque_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/beer_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/globe_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/registre_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/relais_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/ressort_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/temoins_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/unique/acte_dette_self.mcfunction",
-        2,
-        "capskills:reward/unique/minor_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/unique/libraire_self.mcfunction",
-        2,
-        "capskills:reward/unique/minor_self"
-      ]
-    ]
+  "graph_nodes_checked": 94,
+  "stable_node_ids": 95,
+  "real_Fabric_world_started": true,
+  "real_navigation_legs": 4,
+  "real_blocked_navigation_case": 1,
+  "real_world_checks": 23,
+  "real_pipeline_checks": 1029,
+  "world_scope": "PASS 23 checks\nsource NPC inserted\nsource NPC inserted\nsource UUIDs ready after world ticks\nfresh UUIDs for both actors\nactors present in actual ServerWorld\nprivate actor tags loaded\nGautier AI enabled\nsource has a non-default skin payload\nappearance copied: SkinData\nappearance copied: ModelData\nappearance copied: equipment\nproduction goal protection active\nactor custom interaction retained after 20 real ticks\nactual navigation leg 1 arrived\nGautier actually crossed raised stair deck and fractional slab floor\nactual navigation leg 2 arrived\nactual navigation leg 3 arrived\nactual navigation leg 4 arrived\nnative blocked path ends with bounded failure\nblocked actor never teleported through wall\nGautier original never moved\nPerrin original never moved\nactors discarded during production cleanup\nReal Fabric 1.21.11 world and EasyNPC 7.16.0 navigation (stairs, corridor, slabs, outbound/return). Nexus selection and visibility networking doubled; no real client camera tested.\nPASS 1029 pipeline checks, 671 actual server frames, 438 native trigger commands. Real Fabric functions, macros, scoreboard, tellraw packets and Dialogue b10 capture. Camera/panel/Nexus doubled; legacy teleport/reward bodies replaced by markers.",
+  "tests": {
+    "Pq01NbtIntegrationBench": "[14:31:31] [main/INFO]: Registered custom action haute_capitale_quetes:pq01\nPASS 80 assertions avec NBT Minecraft 1.21.11 et actions/registre EasyNPC 7.16.0 réels. Stockage d'entité doublé ; aucun monde ni serveur démarré.",
+    "Pq01NativeApiBench": "REAL_API_LOOKUP checks=119 failures=0; no Minecraft server/world created; existence/arity/public access checked, runtime behavior not covered.",
+    "Pq01CallbackBench": "[14:31:36] [main/INFO]: Registered custom action haute_capitale_quetes:pq01\n[14:31:36] [main/INFO]: [STDOUT]: PASS 3 assertions ; vrai CustomActionDispatcher EasyNPC 7.16.0 et proxy PQ01. Joueur réel alloué sans constructeur ; getEntity doublé à null ; aucun monde ni paquet de clic exécuté.",
+    "Pq01ColorBench": "[14:31:41] [main/INFO]: [STDOUT]: PASS native Dialogue b10 choice color: Minecraft GREEN -> QUETE",
+    "motion": "PASS 20 cas, 32 assertions sur Pq01Motion compilé. Aucun test Minecraft réel.",
+    "Pq01InteractionBench": "PASS 23 assertions ; vrais Pq01Bridge, SequenceBridge et NBT ; monde, personnage Nexus et effets caméra doublés. Aucun serveur, paquet client ou rendu en jeu exécuté.\n[Indivis PQ01-R3-HF6] Phase incompatible : geraud_large, personnage=quai. Relecture explicite : capitale:pq01/admin/test_debut.\n[Indivis PQ01-R3-HF6] Personnage Nexus pas encore chargé.",
+    "Pq01ClientBench": "PASS 38 assertions ; vrais Pq01Client/Pq01Pacing ; UI, réseau et champs de voix doublés. Aucun rendu client réel.",
+    "Pq01GeraudBench": "PASS 41 assertions de régression Géraud sur le pont livré ; monde, effets de fonctions, horloge et caméra doublés. Aucun rendu client réel.\n[Indivis PQ01-R3-HF6] Ouverture de caméra refusée ; session PQ01 libérée pour une nouvelle interaction.",
+    "native_capture": "[14:31:54] [main/INFO]: [STDOUT]: PASS 191 native b10 capture assertions; no graphical client."
   },
-  "baseline_dependencies": {
-    "functions": 12702,
-    "tags": 3,
-    "missing_required": [],
-    "dynamic_macros": [
-      [
-        "data/hc_quetes/function/carrec/demande.mcfunction",
-        3,
-        "hc_quetes:carrec/monde_$(m)"
-      ]
-    ],
-    "external_dependencies": [
-      [
-        "data/capitale/function/reward/skills/core/registre_port_self.mcfunction",
-        2,
-        "capskills:reward/core/registre_port_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/seuil_profondeurs_self.mcfunction",
-        2,
-        "capskills:reward/core/seuil_profondeurs_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/sous_regard_coeur_self.mcfunction",
-        2,
-        "capskills:reward/core/sous_regard_coeur_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/spawn_dirigeable_self.mcfunction",
-        2,
-        "capskills:reward/core/spawn_dirigeable_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/vent_noir_q1_self.mcfunction",
-        2,
-        "capskills:reward/core/vent_noir_q1_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/vent_noir_q2_self.mcfunction",
-        2,
-        "capskills:reward/core/vent_noir_q2_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/vent_noir_q3_self.mcfunction",
-        2,
-        "capskills:reward/core/vent_noir_q3_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/core/vent_noir_q4_self.mcfunction",
-        2,
-        "capskills:reward/core/vent_noir_q4_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/daily/large_self.mcfunction",
-        1,
-        "capskills:reward/daily/large_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/daily/normal_self.mcfunction",
-        1,
-        "capskills:reward/daily/normal_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/daily/reduced_self.mcfunction",
-        1,
-        "capskills:reward/daily/reduced_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/daily/small_self.mcfunction",
-        1,
-        "capskills:reward/daily/small_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/daily/tiny_self.mcfunction",
-        1,
-        "capskills:reward/daily/tiny_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/banque_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/beer_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/globe_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/registre_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/relais_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/ressort_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/first_daily/temoins_self.mcfunction",
-        2,
-        "capskills:reward/daily/first_bonus_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/unique/acte_dette_self.mcfunction",
-        2,
-        "capskills:reward/unique/minor_self"
-      ],
-      [
-        "data/capitale/function/reward/skills/unique/libraire_self.mcfunction",
-        2,
-        "capskills:reward/unique/minor_self"
-      ]
-    ]
-  },
-  "diff_summary": {
+  "bytecode": "PASS ASM BasicVerifier: 180 classes, 1764 methods; no Minecraft API resolution.",
+  "files": {
     "core": {
-      "changed": 45,
-      "added": 399,
-      "removed": 0
+      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF6.zip",
+      "bytes": 4955847,
+      "sha256": "d84f1165dfbd6259e5c0dd141ee7d720ea0abb93488e76ec5a0c9a2a0f597e34"
     },
     "quests": {
-      "changed": 2,
-      "added": 0,
-      "removed": 0
+      "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip",
+      "bytes": 1516080,
+      "sha256": "71478ff2edf9c0246891429144407e5a8532e16baf5a5361494dfb4b78edd153"
     },
     "journal": {
-      "changed": 2,
-      "added": 14,
-      "removed": 0
+      "filename": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF6.jar",
+      "bytes": 476875,
+      "sha256": "44d73b77adf2296cd9b3ba2f8d55cb438a89f5ae1c18f594d3ab8481242d8918"
     }
   },
-  "bytecode": "PASS ASM BasicVerifier: 173 classes, 1704 methods; no Minecraft API resolution.",
   "limits": [
-    "Aucun serveur Minecraft/Fabric ni monde démarré ici.",
-    "BasicVerifier ne résout pas les API Minecraft.",
-    "La politique Nexus est testée directement ; les changements de personnage en jeu restent à recetter.",
-    "Navigation, rendu des modèles et caméra à vérifier sur la copie du monde avec les PNJ réels."
-  ]
+    "Aucun client graphique lancé ; rendu et écoute audio non validés dans le modpack utilisateur.",
+    "Le graphe traverse les fonctions Minecraft, macros, scoreboard, vrais paquets tellraw et capture b10. Caméra, panneau et sélection Nexus doublés ; téléportation et corps de récompense remplacés par marqueurs dans ce banc uniquement.",
+    "Le banc serveur retire seulement les annotations Fabric CLIENT de ses copies des classes de capture ; le test séparé de capture native utilise le JAR b10 intact.",
+    "Les trajets EasyNPC réels parcourent marches, couloir et dalles, et un chemin réellement bloqué ; la géométrie et les points du monde utilisateur ne sont pas disponibles.",
+    "Séquence I : conservation binaire et contrôle des références ; aucun parcours complet sur la carte utilisateur."
+  ],
+  "quest_datapack_byte_identical_to_HF4": true,
+  "historical_mixins_helpers_factory_and_SI1_byte_identical_to_HF5": true,
+  "native_client_members_checked": 13,
+  "optional_voices_jar_sha256": "c6716ca6651bc6e7b5ae0de972c69a8fbea197e5b0be1e1a4d7f7ed2a30ffae4"
 }

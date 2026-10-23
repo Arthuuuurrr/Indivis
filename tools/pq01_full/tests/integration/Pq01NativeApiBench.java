@@ -47,6 +47,7 @@ public final class Pq01NativeApiBench {
     methods("net.minecraft.class_1355",1,"method_35113");
     methods("net.minecraft.class_1408",0,"method_6340");
     methods("net.minecraft.class_1408",4,"method_6337");
+    methods("net.minecraft.class_1408",0,"method_6357");
     methods("net.minecraft.class_1297",1,"method_30949","method_5697","method_5738");
     methods("net.minecraft.class_1297",0,"method_5696","method_21749","method_21750","method_33189","method_49108","method_5732","method_5810");
     methods("net.minecraft.class_1355",2,"method_6277");
