@@ -1,0 +1,31 @@
+{
+  "journal": {
+    "before": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3.jar",
+    "after": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF1.jar",
+    "before_sha256": "765367d4e7c49824ab8ee7c842c17877e3ccd45a599f9ec332b378ec7119a232",
+    "after_sha256": "3a530584447587f01fd4187adae32506a28a56cf2ca98057e636c76ef37901d3",
+    "changed": [
+      "fabric.mod.json",
+      "net/hautecapitale/quetes/pq01/mixin/Pq01EntityMixin.class",
+      "net/hautecapitale/quetes/pq01/mixin/Pq01GoalMixin.class"
+    ],
+    "added": [],
+    "removed": [],
+    "preserved_entries": 208
+  },
+  "admin": {
+    "before": "indivis-admin-0.1.0-alpha.2+1.21.11.jar",
+    "after": "indivis-admin-0.1.0-alpha.3+1.21.11.jar",
+    "before_sha256": "7cb899c39eb9968d59bed3c93ec459fa5a378a72a7773a2145ac236255f3244f",
+    "after_sha256": "1c11cdb7fb11bfdaf587d2d6492569ff79e155dd86ccccfaa4dbd60bade38281",
+    "changed": [
+      "fabric.mod.json",
+      "net/indivis/admin/FabricRuntime.class",
+      "net/indivis/admin/mixin/NexusProfileSaveMixin.class"
+    ],
+    "added": [],
+    "removed": [],
+    "preserved_entries": 19
+  },
+  "datapacks_R3_byte_identical": true
+}

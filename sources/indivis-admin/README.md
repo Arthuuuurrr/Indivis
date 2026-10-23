@@ -1,4 +1,4 @@
-# Indivis — Administration 0.1.0-alpha.2
+# Indivis — Administration 0.1.0-alpha.3
 
 Mod Fabric **Minecraft 1.21.11**, Java **21+**, Fabric Loader **0.18.0+** et Fabric API. **Candidat compilé, non testé dans Minecraft/Fabric.**
 
@@ -6,7 +6,7 @@ Il ouvre une interface native du jeu pour sélectionner un joueur connecté et g
 
 ## Installation et utilisation
 
-Serveur arrêté, remplacer la version alpha.1 par `indivis-admin-0.1.0-alpha.2+1.21.11.jar` dans `mods/`, puis redémarrer. Ne pas conserver alpha.1 à côté. Se reconnecter ensuite avec le personnage choisi ; le hook de chargement du core remet le verrou initial en état normal. Les clients 1.21.11 reçoivent les dialogues natifs sans devoir installer ce mod. Pour une partie locale avec serveur intégré, installer le JAR dans l'instance Fabric locale.
+Serveur arrêté, remplacer alpha.1 ou alpha.2 par `indivis-admin-0.1.0-alpha.3+1.21.11.jar` dans `mods/`, puis redémarrer. Retirer l’ancien JAR de ce même mod. Se reconnecter ensuite avec le personnage choisi ; le hook de chargement du core remet le verrou initial en état normal. Les clients 1.21.11 reçoivent les dialogues natifs sans devoir installer ce mod. Pour une partie locale avec serveur intégré, installer le JAR dans l'instance Fabric locale.
 
 Le core actuel reste nécessaire pour les actions de gestion. Ce correctif remplace uniquement l’ancien JAR `indivis_admin`. Les fichiers des datapacks, de Nexus, du journal et des autres mods restent inchangés. Son identifiant est `indivis_admin` et sa commande est distincte.
 
@@ -18,6 +18,16 @@ Le core actuel reste nécessaire pour les actions de gestion. Ce correctif rempl
 Permissions : opérateur de niveau 2 ou supérieur, vérifié aussi au moment d'appliquer l'action. Le rang social RP ne donne aucun droit d'administration.
 
 La cible est le **personnage actif**, pas un autre personnage hors ligne du même compte. Si Nexus est installé sans personnage actif, si son profil est verrouillé ou si son API ne répond pas, les modifications sont désactivées. Sans Nexus installé, le mod utilise le profil de compte.
+
+## Correctif alpha.3 du 23 octobre 2026
+
+Le mixin alpha.2 utilisait un contrat de compilation incorrect : `@Mixin` était enregistré dans `RuntimeVisibleAnnotations`, alors que `MixinInfo.readPriority` le lit dans `RuntimeInvisibleAnnotations`. Le contrat des points d’injection `at` est également corrigé en tableau `At[]`, conformément au véritable Sponge Mixin `0.17.4+mixin.0.8.7` fourni par Fabric Loader 0.19.5.
+
+Alpha.3 conserve la logique alpha.2 : seuls l’en-tête et la forme des annotations du mixin, la version et le message de démarrage changent. Aucun catalogue, fonction de sauvegarde, contrôle de cible ou dialogue n’est retiré. Compilation contre la vraie dépendance Mixin et comparaison à la compilation avec contrats corrigés : JAR identique.
+
+Le lecteur réel `Annotations.getInvisible` reproduit le défaut sur alpha.2 et reconnaît alpha.3. Le test vérifie aussi le tableau `at`, le code du handler et ses sélecteurs. Les contrôles de construction refusent désormais ces deux formes incorrectes. Le même défaut affectait les deux mixins PQ01 du journal : utiliser le journal R3-HF1 avec les datapacks R3. Axiom est le premier chargement qui déclenche la préparation globale des mixins dans le log ; son fichier n’est pas corrigé par ce lot.
+
+Ces contrôles ne constituent pas un démarrage Fabric. Les limites et la recette en jeu ci-dessous restent applicables.
 
 ## Correctifs alpha.2 du 22 octobre 2026
 
@@ -63,6 +73,7 @@ Chaque appel est tracé dans la console serveur et dans `logs/indivis-admin/acti
 - Banc de l'adaptateur livré : **21 assertions** avec doubles Minecraft/Nexus, notamment scores lus sans création, catalogue `Iterable`, `@s`/dimension/position de la cible, profils verrouillés et liste blanche des fonctions.
 - Vérification ASM : **16 classes, 133 méthodes, 0 erreur**, sans résolution des API Minecraft.
 - JAR : CRC valide, un mixin de compatibilité Nexus ciblé et aucune classe Minecraft/Fabric/Nexus/Mixin ou classe de test embarquée.
+- Alpha.3 : défaut de rétention reproduit sur alpha.2 puis absent dans le lecteur réel Mixin ; forme `At[]` contrôlée ; code et sélecteurs du mixin identiques après normalisation des annotations.
 
 **Non effectués :** démarrage Fabric, décodage/affichage du dialogue dans le jeu, exécution réelle des 148 fonctions, sauvegarde Nexus et test de coexistence sur le serveur complet. Les bancs ne remplacent pas ces vérifications.
 
@@ -70,7 +81,7 @@ Sur une copie du serveur, vérifier l'ouverture OP/non-OP, une modification de r
 
 ## Reconstruction
 
-Un JDK complet **17+** suffit pour ces outils ; le jeu exige Java 21+. Aucune dépendance à télécharger : les accès de production utilisent les noms intermédiaires 1.21.11, les API Fabric présentes à l'exécution et les API Nexus constatées dans le JAR fourni.
+Un JDK complet **17+** suffit pour ces outils ; le jeu exige Java 21+. La compilation accepte `INDIVIS_MIXIN_CLASSPATH` pointant vers le vrai JAR Sponge Mixin. Sans cette variable, les contrats corrigés et les vérifications de structure sont utilisés. Les accès de production utilisent les noms intermédiaires 1.21.11, les API Fabric présentes à l'exécution et les API Nexus constatées dans le JAR fourni.
 
 ```bash
 python3 build.py
@@ -83,7 +94,7 @@ Les contrats natifs sont référencés dans `docs/API.md`. Les traces et limites
 
 ## Recette du correctif
 
-1. Remplacer alpha.1 par alpha.2 dans les mods serveur, redémarrer puis se reconnecter.
+1. Remplacer alpha.1/alpha.2 par alpha.3 dans les mods serveur, redémarrer puis se reconnecter.
 2. `/indivisadmin` doit afficher le panneau ; choisir un autre joueur doit montrer son personnage chargé et les rubriques de gestion.
 3. Modifier un rang puis une valeur de criminalité après confirmation : seuls les scores de la cible doivent changer. Vérifier `logs/indivis-admin/actions.jsonl`.
 4. Attendre au moins une sauvegarde Nexus automatique (intervalle annoncé : 300 s dans le log fourni), puis rouvrir le panneau : le personnage doit rester modifiable s’il ne change pas de profil. Tester aussi `/nexus save`.

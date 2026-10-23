@@ -24,7 +24,7 @@ public final class FabricRuntime {
     event("net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback","net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback","EVENT",a->{register(a[0]);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents","net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents$EndTick","END_SERVER_TICK",a->{tick(a[0]);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents","net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{PENDING.clear();CONTROLLER.clear();return null;});
-    System.out.println("[Indivis Admin] 0.1.0-alpha.2 — /indivisadmin — "+Catalog.ACTIONS.size()+" fonctions cataloguées ; cible joueur corrigée et verrou de sauvegarde Nexus préservé");
+    System.out.println("[Indivis Admin] 0.1.0-alpha.3 — /indivisadmin — "+Catalog.ACTIONS.size()+" fonctions cataloguées ; annotations Mixin corrigées");
   }
   private static Object literal(String name){return Reflect.stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal",name);}
   private static void execute(Object node,String mode,String argumentName) {
