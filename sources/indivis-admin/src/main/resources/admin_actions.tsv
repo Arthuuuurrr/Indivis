@@ -1,0 +1,148 @@
+a001	rank	0 — Étranger non enregistré	capitale:rank/set_0_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a002	rank	10 — Visiteur toléré	capitale:rank/set_10_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a003	rank	20 — Résident inscrit	capitale:rank/set_20_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a004	rank	30 — Citoyen de l'Empire	capitale:rank/set_30_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a005	rank	40 — Artisan / Marchand reconnu	capitale:rank/set_40_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a006	rank	50 — Notable	capitale:rank/set_50_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a007	rank	60 — Noble mineur	capitale:rank/set_60_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a008	rank	70 — Noble reconnu	capitale:rank/set_70_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a009	rank	80 — Agent de la Couronne	capitale:rank/set_80_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a010	rank	90 — Haut dignitaire	capitale:rank/set_90_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a011	rank	100 — Empereur	capitale:rank/set_100_self	CAP_RANGSOCIAL	Met à jour le rang, ses accès automatiques et le préfixe via le core.
+a012	crime	Dossier vierge (0)	capitale:crime/set_0_self	CAP_CRIME	Applique le statut légal prévu par le core. Réinitialise aussi les amendes et plusieurs états judiciaires.
+a013	crime	Avertissement inscrit (10)	capitale:crime/set_10_self	CAP_CRIME	Applique le statut légal prévu par le core.
+a014	crime	Faute mineure (20)	capitale:crime/set_20_self	CAP_CRIME	Applique le statut légal prévu par le core.
+a015	crime	Recherché (30)	capitale:crime/set_30_self	CAP_CRIME	Applique le statut légal prévu par le core.
+a016	crime	Menace prioritaire (40)	capitale:crime/set_40_self	CAP_CRIME	Applique le statut légal prévu par le core.
+a017	crime	Ennemi de la Couronne (50)	capitale:crime/set_50_self	CAP_CRIME	Applique le statut légal prévu par le core.
+a018	crime	Criminalité +5	capitale:crime/add_5_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a019	crime	Criminalité +10	capitale:crime/add_10_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a020	crime	Criminalité +15	capitale:crime/add_15_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a021	crime	Criminalité +20	capitale:crime/add_20_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a022	crime	Criminalité +25	capitale:crime/add_25_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a023	crime	Criminalité +30	capitale:crime/add_30_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a024	crime	Criminalité +50	capitale:crime/add_50_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a025	crime	Criminalité −5	capitale:crime/remove_5_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a026	crime	Criminalité −10	capitale:crime/remove_10_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a027	crime	Criminalité −15	capitale:crime/remove_15_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a028	crime	Criminalité −20	capitale:crime/remove_20_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a029	crime	Criminalité −25	capitale:crime/remove_25_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a030	crime	Criminalité −30	capitale:crime/remove_30_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a031	crime	Criminalité −50	capitale:crime/remove_50_self	CAP_CRIME	Modifie la criminalité avec les bornes du core : 0 à 100.
+a032	rep/couronne	Fixer à -100	capitale:rep/couronne/set_m100_self	REP_COURONNE	Couronne : réglage direct via le core, entre −100 et 100.
+a033	rep/couronne	Fixer à -50	capitale:rep/couronne/set_m50_self	REP_COURONNE	Couronne : réglage direct via le core, entre −100 et 100.
+a034	rep/couronne	Fixer à 0	capitale:rep/couronne/set_0_self	REP_COURONNE	Couronne : réglage direct via le core, entre −100 et 100.
+a035	rep/couronne	Fixer à 50	capitale:rep/couronne/set_p50_self	REP_COURONNE	Couronne : réglage direct via le core, entre −100 et 100.
+a036	rep/couronne	Fixer à 100	capitale:rep/couronne/set_p100_self	REP_COURONNE	Couronne : réglage direct via le core, entre −100 et 100.
+a037	rep/couronne	+5	capitale:rep/couronne/add_5_self	REP_COURONNE	Couronne : ajustement via le core.
+a038	rep/couronne	+10	capitale:rep/couronne/add_10_self	REP_COURONNE	Couronne : ajustement via le core.
+a039	rep/couronne	+15	capitale:rep/couronne/add_15_self	REP_COURONNE	Couronne : ajustement via le core.
+a040	rep/couronne	+20	capitale:rep/couronne/add_20_self	REP_COURONNE	Couronne : ajustement via le core.
+a041	rep/couronne	+25	capitale:rep/couronne/add_25_self	REP_COURONNE	Couronne : ajustement via le core.
+a042	rep/couronne	+30	capitale:rep/couronne/add_30_self	REP_COURONNE	Couronne : ajustement via le core.
+a043	rep/couronne	−5	capitale:rep/couronne/remove_5_self	REP_COURONNE	Couronne : ajustement via le core.
+a044	rep/couronne	−10	capitale:rep/couronne/remove_10_self	REP_COURONNE	Couronne : ajustement via le core.
+a045	rep/couronne	−15	capitale:rep/couronne/remove_15_self	REP_COURONNE	Couronne : ajustement via le core.
+a046	rep/couronne	−20	capitale:rep/couronne/remove_20_self	REP_COURONNE	Couronne : ajustement via le core.
+a047	rep/couronne	−25	capitale:rep/couronne/remove_25_self	REP_COURONNE	Couronne : ajustement via le core.
+a048	rep/couronne	−30	capitale:rep/couronne/remove_30_self	REP_COURONNE	Couronne : ajustement via le core.
+a049	rep/gardecoeur	Fixer à -100	capitale:rep/gardecoeur/set_m100_self	REP_GARDECOEUR	Garde du Cœur : réglage direct via le core, entre −100 et 100.
+a050	rep/gardecoeur	Fixer à -50	capitale:rep/gardecoeur/set_m50_self	REP_GARDECOEUR	Garde du Cœur : réglage direct via le core, entre −100 et 100.
+a051	rep/gardecoeur	Fixer à 0	capitale:rep/gardecoeur/set_0_self	REP_GARDECOEUR	Garde du Cœur : réglage direct via le core, entre −100 et 100.
+a052	rep/gardecoeur	Fixer à 50	capitale:rep/gardecoeur/set_p50_self	REP_GARDECOEUR	Garde du Cœur : réglage direct via le core, entre −100 et 100.
+a053	rep/gardecoeur	Fixer à 100	capitale:rep/gardecoeur/set_p100_self	REP_GARDECOEUR	Garde du Cœur : réglage direct via le core, entre −100 et 100.
+a054	rep/gardecoeur	+5	capitale:rep/gardecoeur/add_5_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a055	rep/gardecoeur	+10	capitale:rep/gardecoeur/add_10_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a056	rep/gardecoeur	+15	capitale:rep/gardecoeur/add_15_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a057	rep/gardecoeur	+20	capitale:rep/gardecoeur/add_20_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a058	rep/gardecoeur	+25	capitale:rep/gardecoeur/add_25_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a059	rep/gardecoeur	+30	capitale:rep/gardecoeur/add_30_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a060	rep/gardecoeur	−5	capitale:rep/gardecoeur/remove_5_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a061	rep/gardecoeur	−10	capitale:rep/gardecoeur/remove_10_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a062	rep/gardecoeur	−15	capitale:rep/gardecoeur/remove_15_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a063	rep/gardecoeur	−20	capitale:rep/gardecoeur/remove_20_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a064	rep/gardecoeur	−25	capitale:rep/gardecoeur/remove_25_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a065	rep/gardecoeur	−30	capitale:rep/gardecoeur/remove_30_self	REP_GARDECOEUR	Garde du Cœur : ajustement via le core.
+a066	rep/gardeport	Fixer à -100	capitale:rep/gardeport/set_m100_self	REP_GARDEPORT	Garde du Port : réglage direct via le core, entre −100 et 100.
+a067	rep/gardeport	Fixer à -50	capitale:rep/gardeport/set_m50_self	REP_GARDEPORT	Garde du Port : réglage direct via le core, entre −100 et 100.
+a068	rep/gardeport	Fixer à 0	capitale:rep/gardeport/set_0_self	REP_GARDEPORT	Garde du Port : réglage direct via le core, entre −100 et 100.
+a069	rep/gardeport	Fixer à 50	capitale:rep/gardeport/set_p50_self	REP_GARDEPORT	Garde du Port : réglage direct via le core, entre −100 et 100.
+a070	rep/gardeport	Fixer à 100	capitale:rep/gardeport/set_p100_self	REP_GARDEPORT	Garde du Port : réglage direct via le core, entre −100 et 100.
+a071	rep/gardeport	+5	capitale:rep/gardeport/add_5_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a072	rep/gardeport	+10	capitale:rep/gardeport/add_10_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a073	rep/gardeport	+15	capitale:rep/gardeport/add_15_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a074	rep/gardeport	+20	capitale:rep/gardeport/add_20_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a075	rep/gardeport	+25	capitale:rep/gardeport/add_25_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a076	rep/gardeport	+30	capitale:rep/gardeport/add_30_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a077	rep/gardeport	−5	capitale:rep/gardeport/remove_5_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a078	rep/gardeport	−10	capitale:rep/gardeport/remove_10_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a079	rep/gardeport	−15	capitale:rep/gardeport/remove_15_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a080	rep/gardeport	−20	capitale:rep/gardeport/remove_20_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a081	rep/gardeport	−25	capitale:rep/gardeport/remove_25_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a082	rep/gardeport	−30	capitale:rep/gardeport/remove_30_self	REP_GARDEPORT	Garde du Port : ajustement via le core.
+a083	rep/gardeprofondeurs	Fixer à -100	capitale:rep/gardeprofondeurs/set_m100_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : réglage direct via le core, entre −100 et 100.
+a084	rep/gardeprofondeurs	Fixer à -50	capitale:rep/gardeprofondeurs/set_m50_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : réglage direct via le core, entre −100 et 100.
+a085	rep/gardeprofondeurs	Fixer à 0	capitale:rep/gardeprofondeurs/set_0_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : réglage direct via le core, entre −100 et 100.
+a086	rep/gardeprofondeurs	Fixer à 50	capitale:rep/gardeprofondeurs/set_p50_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : réglage direct via le core, entre −100 et 100.
+a087	rep/gardeprofondeurs	Fixer à 100	capitale:rep/gardeprofondeurs/set_p100_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : réglage direct via le core, entre −100 et 100.
+a088	rep/gardeprofondeurs	+5	capitale:rep/gardeprofondeurs/add_5_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a089	rep/gardeprofondeurs	+10	capitale:rep/gardeprofondeurs/add_10_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a090	rep/gardeprofondeurs	+15	capitale:rep/gardeprofondeurs/add_15_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a091	rep/gardeprofondeurs	+20	capitale:rep/gardeprofondeurs/add_20_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a092	rep/gardeprofondeurs	+25	capitale:rep/gardeprofondeurs/add_25_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a093	rep/gardeprofondeurs	+30	capitale:rep/gardeprofondeurs/add_30_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a094	rep/gardeprofondeurs	−5	capitale:rep/gardeprofondeurs/remove_5_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a095	rep/gardeprofondeurs	−10	capitale:rep/gardeprofondeurs/remove_10_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a096	rep/gardeprofondeurs	−15	capitale:rep/gardeprofondeurs/remove_15_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a097	rep/gardeprofondeurs	−20	capitale:rep/gardeprofondeurs/remove_20_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a098	rep/gardeprofondeurs	−25	capitale:rep/gardeprofondeurs/remove_25_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a099	rep/gardeprofondeurs	−30	capitale:rep/gardeprofondeurs/remove_30_self	REP_GARDEPROFONDEURS	Garde des Profondeurs : ajustement via le core.
+a100	rep/profondeurs	Fixer à -100	capitale:rep/profondeurs/set_m100_self	REP_PROFONDEURS	Profondeurs : réglage direct via le core, entre −100 et 100.
+a101	rep/profondeurs	Fixer à -50	capitale:rep/profondeurs/set_m50_self	REP_PROFONDEURS	Profondeurs : réglage direct via le core, entre −100 et 100.
+a102	rep/profondeurs	Fixer à 0	capitale:rep/profondeurs/set_0_self	REP_PROFONDEURS	Profondeurs : réglage direct via le core, entre −100 et 100.
+a103	rep/profondeurs	Fixer à 50	capitale:rep/profondeurs/set_p50_self	REP_PROFONDEURS	Profondeurs : réglage direct via le core, entre −100 et 100.
+a104	rep/profondeurs	Fixer à 100	capitale:rep/profondeurs/set_p100_self	REP_PROFONDEURS	Profondeurs : réglage direct via le core, entre −100 et 100.
+a105	rep/profondeurs	+5	capitale:rep/profondeurs/add_5_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a106	rep/profondeurs	+10	capitale:rep/profondeurs/add_10_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a107	rep/profondeurs	+15	capitale:rep/profondeurs/add_15_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a108	rep/profondeurs	+20	capitale:rep/profondeurs/add_20_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a109	rep/profondeurs	+25	capitale:rep/profondeurs/add_25_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a110	rep/profondeurs	+30	capitale:rep/profondeurs/add_30_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a111	rep/profondeurs	−5	capitale:rep/profondeurs/remove_5_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a112	rep/profondeurs	−10	capitale:rep/profondeurs/remove_10_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a113	rep/profondeurs	−15	capitale:rep/profondeurs/remove_15_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a114	rep/profondeurs	−20	capitale:rep/profondeurs/remove_20_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a115	rep/profondeurs	−25	capitale:rep/profondeurs/remove_25_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a116	rep/profondeurs	−30	capitale:rep/profondeurs/remove_30_self	REP_PROFONDEURS	Profondeurs : ajustement via le core.
+a117	access	Accorder — Capitale	capitale:access/grant/capitale_self	ACCESS_CAPITALE,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a118	access	Retirer — Capitale	capitale:access/revoke/capitale_self	ACCESS_CAPITALE,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a119	access	Accorder — Quartier haut nord	capitale:access/grant/quartiers_hauts_nord_self	ACCESS_QH_NORD,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a120	access	Retirer — Quartier haut nord	capitale:access/revoke/quartiers_hauts_nord_self	ACCESS_QH_NORD,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a121	access	Accorder — Quartier haut sud	capitale:access/grant/quartiers_hauts_sud_self	ACCESS_QH_SUD,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a122	access	Retirer — Quartier haut sud	capitale:access/revoke/quartiers_hauts_sud_self	ACCESS_QH_SUD,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a123	access	Accorder — Deux quartiers hauts	capitale:access/grant/quartiers_hauts_self	ACCESS_QH_NORD,ACCESS_QH_SUD,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a124	access	Retirer — Deux quartiers hauts	capitale:access/revoke/quartiers_hauts_self	ACCESS_QH_NORD,ACCESS_QH_SUD,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a125	access	Accorder — Palais	capitale:access/grant/palais_self	ACCESS_PALAIS,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a126	access	Retirer — Palais	capitale:access/revoke/palais_self	ACCESS_PALAIS,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a127	access	Accorder — Archives	capitale:access/grant/archives_self	ACCESS_ARCHIVES,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a128	access	Retirer — Archives	capitale:access/revoke/archives_self	ACCESS_ARCHIVES,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a129	access	Accorder — Banque	capitale:access/grant/banque_self	ACCESS_BANQUE,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a130	access	Retirer — Banque	capitale:access/revoke/banque_self	ACCESS_BANQUE,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a131	access	Accorder — Tribunal	capitale:access/grant/tribunal_self	ACCESS_TRIBUNAL,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a132	access	Retirer — Tribunal	capitale:access/revoke/tribunal_self	ACCESS_TRIBUNAL,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a133	access	Accorder — Cœur	capitale:access/grant/coeur_self	ACCESS_COEUR,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a134	access	Retirer — Cœur	capitale:access/revoke/coeur_self	ACCESS_COEUR,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a135	access	Accorder — Seuils scellés	capitale:access/grant/seuils_scelles_self	ACCESS_SEUILS,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a136	access	Retirer — Seuils scellés	capitale:access/revoke/seuils_scelles_self	ACCESS_SEUILS,CAP_RANGSOCIAL	Applique la règle d’autorisation du core. D’autres sources d’accès peuvent rester actives selon le core installé.
+a137	justice	Effacer le dossier criminel	capitale:crime/clear_self	CAP_CRIME,CAP_AMENDE,CAP_COMPARUTION,CAP_ETAT	Remet aussi à zéro les amendes, la comparution, la fuite et plusieurs états judiciaires : fonction native du core.
+a138	justice	Libérer de la procédure	capitale:crime/release_self	CAP_ETAT,CAP_QUESTLOCK,CAP_SANCTIONLOCK,CAP_ARREST_PENDING	Libère les verrous et effets prévus par le core ; ne remet pas la criminalité à zéro.
+a139	justice	Réinitialiser les temporisations RP	capitale:admin/clear_cooldowns_self		Annule aussi le contexte d’interception et réactive les choix RP, comme la fonction admin existante.
+a140	currency	Émettre 1 Martin(s)	capitale:currency/bank/issue_1_self	CAP_CUR_BANK	Émission manuelle prévue pour remplacer une réserve déjà tenue en banque. Inventaire plein : comportement natif du core.
+a141	currency	Émettre 10 Martin(s)	capitale:currency/bank/issue_10_self	CAP_CUR_BANK	Émission manuelle prévue pour remplacer une réserve déjà tenue en banque. Inventaire plein : comportement natif du core.
+a142	currency	Émettre 64 Martin(s)	capitale:currency/bank/issue_64_self	CAP_CUR_BANK	Émission manuelle prévue pour remplacer une réserve déjà tenue en banque. Inventaire plein : comportement natif du core.
+a143	currency	Émettre 100 Martin(s)	capitale:currency/bank/issue_100_self	CAP_CUR_BANK	Émission manuelle prévue pour remplacer une réserve déjà tenue en banque. Inventaire plein : comportement natif du core.
+a144	currency	Émettre 500 Martin(s)	capitale:currency/bank/issue_500_self	CAP_CUR_BANK	Émission manuelle prévue pour remplacer une réserve déjà tenue en banque. Inventaire plein : comportement natif du core.
+a145	currency	Émettre 1000 Martin(s)	capitale:currency/bank/issue_1000_self	CAP_CUR_BANK	Émission manuelle prévue pour remplacer une réserve déjà tenue en banque. Inventaire plein : comportement natif du core.
+a146	currency	Convertir les anciennes pièces	capitale:currency/convert/legacy_all_self		Remplace les anciens Martins dans l’inventaire principal selon la fonction de conversion existante.
+a147	tools	Activer les valeurs de diagnostic	capitale:admin/debug_on_self	CAP_DEBUG	Change uniquement le mode de diagnostic prévu par le core.
+a148	tools	Masquer les valeurs de diagnostic	capitale:admin/debug_off_self	CAP_DEBUG	Change uniquement le mode de diagnostic prévu par le core.

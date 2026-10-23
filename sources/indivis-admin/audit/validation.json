@@ -1,0 +1,11 @@
+{
+  "status": "CANDIDAT_A_TESTER_EN_JEU",
+  "minecraft_fabric_tested": false,
+  "catalogue_actions": 148,
+  "controller_bench": "CONTROLLER_BENCH assertions=19 errors=0; API Minecraft/Nexus doublées",
+  "adapter_bench": "ADAPTER_BENCH assertions=21 errors=0; API Minecraft/Nexus doublées, serveur non testé",
+  "bytecode": "ASM_BASIC_VERIFIER classes=16 methods=133 errors=0 (sans résolution des API Minecraft)",
+  "jar_crc": "OK",
+  "no_test_or_minecraft_classes_shipped": true,
+  "nexus_presave_compatibility_mixin": true
+}
