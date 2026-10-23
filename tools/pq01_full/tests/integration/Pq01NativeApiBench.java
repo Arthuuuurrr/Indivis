@@ -65,6 +65,9 @@ public final class Pq01NativeApiBench {
     methods(easy+"data.attribute.InventoryAttributes",1,"withDropOnDeath","withPickUpItems");
     String dm="net.hautecapitale.dialogue.session.DialogueManager";
     methods(dm,1,"onFermeture","sondeMouvement","session");methods(dm,2,"pnjOccupe","fermer");methods(dm,3,"ouvrir");
+    methods(dm,1,"enSession");methods(dm,2,"refus","dire");
+    methods("net.hautecapitale.dialogue.config.DialogueConfig",0,"get");
+    methods("net.hautecapitale.dialogue.config.DialogueConfig",1,"capture");
     if(args.length>0){
       String source=java.nio.file.Files.readString(java.nio.file.Path.of(args[0]));var matcher=java.util.regex.Pattern.compile("\"(method_\\d+)\"").matcher(source);
       Set<String> missing=new TreeSet<>();while(matcher.find())if(!COVERED.contains(matcher.group(1)))missing.add(matcher.group(1));

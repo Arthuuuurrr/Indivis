@@ -29,7 +29,7 @@ public final class Pq01Bridge {
       try{return k.newInstance(a);}catch(ReflectiveOperationException e){throw new IllegalStateException(c,e);}
     }throw new IllegalStateException("Constructeur absent : "+c);
   }
-  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF2] "+e);e.printStackTrace(System.err);}}
+  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF3] "+e);e.printStackTrace(System.err);}}
   static void say(Object p,String s){run(p,"tellraw @s "+quote("[PQ01] "+s));}
   static Object world(Object p){return call(p,"method_51469");}
   static String dimension(Object world){return String.valueOf(call(call(world,"method_27983"),"method_29177"));}
@@ -138,9 +138,22 @@ public final class Pq01Bridge {
   }
   static Object action(String key,String event){return Pq01Actions.plan(null,key,event);}
   static Object eventSet(Object snapshot){return child(child(snapshot,"ActionData"),"ActionEventSet");}
+  static boolean captureInteraction(Object p,Object npc){
+    // Dialogue b10 n'ouvre automatiquement la capture que pour COMMAND.
+    // Une action CUSTOM PQ01 doit la préparer avant d'exécuter son texte,
+    // y compris si le personnage n'est pas à la phase de cette liaison.
+    Object config=stat("net.hautecapitale.dialogue.config.DialogueConfig","get");
+    if(!Boolean.TRUE.equals(call(config,"capture",npc)))return true;
+    Optional<?> refusal=(Optional<?>)stat(DM,"refus",p,npc);
+    if(refusal.isPresent()){stat(DM,"dire",p,refusal.get());return false;}
+    if(Boolean.TRUE.equals(stat(DM,"enSession",p)))return true;
+    UUID account=uuid(p);boolean added=SUPPRESS.add(account);
+    try{return stat(DM,"ouvrir",p,npc,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"))!=null;}
+    finally{if(added)SUPPRESS.remove(account);}
+  }
   static void interact(Object p,Object npc,String key,String event){
     Pq01Actions.command(key,event); // Le couple rôle/phase/événement est une liste fermée.
-    if(!available(p)||npc==null||world(p)!=call(npc,"method_73183")||!key.endsWith("_"+phase(p)))return;
+    if(p==null||npc==null||world(p)!=call(npc,"method_73183"))return;
     double maxDistance=event.equals("near")?16:8;
     if(pos(npc,world(p)).distance2(pos(p,world(p)))>maxDistance*maxDistance)return;
     String role=key.substring(0,key.lastIndexOf('_'));
@@ -150,6 +163,13 @@ public final class Pq01Bridge {
     }else{
       Object record=binding(p,key);
       if(record==null||!uuid(npc).toString().equals(str(record,"uuid",""))||!dimension(world(p)).equals(str(record,"dimension","")))return;
+    }
+    boolean click=event.equals("interact");
+    if(click&&!captureInteraction(p,npc))return;
+    if(!available(p)){if(click)say(p,"Le personnage Nexus doit avoir terminé son chargement pour lancer ce dialogue de quête.");return;}
+    if(!key.endsWith("_"+phase(p))){
+      if(click)say(p,"Ce PNJ est lié à la phase "+(key.endsWith("_large")?"départ au large":"arrivée au quai")+" ; le personnage est à la phase "+(phase(p).equals("large")?"départ au large":"arrivée au quai")+". La relecture du départ se lance avec /function capitale:pq01/admin/test_debut.");
+      return;
     }
     run(p,Pq01Actions.function(key,event));
   }

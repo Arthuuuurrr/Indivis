@@ -25,7 +25,7 @@ public final class Pq01NbtIntegrationBench {
   public static void main(String[] args)throws Exception {
     Class<?> element=Class.forName("net.minecraft.class_2520");
     check(element.getProtectionDomain().getCodeSource().getLocation().toString().contains("minecraft-intermediary-1.21.11.jar"),"classes NBT de Minecraft réel");
-    check(Pq01Actions.class.getProtectionDomain().getCodeSource().getLocation().toString().contains("PQ01-R3-HF2.jar"),"code de production du JAR HF2");
+    check(Pq01Actions.class.getProtectionDomain().getCodeSource().getLocation().toString().contains(System.getProperty("indivis.expected.jar","PQ01-R3-HF2.jar")),"code de production du JAR attendu");
     check(GuardNbt.class.getProtectionDomain().getCodeSource().getLocation().equals(Pq01Actions.class.getProtectionDomain().getCodeSource().getLocation()),"helper historique réel du même JAR");
     Object compound=GuardNbt.compound();GuardNbt.string(compound,"name","Althéon Brumeforge");GuardNbt.integer(compound,"value",42);
     Object strings=list(GuardNbt.stringValue("Géraud"),GuardNbt.stringValue("Althéon"));

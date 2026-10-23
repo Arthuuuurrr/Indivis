@@ -1,17 +1,11 @@
-# PQ01 — Sous pavillon de la Couronne — R3-HF2
+# PQ01 — Sous pavillon de la Couronne — R3-HF3
 
-**Version actuelle : journal R3-HF2, 23 octobre 2026.** Corrige les copies de listes/noms NBT, la migration des liaisons multiples avec un hook connu et les déclencheurs EasyNPC. [Installation, preuves et limites HF2](HOTFIX_NBT_R3_HF2.md). Les datapacks restent en R3 et le mod admin en alpha.3. Le correctif des annotations Mixin HF1 est conservé.
+**Version actuelle : journal R3-HF3, 23 octobre 2026.** Corrige le raccord entre les actions natives EasyNPC de HF2 et l’ouverture de la caméra Dialogue b10. [Cause, installation et contrôles HF3](HOTFIX_DIALOGUE_R3_HF3.md).
 
-Minecraft Java Fabric 1.21.11 — 22 octobre 2026.
+**Mise à jour depuis HF2 : remplacer uniquement le JAR journal sur le serveur et les clients, puis redémarrer.** Les deux datapacks restent en R3 ; le mod admin reste en alpha.3. Les liaisons réussies restent utilisables. Les corrections NBT/actions HF2 et les annotations Mixin HF1 sont conservées. Aucun Nexus inchangé n’est redistribué.
 
-Cette livraison intègre les dialogues approuvés, l’aller/retour individuel de Gautier vers Géraud, les occupations des matelots, les liaisons et placements individuels EasyNPC et la relecture de PQ01 par personnage.
+Minecraft Java Fabric 1.21.11. Cette version conserve les dialogues approuvés, l’aller/retour individuel de Gautier vers Géraud, les occupations des matelots, les placements EasyNPC et la relecture PQ01 par personnage. Les 95 nœuds reprennent les 145 passages/questions approuvés.
 
-**Trois composants à remplacer : core, datapack de quêtes et mod journal.** Le journal R3-HF2 s’installe sur le serveur **et sur les clients**. Les fichiers sont dans `installation/`. Nexus, Dialogue et EasyNPC fournis restent utilisés ; aucun Nexus inchangé n’est redistribué.
+Le [guide complet de pose](docs/INSTALLATION_ET_POSE_PNJ.md) contient toutes les commandes de liaison, placement et marche, ainsi que la distinction entre baguette d’édition et clic de dialogue. [Tests de relecture en jeu](docs/TESTS_EN_JEU.md). [Historique HF2](HOTFIX_NBT_R3_HF2.md).
 
-Lire **[INSTALLATION_ET_POSE_PNJ.md](docs/INSTALLATION_ET_POSE_PNJ.md)** : liaison, déplacement physique et points de marche sont trois opérations distinctes, avec toutes les commandes exactes. Puis **[TESTS_EN_JEU.md](docs/TESTS_EN_JEU.md)** pour rejouer sans récompense ni lancement de PQ02.
-
-Les 95 nœuds reprennent les 145 passages/questions approuvés. Les choix et sous-questions sont répétables et fermables ; l’amnésie précède la conclusion d’Althéon. L’amarrage historique et les récompenses normales sont conservés. Visiteur reste attribué chez le magistrat.
-
-Validation exécutée : 12 contrôles des datapacks, 17 cas du contrôleur de marche compilé, 44 assertions sur la politique du Nexus fourni, vérification du bytecode. **Aucun serveur Minecraft/Fabric ni monde n’a été lancé ici.** La navigation dans le décor, le rendu des PNJ, la caméra et les scénarios à deux joueurs restent à recetter sur une copie du monde.
-
-Inventaire exact : `audit/DIFFS_DEPUIS_SI1_EXHAUSTIFS.csv`. Preuves et limites : `docs/VALIDATION_ET_LIMITES.md`. Les sources et le prompt sont inclus dans `sources/`. Aucun déploiement ni merge effectué.
+Validation HF3 : 23 assertions sur le pont de production avec contexte de monde/Nexus/caméra doublé ; 3 assertions sur le vrai dispatcher EasyNPC avec initiateur non nul ; 80 assertions NBT/actions ; 109 recherches de membres publics ; 17 cas de marche, 26 assertions ; bytecode et inventaire binaire contrôlés. **Aucun serveur Fabric complet ni monde du joueur lancé.** Le rendu caméra et les paquets de clic restent à vérifier en jeu. Aucun déploiement ni merge effectué.
