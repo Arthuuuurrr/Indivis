@@ -4,7 +4,7 @@ import csv,json,shutil,zipfile,hashlib,re
 import build
 from model import N,IDS,ROLES,PROMPT
 ROOT=build.ROOT;HERE=build.HERE;OUT=build.OUT
-NAME='Indivis_PQ01_R3_2026-10-22';DEST=ROOT/'deliverables'/NAME
+NAME='Indivis_PQ01_R3_HF1_2026-10-23';DEST=ROOT/'deliverables'/NAME
 def put(path,text):
  p=DEST/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text);return p
 def copy(src,path):
@@ -14,13 +14,15 @@ def release():
  if DEST.exists():shutil.rmtree(DEST)
  DEST.mkdir(parents=True)
  for key,name in build.FILES.items():copy(OUT/name,('installation/mods/' if key=='journal' else 'installation/datapacks/')+name)
- put('README.md',f'''# PQ01 — Sous pavillon de la Couronne — R3
+ put('README.md',f'''# PQ01 — Sous pavillon de la Couronne — R3-HF1
 
-Minecraft Java Fabric 1.21.11 — 22 octobre 2026.
+Minecraft Java Fabric 1.21.11 — 23 octobre 2026.
 
 Cette livraison intègre les dialogues approuvés, l’aller/retour individuel de Gautier vers Géraud, les occupations des matelots, les liaisons et placements individuels EasyNPC et la relecture de PQ01 par personnage.
 
-**Trois composants à remplacer : core, datapack de quêtes et mod journal.** Le journal R3 s’installe sur le serveur **et sur les clients**. Les fichiers sont dans `installation/`. Nexus, Dialogue et EasyNPC fournis restent utilisés ; aucun Nexus inchangé n’est redistribué.
+HF1 corrige les annotations Mixin qui empêchaient le journal R3 de démarrer : en-têtes `@Mixin` retenus dans le fichier de classe et points `at` représentés comme tableaux conformément à Mixin 0.8.7. Les datapacks R3 sont identiques. Le mod admin alpha.2 requiert séparément alpha.3 pour le même défaut de compilation.
+
+**Trois composants à remplacer : core, datapack de quêtes et mod journal.** Le journal R3-HF1 s’installe sur le serveur **et sur les clients**. Les fichiers sont dans `installation/`. Nexus, Dialogue et EasyNPC fournis restent utilisés ; aucun Nexus inchangé n’est redistribué.
 
 Lire **[INSTALLATION_ET_POSE_PNJ.md](docs/INSTALLATION_ET_POSE_PNJ.md)** : liaison, déplacement physique et points de marche sont trois opérations distinctes, avec toutes les commandes exactes. Puis **[TESTS_EN_JEU.md](docs/TESTS_EN_JEU.md)** pour rejouer sans récompense ni lancement de PQ02.
 
@@ -33,7 +35,7 @@ Inventaire exact : `audit/DIFFS_DEPUIS_SI1_EXHAUSTIFS.csv`. Preuves et limites :
  bindings='\n'.join(f'| {ROLES[r]} | `/function capitale:pq01/liaison/{r}_large` | `/function capitale:pq01/liaison/{r}_quai` |' for r in ROLES)
  placements='\n'.join(f'| {ROLES[r]} | `/function capitale:pq01/pose/placer_{r}_large` | `/function capitale:pq01/pose/placer_{r}_quai` |' for r in ROLES)
  unbinds='\n'.join(f'/function capitale:pq01/liaison/liberer_{r}_{phase}' for phase in ('large','quai') for r in ROLES)
- put('docs/INSTALLATION_ET_POSE_PNJ.md',f'''# Installation, configuration et déplacements des PNJ — PQ01-R3
+ put('docs/INSTALLATION_ET_POSE_PNJ.md',f'''# Installation, configuration et déplacements des PNJ — PQ01-R3-HF1
 
 ## 1. Les trois opérations à distinguer
 
@@ -58,7 +60,7 @@ Les deux ZIP internes sont les datapacks complets, avec `pack.mcmeta` à leur ra
 
 1. Fermer les dialogues, attendre la fin d’un amarrage et terminer les relectures actives avec `/function capitale:pq01/admin/test_fin` si R2/R3 est déjà installé. Sauvegarder ensemble le monde et les profils Nexus.
 2. Arrêter le serveur. Remplacer les deux datapacks et le JAR journal correspondants par les trois fichiers ci-dessus. Retirer les versions précédentes de ces mêmes composants.
-3. Installer aussi le journal R3 dans les clients. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants du serveur. Aucun remplacement de Nexus ou Dialogue n’est fourni.
+3. Installer aussi le journal R3-HF1 dans les clients. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants du serveur. Aucun remplacement de Nexus ou Dialogue n’est fourni.
 4. Redémarrer. Les commandes suivantes s’exécutent en jeu, par un administrateur avec un personnage Nexus sélectionné et chargé.
 
 Le code de scène fonctionne côté serveur ; le JAR journal contient aussi ses composants clients et mixins. Ce correctif s’ajoute au journal fourni, sans créer un second mod portant le même identifiant.
@@ -354,7 +356,7 @@ Le modèle R2 extrait le prompt inclus, sans réécriture libre. Le build R3 vé
  with zipfile.ZipFile(temp,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
   for p in sorted(DEST.rglob('*')):
    if p.is_file():
-    info=zipfile.ZipInfo(NAME+'/'+str(p.relative_to(DEST)),(2026,10,22,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;z.writestr(info,p.read_bytes())
+    info=zipfile.ZipInfo(NAME+'/'+str(p.relative_to(DEST)),(2026,10,23,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;z.writestr(info,p.read_bytes())
  with zipfile.ZipFile(temp) as z:assert z.testzip() is None
  temp.replace(archive);report={'file':str(archive),'bytes':archive.stat().st_size,'sha256':hashlib.sha256(archive.read_bytes()).hexdigest()}
  (OUT/'release_manifest.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2));return report

@@ -1,0 +1,3 @@
+PASS identical mixin code and selectors after normalizing @Mixin retention and injection at array: net/hautecapitale/quetes/pq01/mixin/Pq01EntityMixin.class
+PASS identical mixin code and selectors after normalizing @Mixin retention and injection at array: net/hautecapitale/quetes/pq01/mixin/Pq01GoalMixin.class
+PASS identical mixin code and selectors after normalizing @Mixin retention and injection at array: net/indivis/admin/mixin/NexusProfileSaveMixin.class

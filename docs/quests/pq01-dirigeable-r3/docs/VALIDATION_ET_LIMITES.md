@@ -1,5 +1,7 @@
 # Validations exécutées et limites
 
+Les contrôles R3 ci-dessous ne détectaient pas la mauvaise rétention de `@Mixin` ni la mauvaise forme des points `at`. Le crash réel a conduit au correctif [R3-HF1](../HOTFIX_MIXIN_R3_HF1.md) : reproduction sur les anciens binaires avec le lecteur Mixin de production, absence du défaut sur les nouveaux, code/sélecteurs conservés, contrôles de structure ajoutés aux builds. Les rapports du 23 octobre sont préfixés `hf1_` dans `audit/`. Aucun démarrage complet Fabric n’est revendiqué.
+
 - 12 contrôles des datapacks finaux : JSON, chemins et références internes, périmètre protégé, 145 passages approuvés, choix et amnésie obligatoires, déclenchements de conclusion, récompenses, magistrat, relecture par compte/personnage, jetons/voix/timeout, priorité MQ03 et amarrage avec gardes de contexte.
 - 17 cas et 26 assertions exécutés sur le contrôleur `Pq01Motion` réellement compilé : aller/retour, arrivée, attente, chemin refusé/coupé, portée/dimension, annulation, perte de contexte, délais bornés, replanification et deux ports à dix secondes de décalage. Les ports de ce banc ne sont pas des joueurs Minecraft réels.
 - 44 assertions sur la vraie classe `V2QuestPolicy` extraite du Nexus fourni : persistance des huit états et caractère transitoire des quatorze scores de runtime. Ce n’est pas un test de changement de personnage dans le jeu.
