@@ -69,17 +69,17 @@ public final class Pq01InteractionBench {
   static boolean quest(){return events.stream().anyMatch(s->s.equals("command:function capitale:npc/geraud_rivet/interact_self"));}
   static void click(){Pq01Bridge.interact(player,npc,"geraud_large","interact");}
   public static void main(String[] args)throws Exception {
-    check(Pq01Bridge.class.getProtectionDomain().getCodeSource().getLocation().toString().endsWith("PQ01-R3-HF3.jar"),"pont de production HF3");
+    check(Pq01Bridge.class.getProtectionDomain().getCodeSource().getLocation().toString().endsWith("PQ01-R3-HF4.jar"),"pont de production HF4");
     check(SequenceBridge.class.getProtectionDomain().getCodeSource().equals(Pq01Bridge.class.getProtectionDomain().getCodeSource()),"helper historique de production");
     reset();click();check(DialogueManager.opened==1&&quest(),"clic avec joueur non nul ouvre la caméra et appelle la quête");
     check(events.get(0).equals("camera:CAPTURE")&&events.get(1).startsWith("command:function"),"caméra ouverte avant le premier texte");
     click();check(DialogueManager.opened==1,"session existante non ouverte une seconde fois");
     reset();world.server.board.values.put("hcq_pq01",40);click();
     check(DialogueManager.opened==1&&!quest(),"phase quai : caméra conservée, aucune progression de départ");
-    check(events.stream().anyMatch(s->s.contains("test_debut")),"phase incompatible expliquée avec relecture explicite");
+    check(events.stream().anyMatch(s->s.startsWith("command:title @s actionbar"))&&events.stream().noneMatch(s->s.contains("tellraw")),"phase incompatible : actionbar neutre, aucune explication technique en dialogue");
     check(world.server.board.values.get("hcq_pq01")==40,"aucune réinitialisation automatique");
     reset();world.server.board.values.put("CAP_PROFILE_LOCK",1);click();check(DialogueManager.opened==1&&!quest(),"profil en chargement : caméra sans exécution de quête");
-    check(events.stream().anyMatch(s->s.contains("chargement")),"chargement expliqué");
+    check(events.stream().anyMatch(s->s.startsWith("command:title @s actionbar")),"chargement indiqué hors dialogue");
     reset();NexusCharacters.selected=false;click();check(DialogueManager.opened==1&&!quest(),"aucun personnage : caméra sans quête");
     reset();Pq01Bridge.interact(player,npc,"geraud_large","near");check(DialogueManager.opened==0&&events.equals(List.of("command:function capitale:quest/spawn_dirigeable_couronne/geraud_large_start_self")),"near ne force pas la caméra");
     reset();GuardNbt.string(Pq01Bridge.binding(player,"geraud_large"),"uuid",UUID.randomUUID().toString());click();check(events.isEmpty(),"autre PNJ refusé avant caméra");

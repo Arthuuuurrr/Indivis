@@ -1,6 +1,6 @@
-# Installation, configuration et déplacements des PNJ — PQ01-R3-HF3
+# Installation, configuration et déplacements des PNJ — PQ01-R3-HF4
 
-**Mise à jour du 23 octobre : journal R3-HF3.** Depuis HF2, remplacer uniquement le JAR journal sur serveur et clients, puis redémarrer. Les deux datapacks R3 et le mod admin alpha.3 restent installés. Les liaisons déjà réussies et toutes les commandes de pose restent valables ; aucune liaison à refaire pour ce correctif. [Cause, contrôles et limites HF3](../HOTFIX_DIALOGUE_R3_HF3.md).
+**Mise à jour du 23 octobre : les trois composants passent en HF4.** Remplacer les deux datapacks et le journal sur serveur ; remplacer aussi le journal sur les clients, puis redémarrer. Les liaisons déjà réussies, les points et la progression restent enregistrés ; aucune liaison n’est à refaire pour ce correctif. [Changements et contrôles HF4](../HOTFIX_IMMERSION_R3_HF4.md).
 
 ## 1. Les trois opérations à distinguer
 
@@ -17,15 +17,15 @@
 
 | Emplacement | Fichier à installer |
 | --- | --- |
-| Datapacks du monde serveur | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3.zip` |
-| Datapacks du monde serveur | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3.zip` |
-| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF3.jar` |
+| Datapacks du monde serveur | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF4.zip` |
+| Datapacks du monde serveur | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip` |
+| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF4.jar` |
 
 Les deux ZIP internes sont les datapacks complets, avec `pack.mcmeta` à leur racine. Le ZIP extérieur de livraison n’est pas lui-même un datapack.
 
 1. Fermer les dialogues, attendre la fin d’un amarrage et terminer les relectures actives avec `/function capitale:pq01/admin/test_fin` si R2/R3 est déjà installé. Sauvegarder ensemble le monde et les profils Nexus.
-2. Arrêter le serveur. Depuis HF2 avec les datapacks R3 déjà présents, remplacer uniquement le JAR journal HF2 par HF3. Pour une première installation R3, installer les trois composants du tableau. Retirer la précédente version de chaque composant remplacé.
-3. Installer aussi le journal R3-HF3 dans les clients. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants du serveur. Aucun remplacement de Nexus ou Dialogue n’est fourni.
+2. Arrêter le serveur. Installer les trois composants HF4 du tableau, y compris si HF3 était déjà installé. Retirer la précédente version de chaque composant remplacé.
+3. Installer aussi le journal R3-HF4 dans les clients. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants du serveur. Aucun remplacement de Nexus ou Dialogue n’est fourni.
 4. Redémarrer. Les commandes suivantes s’exécutent en jeu, par un administrateur avec un personnage Nexus sélectionné et chargé.
 
 Le code de scène fonctionne côté serveur ; le JAR journal contient aussi ses composants clients et mixins. Ce correctif s’ajoute au journal fourni, sans créer un second mod portant le même identifiant.
@@ -45,7 +45,7 @@ Ces commandes ne réinitialisent aucune quête. Le nettoyage ferme les scènes P
 
 Dans EasyNPC 7.16.0 fourni, le contrôle réseau de l’éditeur accepte le mode créatif ou le propriétaire du PNJ. Il ne donne pas d’exception au statut OP dans cette branche. Pour utiliser la baguette d’édition sur un PNJ dont on n’est pas propriétaire : `/gamemode creative`, effectuer l’édition, puis reprendre son mode de jeu habituel, par exemple `/gamemode adventure`. Les commandes de liaison/pose PQ01 gardent leurs propres permissions administrateur ; elles n’exigent pas de changer le propriétaire EasyNPC.
 
-Pour parler au PNJ, ranger la baguette et les autres outils EasyNPC, puis faire un clic droit de la main principale, sans s’accroupir. Dialogue b10 et EasyNPC réservent le clic avec leurs outils à l’édition. HF3 prépare explicitement la caméra pour l’action native PQ01 après contrôle de la liaison, de la dimension et de la distance. Il respecte les réglages de capture et les refus du gestionnaire de dialogue. Si le personnage est encore en chargement ou à une autre phase, un message explique le contexte ; aucune progression n’est réinitialisée.
+Pour parler au PNJ, ranger la baguette et les autres outils EasyNPC, puis faire un clic droit de la main principale, sans s’accroupir. Dialogue b10 et EasyNPC réservent le clic avec leurs outils à l’édition. HF4 prépare explicitement la caméra pour l’action native PQ01 après contrôle de la liaison, de la dimension et de la distance. Il respecte les réglages de capture et les refus du gestionnaire de dialogue. Si le personnage est encore en chargement ou à une autre phase, un message neutre apparaît en barre d’action et le détail reste dans le journal serveur ; aucune progression n’est réinitialisée.
 
 ## 4. Lier les six PNJ de chaque exemplaire du navire
 
@@ -64,7 +64,7 @@ La liaison conserve le type, le modèle, le skin, les textures, l’équipement 
 
 `ON_INTERACTION` peut être absent ou contenir un unique déclencheur PQ01 reconnu, seul ou accompagné d’autres actions. La liaison remplace seulement ce déclencheur et conserve l’ordre, les conditions et les autres actions. Les anciennes commandes `function capitale:…`, `/function capitale:…` et les chemins `capitale:…` seuls sont reconnus pour les rôles prévus. Une interaction sans déclencheur PQ01 reconnu, ou avec plusieurs déclencheurs, est refusée et décrite sans écriture. Une liaison existante vers un autre PNJ doit être libérée avant réaffectation. Une modification externe des actions après liaison reste protégée lors d’une nouvelle liaison.
 
-L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal HF3. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud/Althéon au large, un `ON_DISTANCE_NEAR` absent reçoit le déclencheur prévu ; un ancien déclencheur PQ01 reconnu est converti, ses autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
+L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal HF4. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud au large, le déclencheur de proximité prévu reste disponible. Le déclencheur PQ01 de proximité du Capitaine devient sans effet : sa conversation commence au clic droit. Un ancien déclencheur PQ01 reconnu est converti et les autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
 
 Un PNJ impliqué dans une scène personnelle ou occupé par un autre joueur ne peut pas être lié/libéré/déplacé tant que cette utilisation dure.
 
@@ -96,7 +96,7 @@ Chaque commande ci-dessous enregistre **la position actuelle de l’admin**, san
 | `/function capitale:pq01/pose/perrin_a` | Premier point du service léger de Perrin. |
 | `/function capitale:pq01/pose/perrin_b` | Second point du service léger de Perrin. |
 
-Gautier : poste et approche dans la même dimension, sur un sol praticable, à 24 blocs maximum l’un de l’autre et proches des PNJ sources. Laisser une voie réelle entre eux, compatible avec les portes et escaliers du décor. Les acteurs n’ouvrent pas les portes ; un trajet fermé produit un repli explicite. Perrin : deux points accessibles dans la même zone, à 24 blocs maximum. Aucun chemin ni coordonnée du décor n’a été inventé.
+Gautier : poste et approche dans la même dimension, sur un sol praticable, à 24 blocs maximum l’un de l’autre et proches des PNJ sources. Laisser une voie réelle entre eux, compatible avec les portes et escaliers du décor. Les acteurs n’ouvrent pas les portes ; un trajet fermé produit un repli dont la raison reste dans le journal serveur. Perrin : deux points accessibles dans la même zone, à 24 blocs maximum. Aucun chemin ni coordonnée du décor n’a été inventé.
 
 Gautier attend son arrivée pour prononcer son interruption. Après « Bien, quartier-maître ! » et sa durée audio éventuelle, il rejoint réellement son poste, puis Géraud revient vers le joueur. Hugues regarde la cargaison et fait un geste d’inspection périodique sans modifier les inventaires. Anselme regarde ses instruments. Perrin marche entre A et B, avec une pause aux extrémités. Leur occupation se suspend pendant leur propre dialogue ; la scène principale garde la priorité.
 
@@ -160,7 +160,7 @@ Les données de configuration sont dans `capitale:pq01_setup` : `bindings`, `poi
 /data modify storage capitale:pq01_setup move_timeout_ticks set value 300
 ```
 
-Un acteur absent, un point non configuré, un chemin refusé ou le dépassement du délai déclenche un message de raison et un repli qui laisse la quête avancer. Le repli supprime l’acteur personnel concerné ; aucun PNJ original n’est téléporté pour forcer l’animation. Après correction du chemin, un admin peut réarmer uniquement l’introduction de son personnage :
+Un acteur absent, un point non configuré, un chemin refusé ou le dépassement du délai inscrit la raison dans le journal serveur et déclenche un repli qui laisse la quête avancer. Aucun diagnostic technique n’est envoyé comme réplique de PNJ. Le repli supprime l’acteur personnel concerné ; aucun PNJ original n’est téléporté pour forcer l’animation. Après correction du chemin, un admin peut réarmer uniquement l’introduction de son personnage :
 
 ```mcfunction
 /function capitale:pq01/admin/fermer_dialogue
@@ -170,3 +170,15 @@ Un acteur absent, un point non configuré, un chemin refusé ou le dépassement 
 Cette réparation est limitée à PQ01 avant l’entretien achevé du capitaine. Pour revoir PQ01 sur un personnage plus avancé, employer `test_debut`/`test_fin` décrits dans `TESTS_EN_JEU.md`.
 
 En cas de « unknown function », les adresses ci-dessus correspondent aux fichiers présents dans les ZIP R3 et sont contrôlées dans la livraison. Le journal R3 fournit la commande native `indivispq01` : son absence ou une erreur de chargement se diagnostique dans le log de démarrage, sans reset de profil ni vérification générique des datapacks.
+
+## 11. Dialogues HF4
+
+Les pages qui n’offraient que « Continuer. » avancent désormais seules après le temps de lecture, la dernière page et la fin de la voix. Le joueur conserve ses vraies réponses, ses questions et la possibilité de fermer. Un menu de questions ne se valide jamais automatiquement. Aucun texte nouveau de réponse n’a été inventé.
+
+L’interruption affiche le nom et la caméra du locuteur : **Gautier** pendant ses lignes, **Géraud Rivet** pendant les siennes. La caméra quitte Gautier avant son retour pour que le verrou de dialogue ne bloque pas sa marche. Les menus sans réplique ne montrent plus une page « … » à valider. La première page vide du Capitaine est sautée.
+
+Le Capitaine attend un clic droit ; il ne déclenche plus l’interpellation automatique PQ01. Dans ses questions, la réponse finale est verte et porte la mention **« Terminer l’entretien et lancer l’amarrage. »**. Les autres questions peuvent être reprises avant de choisir cette réponse. La couleur utilise la catégorie verte native de Dialogue b10.
+
+Le matelot Anselme reçoit un tag réservé PQ01. Les liaisons déjà enregistrées sont mises à jour quand le PNJ est chargé près d’un joueur, sans refaire la liaison. La quête de l’archiviste Anselme Kerrec exclut ce tag ; les autres archivistes gardent leur comportement.
+
+Gautier et Perrin utilisent une création directe d’entité puis une copie contrôlée et une navigation réelle. Le seuil d’arrivée est de 1,25 bloc, compatible avec l’arrêt du chemin vanilla observé à environ 0,97 bloc ; un nouvel échec de recalcul n’annule plus une arrivée déjà atteinte. Les originaux ne sont pas déplacés par une scène.

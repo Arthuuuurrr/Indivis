@@ -29,8 +29,10 @@ public final class Pq01Bridge {
       try{return k.newInstance(a);}catch(ReflectiveOperationException e){throw new IllegalStateException(c,e);}
     }throw new IllegalStateException("Constructeur absent : "+c);
   }
-  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF3] "+e);e.printStackTrace(System.err);}}
+  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF4] "+e);e.printStackTrace(System.err);}}
   static void say(Object p,String s){run(p,"tellraw @s "+quote("[PQ01] "+s));}
+  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF4] "+text);}
+  static void unavailable(Object p,String reason){diagnostic(p,reason);run(p,"title @s actionbar "+quote("Cette conversation n’est pas disponible pour le moment."));}
   static Object world(Object p){return call(p,"method_51469");}
   static String dimension(Object world){return String.valueOf(call(call(world,"method_27983"),"method_29177"));}
   static Pq01Motion.Point pos(Object e,Object w){return new Pq01Motion.Point(dimension(w),num(call(e,"method_23317")),num(call(e,"method_23318")),num(call(e,"method_23321")));}
@@ -55,7 +57,12 @@ public final class Pq01Bridge {
   static Object binding(Object p,String key){return child(child(setup(p),"bindings"),key);}
   static Object source(Object p,String key){
     Object b=binding(p,key);if(b==null||!dimension(world(p)).equals(str(b,"dimension","")))return null;
-    String id=str(b,"uuid","");return id.isEmpty()?null:call(world(p),"method_66347",UUID.fromString(id));
+    String id=str(b,"uuid","");Object npc=id.isEmpty()?null:call(world(p),"method_66347",UUID.fromString(id));
+    if(npc!=null&&key.startsWith("anselme_")&&!tags(npc).contains("hcm_pq1_anselme")){
+      call(npc,"method_5780","hcm_pq1_anselme");
+      if(integer(b,"added_role_tag",0)==1)call(npc,"method_5738","hcq_pnj_anselme");
+    }
+    return npc;
   }
   static Pq01Motion.Point configuredPoint(Object p,String key,Pq01Motion.Point fallback){
     String scoped=phase(p).equals("quai")?key+"_quai":key;
@@ -72,7 +79,7 @@ public final class Pq01Bridge {
   }
   private static final class View {
     final UUID account,character;final Object player,world;final Map<String,Actor> actors=new HashMap<>();final Set<UUID> hidden=new HashSet<>();
-    String phase,cameraRole;Object pendingCamera,camera,captureSession;long cameraAt;boolean scene,banter;int waitingNode;Pq01Motion.Point approach;
+    String phase,cameraRole,pendingNode;Object pendingCamera,camera,captureSession;long cameraAt;boolean scene,banter;int waitingNode;Pq01Motion.Point approach;
     View(Object p,String phase){account=uuid(p);character=character(p);player=p;world=world(p);this.phase=phase;}
   }
   public static void init(){
@@ -102,6 +109,7 @@ public final class Pq01Bridge {
     List<String> actions=new ArrayList<>(List.of("approach","return","close","banter","status","cleanup"));
     for(String r:ROLES){actions.add("camera_"+r);for(String phase:List.of("large","quai")){for(String op:List.of("bind_","unbind_","place_"))actions.add(op+r+"_"+phase);}}
     for(String p:POINTS)actions.add("point_"+p);
+    for(String key:Pq01Ids.keys())actions.add("line_"+key);
     for(String action:actions){
       Object node=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal",action);
       if(action.startsWith("bind_")||action.startsWith("unbind_")||action.startsWith("point_")||action.startsWith("place_")||action.equals("status")||action.equals("cleanup")){
@@ -110,7 +118,7 @@ public final class Pq01Bridge {
       Class<?> command=type("com.mojang.brigadier.Command");
       Object proxy=Proxy.newProxyInstance(command.getClassLoader(),new Class<?>[]{command},(p,m,a)->{
         if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);
-        Object player=null;try{player=call(call(a[0],"getSource"),"method_9207");return execute(player,action);}catch(Throwable failure){report(failure);if(player!=null)say(player,"Action annulée : "+failure.getMessage());return 0;}
+        Object player=null;try{player=call(call(a[0],"getSource"),"method_9207");return execute(player,action);}catch(Throwable failure){report(failure);if(player!=null){if(action.startsWith("camera_")||action.startsWith("line_")||List.of("approach","return","banter").contains(action))diagnostic(player,"Scène indisponible : "+failure.getMessage());else say(player,"Action annulée : "+failure.getMessage());}return 0;}
       });call(node,"executes",proxy);call(root,"then",node);
     }call(dispatcher,"register",root);
   }
@@ -124,6 +132,7 @@ public final class Pq01Bridge {
     if(action.startsWith("place_"))return place(p,action.substring(6));
     if(action.startsWith("point_")){Object root=rootCopy(p);GuardNbt.put(GuardNbt.childOrCreate(root,"points"),action.substring(6),pointNbt(pos(p,world(p))));save(p,root);say(p,"Point réel enregistré : "+action.substring(6));return 1;}
     if(!dialogue(p))return 0;
+    if(action.startsWith("line_"))return line(p,action.substring(5));
     if(action.startsWith("camera_"))return camera(p,action.substring(7));
     if(action.equals("approach"))return moveScene(p,false);
     if(action.equals("return"))return moveScene(p,true);
@@ -166,9 +175,9 @@ public final class Pq01Bridge {
     }
     boolean click=event.equals("interact");
     if(click&&!captureInteraction(p,npc))return;
-    if(!available(p)){if(click)say(p,"Le personnage Nexus doit avoir terminé son chargement pour lancer ce dialogue de quête.");return;}
+    if(!available(p)){if(click)unavailable(p,"Personnage Nexus pas encore chargé.");return;}
     if(!key.endsWith("_"+phase(p))){
-      if(click)say(p,"Ce PNJ est lié à la phase "+(key.endsWith("_large")?"départ au large":"arrivée au quai")+" ; le personnage est à la phase "+(phase(p).equals("large")?"départ au large":"arrivée au quai")+". La relecture du départ se lance avec /function capitale:pq01/admin/test_debut.");
+      if(click)unavailable(p,"Phase incompatible : "+key+", personnage="+phase(p)+". Relecture explicite : capitale:pq01/admin/test_debut.");
       return;
     }
     run(p,Pq01Actions.function(key,event));
@@ -196,7 +205,7 @@ public final class Pq01Bridge {
     Object linked=Pq01Actions.plan(old,key,"interact");
     Object root=rootCopy(p),bindings=GuardNbt.childOrCreate(root,"bindings"),record=previous==null?GuardNbt.compound():Pq01Nbt.copy(previous);
     if(previous==null){
-      GuardNbt.string(record,"uuid",uuid(npc).toString());GuardNbt.string(record,"dimension",dimension(world(p)));GuardNbt.string(record,"type",String.valueOf(call(npc,"getEntityTypeId")));
+      GuardNbt.string(record,"uuid",uuid(npc).toString());GuardNbt.string(record,"dimension",dimension(world(p)));GuardNbt.string(record,"type",Pq01EntityFactory.registryId(npc));
       if(old!=null)GuardNbt.put(record,"original_interaction",Pq01Nbt.copy(old));
       Object near=child(events,"ON_DISTANCE_NEAR");if(near!=null)GuardNbt.put(record,"original_near",Pq01Nbt.copy(near));
       for(String n:List.of("CustomName","custom_name")){Object name=child(snapshot,n);if(name!=null){GuardNbt.string(record,"name_key",n);GuardNbt.put(record,"original_name",Pq01Nbt.copy(name));break;}}
@@ -213,6 +222,7 @@ public final class Pq01Bridge {
     mutateEvent(p,npc,"ON_INTERACTION",linked);
     if(newNear!=null)mutateEvent(p,npc,"ON_DISTANCE_NEAR",newNear);
     call(npc,"method_5780","hcq_pnj_"+role);call(npc,"method_5665",stat("net.minecraft.class_2561","method_43470",NAMES.get(role)));
+    if(role.equals("anselme")){call(npc,"method_5780","hcm_pq1_anselme");if(integer(record,"added_role_tag",0)==1)call(npc,"method_5738","hcq_pnj_anselme");}
     Object named=GuardNbt.entity(npc);for(String k:List.of("CustomName","custom_name"))if(child(named,k)!=null){GuardNbt.string(record,"linked_name_key",k);GuardNbt.put(record,"linked_name",Pq01Nbt.copy(child(named,k)));}
     GuardNbt.put(record,"post",pointNbt(pos(npc,world(p))));GuardNbt.put(bindings,key,record);save(p,root);
     run(p,"data modify storage hc_quetes:lieux pq01_"+key+" set value "+waypoint(pos(npc,world(p))));
@@ -231,6 +241,7 @@ public final class Pq01Bridge {
     mutateEvent(p,npc,"ON_INTERACTION",child(record,"original_interaction"));
     if(child(record,"linked_near")!=null)mutateEvent(p,npc,"ON_DISTANCE_NEAR",child(record,"original_near"));
     String role=key.split("_")[0];if(integer(record,"added_role_tag",0)==1)run(p,"tag "+uuid(npc)+" remove hcq_pnj_"+role);
+    if(role.equals("anselme"))call(npc,"method_5738","hcm_pq1_anselme");
     String nameKey=str(record,"linked_name_key","");Object current=GuardNbt.entity(npc);
     Object currentName=call(npc,"method_5797");
     boolean interruptedNameWrite=nameKey.isEmpty()&&currentName!=null&&str(record,"linked_name_text","").equals(call(currentName,"getString"));
@@ -273,21 +284,21 @@ public final class Pq01Bridge {
     call(template,"method_10556","Invulnerable",true);call(template,"method_10556","Silent",true);call(template,"method_10556","NoAI",!role.equals("gautier")&&!role.equals("perrin"));
     call(template,"method_10556","NoGravity",false);call(template,"method_10556","CanPickUpLoot",false);GuardNbt.string(template,"DeathLootTable","minecraft:empty");
     Object events=GuardNbt.childOrCreate(GuardNbt.childOrCreate(template,"ActionData"),"ActionEventSet");GuardNbt.put(events,"ON_INTERACTION",action(role+"_"+v.phase,"interact"));
-    UUID fresh=UUID.randomUUID();String ints="[I;"+(int)(fresh.getMostSignificantBits()>>>32)+","+(int)fresh.getMostSignificantBits()+","+(int)(fresh.getLeastSignificantBits()>>>32)+","+(int)fresh.getLeastSignificantBits()+"]";
-    String text=template.toString();text=text.substring(0,text.length()-1)+",UUID:"+ints+"}";
+    UUID fresh=UUID.randomUUID();
     ACTORS.add(fresh);v.hidden.add(uuid(src));Object e=null,g=null,t=null;
     try{
-      run(v.player,"summon "+call(src,"getEntityTypeId")+" "+coords(start)+" "+text);
-      e=call(v.world,"method_66347",fresh);if(e==null)throw new IllegalStateException("Création de l'acteur non confirmée.");
+      e=Pq01EntityFactory.create(src,v.world,template,fresh,start);
       call(e,"method_5665",stat("net.minecraft.class_2561","method_43470",NAMES.get(role)));
       configureActor(e,role.equals("gautier")||role.equals("perrin"));
       Object yaw=call(src,"method_36454"),pitch=call(src,"method_36455");call(e,"method_36456",yaw);call(e,"method_36457",pitch);call(e,"method_5847",yaw);call(e,"method_5636",yaw);
       g=call(e,"getEntityGoalSelector");t=call(e,"getEntityTargetSelector");Pq01Actors.protect(g);Pq01Actors.protect(t);
       call(g,"method_35113",(Predicate<Object>)goal->true);call(t,"method_35113",(Predicate<Object>)goal->true);
       if(!teamReady){run(v.player,"team add indivis_pq01");run(v.player,"team modify indivis_pq01 collisionRule never");teamReady=true;}
-      run(v.player,"team join indivis_pq01 "+fresh);
-      Actor a=new Actor(role,e,src,g,t,start);v.actors.put(role,a);refresh(v.player);return a;
-    }catch(Throwable failure){ACTORS.remove(fresh);v.hidden.remove(uuid(src));if(g!=null)Pq01Actors.forget(g);if(t!=null)Pq01Actors.forget(t);if(e!=null)call(e,"method_31472");refresh(v.player);throw failure;}
+      Actor a=new Actor(role,e,src,g,t,start);v.actors.put(role,a);
+      if(!Boolean.TRUE.equals(call(v.world,"method_8649",e))||call(v.world,"method_66347",fresh)!=e)throw new IllegalStateException("Insertion de l'acteur refusée par le monde.");
+      Pq01Actions.mutate(e,"ON_INTERACTION",action(role+"_"+v.phase,"interact"));
+      run(v.player,"team join indivis_pq01 "+fresh);refresh(v.player);return a;
+    }catch(Throwable failure){v.actors.remove(role);ACTORS.remove(fresh);v.hidden.remove(uuid(src));if(g!=null)Pq01Actors.forget(g);if(t!=null)Pq01Actors.forget(t);if(e!=null)call(e,"method_31472");refresh(v.player);throw failure;}
   }
   static void configureActor(Object e,boolean mobile){
     Object provider=call(e,"getEasyNPCAttributeData"),attributes=call(provider,"getEntityAttributes");
@@ -331,9 +342,9 @@ public final class Pq01Bridge {
           resumed=true;
           String resumeKey="a"+resume;v.waitingNode=resume;
           run(p,"scoreboard players set @s hcm_pq1_node "+resume);run(p,"scoreboard players set @s hcm_pq1_wait 1");run(p,"function capitale:pq01/scene/resume_wait_self");
-          travel(v,ga,v.approach,()->{face(ga,pos(geraud.entity,v.world));face(geraud,pos(ga.entity,v.world));advance(v,resumeKey);},reason->{say(p,"Reprise mobile interrompue : "+reason);discard(v,"gautier");refresh(p);advance(v,resumeKey);});
+          travel(v,ga,v.approach,()->{face(ga,pos(geraud.entity,v.world));face(geraud,pos(ga.entity,v.world));advance(v,resumeKey);},reason->{diagnostic(p,"Reprise mobile interrompue : "+reason);discard(v,"gautier");refresh(p);advance(v,resumeKey);});
         }
-      }catch(Throwable e){report(e);say(p,"Scène mobile en repli : "+e.getMessage());}
+      }catch(Throwable e){report(e);diagnostic(p,"Scène mobile en repli : "+e.getMessage());}
     }else{
       Actor a=v.actors.get(role);
       if(alive(a))focus=a.entity;
@@ -341,6 +352,15 @@ public final class Pq01Bridge {
     }
     Actor a=v.actors.get(role);if(a!=null){if(a.motion!=null){a.motion.cancel();a.motion=null;}stop(a);}
     v.cameraRole=role;v.pendingCamera=focus;v.cameraAt=clock+1;return resumed?2:1;
+  }
+  static int line(Object p,String key){
+    String role=Pq01Ids.role(key);if(role==null)return 0;
+    View v=view(p);Actor a=v.actors.get(role);Object focus=alive(a)?a.entity:source(p,role+"_"+v.phase);
+    if(focus==null)return 1; // texte de secours, nom transmis dans la trame client.
+    if(v.pendingCamera==focus){v.pendingNode=key;return 0;}
+    Object session=((Optional<?>)stat(DM,"session",p)).orElse(null);
+    if(v.camera==focus&&v.captureSession!=null&&v.captureSession==session){v.cameraRole=role;return 1;}
+    v.cameraRole=role;v.pendingCamera=focus;v.pendingNode=key;v.cameraAt=clock+1;return 0;
   }
   static void openCamera(View v,Object focus){
     if(!actor(focus)&&occupied(v,focus)){Actor replacement=spawn(v,v.cameraRole,null);v.pendingCamera=replacement.entity;v.cameraAt=clock+1;return;}
@@ -362,16 +382,17 @@ public final class Pq01Bridge {
     if(score(p,"hcm_pq1_node")!=Pq01Ids.id(expected))return 0;
     if(score(p,"hcm_pq1_voice")>0)return 1;
     View v=VIEWS.get(uuid(p));
-    if(v==null||!same(v,p)||!v.scene){say(p,"Scène mobile indisponible ; reprise du dialogue sans bloquer la quête.");run(p,"function capitale:pq01/node/"+next);return 1;}
+    if(v==null||!same(v,p)||!v.scene){diagnostic(p,"Scène mobile indisponible ; repli du dialogue.");run(p,"function capitale:pq01/node/"+next);return 1;}
     if(v.waitingNode!=0)return 1;
     Actor a=v.actors.get("gautier");Pq01Motion.Point target=returning?(a==null?null:configuredPoint(p,"gautier_poste",point(child(binding(p,"gautier_large"),"post")))):v.approach;
-    if(!alive(a)||target==null){say(p,"Trajet non configuré/acteur absent ; repli pour cette interruption.");run(p,"function capitale:pq01/node/"+next);return 1;}
+    if(!alive(a)||target==null){diagnostic(p,"Trajet non configuré/acteur absent ; repli de l'interruption.");run(p,"function capitale:pq01/node/"+next);return 1;}
+    if(returning&&v.camera==a.entity){Actor geraud=v.actors.get("geraud");if(alive(geraud)){v.cameraRole="geraud";openCamera(v,geraud.entity);}}
     v.waitingNode=Pq01Ids.id(expected);run(p,"scoreboard players set @s hcm_pq1_wait 1");
     travel(v,a,target,()->{
       if(returning)face(v.actors.get("geraud"),pos(p,v.world));
       else {face(a,pos(v.actors.get("geraud").entity,v.world));face(v.actors.get("geraud"),pos(a.entity,v.world));}
       advance(v,next);
-    },reason->{say(p,"Trajet Gautier interrompu : "+reason+". Le dialogue reste disponible.");discard(v,"gautier");refresh(p);advance(v,next);});
+    },reason->{diagnostic(p,"Trajet Gautier interrompu : "+reason);discard(v,"gautier");refresh(p);advance(v,next);});
     return 1;
   }
   static void travel(View v,Actor a,Pq01Motion.Point target,Runnable done,Consumer<String> failed){
@@ -407,15 +428,14 @@ public final class Pq01Bridge {
     clock++;
     @SuppressWarnings("unchecked") List<Object> players=(List<Object>)call(call(server,"method_3760"),"method_14571");
     Set<UUID> online=new HashSet<>();for(Object p:players)online.add(uuid(p));
+    if(clock%20==0)for(Object p:players)try{source(p,"anselme_large");source(p,"anselme_quai");}catch(RuntimeException e){report(e);}
     for(View v:new ArrayList<>(VIEWS.values()))try{
       if(!online.contains(v.account)||!same(v,v.player)||!phase(v.player).equals(v.phase)){close(v.player,true);continue;}
       for(Actor a:new ArrayList<>(v.actors.values()))if(a.motion!=null&&!a.motion.done())a.motion.tick();
       if(VIEWS.get(v.account)!=v)continue;
-      if(v.pendingCamera!=null&&clock>=v.cameraAt){Object focus=v.pendingCamera;v.pendingCamera=null;if(dialogue(v.player))openCamera(v,focus);}
+      if(v.pendingCamera!=null&&clock>=v.cameraAt){Object focus=v.pendingCamera;v.pendingCamera=null;if(dialogue(v.player)){openCamera(v,focus);if(v.pendingCamera==null&&v.captureSession!=null){String node=v.pendingNode;v.pendingNode=null;if(node!=null)run(v.player,"function capitale:pq01/node/"+node);}}}
       int node=score(v.player,"hcm_pq1_node");
-      if(v.scene&&node>=Pq01Ids.id("ga_menu")){
-        v.scene=false;Actor geraud=v.actors.get("geraud");if(geraud!=null&&!occupied(v,geraud.source)){Object original=geraud.source;v.hidden.remove(geraud.sourceId);refresh(v.player);if(dialogue(v.player))openCamera(v,original);discard(v,"geraud");}
-      }
+      if(v.scene&&node>=Pq01Ids.id("ga_menu"))v.scene=false;
       if(v.banter&&(node<Pq01Ids.id("b0")||node>Pq01Ids.id("b7")))v.banter=false;
       if(clock%20==0)work(v);
     }catch(Throwable e){report(e);close(v.player,true);if(online.contains(v.account)&&score(v.player,"hcm_pq1_active")==1)run(v.player,"function capitale:pq01/close_self");}
@@ -445,7 +465,7 @@ public final class Pq01Bridge {
         Pq01Motion.Point target=configuredPoint(p,"anselme_instruments",null);if(target!=null)face(a,target);
       }else if(a.role.equals("perrin")){
         Pq01Motion.Point target=configuredPoint(p,a.leg?"perrin_a":"perrin_b",null);
-        if(target!=null)travel(v,a,target,()->{a.leg=!a.leg;a.nextWork=clock+120;},reason->{a.nextWork=clock+600;say(p,"Service de Perrin suspendu : "+reason);});
+        if(target!=null)travel(v,a,target,()->{a.leg=!a.leg;a.nextWork=clock+120;},reason->{a.nextWork=clock+600;diagnostic(p,"Service de Perrin suspendu : "+reason);});
       }
     }
     if(v.actors.isEmpty()&&!active)VIEWS.remove(v.account);

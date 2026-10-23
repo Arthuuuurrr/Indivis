@@ -6,7 +6,7 @@ sys.path.insert(0,str(ROOT/'work/pq01_rebuild'))
 from model import N,IDS,ROLES
 R2=HERE/'r2'
 JAR=ROOT/'upload/haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b.jar'
-FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3.zip','journal':'haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF3.jar'}
+FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF4.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip','journal':'haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF4.jar'}
 def sha(b):return hashlib.sha256(b).hexdigest()
 def load(p):
  with zipfile.ZipFile(p) as z:assert z.testzip() is None;return {n:z.read(n) for n in z.namelist() if not n.endswith('/')}
@@ -65,10 +65,13 @@ def build():
  for k in ('core','quests'):
   meta=json.loads(packs[k]['pack.mcmeta']);meta['pack']['description']=meta['pack']['description'].split(' — PQ01-R2')[0]+' — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture'
   packs[k]['pack.mcmeta']=(json.dumps(meta,ensure_ascii=False,indent=2)+'\n').encode()
+ from hf4 import apply
+ apply(packs)
  classes=HERE/'classes';contracts=HERE/'compile_contracts';contract_classes=HERE/'contract_classes'
  for p in (classes,contracts,contract_classes):shutil.rmtree(p,ignore_errors=True);p.mkdir()
  definitions={
  'net/fabricmc/api/ModInitializer.java':'package net.fabricmc.api; public interface ModInitializer { void onInitialize(); }',
+ 'net/fabricmc/api/ClientModInitializer.java':'package net.fabricmc.api; public interface ClientModInitializer { void onInitializeClient(); }',
  'net/minecraft/class_1297.java':'package net.minecraft; public class class_1297 { public java.util.Set<String> method_5752(){return null;} }',
  'net/minecraft/class_1352.java':'package net.minecraft; public class class_1352 {}',
  'net/hautecapitale/quetes/sequence/SequenceBridge.java':'''package net.hautecapitale.quetes.sequence; public class SequenceBridge {static Object call(Object o,String n,Object...a){return null;} static Object server(Object p){return null;} static java.util.UUID uuid(Object p){return null;} static int score(Object p,String n){return 0;} static void run(Object p,String c){} static String quote(String s){return s;} }''',
@@ -83,7 +86,7 @@ def build():
  if mixin_classpath:definitions={n:s for n,s in definitions.items() if not n.startswith('org/spongepowered/')}
  for n,s in definitions.items():p=contracts/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(s+'\n')
  ids=HERE/'java/net/hautecapitale/quetes/sequence/Pq01Ids.java'
- ids.write_text('package net.hautecapitale.quetes.sequence; import java.util.*; public final class Pq01Ids {private static final Map<String,Integer> IDS=Map.ofEntries('+','.join('Map.entry('+json.dumps(k)+','+str(v)+')' for k,v in IDS.items())+'); public static int id(String s){return IDS.get(s);} }\n')
+ ids.write_text('package net.hautecapitale.quetes.sequence; import java.util.*; public final class Pq01Ids {private static final Map<String,Integer> IDS=Map.ofEntries('+','.join('Map.entry('+json.dumps(k)+','+str(v)+')' for k,v in IDS.items())+'); private static final Map<String,String> ROLES=Map.ofEntries('+','.join('Map.entry('+json.dumps(k)+','+json.dumps(N[k]['role'])+')' for k in IDS)+'); public static int id(String s){return IDS.get(s);} public static String role(String s){return ROLES.get(s);} public static Set<String> keys(){return IDS.keySet();} }\n')
  javac=['java','--module','jdk.compiler/com.sun.tools.javac.Main']
  run([*javac,'-d',contract_classes,*sorted(contracts.rglob('*.java'))],'compile_contracts.log')
  exports=['--add-exports','java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED','--add-exports','java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED','--add-exports','java.base/jdk.internal.org.objectweb.asm.tree.analysis=ALL-UNNAMED']
@@ -92,8 +95,9 @@ def build():
  vis='net/hautecapitale/quetes/visibility/QuestVisibility.class';inp=HERE/'QuestVisibility.original.class';inp.write_bytes(packs['journal'][vis]);patched=HERE/'QuestVisibility.patched.class'
  run(['java',*exports,'-cp',classes,'PatchVisibility',inp,patched],'patch.log');packs['journal'][vis]=patched.read_bytes()
  for p in sorted((classes/'net/hautecapitale').rglob('*.class')):packs['journal'][str(p.relative_to(classes))]=p.read_bytes()
- meta=json.loads(packs['journal']['fabric.mod.json']);meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF3';meta['description']+=' PQ01-R3-HF3 : ouverture de la capture sur les actions natives EasyNPC et refus de contexte explicites ; scènes personnelles conservées.'
+ meta=json.loads(packs['journal']['fabric.mod.json']);meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF4';meta['description']+=' PQ01-R3-HF4 : scènes, interlocuteurs, lecture continue et Anselme du navire corrigés.'
  meta['entrypoints']['main'].append('net.hautecapitale.quetes.sequence.Pq01Initializer')
+ meta['entrypoints'].setdefault('client',[]).append('net.hautecapitale.quetes.sequence.Pq01Client')
  dialogue=load(next((ROOT/'upload').glob('haute-capitale-dialogue*.jar')));dialogue_id=json.loads(dialogue['fabric.mod.json'])['id'];meta['depends'][dialogue_id]='>=0.1.0'
  meta['mixins'].append('indivis_pq01.mixins.json');packs['journal']['fabric.mod.json']=(json.dumps(meta,ensure_ascii=False,indent=2)+'\n').encode()
  packs['journal']['indivis_pq01.mixins.json']=json.dumps({'required':True,'minVersion':'0.8','package':'net.hautecapitale.quetes.pq01.mixin','compatibilityLevel':'JAVA_21','mixins':['Pq01EntityMixin','Pq01GoalMixin'],'injectors':{'defaultRequire':1}},indent=2).encode()

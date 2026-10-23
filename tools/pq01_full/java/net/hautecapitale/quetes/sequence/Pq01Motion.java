@@ -2,6 +2,8 @@ package net.hautecapitale.quetes.sequence;
 
 /** Contrôleur de trajet indépendant de Minecraft ; le port déplace réellement l'acteur. */
 public final class Pq01Motion {
+  // La navigation au sol d'EasyNPC s'arrête avant le centre exact du bloc.
+  private static final double ARRIVAL_RADIUS=1.25;
   public record Point(String dimension,double x,double y,double z) {
     public double distance2(Point p){double a=x-p.x,b=y-p.y,c=z-p.z;return a*a+b*b+c*c;}
   }
@@ -16,7 +18,7 @@ public final class Pq01Motion {
     if(!port.valid()){fail("acteur ou personnage indisponible");return;}
     Point at=port.position();
     if(!at.dimension.equals(target.dimension)||at.distance2(target)>24*24){fail("point de trajet hors portée ou dans une autre dimension");return;}
-    if(at.distance2(target)<=0.8*0.8){finish();return;}
+    if(at.distance2(target)<=ARRIVAL_RADIUS*ARRIVAL_RADIUS){finish();return;}
     if(!port.navigate(target))fail("aucun chemin au sol vers le point configuré");
   }
   public void tick(){
@@ -24,7 +26,7 @@ public final class Pq01Motion {
     if(!port.valid()){fail("acteur ou contexte de personnage perdu");return;}
     Point at=port.position();
     if(!at.dimension.equals(target.dimension)){fail("dimension changée");return;}
-    if(at.distance2(target)<=0.8*0.8){finish();return;}
+    if(at.distance2(target)<=ARRIVAL_RADIUS*ARRIVAL_RADIUS){finish();return;}
     if(++ticks>=timeout){fail("délai de déplacement dépassé");return;}
     if(ticks%40==0&&!port.navigate(target))fail("chemin devenu inaccessible");
   }

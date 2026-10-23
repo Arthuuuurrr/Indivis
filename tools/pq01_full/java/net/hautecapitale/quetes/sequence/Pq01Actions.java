@@ -19,7 +19,7 @@ final class Pq01Actions {
   }
   static String function(String key,String event){
     command(key,event);String role=key.substring(0,key.lastIndexOf('_')),phase=key.substring(key.lastIndexOf('_')+1);
-    return event.equals("interact")?Pq01Bridge.hook(role,phase):"function capitale:quest/spawn_dirigeable_couronne/"+(role.equals("geraud")?"geraud_large_start_self":"capitaine_large/near_self");
+    return event.equals("interact")?Pq01Bridge.hook(role,phase):role.equals("geraud")?"function capitale:quest/spawn_dirigeable_couronne/geraud_large_start_self":"function capitale:pq01/near_altheon_self";
   }
   static String normalizedCommand(String text){
     String s=text.strip().replaceFirst("^/","");
@@ -31,6 +31,7 @@ final class Pq01Actions {
     if(!kind.equals("COMMAND"))return false;
     text=normalizedCommand(text);
     if(text.equals(function(key,event)))return true;
+    if(event.equals("near")&&key.equals("altheon_large")&&text.equals("function capitale:quest/spawn_dirigeable_couronne/capitaine_large/near_self"))return true;
     if(event.equals("interact")&&key.equals("geraud_large"))return text.equals("function capitale:quest/spawn_dirigeable_couronne/geraud_large_start_self");
     if(event.equals("interact")&&key.equals("geraud_quai"))return text.equals("function capitale:quest/spawn_dirigeable_couronne/geraud_quai_interact_self");
     return false;
@@ -110,7 +111,7 @@ final class Pq01Actions {
       if(player==null||args[1]==null)return null;
       if(words instanceof List<?> list&&list.size()==2&&list.get(0) instanceof String key&&list.get(1) instanceof String event){
         try{Pq01Bridge.interact(player,call(args[1],"getEntity"),key,event);}
-        catch(RuntimeException e){Pq01Bridge.report(e);if(player!=null)Pq01Bridge.say(player,"Interaction PQ01 annulée : "+e.getMessage());}
+        catch(RuntimeException e){Pq01Bridge.report(e);if(player!=null)Pq01Bridge.unavailable(player,"Interaction PQ01 annulée : "+e.getMessage());}
       }
       return null;
     });

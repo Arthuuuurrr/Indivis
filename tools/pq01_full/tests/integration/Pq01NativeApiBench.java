@@ -24,7 +24,13 @@ public final class Pq01NativeApiBench {
     methods("net.minecraft.class_1937",0,"method_27983");
     methods("net.minecraft.class_5321",0,"method_29177");
     methods("net.minecraft.class_1937",3,"method_8333");
-    methods("net.minecraft.class_3218",1,"method_66347");
+    methods("net.minecraft.class_3218",1,"method_66347","method_8649");
+    methods("net.minecraft.class_1297",0,"method_5864");
+    methods("net.minecraft.class_1297",1,"method_5826","method_5651");
+    methods("net.minecraft.class_1299",2,"method_5883");
+    methods("net.minecraft.class_1299",1,"method_5890");
+    methods("net.minecraft.class_2561",0,"method_10866");
+    methods("net.minecraft.class_2583",0,"method_10955");
     methods("net.minecraft.class_238",1,"method_1014");
     methods("net.minecraft.class_2487",2,"method_68564","method_68083","method_10549","method_10556");
     methods("net.minecraft.class_2487",1,"method_10551","method_10580");
@@ -41,7 +47,7 @@ public final class Pq01NativeApiBench {
     methods("net.minecraft.class_1355",1,"method_35113");
     methods("net.minecraft.class_1408",0,"method_6340");
     methods("net.minecraft.class_1408",4,"method_6337");
-    methods("net.minecraft.class_1297",1,"method_30949","method_5697");
+    methods("net.minecraft.class_1297",1,"method_30949","method_5697","method_5738");
     methods("net.minecraft.class_1297",0,"method_5696","method_21749","method_21750","method_33189","method_49108","method_5732","method_5810");
     methods("net.minecraft.class_1355",2,"method_6277");
     String easy="de.markusbordihn.easynpc.";

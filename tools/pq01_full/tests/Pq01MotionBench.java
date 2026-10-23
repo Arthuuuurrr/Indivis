@@ -18,6 +18,7 @@ public final class Pq01MotionBench {
     Port p=new Port();Pq01Motion m=motion(p,6,300);m.start();check(p.moves==1,"navigation native demandée");check(p.arrivals==0,"pas de réplique avant arrivée");p.at(5.3);m.tick();check(m.done()&&p.arrivals==1&&p.stops==1,"arrivée et arrêt");cases++;
     m.tick();m.start();m.cancel();check(p.arrivals==1&&p.moves==1&&p.stops==1,"aucun callback après fin");cases++;
     p=new Port();m=motion(p,0.5,300);m.start();check(m.done()&&p.moves==0&&p.arrivals==1,"déjà arrivé");cases++;
+    p=new Port();m=motion(p,8.5,300);m.start();p.at(7.5279737);p.path=false;m.tick();check(m.done()&&p.arrivals==1&&p.failures==0,"arrêt natif à 0,972 bloc accepté avant replanification");cases++;
     p=new Port();p.path=false;m=motion(p,6,300);m.start();check(m.done()&&p.failures==1&&p.arrivals==0&&p.reason.contains("aucun chemin"),"chemin refusé");cases++;
     p=new Port();p.valid=false;m=motion(p,6,300);m.start();check(m.done()&&p.moves==0&&p.failures==1,"acteur absent avant départ");cases++;
     p=new Port();m=new Pq01Motion(p,new Point("minecraft:the_nether",6,80,0),300);m.start();check(m.done()&&p.moves==0&&p.failures==1,"autre dimension au départ");cases++;
