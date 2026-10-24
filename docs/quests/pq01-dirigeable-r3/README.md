@@ -1,19 +1,21 @@
-# PQ01 — Correctif de cadence et service de Perrin — R3-HF8
+# PQ01 — Blocs de lecture, orientation et doublage — R3-HF9
 
 24 octobre 2026 — Minecraft Fabric 1.21.11, EasyNPC 7.16.0 et Dialogue b10.
 
-Les répliques successives de Géraud, d’Althéon et des autres PNJ avancent dès la fin de la frappe et de la voix. Le délai supplémentaire de lecture et le repos final sont retirés lorsque le texte se révèle progressivement. Le temps de lecture reste disponible lorsque la frappe est désactivée ; les questions du joueur restent manuelles.
+Les répliques consécutives d’un même PNJ sont regroupées. Aucun texte ne disparaît à la fin de sa frappe : le bloc et ses pages restent affichés jusqu’à Espace, Entrée ou un clic du joueur. Les véritables réponses restent des choix, sans ligne fictive « Continuer » dans la bouche du protagoniste.
 
-Perrin peut commencer son service avant la première progression PQ01. Son trajet vise le bloc exact, afin que des points proches ne soient pas tous considérés comme déjà atteints. Le correctif conserve les points existants, le fonctionnement de Gautier, les questions répétables, la conclusion verte et le filtre des notifications.
+Géraud regarde le joueur au début. Il ne se tourne vers Gautier que pendant l’interruption. « Matelot ! » reste avec la remontrance, au même endroit et sans temporisation qui l’efface.
 
-**Remplacer uniquement le JAR du mod de quêtes/journal sur le serveur et chaque client. Conserver le core HF7 et `hc_quetes` HF4.** Aucun PNJ ni point à replacer, aucune quête à réinitialiser.
+Perrin conserve sa ronde et ses points. Le correctif récupère aussi une vitesse de base nulle héritée d’un PNJ décoratif, seulement pour l’acteur temporaire. Son état propre sur la carte reste à établir : une commande de diagnostic ciblée est incluse.
 
-- [Installation et toutes les commandes de pose](docs/INSTALLATION_ET_POSE_PNJ.md)
-- [Causes, portée et vérifications](HOTFIX_CADENCE_PERRIN_R3_HF8.md)
-- [Relecture et recette](docs/TESTS_EN_JEU.md)
-- [Direction humaine en français](direction_acteur/DIRECTION_ACTEUR_FR.md)
-- [Prompts Qwen en français](direction_acteur/PROMPTS_QWEN_FR.md)
+**Remplacer le core sur le serveur et le journal sur le serveur et chaque client. Conserver `hc_quetes` HF4. Aucun PNJ, point ou liaison à replacer.**
 
-Le dossier vocal contient six fiches de rôle, 92 directions de prise, les textes exacts et des prompts individuels ou regroupés en JSONL. Aucun fichier audio n’est généré ou remplacé.
+- [Installation et commandes complètes](docs/INSTALLATION_ET_POSE_PNJ.md)
+- [Changements, vérifications et limites](HOTFIX_BLOCS_ORIENTATION_R3_HF9.md)
+- [Recette en jeu](docs/TESTS_EN_JEU.md)
+- [Intégration future des doublages](docs/DOUBLAGE_BLOCS.md)
+- [Correspondance blocs et prises](config/BLOCS_ET_PRISES.json)
 
-Sources et documentation : [PR GitHub nº177](https://github.com/Arthuuuurrr/Indivis/pull/177). Le banc couvre les fonctions, le contrôleur et la navigation réels ; le rendu et le monde utilisateur restent hors du banc.
+Les 92 prises et leurs identifiants ne changent pas. Une file serveur joue les prises d’un bloc dans l’ordre, attend leurs durées et annule le reste à la fermeture. Aucun audio nouveau ni nouveau JAR Indivis Voices n’est livré.
+
+Le banc valide fonctions, contrôleurs et navigation réels ; le rendu et la géométrie de la carte utilisateur restent hors du banc. [GitHub nº177](https://github.com/Arthuuuurrr/Indivis/pull/177).

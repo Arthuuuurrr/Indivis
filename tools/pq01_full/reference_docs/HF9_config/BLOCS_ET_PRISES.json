@@ -1,0 +1,3118 @@
+[
+  {
+    "block": "a1",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 1,
+    "parts": [
+      {
+        "take": "a1",
+        "hook": "voices.a1",
+        "text": [
+          "Ah ! Vous voilà enfin sur vos jambes. Doucement, tout de même. Vous nous avez fait une sacrée frayeur."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Où suis-je ?",
+        "target": "a2"
+      }
+    ]
+  },
+  {
+    "block": "a2",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 2,
+    "parts": [
+      {
+        "take": "a2",
+        "hook": "voices.a2",
+        "text": [
+          "À bord d'un dirigeable de la Couronne. On vous a récupéré sur un rocher, inconscient. Quant à savoir comment vous avez atterri là... ça, c'est une autre histoire."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "a3"
+      }
+    ]
+  },
+  {
+    "block": "a3",
+    "speaker": "Gautier",
+    "legacy_node_id": 3,
+    "parts": [
+      {
+        "take": "a3",
+        "hook": "voices.a3",
+        "text": [
+          "Quartier-maître ! Le capitaine a demandé que notre passager lui soit présenté avant l'arrivée. Nous devrions peut-être..."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "a4"
+      }
+    ]
+  },
+  {
+    "block": "a4",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 4,
+    "parts": [
+      {
+        "take": "a4",
+        "hook": "voices.a4",
+        "text": [
+          "Matelot !"
+        ]
+      },
+      {
+        "take": "a5",
+        "hook": "voices.a5",
+        "text": [
+          "Je connais les ordres du capitaine. Retournez à votre poste et laissez-moi faire mon travail."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "a6"
+      }
+    ]
+  },
+  {
+    "block": "a5",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 5,
+    "parts": [
+      {
+        "take": "a5",
+        "hook": "voices.a5",
+        "text": [
+          "Je connais les ordres du capitaine. Retournez à votre poste et laissez-moi faire mon travail."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "a6"
+      }
+    ]
+  },
+  {
+    "block": "a6",
+    "speaker": "Gautier",
+    "legacy_node_id": 6,
+    "parts": [
+      {
+        "take": "a6",
+        "hook": "voices.a6",
+        "text": [
+          "Bien, quartier-maître !"
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "a7"
+      }
+    ]
+  },
+  {
+    "block": "a7",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 7,
+    "parts": [
+      {
+        "take": "a7",
+        "hook": "voices.a7",
+        "text": [
+          "Enfin... pour une fois qu'il prend une initiative, il aurait pu choisir un meilleur moment."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Le capitaine veut me voir ?",
+        "target": "a8"
+      }
+    ]
+  },
+  {
+    "block": "a8",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 8,
+    "parts": [
+      {
+        "take": "a8",
+        "hook": "voices.a8",
+        "text": [
+          "En effet. Mais vous venez à peine de vous réveiller. Prenez une minute pour retrouver vos esprits, puis allez le rejoindre. Sa cabine est à l'arrière, sous le poste du timonier."
+        ]
+      },
+      {
+        "take": "ga_menu",
+        "hook": "voices.ga_menu",
+        "text": [
+          "Vous avez besoin d'autre chose ? Faites vite, j'ai encore du travail avant notre arrivée."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous étiez là quand on m'a retrouvé ?",
+        "target": "ga_12"
+      },
+      {
+        "label": "Quel est votre rôle sur ce dirigeable ?",
+        "target": "ga_14"
+      },
+      {
+        "label": "Vous connaissez le capitaine depuis longtemps ?",
+        "target": "ga_16"
+      },
+      {
+        "label": "Le matelot avait pourtant raison, non ?",
+        "target": "ga_18"
+      },
+      {
+        "label": "Je vais rejoindre le capitaine.",
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "block": "ga_menu",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 9,
+    "parts": [
+      {
+        "take": "ga_menu",
+        "hook": "voices.ga_menu",
+        "text": [
+          "Vous avez besoin d'autre chose ? Faites vite, j'ai encore du travail avant notre arrivée."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous étiez là quand on m'a retrouvé ?",
+        "target": "ga_12"
+      },
+      {
+        "label": "Quel est votre rôle sur ce dirigeable ?",
+        "target": "ga_14"
+      },
+      {
+        "label": "Vous connaissez le capitaine depuis longtemps ?",
+        "target": "ga_16"
+      },
+      {
+        "label": "Le matelot avait pourtant raison, non ?",
+        "target": "ga_18"
+      },
+      {
+        "label": "Je vais rejoindre le capitaine.",
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "block": "ga_12",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 10,
+    "parts": [
+      {
+        "take": "ga_12",
+        "hook": "voices.ga_12",
+        "text": [
+          "Oui. Pas tous les jours qu'on interrompt un retour de mission pour récupérer quelqu'un sur un rocher. Vous ne répondiez à rien. On vous a installé à bord et on a fait ce qu'on pouvait."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous étiez là quand on m'a retrouvé ?",
+        "target": "ga_12"
+      },
+      {
+        "label": "Quel est votre rôle sur ce dirigeable ?",
+        "target": "ga_14"
+      },
+      {
+        "label": "Vous connaissez le capitaine depuis longtemps ?",
+        "target": "ga_16"
+      },
+      {
+        "label": "Le matelot avait pourtant raison, non ?",
+        "target": "ga_18"
+      },
+      {
+        "label": "Je vais rejoindre le capitaine.",
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "block": "ga_14",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 11,
+    "parts": [
+      {
+        "take": "ga_14",
+        "hook": "voices.ga_14",
+        "text": [
+          "Quartier-maître. Je m'assure que le matériel soit à sa place, que les hommes fassent leur travail et que le capitaine n'ait pas à régler chaque petit problème lui-même. Croyez-moi, ça en fait déjà suffisamment."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous étiez là quand on m'a retrouvé ?",
+        "target": "ga_12"
+      },
+      {
+        "label": "Quel est votre rôle sur ce dirigeable ?",
+        "target": "ga_14"
+      },
+      {
+        "label": "Vous connaissez le capitaine depuis longtemps ?",
+        "target": "ga_16"
+      },
+      {
+        "label": "Le matelot avait pourtant raison, non ?",
+        "target": "ga_18"
+      },
+      {
+        "label": "Je vais rejoindre le capitaine.",
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "block": "ga_16",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 12,
+    "parts": [
+      {
+        "take": "ga_16",
+        "hook": "voices.ga_16",
+        "text": [
+          "Assez pour savoir quand il vaut mieux le laisser travailler. C'est un bon officier. Exigeant, oui, mais il n'envoie pas ses hommes faire ce qu'il refuserait lui-même."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous étiez là quand on m'a retrouvé ?",
+        "target": "ga_12"
+      },
+      {
+        "label": "Quel est votre rôle sur ce dirigeable ?",
+        "target": "ga_14"
+      },
+      {
+        "label": "Vous connaissez le capitaine depuis longtemps ?",
+        "target": "ga_16"
+      },
+      {
+        "label": "Le matelot avait pourtant raison, non ?",
+        "target": "ga_18"
+      },
+      {
+        "label": "Je vais rejoindre le capitaine.",
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "block": "ga_18",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 13,
+    "parts": [
+      {
+        "take": "ga_18",
+        "hook": "voices.ga_18",
+        "text": [
+          "Sur les ordres ? Oui. Sur le moment de venir me les rappeler ? Beaucoup moins. Il apprendra."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous étiez là quand on m'a retrouvé ?",
+        "target": "ga_12"
+      },
+      {
+        "label": "Quel est votre rôle sur ce dirigeable ?",
+        "target": "ga_14"
+      },
+      {
+        "label": "Vous connaissez le capitaine depuis longtemps ?",
+        "target": "ga_16"
+      },
+      {
+        "label": "Le matelot avait pourtant raison, non ?",
+        "target": "ga_18"
+      },
+      {
+        "label": "Je vais rejoindre le capitaine.",
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "block": "ga_20",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 14,
+    "parts": [
+      {
+        "take": "ga_20",
+        "hook": "voices.ga_20",
+        "text": [
+          "Bonne idée. Et ne vous sentez pas obligé de vous mettre au garde-à-vous : vous êtes notre passager, pas une nouvelle recrue."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  },
+  {
+    "block": "gautier_menu",
+    "speaker": "Gautier",
+    "legacy_node_id": 15,
+    "parts": [
+      {
+        "take": "gautier_menu",
+        "hook": "voices.gautier_menu",
+        "text": [
+          "Ah, vous voilà. Je crains de ne pas avoir choisi le meilleur moment pour intervenir tout à l'heure."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Géraud avait l'air furieux.",
+        "target": "gautier_23"
+      },
+      {
+        "label": "Vous avez peur de lui ?",
+        "target": "gautier_25"
+      },
+      {
+        "label": "Vous travaillez sur ce dirigeable depuis longtemps ?",
+        "target": "gautier_27"
+      },
+      {
+        "label": "Vous tenez beaucoup à votre carrière.",
+        "target": "gautier_29"
+      },
+      {
+        "label": "Où puis-je trouver le capitaine ?",
+        "target": "gautier_31"
+      },
+      {
+        "label": "Je vous laisse reprendre votre service.",
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "block": "gautier_23",
+    "speaker": "Gautier",
+    "legacy_node_id": 16,
+    "parts": [
+      {
+        "take": "gautier_23",
+        "hook": "voices.gautier_23",
+        "text": [
+          "Furieux ? Non, je ne crois pas. Enfin... il a connu de meilleurs moments pour me voir. Je pensais simplement respecter les consignes."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Géraud avait l'air furieux.",
+        "target": "gautier_23"
+      },
+      {
+        "label": "Vous avez peur de lui ?",
+        "target": "gautier_25"
+      },
+      {
+        "label": "Vous travaillez sur ce dirigeable depuis longtemps ?",
+        "target": "gautier_27"
+      },
+      {
+        "label": "Vous tenez beaucoup à votre carrière.",
+        "target": "gautier_29"
+      },
+      {
+        "label": "Où puis-je trouver le capitaine ?",
+        "target": "gautier_31"
+      },
+      {
+        "label": "Je vous laisse reprendre votre service.",
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "block": "gautier_25",
+    "speaker": "Gautier",
+    "legacy_node_id": 17,
+    "parts": [
+      {
+        "take": "gautier_25",
+        "hook": "voices.gautier_25",
+        "text": [
+          "Peur ? Certainement pas ! C'est un excellent quartier-maître. Mais je préférerais éviter qu'il ait à me reprendre une deuxième fois aujourd'hui."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Géraud avait l'air furieux.",
+        "target": "gautier_23"
+      },
+      {
+        "label": "Vous avez peur de lui ?",
+        "target": "gautier_25"
+      },
+      {
+        "label": "Vous travaillez sur ce dirigeable depuis longtemps ?",
+        "target": "gautier_27"
+      },
+      {
+        "label": "Vous tenez beaucoup à votre carrière.",
+        "target": "gautier_29"
+      },
+      {
+        "label": "Où puis-je trouver le capitaine ?",
+        "target": "gautier_31"
+      },
+      {
+        "label": "Je vous laisse reprendre votre service.",
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "block": "gautier_27",
+    "speaker": "Gautier",
+    "legacy_node_id": 18,
+    "parts": [
+      {
+        "take": "gautier_27",
+        "hook": "voices.gautier_27",
+        "text": [
+          "Suffisamment pour connaître mon service. J'espère d'ailleurs obtenir davantage de responsabilités. J'ai déjà pris certaines dispositions pour... Enfin, cela ne vous intéresse probablement pas."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Géraud avait l'air furieux.",
+        "target": "gautier_23"
+      },
+      {
+        "label": "Vous avez peur de lui ?",
+        "target": "gautier_25"
+      },
+      {
+        "label": "Vous travaillez sur ce dirigeable depuis longtemps ?",
+        "target": "gautier_27"
+      },
+      {
+        "label": "Vous tenez beaucoup à votre carrière.",
+        "target": "gautier_29"
+      },
+      {
+        "label": "Où puis-je trouver le capitaine ?",
+        "target": "gautier_31"
+      },
+      {
+        "label": "Je vous laisse reprendre votre service.",
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "block": "gautier_29",
+    "speaker": "Gautier",
+    "legacy_node_id": 19,
+    "parts": [
+      {
+        "take": "gautier_29",
+        "hook": "voices.gautier_29",
+        "text": [
+          "Évidemment. On n'obtient pas un avancement en attendant que les choses arrivent toutes seules. Encore faut-il se faire remarquer pour les bonnes raisons."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Géraud avait l'air furieux.",
+        "target": "gautier_23"
+      },
+      {
+        "label": "Vous avez peur de lui ?",
+        "target": "gautier_25"
+      },
+      {
+        "label": "Vous travaillez sur ce dirigeable depuis longtemps ?",
+        "target": "gautier_27"
+      },
+      {
+        "label": "Vous tenez beaucoup à votre carrière.",
+        "target": "gautier_29"
+      },
+      {
+        "label": "Où puis-je trouver le capitaine ?",
+        "target": "gautier_31"
+      },
+      {
+        "label": "Je vous laisse reprendre votre service.",
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "block": "gautier_31",
+    "speaker": "Gautier",
+    "legacy_node_id": 20,
+    "parts": [
+      {
+        "take": "gautier_31",
+        "hook": "voices.gautier_31",
+        "text": [
+          "À l'arrière, sous le poste du timonier. Présentez-vous directement à sa cabine. Vous ne pouvez pas vous tromper."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Géraud avait l'air furieux.",
+        "target": "gautier_23"
+      },
+      {
+        "label": "Vous avez peur de lui ?",
+        "target": "gautier_25"
+      },
+      {
+        "label": "Vous travaillez sur ce dirigeable depuis longtemps ?",
+        "target": "gautier_27"
+      },
+      {
+        "label": "Vous tenez beaucoup à votre carrière.",
+        "target": "gautier_29"
+      },
+      {
+        "label": "Où puis-je trouver le capitaine ?",
+        "target": "gautier_31"
+      },
+      {
+        "label": "Je vous laisse reprendre votre service.",
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "block": "gautier_33",
+    "speaker": "Gautier",
+    "legacy_node_id": 21,
+    "parts": [
+      {
+        "take": "gautier_33",
+        "hook": "voices.gautier_33",
+        "text": [
+          "Merci. Et... j'espère que vous vous remettrez rapidement."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  },
+  {
+    "block": "hugues_menu",
+    "speaker": "Hugues",
+    "legacy_node_id": 22,
+    "parts": [
+      {
+        "take": "hugues_menu",
+        "hook": "voices.hugues_menu",
+        "text": [
+          "Trois fois qu'on me fait recompter les mêmes caisses... Ah, pardon. Vous cherchiez quelque chose ?"
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Qu'est-ce que vous transportiez ?",
+        "target": "hugues_36"
+      },
+      {
+        "label": "Pourquoi avoir livré des canons à Avaleiv ?",
+        "target": "hugues_38"
+      },
+      {
+        "label": "Vous n'aimez pas votre travail ?",
+        "target": "hugues_40"
+      },
+      {
+        "label": "Vous connaissiez déjà Avaleiv ?",
+        "target": "hugues_42"
+      },
+      {
+        "label": "Vous étiez là lorsqu'on m'a secouru ?",
+        "target": "hugues_44"
+      },
+      {
+        "label": "Écouter leur échange sur les procédures.",
+        "target": "banter_start"
+      },
+      {
+        "label": "Je vous laisse à vos caisses.",
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "block": "hugues_36",
+    "speaker": "Hugues",
+    "legacy_node_id": 23,
+    "parts": [
+      {
+        "take": "hugues_36",
+        "hook": "voices.hugues_36",
+        "text": [
+          "Des canons. Enfin, nous les avons livrés à Avaleiv. C'est déjà ça de moins à surveiller. Vous auriez vu le temps qu'il nous a fallu pour les faire décharger..."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Qu'est-ce que vous transportiez ?",
+        "target": "hugues_36"
+      },
+      {
+        "label": "Pourquoi avoir livré des canons à Avaleiv ?",
+        "target": "hugues_38"
+      },
+      {
+        "label": "Vous n'aimez pas votre travail ?",
+        "target": "hugues_40"
+      },
+      {
+        "label": "Vous connaissiez déjà Avaleiv ?",
+        "target": "hugues_42"
+      },
+      {
+        "label": "Vous étiez là lorsqu'on m'a secouru ?",
+        "target": "hugues_44"
+      },
+      {
+        "label": "Écouter leur échange sur les procédures.",
+        "target": "banter_start"
+      },
+      {
+        "label": "Je vous laisse à vos caisses.",
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "block": "hugues_38",
+    "speaker": "Hugues",
+    "legacy_node_id": 24,
+    "parts": [
+      {
+        "take": "hugues_38",
+        "hook": "voices.hugues_38",
+        "text": [
+          "Parce qu'on nous en a donné l'ordre. Quant à savoir ce qui s'est négocié là-bas, il faudrait demander à ceux qui signent les papiers. Moi, je m'occupe de ce qu'ils nous font transporter."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Qu'est-ce que vous transportiez ?",
+        "target": "hugues_36"
+      },
+      {
+        "label": "Pourquoi avoir livré des canons à Avaleiv ?",
+        "target": "hugues_38"
+      },
+      {
+        "label": "Vous n'aimez pas votre travail ?",
+        "target": "hugues_40"
+      },
+      {
+        "label": "Vous connaissiez déjà Avaleiv ?",
+        "target": "hugues_42"
+      },
+      {
+        "label": "Vous étiez là lorsqu'on m'a secouru ?",
+        "target": "hugues_44"
+      },
+      {
+        "label": "Écouter leur échange sur les procédures.",
+        "target": "banter_start"
+      },
+      {
+        "label": "Je vous laisse à vos caisses.",
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "block": "hugues_40",
+    "speaker": "Hugues",
+    "legacy_node_id": 25,
+    "parts": [
+      {
+        "take": "hugues_40",
+        "hook": "voices.hugues_40",
+        "text": [
+          "Si je le détestais vraiment, je ne serais plus là. Et puis, il y a pire comme équipage. Ne répétez pas ça à Géraud, il finirait par se croire indispensable."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Qu'est-ce que vous transportiez ?",
+        "target": "hugues_36"
+      },
+      {
+        "label": "Pourquoi avoir livré des canons à Avaleiv ?",
+        "target": "hugues_38"
+      },
+      {
+        "label": "Vous n'aimez pas votre travail ?",
+        "target": "hugues_40"
+      },
+      {
+        "label": "Vous connaissiez déjà Avaleiv ?",
+        "target": "hugues_42"
+      },
+      {
+        "label": "Vous étiez là lorsqu'on m'a secouru ?",
+        "target": "hugues_44"
+      },
+      {
+        "label": "Écouter leur échange sur les procédures.",
+        "target": "banter_start"
+      },
+      {
+        "label": "Je vous laisse à vos caisses.",
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "block": "hugues_42",
+    "speaker": "Hugues",
+    "legacy_node_id": 26,
+    "parts": [
+      {
+        "take": "hugues_42",
+        "hook": "voices.hugues_42",
+        "text": [
+          "J'y ai accosté plus d'une fois. C'est un beau pays, du peu que j'en ai vu. Mais entre les cargaisons et les ordres de départ, on ne nous laisse pas vraiment le temps de jouer les touristes."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Qu'est-ce que vous transportiez ?",
+        "target": "hugues_36"
+      },
+      {
+        "label": "Pourquoi avoir livré des canons à Avaleiv ?",
+        "target": "hugues_38"
+      },
+      {
+        "label": "Vous n'aimez pas votre travail ?",
+        "target": "hugues_40"
+      },
+      {
+        "label": "Vous connaissiez déjà Avaleiv ?",
+        "target": "hugues_42"
+      },
+      {
+        "label": "Vous étiez là lorsqu'on m'a secouru ?",
+        "target": "hugues_44"
+      },
+      {
+        "label": "Écouter leur échange sur les procédures.",
+        "target": "banter_start"
+      },
+      {
+        "label": "Je vous laisse à vos caisses.",
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "block": "hugues_44",
+    "speaker": "Hugues",
+    "legacy_node_id": 27,
+    "parts": [
+      {
+        "take": "hugues_44",
+        "hook": "voices.hugues_44",
+        "text": [
+          "Oui. J'ai vu qu'on vous remontait à bord. Vous ne donniez pas franchement l'impression d'avoir passé une bonne journée. Enfin, regardez-vous : vous tenez debout et vous posez des questions. C'est encourageant."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Qu'est-ce que vous transportiez ?",
+        "target": "hugues_36"
+      },
+      {
+        "label": "Pourquoi avoir livré des canons à Avaleiv ?",
+        "target": "hugues_38"
+      },
+      {
+        "label": "Vous n'aimez pas votre travail ?",
+        "target": "hugues_40"
+      },
+      {
+        "label": "Vous connaissiez déjà Avaleiv ?",
+        "target": "hugues_42"
+      },
+      {
+        "label": "Vous étiez là lorsqu'on m'a secouru ?",
+        "target": "hugues_44"
+      },
+      {
+        "label": "Écouter leur échange sur les procédures.",
+        "target": "banter_start"
+      },
+      {
+        "label": "Je vous laisse à vos caisses.",
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "block": "hugues_46",
+    "speaker": "Hugues",
+    "legacy_node_id": 28,
+    "parts": [
+      {
+        "take": "hugues_46",
+        "hook": "voices.hugues_46",
+        "text": [
+          "Ah, ne m'en parlez plus, de ces fichues caisses ! Bonne continuation."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  },
+  {
+    "block": "anselme_menu",
+    "speaker": "Anselme",
+    "legacy_node_id": 29,
+    "parts": [
+      {
+        "take": "anselme_menu",
+        "hook": "voices.anselme_menu",
+        "text": [
+          "Un instant... Un instant... Voilà. Excusez-moi. Vous vouliez quelque chose ?"
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "C'est difficile de piloter un dirigeable ?",
+        "target": "anselme_49"
+      },
+      {
+        "label": "Vous semblez aimer votre métier.",
+        "target": "anselme_51"
+      },
+      {
+        "label": "Vous avez aperçu l'endroit où l'on m'a retrouvé ?",
+        "target": "anselme_53"
+      },
+      {
+        "label": "Comment fonctionne ce dirigeable ?",
+        "target": "anselme_55"
+      },
+      {
+        "label": "Votre appareil semble compliqué.",
+        "target": "anselme_57"
+      },
+      {
+        "label": "Je vais vous laisser piloter.",
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "block": "anselme_49",
+    "speaker": "Anselme",
+    "legacy_node_id": 30,
+    "parts": [
+      {
+        "take": "anselme_49",
+        "hook": "voices.anselme_49",
+        "text": [
+          "Difficile ? Tout dépend de ce que vous appelez piloter. Maintenir un cap par temps clair, n'importe quel apprenti convenablement formé peut y parvenir. Mais lorsque les vents changent et que le bâtiment commence à dériver... Ah ! Là, vous voyez ce que vaut réellement un timonier."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "C'est difficile de piloter un dirigeable ?",
+        "target": "anselme_49"
+      },
+      {
+        "label": "Vous semblez aimer votre métier.",
+        "target": "anselme_51"
+      },
+      {
+        "label": "Vous avez aperçu l'endroit où l'on m'a retrouvé ?",
+        "target": "anselme_53"
+      },
+      {
+        "label": "Comment fonctionne ce dirigeable ?",
+        "target": "anselme_55"
+      },
+      {
+        "label": "Votre appareil semble compliqué.",
+        "target": "anselme_57"
+      },
+      {
+        "label": "Je vais vous laisser piloter.",
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "block": "anselme_51",
+    "speaker": "Anselme",
+    "legacy_node_id": 31,
+    "parts": [
+      {
+        "take": "anselme_51",
+        "hook": "voices.anselme_51",
+        "text": [
+          "Aimer ? C'est bien peu dire. Il n'y a rien de comparable à la sensation d'un bâtiment qui répond exactement à vos commandes. Enfin... lorsque la mécanique ne décide pas de vous contrarier."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "C'est difficile de piloter un dirigeable ?",
+        "target": "anselme_49"
+      },
+      {
+        "label": "Vous semblez aimer votre métier.",
+        "target": "anselme_51"
+      },
+      {
+        "label": "Vous avez aperçu l'endroit où l'on m'a retrouvé ?",
+        "target": "anselme_53"
+      },
+      {
+        "label": "Comment fonctionne ce dirigeable ?",
+        "target": "anselme_55"
+      },
+      {
+        "label": "Votre appareil semble compliqué.",
+        "target": "anselme_57"
+      },
+      {
+        "label": "Je vais vous laisser piloter.",
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "block": "anselme_53",
+    "speaker": "Anselme",
+    "legacy_node_id": 32,
+    "parts": [
+      {
+        "take": "anselme_53",
+        "hook": "voices.anselme_53",
+        "text": [
+          "Pas assez pour vous en donner une position exacte. Nous avons quitté notre trajectoire habituelle pour procéder au sauvetage, mais j'avais autre chose à surveiller que le paysage. Le capitaine pourra vous en dire davantage."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "C'est difficile de piloter un dirigeable ?",
+        "target": "anselme_49"
+      },
+      {
+        "label": "Vous semblez aimer votre métier.",
+        "target": "anselme_51"
+      },
+      {
+        "label": "Vous avez aperçu l'endroit où l'on m'a retrouvé ?",
+        "target": "anselme_53"
+      },
+      {
+        "label": "Comment fonctionne ce dirigeable ?",
+        "target": "anselme_55"
+      },
+      {
+        "label": "Votre appareil semble compliqué.",
+        "target": "anselme_57"
+      },
+      {
+        "label": "Je vais vous laisser piloter.",
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "block": "anselme_55",
+    "speaker": "Anselme",
+    "legacy_node_id": 33,
+    "parts": [
+      {
+        "take": "anselme_55",
+        "hook": "voices.anselme_55",
+        "text": [
+          "Vous voulez une explication courte ou une explication exacte ? Parce que ce n'est pas tout à fait la même chose. Pour simplifier : il faut contrôler la sustentation, la propulsion et la direction. Et aucun de ces trois éléments n'a la politesse de rester parfaitement stable."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "C'est difficile de piloter un dirigeable ?",
+        "target": "anselme_49"
+      },
+      {
+        "label": "Vous semblez aimer votre métier.",
+        "target": "anselme_51"
+      },
+      {
+        "label": "Vous avez aperçu l'endroit où l'on m'a retrouvé ?",
+        "target": "anselme_53"
+      },
+      {
+        "label": "Comment fonctionne ce dirigeable ?",
+        "target": "anselme_55"
+      },
+      {
+        "label": "Votre appareil semble compliqué.",
+        "target": "anselme_57"
+      },
+      {
+        "label": "Je vais vous laisser piloter.",
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "block": "anselme_57",
+    "speaker": "Anselme",
+    "legacy_node_id": 34,
+    "parts": [
+      {
+        "take": "anselme_57",
+        "hook": "voices.anselme_57",
+        "text": [
+          "Notre bâtiment, si vous permettez. Et il est complexe, oui, ce qui n'est pas exactement la même chose. Enfin, je suppose que vous ne pouviez pas le savoir."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "C'est difficile de piloter un dirigeable ?",
+        "target": "anselme_49"
+      },
+      {
+        "label": "Vous semblez aimer votre métier.",
+        "target": "anselme_51"
+      },
+      {
+        "label": "Vous avez aperçu l'endroit où l'on m'a retrouvé ?",
+        "target": "anselme_53"
+      },
+      {
+        "label": "Comment fonctionne ce dirigeable ?",
+        "target": "anselme_55"
+      },
+      {
+        "label": "Votre appareil semble compliqué.",
+        "target": "anselme_57"
+      },
+      {
+        "label": "Je vais vous laisser piloter.",
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "block": "anselme_59",
+    "speaker": "Anselme",
+    "legacy_node_id": 35,
+    "parts": [
+      {
+        "take": "anselme_59",
+        "hook": "voices.anselme_59",
+        "text": [
+          "Sage décision. Nous approchons et je préfère avoir les yeux sur mes instruments. Bonne visite à bord."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  },
+  {
+    "block": "perrin_menu",
+    "speaker": "Perrin",
+    "legacy_node_id": 36,
+    "parts": [
+      {
+        "take": "perrin_menu",
+        "hook": "voices.perrin_menu",
+        "text": [
+          "Ah, c'est donc vous, notre fameux rescapé ! Excusez-moi, mais depuis votre arrivée, vous avez suscité quelques conversations à bord. Comment vous sentez-vous ?"
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous parlez souvent de moi ?",
+        "target": "perrin_62"
+      },
+      {
+        "label": "Vous savez ce qui m'est arrivé ?",
+        "target": "perrin_64"
+      },
+      {
+        "label": "Vous connaissez bien la Haute Capitale ?",
+        "target": "perrin_66"
+      },
+      {
+        "label": "Comment sont les habitants de la Capitale ?",
+        "target": "perrin_68"
+      },
+      {
+        "label": "On m'a parlé d'un enregistrement à mon arrivée.",
+        "target": "perrin_70"
+      },
+      {
+        "label": "Je préfère continuer ma visite.",
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "block": "perrin_62",
+    "speaker": "Perrin",
+    "legacy_node_id": 37,
+    "parts": [
+      {
+        "take": "perrin_62",
+        "hook": "voices.perrin_62",
+        "text": [
+          "Oh, pas constamment ! Mais avouez que ce n'est pas tous les jours qu'on recueille quelqu'un dans de pareilles circonstances. Certains se demandaient même si vous alliez vous réveiller avant notre arrivée."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous parlez souvent de moi ?",
+        "target": "perrin_62"
+      },
+      {
+        "label": "Vous savez ce qui m'est arrivé ?",
+        "target": "perrin_64"
+      },
+      {
+        "label": "Vous connaissez bien la Haute Capitale ?",
+        "target": "perrin_66"
+      },
+      {
+        "label": "Comment sont les habitants de la Capitale ?",
+        "target": "perrin_68"
+      },
+      {
+        "label": "On m'a parlé d'un enregistrement à mon arrivée.",
+        "target": "perrin_70"
+      },
+      {
+        "label": "Je préfère continuer ma visite.",
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "block": "perrin_64",
+    "speaker": "Perrin",
+    "legacy_node_id": 38,
+    "parts": [
+      {
+        "take": "perrin_64",
+        "hook": "voices.perrin_64",
+        "text": [
+          "J'aimerais bien ! J'aurais une sacrée histoire à raconter. Mais non, malheureusement. À part ce qu'on vous a probablement déjà dit, je n'en sais pas plus."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous parlez souvent de moi ?",
+        "target": "perrin_62"
+      },
+      {
+        "label": "Vous savez ce qui m'est arrivé ?",
+        "target": "perrin_64"
+      },
+      {
+        "label": "Vous connaissez bien la Haute Capitale ?",
+        "target": "perrin_66"
+      },
+      {
+        "label": "Comment sont les habitants de la Capitale ?",
+        "target": "perrin_68"
+      },
+      {
+        "label": "On m'a parlé d'un enregistrement à mon arrivée.",
+        "target": "perrin_70"
+      },
+      {
+        "label": "Je préfère continuer ma visite.",
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "block": "perrin_66",
+    "speaker": "Perrin",
+    "legacy_node_id": 39,
+    "parts": [
+      {
+        "take": "perrin_66",
+        "hook": "voices.perrin_66",
+        "text": [
+          "Plutôt, oui ! Les quais, surtout. Si vous aimez les endroits tranquilles, ce n'est peut-être pas le meilleur quartier pour commencer. Mais pour rencontrer du monde, vous serez servi."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous parlez souvent de moi ?",
+        "target": "perrin_62"
+      },
+      {
+        "label": "Vous savez ce qui m'est arrivé ?",
+        "target": "perrin_64"
+      },
+      {
+        "label": "Vous connaissez bien la Haute Capitale ?",
+        "target": "perrin_66"
+      },
+      {
+        "label": "Comment sont les habitants de la Capitale ?",
+        "target": "perrin_68"
+      },
+      {
+        "label": "On m'a parlé d'un enregistrement à mon arrivée.",
+        "target": "perrin_70"
+      },
+      {
+        "label": "Je préfère continuer ma visite.",
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "block": "perrin_68",
+    "speaker": "Perrin",
+    "legacy_node_id": 40,
+    "parts": [
+      {
+        "take": "perrin_68",
+        "hook": "voices.perrin_68",
+        "text": [
+          "Il y a de tout. Des marchands qui vous vendraient leur propre chapeau, des soldats qui prennent leur uniforme très au sérieux et des gens parfaitement charmants. Vous finirez bien par vous y faire quelques connaissances."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous parlez souvent de moi ?",
+        "target": "perrin_62"
+      },
+      {
+        "label": "Vous savez ce qui m'est arrivé ?",
+        "target": "perrin_64"
+      },
+      {
+        "label": "Vous connaissez bien la Haute Capitale ?",
+        "target": "perrin_66"
+      },
+      {
+        "label": "Comment sont les habitants de la Capitale ?",
+        "target": "perrin_68"
+      },
+      {
+        "label": "On m'a parlé d'un enregistrement à mon arrivée.",
+        "target": "perrin_70"
+      },
+      {
+        "label": "Je préfère continuer ma visite.",
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "block": "perrin_70",
+    "speaker": "Perrin",
+    "legacy_node_id": 41,
+    "parts": [
+      {
+        "take": "perrin_70",
+        "hook": "voices.perrin_70",
+        "text": [
+          "Ah oui, les registres ! On n'y échappe pas facilement. Mais ne vous inquiétez pas, on vous expliquera comment procéder. Ce serait tout de même malheureux de vous perdre dans les bureaux après vous avoir retrouvé en pleine nature."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous parlez souvent de moi ?",
+        "target": "perrin_62"
+      },
+      {
+        "label": "Vous savez ce qui m'est arrivé ?",
+        "target": "perrin_64"
+      },
+      {
+        "label": "Vous connaissez bien la Haute Capitale ?",
+        "target": "perrin_66"
+      },
+      {
+        "label": "Comment sont les habitants de la Capitale ?",
+        "target": "perrin_68"
+      },
+      {
+        "label": "On m'a parlé d'un enregistrement à mon arrivée.",
+        "target": "perrin_70"
+      },
+      {
+        "label": "Je préfère continuer ma visite.",
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "block": "perrin_72",
+    "speaker": "Perrin",
+    "legacy_node_id": 42,
+    "parts": [
+      {
+        "take": "perrin_72",
+        "hook": "voices.perrin_72",
+        "text": [
+          "Faites donc ! Et bonne chance avec le capitaine. Il a l'air sévère au premier abord, mais c'est un brave homme. Enfin, ne lui répétez pas que je l'ai dit comme ça."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  },
+  {
+    "block": "b0",
+    "speaker": "Gautier",
+    "legacy_node_id": 43,
+    "parts": [
+      {
+        "take": "b0",
+        "hook": "voices.b0",
+        "text": [
+          "Vous avez terminé le contrôle du matériel ?"
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "b1"
+      }
+    ]
+  },
+  {
+    "block": "b1",
+    "speaker": "Hugues",
+    "legacy_node_id": 44,
+    "parts": [
+      {
+        "take": "b1",
+        "hook": "voices.b1",
+        "text": [
+          "Oui."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "b2"
+      }
+    ]
+  },
+  {
+    "block": "b2",
+    "speaker": "Gautier",
+    "legacy_node_id": 45,
+    "parts": [
+      {
+        "take": "b2",
+        "hook": "voices.b2",
+        "text": [
+          "Et vous avez signé le registre ?"
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "b3"
+      }
+    ]
+  },
+  {
+    "block": "b3",
+    "speaker": "Hugues",
+    "legacy_node_id": 46,
+    "parts": [
+      {
+        "take": "b3",
+        "hook": "voices.b3",
+        "text": [
+          "Pas encore."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "b4"
+      }
+    ]
+  },
+  {
+    "block": "b4",
+    "speaker": "Gautier",
+    "legacy_node_id": 47,
+    "parts": [
+      {
+        "take": "b4",
+        "hook": "voices.b4",
+        "text": [
+          "Alors le contrôle n'est pas terminé."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "b5"
+      }
+    ]
+  },
+  {
+    "block": "b5",
+    "speaker": "Hugues",
+    "legacy_node_id": 48,
+    "parts": [
+      {
+        "take": "b5",
+        "hook": "voices.b5",
+        "text": [
+          "Vous savez, un jour, vous découvrirez qu'une caisse ne disparaît pas simplement parce qu'on a oublié de signer un papier."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "b6"
+      }
+    ]
+  },
+  {
+    "block": "b6",
+    "speaker": "Gautier",
+    "legacy_node_id": 49,
+    "parts": [
+      {
+        "take": "b6",
+        "hook": "voices.b6",
+        "text": [
+          "Ce n'est pas une raison pour négliger les procédures."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "b7"
+      }
+    ]
+  },
+  {
+    "block": "b7",
+    "speaker": "Hugues",
+    "legacy_node_id": 50,
+    "parts": [
+      {
+        "take": "b7",
+        "hook": "voices.b7",
+        "text": [
+          "Et voilà. Je savais que j'aurais dû me contenter de vous dire bonjour."
+        ]
+      },
+      {
+        "take": "hugues_menu",
+        "hook": "voices.hugues_menu",
+        "text": [
+          "Trois fois qu'on me fait recompter les mêmes caisses... Ah, pardon. Vous cherchiez quelque chose ?"
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Qu'est-ce que vous transportiez ?",
+        "target": "hugues_36"
+      },
+      {
+        "label": "Pourquoi avoir livré des canons à Avaleiv ?",
+        "target": "hugues_38"
+      },
+      {
+        "label": "Vous n'aimez pas votre travail ?",
+        "target": "hugues_40"
+      },
+      {
+        "label": "Vous connaissiez déjà Avaleiv ?",
+        "target": "hugues_42"
+      },
+      {
+        "label": "Vous étiez là lorsqu'on m'a secouru ?",
+        "target": "hugues_44"
+      },
+      {
+        "label": "Écouter leur échange sur les procédures.",
+        "target": "banter_start"
+      },
+      {
+        "label": "Je vous laisse à vos caisses.",
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "block": "c1",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 52,
+    "parts": [
+      {
+        "take": "c1",
+        "hook": "voices.c1",
+        "text": [
+          "Entrez, je vous prie. Vous êtes donc notre rescapé. Je suis Althéon Brumeforge, capitaine de ce bâtiment."
+        ]
+      },
+      {
+        "take": "c2",
+        "hook": "voices.c2",
+        "text": [
+          "Je suis heureux de vous voir remis. Lorsque nous vous avons trouvé, votre état était préoccupant."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous savez ce qui m'est arrivé ?",
+        "target": "c3"
+      }
+    ]
+  },
+  {
+    "block": "c2",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 53,
+    "parts": [
+      {
+        "take": "c2",
+        "hook": "voices.c2",
+        "text": [
+          "Je suis heureux de vous voir remis. Lorsque nous vous avons trouvé, votre état était préoccupant."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous savez ce qui m'est arrivé ?",
+        "target": "c3"
+      }
+    ]
+  },
+  {
+    "block": "c3",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 54,
+    "parts": [
+      {
+        "take": "c3",
+        "hook": "voices.c3",
+        "text": [
+          "C'est précisément ce que j'espérais vous demander."
+        ]
+      },
+      {
+        "take": "c4",
+        "hook": "voices.c4",
+        "text": [
+          "Vous souvenez-vous de ce qui vous a conduit là-bas ?"
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Non. Je ne me souviens de rien avant votre sauvetage.",
+        "target": "c5"
+      }
+    ]
+  },
+  {
+    "block": "c4",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 55,
+    "parts": [
+      {
+        "take": "c4",
+        "hook": "voices.c4",
+        "text": [
+          "Vous souvenez-vous de ce qui vous a conduit là-bas ?"
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Non. Je ne me souviens de rien avant votre sauvetage.",
+        "target": "c5"
+      }
+    ]
+  },
+  {
+    "block": "c5",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 56,
+    "parts": [
+      {
+        "take": "c5",
+        "hook": "voices.c5",
+        "text": [
+          "Je vois..."
+        ]
+      },
+      {
+        "take": "c6",
+        "hook": "voices.c6",
+        "text": [
+          "Dans ce cas, je crains de ne pouvoir vous donner toutes les réponses que vous espérez. Mais je peux au moins vous expliquer ce que nous savons."
+        ]
+      },
+      {
+        "take": "c_menu",
+        "hook": "voices.c_menu",
+        "text": []
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Où m'avez-vous trouvé ?",
+        "target": "ca1"
+      },
+      {
+        "label": "Quelle était votre mission ?",
+        "target": "cb1"
+      },
+      {
+        "label": "Qu'est-ce qu'Avaleiv ?",
+        "target": "cc1",
+        "condition": "av"
+      },
+      {
+        "label": "Que devrais-je savoir de la Haute Capitale ?",
+        "target": "cd1"
+      },
+      {
+        "label": "Pensez-vous que je puisse retrouver la mémoire ?",
+        "target": "ce1"
+      },
+      {
+        "label": "Merci, capitaine. J'en sais assez pour le moment.",
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "block": "c6",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 57,
+    "parts": [
+      {
+        "take": "c6",
+        "hook": "voices.c6",
+        "text": [
+          "Dans ce cas, je crains de ne pouvoir vous donner toutes les réponses que vous espérez. Mais je peux au moins vous expliquer ce que nous savons."
+        ]
+      },
+      {
+        "take": "c_menu",
+        "hook": "voices.c_menu",
+        "text": []
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Où m'avez-vous trouvé ?",
+        "target": "ca1"
+      },
+      {
+        "label": "Quelle était votre mission ?",
+        "target": "cb1"
+      },
+      {
+        "label": "Qu'est-ce qu'Avaleiv ?",
+        "target": "cc1",
+        "condition": "av"
+      },
+      {
+        "label": "Que devrais-je savoir de la Haute Capitale ?",
+        "target": "cd1"
+      },
+      {
+        "label": "Pensez-vous que je puisse retrouver la mémoire ?",
+        "target": "ce1"
+      },
+      {
+        "label": "Merci, capitaine. J'en sais assez pour le moment.",
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "block": "c_menu",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 58,
+    "parts": [
+      {
+        "take": "c_menu",
+        "hook": "voices.c_menu",
+        "text": []
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Où m'avez-vous trouvé ?",
+        "target": "ca1"
+      },
+      {
+        "label": "Quelle était votre mission ?",
+        "target": "cb1"
+      },
+      {
+        "label": "Qu'est-ce qu'Avaleiv ?",
+        "target": "cc1",
+        "condition": "av"
+      },
+      {
+        "label": "Que devrais-je savoir de la Haute Capitale ?",
+        "target": "cd1"
+      },
+      {
+        "label": "Pensez-vous que je puisse retrouver la mémoire ?",
+        "target": "ce1"
+      },
+      {
+        "label": "Merci, capitaine. J'en sais assez pour le moment.",
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "block": "ca1",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 59,
+    "parts": [
+      {
+        "take": "ca1",
+        "hook": "voices.ca1",
+        "text": [
+          "Notre vigie vous a aperçu sur un relief rocheux, exposé aux vents, à l'écart de notre trajectoire. Vous étiez seul et ne sembliez pas en état de nous appeler à l'aide."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous avez pu déterminer de quel endroit il s'agissait ?",
+        "target": "ca2"
+      },
+      {
+        "label": "Revenir aux questions.",
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "block": "ca2",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 60,
+    "parts": [
+      {
+        "take": "ca2",
+        "hook": "voices.ca2",
+        "text": [
+          "Pas avec certitude. Nous avons interrompu notre route pour vous porter secours, sans entreprendre de reconnaissance des environs."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Pourquoi ne pas avoir examiné les lieux ?",
+        "target": "ca3"
+      },
+      {
+        "label": "Revenir aux questions.",
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "block": "ca3",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 61,
+    "parts": [
+      {
+        "take": "ca3",
+        "hook": "voices.ca3",
+        "text": [
+          "Vous étiez inconscient. Ma priorité était de vous mettre en sécurité, pas de satisfaire ma curiosité."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Où m'avez-vous trouvé ?",
+        "target": "ca1"
+      },
+      {
+        "label": "Quelle était votre mission ?",
+        "target": "cb1"
+      },
+      {
+        "label": "Qu'est-ce qu'Avaleiv ?",
+        "target": "cc1",
+        "condition": "av"
+      },
+      {
+        "label": "Que devrais-je savoir de la Haute Capitale ?",
+        "target": "cd1"
+      },
+      {
+        "label": "Pensez-vous que je puisse retrouver la mémoire ?",
+        "target": "ce1"
+      },
+      {
+        "label": "Merci, capitaine. J'en sais assez pour le moment.",
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "block": "cb1",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 62,
+    "parts": [
+      {
+        "take": "cb1",
+        "hook": "voices.cb1",
+        "text": [
+          "Nous avions pour ordre de livrer plusieurs pièces d'artillerie à Avaleiv. La cargaison remise à ses destinataires, nous avons repris la route de la Haute Capitale. C'est au retour que nous vous avons découvert."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Pourquoi l'Empire livre-t-il des canons à Avaleiv ?",
+        "target": "cb2"
+      },
+      {
+        "label": "Revenir aux questions.",
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "block": "cb2",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 63,
+    "parts": [
+      {
+        "take": "cb2",
+        "hook": "voices.cb2",
+        "text": [
+          "Les relations entre États ne se limitent pas au commerce des étoffes et des denrées. Certaines livraisons relèvent d'accords dont je ne négocie pas les termes. Mon devoir était d'assurer le transport."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous ne connaissez pas les raisons de cette livraison ?",
+        "target": "cb3"
+      },
+      {
+        "label": "Revenir aux questions.",
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "block": "cb3",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 64,
+    "parts": [
+      {
+        "take": "cb3",
+        "hook": "voices.cb3",
+        "text": [
+          "J'en connais la destination et le caractère officiel. Pour le reste, je préfère ne pas vous présenter des suppositions comme des certitudes."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Où m'avez-vous trouvé ?",
+        "target": "ca1"
+      },
+      {
+        "label": "Quelle était votre mission ?",
+        "target": "cb1"
+      },
+      {
+        "label": "Qu'est-ce qu'Avaleiv ?",
+        "target": "cc1",
+        "condition": "av"
+      },
+      {
+        "label": "Que devrais-je savoir de la Haute Capitale ?",
+        "target": "cd1"
+      },
+      {
+        "label": "Pensez-vous que je puisse retrouver la mémoire ?",
+        "target": "ce1"
+      },
+      {
+        "label": "Merci, capitaine. J'en sais assez pour le moment.",
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "block": "cc1",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 65,
+    "parts": [
+      {
+        "take": "cc1",
+        "hook": "voices.cc1",
+        "text": [
+          "Une principauté elfique indépendante. Elle entretient des relations commerciales avec l'Empire, mais ne relève pas de l'autorité de la Couronne."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous y allez souvent ?",
+        "target": "cc2"
+      },
+      {
+        "label": "Revenir aux questions.",
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "block": "cc2",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 66,
+    "parts": [
+      {
+        "take": "cc2",
+        "hook": "voices.cc2",
+        "text": [
+          "Suffisamment pour connaître certaines routes et les usages des ports que nous fréquentons. Mais je n'aurais pas la prétention de connaître la principauté dans son ensemble."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Où m'avez-vous trouvé ?",
+        "target": "ca1"
+      },
+      {
+        "label": "Quelle était votre mission ?",
+        "target": "cb1"
+      },
+      {
+        "label": "Qu'est-ce qu'Avaleiv ?",
+        "target": "cc1",
+        "condition": "av"
+      },
+      {
+        "label": "Que devrais-je savoir de la Haute Capitale ?",
+        "target": "cd1"
+      },
+      {
+        "label": "Pensez-vous que je puisse retrouver la mémoire ?",
+        "target": "ce1"
+      },
+      {
+        "label": "Merci, capitaine. J'en sais assez pour le moment.",
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "block": "cd1",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 67,
+    "parts": [
+      {
+        "take": "cd1",
+        "hook": "voices.cd1",
+        "text": [
+          "C'est le centre de l'Empire et le siège de la Couronne. Vous y trouverez de quoi vous loger, travailler et, je l'espère, obtenir de l'aide pour vos recherches."
+        ]
+      },
+      {
+        "take": "cd2",
+        "hook": "voices.cd2",
+        "text": [
+          "Mais vous devrez d'abord faire enregistrer votre arrivée. C'est une formalité à laquelle les autorités accordent beaucoup d'importance."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Et si je ne connais pas mon passé ?",
+        "target": "cd3"
+      },
+      {
+        "label": "La Capitale est-elle accueillante envers les étrangers ?",
+        "target": "cd4"
+      },
+      {
+        "label": "Revenir aux questions.",
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "block": "cd2",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 68,
+    "parts": [
+      {
+        "take": "cd2",
+        "hook": "voices.cd2",
+        "text": [
+          "Mais vous devrez d'abord faire enregistrer votre arrivée. C'est une formalité à laquelle les autorités accordent beaucoup d'importance."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Et si je ne connais pas mon passé ?",
+        "target": "cd3"
+      },
+      {
+        "label": "La Capitale est-elle accueillante envers les étrangers ?",
+        "target": "cd4"
+      },
+      {
+        "label": "Revenir aux questions.",
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "block": "cd3",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 69,
+    "parts": [
+      {
+        "take": "cd3",
+        "hook": "voices.cd3",
+        "text": [
+          "Dites-le. Vous avez été recueilli par un bâtiment impérial, et notre rapport en attestera. Je ne vois aucune raison de vous demander d'inventer ce que vous ignorez."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "La Capitale est-elle accueillante envers les étrangers ?",
+        "target": "cd4"
+      },
+      {
+        "label": "Revenir aux questions.",
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "block": "cd4",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 70,
+    "parts": [
+      {
+        "take": "cd4",
+        "hook": "voices.cd4",
+        "text": [
+          "C'est une ville où se croisent de nombreux peuples. Vous y rencontrerez des gens de toutes dispositions. Je ne vous promettrai pas qu'ils seront tous aimables, mais vous n'avez pas à vous présenter comme un intrus pour autant."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Où m'avez-vous trouvé ?",
+        "target": "ca1"
+      },
+      {
+        "label": "Quelle était votre mission ?",
+        "target": "cb1"
+      },
+      {
+        "label": "Qu'est-ce qu'Avaleiv ?",
+        "target": "cc1",
+        "condition": "av"
+      },
+      {
+        "label": "Que devrais-je savoir de la Haute Capitale ?",
+        "target": "cd1"
+      },
+      {
+        "label": "Pensez-vous que je puisse retrouver la mémoire ?",
+        "target": "ce1"
+      },
+      {
+        "label": "Merci, capitaine. J'en sais assez pour le moment.",
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "block": "ce1",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 71,
+    "parts": [
+      {
+        "take": "ce1",
+        "hook": "voices.ce1",
+        "text": [
+          "Je ne suis pas médecin, et je me garderais bien de vous en faire la promesse."
+        ]
+      },
+      {
+        "take": "ce2",
+        "hook": "voices.ce2",
+        "text": [
+          "Mais ne concluez pas trop vite que votre passé est définitivement perdu. Vous avez peut-être laissé des traces quelque part, même si vous ne vous en souvenez pas."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous croyez vraiment que je pourrai découvrir quelque chose ?",
+        "target": "ce3"
+      },
+      {
+        "label": "Revenir aux questions.",
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "block": "ce2",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 72,
+    "parts": [
+      {
+        "take": "ce2",
+        "hook": "voices.ce2",
+        "text": [
+          "Mais ne concluez pas trop vite que votre passé est définitivement perdu. Vous avez peut-être laissé des traces quelque part, même si vous ne vous en souvenez pas."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Vous croyez vraiment que je pourrai découvrir quelque chose ?",
+        "target": "ce3"
+      },
+      {
+        "label": "Revenir aux questions.",
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "block": "ce3",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 73,
+    "parts": [
+      {
+        "take": "ce3",
+        "hook": "voices.ce3",
+        "text": [
+          "Je crois surtout qu'il serait prématuré de renoncer."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Où m'avez-vous trouvé ?",
+        "target": "ca1"
+      },
+      {
+        "label": "Quelle était votre mission ?",
+        "target": "cb1"
+      },
+      {
+        "label": "Qu'est-ce qu'Avaleiv ?",
+        "target": "cc1",
+        "condition": "av"
+      },
+      {
+        "label": "Que devrais-je savoir de la Haute Capitale ?",
+        "target": "cd1"
+      },
+      {
+        "label": "Pensez-vous que je puisse retrouver la mémoire ?",
+        "target": "ce1"
+      },
+      {
+        "label": "Merci, capitaine. J'en sais assez pour le moment.",
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "block": "cx1",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 74,
+    "parts": [
+      {
+        "take": "cx1",
+        "hook": "voices.cx1",
+        "text": [
+          "Très bien. Nous approchons des quais. Vous pouvez rester ici pendant la manœuvre ; Géraud vous retrouvera une fois l'amarrage terminé."
+        ]
+      },
+      {
+        "take": "cx2",
+        "hook": "voices.cx2",
+        "text": [
+          "Et une dernière chose..."
+        ]
+      },
+      {
+        "take": "cx3",
+        "hook": "voices.cx3",
+        "text": [
+          "Ne vous reprochez pas de ne pas avoir de réponses aujourd'hui. Nous ignorons encore bien des choses sur les circonstances de votre découverte."
+        ]
+      },
+      {
+        "take": "cx4",
+        "hook": "voices.cx4",
+        "text": [
+          "Pour l'instant, tâchez simplement de reprendre pied. Nous verrons ensuite ce que l'avenir vous réserve."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "dock"
+      }
+    ]
+  },
+  {
+    "block": "cx2",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 75,
+    "parts": [
+      {
+        "take": "cx2",
+        "hook": "voices.cx2",
+        "text": [
+          "Et une dernière chose..."
+        ]
+      },
+      {
+        "take": "cx3",
+        "hook": "voices.cx3",
+        "text": [
+          "Ne vous reprochez pas de ne pas avoir de réponses aujourd'hui. Nous ignorons encore bien des choses sur les circonstances de votre découverte."
+        ]
+      },
+      {
+        "take": "cx4",
+        "hook": "voices.cx4",
+        "text": [
+          "Pour l'instant, tâchez simplement de reprendre pied. Nous verrons ensuite ce que l'avenir vous réserve."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "dock"
+      }
+    ]
+  },
+  {
+    "block": "cx3",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 76,
+    "parts": [
+      {
+        "take": "cx3",
+        "hook": "voices.cx3",
+        "text": [
+          "Ne vous reprochez pas de ne pas avoir de réponses aujourd'hui. Nous ignorons encore bien des choses sur les circonstances de votre découverte."
+        ]
+      },
+      {
+        "take": "cx4",
+        "hook": "voices.cx4",
+        "text": [
+          "Pour l'instant, tâchez simplement de reprendre pied. Nous verrons ensuite ce que l'avenir vous réserve."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "dock"
+      }
+    ]
+  },
+  {
+    "block": "cx4",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 77,
+    "parts": [
+      {
+        "take": "cx4",
+        "hook": "voices.cx4",
+        "text": [
+          "Pour l'instant, tâchez simplement de reprendre pied. Nous verrons ensuite ce que l'avenir vous réserve."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "dock"
+      }
+    ]
+  },
+  {
+    "block": "e1",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 78,
+    "parts": [
+      {
+        "take": "e1",
+        "hook": "voices.e1",
+        "text": [
+          "Ah, vous voilà ! Bienvenue dans la Haute Capitale. Enfin... sur ses quais, pour commencer."
+        ]
+      },
+      {
+        "take": "e2",
+        "hook": "voices.e2",
+        "text": [
+          "Vous pouvez descendre. Mais avant de vous laisser partir, il y a deux ou trois choses que vous feriez bien de savoir."
+        ]
+      },
+      {
+        "take": "e_menu",
+        "hook": "voices.e_menu",
+        "text": []
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Que dois-je faire maintenant ?",
+        "target": "e_127"
+      },
+      {
+        "label": "Je risque d'avoir des ennuis avec les gardes ?",
+        "target": "e_129"
+      },
+      {
+        "label": "Je peux circuler librement dans la Capitale ?",
+        "target": "e_131"
+      },
+      {
+        "label": "Vous allez repartir bientôt ?",
+        "target": "e_133"
+      },
+      {
+        "label": "Merci de m'avoir aidé.",
+        "target": "e_135"
+      },
+      {
+        "label": "Je vais y aller.",
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "block": "e2",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 79,
+    "parts": [
+      {
+        "take": "e2",
+        "hook": "voices.e2",
+        "text": [
+          "Vous pouvez descendre. Mais avant de vous laisser partir, il y a deux ou trois choses que vous feriez bien de savoir."
+        ]
+      },
+      {
+        "take": "e_menu",
+        "hook": "voices.e_menu",
+        "text": []
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Que dois-je faire maintenant ?",
+        "target": "e_127"
+      },
+      {
+        "label": "Je risque d'avoir des ennuis avec les gardes ?",
+        "target": "e_129"
+      },
+      {
+        "label": "Je peux circuler librement dans la Capitale ?",
+        "target": "e_131"
+      },
+      {
+        "label": "Vous allez repartir bientôt ?",
+        "target": "e_133"
+      },
+      {
+        "label": "Merci de m'avoir aidé.",
+        "target": "e_135"
+      },
+      {
+        "label": "Je vais y aller.",
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "block": "e_menu",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 80,
+    "parts": [
+      {
+        "take": "e_menu",
+        "hook": "voices.e_menu",
+        "text": []
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Que dois-je faire maintenant ?",
+        "target": "e_127"
+      },
+      {
+        "label": "Je risque d'avoir des ennuis avec les gardes ?",
+        "target": "e_129"
+      },
+      {
+        "label": "Je peux circuler librement dans la Capitale ?",
+        "target": "e_131"
+      },
+      {
+        "label": "Vous allez repartir bientôt ?",
+        "target": "e_133"
+      },
+      {
+        "label": "Merci de m'avoir aidé.",
+        "target": "e_135"
+      },
+      {
+        "label": "Je vais y aller.",
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "block": "e_127",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 81,
+    "parts": [
+      {
+        "take": "e_127",
+        "hook": "voices.e_127",
+        "text": [
+          "Commencez par vous faire enregistrer. Cherchez Léovic sur les quais, il saura vous indiquer la marche à suivre. Après ça, vous pourrez vous occuper de trouver un toit et de découvrir la ville."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Que dois-je faire maintenant ?",
+        "target": "e_127"
+      },
+      {
+        "label": "Je risque d'avoir des ennuis avec les gardes ?",
+        "target": "e_129"
+      },
+      {
+        "label": "Je peux circuler librement dans la Capitale ?",
+        "target": "e_131"
+      },
+      {
+        "label": "Vous allez repartir bientôt ?",
+        "target": "e_133"
+      },
+      {
+        "label": "Merci de m'avoir aidé.",
+        "target": "e_135"
+      },
+      {
+        "label": "Je vais y aller.",
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "block": "e_129",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 82,
+    "parts": [
+      {
+        "take": "e_129",
+        "hook": "voices.e_129",
+        "text": [
+          "Tant que vous ne leur donnez pas de raison d'en chercher, ça devrait aller. Ils pourront vous demander d'où vous venez. Dites que vous avez été recueilli par le capitaine Brumeforge."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Que dois-je faire maintenant ?",
+        "target": "e_127"
+      },
+      {
+        "label": "Je risque d'avoir des ennuis avec les gardes ?",
+        "target": "e_129"
+      },
+      {
+        "label": "Je peux circuler librement dans la Capitale ?",
+        "target": "e_131"
+      },
+      {
+        "label": "Vous allez repartir bientôt ?",
+        "target": "e_133"
+      },
+      {
+        "label": "Merci de m'avoir aidé.",
+        "target": "e_135"
+      },
+      {
+        "label": "Je vais y aller.",
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "block": "e_131",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 83,
+    "parts": [
+      {
+        "take": "e_131",
+        "hook": "voices.e_131",
+        "text": [
+          "Dans les quartiers ouverts au public, oui. Pour le reste, il y a des contrôles. Et croyez-moi, certains gardes prennent leur travail aussi à cœur que notre jeune matelot."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Que dois-je faire maintenant ?",
+        "target": "e_127"
+      },
+      {
+        "label": "Je risque d'avoir des ennuis avec les gardes ?",
+        "target": "e_129"
+      },
+      {
+        "label": "Je peux circuler librement dans la Capitale ?",
+        "target": "e_131"
+      },
+      {
+        "label": "Vous allez repartir bientôt ?",
+        "target": "e_133"
+      },
+      {
+        "label": "Merci de m'avoir aidé.",
+        "target": "e_135"
+      },
+      {
+        "label": "Je vais y aller.",
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "block": "e_133",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 84,
+    "parts": [
+      {
+        "take": "e_133",
+        "hook": "voices.e_133",
+        "text": [
+          "Pas immédiatement. Il faut vérifier le bâtiment, régler les formalités de retour et préparer les prochaines affectations. On ne termine pas un voyage simplement parce qu'on a posé les amarres."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Que dois-je faire maintenant ?",
+        "target": "e_127"
+      },
+      {
+        "label": "Je risque d'avoir des ennuis avec les gardes ?",
+        "target": "e_129"
+      },
+      {
+        "label": "Je peux circuler librement dans la Capitale ?",
+        "target": "e_131"
+      },
+      {
+        "label": "Vous allez repartir bientôt ?",
+        "target": "e_133"
+      },
+      {
+        "label": "Merci de m'avoir aidé.",
+        "target": "e_135"
+      },
+      {
+        "label": "Je vais y aller.",
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "block": "e_135",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 85,
+    "parts": [
+      {
+        "take": "e_135",
+        "hook": "voices.e_135",
+        "text": [
+          "Bah, on n'allait tout de même pas vous laisser sur votre rocher. Et maintenant que vous tenez debout, tâchez de le rester."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Que dois-je faire maintenant ?",
+        "target": "e_127"
+      },
+      {
+        "label": "Je risque d'avoir des ennuis avec les gardes ?",
+        "target": "e_129"
+      },
+      {
+        "label": "Je peux circuler librement dans la Capitale ?",
+        "target": "e_131"
+      },
+      {
+        "label": "Vous allez repartir bientôt ?",
+        "target": "e_133"
+      },
+      {
+        "label": "Merci de m'avoir aidé.",
+        "target": "e_135"
+      },
+      {
+        "label": "Je vais y aller.",
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "block": "ex1",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 86,
+    "parts": [
+      {
+        "take": "ex1",
+        "hook": "voices.ex1",
+        "text": [
+          "Bon. Je crois que je vous ai dit l'essentiel."
+        ]
+      },
+      {
+        "take": "ex2",
+        "hook": "voices.ex2",
+        "text": [
+          "Allez trouver Léovic, et ne vous laissez pas impressionner par toute cette agitation. On finit par s'y habituer."
+        ]
+      },
+      {
+        "take": "ex3",
+        "hook": "voices.ex3",
+        "text": [
+          "Prenez soin de vous, surtout. J'aimerais autant que la prochaine fois qu'on se croise, vous soyez en meilleure forme que lors de notre première rencontre."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Je ferai de mon mieux.",
+        "target": "ex4"
+      }
+    ]
+  },
+  {
+    "block": "ex2",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 87,
+    "parts": [
+      {
+        "take": "ex2",
+        "hook": "voices.ex2",
+        "text": [
+          "Allez trouver Léovic, et ne vous laissez pas impressionner par toute cette agitation. On finit par s'y habituer."
+        ]
+      },
+      {
+        "take": "ex3",
+        "hook": "voices.ex3",
+        "text": [
+          "Prenez soin de vous, surtout. J'aimerais autant que la prochaine fois qu'on se croise, vous soyez en meilleure forme que lors de notre première rencontre."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Je ferai de mon mieux.",
+        "target": "ex4"
+      }
+    ]
+  },
+  {
+    "block": "ex3",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 88,
+    "parts": [
+      {
+        "take": "ex3",
+        "hook": "voices.ex3",
+        "text": [
+          "Prenez soin de vous, surtout. J'aimerais autant que la prochaine fois qu'on se croise, vous soyez en meilleure forme que lors de notre première rencontre."
+        ]
+      }
+    ],
+    "advance": "player_choice",
+    "choices": [
+      {
+        "label": "Je ferai de mon mieux.",
+        "target": "ex4"
+      }
+    ]
+  },
+  {
+    "block": "ex4",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 89,
+    "parts": [
+      {
+        "take": "ex4",
+        "hook": "voices.ex4",
+        "text": [
+          "Voilà qui me suffit. Allez, filez. J'ai un équipage à remettre au travail, moi."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "complete"
+      }
+    ]
+  },
+  {
+    "block": "f_altheon",
+    "speaker": "Althéon Brumeforge",
+    "legacy_node_id": 90,
+    "parts": [
+      {
+        "take": "f_altheon",
+        "hook": "voices.f_altheon",
+        "text": [
+          "Vous avez pu parler à Géraud ? Bien. J'espère que vous trouverez vos repères dans la Capitale. Quant à moi, j'ai encore quelques rapports à terminer."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  },
+  {
+    "block": "f_gautier",
+    "speaker": "Gautier",
+    "legacy_node_id": 91,
+    "parts": [
+      {
+        "take": "f_gautier",
+        "hook": "voices.f_gautier",
+        "text": [
+          "La passerelle est en place et les opérations de débarquement sont autorisées. Vous pouvez rejoindre les quais. Bonne continuation !"
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  },
+  {
+    "block": "f_hugues",
+    "speaker": "Hugues",
+    "legacy_node_id": 92,
+    "parts": [
+      {
+        "take": "f_hugues",
+        "hook": "voices.f_hugues",
+        "text": [
+          "À peine rentrés et voilà déjà les inventaires qui recommencent. Ah, vous partez ? Profitez-en. Vous, au moins, personne ne vous réclamera un relevé des soutes."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  },
+  {
+    "block": "f_anselme",
+    "speaker": "Anselme",
+    "legacy_node_id": 93,
+    "parts": [
+      {
+        "take": "f_anselme",
+        "hook": "voices.f_anselme",
+        "text": [
+          "Un amarrage parfaitement convenable, malgré ce vent de travers. J'aurais préféré une approche un peu plus... Enfin, vous n'avez pas à vous soucier de ces détails. Bonne continuation."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  },
+  {
+    "block": "f_perrin",
+    "speaker": "Perrin",
+    "legacy_node_id": 94,
+    "parts": [
+      {
+        "take": "f_perrin",
+        "hook": "voices.f_perrin",
+        "text": [
+          "Alors, prêt à découvrir la Capitale ? Ne passez pas toute votre première journée dans les bureaux, tout de même. Il y a bien des choses à voir ici !"
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  },
+  {
+    "block": "f_geraud",
+    "speaker": "Géraud Rivet",
+    "legacy_node_id": 95,
+    "parts": [
+      {
+        "take": "f_geraud",
+        "hook": "voices.f_geraud",
+        "text": [
+          "La passerelle reste libre. Le Port est devant vous ; bonne route à terre."
+        ]
+      }
+    ],
+    "advance": "space_or_click",
+    "choices": [
+      {
+        "label": "Continuer.",
+        "target": "close"
+      }
+    ]
+  }
+]

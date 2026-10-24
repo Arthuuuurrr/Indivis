@@ -4,11 +4,19 @@ import static net.hautecapitale.quetes.sequence.SequenceBridge.*;
 import static net.hautecapitale.quetes.sequence.Pq01Bridge.*;
 /** Vrai contrôleur de scène + vraies fonctions + marche EasyNPC ; caméra/panneau doublés. */
 public final class Pq01SceneWorldBench {
-  static Object player,world,view,actor,record,lookSession;static int phase,ticks,checks;static Pq01Motion.Point initial,at,previous;static double maxStep;
+  static Object player,world,view,actor,record,lookSession,geraudActor;static int phase,ticks,checks;static Pq01Motion.Point initial,at,previous;static double maxStep;
   static void set(String n,Object value)throws Exception{Field f=view.getClass().getDeclaredField(n);f.setAccessible(true);f.set(view,value);}
   static void check(boolean ok,String label){checks++;if(!ok)throw new AssertionError("scene: "+label);System.out.println("SCENE CHECK "+label);}
   static Pq01Motion motion()throws Exception{return (Pq01Motion)Pq01WorldBench.reflect(record,"motion");}
   static void sameActor(){check(!Boolean.TRUE.equals(call(actor,"method_31481"))&&!visibleOriginal(Pq01WorldBench.source,player),"same Gautier actor retained and original hidden");}
+  static void orientation(String key,boolean toPlayer)throws Exception{
+    Pq01WorldBench.invoke("orient",new Class<?>[]{view.getClass(),int.class},view,Pq01Ids.id(key));
+    Pq01Motion.Point origin=pos(geraudActor,world),target=pos(toPlayer?player:actor,world);
+    double expected=Math.toDegrees(Math.atan2(target.z()-origin.z(),target.x()-origin.x()))-90;
+    double actual=((Number)call(geraudActor,"method_36454")).doubleValue();
+    double error=((actual-expected+540)%360)-180;
+    check(Math.abs(error)<0.01,"Géraud faces "+(toPlayer?"player":"Gautier")+" for "+key);
+  }
   static void look(boolean open)throws Exception{
     Class<?> session=type("net.hautecapitale.dialogue.session.DialogueSession");
     if(open)lookSession=session.getConstructors()[0].newInstance(700,uuid(player),uuid(actor),call(actor,"method_5628"),"Gautier",call(world,"method_27983"),en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"),null,0,0L,call(player,"method_73189"));
@@ -19,8 +27,9 @@ public final class Pq01SceneWorldBench {
     player=p;world=Pq01WorldBench.world;Pq01PipelineBench.active=true;Pq01PipelineBench.realScene=true;Pq01PipelineBench.seed("geraud");
     view=Pq01WorldBench.invoke("view",new Class<?>[]{Object.class},player);Pq01WorldBench.view=view;
     set("scene",true);set("approach",new Pq01Motion.Point(dimension(world),9.5,64.5,0.5));
-    record=Pq01WorldBench.spawn("gautier");actor=Pq01WorldBench.reflect(record,"entity");Object geraud=Pq01WorldBench.spawn("geraud");
+    record=Pq01WorldBench.spawn("gautier");actor=Pq01WorldBench.reflect(record,"entity");Object geraud=Pq01WorldBench.spawn("geraud");geraudActor=Pq01WorldBench.reflect(geraud,"entity");
     set("cameraRole","geraud");set("camera",Pq01WorldBench.reflect(geraud,"entity"));
+    orientation("a1",true);orientation("a2",true);
     Object setup=GuardNbt.copy(storage(player,"capitale:pq01_setup"));GuardNbt.integer(setup,"move_timeout_ticks",300);GuardNbt.save(server(player),"capitale:pq01_setup",setup);
     phase=-1;ticks=0;initial=pos(actor,world);previous=initial;
   }
@@ -34,8 +43,10 @@ public final class Pq01SceneWorldBench {
       look(true);
       Pq01PipelineBench.automatic();check(Pq01PipelineBench.current.equals("a3")&&!motion().done()&&score(player,"hcm_pq1_wait")==0,"Gautier speaks during approach without waiting for arrival");
       check(call(Pq01PipelineBench.state,"pnjNom").equals("Gautier"),"native capture speaker is only Gautier");phase=1;ticks=0;
+      orientation("a3",false);
     }else if(phase==1&&motion().done()){
-      sameActor();look(false);at=pos(actor,world);Pq01PipelineBench.automatic();Pq01PipelineBench.automatic();check(Pq01PipelineBench.current.equals("a5"),"Géraud admonishment while same actor stays");phase=2;ticks=0;
+      sameActor();look(false);at=pos(actor,world);Pq01PipelineBench.automatic();check(Pq01PipelineBench.current.equals("a4"),"Géraud Matelot and admonishment in same retained block");phase=2;ticks=0;
+      orientation("a4",false);
     }else if(phase==2&&ticks==20){
       at=pos(actor,world);check(at.distance2(initial)>25,"Gautier remains near dialogue point after physical settling");
     }else if(phase==2&&ticks>=40){
@@ -44,6 +55,7 @@ public final class Pq01SceneWorldBench {
       check(score(player,"hcm_pq1_node")==6&&!motion().done()&&score(player,"hcm_pq1_wait")==1,"return begins after Gautier final reply");phase=3;ticks=0;
     }else if(phase==3&&motion().done()){
       sameActor();check(Pq01PipelineBench.current.equals("a7")&&pos(actor,world).distance2(initial)<=2.25,"same actor walks back before Géraud resumes");
+      orientation("a7",true);
       set("approachStarted",false);set("approach",new Pq01Motion.Point(dimension(world),8.5,64,4.5));
       Object setup=GuardNbt.copy(storage(player,"capitale:pq01_setup"));GuardNbt.integer(setup,"move_timeout_ticks",80);GuardNbt.save(server(player),"capitale:pq01_setup",setup);
       Pq01PipelineBench.node("a2");Pq01PipelineBench.automatic();phase=4;ticks=0;

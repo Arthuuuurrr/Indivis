@@ -45,7 +45,7 @@ public final class Pq01PipelineBench {
     if(text==null||!text.startsWith("/trigger QuestChoix set "))throw new AssertionError("real capture has no QuestChoix command: "+event);
     call(state,"onChoixEnvoye",false,"");client.network.method_45730(text.substring(1));
   }
-  static void automatic(){String was=current;int before=commands;for(int i=0;i<12050&&current.equals(was)&&score(player,"hcm_pq1_active")==1;i++)Pq01Client.tickClient(client);check(commands>before,"automatic real frame sends choice "+was);}
+  static void automatic(){check(Pq01Client.requestAdvance(client.field_1755),"explicit block advance accepted");String was=current;int before=commands;for(int i=0;i<12050&&current.equals(was)&&score(player,"hcm_pq1_active")==1;i++)Pq01Client.tickClient(client);check(commands>before,"manual real frame sends choice "+was);}
   static String string(Object o,String key){return (String)call(call(o,"get",key),"getAsString");}
   public static String runAll(Object p)throws Exception{
     player=p;active=true;
@@ -74,28 +74,44 @@ public final class Pq01PipelineBench {
       for(int i=0;i<count;i++){pick(i);check(score(player,"hcm_pq1_active")==1&&choices().size()==expected,"same session repeated questions "+key+" #"+i);}
       pick(choices().size()-1);check(score(player,"hcm_pq1_active")==0,"close remains usable "+key);
     }
-    // Course client/serveur : choix reçu pendant la voix, puis envoyé à nouveau.
+    // Parcours complet avec les frontières de blocs indépendantes de la vitesse de lecture.
     seed("geraud");node("a1");pick(0);automatic();check(current.equals("a3"),"intro enters Gautier scene fallback");
-    automatic();automatic();automatic();automatic();check(current.equals("a7"),"intro returns to Géraud after Gautier");pick(0);automatic();check(current.equals("ga_menu")&&score(player,"hcf_pq1_a")==1,"intro reaches captain objective");
-    setScore("hcm_pq1_ttl",201);pick(0);check(score(player,"hcm_pq1_ttl")==3600,"a new answer renews conversation timeout");pick(1);pick(2);pick(3);check(score(player,"hcm_pq1_active")==1,"Géraud four questions without reopening");
-    pick(choices().size()-1);run(player,"function capitale:pq01/open/geraud_self");check(current.equals("ga_menu")&&score(player,"hcm_pq1_active")==1,"closed completed intro reopens at questions");
-    seed("altheon");setScore("hcf_pq1_av",0);node("c1");automatic();pick(0);automatic();pick(0);automatic();automatic();
-    check(current.equals("c_menu")&&choices().size()==6,"captain introduction and conditional questions");
-    pick(0);pick(0);pick(0);check(current.equals("ca3"),"captain family A returns questions on answer");
+    automatic();check(current.equals("a4")&&((List<?>)call(state,"repliquesCapturees")).size()==2,"Matelot and reprimand in one block");
+    automatic();automatic();check(current.equals("a7"),"intro returns to Géraud after Gautier");pick(0);
+    check(current.equals("a8")&&score(player,"hcf_pq1_a")==1&&choices().size()==6,"Géraud answer and questions in one block");
+    setScore("hcm_pq1_ttl",201);pick(0);check(score(player,"hcm_pq1_ttl")==3600,"a new answer renews timeout");pick(1);pick(2);pick(3);check(score(player,"hcm_pq1_active")==1,"Géraud four questions without reopening");
+    pick(choices().size()-1);run(player,"function capitale:pq01/open/geraud_self");check(current.equals("ga_menu")&&score(player,"hcm_pq1_active")==1,"closed intro reopens at questions");
+    seed("altheon");setScore("hcf_pq1_av",0);node("c1");
+    check(((List<?>)call(state,"repliquesCapturees")).size()==2,"captain welcome is one block");pick(0);pick(0);
+    check(current.equals("c5")&&choices().size()==6,"captain amnesia block reaches questions");
+    pick(0);pick(0);pick(0);check(current.equals("ca3"),"captain family A repeatable");
     pick(1);pick(0);pick(0);check(current.equals("cb3")&&choices().size()==7,"captain mission unlocks Avaleiv");
-    pick(2);pick(0);check(current.equals("cc2"),"captain family C usable in same session");
-    pick(3);automatic();pick(0);pick(0);check(current.equals("cd4"),"captain family D usable in same session");
-    pick(4);automatic();pick(0);check(current.equals("ce3")&&score(player,"hcm_pq1_active")==1,"captain family E usable before conclusion");
-    check(call(choices().get(5),"type").toString().equals("QUETE"),"native green captain conclusion remains explicit");
-    pick(5);automatic();automatic();automatic();automatic();check(score(player,"pipeline_dock")==1,"captain full interview ends at legacy docking handoff");
-    seed("geraud");node("a8");setScore("hcm_pq1_voice",5);automatic();
-    check(current.equals("a8")&&score(player,"hcm_pq1_queued")>0,"early automatic input queued without losing frame");
+    pick(2);pick(0);check(current.equals("cc2"),"captain family C usable");
+    pick(3);check(current.equals("cd1")&&((List<?>)call(state,"repliquesCapturees")).size()==2,"capital explanation grouped");pick(0);pick(0);check(current.equals("cd4"),"captain family D usable");
+    pick(4);pick(0);check(current.equals("ce3")&&score(player,"hcm_pq1_active")==1,"captain family E usable");
+    check(call(choices().get(5),"type").toString().equals("QUETE"),"green captain conclusion explicit");pick(5);
+    check(current.equals("cx1")&&((List<?>)call(state,"repliquesCapturees")).size()==4,"four farewell lines in one block");
+    for(int i=0;i<2000;i++)Pq01Client.tickClient(client);check(score(player,"pipeline_dock")==0,"reading timer never forces docking");
+    automatic();check(score(player,"pipeline_dock")==1,"explicit end of farewell hands off docking");
+    seed("geraud");node("a2");setScore("hcm_pq1_voice",5);automatic();
+    check(current.equals("a2")&&score(player,"hcm_pq1_queued")>0,"explicit input during server voice queued");
     for(int i=0;i<5;i++)run(player,"function capitale:pq01/session/tick_self");
-    check(current.equals("ga_menu")&&choices().size()==6,"queued automatic resumes to usable questions");int nonce=score(player,"hcm_pq1_tok");
-    client.network.method_45730("trigger QuestChoix set "+(nonce-16+1));check(current.equals("ga_menu")&&score(player,"hcm_pq1_active")==1,"stale retry cannot advance next frame");
-    // Voix déclarée sans son : aucune attente fantôme pour le client.
-    run(player,"data modify storage capitale:pq01_config voices.a8 set value {sound:\"\",ticks:12000}");node("a8");
-    Field f=Pq01Client.class.getDeclaredField("frame");f.setAccessible(true);check(((Pq01Pacing.Frame)f.get(null)).voiceTicks()==0,"empty sound ignores stale voice ticks");
+    check(current.equals("a3"),"queued input resumes without losing block");int nonce=score(player,"hcm_pq1_tok");
+    client.network.method_45730("trigger QuestChoix set "+(nonce-16+1));check(current.equals("a3")&&score(player,"hcm_pq1_active")==1,"stale input cannot advance new block");
+    // Les prises restent individuelles et sont jouées séquentiellement dans un même bloc.
+    seed("altheon");
+    run(player,"data modify storage capitale:pq01_config voices.c1 set value {sound:\"minecraft:block.note_block.harp\",ticks:3}");
+    run(player,"data modify storage capitale:pq01_config voices.c2 set value {sound:\"minecraft:block.note_block.bell\",ticks:4}");
+    node("c1");check(score(player,"hcm_pq1_vplaying")==Pq01Ids.id("c1")&&score(player,"hcm_pq1_voice")==3,"first recorded take starts");
+    pick(0);check(current.equals("c1")&&score(player,"hcm_pq1_queued")>0,"question waits for complete voice block");
+    for(int i=0;i<3;i++)run(player,"function capitale:pq01/session/tick_self");
+    check(score(player,"hcm_pq1_vplaying")==Pq01Ids.id("c2")&&score(player,"hcm_pq1_voice")==4&&current.equals("c1"),"second take follows without replacing caption block");
+    for(int i=0;i<4;i++)run(player,"function capitale:pq01/session/tick_self");
+    check(current.equals("c3")&&score(player,"hcm_pq1_vqueue")==0,"queued question executes after all takes");
+    node("c1");pick(choices().size()-1);check(score(player,"hcm_pq1_vqueue")==0&&score(player,"hcm_pq1_vplaying")==0&&score(player,"hcm_pq1_voice")==0,"closing stops current take and remaining queue");
+    run(player,"data modify storage capitale:pq01_config voices.c1 set value {sound:\"\",ticks:12000}");run(player,"data modify storage capitale:pq01_config voices.c2 set value {sound:\"\",ticks:12000}");
+    seed("altheon");node("c1");Field f=Pq01Client.class.getDeclaredField("frame");f.setAccessible(true);
+    check(((Pq01Pacing.Frame)f.get(null)).voiceTicks()==0&&score(player,"hcm_pq1_vqueue")==0,"empty sounds ignore stale durations for entire block");
     int captured=((List<?>)call(state,"repliquesCapturees")).size();
     Method onGame=type("net.hautecapitale.dialogue.client.capture.MessageCapture").getDeclaredMethod("onMessageDeJeu",type("net.minecraft.class_2561"),boolean.class);onGame.setAccessible(true);
     for(String key:List.of("multiplayer.player.joined","multiplayer.player.joined.renamed","multiplayer.player.left")){

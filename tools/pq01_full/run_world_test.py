@@ -5,7 +5,7 @@ import build
 
 ROOT=build.HERE.parent.parent
 RT=ROOT/'work/pq01_hf4/runtime'
-SERVER=RT/('server-hf8-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d%H%M%S%f'))
+SERVER=RT/('server-hf9-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d%H%M%S%f'))
 def main():
     SERVER.mkdir(exist_ok=True);(SERVER/'mods').mkdir(exist_ok=True)
     for name in ['eula.txt','server.properties']:
@@ -36,7 +36,7 @@ def main():
     while (SERVER/f'world-run{i}').exists():i+=1
     # Monde de test jetable, distinct de toute carte fournie par l’utilisateur.
     if (SERVER/'world').exists():shutil.rmtree(SERVER/'world')
-    for path in [RT/'world-test-hf8-server.log',SERVER/'world-test-result.txt']:
+    for path in [RT/'world-test-hf9-server.log',SERVER/'world-test-result.txt']:
         if path.exists():path.unlink()
     pack=SERVER/'world/datapacks/pq01_syntax';pack.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(build.OUT/build.FILES['core']) as src:
@@ -60,6 +60,7 @@ def main():
       'data/capitale/function/pq01/reward_body_self.mcfunction':'scoreboard players set @s pipeline_reward 1\n'}
     for name,data in overrides.items():p=pack/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(data)
     from model import N
+    from hf9 import effective,manual
     scores={'QuestChoix','CAP_QDIALOG_OWNER','CAP_QDIALOG_KEEP','pipeline_dock','pipeline_reward','hcq_pq01','CAP_QSEQ'}
     for p in pack.rglob('*.mcfunction'):
         text=p.read_text()
@@ -68,10 +69,7 @@ def main():
     edges=[];repeat=[]
     for key,node in N.items():
         if key=='c0':continue
-        choices=node['choices'];automatic=len(choices)==1 and choices[0]['label']=='Continuer.'
-        parent=choices[0]['target'] if automatic else None
-        if parent in menus and (key.startswith(('ga_','gautier_','hugues_','anselme_','perrin_','e_')) or re.fullmatch(r'c[a-e][0-9]+',key)):
-            choices=N[parent]['choices'];automatic=False
+        choices=effective(key);automatic=manual(key)
         for i,ch in enumerate(choices):
             if ch['target']=='banter_start':continue
             edges.append({'key':key,'role':node['role'],'pick':i,'target':ch['target'],'automatic':automatic,'choices':1 if automatic else len(choices)+1})
@@ -85,13 +83,13 @@ def main():
     game=mc/'META-INF/versions/1.21.11/server-1.21.11.jar'
     java=ROOT/'work/pq01_hf2/runtime/jre/zulu21.52.203-ca-jre21.0.12.1-linux_x64/bin/java'
     cp=os.pathsep.join(map(str,[*sorted((RT/'libraries').glob('*.jar')),*sorted((mc/'META-INF/libraries').rglob('*.jar')),game]))
-    with (RT/'world-test-hf8-server.log').open('w') as log:
+    with (RT/'world-test-hf9-server.log').open('w') as log:
         result=subprocess.run([str(java),'-Xmx2G','-Xms512M',f'-Dfabric.gameJarPath={game}','-Dfabric.log.disableAnsi=true','-cp',cp,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui'],cwd=SERVER,stdout=log,stderr=subprocess.STDOUT,timeout=180)
     print((SERVER/'world-test-result.txt').read_text())
-    shutil.copyfile(SERVER/'world-test-result.txt',RT/'world-test-hf8-result.txt')
+    shutil.copyfile(SERVER/'world-test-result.txt',RT/'world-test-hf9-result.txt')
     assert result.returncode==0
     assert (SERVER/'world-test-result.txt').read_text().startswith('PASS')
-    log=(RT/'world-test-hf8-server.log').read_text()
+    log=(RT/'world-test-hf9-server.log').read_text()
     assert 'Failed to load function' not in log and 'Failed to parse' not in log
     print('PASS real Fabric function parsing: all PQ01 functions loaded')
 

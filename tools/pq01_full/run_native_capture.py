@@ -2,7 +2,7 @@
 from pathlib import Path
 import subprocess,os
 import build
-r=build.ROOT;s=build.HERE;out=r/'work/pq01_hf6/native-capture';out.mkdir(parents=True,exist_ok=True)
+r=build.ROOT;s=build.HERE;out=r/'work/pq01_hf9/native-capture';out.mkdir(parents=True,exist_ok=True)
 cp=os.pathsep.join(map(str,[s/'contract_classes',s/'classes']))
 sources=[s/'tests/integration/Pq01NativeCaptureBench.java',*sorted((s/'tests/native_capture_doubles').rglob('*.java'))]
 subprocess.run(['java','--module','jdk.compiler/com.sun.tools.javac.Main','-proc:none','-cp',cp,'-d',str(out),*map(str,sources)],check=True)
@@ -22,10 +22,9 @@ for key,node in N.items():
             text=line.split('tellraw @s ',1)[1]
             text=re.sub(r'\$\(b(\d+)\)',lambda m:str(1000000000+int(m[1])),text).replace('$(voice)','0')
             messages.append(text)
-    old=node['choices'];parent=old[0]['target'] if len(old)==1 and old[0]['label']=='Continuer.' else None
-    if parent in {'ga_menu','gautier_menu','hugues_menu','anselme_menu','perrin_menu','c_menu','e_menu'} and (key.startswith(('ga_','gautier_','hugues_','anselme_','perrin_','e_')) or re.fullmatch(r'c[a-e][0-9]+',key)):expected=len(N[parent]['choices'])+1
-    else:expected=(0 if len(old)==1 and old[0]['label']=='Continuer.' else len(old))+1
+    from hf9 import effective,manual
+    expected=(0 if manual(key) else len(effective(key)))+1
     rows.append({'key':key,'speaker':ROLES[node['role']],'choices':expected,'messages':messages})
-fixtures=r/'work/pq01_hf6/native-capture-fixtures.json';fixtures.write_text(json.dumps(rows,ensure_ascii=False))
+fixtures=r/'work/pq01_hf9/native-capture-fixtures.json';fixtures.write_text(json.dumps(rows,ensure_ascii=False))
 p=subprocess.run([str(java),'-cp',cp,'net.hautecapitale.quetes.sequence.Pq01NativeCaptureBench',str(fixtures)],capture_output=True,text=True)
-(r/'work/pq01_hf6/native-capture.log').write_text(p.stdout+p.stderr);print(p.stdout+p.stderr);raise SystemExit(p.returncode)
+(r/'work/pq01_hf9/native-capture.log').write_text(p.stdout+p.stderr);print(p.stdout+p.stderr);raise SystemExit(p.returncode)

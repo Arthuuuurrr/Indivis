@@ -13,8 +13,7 @@ final class Pq01Pacing {
     }catch(NumberFormatException e){return null;}
   }
   static boolean ready(Frame f,int age,int finalPageTicks,boolean lastPage,boolean typing,boolean voicePlaying,boolean typewriter){
-    // La frappe constitue déjà le temps de lecture. Ne pas ajouter un second minuteur.
-    // Sans frappe progressive, garder le temps de lecture pour un texte affiché d'un coup.
-    return f!=null&&f.token()!=0&&!voicePlaying&&lastPage&&!typing&&age>=Math.max(typewriter?2:f.readingTicks(),f.voiceTicks())&&finalPageTicks>=1;
+    // Le lecteur décide quand avancer ; seules la nouvelle capture et la voix sont attendues.
+    return f!=null&&f.token()!=0&&!voicePlaying&&lastPage&&!typing&&age>=Math.max(2,f.voiceTicks())&&finalPageTicks>=1;
   }
 }

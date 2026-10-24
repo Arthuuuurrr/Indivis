@@ -61,6 +61,8 @@ public final class Pq01WorldBench implements ModInitializer {
   }
   static void initActors()throws Exception{
     check(call(world,"method_66347",uuid(source))==source&&call(world,"method_66347",uuid(perrinSource))==perrinSource,"source UUIDs ready after world ticks");
+    run(player,"scoreboard objectives add hcm_pq1_temp dummy");
+    run(player,"attribute "+uuid(perrinSource)+" minecraft:movement_speed base set 0");
     Object data=GuardNbt.compound(),bindings=GuardNbt.childOrCreate(data,"bindings");
     GuardNbt.put(bindings,"gautier_large",bindingFor(source));GuardNbt.put(bindings,"perrin_large",bindingFor(perrinSource));GuardNbt.put(bindings,"geraud_large",bindingFor(geraudSource));GuardNbt.save(server,"capitale:pq01_setup",data);
     view=invoke("view",new Class<?>[]{Object.class},player);
@@ -69,6 +71,10 @@ public final class Pq01WorldBench implements ModInitializer {
     check(call(world,"method_66347",uuid(actor))==actor&&call(world,"method_66347",uuid(perrin))==perrin,"actors present in actual ServerWorld");
     check(tags(actor).contains(Pq01Actors.TAG)&&tags(actor).contains("hcm_owner_"+uuid(player)),"private actor tags loaded");
     check(Boolean.FALSE.equals(call(actor,"method_5987")),"Gautier AI enabled");
+    run(player,"execute store result score @s hcm_pq1_temp run attribute "+uuid(perrin)+" minecraft:movement_speed base get 1000");
+    check(score(player,"hcm_pq1_temp")>0,"Perrin private actor recovers from source zero movement speed");
+    run(player,"execute store result score @s hcm_pq1_temp run attribute "+uuid(perrinSource)+" minecraft:movement_speed base get 1000");
+    check(score(player,"hcm_pq1_temp")==0,"Perrin source zero movement speed remains untouched");
     Object srcTag=GuardNbt.entity(source),copyTag=GuardNbt.entity(actor);
     check(!Objects.equals(child(srcTag,"SkinData"),GuardNbt.compound()),"source has a non-default skin payload");
     for(String key:List.of("SkinData","ModelData","EquipmentData","equipment","HandItems"))if(child(srcTag,key)!=null)check(Objects.equals(child(srcTag,key),child(copyTag,key)),"appearance copied: "+key);

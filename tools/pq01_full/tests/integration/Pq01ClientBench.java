@@ -3,47 +3,49 @@ import java.lang.reflect.*;
 import java.util.*;
 import net.hautecapitale.dialogue.client.DialogueClientState;
 import net.hautecapitale.dialogue.client.capture.CaptureDialogueScreen;
-/** Vrai adaptateur et parseur du JAR ; écran, réseau et voix doublés. */
+/** Vrai adaptateur ; réseau, panneau, entrées et rendu doublés. */
 public final class Pq01ClientBench {
   static int checks;static final int TOKEN=1000000001;
   static void check(boolean ok,String name){checks++;if(!ok)throw new AssertionError(name);}
   public record Text(Style style){public Style method_10866(){return style;}}
   public record Style(String insertion){public String method_10955(){return insertion;}}
+  public record Key(int code,boolean control){public int method_74228(){return code;}public boolean method_74231(){return control;}}
+  public record Mouse(int button,double x,double y){public int method_74245(){return button;}public double comp_4798(){return x;}public double comp_4799(){return y;}}
+  public static final class Draw {public String shown="";public int boxes;public void method_25294(int a,int b,int c,int d,int color){boxes++;}public void method_51433(CaptureDialogueScreen.Font f,String s,int x,int y,int color,boolean shadow){shown=s;}}
   public static final class Network {public final List<String> commands=new ArrayList<>();public void method_45730(String c){commands.add(c);}}
   public static final class Client {public Object field_1755=new CaptureDialogueScreen();public final Network network=new Network();public Network method_1562(){return network;}}
   public static final class Voices {private Object active,pending,fading;}
   static void field(String name,Object value)throws Exception{Field f=Pq01Client.class.getDeclaredField(name);f.setAccessible(true);f.set(null,value);}
-  static String marker(String key,String role,int token,int read,int voice){return "indivis:pq01:v1:"+key+":"+role+":"+token+":"+read+":"+voice;}
+  static String marker(String key,String role,int token,int voice){return "indivis:pq01:v1:"+key+":"+role+":"+token+":0:"+voice;}
   static boolean message(String text){return Pq01Client.message(new Text(new Style(text)),false);}
   static void ticks(Client c,int count){for(int i=0;i<count;i++)Pq01Client.tickClient(c);}
   public static void main(String[] args)throws Exception {
-    field("voicesChecked",true);String frame=marker("c1","altheon",TOKEN,600,0);
-    Pq01Pacing.Frame parsed=Pq01Pacing.parse(frame);check(parsed!=null&&parsed.token()==TOKEN,"trame valide");
-    for(String bad:Arrays.asList(null,"",frame+":extra",marker("c1","geraud",TOKEN,60,0),marker("missing","altheon",TOKEN,60,0),marker("c1","altheon",1,60,0),marker("c1","altheon",2000000000,60,0),marker("c1","altheon",TOKEN,-1,0),marker("c1","altheon",TOKEN,60,12001)))check(Pq01Pacing.parse(bad)==null,"trame invalide refusée : "+bad);
-    check(!Pq01Pacing.ready(parsed,1,1,true,false,false,true),"pas d'avance dans le premier tick de réception");
-    check(Pq01Pacing.ready(parsed,2,1,true,false,false,true),"texte révélé sans second délai de lecture");
-    check(!Pq01Pacing.ready(parsed,599,80,true,false,false,false),"lecture conservée si texte instantané");
-    check(Pq01Pacing.ready(parsed,600,80,true,false,false,false),"lecture instantanée avance après son budget");
-    check(!Pq01Pacing.ready(parsed,1000,80,false,false,false,true),"aucun saut de page");
-    check(!Pq01Pacing.ready(parsed,1000,80,true,true,false,true),"frappe attendue");
-    check(!Pq01Pacing.ready(parsed,1000,80,true,false,true,true),"voix réelle attendue");
-    var voiced=Pq01Pacing.parse(marker("c1","altheon",TOKEN,600,80));
-    check(!Pq01Pacing.ready(voiced,79,1,true,false,false,true),"durée audio déclarée respectée");
-    check(Pq01Pacing.ready(voiced,80,1,true,false,false,true),"aucun silence supplémentaire après durée audio");
+    field("voicesChecked",true);String frame=marker("a4","geraud",TOKEN,0);
+    var parsed=Pq01Pacing.parse(frame);check(parsed!=null&&parsed.token()==TOKEN,"trame valide");
+    for(String bad:Arrays.asList(null,"",frame+":extra",marker("a4","gautier",TOKEN,0),marker("missing","geraud",TOKEN,0),marker("a4","geraud",1,0),marker("a4","geraud",2000000000,0),marker("a4","geraud",TOKEN,12001)))check(Pq01Pacing.parse(bad)==null,"trame invalide refusée");
     Client c=new Client();CaptureDialogueScreen screen=(CaptureDialogueScreen)c.field_1755;
     check(message("bonjour")&&message(null),"messages ordinaires préservés");check(!message(frame),"trame invisible");
-    check(DialogueClientState.name().equals("Althéon Brumeforge"),"nom mis à jour avant texte");
-    screen.versionVue=0;ticks(c,100);check(c.network.commands.isEmpty(),"ancienne page ne valide jamais la nouvelle trame");
-    screen.versionVue=1;screen.panneau.typing=true;ticks(c,100);check(c.network.commands.isEmpty(),"frappe réelle jamais coupée");
-    screen.panneau.typing=false;ticks(c,1);check(c.network.commands.size()==1,"fin de frappe enchaîne au tick suivant");
-    int cleared=DialogueClientState.cleared;ticks(c,19);check(c.network.commands.size()==1,"pas de spam entre tentatives");ticks(c,1);check(c.network.commands.size()==2,"réessai même nonce si aucun acquittement");check(DialogueClientState.cleared==cleared,"capture conservée pendant réessai");
-    check(screen.panneau.name.equals("Althéon Brumeforge")&&!screen.panneau.waiting,"en-tête et panneau corrects");check(DialogueClientState.deadline()>System.currentTimeMillis(),"caméra maintenue");
-    message(marker("c_menu","altheon",0,60,0));ticks(c,300);check(c.network.commands.size()==2,"menu acquitte sans progression automatique");
-    message(frame);screen.panneau.last=false;ticks(c,1);check(screen.panneau.pagesAdvanced==1&&c.network.commands.size()==2,"page intermédiaire lue avance directement");ticks(c,1);check(c.network.commands.size()==3,"dernière page achevée valide sans pause");
-    message(marker("c1","altheon",TOKEN,60,0));screen.panneau.typewriter=false;ticks(c,59);check(c.network.commands.size()==3,"frappe désactivée laisse le temps de lire");ticks(c,1);check(c.network.commands.size()==4,"frappe désactivée garde lecture bornée");screen.panneau.typewriter=true;
-    Voices voices=new Voices();field("voices",voices);voices.active=new Object();message(frame);ticks(c,100);check(c.network.commands.size()==4,"voix active bloque");voices.active=null;voices.pending=new Object();ticks(c,100);check(c.network.commands.size()==4,"chargement audio bloque");voices.pending=null;voices.fading=new Object();ticks(c,100);check(c.network.commands.size()==4,"fin audio bloque");voices.fading=null;ticks(c,1);check(c.network.commands.size()==5,"fin audio enchaîne immédiatement");
-    message(frame);DialogueClientState.active=false;ticks(c,200);check(c.network.commands.size()==5,"fermeture annule avance tardive");
-    DialogueClientState.active=true;message(frame);ticks(c,2000);check(c.network.commands.size()==65,"réessais bornés à soixante");
-    System.out.println("PASS "+checks+" assertions ; vrais Pq01Client/Pq01Pacing ; frappe, version de capture, voix et budget sans frappe ; UI et réseau doublés.");
+    ticks(c,2000);check(c.network.commands.isEmpty(),"Matelot et remontrance restent lisibles sans action même après 100 secondes");
+    screen.versionVue=0;check(!Pq01Client.requestAdvance(screen),"ancienne capture ne peut pas avancer nouvelle page");screen.versionVue=1;
+    screen.panneau.typing=true;check(!Pq01Client.key(screen,new Key(32,false)),"premier Espace laissé au moteur natif pour révéler texte");ticks(c,100);check(c.network.commands.isEmpty(),"frappe jamais validée automatiquement");
+    screen.panneau.typing=false;screen.panneau.last=false;check(!Pq01Client.key(screen,new Key(32,false)),"pagination laissée au moteur natif");ticks(c,100);check(screen.panneau.pagesAdvanced==0,"aucune page tournée par minuteur");screen.panneau.last=true;
+    screen.panneau.history=true;check(!Pq01Client.requestAdvance(screen),"historique ne fait pas progresser quête");screen.panneau.history=false;
+    check(!Pq01Client.key(screen,new Key(72,false))&&!Pq01Client.key(screen,new Key(32,true)),"raccourcis étrangers et modifiés conservés");
+    check(Pq01Client.key(screen,new Key(32,false)),"Espace demande explicitement la suite");ticks(c,1);check(c.network.commands.size()==1,"suite envoyée après action utilisateur");
+    int cleared=DialogueClientState.cleared;ticks(c,19);check(c.network.commands.size()==1,"réessai borné sans spam");ticks(c,1);check(c.network.commands.size()==2&&DialogueClientState.cleared==cleared,"réessai conserve capture");
+    Draw draw=new Draw();Pq01Client.hint(screen,draw);check(draw.shown.equals("Espace ou clic : suite")&&draw.boxes==1,"indication française et hauteur héritée valides");
+    message(marker("c1","altheon",0,0));ticks(c,2000);check(c.network.commands.size()==2&&!Pq01Client.requestAdvance(screen),"vraies questions jamais validées par Espace");
+    draw=new Draw();Pq01Client.hint(screen,draw);check(draw.shown.isEmpty(),"aucune fausse indication de suite sur un menu de réponses");
+    message(frame);screen.panneau.choiceAt=0;check(!Pq01Client.mouse(screen,new Mouse(0,4,4)),"clic sur bouton fermer préservé");screen.panneau.choiceAt=-1;
+    check(!Pq01Client.mouse(screen,new Mouse(1,4,4)),"clic droit non détourné");check(Pq01Client.mouse(screen,new Mouse(0,4,4)),"clic gauche sur texte demande suite");ticks(c,2);check(c.network.commands.size()==3,"clic hors boutons avance le bloc");
+    message(frame);screen.panneau.typewriter=false;ticks(c,5000);check(c.network.commands.size()==3,"frappe désactivée : texte reste jusqu'à action");check(Pq01Client.key(screen,new Key(257,false)),"Entrée avance aussi sans frappe");ticks(c,1);check(c.network.commands.size()==4,"validation manuelle sans budget imposé");screen.panneau.typewriter=true;
+    Voices voices=new Voices();field("voices",voices);voices.active=new Object();message(frame);check(Pq01Client.requestAdvance(screen),"demande de suite mémorisée pendant voix");ticks(c,100);check(c.network.commands.size()==4,"voix active ne peut pas être coupée");voices.active=null;voices.pending=new Object();ticks(c,100);check(c.network.commands.size()==4,"chargement audio attendu");voices.pending=null;voices.fading=new Object();ticks(c,100);check(c.network.commands.size()==4,"fin de voix attendue");voices.fading=null;ticks(c,1);check(c.network.commands.size()==5,"demande déjà faite exécutée à la fin audio");
+    message(marker("a4","geraud",TOKEN,80));Pq01Client.requestAdvance(screen);ticks(c,79);check(c.network.commands.size()==5,"durée de voix déclarée respectée");ticks(c,1);check(c.network.commands.size()==6,"suite possible après durée audio");
+    message(frame);Pq01Client.requestAdvance(screen);DialogueClientState.active=false;ticks(c,200);check(c.network.commands.size()==6&&!Pq01Client.requestAdvance(screen),"fermeture annule demandes tardives");
+    DialogueClientState.active=true;message(frame);Pq01Client.requestAdvance(screen);ticks(c,2000);check(c.network.commands.size()==66,"soixante tentatives maximum par demande explicite");
+    message(frame);Pq01Client.requestAdvance(screen);DialogueClientState.sessionId++;Pq01Client.state("pnjNom","Autre PNJ");ticks(c,100);
+    check(c.network.commands.size()==66&&!Pq01Client.requestAdvance(screen)&&DialogueClientState.name().equals("Autre PNJ"),"autre session : aucun choix tardif ni nom PQ01 imposé");
+    draw=new Draw();Pq01Client.hint(screen,draw);check(draw.shown.isEmpty(),"aucune indication PQ01 sur une autre quête");
+    System.out.println("PASS "+checks+" assertions ; vrais Pq01Client/Pq01Pacing, lecture manuelle, clavier/souris, pagination, capture, voix et hint ; affichage/réseau doublés.");
   }
 }

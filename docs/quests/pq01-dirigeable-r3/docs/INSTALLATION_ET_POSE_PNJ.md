@@ -1,8 +1,8 @@
-# Installation, configuration et déplacements des PNJ — PQ01-R3-HF8
+# Installation, configuration et déplacements des PNJ — PQ01-R3-HF9
 
-**Mise à jour du 24 octobre 2026 : remplacer uniquement le mod de quêtes/journal sur le serveur et chaque client par HF8.** Conserver le core HF7 et `hc_quetes` HF4. Les liaisons, points, apparences et progressions existants sont réutilisés. Aucune commande de liaison, pose ou reset n’est requise pour cette mise à jour.
+**Mise à jour du 24 octobre 2026 : remplacer le core serveur et le mod de quêtes/journal serveur et clients par HF9.** Conserver `hc_quetes` HF4. Liaisons, points, apparences et progressions sont réutilisés. Aucune commande de liaison, pose ou reset n’est requise pour mettre à jour.
 
-L’archive de correctif contient uniquement le JAR modifié, les guides et les preuves. Les commandes de pose ci-dessous restent le guide complet pour une configuration initiale ou un déplacement volontaire. [Causes et vérifications HF8](../HOTFIX_CADENCE_PERRIN_R3_HF8.md).
+Le correctif regroupe les répliques successives d’un même PNJ dans un bloc. Le texte reste affiché jusqu’à la lecture du joueur : Espace, Entrée ou clic dans le dialogue pour révéler/parcourir le texte, puis lire la suite. Les vraies réponses restent des choix. La file des prises audio conserve les hooks existants. [Causes et vérifications](../HOTFIX_BLOCS_ORIENTATION_R3_HF9.md).
 
 ## 1. Les trois opérations à distinguer
 
@@ -15,20 +15,20 @@ L’archive de correctif contient uniquement le JAR modifié, les guides et les 
 
 **Pendant la quête, Gautier marche réellement vers le point d’approche puis vers son poste.** La commande `placer_…` sert à l’édition du décor ; elle n’est jamais appelée par le trajet de scène. L’acteur temporaire est créé à son poste réel et sa navigation doit rejoindre la destination : aucun TP de scène à travers un mur.
 
-## 2. Mettre à jour depuis HF7
+## 2. Installer HF9 depuis HF8 ou HF7
 
 | Composant | Action | Fichier |
 | --- | --- | --- |
-| Mod de quêtes/journal, serveur **et chaque client** | Remplacer l’ancien JAR par celui inclus | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF8.jar` |
-| Core, datapacks du monde serveur | Conserver la version HF7 déjà installée | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF7.zip` |
-| Quêtes, datapacks du monde serveur | Conserver la version HF4 déjà installée | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip` |
+| Core, datapacks du monde serveur | Remplacer le ZIP précédent | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9.zip` |
+| Mod de quêtes/journal, serveur **et chaque client** | Remplacer le JAR précédent | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF9.jar` |
+| Quêtes, datapacks du monde serveur | Conserver HF4 | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip` |
 
 1. Fermer les dialogues et attendre la fin d’un amarrage éventuel. Sauvegarder ensemble monde et profils Nexus, puis arrêter le serveur.
-2. Remplacer uniquement le JAR du journal dans `mods` par HF8. Conserver les deux datapacks indiqués ci-dessus.
-3. Remplacer aussi ce JAR sur chaque client. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, ainsi que les autres composants.
-4. Redémarrer puis reprendre au clic droit sur le PNJ. Aucun reset ni commande de pose n’est nécessaire.
+2. Remplacer le core et le journal par les deux fichiers HF9 inclus. Conserver `hc_quetes` HF4.
+3. Remplacer aussi le journal sur chaque client. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC `7.16.0`, Fabric API `0.141.6+1.21.11` et les autres composants.
+4. Redémarrer et reprendre au clic droit sur le PNJ. Aucun PNJ ou point à replacer ; aucune progression à réinitialiser.
 
-Les commandes des sections suivantes servent uniquement à modifier volontairement la configuration. Elles s’exécutent en jeu avec le personnage Nexus voulu sélectionné et chargé.
+Le ZIP extérieur de livraison contient le guide et les composants. Installer uniquement le ZIP du core dans les datapacks et le JAR du journal dans les mods. Les commandes de pose suivantes servent aux modifications volontaires du décor.
 
 ## 3. Préparer l’édition
 
@@ -171,50 +171,18 @@ Cette réparation est limitée à PQ01 avant l’entretien achevé du capitaine.
 
 En cas de « unknown function », les adresses ci-dessus correspondent aux fichiers présents dans les ZIP R3 et sont contrôlées dans la livraison. Le journal R3 fournit la commande native `indivispq01` : son absence ou une erreur de chargement se diagnostique dans le log de démarrage, sans reset de profil ni vérification générique des datapacks.
 
-## 11. Dialogues et questions HF6
+## HF9 : lecture, orientation et diagnostic de Perrin
 
-Les pages qui n’offraient que « Continuer. » avancent seules après le temps de lecture, la dernière page et la fin de la voix. Les pages intermédiaires se tournent aussi automatiquement une fois leur texte révélé. Le joueur conserve ses vraies réponses, ses questions et la possibilité de fermer. Un menu de questions ne se valide jamais automatiquement. Aucun texte nouveau de réponse n’a été inventé.
+- **Lecture :** aucun minuteur ne tourne les pages ou n’efface un bloc. Espace/Entrée/clic laisse d’abord le moteur révéler ou parcourir le texte ; sur la dernière page achevée, la même action demande le bloc suivant. L’indication « Espace ou clic : suite » n’est pas une parole du protagoniste. Les boutons de questions et la fermeture restent ceux du dialogue.
+- **Géraud :** son acteur regarde le joueur à l’ouverture et pendant A1/A2. Il ne se tourne vers Gautier que pour A3 à A6, puis revient vers le joueur. « Matelot ! » et la remontrance sont dans un même bloc lisible.
+- **Perrin :** la marche reste personnelle, respecte les points enregistrés et l’ambiance désactivée. Une vitesse de base nulle du PNJ décoratif est corrigée seulement sur l’acteur temporaire. L’original conserve ses attributs. La ronde comporte normalement une pause de six secondes entre les trajets.
 
-L’interruption affiche le nom et la caméra du locuteur : **Gautier** pendant ses lignes, **Géraud Rivet** pendant les siennes. La caméra quitte Gautier avant son retour pour que le verrou de dialogue ne bloque pas sa marche. Les menus sans réplique ne montrent plus une page « … » à valider. La première page vide du Capitaine est sautée.
+Si Perrin reste immobile sur le serveur, se tenir près de lui avec le personnage concerné et exécuter :
 
-Le Capitaine attend un clic droit ; il ne déclenche plus l’interpellation automatique PQ01. Dans ses questions, la réponse finale est verte et porte la mention **« Terminer l’entretien et lancer l’amarrage. »**. Les autres questions peuvent être reprises avant de choisir cette réponse. La couleur utilise la catégorie verte native de Dialogue b10.
+```mcfunction
+/function capitale:pq01/admin/diagnostic_perrin
+```
 
-Le matelot Anselme reçoit un tag réservé PQ01. Les liaisons déjà enregistrées sont mises à jour quand le PNJ est chargé près d’un joueur, sans refaire la liaison. La quête de l’archiviste Anselme Kerrec exclut ce tag ; les autres archivistes gardent leur comportement.
+La commande inscrit une ligne `[Indivis PERRIN_DIAG HF9]` dans le log serveur : phase, progression, ambiance, position du joueur/source/acteur, points A/B, vitesse effective et raison actuelle. Elle ne déplace pas le PNJ et ne réinitialise rien. Fournir ensuite cette ligne ou le log serveur permet de distinguer un point absent, une ambiance désactivée, un PNJ non chargé/éloigné, une vitesse, une pause ou un trajet bloqué. La capture fournie ne contient pas ces données ; l’immobilité du Perrin de cette carte ne peut pas être déclarée résolue sans cet état réel.
 
-Gautier et Perrin utilisent une création directe d’entité puis une copie contrôlée et une navigation réelle. Le seuil d’arrivée est de 1,5 bloc avec un écart vertical de 0,75 bloc maximum. Il accepte notamment l’arrêt natif à environ 1,31 bloc observé dans le log. Un autre étage n’est pas considéré comme une arrivée proche. Les originaux ne sont pas déplacés par une scène.
-
-## 12. Déclenchement et reprise HF5
-
-Après disponibilité du personnage Nexus, Géraud attend au moins cinq secondes, un mouvement horizontal du joueur d’au moins 0,75 bloc et une proximité réelle de trois blocs. La surveillance de proximité ne dépend plus d’un nouvel événement EasyNPC après l’entrée dans son ancien grand rayon. Un clic droit volontaire reste utilisable immédiatement, sans ce délai.
-
-Après fermeture, l’interpellation ne rouvre pas la conversation toute seule. Un clic droit reprend au checkpoint existant. La première caméra est prise en compte avant son éventuel remplacement ; un refus de caméra ou une session disparue libère les seuls états temporaires PQ01. Les autres sessions de dialogue et les scores persistants sont conservés. Cette récupération traite aussi l’état bloqué laissé par HF4.
-
-Le contrôle supplémentaire qui rejetait l’approche de Gautier au-delà de quatre blocs de Géraud est retiré. Les points enregistrés sont réutilisés ; les limites de navigation, de dimension et de délai restent actives. Si un locuteur est hors de la portée d’ouverture de Dialogue, la caméra valide déjà ouverte est conservée et son texte continue avec son nom. Si aucune caméra valide n’existe, la conversation se ferme proprement et peut être relancée au clic.
-
-Le mode volontaire `test_debut` réarme la proximité pour une nouvelle recette, sans modifier ses sauvegardes historiques. Aucune de ces commandes de test n’est exécutée lors de l’installation.
-
-## 13. Enchaînements et navigation HF6
-
-Après une réponse de Géraud, Gautier, Hugues, Anselme ou Perrin, les questions sont directement disponibles sous cette réponse. Le Capitaine retrouve aussi ses questions à la fin de chaque famille de réponses ; les sous-questions rédigées restent des choix manuels. Les cinq questions de Géraud au quai restent réutilisables. Il n’est plus nécessaire de fermer puis rouvrir la conversation pour changer de question. La conclusion verte du Capitaine conserve sa fonction de clôture explicite.
-
-Une avance automatique reçue pendant une voix est conservée par le serveur puis traitée quand cette attente se termine. Le client réessaie avec le même jeton jusqu’à la nouvelle page, de façon bornée ; un ancien jeton ne valide pas la page suivante. Une durée audio sans son associé ne provoque plus d’attente. Chaque nouveau passage renouvelle le délai de conversation configuré : le délai de 3 600 ticks ne porte plus sur la durée totale de tout l’entretien.
-
-La marche conserve un chemin natif actif. Elle ne le remplace plus périodiquement par un nouveau calcul susceptible de faire échouer un trajet en cours. Un refus initial bénéficie de nouvelles tentatives pendant la pose au sol ; un point à hauteur fractionnaire peut être proposé au calcul natif à la hauteur de bloc supérieure, sans changer le point sauvegardé ni téléporter l’acteur. Un blocage réel conserve un arrêt/repli borné et son diagnostic serveur.
-
-Les essais exécutés et leurs limites sont décrits dans `HOTFIX_SCENE_CAPTURE_R3_HF7.md` et `audit/validation.json`. La carte réelle et le rendu graphique complet du modpack ne sont pas disponibles dans ce banc.
-
-## 14. Scène et notifications HF7
-
-Les notifications Minecraft de connexion, reconnexion avec ancien nom et déconnexion restent dans le chat normal et n’apparaissent plus comme paroles du PNJ. Le filtre porte sur les clés de traduction de ces notifications, y compris lorsqu’elles sont enveloppées dans un autre composant de texte ; une réplique littérale contenant les mêmes mots reste intacte. Il s’applique aux conversations capturées par Dialogue b10, pas uniquement à PQ01. Le JAR Dialogue reste inchangé.
-
-Gautier commence son approche pendant la deuxième réplique de Géraud. L’arrivée ne déclenche pas à elle seule une nouvelle réplique : le dialogue garde son ordre et le temps de lecture/de voix de Géraud. À la fin de cette réplique, Gautier peut parler en marchant. Une fois arrêté, il garde son acteur, sa position et son apparence pendant l’échange. Après « Bien, quartier-maître ! », il repart à pied. Un échec d’approche, de reprise ou de retour le laisse au dernier point atteint ; aucune suppression/recréation ne simule un retour instantané au poste.
-
-La mise à jour se fait sur le **serveur et chaque client**. Les logs fournis le 24 octobre annoncent journal HF6 côté serveur et HF4 côté client ; le nouveau filtre d’affichage se trouve dans le journal HF7 côté client. Cette observation ne suffit pas à expliquer le problème de trajet, qui a sa correction serveur propre.
-
-## Correctif HF8 : cadence et service de Perrin
-
-Les répliques automatiques enchaînent après la fin de la frappe du texte et de la voix, sans ajouter le second délai de lecture ni la seconde de repos final. La nouvelle capture doit avoir été rafraîchie avant qu’elle puisse être validée : une ancienne page ne peut pas faire sauter la suivante. Si la frappe progressive est désactivée, le budget de lecture est conservé pour laisser lire le texte affiché d’un coup. Les menus de questions restent manuels.
-
-L’ambiance peut démarrer à l’étape PQ01 0, avant la première discussion complète. Perrin vise le bloc exact de sa destination, avec une tolérance adaptée aux trajets courts. Le dialogue avec lui suspend sa marche ; son service reprend ensuite. Au quai, il utilise uniquement `perrin_a_quai` et `perrin_b_quai`. Les points déjà enregistrés sont conservés. Prévoir deux points réellement distincts sur un passage praticable ; aucun nouveau point n’est inventé par le correctif.
-
-Le réglage explicite `ambient_enabled=0` est respecté. La commande existante `/function capitale:pq01/admin/status` indique désormais aussi son état, la phase et les coordonnées de la ronde dans la dimension courante. Un point absent produit un diagnostic serveur, sans réplique technique dans une fenêtre de PNJ. Les nouveaux logs fournis ne contiennent pas les coordonnées enregistrées : ce correctif valide le contrôleur et ses cas limites, pas la géométrie du navire utilisateur.
+Pour le futur doublage, voir `DOUBLAGE_BLOCS.md` et `../config/BLOCS_ET_PRISES.json`. Les 92 prises individuelles restent valables.

@@ -1,4 +1,4 @@
-# Rejouer PQ01 et effectuer la recette — HF8
+# Rejouer PQ01 et effectuer la recette — HF9
 
 ## Relecture personnelle sans récompenses
 
@@ -46,17 +46,11 @@ En parcours normal, contrôler séparément sur un personnage de test approprié
 | Deux rondes de Perrin et échange Hugues/Gautier | Rondes indépendantes ; ambiance refusée près d’un autre joueur ; scène obligatoire prioritaire. |
 | Navire amarré | Aucune destination du navire au large réutilisée au quai. Les points suffixés `_quai` sont indépendants. |
 
-Chaque nouveau passage renouvelle le timeout de dialogue de 3 600 ticks par défaut, configurable dans `capitale:pq01_config timeout_ticks` entre 200 et 12 000. La distance maximale au point d’ouverture est de dix blocs. Les pages linéaires avancent après lecture, dernière page affichée et fin de voix ; les vraies réponses et les questions attendent le choix du joueur.
+Chaque nouveau passage renouvelle le timeout de dialogue de 3 600 ticks par défaut, configurable dans `capitale:pq01_config timeout_ticks` entre 200 et 12 000. La distance maximale au point d’ouverture est de dix blocs. Les pages et blocs restent à l’écran jusqu’à l’action du joueur, et la voix en cours doit être terminée avant la suite. Les vraies réponses et les questions attendent leur sélection.
 
 ## Futurs doublages
 
-Les 92 prises et leurs textes exacts sont dans le dossier `direction_acteur` : `DIRECTION_ACTEUR_FR.md`, `PROMPTS_QWEN_FR.md` et `qwen/prises_pq01.jsonl`. Aucun son nouveau n’est généré ou livré. Une fois la ressource audio réelle disponible, régler son nœud, par exemple :
-
-```mcfunction
-/data modify storage capitale:pq01_config voices.c1 set value {sound:"indivis:voix/altheon/pq01_c1",ticks:180}
-```
-
-Remplacer cet identifiant d’exemple par le son réel. La durée `ticks` bloque le choix suivant jusqu’à la fin audio ; fermer reste possible. Sans son configuré, les pages linéaires avancent dès la fin de leur frappe progressive ; si celle-ci est désactivée, le temps de lecture est conservé ; les questions et réponses restent manuelles. Les sons d’amarrage historiques sont conservés. Indivis Voices 0.2.3 est facultatif ; sa lecture active bloque aussi l’avance automatique.
+Consulter `DOUBLAGE_BLOCS.md` et `../config/BLOCS_ET_PRISES.json`. Les prises gardent leurs identifiants et sont jouées dans l’ordre du bloc, sans effacer le texte entre elles. Aucun audio nouveau n’est fourni.
 
 ## Retour arrière
 
@@ -64,53 +58,14 @@ Tant que R3 est présent, terminer chaque relecture avec `test_fin`, fermer les 
 
 **Cette recette du modpack et de la carte reste à exécuter.** Un monde Fabric/EasyNPC isolé a validé la création/copie d’acteurs et quatre trajets réels ; il ne valide pas le rendu, le son ni les profils du monde utilisateur.
 
-## Points à revoir après HF3
+## Recette HF9 prioritaire
 
-La mise à jour conserve la progression actuelle. Pour revoir le début sur un personnage avancé, le mode réversible reste volontaire : `/function capitale:pq01/admin/test_debut`, puis `/function capitale:pq01/admin/test_fin` à la fin. Le mode de test sauvegarde le contexte du personnage ; ne pas supprimer cette sauvegarde ni forcer les scores à la main.
+1. Ouvrir Géraud : il regarde le joueur pendant A1 et A2, puis Gautier pendant l’interruption, puis de nouveau le joueur. Attendre une minute sur A1 sans toucher les commandes : aucune avance automatique.
+2. Lire le bloc « Matelot ! » suivi de la remontrance. Le texte reste jusqu’à l’action du joueur. Aucun personnage supplémentaire n’est ajouté au titre du dialogue.
+3. Vérifier les blocs C1+C2, C3+C4 et C5+C6+questions du capitaine ; CD1+CD2, CE1+CE2 ; la conclusion CX1 à CX4 ; l’accueil et le départ de Géraud au quai.
+4. Sur un bloc long, vérifier les pages : premier Espace/clic pour révéler si nécessaire, puis page suivante, puis bloc suivant à la dernière page. Refaire avec la frappe désactivée. Les questions ne se choisissent pas toutes seules.
+5. Vérifier la conclusion verte du capitaine. Après sa sélection, lire l’intégralité de son bloc final : l’amarrage ne part qu’après la validation de fin, et après la voix si elle est configurée. Fermer ne déclenche pas l’amarrage.
+6. Observer Perrin hors conversation durant au moins deux trajets et leurs pauses de six secondes. Si immobile, exécuter `/function capitale:pq01/admin/diagnostic_perrin`, puis conserver la ligne PERRIN_DIAG du log serveur. Aucun reset de PNJ.
+7. Pour le doublage futur, configurer deux prises de test d’un même bloc. Vérifier ordre, durée, choix reçu pendant la lecture et annulation à la fermeture. Retirer ces sons de test ensuite. Le banc utilise des sons Minecraft uniquement pour vérifier l’ordonnancement ; aucune voix n’est incluse dans HF9.
 
-1. Parler à Géraud. Vérifier que Gautier marche jusqu’à son approche, que son interruption affiche uniquement Gautier, puis que Géraud reprend avec son nom. Après la réponse de Gautier, il retourne à son poste.
-2. Laisser une réplique s’achever. Vérifier l’avance automatique après lecture/voix, la conservation des vraies réponses et la possibilité de fermer. Un menu de questions doit rester ouvert jusqu’au choix du joueur. Les menus vides ne doivent pas afficher « … ».
-3. Parler à Anselme : vérifier ses lignes de matelot et l’absence de progression de la quête de l’archiviste Kerrec.
-4. S’approcher du Capitaine : aucune interpellation PQ01. Faire un clic droit : sa première vraie réplique s’affiche. Poser les questions dans l’ordre voulu et revenir au menu. Vérifier la réponse verte « Terminer l’entretien et lancer l’amarrage. » ; seule sa sélection conduit à la séquence de départ.
-5. Hors de son dialogue, observer Perrin faire A → B puis B → A avec ses pauses. Vérifier aussi au quai si les points distincts du quai ont été configurés.
-6. Fermer pendant une marche et changer de personnage : aucune scène personnelle ni choix de l’ancien personnage ne doit continuer. À deux joueurs, vérifier que chacun ne voit que ses acteurs personnels.
-
-Les quatre trajets et la copie d’apparence ont été testés en monde isolé réel. Cette liste couvre ce qui reste à observer avec le rendu, le son et la carte utilisateur. Si un chemin est inaccessible, le diagnostic se trouve dans le log serveur ; il ne doit pas apparaître dans la bouche d’un PNJ.
-
-## Régression Géraud HF7
-
-1. Au spawn, rester immobile plus de cinq secondes : aucune conversation automatique.
-2. Avancer en restant à plus de trois blocs réels de Géraud : aucune conversation automatique.
-3. S’approcher à trois blocs après le délai : l’introduction peut commencer. Un clic droit reste possible avant le délai.
-4. Fermer avec Échap, puis attendre : aucune réouverture automatique. Refaire un clic droit : reprise de la conversation, sans page « … » bloquante. Répéter pendant l’aller, l’interruption et le retour de Gautier.
-5. Reprendre un personnage déjà bloqué sous HF4 : le clic suivant récupère la session temporaire et conserve son checkpoint. Aucun reset manuel des scores.
-6. Lancer volontairement une nouvelle relecture avec `test_debut` : la proximité est réarmée avec le même délai et la même condition de déplacement. Terminer avec `test_fin` comme décrit plus haut.
-
-## Contrôles ciblés HF7
-
-- Géraud : terminer l’introduction, demander le sauvetage, le rocher, sa fonction puis le Capitaine dans la même conversation. Après chaque réponse, les autres questions doivent être visibles immédiatement. Fermer puis rouvrir doit ramener aux questions.
-- Gautier, Hugues, Anselme, Perrin : poser plusieurs questions successives. Pour les réponses de départ, laisser le PNJ terminer sa réplique avant la fermeture automatique.
-- Capitaine : écouter son introduction, parcourir les familles A–E et débloquer Avaleiv en parlant de la mission. Les questions doivent rester disponibles jusqu’au choix vert de conclusion.
-- Géraud au quai : poser les cinq questions avant de prendre la conclusion finale.
-- Conserver une conversation pendant plusieurs questions longues : le timeout repart à chaque nouveau passage. Une voix en cours doit retarder un choix, puis permettre son traitement sans devoir rouvrir.
-
-Les vérifications déjà exécutées figurent dans le rapport HF7. Cette recette supplémentaire concerne uniquement le rendu, la caméra, le son et les chemins de la carte réelle, absents du banc automatisé.
-
-## Contrôles ciblés scène/capture HF7
-
-1. Pendant la réplique de Géraud « À bord d’un dirigeable… », observer le départ de Gautier. Son approche et la lecture doivent se dérouler en parallèle. Son interruption reste après la fin de la réplique de Géraud.
-2. Pendant les deux réponses de Géraud à Gautier, vérifier que le même Gautier reste au point atteint. Il repart uniquement après « Bien, quartier-maître ! ».
-3. Obstruer un trajet sur une copie de test : l’acteur doit s’arrêter sur place et le dialogue doit rester utilisable ; aucune disparition/réapparition au poste pendant la conversation.
-4. Faire rejoindre puis quitter un autre joueur pendant un dialogue : le message doit rester dans le chat et ne pas être ajouté aux répliques.
-
-Ces cas sont aussi contrôlés par un nouveau banc qui associe le contrôleur de scène de production, les fonctions Minecraft et la marche EasyNPC. La caméra et le panneau restent doublés dans le banc ; le comportement graphique complet reste à observer sur la carte réelle.
-
-## Recette ciblée HF8
-
-- Géraud A7 → A8 → questions : après la réponse du joueur sur le capitaine, lire la réplique de Géraud. Dès sa fin, la suite s’affiche sans seconde attente avec seulement « Fermer ». Les questions restent consultables successivement.
-- Althéon C1 → C2, puis C5 → C6 : pas de seconde attente après la fin de frappe. Les réponses réelles du joueur restent cliquables ; les questions facultatives ne se valident pas automatiquement.
-- Son actif : attendre la fin de la prise, y compris son chargement ; son absent : aucune durée fantôme. Frappe désactivée : laisser le budget de lecture. Fermer pendant la réplique : aucun choix tardif.
-- Perrin avant le premier échange : le service démarre déjà à l’étape 0 si l’ambiance est activée et ses points sont configurés. Observer A → B puis B → A, y compris avec des points proches.
-- Parler à Perrin pendant sa marche : arrêt pour sa conversation, reprise ensuite. Vérifier les points distincts du quai, le respect de l’ambiance désactivée et le nettoyage lors d’un changement de personnage.
-
-Ces cas sont vérifiés par le banc avec le vrai tick de production et la navigation EasyNPC. La vue, la géométrie utilisateur et l’écoute audio restent à observer dans le modpack.
+Le mode de lecture actuel est celui de cette recette HF9 : pages et blocs manuels.

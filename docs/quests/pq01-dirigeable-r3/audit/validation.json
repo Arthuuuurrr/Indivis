@@ -5,28 +5,28 @@
   "real_Fabric_world_started": true,
   "real_navigation_legs": 4,
   "real_blocked_navigation_case": 1,
-  "real_world_checks": 24,
-  "real_pipeline_checks": 1042,
-  "coupled_scene_checks": 20,
+  "real_world_checks": 26,
+  "real_pipeline_checks": 1161,
+  "coupled_scene_checks": 25,
   "ambient_occupation_checks": 15,
-  "world_scope": "PASS 24 checks\nsource NPC inserted\nsource NPC inserted\nsource NPC inserted\nsource UUIDs ready after world ticks\nfresh UUIDs for both actors\nactors present in actual ServerWorld\nprivate actor tags loaded\nGautier AI enabled\nsource has a non-default skin payload\nappearance copied: SkinData\nappearance copied: ModelData\nappearance copied: equipment\nproduction goal protection active\nactor custom interaction retained after 20 real ticks\nactual navigation leg 1 arrived\nGautier actually crossed raised stair deck and fractional slab floor\nactual navigation leg 2 arrived\nactual navigation leg 3 arrived\nactual navigation leg 4 arrived\nnative blocked path ends with bounded failure\nblocked actor never teleported through wall\nGautier original never moved\nPerrin original never moved\nactors discarded during production cleanup\nReal Fabric 1.21.11 world and EasyNPC 7.16.0 navigation (stairs, corridor, slabs, outbound/return). Nexus selection and visibility networking doubled; no real client camera tested.\nPASS 1042 pipeline checks, 671 actual server frames, 438 native trigger commands. Real Fabric functions, macros, scoreboard, tellraw packets and Dialogue b10 capture. Camera/panel/Nexus doubled; legacy teleport/reward bodies replaced by markers.\nPASS 20 coupled scene checks: production Pq01Bridge, actual PQ01 functions and EasyNPC path navigation; camera and panel doubled. Approach during a2, speech during walking, stationary conversation, walking return, blocked approach/return retain actor, no teleport.\nPASS 15 ambient occupation checks: production tick, pre-quest activation, one-block A/B route, conversation pause/resume, quai points, disable/reactivate, character cleanup; real EasyNPC navigation and camera preparation, graphical capture doubled. No direct travel invocation.",
+  "world_scope": "PASS 26 checks\nsource NPC inserted\nsource NPC inserted\nsource NPC inserted\nsource UUIDs ready after world ticks\nfresh UUIDs for both actors\nactors present in actual ServerWorld\nprivate actor tags loaded\nGautier AI enabled\nPerrin private actor recovers from source zero movement speed\nPerrin source zero movement speed remains untouched\nsource has a non-default skin payload\nappearance copied: SkinData\nappearance copied: ModelData\nappearance copied: equipment\nproduction goal protection active\nactor custom interaction retained after 20 real ticks\nactual navigation leg 1 arrived\nGautier actually crossed raised stair deck and fractional slab floor\nactual navigation leg 2 arrived\nactual navigation leg 3 arrived\nactual navigation leg 4 arrived\nnative blocked path ends with bounded failure\nblocked actor never teleported through wall\nGautier original never moved\nPerrin original never moved\nactors discarded during production cleanup\nReal Fabric 1.21.11 world and EasyNPC 7.16.0 navigation (stairs, corridor, slabs, outbound/return). Nexus selection and visibility networking doubled; no real client camera tested.\nPASS 1161 pipeline checks, 724 actual server frames, 461 native trigger commands. Real Fabric functions, macros, scoreboard, tellraw packets and Dialogue b10 capture. Camera/panel/Nexus doubled; legacy teleport/reward bodies replaced by markers.\nPASS 25 coupled scene checks: production Pq01Bridge, actual PQ01 functions and EasyNPC path navigation; camera and panel doubled. Approach during a2, speech during walking, stationary conversation, walking return, blocked approach/return retain actor, no teleport.\nPASS 15 ambient occupation checks: production tick, pre-quest activation, one-block A/B route, conversation pause/resume, quai points, disable/reactivate, character cleanup; real EasyNPC navigation and camera preparation, graphical capture doubled. No direct travel invocation.",
   "tests": {
-    "Pq01NbtIntegrationBench": "[12:16:20] [main/INFO]: Registered custom action haute_capitale_quetes:pq01\nPASS 80 assertions avec NBT Minecraft 1.21.11 et actions/registre EasyNPC 7.16.0 réels. Stockage d'entité doublé ; aucun monde ni serveur démarré.",
+    "Pq01NbtIntegrationBench": "[18:21:04] [main/INFO]: Registered custom action haute_capitale_quetes:pq01\nPASS 80 assertions avec NBT Minecraft 1.21.11 et actions/registre EasyNPC 7.16.0 réels. Stockage d'entité doublé ; aucun monde ni serveur démarré.",
     "Pq01NativeApiBench": "REAL_API_LOOKUP checks=120 failures=0; no Minecraft server/world created; existence/arity/public access checked, runtime behavior not covered.",
-    "Pq01CallbackBench": "[12:16:24] [main/INFO]: Registered custom action haute_capitale_quetes:pq01\n[12:16:24] [main/INFO]: [STDOUT]: PASS 3 assertions ; vrai CustomActionDispatcher EasyNPC 7.16.0 et proxy PQ01. Joueur réel alloué sans constructeur ; getEntity doublé à null ; aucun monde ni paquet de clic exécuté.",
-    "Pq01ColorBench": "[12:16:28] [main/INFO]: [STDOUT]: PASS native Dialogue b10 choice color: Minecraft GREEN -> QUETE",
+    "Pq01CallbackBench": "[18:21:11] [main/INFO]: Registered custom action haute_capitale_quetes:pq01\n[18:21:11] [main/INFO]: [STDOUT]: PASS 3 assertions ; vrai CustomActionDispatcher EasyNPC 7.16.0 et proxy PQ01. Joueur réel alloué sans constructeur ; getEntity doublé à null ; aucun monde ni paquet de clic exécuté.",
+    "Pq01ColorBench": "[18:21:17] [main/INFO]: [STDOUT]: PASS native Dialogue b10 choice color: Minecraft GREEN -> QUETE",
     "motion": "PASS 22 cas, 34 assertions sur Pq01Motion compilé. Aucun test Minecraft réel.",
-    "Pq01InteractionBench": "PASS 23 assertions ; vrais Pq01Bridge, SequenceBridge et NBT ; monde, personnage Nexus et effets caméra doublés. Aucun serveur, paquet client ou rendu en jeu exécuté.\n[Indivis PQ01-R3-HF8] Phase incompatible : geraud_large, personnage=quai. Relecture explicite : capitale:pq01/admin/test_debut.\n[Indivis PQ01-R3-HF8] Personnage Nexus pas encore chargé.",
-    "Pq01ClientBench": "PASS 41 assertions ; vrais Pq01Client/Pq01Pacing ; frappe, version de capture, voix et budget sans frappe ; UI et réseau doublés.",
-    "Pq01GeraudBench": "PASS 41 assertions de régression Géraud sur le pont livré ; monde, effets de fonctions, horloge et caméra doublés. Aucun rendu client réel.\n[Indivis PQ01-R3-HF8] Ouverture de caméra refusée ; session PQ01 libérée pour une nouvelle interaction.",
-    "native_capture": "[12:16:39] [main/INFO]: [STDOUT]: PASS 191 native b10 capture assertions; no graphical client."
+    "Pq01InteractionBench": "PASS 23 assertions ; vrais Pq01Bridge, SequenceBridge et NBT ; monde, personnage Nexus et effets caméra doublés. Aucun serveur, paquet client ou rendu en jeu exécuté.\n[Indivis PQ01-R3-HF9] Phase incompatible : geraud_large, personnage=quai. Relecture explicite : capitale:pq01/admin/test_debut.\n[Indivis PQ01-R3-HF9] Personnage Nexus pas encore chargé.",
+    "Pq01ClientBench": "PASS 44 assertions ; vrais Pq01Client/Pq01Pacing, lecture manuelle, clavier/souris, pagination, capture, voix et hint ; affichage/réseau doublés.",
+    "Pq01GeraudBench": "PASS 41 assertions de régression Géraud sur le pont livré ; monde, effets de fonctions, horloge et caméra doublés. Aucun rendu client réel.\n[Indivis PQ01-R3-HF9] Ouverture de caméra refusée ; session PQ01 libérée pour une nouvelle interaction.",
+    "native_capture": "[18:21:38] [main/INFO]: [STDOUT]: PASS 191 native b10 capture assertions; no graphical client."
   },
-  "bytecode": "PASS ASM BasicVerifier: 182 classes, 1776 methods; no Minecraft API resolution.",
+  "bytecode": "PASS ASM BasicVerifier: 182 classes, 1791 methods; no Minecraft API resolution.",
   "files": {
     "core": {
-      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF7.zip",
-      "bytes": 4955886,
-      "sha256": "308c246eef6e90e73b48f5705efc9e5c3aca2fa3d06d6baf304e4af5e2f9df94"
+      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9.zip",
+      "bytes": 5063973,
+      "sha256": "cd714f723c47a1b69dbd3f7e60413b46a0f4c3d9cca8bc9231763c2cf76e341d"
     },
     "quests": {
       "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip",
@@ -34,9 +34,9 @@
       "sha256": "71478ff2edf9c0246891429144407e5a8532e16baf5a5361494dfb4b78edd153"
     },
     "journal": {
-      "filename": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF8.jar",
-      "bytes": 480079,
-      "sha256": "fd0f45425638693fdd66b221929ddc84b32d037047d1397b4d0ee4a309a2d0f3"
+      "filename": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF9.jar",
+      "bytes": 482746,
+      "sha256": "cc8e69224c40be3623e45df3aeb871e6654e430266f8a942d24aabd123357f60"
     }
   },
   "limits": [
@@ -46,9 +46,10 @@
     "La scène emploie le vrai contrôleur de production avec marche et répliques couplées ; caméra et panneau sont doublés. Les trajets EasyNPC réels parcourent marches, couloir et dalles, et un chemin réellement bloqué ; la géométrie et les points du monde utilisateur ne sont pas disponibles.",
     "Séquence I : conservation binaire et contrôle des références ; aucun parcours complet sur la carte utilisateur."
   ],
-  "core_datapack_byte_identical_to_HF7": true,
+  "core_changes_limited_to_PQ01": true,
+  "grouped_node_variants": 16,
   "quest_datapack_byte_identical_to_HF4": true,
-  "historical_mixins_helpers_factory_and_SI1_byte_identical_to_HF7": true,
-  "native_client_members_checked": 16,
+  "historical_mixins_helpers_factory_and_SI1_byte_identical_to_HF8": true,
+  "native_client_members_checked": 27,
   "optional_voices_jar_sha256": "c6716ca6651bc6e7b5ae0de972c69a8fbea197e5b0be1e1a4d7f7ed2a30ffae4"
 }
