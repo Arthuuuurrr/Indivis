@@ -1,5 +1,7 @@
 # PQ01 — scènes personnelles et charge multijoueur — R3-HF10
 
+**Framerate : régression signalée le 24 octobre 2026, cause encore non identifiée.** Le profil reçu contient uniquement le thread serveur (environ 20 TPS, MSPT médian 9,62 ms), sans rendu client. Les tests HF10 ne valident donc pas les FPS. [Analyse et capture client nécessaire](audit/SPARK_GiYiuD2gYw_2026-10-24.md).
+
 24 octobre 2026 — Minecraft Fabric 1.21.11.
 
 **Remplacer uniquement le JAR de quêtes/journal sur le serveur et chaque client. Conserver le core HF9 et le datapack `hc_quetes` HF4 déjà installés. Aucun PNJ, point, liaison ou progression à réinitialiser.**

@@ -1,5 +1,7 @@
 # Statut PQ01
 
+**Framerate : régression signalée le 24 octobre 2026, cause encore non identifiée.** Le profil reçu contient uniquement le thread serveur (environ 20 TPS, MSPT médian 9,62 ms), sans rendu client. Les tests HF10 ne valident donc pas les FPS. [Analyse et capture client nécessaire](pq01-dirigeable-r3/audit/SPARK_GiYiuD2gYw_2026-10-24.md).
+
 Version actuelle : **journal R3-HF10**, core **R3-HF9**, datapack `hc_quetes` **R3-HF4** conservé.
 
 Les scènes utilisent des copies personnelles. HF10 refuse les acteurs des autres joueurs avant les contrôles historiques et regroupe les rafraîchissements de visibilité par joueur/tick. La création de deux acteurs passe de deux parcours natifs en HF9 à un en HF10 dans le même banc. Gautier n’a plus de copie d’ambiance inactive ; ses scènes et sa marche restent disponibles.
