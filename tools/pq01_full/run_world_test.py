@@ -5,7 +5,9 @@ import build
 
 ROOT=build.HERE.parent.parent
 RT=ROOT/'work/pq01_hf4/runtime'
-SERVER=RT/('server-hf9-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d%H%M%S%f'))
+MULTI=os.environ.get('PQ01_MULTIPLAYER')=='1'
+LABEL=os.environ.get('PQ01_TEST_LABEL','multi-hf10' if MULTI else 'world-test-hf10')
+SERVER=RT/('server-'+LABEL+'-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d%H%M%S%f'))
 def main():
     SERVER.mkdir(exist_ok=True);(SERVER/'mods').mkdir(exist_ok=True)
     for name in ['eula.txt','server.properties']:
@@ -18,25 +20,36 @@ def main():
     classes=RT/'world-test-classes';classes.mkdir(exist_ok=True)
     shutil.rmtree(classes);classes.mkdir()
     sources=[build.HERE/'tests/world/Pq01WorldBench.java',build.HERE/'tests/world/Pq01PipelineBench.java',build.HERE/'tests/world/Pq01SceneWorldBench.java',build.HERE/'tests/world/Pq01AmbientWorldBench.java',build.HERE/'tests/world_doubles/net/hautecapitale/quetes/visibility/QuestVisibility.java',build.HERE/'tests/interaction_doubles/net/tompsen/nexuscharacters/NexusCharacters.java',build.HERE/'tests/client_doubles/net/hautecapitale/dialogue/client/capture/CaptureDialogueScreen.java',*sorted((build.HERE/'tests/native_capture_doubles').rglob('*.java'))]
+    sources.append(build.HERE/'tests/world/Pq01MultiWorldBench.java')
+    if MULTI:sources=[p for p in sources if '/world_doubles/' not in str(p)]
     subprocess.run(['java','--module','jdk.compiler/com.sun.tools.javac.Main','-proc:none','-cp',os.pathsep.join(map(str,[build.HERE/'contract_classes',build.HERE/'classes'])),'-d',str(classes),*map(str,sources)],check=True)
     export=['--add-exports','java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED']
     subprocess.run(['java','--module','jdk.compiler/com.sun.tools.javac.Main',*export,'-d',str(classes),str(build.HERE/'tests/world/MakePacketSink.java')],check=True)
     subprocess.run(['java',*export,'-cp',str(classes),'MakePacketSink',str(classes)],check=True)
+    journal=build.OUT/os.environ.get('PQ01_JAR',build.FILES['journal'])
+    if MULTI:
+        subprocess.run(['java','--module','jdk.compiler/com.sun.tools.javac.Main',*export,'-d',str(classes),str(build.HERE/'tests/world/InstrumentVisibility.java')],check=True)
+        subprocess.run(['java',*export,'-cp',str(classes),'InstrumentVisibility',str(journal),str(classes)],check=True)
     asm=RT/'libraries/asm-9.10.1.jar'
     subprocess.run(['java','--module','jdk.compiler/com.sun.tools.javac.Main','-cp',str(asm),'-d',str(classes),str(build.HERE/'tests/world/StripClientEnvironment.java')],check=True)
     subprocess.run(['java','-cp',os.pathsep.join(map(str,[classes,asm])),'StripClientEnvironment',str(ROOT/'upload/haute-capitale-dialogue-0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX (1)(2).jar'),str(classes)],check=True)
-    with zipfile.ZipFile(build.OUT/build.FILES['journal']) as src,zipfile.ZipFile(SERVER/'mods/pq01-world-test.jar','w',zipfile.ZIP_DEFLATED) as out:
+    with zipfile.ZipFile(journal) as src,zipfile.ZipFile(SERVER/'mods/pq01-world-test.jar','w',zipfile.ZIP_DEFLATED) as out:
         for name in src.namelist():
-            if (name.startswith('net/hautecapitale/quetes/') and not name.startswith('net/hautecapitale/quetes/visibility/')):out.writestr(name,src.read(name))
+            if (classes/name).is_file():continue
+            if MULTI and name=='indivis_sequence_states.tsv':out.writestr(name,src.read(name))
+            if (name.startswith('net/hautecapitale/quetes/') and (MULTI or not name.startswith('net/hautecapitale/quetes/visibility/'))):out.writestr(name,src.read(name))
             elif name=='indivis_pq01.mixins.json':
                 config=json.loads(src.read(name));config['mixins']+=config.pop('client',[]);out.writestr(name,json.dumps(config))
         for path in classes.rglob('*.class'):out.write(path,path.relative_to(classes).as_posix())
-        out.writestr('fabric.mod.json','{"schemaVersion":1,"id":"indivis_pq01_worldtest","version":"4.0.0","environment":"server","entrypoints":{"main":["net.hautecapitale.quetes.sequence.Pq01WorldBench"]},"mixins":["indivis_pq01.mixins.json"],"depends":{"fabricloader":">=0.19.5","fabric-api":"*","minecraft":"1.21.11","easy_npc":"*"}}')
+        configs=['indivis_pq01.mixins.json']
+        if MULTI:
+            configs.append('indivis_tracker_test.mixins.json');out.writestr(configs[-1],json.dumps({'required':True,'minVersion':'0.8','package':'net.hautecapitale.quetes.mixin','compatibilityLevel':'JAVA_21','mixins':['EntityTrackerMixin'],'injectors':{'defaultRequire':1}}))
+        out.writestr('fabric.mod.json',json.dumps({'schemaVersion':1,'id':'indivis_pq01_worldtest','version':'4.0.0','environment':'server','entrypoints':{'main':['net.hautecapitale.quetes.sequence.'+('Pq01MultiWorldBench' if MULTI else 'Pq01WorldBench')]},'mixins':configs,'depends':{'fabricloader':'>=0.19.5','fabric-api':'*','minecraft':'1.21.11','easy_npc':'*'}}))
     i=1
     while (SERVER/f'world-run{i}').exists():i+=1
     # Monde de test jetable, distinct de toute carte fournie par l’utilisateur.
     if (SERVER/'world').exists():shutil.rmtree(SERVER/'world')
-    for path in [RT/'world-test-hf9-server.log',SERVER/'world-test-result.txt']:
+    for path in [RT/(LABEL+'-server.log'),SERVER/'world-test-result.txt']:
         if path.exists():path.unlink()
     pack=SERVER/'world/datapacks/pq01_syntax';pack.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(build.OUT/build.FILES['core']) as src:
@@ -83,13 +96,13 @@ def main():
     game=mc/'META-INF/versions/1.21.11/server-1.21.11.jar'
     java=ROOT/'work/pq01_hf2/runtime/jre/zulu21.52.203-ca-jre21.0.12.1-linux_x64/bin/java'
     cp=os.pathsep.join(map(str,[*sorted((RT/'libraries').glob('*.jar')),*sorted((mc/'META-INF/libraries').rglob('*.jar')),game]))
-    with (RT/'world-test-hf9-server.log').open('w') as log:
+    with (RT/(LABEL+'-server.log')).open('w') as log:
         result=subprocess.run([str(java),'-Xmx2G','-Xms512M',f'-Dfabric.gameJarPath={game}','-Dfabric.log.disableAnsi=true','-cp',cp,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui'],cwd=SERVER,stdout=log,stderr=subprocess.STDOUT,timeout=180)
     print((SERVER/'world-test-result.txt').read_text())
-    shutil.copyfile(SERVER/'world-test-result.txt',RT/'world-test-hf9-result.txt')
+    shutil.copyfile(SERVER/'world-test-result.txt',RT/(LABEL+'-result.txt'))
     assert result.returncode==0
     assert (SERVER/'world-test-result.txt').read_text().startswith('PASS')
-    log=(RT/'world-test-hf9-server.log').read_text()
+    log=(RT/(LABEL+'-server.log')).read_text()
     assert 'Failed to load function' not in log and 'Failed to parse' not in log
     print('PASS real Fabric function parsing: all PQ01 functions loaded')
 

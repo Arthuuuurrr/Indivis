@@ -14,6 +14,7 @@ public final class Pq01Bridge {
   private static final Set<UUID> ACTORS=new HashSet<>(),SUPPRESS=new HashSet<>();
   private static final Map<UUID,Long> GRACE=new HashMap<>();
   private static final Map<UUID,NearState> NEAR=new HashMap<>();
+  private static final Map<UUID,Object> REFRESH=new LinkedHashMap<>();
   private static final Set<String> ERRORS=new HashSet<>();
   private static long clock; private static boolean initialized,teamReady;
   private static final String[] ROLES={"geraud","altheon","gautier","hugues","anselme","perrin"};
@@ -34,9 +35,9 @@ public final class Pq01Bridge {
       try{return k.newInstance(a);}catch(ReflectiveOperationException e){throw new IllegalStateException(c,e);}
     }throw new IllegalStateException("Constructeur absent : "+c);
   }
-  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF9] "+e);e.printStackTrace(System.err);}}
+  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF10] "+e);e.printStackTrace(System.err);}}
   static void say(Object p,String s){run(p,"tellraw @s "+quote("[PQ01] "+s));}
-  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF9] "+text);}
+  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF10] "+text);}
   static void unavailable(Object p,String reason){diagnostic(p,reason);run(p,"title @s actionbar "+quote("Cette conversation n’est pas disponible pour le moment."));}
   static Object world(Object p){return call(p,"method_51469");}
   static String dimension(Object world){return String.valueOf(call(call(world,"method_27983"),"method_29177"));}
@@ -74,7 +75,7 @@ public final class Pq01Bridge {
     Object n=child(child(setup(p),"points"),scoped);if(n==null)return fallback;
     Pq01Motion.Point found=point(n);return found.dimension().equals(dimension(world(p)))?found:fallback;
   }
-  static boolean same(View v,Object p){return available(p)&&v.account.equals(uuid(p))&&v.character.equals(character(p))&&v.world==world(p);}
+  static boolean same(View v,Object p){return p!=null&&v.account.equals(uuid(p))&&v.world==world(p)&&score(p,"CAP_PROFILE_LOCK")==0&&v.character.equals(character(p));}
   static boolean dialogue(Object p){return available(p)&&score(p,"hcm_pq1_active")==1&&score(p,"CAP_QDIALOG_OWNER")>=91&&score(p,"CAP_QDIALOG_OWNER")<=96;}
   static boolean alive(Actor a){return a!=null&&!(Boolean)call(a.entity,"method_31481");}
   private static final class Actor {
@@ -85,7 +86,7 @@ public final class Pq01Bridge {
   private static final class View {
     final UUID account,character;final Object player,world;final Map<String,Actor> actors=new HashMap<>();final Set<UUID> hidden=new HashSet<>();
     String phase,cameraRole,pendingNode;Object pendingCamera,camera,captureSession;long cameraAt;boolean scene,banter,approachStarted;int waitingNode;Pq01Motion.Point approach;
-    View(Object p,String phase){account=uuid(p);character=character(p);player=p;world=world(p);this.phase=phase;}
+    View(Object p,String phase){account=uuid(p);character=character(p);player=p;world=world(p);this.phase=phase;Pq01Actors.view(account,hidden);}
   }
   public static void init(){
     if(initialized)return;initialized=true;
@@ -93,7 +94,7 @@ public final class Pq01Bridge {
     event("net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback","EVENT",a->{register(a[0]);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents$EndTick","END_SERVER_TICK",a->{tick(a[0]);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopping","SERVER_STOPPING",a->{for(View v:new ArrayList<>(VIEWS.values()))close(v.player,true);return null;});
-    event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{VIEWS.clear();ACTORS.clear();GRACE.clear();NEAR.clear();SUPPRESS.clear();Pq01Actors.reset();clock=0;teamReady=false;return null;});
+    event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{VIEWS.clear();ACTORS.clear();GRACE.clear();NEAR.clear();SUPPRESS.clear();REFRESH.clear();Pq01Actors.reset();clock=0;teamReady=false;return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents$Load","ENTITY_LOAD",a->{if(actor(a[0])&&!ACTORS.contains(uuid(a[0])))call(a[0],"method_31472");return null;});
     stat(DM,"onFermeture",(BiConsumer<Object,Object>)Pq01Bridge::captureClosed);
     stat(DM,"sondeMouvement",(Function<Object,Optional<Boolean>>)e->actor(e)?Optional.of(false):Optional.empty());
@@ -302,7 +303,12 @@ public final class Pq01Bridge {
     if(v!=null&&(!same(v,p)||!v.phase.equals(phase))){close(p,true);v=null;}
     if(v==null){v=new View(p,phase);VIEWS.put(uuid(p),v);}return v;
   }
-  static void refresh(Object p){stat("net.hautecapitale.quetes.visibility.QuestVisibility","forget",p);stat("net.hautecapitale.quetes.visibility.QuestVisibility","refresh",p);}
+  static void refresh(Object p){REFRESH.put(uuid(p),p);}
+  static void flushVisibility(){
+    List<Object> dirty=new ArrayList<>(REFRESH.values());REFRESH.clear();
+    for(Object p:dirty)try{stat("net.hautecapitale.quetes.visibility.QuestVisibility","refresh",p);}catch(Throwable failure){report(failure);}
+  }
+  static boolean ownerActive(Object player){View v=VIEWS.get(uuid(player));return v!=null&&same(v,player);}
   public static boolean visibleOriginal(Object entity,Object player){
     if(VIEWS.isEmpty())return true;
     View v=VIEWS.get(uuid(player));return v==null||!v.hidden.contains(uuid(entity))||!same(v,player);
@@ -320,7 +326,7 @@ public final class Pq01Bridge {
     call(template,"method_10556","NoGravity",false);call(template,"method_10556","CanPickUpLoot",false);GuardNbt.string(template,"DeathLootTable","minecraft:empty");
     Object events=GuardNbt.childOrCreate(GuardNbt.childOrCreate(template,"ActionData"),"ActionEventSet");GuardNbt.put(events,"ON_INTERACTION",action(role+"_"+v.phase,"interact"));
     UUID fresh=UUID.randomUUID();
-    ACTORS.add(fresh);v.hidden.add(uuid(src));Object e=null,g=null,t=null;
+    ACTORS.add(fresh);Pq01Actors.owner(fresh,v.account);v.hidden.add(uuid(src));Object e=null,g=null,t=null;
     try{
       e=Pq01EntityFactory.create(src,v.world,template,fresh,start);
       call(e,"method_5665",stat("net.minecraft.class_2561","method_43470",NAMES.get(role)));
@@ -340,7 +346,7 @@ public final class Pq01Bridge {
       }
       Pq01Actions.mutate(e,"ON_INTERACTION",action(role+"_"+v.phase,"interact"));
       run(v.player,"team join indivis_pq01 "+fresh);refresh(v.player);return a;
-    }catch(Throwable failure){v.actors.remove(role);ACTORS.remove(fresh);v.hidden.remove(uuid(src));if(g!=null)Pq01Actors.forget(g);if(t!=null)Pq01Actors.forget(t);if(e!=null)call(e,"method_31472");refresh(v.player);throw failure;}
+    }catch(Throwable failure){v.actors.remove(role);ACTORS.remove(fresh);Pq01Actors.remove(fresh);v.hidden.remove(uuid(src));if(g!=null)Pq01Actors.forget(g);if(t!=null)Pq01Actors.forget(t);if(e!=null)call(e,"method_31472");refresh(v.player);throw failure;}
   }
   static void configureActor(Object e,boolean mobile){
     Object provider=call(e,"getEasyNPCAttributeData"),attributes=call(provider,"getEntityAttributes");
@@ -357,7 +363,7 @@ public final class Pq01Bridge {
   }
   static void discard(View v,String role){
     Actor a=v.actors.remove(role);if(a==null)return;
-    if(a.motion!=null)a.motion.cancel();Pq01Actors.forget(a.goals);Pq01Actors.forget(a.targets);ACTORS.remove(a.id);v.hidden.remove(a.sourceId);call(a.entity,"method_31472");
+    if(a.motion!=null)a.motion.cancel();Pq01Actors.forget(a.goals);Pq01Actors.forget(a.targets);ACTORS.remove(a.id);Pq01Actors.remove(a.id);v.hidden.remove(a.sourceId);call(a.entity,"method_31472");
   }
   static void stop(Actor a){if(a==null)return;Object nav=call(a.entity,"getGroundPathNavigation");if(nav!=null)call(nav,"method_6340");call(a.entity,"method_18799",en("net.minecraft.class_243","field_1353"));}
   static void face(Actor a,Pq01Motion.Point target){
@@ -435,6 +441,7 @@ public final class Pq01Bridge {
   }
   static void close(Object p,boolean closeCamera){
     View v=VIEWS.remove(uuid(p));if(v==null)return;
+    Pq01Actors.close(v.account);
     v.waitingNode=0;GRACE.put(v.account,clock+40);
     if(closeCamera&&v.captureSession!=null&&((Optional<?>)stat(DM,"session",p)).orElse(null)==v.captureSession){SUPPRESS.add(v.account);try{stat(DM,"fermer",p,en("net.hautecapitale.dialogue.session.CloseReason","REMPLACEE"));}finally{SUPPRESS.remove(v.account);}}
     for(String role:new ArrayList<>(v.actors.keySet()))try{discard(v,role);}catch(Throwable e){report(e);}
@@ -506,12 +513,16 @@ public final class Pq01Bridge {
     if(alive(speaker)&&speaker!=geraud&&(speaker.motion==null||speaker.motion.done())&&dialogue(v.player))face(speaker,interruption&&speaker==gautier&&alive(geraud)?pos(geraud.entity,v.world):pos(v.player,v.world));
   }
   static void diagnosticPerrin(Object p){
+    diagnosticPerrin(p,true);
+  }
+  static void diagnosticPerrin(Object p,boolean notify){
     Object src=source(p,"perrin_"+phase(p));View v=VIEWS.get(uuid(p));Actor a=v==null?null:v.actors.get("perrin");
     Pq01Motion.Point pa=configuredPoint(p,"perrin_a",null),pb=configuredPoint(p,"perrin_b",null);
     String reason=integer(setup(p),"ambient_enabled",1)==0?"ambiance désactivée":!available(p)?"personnage indisponible":score(p,"hcq_pq01")>=100?"prologue déjà terminé":src==null?"liaison absente ou source non chargée dans cette dimension":pos(src,world(p)).distance2(pos(p,world(p)))>24*24?"source à plus de 24 blocs":pa==null||pb==null?"point A/B manquant dans cette dimension":a==null?"acteur absent, attendre le prochain tick d'ambiance":dialogue(p)&&"perrin".equals(v.cameraRole)?"conversation de Perrin active":a.motion!=null&&!a.motion.done()?"navigation en cours":!a.failure.isEmpty()?a.failure:"pause entre deux trajets";
     String speed="sans acteur";if(alive(a)){run(p,"scoreboard players set @s hcm_pq1_temp 0");run(p,"execute store result score @s hcm_pq1_temp run attribute "+a.id+" minecraft:movement_speed get 1000");speed=String.valueOf(score(p,"hcm_pq1_temp")/1000d);}
-    System.out.println("[Indivis PERRIN_DIAG HF9] phase="+phase(p)+" progression="+score(p,"hcq_pq01")+" ambient="+integer(setup(p),"ambient_enabled",1)+" player="+pos(p,world(p))+" source="+(src==null?"absente":pos(src,world(p)))+" A="+pa+" B="+pb+" actor="+(alive(a)?pos(a.entity,v.world):"absent")+" effectiveSpeed="+speed+" cause="+reason);
-    run(p,"title @s actionbar "+quote("Diagnostic de Perrin écrit dans le journal serveur."));
+    String line="[Indivis PERRIN_DIAG HF10] phase="+phase(p)+" progression="+score(p,"hcq_pq01")+" ambient="+integer(setup(p),"ambient_enabled",1)+" player="+pos(p,world(p))+" source="+(src==null?"absente":pos(src,world(p)))+" A="+pa+" B="+pb+" actor="+(alive(a)?pos(a.entity,v.world):"absent")+" effectiveSpeed="+speed+" cause="+reason;
+    if(notify||ERRORS.add(line))System.out.println(line);
+    if(notify)run(p,"title @s actionbar "+quote("Diagnostic de Perrin écrit dans le journal serveur."));
   }
   static void advance(View v,String node){
     if(!same(v,v.player)||!dialogue(v.player)||score(v.player,"hcm_pq1_node")!=v.waitingNode){close(v.player,true);return;}
@@ -555,13 +566,15 @@ public final class Pq01Bridge {
       if(!available(p)||score(p,"hcq_pq01")<0||score(p,"hcq_pq01")>=100||clock<GRACE.getOrDefault(uuid(p),0L))continue;
       if(integer(setup(p),"ambient_enabled",1)==0)continue;
       View v=VIEWS.get(uuid(p));
-      for(String role:List.of("gautier","hugues","anselme","perrin")){
+      for(String role:List.of("hugues","anselme","perrin")){
         Object s=source(p,role+"_"+phase(p));if(s==null||pos(s,world(p)).distance2(pos(p,world(p)))>24*24)continue;
         if(v==null)v=view(p);if(!v.actors.containsKey(role))spawn(v,role,configuredPoint(p,role.equals("perrin")?"perrin_a":role.equals("gautier")?"gautier_poste":"__none",null));
       }
     }catch(Throwable e){report(e);close(p,true);}
     GRACE.keySet().retainAll(online);
     NEAR.keySet().retainAll(online);
+    REFRESH.keySet().retainAll(online);
+    flushVisibility();
   }
   static void work(View v){
     Object p=v.player;boolean active=dialogue(p);
@@ -578,10 +591,10 @@ public final class Pq01Bridge {
         Pq01Motion.Point target=configuredPoint(p,"anselme_instruments",null);if(target!=null)face(a,target);
       }else if(a.role.equals("perrin")){
         Pq01Motion.Point target=configuredPoint(p,a.leg?"perrin_a":"perrin_b",null);
-        if(target==null){diagnostic(p,"Service de Perrin : point "+(a.leg?"perrin_a":"perrin_b")+(v.phase.equals("quai")?"_quai":"")+" absent dans cette dimension. Voir capitale:pq01/admin/status.");continue;}
-        if(target!=null)travel(v,a,target,()->{a.leg=!a.leg;a.nextWork=clock+120;},reason->{a.nextWork=clock+600;diagnostic(p,"Service de Perrin suspendu : "+reason);});
+        if(target==null){if(ERRORS.add("perrin_points_"+v.character+"_"+v.phase))diagnosticPerrin(p,false);continue;}
+        if(target!=null)travel(v,a,target,()->{a.leg=!a.leg;a.nextWork=clock+120;},reason->{a.nextWork=clock+600;diagnostic(p,"Service de Perrin suspendu : "+reason);if(ERRORS.add("perrin_motion_"+v.character+"_"+v.phase+"_"+reason))diagnosticPerrin(p,false);});
       }
     }
-    if(v.actors.isEmpty()&&!active)VIEWS.remove(v.account);
+    if(v.actors.isEmpty()&&!active){VIEWS.remove(v.account);Pq01Actors.close(v.account);}
   }
 }

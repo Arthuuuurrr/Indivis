@@ -1,0 +1,50 @@
+PASS 47 multiplayer checks
+A Gautier tracked only by A for observer 0
+B Gautier tracked only by B for observer 0
+foreign actor never spawned for observer 0
+A Gautier tracked only by A for observer 1
+B Gautier tracked only by B for observer 1
+foreign actor never spawned for observer 1
+A Gautier tracked only by A for observer 2
+B Gautier tracked only by B for observer 2
+foreign actor never spawned for observer 2
+original hidden only for scene owners, visible to spectator
+Geraud copy private to A
+Geraud copy private to B
+late observer receives originals and no private Gautier
+A Gautier tracked only by A for observer 0
+B Gautier tracked only by B for observer 0
+foreign actor never spawned for observer 0
+A Gautier tracked only by A for observer 1
+B Gautier tracked only by B for observer 1
+foreign actor never spawned for observer 1
+A Gautier tracked only by A for observer 2
+B Gautier tracked only by B for observer 2
+foreign actor never spawned for observer 2
+A Gautier tracked only by A for observer 3
+B Gautier tracked only by B for observer 3
+foreign actor never spawned for observer 3
+two overlapping native walks actually progressed
+legacy private cleanup retains both actors
+both Perrin copies physically walk while two Gautier scenes run
+Perrin copies private for observer 0
+Perrin copies private for observer 1
+Perrin copies private for observer 2
+Perrin copies private for observer 3
+stable Gautier actors spawned once, no visibility churn
+closing A does not remove B actor
+B keeps its actor after A closes
+A original restored after close
+character switch immediately rejects previous character actor
+character switch removes old actors on production tick
+disconnected owner actor cleaned by production tick
+all initial Gautier actors removed after close
+public original never moved
+zero foreign PQ01 actor spawn packets across full lifecycle
+no initial private actor remains tracked for observer 0
+no initial private actor remains tracked for observer 1
+no initial private actor remains tracked for observer 2
+no initial private actor remains tracked for observer 3
+historical score visibility rule still enforced for ordinary NPC
+Native visibility refresh counts={20:0=2, 20:1=2, 39:0=1, 39:1=1, 180:0=1, 200:1=1, 210:0=2, 213:0=1, 215:-1=2, 216:-1=1} max=2
+Real QuestVisibility body (refresh entry instrumented only), original EntityTrackerMixin, native tracker listeners and spawn/destroy packets, native legacy cleanup, two overlapping EasyNPC walks plus spectator and concurrent Perrin. Connections, chunk receipt and Nexus profiles synthetic; no rendered FPS measured.

@@ -20,7 +20,7 @@ public final class Pq01NativeApiBench {
   public static void main(String[] args)throws Exception {
     methods("net.minecraft.class_1297",0,"method_23317","method_23318","method_23321","method_5752","method_31472","method_31481","method_36454","method_36455","method_5797","method_5829","method_73183");
     methods("net.minecraft.class_1297",1,"method_5780","method_5665","method_5684","method_5803","method_36456","method_36457","method_18799");
-    methods("net.minecraft.class_3222",0,"method_51469");
+    methods("net.minecraft.class_3222",0,"method_51469","method_5667");
     methods("net.minecraft.class_1937",0,"method_27983");
     methods("net.minecraft.class_5321",0,"method_29177");
     methods("net.minecraft.class_1937",3,"method_8333");

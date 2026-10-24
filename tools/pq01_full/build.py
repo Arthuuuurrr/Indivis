@@ -6,7 +6,7 @@ sys.path.insert(0,str(ROOT/'work/pq01_rebuild'))
 from model import N,IDS,ROLES
 R2=HERE/'r2'
 JAR=ROOT/'upload/haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b.jar'
-FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip','journal':'haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF9.jar'}
+FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip','journal':'haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF10.jar'}
 def sha(b):return hashlib.sha256(b).hexdigest()
 def load(p):
  with zipfile.ZipFile(p) as z:assert z.testzip() is None;return {n:z.read(n) for n in z.namelist() if not n.endswith('/')}
@@ -80,7 +80,8 @@ def build():
  definitions={
  'net/fabricmc/api/ModInitializer.java':'package net.fabricmc.api; public interface ModInitializer { void onInitialize(); }',
  'net/fabricmc/api/ClientModInitializer.java':'package net.fabricmc.api; public interface ClientModInitializer { void onInitializeClient(); }',
- 'net/minecraft/class_1297.java':'package net.minecraft; public class class_1297 { public java.util.Set<String> method_5752(){return null;} }',
+ 'net/minecraft/class_1297.java':'package net.minecraft; public class class_1297 { public java.util.Set<String> method_5752(){return null;} public java.util.UUID method_5667(){return null;} }',
+ 'net/minecraft/class_3222.java':'package net.minecraft; public class class_3222 extends class_1297 {}',
  'net/minecraft/class_1352.java':'package net.minecraft; public class class_1352 {}',
  'net/hautecapitale/quetes/sequence/SequenceBridge.java':'''package net.hautecapitale.quetes.sequence; public class SequenceBridge {static Object call(Object o,String n,Object...a){return null;} static Object server(Object p){return null;} static java.util.UUID uuid(Object p){return null;} static int score(Object p,String n){return 0;} static void run(Object p,String c){} static String quote(String s){return s;} }''',
  'net/hautecapitale/quetes/sequence/GuardNbt.java':'''package net.hautecapitale.quetes.sequence; public class GuardNbt { static Object read(Object c,String k){return null;} static Object copy(Object c){return null;} static Object compound(){return null;} static void put(Object c,String k,Object v){} static void string(Object c,String k,String v){} static void integer(Object c,String k,int v){} static Object stringValue(String v){return null;} static Object list(java.util.Collection<?> v){return null;} static Object entity(Object e){return null;} static void save(Object s,String k,Object n){} static Object childOrCreate(Object c,String k){return null;} }''',
@@ -104,7 +105,7 @@ def build():
  vis='net/hautecapitale/quetes/visibility/QuestVisibility.class';inp=HERE/'QuestVisibility.original.class';inp.write_bytes(packs['journal'][vis]);patched=HERE/'QuestVisibility.patched.class'
  run(['java',*exports,'-cp',classes,'PatchVisibility',inp,patched],'patch.log');packs['journal'][vis]=patched.read_bytes()
  for p in sorted((classes/'net/hautecapitale').rglob('*.class')):packs['journal'][str(p.relative_to(classes))]=p.read_bytes()
- meta=json.loads(packs['journal']['fabric.mod.json']);meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF9';meta['description']+=' PQ01-R3-HF9 : blocs de lecture manuels, orientation et file de doublage.'
+ meta=json.loads(packs['journal']['fabric.mod.json']);meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF10';meta['description']+=' PQ01-R3-HF10 : filtrage réseau des scènes personnelles et actualisations regroupées.'
  meta['entrypoints']['main'].append('net.hautecapitale.quetes.sequence.Pq01Initializer')
  meta['entrypoints'].setdefault('client',[]).append('net.hautecapitale.quetes.sequence.Pq01Client')
  dialogue=load(next((ROOT/'upload').glob('haute-capitale-dialogue*.jar')));dialogue_id=json.loads(dialogue['fabric.mod.json'])['id'];meta['depends'][dialogue_id]='>=0.1.0'

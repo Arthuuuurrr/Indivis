@@ -1,4 +1,4 @@
-# Rejouer PQ01 et effectuer la recette — HF9
+# Rejouer PQ01 et effectuer la recette — HF10
 
 ## Relecture personnelle sans récompenses
 
@@ -50,7 +50,7 @@ Chaque nouveau passage renouvelle le timeout de dialogue de 3 600 ticks par déf
 
 ## Futurs doublages
 
-Consulter `DOUBLAGE_BLOCS.md` et `../config/BLOCS_ET_PRISES.json`. Les prises gardent leurs identifiants et sont jouées dans l’ordre du bloc, sans effacer le texte entre elles. Aucun audio nouveau n’est fourni.
+Consulter [guide de doublage](https://github.com/Arthuuuurrr/Indivis/blob/feat/pq01-dirigeable-r2-20261022/docs/quests/pq01-dirigeable-r3/docs/DOUBLAGE_BLOCS.md) et [correspondance blocs/prises](https://github.com/Arthuuuurrr/Indivis/blob/feat/pq01-dirigeable-r2-20261022/docs/quests/pq01-dirigeable-r3/config/BLOCS_ET_PRISES.json). Les prises gardent leurs identifiants et sont jouées dans l’ordre du bloc, sans effacer le texte entre elles. Aucun audio nouveau n’est fourni.
 
 ## Retour arrière
 
@@ -69,3 +69,14 @@ Tant que R3 est présent, terminer chaque relecture avec `test_fin`, fermer les 
 7. Pour le doublage futur, configurer deux prises de test d’un même bloc. Vérifier ordre, durée, choix reçu pendant la lecture et annulation à la fermeture. Retirer ces sons de test ensuite. Le banc utilise des sons Minecraft uniquement pour vérifier l’ordonnancement ; aucune voix n’est incluse dans HF9.
 
 Le mode de lecture actuel est celui de cette recette HF9 : pages et blocs manuels.
+
+## Recette multijoueur HF10
+
+1. Installer le journal HF10 sur le serveur et tous les clients, en conservant le core HF9. Les logs reçus montraient un client HF5 et un client HF9 ; cela ne prouve pas la cause des chutes de FPS.
+2. Deux joueurs parlent à Géraud en même temps. Chacun voit son Gautier approcher et rester pendant son dialogue. Un observateur, puis un joueur qui arrive pendant la scène, voient les originaux et aucun double des deux scènes.
+3. Fermer le dialogue du premier joueur : le second continue et ses acteurs restent présents. Le premier peut reprendre au clic droit.
+4. Vérifier la marche aller/retour de Perrin avant toute progression puis après l’amarrage, avec deux joueurs proches. Le dialogue de Perrin suspend sa marche ; après fermeture, son activité reprend.
+5. Changer de personnage et se déconnecter pendant une scène : les anciens acteurs disparaissent et les autres joueurs gardent leurs PNJ.
+6. Rejouer les questions de Géraud et du capitaine, parcourir toutes les pages à son rythme, puis choisir explicitement la réponse verte.
+
+Le banc valide le suivi réseau réel et la navigation. Le gain de FPS du modpack doit être mesuré en jeu : les logs reçus ne contiennent pas de profil de rendu. Les erreurs Nexus de NativeLayers23 et de transition du client HF5 sont distinctes et ne sont pas corrigées dans ce JAR.
