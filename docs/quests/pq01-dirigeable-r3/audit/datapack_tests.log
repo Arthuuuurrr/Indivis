@@ -1,0 +1,17 @@
+test_amnesia_cannot_be_skipped_by_new_character (r2_tests.CandidateTests.test_amnesia_cannot_be_skipped_by_new_character) ... ok
+test_approved_text_and_real_questions (r2_tests.CandidateTests.test_approved_text_and_real_questions) ... ok
+test_archives_json_and_no_removed_entries (r2_tests.CandidateTests.test_archives_json_and_no_removed_entries) ... ok
+test_context_fresh_tokens_timeout_voice_and_no_global_scene_mutations (r2_tests.CandidateTests.test_context_fresh_tokens_timeout_voice_and_no_global_scene_mutations) ... ok
+test_docking_rechecks_character_before_each_phase (r2_tests.CandidateTests.test_docking_rechecks_character_before_each_phase) ... ok
+test_inputs_pinned (r2_tests.CandidateTests.test_inputs_pinned) ... ok
+test_mq03_and_other_journal_quests_preserved (r2_tests.CandidateTests.test_mq03_and_other_journal_quests_preserved) ... ok
+test_only_expected_scope_changed (r2_tests.CandidateTests.test_only_expected_scope_changed) ... ok
+test_only_explicit_endpoints_progress (r2_tests.CandidateTests.test_only_explicit_endpoints_progress) ... ok
+test_original_rewards_retained_except_premature_rank (r2_tests.CandidateTests.test_original_rewards_retained_except_premature_rank) ... ok
+test_required_function_closure (r2_tests.CandidateTests.test_required_function_closure) ... ok
+test_test_mode_is_profile_scoped_and_reversible (r2_tests.CandidateTests.test_test_mode_is_profile_scoped_and_reversible) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.259s
+
+OK

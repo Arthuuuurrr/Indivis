@@ -1,0 +1,10 @@
+Compiled from "ScreenKeyboardEvents.java"
+public final class net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents {
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents$AllowKeyPress> allowKeyPress(net.minecraft.class_437);
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents$BeforeKeyPress> beforeKeyPress(net.minecraft.class_437);
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents$AfterKeyPress> afterKeyPress(net.minecraft.class_437);
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents$AllowKeyRelease> allowKeyRelease(net.minecraft.class_437);
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents$BeforeKeyRelease> beforeKeyRelease(net.minecraft.class_437);
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents$AfterKeyRelease> afterKeyRelease(net.minecraft.class_437);
+  private net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents();
+}

@@ -1,0 +1,8 @@
+PERSONNAGE : Géraud Rivet
+LANGUE : French
+
+INSTRUCTIONS (champ instruct) :
+Français naturel et intelligible. Jeu de dialogue réaliste, adressé à un interlocuteur proche. Variation d'intention à l'intérieur des phrases, diction nette, pauses expressives courtes. Lire exactement le texte fourni, sans annoncer le nom du personnage, l'identifiant ou les consignes. Conserver les noms propres et la ponctuation du texte. Pas de musique, bruitage, applaudissement, rire ou respiration théâtrale ajoutés. Identité de Géraud Rivet : Voix masculine expérimentée, plutôt grave et légèrement rugueuse, sans forçage de gorge. Parole concrète, débit variable, ironie sèche. Se soucier d'abord de l'état physique du passager. Avec Gautier, couper net et rétablir la discipline, puis retrouver aussitôt le ton ordinaire. Sur les quais, orienter efficacement le passager ; derrière la brusquerie, la protection devient plus visible au moment de le laisser partir. Intention de cette prise : Exprimer un respect ancien du capitaine ; l'exigence de l'officier paraît normale et justifiée.
+
+TEXTE SEUL (champ text) :
+Assez pour savoir quand il vaut mieux le laisser travailler. C'est un bon officier. Exigeant, oui, mais il n'envoie pas ses hommes faire ce qu'il refuserait lui-même.

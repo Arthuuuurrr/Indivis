@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "graph_nodes_checked": 94,
+  "stable_node_ids": 95,
+  "real_Fabric_world_started": true,
+  "real_navigation_legs": 4,
+  "real_world_checks": 19,
+  "world_scope": "Minecraft/Fabric/EasyNPC réels ; sélection Nexus et émission visibilité doublées ; joueur hors ligne réel construit ; caméra sans client non testée.",
+  "tests": {
+    "Pq01NbtIntegrationBench": "[18:30:12] [main/INFO]: Registered custom action haute_capitale_quetes:pq01\nPASS 80 assertions avec NBT Minecraft 1.21.11 et actions/registre EasyNPC 7.16.0 réels. Stockage d'entité doublé ; aucun monde ni serveur démarré.",
+    "Pq01NativeApiBench": "REAL_API_LOOKUP checks=118 failures=0; no Minecraft server/world created; existence/arity/public access checked, runtime behavior not covered.",
+    "Pq01CallbackBench": "[18:30:17] [main/INFO]: Registered custom action haute_capitale_quetes:pq01\n[18:30:17] [main/INFO]: [STDOUT]: PASS 3 assertions ; vrai CustomActionDispatcher EasyNPC 7.16.0 et proxy PQ01. Joueur réel alloué sans constructeur ; getEntity doublé à null ; aucun monde ni paquet de clic exécuté.",
+    "Pq01ColorBench": "[18:30:21] [main/INFO]: [STDOUT]: PASS native Dialogue b10 choice color: Minecraft GREEN -> QUETE",
+    "motion": "PASS 18 cas, 27 assertions sur Pq01Motion compilé. Aucun test Minecraft réel.",
+    "Pq01InteractionBench": "PASS 23 assertions ; vrais Pq01Bridge, SequenceBridge et NBT ; monde, personnage Nexus et effets caméra doublés. Aucun serveur, paquet client ou rendu en jeu exécuté.\n[Indivis PQ01-R3-HF5] Phase incompatible : geraud_large, personnage=quai. Relecture explicite : capitale:pq01/admin/test_debut.\n[Indivis PQ01-R3-HF5] Personnage Nexus pas encore chargé.",
+    "Pq01ClientBench": "PASS 34 assertions ; vrais Pq01Client/Pq01Pacing ; UI, réseau et champs de voix doublés. Aucun rendu client réel.",
+    "Pq01GeraudBench": "PASS 41 assertions de régression Géraud sur le vrai pont HF5 ; monde, effets de fonctions, horloge et caméra doublés. Aucun rendu client réel.\n[Indivis PQ01-R3-HF5] Ouverture de caméra refusée ; session PQ01 libérée pour une nouvelle interaction."
+  },
+  "bytecode": "PASS ASM BasicVerifier: 180 classes, 1762 methods; no Minecraft API resolution.",
+  "files": {
+    "core": {
+      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF5.zip",
+      "bytes": 4946873,
+      "sha256": "12cf679a919ccaf0f50aee45ad79e81dc5f034c1f5e9985c29edab02f12a9960"
+    },
+    "quests": {
+      "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip",
+      "bytes": 1516080,
+      "sha256": "71478ff2edf9c0246891429144407e5a8532e16baf5a5361494dfb4b78edd153"
+    },
+    "journal": {
+      "filename": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF5.jar",
+      "bytes": 476262,
+      "sha256": "4ad2b51ffb6641540be5769203a2169c4a4bb85c765c0f2898ffb5fdb13bc018"
+    }
+  },
+  "limits": [
+    "Aucun client Minecraft graphique lancé ; rendu, son et transition caméra restent à vérifier dans le modpack utilisateur.",
+    "Le banc client exécute le vrai adaptateur avec écran/réseau/état vocal doublés ; ce n’est pas une validation graphique.",
+    "Les quatre trajets réels ont été parcourus sur un sol plat ; le relief, les obstacles et la longueur des points de la carte restent propres au monde utilisateur."
+  ],
+  "quest_datapack_byte_identical_to_HF4": true,
+  "movement_factory_client_and_mixins_byte_identical_to_HF4": true,
+  "native_client_members_checked": 12,
+  "optional_voices_jar_sha256": "c6716ca6651bc6e7b5ae0de972c69a8fbea197e5b0be1e1a4d7f7ed2a30ffae4"
+}

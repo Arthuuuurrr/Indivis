@@ -1,0 +1,20 @@
+{
+  "source": "Three user-provided logs dated 2026-10-24, inspected locally; raw logs excluded",
+  "versions": {
+    "server": "HF9",
+    "client_A": "HF5",
+    "client_B": "HF9",
+    "Nexus": "PRE34-SI1"
+  },
+  "findings": {
+    "native_layers_failures_client_A": 4,
+    "native_layers_failures_client_B": 0,
+    "client_A_skinlayers3d_loaded": false,
+    "client_B_skinlayers3d": "1.10.2",
+    "gautier_approach_timeouts": 1,
+    "perrin_diagnostic_lines": 0,
+    "startup_tick_delay_ms": 3053
+  },
+  "causality": "No render frame profile or sustained tick metrics; no proven sole FPS root cause. Version difference and Nexus failures are observations, not attribution.",
+  "privacy": "No player names, account UUIDs, IPs or raw logs included"
+}

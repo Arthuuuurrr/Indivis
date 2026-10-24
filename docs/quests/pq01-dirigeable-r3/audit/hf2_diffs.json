@@ -1,0 +1,19 @@
+{
+  "baseline": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF1.jar",
+  "baseline_sha256": "3a530584447587f01fd4187adae32506a28a56cf2ca98057e636c76ef37901d3",
+  "output": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF2.jar",
+  "output_sha256": "320ae69d6dca99bfc2ac4b9f0515a44d01b84e3274e9087115495c52ac235613",
+  "bytes": 465422,
+  "changed": [
+    "fabric.mod.json",
+    "net/hautecapitale/quetes/sequence/Pq01Bridge$1.class",
+    "net/hautecapitale/quetes/sequence/Pq01Bridge.class"
+  ],
+  "added": [
+    "net/hautecapitale/quetes/sequence/Pq01Actions.class",
+    "net/hautecapitale/quetes/sequence/Pq01Nbt.class"
+  ],
+  "removed": [],
+  "identical_entries": 208,
+  "historical_helpers_and_all_mixin_classes_byte_identical": true
+}

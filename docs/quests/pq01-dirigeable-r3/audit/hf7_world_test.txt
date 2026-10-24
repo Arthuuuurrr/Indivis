@@ -1,0 +1,29 @@
+PASS 24 checks
+source NPC inserted
+source NPC inserted
+source NPC inserted
+source UUIDs ready after world ticks
+fresh UUIDs for both actors
+actors present in actual ServerWorld
+private actor tags loaded
+Gautier AI enabled
+source has a non-default skin payload
+appearance copied: SkinData
+appearance copied: ModelData
+appearance copied: equipment
+production goal protection active
+actor custom interaction retained after 20 real ticks
+actual navigation leg 1 arrived
+Gautier actually crossed raised stair deck and fractional slab floor
+actual navigation leg 2 arrived
+actual navigation leg 3 arrived
+actual navigation leg 4 arrived
+native blocked path ends with bounded failure
+blocked actor never teleported through wall
+Gautier original never moved
+Perrin original never moved
+actors discarded during production cleanup
+Real Fabric 1.21.11 world and EasyNPC 7.16.0 navigation (stairs, corridor, slabs, outbound/return). Nexus selection and visibility networking doubled; no real client camera tested.
+PASS 1042 pipeline checks, 671 actual server frames, 438 native trigger commands. Real Fabric functions, macros, scoreboard, tellraw packets and Dialogue b10 capture. Camera/panel/Nexus doubled; legacy teleport/reward bodies replaced by markers.
+PASS 20 coupled scene checks: production Pq01Bridge, actual PQ01 functions and EasyNPC path navigation; camera and panel doubled. Approach during a2, speech during walking, stationary conversation, walking return, blocked approach/return retain actor, no teleport.
+All PQ01 functions parsed by the real Minecraft dispatcher; required predicates included.

@@ -1,0 +1,22 @@
+PASS 19 checks
+source NPC inserted
+source NPC inserted
+fresh UUIDs for both actors
+actors present in actual ServerWorld
+private actor tags loaded
+Gautier AI enabled
+source has a non-default skin payload
+appearance copied: SkinData
+appearance copied: ModelData
+appearance copied: equipment
+production goal protection active
+actor custom interaction retained after 20 real ticks
+actual navigation leg 1 arrived
+actual navigation leg 2 arrived
+actual navigation leg 3 arrived
+actual navigation leg 4 arrived
+Gautier original never moved
+Perrin original never moved
+actors discarded during production cleanup
+Real Fabric 1.21.11 world and EasyNPC 7.16.0 navigation. Nexus selection and visibility networking doubled; no real client camera tested.
+All PQ01 functions parsed by the real Minecraft dispatcher; required predicates included.

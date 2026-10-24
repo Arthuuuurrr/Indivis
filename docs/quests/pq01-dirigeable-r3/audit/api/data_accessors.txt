@@ -1,0 +1,1382 @@
+Compiled from "EasyNPCDataAccessors.java"
+public interface de.markusbordihn.easynpc.entity.easynpc.EasyNPCDataAccessors<E extends net.minecraft.class_1308> {
+  public default de.markusbordihn.easynpc.entity.easynpc.data.ActionEventDataCapable<E> getEasyNPCActionEventData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #11                 // class de/markusbordihn/easynpc/entity/easynpc/data/ActionEventDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #11                 // class de/markusbordihn/easynpc/entity/easynpc/data/ActionEventDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.AttackDataCapable<E> getEasyNPCAttackData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #22                 // class de/markusbordihn/easynpc/entity/easynpc/data/AttackDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #22                 // class de/markusbordihn/easynpc/entity/easynpc/data/AttackDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.AttributeDataCapable<E> getEasyNPCAttributeData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #30                 // class de/markusbordihn/easynpc/entity/easynpc/data/AttributeDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #30                 // class de/markusbordihn/easynpc/entity/easynpc/data/AttributeDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.ConfigDataCapable<E> getEasyNPCConfigData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #38                 // class de/markusbordihn/easynpc/entity/easynpc/data/ConfigDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #38                 // class de/markusbordihn/easynpc/entity/easynpc/data/ConfigDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.ConfigurationDataCapable<E> getEasyNPCConfigurationData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #46                 // class de/markusbordihn/easynpc/entity/easynpc/data/ConfigurationDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #46                 // class de/markusbordihn/easynpc/entity/easynpc/data/ConfigurationDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.DialogDataCapable<E> getEasyNPCDialogData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #54                 // class de/markusbordihn/easynpc/entity/easynpc/data/DialogDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #54                 // class de/markusbordihn/easynpc/entity/easynpc/data/DialogDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.DisplayAttributeDataCapable<E> getEasyNPCDisplayAttributeData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #62                 // class de/markusbordihn/easynpc/entity/easynpc/data/DisplayAttributeDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #62                 // class de/markusbordihn/easynpc/entity/easynpc/data/DisplayAttributeDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.InventoryDataCapable<E> getEasyNPCInventoryData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #70                 // class de/markusbordihn/easynpc/entity/easynpc/data/InventoryDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #70                 // class de/markusbordihn/easynpc/entity/easynpc/data/InventoryDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.SkinDataCapable<E> getEasyNPCSkinData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #78                 // class de/markusbordihn/easynpc/entity/easynpc/data/SkinDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #78                 // class de/markusbordihn/easynpc/entity/easynpc/data/SkinDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.StateDataCapable<E> getEasyNPCStateData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #86                 // class de/markusbordihn/easynpc/entity/easynpc/data/StateDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #86                 // class de/markusbordihn/easynpc/entity/easynpc/data/StateDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.ModelDataCapable<E> getEasyNPCModelData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #94                 // class de/markusbordihn/easynpc/entity/easynpc/data/ModelDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #94                 // class de/markusbordihn/easynpc/entity/easynpc/data/ModelDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.NavigationDataCapable<E> getEasyNPCNavigationData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #102                // class de/markusbordihn/easynpc/entity/easynpc/data/NavigationDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #102                // class de/markusbordihn/easynpc/entity/easynpc/data/NavigationDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.ObjectiveDataCapable<E> getEasyNPCObjectiveData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #110                // class de/markusbordihn/easynpc/entity/easynpc/data/ObjectiveDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #110                // class de/markusbordihn/easynpc/entity/easynpc/data/ObjectiveDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.FactionDataCapable<E> getEasyNPCFactionData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #118                // class de/markusbordihn/easynpc/entity/easynpc/data/FactionDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #118                // class de/markusbordihn/easynpc/entity/easynpc/data/FactionDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.OwnerDataCapable<E> getEasyNPCOwnerData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #126                // class de/markusbordihn/easynpc/entity/easynpc/data/OwnerDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #126                // class de/markusbordihn/easynpc/entity/easynpc/data/OwnerDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.PresetDataCapable<E> getEasyNPCPresetData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #134                // class de/markusbordihn/easynpc/entity/easynpc/data/PresetDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #134                // class de/markusbordihn/easynpc/entity/easynpc/data/PresetDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.ProfessionDataCapable<E> getEasyNPCProfessionData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #142                // class de/markusbordihn/easynpc/entity/easynpc/data/ProfessionDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #142                // class de/markusbordihn/easynpc/entity/easynpc/data/ProfessionDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.ProgressionDataCapable<E> getEasyNPCProgressionData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #150                // class de/markusbordihn/easynpc/entity/easynpc/data/ProgressionDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #150                // class de/markusbordihn/easynpc/entity/easynpc/data/ProgressionDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.RenderDataCapable<E> getEasyNPCRenderData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #158                // class de/markusbordihn/easynpc/entity/easynpc/data/RenderDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #158                // class de/markusbordihn/easynpc/entity/easynpc/data/RenderDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.ServerDataCapable<E> getEasyNPCServerData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #166                // class de/markusbordihn/easynpc/entity/easynpc/data/ServerDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #166                // class de/markusbordihn/easynpc/entity/easynpc/data/ServerDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.StatusDataCapable<E> getEasyNPCStatusData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #174                // class de/markusbordihn/easynpc/entity/easynpc/data/StatusDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #174                // class de/markusbordihn/easynpc/entity/easynpc/data/StatusDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.TickerDataCapable<E> getEasyNPCTickerData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #182                // class de/markusbordihn/easynpc/entity/easynpc/data/TickerDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #182                // class de/markusbordihn/easynpc/entity/easynpc/data/TickerDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.TradingDataCapable<E> getEasyNPCTradingData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #190                // class de/markusbordihn/easynpc/entity/easynpc/data/TradingDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #190                // class de/markusbordihn/easynpc/entity/easynpc/data/TradingDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.SoundDataCapable<E> getEasyNPCSoundData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #198                // class de/markusbordihn/easynpc/entity/easynpc/data/SoundDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #198                // class de/markusbordihn/easynpc/entity/easynpc/data/SoundDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default void playDefaultSoundIfAvailable(de.markusbordihn.easynpc.data.sound.SoundType);
+    Code:
+       0: aload_0
+       1: invokeinterface #206,  1          // InterfaceMethod getEasyNPCSoundData:()Lde/markusbordihn/easynpc/entity/easynpc/data/SoundDataCapable;
+       6: astore_2
+       7: aload_2
+       8: ifnull        18
+      11: aload_2
+      12: aload_1
+      13: invokeinterface #209,  2          // InterfaceMethod de/markusbordihn/easynpc/entity/easynpc/data/SoundDataCapable.playDefaultSound:(Lde/markusbordihn/easynpc/data/sound/SoundType;)V
+      18: return
+
+  public default de.markusbordihn.easynpc.entity.easynpc.data.VariantDataCapable<E> getEasyNPCVariantData();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #215                // class de/markusbordihn/easynpc/entity/easynpc/data/VariantDataCapable
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #215                // class de/markusbordihn/easynpc/entity/easynpc/data/VariantDataCapable
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.handlers.ActionHandler<E> getEasyNPCActionHandler();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #223                // class de/markusbordihn/easynpc/entity/easynpc/handlers/ActionHandler
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #223                // class de/markusbordihn/easynpc/entity/easynpc/handlers/ActionHandler
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.handlers.AttributeHandler<E> getEasyNPCAttributeHandler();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #231                // class de/markusbordihn/easynpc/entity/easynpc/handlers/AttributeHandler
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #231                // class de/markusbordihn/easynpc/entity/easynpc/handlers/AttributeHandler
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+
+  public default de.markusbordihn.easynpc.entity.easynpc.handlers.PendingActionHandler<E> getEasyNPCPendingActionHandler();
+    Code:
+       0: aload_0
+       1: astore_2
+       2: aload_2
+       3: instanceof    #239                // class de/markusbordihn/easynpc/entity/easynpc/handlers/PendingActionHandler
+       6: ifeq          18
+       9: aload_2
+      10: checkcast     #239                // class de/markusbordihn/easynpc/entity/easynpc/handlers/PendingActionHandler
+      13: astore_1
+      14: aload_1
+      15: goto          19
+      18: aconst_null
+      19: areturn
+}
+Compiled from "NavigationDataCapable.java"
+public interface de.markusbordihn.easynpc.entity.easynpc.data.NavigationDataCapable<T extends net.minecraft.class_1308> extends de.markusbordihn.easynpc.entity.easynpc.EasyNPC<T> {
+  public static final java.lang.String DATA_HOME_TAG;
+
+  public static final java.lang.String DATA_NAVIGATION_TAG;
+
+  public static final int TRAVEL_EVENT_TICK;
+
+  private static boolean hasFlyingSpeedAttribute(net.minecraft.class_1299<? extends net.minecraft.class_1297>);
+    Code:
+       0: aload_0
+       1: invokestatic  #31                 // InterfaceMethod asLivingEntityType:(Lnet/minecraft/class_1299;)Lnet/minecraft/class_1299;
+       4: invokestatic  #37                 // Method net/minecraft/class_5135.method_26873:(Lnet/minecraft/class_1299;)Lnet/minecraft/class_5132;
+       7: astore_1
+       8: aload_1
+       9: ifnull        26
+      12: aload_1
+      13: getstatic     #43                 // Field net/minecraft/class_5134.field_23720:Lnet/minecraft/class_6880;
+      16: invokevirtual #49                 // Method net/minecraft/class_5132.method_27310:(Lnet/minecraft/class_6880;)Z
+      19: ifeq          26
+      22: iconst_1
+      23: goto          27
+      26: iconst_0
+      27: ireturn
+
+  private static net.minecraft.class_1299<? extends net.minecraft.class_1309> asLivingEntityType(net.minecraft.class_1299<? extends net.minecraft.class_1297>);
+    Code:
+       0: aload_0
+       1: areturn
+
+  private static boolean hasWaterMobCategory(net.minecraft.class_1299<? extends net.minecraft.class_1297>);
+    Code:
+       0: aload_0
+       1: invokevirtual #61                 // Method net/minecraft/class_1299.method_5891:()Lnet/minecraft/class_1311;
+       4: astore_1
+       5: aload_1
+       6: getstatic     #67                 // Field net/minecraft/class_1311.field_6300:Lnet/minecraft/class_1311;
+       9: if_acmpeq     33
+      12: aload_1
+      13: getstatic     #70                 // Field net/minecraft/class_1311.field_24460:Lnet/minecraft/class_1311;
+      16: if_acmpeq     33
+      19: aload_1
+      20: getstatic     #73                 // Field net/minecraft/class_1311.field_30092:Lnet/minecraft/class_1311;
+      23: if_acmpeq     33
+      26: aload_1
+      27: getstatic     #76                 // Field net/minecraft/class_1311.field_34447:Lnet/minecraft/class_1311;
+      30: if_acmpne     37
+      33: iconst_1
+      34: goto          38
+      37: iconst_0
+      38: ireturn
+
+  private static boolean spawnsInWater(net.minecraft.class_1299<? extends net.minecraft.class_1297>);
+    Code:
+       0: aload_0
+       1: invokestatic  #84                 // Method net/minecraft/class_1317.method_6159:(Lnet/minecraft/class_1299;)Lnet/minecraft/class_9168;
+       4: getstatic     #90                 // Field net/minecraft/class_9169.field_48743:Lnet/minecraft/class_9168;
+       7: if_acmpne     14
+      10: iconst_1
+      11: goto          15
+      14: iconst_0
+      15: ireturn
+
+  public default net.minecraft.class_2338 getNPCHomePosition();
+    Code:
+       0: aload_0
+       1: getstatic     #98                 // Field de/markusbordihn/easynpc/data/synched/SynchedDataIndex.NAVIGATION_HOME_POSITION:Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;
+       4: invokeinterface #102,  2          // InterfaceMethod getSynchedEntityData:(Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;)Ljava/lang/Object;
+       9: checkcast     #104                // class net/minecraft/class_2338
+      12: areturn
+
+  public default void setNPCHomePosition(net.minecraft.class_2338);
+    Code:
+       0: aload_0
+       1: getstatic     #98                 // Field de/markusbordihn/easynpc/data/synched/SynchedDataIndex.NAVIGATION_HOME_POSITION:Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;
+       4: aload_1
+       5: invokeinterface #114,  3          // InterfaceMethod setSynchedEntityData:(Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;Ljava/lang/Object;)V
+      10: return
+
+  public default boolean hasNPCHomePosition();
+    Code:
+       0: aload_0
+       1: invokeinterface #119,  1          // InterfaceMethod getNPCHomePosition:()Lnet/minecraft/class_2338;
+       6: ifnull        28
+       9: aload_0
+      10: invokeinterface #119,  1          // InterfaceMethod getNPCHomePosition:()Lnet/minecraft/class_2338;
+      15: getstatic     #122                // Field net/minecraft/class_2338.field_10980:Lnet/minecraft/class_2338;
+      18: invokevirtual #126                // Method net/minecraft/class_2338.equals:(Ljava/lang/Object;)Z
+      21: ifne          28
+      24: iconst_1
+      25: goto          29
+      28: iconst_0
+      29: ireturn
+
+  public default void setNPCHomePositionIfMissing(net.minecraft.class_2338);
+    Code:
+       0: aload_0
+       1: invokeinterface #129,  1          // InterfaceMethod hasNPCHomePosition:()Z
+       6: ifne          16
+       9: aload_0
+      10: aload_1
+      11: invokeinterface #131,  2          // InterfaceMethod setNPCHomePosition:(Lnet/minecraft/class_2338;)V
+      16: return
+
+  public default void applyDefaultNPCHomePosition();
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokeinterface #137,  1          // InterfaceMethod getEntity:()Lnet/minecraft/class_1297;
+       7: invokevirtual #142                // Method net/minecraft/class_1297.method_24515:()Lnet/minecraft/class_2338;
+      10: invokeinterface #144,  2          // InterfaceMethod setNPCHomePositionIfMissing:(Lnet/minecraft/class_2338;)V
+      15: return
+
+  public default void setPosition(net.minecraft.class_243);
+    Code:
+       0: aload_0
+       1: invokeinterface #151,  1          // InterfaceMethod getLivingEntity:()Lnet/minecraft/class_1309;
+       6: aload_1
+       7: invokevirtual #156                // Method net/minecraft/class_1309.method_33574:(Lnet/minecraft/class_243;)V
+      10: aload_0
+      11: invokeinterface #151,  1          // InterfaceMethod getLivingEntity:()Lnet/minecraft/class_1309;
+      16: aload_1
+      17: invokevirtual #159                // Method net/minecraft/class_1309.method_29495:(Lnet/minecraft/class_243;)V
+      20: return
+
+  public default void refreshGroundNavigation();
+    Code:
+       0: aload_0
+       1: invokeinterface #165,  1          // InterfaceMethod getGroundPathNavigation:()Lnet/minecraft/class_1409;
+       6: astore_1
+       7: aload_1
+       8: ifnonnull     12
+      11: return
+      12: aload_0
+      13: invokeinterface #171,  1          // InterfaceMethod getNavigationEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+      18: astore_2
+      19: aload_2
+      20: ifnull        96
+      23: aload_2
+      24: invokevirtual #176                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.hasMovementAttributes:()Z
+      27: ifeq          96
+      30: aload_2
+      31: invokevirtual #180                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.getMovementAttributes:()Lde/markusbordihn/easynpc/data/attribute/MovementAttributes;
+      34: astore_3
+      35: aload_3
+      36: invokevirtual #185                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.canOpenDoor:()Z
+      39: istore        4
+      41: aload_3
+      42: invokevirtual #188                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.canCloseDoor:()Z
+      45: istore        5
+      47: aload_1
+      48: iload         4
+      50: invokevirtual #192                // Method net/minecraft/class_1409.method_70687:(Z)V
+      53: aload_1
+      54: invokevirtual #196                // Method net/minecraft/class_1409.method_6342:()Lnet/minecraft/class_8;
+      57: aload_3
+      58: invokevirtual #199                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.canPassDoor:()Z
+      61: ifne          74
+      64: iload         4
+      66: ifne          74
+      69: iload         5
+      71: ifeq          78
+      74: iconst_1
+      75: goto          79
+      78: iconst_0
+      79: invokevirtual #204                // Method net/minecraft/class_8.method_15:(Z)V
+      82: aload_1
+      83: aload_2
+      84: invokevirtual #208                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.getEnvironmentalAttributes:()Lde/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes;
+      87: invokevirtual #213                // Method de/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes.canFloat:()Z
+      90: invokevirtual #216                // Method net/minecraft/class_1409.method_6354:(Z)V
+      93: goto          106
+      96: aload_1
+      97: iconst_1
+      98: invokevirtual #192                // Method net/minecraft/class_1409.method_70687:(Z)V
+     101: aload_1
+     102: iconst_1
+     103: invokevirtual #216                // Method net/minecraft/class_1409.method_6354:(Z)V
+     106: return
+
+  public default void handleWaterEscapeTick();
+    Code:
+       0: aload_0
+       1: invokeinterface #165,  1          // InterfaceMethod getGroundPathNavigation:()Lnet/minecraft/class_1409;
+       6: astore_1
+       7: aload_1
+       8: ifnonnull     12
+      11: return
+      12: aload_0
+      13: invokeinterface #228,  1          // InterfaceMethod getMob:()Lnet/minecraft/class_1308;
+      18: astore_2
+      19: aload_2
+      20: invokevirtual #233                // Method net/minecraft/class_1308.method_5799:()Z
+      23: ifeq          42
+      26: aload_2
+      27: invokevirtual #236                // Method net/minecraft/class_1308.method_6094:()Z
+      30: ifne          42
+      33: aload_0
+      34: invokeinterface #239,  1          // InterfaceMethod isImmovable:()Z
+      39: ifeq          62
+      42: aload_1
+      43: invokevirtual #242                // Method net/minecraft/class_1409.method_6350:()Z
+      46: aload_0
+      47: invokeinterface #245,  1          // InterfaceMethod configuredCanFloat:()Z
+      52: if_icmpeq     61
+      55: aload_0
+      56: invokeinterface #247,  1          // InterfaceMethod refreshGroundNavigation:()V
+      61: return
+      62: aload_1
+      63: invokevirtual #242                // Method net/minecraft/class_1409.method_6350:()Z
+      66: ifne          78
+      69: aload_1
+      70: iconst_1
+      71: invokevirtual #216                // Method net/minecraft/class_1409.method_6354:(Z)V
+      74: aload_1
+      75: invokevirtual #250                // Method net/minecraft/class_1409.method_6340:()V
+      78: aload_2
+      79: getstatic     #256                // Field net/minecraft/class_3486.field_15517:Lnet/minecraft/class_6862;
+      82: invokevirtual #260                // Method net/minecraft/class_1308.method_5861:(Lnet/minecraft/class_6862;)D
+      85: aload_2
+      86: invokevirtual #264                // Method net/minecraft/class_1308.method_29241:()D
+      89: dcmpl
+      90: ifle          100
+      93: aload_2
+      94: invokevirtual #268                // Method net/minecraft/class_1308.method_5993:()Lnet/minecraft/class_1334;
+      97: invokevirtual #273                // Method net/minecraft/class_1334.method_6233:()V
+     100: return
+
+  private boolean configuredCanFloat();
+    Code:
+       0: aload_0
+       1: invokeinterface #171,  1          // InterfaceMethod getNavigationEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+       6: astore_1
+       7: aload_1
+       8: ifnull        28
+      11: aload_1
+      12: invokevirtual #176                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.hasMovementAttributes:()Z
+      15: ifeq          28
+      18: aload_1
+      19: invokevirtual #208                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.getEnvironmentalAttributes:()Lde/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes;
+      22: invokevirtual #213                // Method de/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes.canFloat:()Z
+      25: ifeq          32
+      28: iconst_1
+      29: goto          33
+      32: iconst_0
+      33: ireturn
+
+  public default net.minecraft.class_1409 getGroundPathNavigation();
+    Code:
+       0: aload_0
+       1: astore_3
+       2: aload_3
+       3: instanceof    #230                // class net/minecraft/class_1308
+       6: ifeq          33
+       9: aload_3
+      10: checkcast     #230                // class net/minecraft/class_1308
+      13: astore_1
+      14: aload_1
+      15: invokevirtual #279                // Method net/minecraft/class_1308.method_5942:()Lnet/minecraft/class_1408;
+      18: astore_3
+      19: aload_3
+      20: instanceof    #167                // class net/minecraft/class_1409
+      23: ifeq          33
+      26: aload_3
+      27: checkcast     #167                // class net/minecraft/class_1409
+      30: astore_2
+      31: aload_2
+      32: areturn
+      33: aconst_null
+      34: areturn
+
+  public default void defineSynchedNavigationData(net.minecraft.class_2945$class_9222);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #98                 // Field de/markusbordihn/easynpc/data/synched/SynchedDataIndex.NAVIGATION_HOME_POSITION:Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;
+       5: getstatic     #122                // Field net/minecraft/class_2338.field_10980:Lnet/minecraft/class_2338;
+       8: invokeinterface #286,  4          // InterfaceMethod defineSynchedEntityData:(Lnet/minecraft/class_2945$class_9222;Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;Ljava/lang/Object;)V
+      13: return
+
+  public default de.markusbordihn.easynpc.data.attribute.NavigationType defaultNavigationType();
+    Code:
+       0: aload_0
+       1: invokeinterface #292,  1          // InterfaceMethod rendersAsWaterCreature:()Z
+       6: ifeq          13
+       9: getstatic     #298                // Field de/markusbordihn/easynpc/data/attribute/NavigationType.AQUATIC:Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+      12: areturn
+      13: aload_0
+      14: invokeinterface #301,  1          // InterfaceMethod rendersAsFlyingCreature:()Z
+      19: ifeq          26
+      22: getstatic     #304                // Field de/markusbordihn/easynpc/data/attribute/NavigationType.FLYING:Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+      25: areturn
+      26: getstatic     #307                // Field de/markusbordihn/easynpc/data/attribute/NavigationType.GROUND:Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+      29: areturn
+
+  private net.minecraft.class_1299<? extends net.minecraft.class_1297> getCustomRenderEntityType();
+    Code:
+       0: aload_0
+       1: invokeinterface #314,  1          // InterfaceMethod getEasyNPCRenderData:()Lde/markusbordihn/easynpc/entity/easynpc/data/RenderDataCapable;
+       6: astore_1
+       7: aload_1
+       8: ifnull        20
+      11: aload_1
+      12: invokeinterface #320,  1          // InterfaceMethod de/markusbordihn/easynpc/entity/easynpc/data/RenderDataCapable.getRenderDataEntry:()Lde/markusbordihn/easynpc/data/render/RenderDataEntry;
+      17: goto          21
+      20: aconst_null
+      21: astore_2
+      22: aload_2
+      23: ifnull        36
+      26: aload_2
+      27: invokevirtual #326                // Method de/markusbordihn/easynpc/data/render/RenderDataEntry.getRenderType:()Lde/markusbordihn/easynpc/data/render/RenderType;
+      30: getstatic     #332                // Field de/markusbordihn/easynpc/data/render/RenderType.CUSTOM_ENTITY:Lde/markusbordihn/easynpc/data/render/RenderType;
+      33: if_acmpeq     38
+      36: aconst_null
+      37: areturn
+      38: aload_2
+      39: invokevirtual #335                // Method de/markusbordihn/easynpc/data/render/RenderDataEntry.getRenderEntityType:()Lnet/minecraft/class_1299;
+      42: areturn
+
+  public default boolean rendersAsWaterCreature();
+    Code:
+       0: aload_0
+       1: invokeinterface #342,  1          // InterfaceMethod getCustomRenderEntityType:()Lnet/minecraft/class_1299;
+       6: astore_1
+       7: aload_1
+       8: ifnonnull     13
+      11: iconst_0
+      12: ireturn
+      13: aload_1
+      14: invokestatic  #344                // InterfaceMethod hasWaterMobCategory:(Lnet/minecraft/class_1299;)Z
+      17: ifne          27
+      20: aload_1
+      21: invokestatic  #346                // InterfaceMethod spawnsInWater:(Lnet/minecraft/class_1299;)Z
+      24: ifeq          31
+      27: iconst_1
+      28: goto          32
+      31: iconst_0
+      32: ireturn
+
+  public default boolean rendersAsFlyingCreature();
+    Code:
+       0: aload_0
+       1: invokeinterface #342,  1          // InterfaceMethod getCustomRenderEntityType:()Lnet/minecraft/class_1299;
+       6: astore_1
+       7: aload_1
+       8: ifnonnull     13
+      11: iconst_0
+      12: ireturn
+      13: aload_1
+      14: invokevirtual #61                 // Method net/minecraft/class_1299.method_5891:()Lnet/minecraft/class_1311;
+      17: getstatic     #350                // Field net/minecraft/class_1311.field_6303:Lnet/minecraft/class_1311;
+      20: if_acmpeq     30
+      23: aload_1
+      24: invokestatic  #352                // InterfaceMethod hasFlyingSpeedAttribute:(Lnet/minecraft/class_1299;)Z
+      27: ifeq          34
+      30: iconst_1
+      31: goto          35
+      34: iconst_0
+      35: ireturn
+
+  public default de.markusbordihn.easynpc.data.attribute.NavigationType getNavigationType();
+    Code:
+       0: aload_0
+       1: invokeinterface #354,  1          // InterfaceMethod getMovementAttributes:()Lde/markusbordihn/easynpc/data/attribute/MovementAttributes;
+       6: astore_1
+       7: aload_1
+       8: ifnull        21
+      11: aload_1
+      12: invokevirtual #357                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.navigationType:()Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+      15: getstatic     #360                // Field de/markusbordihn/easynpc/data/attribute/NavigationType.DEFAULT:Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+      18: if_acmpne     28
+      21: aload_0
+      22: invokeinterface #362,  1          // InterfaceMethod defaultNavigationType:()Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+      27: areturn
+      28: aload_1
+      29: invokevirtual #357                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.navigationType:()Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+      32: areturn
+
+  public default double defaultHoverHeight();
+    Code:
+       0: dconst_0
+       1: dreturn
+
+  public default double getHoverHeight();
+    Code:
+       0: aload_0
+       1: invokeinterface #354,  1          // InterfaceMethod getMovementAttributes:()Lde/markusbordihn/easynpc/data/attribute/MovementAttributes;
+       6: astore_1
+       7: aload_1
+       8: ifnull        20
+      11: aload_1
+      12: invokevirtual #367                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.hoverHeight:()D
+      15: dconst_0
+      16: dcmpg
+      17: ifgt          27
+      20: aload_0
+      21: invokeinterface #369,  1          // InterfaceMethod defaultHoverHeight:()D
+      26: dreturn
+      27: aload_1
+      28: invokevirtual #367                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.hoverHeight:()D
+      31: dreturn
+
+  public default double defaultMinHoverHeight();
+    Code:
+       0: dconst_0
+       1: dreturn
+
+  public default double getMinHoverHeight();
+    Code:
+       0: aload_0
+       1: invokeinterface #354,  1          // InterfaceMethod getMovementAttributes:()Lde/markusbordihn/easynpc/data/attribute/MovementAttributes;
+       6: astore_1
+       7: aload_1
+       8: ifnull        20
+      11: aload_1
+      12: invokevirtual #374                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.minHoverHeight:()D
+      15: dconst_0
+      16: dcmpg
+      17: ifgt          27
+      20: aload_0
+      21: invokeinterface #376,  1          // InterfaceMethod defaultMinHoverHeight:()D
+      26: dreturn
+      27: aload_1
+      28: invokevirtual #374                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.minHoverHeight:()D
+      31: dreturn
+
+  public default double defaultSwimDepthBelowSurface();
+    Code:
+       0: dconst_0
+       1: dreturn
+
+  public default double getSwimDepthBelowSurface();
+    Code:
+       0: aload_0
+       1: invokeinterface #354,  1          // InterfaceMethod getMovementAttributes:()Lde/markusbordihn/easynpc/data/attribute/MovementAttributes;
+       6: astore_1
+       7: aload_1
+       8: ifnull        20
+      11: aload_1
+      12: invokevirtual #381                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.swimDepthBelowSurface:()D
+      15: dconst_0
+      16: dcmpg
+      17: ifgt          27
+      20: aload_0
+      21: invokeinterface #383,  1          // InterfaceMethod defaultSwimDepthBelowSurface:()D
+      26: dreturn
+      27: aload_1
+      28: invokevirtual #381                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.swimDepthBelowSurface:()D
+      31: dreturn
+
+  public default double defaultSwimHeightAboveFloor();
+    Code:
+       0: dconst_0
+       1: dreturn
+
+  public default double getSwimHeightAboveFloor();
+    Code:
+       0: aload_0
+       1: invokeinterface #354,  1          // InterfaceMethod getMovementAttributes:()Lde/markusbordihn/easynpc/data/attribute/MovementAttributes;
+       6: astore_1
+       7: aload_1
+       8: ifnull        20
+      11: aload_1
+      12: invokevirtual #388                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.swimHeightAboveFloor:()D
+      15: dconst_0
+      16: dcmpg
+      17: ifgt          27
+      20: aload_0
+      21: invokeinterface #390,  1          // InterfaceMethod defaultSwimHeightAboveFloor:()D
+      26: dreturn
+      27: aload_1
+      28: invokevirtual #388                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.swimHeightAboveFloor:()D
+      31: dreturn
+
+  private de.markusbordihn.easynpc.data.attribute.EntityAttributes getNavigationEntityAttributes();
+    Code:
+       0: aload_0
+       1: invokeinterface #394,  1          // InterfaceMethod getEasyNPCAttributeData:()Lde/markusbordihn/easynpc/entity/easynpc/data/AttributeDataCapable;
+       6: ifnull        23
+       9: aload_0
+      10: invokeinterface #394,  1          // InterfaceMethod getEasyNPCAttributeData:()Lde/markusbordihn/easynpc/entity/easynpc/data/AttributeDataCapable;
+      15: invokeinterface #399,  1          // InterfaceMethod de/markusbordihn/easynpc/entity/easynpc/data/AttributeDataCapable.getEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+      20: goto          24
+      23: aconst_null
+      24: areturn
+
+  public default de.markusbordihn.easynpc.data.attribute.MovementAttributes getMovementAttributes();
+    Code:
+       0: aload_0
+       1: invokeinterface #171,  1          // InterfaceMethod getNavigationEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+       6: astore_1
+       7: aload_1
+       8: ifnull        18
+      11: aload_1
+      12: invokevirtual #176                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.hasMovementAttributes:()Z
+      15: ifne          20
+      18: aconst_null
+      19: areturn
+      20: aload_1
+      21: invokevirtual #180                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.getMovementAttributes:()Lde/markusbordihn/easynpc/data/attribute/MovementAttributes;
+      24: areturn
+
+  public default de.markusbordihn.easynpc.data.attribute.NavigationType getAppliedNavigationType();
+    Code:
+       0: getstatic     #360                // Field de/markusbordihn/easynpc/data/attribute/NavigationType.DEFAULT:Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+       3: areturn
+
+  public default void refreshNavigation();
+    Code:
+       0: aload_0
+       1: invokeinterface #247,  1          // InterfaceMethod refreshGroundNavigation:()V
+       6: return
+
+  public default void restoreGravityFromAttributes();
+    Code:
+       0: aload_0
+       1: invokeinterface #171,  1          // InterfaceMethod getNavigationEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+       6: astore_1
+       7: aload_1
+       8: ifnull        36
+      11: aload_0
+      12: invokeinterface #151,  1          // InterfaceMethod getLivingEntity:()Lnet/minecraft/class_1309;
+      17: ifnull        36
+      20: aload_0
+      21: invokeinterface #151,  1          // InterfaceMethod getLivingEntity:()Lnet/minecraft/class_1309;
+      26: aload_1
+      27: invokevirtual #208                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.getEnvironmentalAttributes:()Lde/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes;
+      30: invokevirtual #405                // Method de/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes.noGravity:()Z
+      33: invokevirtual #408                // Method net/minecraft/class_1309.method_5875:(Z)V
+      36: return
+
+  public default void refreshNavigationIfChanged();
+    Code:
+       0: aload_0
+       1: invokeinterface #411,  1          // InterfaceMethod getAppliedNavigationType:()Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+       6: aload_0
+       7: invokeinterface #413,  1          // InterfaceMethod getNavigationType:()Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+      12: if_acmpeq     21
+      15: aload_0
+      16: invokeinterface #415,  1          // InterfaceMethod refreshNavigation:()V
+      21: return
+
+  public default boolean canFly();
+    Code:
+       0: aload_0
+       1: invokeinterface #413,  1          // InterfaceMethod getNavigationType:()Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+       6: getstatic     #304                // Field de/markusbordihn/easynpc/data/attribute/NavigationType.FLYING:Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+       9: if_acmpne     16
+      12: iconst_1
+      13: goto          17
+      16: iconst_0
+      17: ireturn
+
+  public default boolean canSwim();
+    Code:
+       0: aload_0
+       1: invokeinterface #413,  1          // InterfaceMethod getNavigationType:()Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+       6: getstatic     #298                // Field de/markusbordihn/easynpc/data/attribute/NavigationType.AQUATIC:Lde/markusbordihn/easynpc/data/attribute/NavigationType;
+       9: if_acmpne     16
+      12: iconst_1
+      13: goto          17
+      16: iconst_0
+      17: ireturn
+
+  public default boolean isFlying();
+    Code:
+       0: aload_0
+       1: invokeinterface #420,  1          // InterfaceMethod canFly:()Z
+       6: ifeq          25
+       9: aload_0
+      10: invokeinterface #137,  1          // InterfaceMethod getEntity:()Lnet/minecraft/class_1297;
+      15: invokevirtual #423                // Method net/minecraft/class_1297.method_24828:()Z
+      18: ifne          25
+      21: iconst_1
+      22: goto          26
+      25: iconst_0
+      26: ireturn
+
+  public default boolean canJump();
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public default void addAdditionalNavigationData(net.minecraft.class_11372);
+    Code:
+       0: new           #429                // class net/minecraft/class_2487
+       3: dup
+       4: invokespecial #432                // Method net/minecraft/class_2487."<init>":()V
+       7: astore_2
+       8: aload_0
+       9: invokeinterface #129,  1          // InterfaceMethod hasNPCHomePosition:()Z
+      14: ifeq          33
+      17: aload_2
+      18: ldc           #17                 // String Home
+      20: aload_0
+      21: invokeinterface #119,  1          // InterfaceMethod getNPCHomePosition:()Lnet/minecraft/class_2338;
+      26: invokestatic  #438                // Method de/markusbordihn/easynpc/utils/CompoundTagUtils.writeBlockPos:(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2487;
+      29: invokevirtual #442                // Method net/minecraft/class_2487.method_10566:(Ljava/lang/String;Lnet/minecraft/class_2520;)Lnet/minecraft/class_2520;
+      32: pop
+      33: aload_2
+      34: invokevirtual #445                // Method net/minecraft/class_2487.method_33133:()Z
+      37: ifne          52
+      40: aload_1
+      41: ldc           #20                 // String Navigation
+      43: getstatic     #449                // Field net/minecraft/class_2487.field_25128:Lcom/mojang/serialization/Codec;
+      46: aload_2
+      47: invokeinterface #455,  4          // InterfaceMethod net/minecraft/class_11372.method_71468:(Ljava/lang/String;Lcom/mojang/serialization/Codec;Ljava/lang/Object;)V
+      52: return
+
+  public default void readAdditionalNavigationData(net.minecraft.class_11368);
+    Code:
+       0: aload_1
+       1: ldc           #20                 // String Navigation
+       3: getstatic     #449                // Field net/minecraft/class_2487.field_25128:Lcom/mojang/serialization/Codec;
+       6: invokeinterface #467,  3          // InterfaceMethod net/minecraft/class_11368.method_71426:(Ljava/lang/String;Lcom/mojang/serialization/Codec;)Ljava/util/Optional;
+      11: astore_2
+      12: aload_2
+      13: invokevirtual #472                // Method java/util/Optional.isEmpty:()Z
+      16: ifeq          20
+      19: return
+      20: aload_2
+      21: invokevirtual #476                // Method java/util/Optional.get:()Ljava/lang/Object;
+      24: checkcast     #429                // class net/minecraft/class_2487
+      27: astore_3
+      28: aload_3
+      29: ldc           #17                 // String Home
+      31: invokevirtual #480                // Method net/minecraft/class_2487.method_10545:(Ljava/lang/String;)Z
+      34: ifeq          52
+      37: aload_0
+      38: aload_3
+      39: ldc           #17                 // String Home
+      41: invokevirtual #484                // Method net/minecraft/class_2487.method_68568:(Ljava/lang/String;)Lnet/minecraft/class_2487;
+      44: invokestatic  #488                // Method de/markusbordihn/easynpc/utils/CompoundTagUtils.readBlockPos:(Lnet/minecraft/class_2487;)Lnet/minecraft/class_2338;
+      47: invokeinterface #131,  2          // InterfaceMethod setNPCHomePosition:(Lnet/minecraft/class_2338;)V
+      52: return
+
+  public default boolean isImmovable();
+    Code:
+       0: aload_0
+       1: invokeinterface #394,  1          // InterfaceMethod getEasyNPCAttributeData:()Lde/markusbordihn/easynpc/entity/easynpc/data/AttributeDataCapable;
+       6: astore_1
+       7: aload_1
+       8: ifnull        39
+      11: aload_1
+      12: invokeinterface #399,  1          // InterfaceMethod de/markusbordihn/easynpc/entity/easynpc/data/AttributeDataCapable.getEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+      17: ifnull        39
+      20: aload_1
+      21: invokeinterface #399,  1          // InterfaceMethod de/markusbordihn/easynpc/entity/easynpc/data/AttributeDataCapable.getEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+      26: invokevirtual #180                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.getMovementAttributes:()Lde/markusbordihn/easynpc/data/attribute/MovementAttributes;
+      29: invokevirtual #493                // Method de/markusbordihn/easynpc/data/attribute/MovementAttributes.isImmovable:()Z
+      32: ifeq          39
+      35: iconst_1
+      36: goto          40
+      39: iconst_0
+      40: ireturn
+
+  public default boolean anchorImmovablePosition();
+    Code:
+       0: aload_0
+       1: invokeinterface #239,  1          // InterfaceMethod isImmovable:()Z
+       6: ifne          11
+       9: iconst_0
+      10: ireturn
+      11: aload_0
+      12: invokeinterface #228,  1          // InterfaceMethod getMob:()Lnet/minecraft/class_1308;
+      17: astore_1
+      18: aload_1
+      19: getstatic     #501                // Field net/minecraft/class_243.field_1353:Lnet/minecraft/class_243;
+      22: invokevirtual #504                // Method net/minecraft/class_1308.method_18799:(Lnet/minecraft/class_243;)V
+      25: aload_1
+      26: invokevirtual #279                // Method net/minecraft/class_1308.method_5942:()Lnet/minecraft/class_1408;
+      29: invokevirtual #509                // Method net/minecraft/class_1408.method_6357:()Z
+      32: ifne          42
+      35: aload_1
+      36: invokevirtual #279                // Method net/minecraft/class_1308.method_5942:()Lnet/minecraft/class_1408;
+      39: invokevirtual #510                // Method net/minecraft/class_1408.method_6340:()V
+      42: iconst_1
+      43: ireturn
+
+  public default void handleNavigationTravelEvent(net.minecraft.class_243);
+    Code:
+       0: aload_0
+       1: invokeinterface #516,  1          // InterfaceMethod getEasyNPCTickerData:()Lde/markusbordihn/easynpc/entity/easynpc/data/TickerDataCapable;
+       6: astore_2
+       7: aload_2
+       8: getstatic     #522                // Field de/markusbordihn/easynpc/data/ticker/TickerType.TRAVEL_EVENT:Lde/markusbordihn/easynpc/data/ticker/TickerType;
+      11: bipush        20
+      13: invokeinterface #528,  3          // InterfaceMethod de/markusbordihn/easynpc/entity/easynpc/data/TickerDataCapable.checkAndIncreaseTicker:(Lde/markusbordihn/easynpc/data/ticker/TickerType;I)Z
+      18: ifeq          258
+      21: aload_0
+      22: invokeinterface #228,  1          // InterfaceMethod getMob:()Lnet/minecraft/class_1308;
+      27: astore_3
+      28: aload_0
+      29: invokeinterface #532,  1          // InterfaceMethod getEntityLevel:()Lnet/minecraft/class_1937;
+      34: astore        4
+      36: aload         4
+      38: aload_3
+      39: invokevirtual #535                // Method net/minecraft/class_1308.method_23312:()Lnet/minecraft/class_2338;
+      42: invokevirtual #541                // Method net/minecraft/class_1937.method_8320:(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;
+      45: astore        5
+      47: aload_3
+      48: aload         5
+      50: getstatic     #547                // Field net/minecraft/class_2246.field_10124:Lnet/minecraft/class_2248;
+      53: invokevirtual #553                // Method net/minecraft/class_2680.method_27852:(Lnet/minecraft/class_2248;)Z
+      56: ifne          96
+      59: aload         5
+      61: getstatic     #556                // Field net/minecraft/class_2246.field_10219:Lnet/minecraft/class_2248;
+      64: invokevirtual #553                // Method net/minecraft/class_2680.method_27852:(Lnet/minecraft/class_2248;)Z
+      67: ifne          96
+      70: aload         5
+      72: getstatic     #559                // Field net/minecraft/class_2246.field_10466:Lnet/minecraft/class_2248;
+      75: invokevirtual #553                // Method net/minecraft/class_2680.method_27852:(Lnet/minecraft/class_2248;)Z
+      78: ifne          96
+      81: aload         5
+      83: getstatic     #562                // Field net/minecraft/class_2246.field_10536:Lnet/minecraft/class_2248;
+      86: invokevirtual #553                // Method net/minecraft/class_2680.method_27852:(Lnet/minecraft/class_2248;)Z
+      89: ifne          96
+      92: iconst_1
+      93: goto          97
+      96: iconst_0
+      97: invokevirtual #565                // Method net/minecraft/class_1308.method_24830:(Z)V
+     100: aload_0
+     101: invokeinterface #569,  1          // InterfaceMethod getEasyNPCObjectiveData:()Lde/markusbordihn/easynpc/entity/easynpc/data/ObjectiveDataCapable;
+     106: astore        6
+     108: aload         6
+     110: invokeinterface #574,  1          // InterfaceMethod de/markusbordihn/easynpc/entity/easynpc/data/ObjectiveDataCapable.hasTravelTargetObjectives:()Z
+     115: ifne          249
+     118: aload_0
+     119: invokeinterface #394,  1          // InterfaceMethod getEasyNPCAttributeData:()Lde/markusbordihn/easynpc/entity/easynpc/data/AttributeDataCapable;
+     124: astore        7
+     126: aload         7
+     128: invokeinterface #399,  1          // InterfaceMethod de/markusbordihn/easynpc/entity/easynpc/data/AttributeDataCapable.getEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+     133: invokevirtual #208                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.getEnvironmentalAttributes:()Lde/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes;
+     136: astore        8
+     138: aload         8
+     140: invokevirtual #577                // Method de/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes.freefall:()Z
+     143: ifeq          249
+     146: aload         8
+     148: invokevirtual #405                // Method de/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes.noGravity:()Z
+     151: ifne          249
+     154: aload_3
+     155: invokevirtual #578                // Method net/minecraft/class_1308.method_24828:()Z
+     158: ifne          249
+     161: aload_3
+     162: invokevirtual #582                // Method net/minecraft/class_1308.method_73189:()Lnet/minecraft/class_243;
+     165: astore        9
+     167: aload_3
+     168: invokevirtual #535                // Method net/minecraft/class_1308.method_23312:()Lnet/minecraft/class_2338;
+     171: invokevirtual #585                // Method net/minecraft/class_2338.method_10074:()Lnet/minecraft/class_2338;
+     174: astore        10
+     176: aload         4
+     178: aload         10
+     180: invokevirtual #541                // Method net/minecraft/class_1937.method_8320:(Lnet/minecraft/class_2338;)Lnet/minecraft/class_2680;
+     183: astore        11
+     185: aload         11
+     187: invokevirtual #588                // Method net/minecraft/class_2680.method_26215:()Z
+     190: ifeq          226
+     193: aload_3
+     194: aload         9
+     196: getfield      #592                // Field net/minecraft/class_243.field_1352:D
+     199: aload         9
+     201: getfield      #595                // Field net/minecraft/class_243.field_1351:D
+     204: aload         10
+     206: invokevirtual #599                // Method net/minecraft/class_2338.method_10264:()I
+     209: i2d
+     210: dconst_1
+     211: dadd
+     212: invokestatic  #605                // Method java/lang/Math.max:(DD)D
+     215: aload         9
+     217: getfield      #608                // Field net/minecraft/class_243.field_1350:D
+     220: invokevirtual #612                // Method net/minecraft/class_1308.method_5814:(DDD)V
+     223: goto          249
+     226: aload_3
+     227: aload_3
+     228: invokevirtual #615                // Method net/minecraft/class_1308.method_23317:()D
+     231: aload_3
+     232: invokevirtual #618                // Method net/minecraft/class_1308.method_23318:()D
+     235: ldc2_w        #619                // double 0.1d
+     238: dsub
+     239: invokestatic  #624                // Method java/lang/Math.floor:(D)D
+     242: aload_3
+     243: invokevirtual #627                // Method net/minecraft/class_1308.method_23321:()D
+     246: invokevirtual #612                // Method net/minecraft/class_1308.method_5814:(DDD)V
+     249: aload_2
+     250: getstatic     #522                // Field de/markusbordihn/easynpc/data/ticker/TickerType.TRAVEL_EVENT:Lde/markusbordihn/easynpc/data/ticker/TickerType;
+     253: invokeinterface #631,  2          // InterfaceMethod de/markusbordihn/easynpc/entity/easynpc/data/TickerDataCapable.resetTicker:(Lde/markusbordihn/easynpc/data/ticker/TickerType;)V
+     258: return
+}
+Compiled from "AttributeDataCapable.java"
+public interface de.markusbordihn.easynpc.entity.easynpc.data.AttributeDataCapable<E extends net.minecraft.class_1308> extends de.markusbordihn.easynpc.entity.easynpc.EasyNPC<E> {
+  public default void setBaseAttribute(net.minecraft.class_6880<net.minecraft.class_1320>, double);
+    Code:
+       0: aload_1
+       1: ifnull        17
+       4: aload_0
+       5: invokeinterface #22,  1           // InterfaceMethod getLivingEntity:()Lnet/minecraft/class_1309;
+      10: aload_1
+      11: invokevirtual #28                 // Method net/minecraft/class_1309.method_5996:(Lnet/minecraft/class_6880;)Lnet/minecraft/class_1324;
+      14: ifnonnull     18
+      17: return
+      18: aload_0
+      19: invokeinterface #22,  1           // InterfaceMethod getLivingEntity:()Lnet/minecraft/class_1309;
+      24: aload_1
+      25: invokevirtual #28                 // Method net/minecraft/class_1309.method_5996:(Lnet/minecraft/class_6880;)Lnet/minecraft/class_1324;
+      28: dload_2
+      29: invokevirtual #34                 // Method net/minecraft/class_1324.method_6192:(D)V
+      32: return
+
+  public default double getBaseAttribute(net.minecraft.class_6880<net.minecraft.class_1320>);
+    Code:
+       0: aload_1
+       1: ifnull        17
+       4: aload_0
+       5: invokeinterface #22,  1           // InterfaceMethod getLivingEntity:()Lnet/minecraft/class_1309;
+      10: aload_1
+      11: invokevirtual #28                 // Method net/minecraft/class_1309.method_5996:(Lnet/minecraft/class_6880;)Lnet/minecraft/class_1324;
+      14: ifnonnull     19
+      17: dconst_0
+      18: dreturn
+      19: aload_0
+      20: invokeinterface #22,  1           // InterfaceMethod getLivingEntity:()Lnet/minecraft/class_1309;
+      25: aload_1
+      26: invokevirtual #28                 // Method net/minecraft/class_1309.method_5996:(Lnet/minecraft/class_6880;)Lnet/minecraft/class_1324;
+      29: invokevirtual #47                 // Method net/minecraft/class_1324.method_6201:()D
+      32: dreturn
+
+  public default de.markusbordihn.easynpc.data.attribute.EntityAttributes getEntityAttributes();
+    Code:
+       0: aload_0
+       1: getstatic     #55                 // Field de/markusbordihn/easynpc/data/synched/SynchedDataIndex.ENTITY_ATTRIBUTES:Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;
+       4: invokeinterface #59,  2           // InterfaceMethod getSynchedEntityData:(Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;)Ljava/lang/Object;
+       9: checkcast     #61                 // class de/markusbordihn/easynpc/data/attribute/EntityAttributes
+      12: areturn
+
+  public default void setEntityAttributes(de.markusbordihn.easynpc.data.attribute.EntityAttributes);
+    Code:
+       0: aload_0
+       1: getstatic     #55                 // Field de/markusbordihn/easynpc/data/synched/SynchedDataIndex.ENTITY_ATTRIBUTES:Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;
+       4: aload_1
+       5: invokeinterface #68,  3           // InterfaceMethod setSynchedEntityData:(Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;Ljava/lang/Object;)V
+      10: return
+
+  public default void refreshEntityAttributes();
+    Code:
+       0: aload_0
+       1: invokeinterface #73,  1           // InterfaceMethod getEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+       6: astore_1
+       7: aload_1
+       8: ifnull        28
+      11: aload_0
+      12: new           #61                 // class de/markusbordihn/easynpc/data/attribute/EntityAttributes
+      15: dup
+      16: aload_1
+      17: invokevirtual #77                 // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.createTag:()Lnet/minecraft/class_2487;
+      20: invokespecial #81                 // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes."<init>":(Lnet/minecraft/class_2487;)V
+      23: invokeinterface #83,  2           // InterfaceMethod setEntityAttributes:(Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;)V
+      28: return
+
+  public default boolean getAttributeSilent();
+    Code:
+       0: aload_0
+       1: invokeinterface #89,  1           // InterfaceMethod getEntity:()Lnet/minecraft/class_1297;
+       6: invokevirtual #94                 // Method net/minecraft/class_1297.method_5701:()Z
+       9: ireturn
+
+  public default void setAttributeSilent(boolean);
+    Code:
+       0: aload_0
+       1: invokeinterface #89,  1           // InterfaceMethod getEntity:()Lnet/minecraft/class_1297;
+       6: iload_1
+       7: invokevirtual #100                // Method net/minecraft/class_1297.method_5803:(Z)V
+      10: return
+
+  public default void defineSynchedAttributeData(net.minecraft.class_2945$class_9222);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #55                 // Field de/markusbordihn/easynpc/data/synched/SynchedDataIndex.ENTITY_ATTRIBUTES:Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;
+       5: new           #61                 // class de/markusbordihn/easynpc/data/attribute/EntityAttributes
+       8: dup
+       9: invokespecial #106                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes."<init>":()V
+      12: invokeinterface #110,  4          // InterfaceMethod defineSynchedEntityData:(Lnet/minecraft/class_2945$class_9222;Lde/markusbordihn/easynpc/data/synched/SynchedDataIndex;Ljava/lang/Object;)V
+      17: return
+
+  public default void addAdditionalAttributeData(net.minecraft.class_11372);
+    Code:
+       0: aload_0
+       1: invokeinterface #73,  1           // InterfaceMethod getEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+       6: astore_2
+       7: aload_2
+       8: ifnull        16
+      11: aload_2
+      12: aload_1
+      13: invokevirtual #117                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.save:(Lnet/minecraft/class_11372;)V
+      16: return
+
+  public default void handleBlockedVehicleMountingTick();
+    Code:
+       0: aload_0
+       1: invokeinterface #123,  1          // InterfaceMethod getMob:()Lnet/minecraft/class_1308;
+       6: astore_1
+       7: aload_1
+       8: ifnull        18
+      11: aload_1
+      12: invokevirtual #128                // Method net/minecraft/class_1308.method_5765:()Z
+      15: ifne          19
+      18: return
+      19: aload_0
+      20: invokeinterface #73,  1           // InterfaceMethod getEntityAttributes:()Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;
+      25: astore_2
+      26: aload_2
+      27: ifnull        44
+      30: aload_2
+      31: invokevirtual #132                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.getInteractionAttributes:()Lde/markusbordihn/easynpc/data/attribute/InteractionAttributes;
+      34: invokevirtual #137                // Method de/markusbordihn/easynpc/data/attribute/InteractionAttributes.blockVehicleMounting:()Z
+      37: ifeq          44
+      40: aload_1
+      41: invokevirtual #140                // Method net/minecraft/class_1308.method_5848:()V
+      44: return
+
+  public default void readAdditionalAttributeData(net.minecraft.class_11368);
+    Code:
+       0: aload_1
+       1: ldc           #147                // String EntityAttribute
+       3: invokeinterface #153,  2          // InterfaceMethod net/minecraft/class_11368.method_71420:(Ljava/lang/String;)Ljava/util/Optional;
+       8: invokevirtual #158                // Method java/util/Optional.isEmpty:()Z
+      11: ifeq          15
+      14: return
+      15: new           #61                 // class de/markusbordihn/easynpc/data/attribute/EntityAttributes
+      18: dup
+      19: aload_1
+      20: invokespecial #160                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes."<init>":(Lnet/minecraft/class_11368;)V
+      23: astore_2
+      24: aload_0
+      25: aload_2
+      26: invokeinterface #83,  2           // InterfaceMethod setEntityAttributes:(Lde/markusbordihn/easynpc/data/attribute/EntityAttributes;)V
+      31: aload_0
+      32: invokeinterface #22,  1           // InterfaceMethod getLivingEntity:()Lnet/minecraft/class_1309;
+      37: astore_3
+      38: aload_3
+      39: ifnull        53
+      42: aload_3
+      43: aload_2
+      44: invokevirtual #164                // Method de/markusbordihn/easynpc/data/attribute/EntityAttributes.getEnvironmentalAttributes:()Lde/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes;
+      47: invokevirtual #169                // Method de/markusbordihn/easynpc/data/attribute/EnvironmentalAttributes.noGravity:()Z
+      50: invokevirtual #172                // Method net/minecraft/class_1309.method_5875:(Z)V
+      53: return
+}

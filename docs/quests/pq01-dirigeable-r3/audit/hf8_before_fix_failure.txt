@@ -1,0 +1,16 @@
+HF7, banc avec hcq_pq01=0 et points de Perrin à un bloc :
+java.lang.AssertionError: ambient: Perrin spawned by automatic server tick
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.hautecapitale.quetes.sequence.Pq01AmbientWorldBench.check(Pq01AmbientWorldBench.java:8)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.hautecapitale.quetes.sequence.Pq01AmbientWorldBench.tick(Pq01AmbientWorldBench.java:27)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.hautecapitale.quetes.sequence.Pq01WorldBench.tick(Pq01WorldBench.java:88)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.hautecapitale.quetes.sequence.Pq01WorldBench.lambda$onInitialize$2(Pq01WorldBench.java:18)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.hautecapitale.quetes.sequence.Pq01Bridge.lambda$event$6(Pq01Bridge.java:107)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot/jdk.proxy2/jdk.proxy2.$Proxy32.onEndTick(Unknown Source)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.lambda$static$2(ServerTickEvents.java:55)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.minecraft.server.MinecraftServer.handler$zfp000$fabric-lifecycle-events-v1$onEndTick(MinecraftServer.java:3359)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.minecraft.server.MinecraftServer.method_3748(MinecraftServer.java:1040)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.minecraft.class_3176.method_3748(class_3176.java:318)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.minecraft.server.MinecraftServer.method_76677(MinecraftServer.java:1049)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.minecraft.server.MinecraftServer.method_29741(MinecraftServer.java:771)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at knot//net.minecraft.server.MinecraftServer.method_29739(MinecraftServer.java:301)
+[12:06:56] [Server thread/INFO]: [STDERR]: 	at java.base/java

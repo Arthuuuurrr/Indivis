@@ -1,0 +1,95 @@
+{
+  "capitale_core_1.5.7_V2_SEQUENCE_I_SI1(1).zip": {
+    "sha256": "dfbc034fa9ea481105c76c461e88911790b733e939401960029653caa4fc482a",
+    "bytes": 4748899,
+    "metadata": {
+      "pack": {
+        "description": "Indivis — Core 1.5.7 — norme v2 + Séquence I — candidat SI1",
+        "min_format": [
+          94,
+          1
+        ],
+        "max_format": [
+          94,
+          1
+        ]
+      }
+    }
+  },
+  "hc_quetes_b22_V2_SEQUENCE_I_SI1b.zip": {
+    "sha256": "ad3bed0ff8e08921f1c99e757b7002c43a788676fa0ed0b18af10d7e8527fe0c",
+    "bytes": 1514444,
+    "metadata": {
+      "pack": {
+        "pack_format": 94,
+        "min_format": 94,
+        "max_format": 94,
+        "description": "Indivis — Quêtes b22 — norme v2 + Séquence I — candidat SI1b — reconnaissance et liaison des gardes existants"
+      }
+    }
+  },
+  "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b.jar": {
+    "sha256": "7d17bc58795f47561a873bff7ce07ecbb3838ba521bddc9a9c2bdd7e86eb8665",
+    "bytes": 426233,
+    "metadata": {
+      "id": "haute_capitale_quetes",
+      "version": "0.1.0+1.21.11.b7.SEQUENCE-I.SI1b",
+      "environment": "*",
+      "depends": {
+        "fabricloader": ">=0.19.0",
+        "minecraft": "~1.21.11",
+        "java": ">=21",
+        "fabric-api": "*",
+        "nexuscharacters": ">=1.0.0-beta.34",
+        "puffish_skills": "0.17.3",
+        "easy_npc": ">=7.16.0"
+      }
+    }
+  },
+  "NexusCharacters-Indivis-1.21.11-PRE34-SI1.jar": {
+    "sha256": "454bd4206b50737bf386d65eb09f4f0e3ad1294a1fd4e6df426f9fe205cb31d0",
+    "bytes": 28180836,
+    "metadata": {
+      "id": "nexuscharacters",
+      "version": "1.0.0-beta.34+indivis.1.21.11.SI1",
+      "environment": "*",
+      "depends": {
+        "fabricloader": ">=0.19.5",
+        "minecraft": "~1.21.11",
+        "java": ">=21",
+        "fabric-api": ">=0.141.6"
+      }
+    }
+  },
+  "haute-capitale-dialogue-0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX (1)(2).jar": {
+    "sha256": "a2c21f24889f96880c472d168ea55cf65e84ff154ee1bbcc22dbeaa9df1d4057",
+    "bytes": 200473,
+    "metadata": {
+      "id": "haute_capitale_dialogue",
+      "version": "0.1.0+1.21.11.b10",
+      "environment": "*",
+      "depends": {
+        "fabricloader": ">=0.19.0",
+        "minecraft": "~1.21.11",
+        "java": ">=21",
+        "fabric-api": "*",
+        "haute_capitale_rpg": ">=0.3.0"
+      }
+    }
+  },
+  "easy_npc-fabric-1.21.11-7.16.0(1).jar": {
+    "sha256": "be3531fba0d3b0553e64ac8acae1906a882f41b32ac5e64386c3d6c4cbef6f8b",
+    "bytes": 3328638,
+    "metadata": {
+      "id": "easy_npc",
+      "version": "7.16.0",
+      "environment": "*",
+      "depends": {
+        "fabricloader": ">=0.18.4",
+        "fabric-api": ">=0.141.3+1.21.11",
+        "minecraft": "1.21.11",
+        "java": ">=21"
+      }
+    }
+  }
+}

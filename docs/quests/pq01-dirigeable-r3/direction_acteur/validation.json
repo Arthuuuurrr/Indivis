@@ -1,0 +1,8 @@
+{
+  "roles": 6,
+  "takes": 92,
+  "texts_match_canonical_nodes": true,
+  "all_takes_have_french_direction": true,
+  "no_audio_generated": true,
+  "no_datapack_hook_changed": true
+}
