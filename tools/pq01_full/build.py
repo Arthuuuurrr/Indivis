@@ -6,7 +6,7 @@ sys.path.insert(0,str(ROOT/'work/pq01_rebuild'))
 from model import N,IDS,ROLES
 R2=HERE/'r2'
 JAR=ROOT/'upload/haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b.jar'
-FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF6.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip','journal':'haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF6.jar'}
+FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF7.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip','journal':'haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF7.jar'}
 def sha(b):return hashlib.sha256(b).hexdigest()
 def load(p):
  with zipfile.ZipFile(p) as z:assert z.testzip() is None;return {n:z.read(n) for n in z.namelist() if not n.endswith('/')}
@@ -71,6 +71,8 @@ def build():
  apply_hf5(packs)
  from hf6 import apply as apply_hf6
  apply_hf6(packs)
+ from hf7 import apply as apply_hf7
+ apply_hf7(packs)
  classes=HERE/'classes';contracts=HERE/'compile_contracts';contract_classes=HERE/'contract_classes'
  for p in (classes,contracts,contract_classes):shutil.rmtree(p,ignore_errors=True);p.mkdir()
  definitions={
@@ -80,9 +82,10 @@ def build():
  'net/minecraft/class_1352.java':'package net.minecraft; public class class_1352 {}',
  'net/hautecapitale/quetes/sequence/SequenceBridge.java':'''package net.hautecapitale.quetes.sequence; public class SequenceBridge {static Object call(Object o,String n,Object...a){return null;} static Object server(Object p){return null;} static java.util.UUID uuid(Object p){return null;} static int score(Object p,String n){return 0;} static void run(Object p,String c){} static String quote(String s){return s;} }''',
  'net/hautecapitale/quetes/sequence/GuardNbt.java':'''package net.hautecapitale.quetes.sequence; public class GuardNbt { static Object read(Object c,String k){return null;} static Object copy(Object c){return null;} static Object compound(){return null;} static void put(Object c,String k,Object v){} static void string(Object c,String k,String v){} static void integer(Object c,String k,int v){} static Object stringValue(String v){return null;} static Object list(java.util.Collection<?> v){return null;} static Object entity(Object e){return null;} static void save(Object s,String k,Object n){} static Object childOrCreate(Object c,String k){return null;} }''',
- 'org/spongepowered/asm/mixin/Mixin.java':'package org.spongepowered.asm.mixin; @java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.CLASS) @java.lang.annotation.Target(java.lang.annotation.ElementType.TYPE) public @interface Mixin { String[] targets(); }',
+ 'org/spongepowered/asm/mixin/Mixin.java':'package org.spongepowered.asm.mixin; @java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.CLASS) @java.lang.annotation.Target(java.lang.annotation.ElementType.TYPE) public @interface Mixin { String[] targets(); boolean remap() default true; }',
+ 'org/spongepowered/asm/mixin/injection/Coerce.java':'package org.spongepowered.asm.mixin.injection; @java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.CLASS) @java.lang.annotation.Target(java.lang.annotation.ElementType.PARAMETER) public @interface Coerce {}',
  'org/spongepowered/asm/mixin/injection/At.java':'package org.spongepowered.asm.mixin.injection; @java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.RUNTIME) public @interface At { String value(); }',
- 'org/spongepowered/asm/mixin/injection/Inject.java':'package org.spongepowered.asm.mixin.injection; @java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.RUNTIME) @java.lang.annotation.Target(java.lang.annotation.ElementType.METHOD) public @interface Inject { String[] method(); At[] at(); boolean cancellable() default false; }',
+ 'org/spongepowered/asm/mixin/injection/Inject.java':'package org.spongepowered.asm.mixin.injection; @java.lang.annotation.Retention(java.lang.annotation.RetentionPolicy.RUNTIME) @java.lang.annotation.Target(java.lang.annotation.ElementType.METHOD) public @interface Inject { String[] method(); At[] at(); boolean cancellable() default false; boolean remap() default true; }',
  'org/spongepowered/asm/mixin/injection/callback/CallbackInfo.java':'package org.spongepowered.asm.mixin.injection.callback; public class CallbackInfo { public void cancel(){} }',
  'org/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable.java':'package org.spongepowered.asm.mixin.injection.callback; public class CallbackInfoReturnable<T> extends CallbackInfo { public void setReturnValue(T v){} }'
  }
@@ -99,12 +102,12 @@ def build():
  vis='net/hautecapitale/quetes/visibility/QuestVisibility.class';inp=HERE/'QuestVisibility.original.class';inp.write_bytes(packs['journal'][vis]);patched=HERE/'QuestVisibility.patched.class'
  run(['java',*exports,'-cp',classes,'PatchVisibility',inp,patched],'patch.log');packs['journal'][vis]=patched.read_bytes()
  for p in sorted((classes/'net/hautecapitale').rglob('*.class')):packs['journal'][str(p.relative_to(classes))]=p.read_bytes()
- meta=json.loads(packs['journal']['fabric.mod.json']);meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF6';meta['description']+=' PQ01-R3-HF6 : questions disponibles après réponse, choix différés et navigation corrigés.'
+ meta=json.loads(packs['journal']['fabric.mod.json']);meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF7';meta['description']+=' PQ01-R3-HF7 : Gautier part pendant le dialogue, reste sur place et notifications hors capture.'
  meta['entrypoints']['main'].append('net.hautecapitale.quetes.sequence.Pq01Initializer')
  meta['entrypoints'].setdefault('client',[]).append('net.hautecapitale.quetes.sequence.Pq01Client')
  dialogue=load(next((ROOT/'upload').glob('haute-capitale-dialogue*.jar')));dialogue_id=json.loads(dialogue['fabric.mod.json'])['id'];meta['depends'][dialogue_id]='>=0.1.0'
  meta['mixins'].append('indivis_pq01.mixins.json');packs['journal']['fabric.mod.json']=(json.dumps(meta,ensure_ascii=False,indent=2)+'\n').encode()
- packs['journal']['indivis_pq01.mixins.json']=json.dumps({'required':True,'minVersion':'0.8','package':'net.hautecapitale.quetes.pq01.mixin','compatibilityLevel':'JAVA_21','mixins':['Pq01EntityMixin','Pq01GoalMixin'],'injectors':{'defaultRequire':1}},indent=2).encode()
+ packs['journal']['indivis_pq01.mixins.json']=json.dumps({'required':True,'minVersion':'0.8','package':'net.hautecapitale.quetes.pq01.mixin','compatibilityLevel':'JAVA_21','mixins':['Pq01EntityMixin','Pq01GoalMixin'],'client':['Pq01CaptureMixin'],'injectors':{'defaultRequire':1}},indent=2).encode()
  for n in definitions:assert n[:-5]+'.class' not in {p for p in packs['journal'] if p not in baseline['journal']},n
  report={}
  for k,pack in packs.items():

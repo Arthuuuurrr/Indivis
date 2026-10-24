@@ -34,9 +34,9 @@ public final class Pq01Bridge {
       try{return k.newInstance(a);}catch(ReflectiveOperationException e){throw new IllegalStateException(c,e);}
     }throw new IllegalStateException("Constructeur absent : "+c);
   }
-  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF6] "+e);e.printStackTrace(System.err);}}
+  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF7] "+e);e.printStackTrace(System.err);}}
   static void say(Object p,String s){run(p,"tellraw @s "+quote("[PQ01] "+s));}
-  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF6] "+text);}
+  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF7] "+text);}
   static void unavailable(Object p,String reason){diagnostic(p,reason);run(p,"title @s actionbar "+quote("Cette conversation n’est pas disponible pour le moment."));}
   static Object world(Object p){return call(p,"method_51469");}
   static String dimension(Object world){return String.valueOf(call(call(world,"method_27983"),"method_29177"));}
@@ -84,7 +84,7 @@ public final class Pq01Bridge {
   }
   private static final class View {
     final UUID account,character;final Object player,world;final Map<String,Actor> actors=new HashMap<>();final Set<UUID> hidden=new HashSet<>();
-    String phase,cameraRole,pendingNode;Object pendingCamera,camera,captureSession;long cameraAt;boolean scene,banter;int waitingNode;Pq01Motion.Point approach;
+    String phase,cameraRole,pendingNode;Object pendingCamera,camera,captureSession;long cameraAt;boolean scene,banter,approachStarted;int waitingNode;Pq01Motion.Point approach;
     View(Object p,String phase){account=uuid(p);character=character(p);player=p;world=world(p);this.phase=phase;}
   }
   public static void init(){
@@ -111,7 +111,7 @@ public final class Pq01Bridge {
   static Object objectMethod(Object p,Method m,Object[] a){return switch(m.getName()){case "toString"->"IndivisPQ01";case "hashCode"->System.identityHashCode(p);case "equals"->p==a[0];default->null;};}
   static void register(Object dispatcher){
     Object root=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal","indivispq01");
-    List<String> actions=new ArrayList<>(List.of("approach","return","close","banter","status","cleanup","near_geraud","reconcile","rearm_near"));
+    List<String> actions=new ArrayList<>(List.of("approach_early","approach","return","close","banter","status","cleanup","near_geraud","reconcile","rearm_near"));
     for(String r:ROLES){actions.add("camera_"+r);for(String phase:List.of("large","quai")){for(String op:List.of("bind_","unbind_","place_"))actions.add(op+r+"_"+phase);}}
     for(String p:POINTS)actions.add("point_"+p);
     for(String key:Pq01Ids.keys())actions.add("line_"+key);
@@ -123,7 +123,7 @@ public final class Pq01Bridge {
       Class<?> command=type("com.mojang.brigadier.Command");
       Object proxy=Proxy.newProxyInstance(command.getClassLoader(),new Class<?>[]{command},(p,m,a)->{
         if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);
-        Object player=null;try{player=call(call(a[0],"getSource"),"method_9207");return execute(player,action);}catch(Throwable failure){report(failure);if(player!=null){if(action.startsWith("camera_")||action.startsWith("line_")||List.of("approach","return","banter","near_geraud").contains(action))diagnostic(player,"Scène indisponible : "+failure.getMessage());else say(player,"Action annulée : "+failure.getMessage());}return 0;}
+        Object player=null;try{player=call(call(a[0],"getSource"),"method_9207");return execute(player,action);}catch(Throwable failure){report(failure);if(player!=null){if(action.startsWith("camera_")||action.startsWith("line_")||List.of("approach_early","approach","return","banter","near_geraud").contains(action))diagnostic(player,"Scène indisponible : "+failure.getMessage());else say(player,"Action annulée : "+failure.getMessage());}return 0;}
       });call(node,"executes",proxy);call(root,"then",node);
     }call(dispatcher,"register",root);
   }
@@ -142,6 +142,7 @@ public final class Pq01Bridge {
     if(!dialogue(p))return 0;
     if(action.startsWith("line_"))return line(p,action.substring(5));
     if(action.startsWith("camera_"))return camera(p,action.substring(7));
+    if(action.equals("approach_early"))return startApproach(p);
     if(action.equals("approach"))return moveScene(p,false);
     if(action.equals("return"))return moveScene(p,true);
     if(action.equals("banter"))return banter(p);
@@ -374,7 +375,8 @@ public final class Pq01Bridge {
           resumed=true;
           String resumeKey="a"+resume;v.waitingNode=resume;
           run(p,"scoreboard players set @s hcm_pq1_node "+resume);run(p,"scoreboard players set @s hcm_pq1_wait 1");run(p,"function capitale:pq01/scene/resume_wait_self");
-          travel(v,ga,v.approach,()->{face(ga,pos(geraud.entity,v.world));face(geraud,pos(ga.entity,v.world));advance(v,resumeKey);},reason->{diagnostic(p,"Reprise mobile interrompue : "+reason);discard(v,"gautier");refresh(p);advance(v,resumeKey);});
+          v.approachStarted=true;
+          travel(v,ga,v.approach,()->{face(ga,pos(geraud.entity,v.world));face(geraud,pos(ga.entity,v.world));advance(v,resumeKey);},reason->{diagnostic(p,"Reprise mobile arrêtée sur place : "+reason);advance(v,resumeKey);});
         }
       }catch(Throwable e){report(e);diagnostic(p,"Scène mobile en repli : "+e.getMessage());}
     }else{
@@ -433,6 +435,7 @@ public final class Pq01Bridge {
     if(score(p,"hcm_pq1_voice")>0)return 1;
     View v=VIEWS.get(uuid(p));
     if(v==null||!same(v,p)||!v.scene){diagnostic(p,"Scène mobile indisponible ; repli du dialogue.");run(p,"function capitale:pq01/node/"+next);return 1;}
+    if(!returning){startApproach(p);run(p,"function capitale:pq01/node/a3");return 1;}
     if(v.waitingNode!=0)return 1;
     Actor a=v.actors.get("gautier");Pq01Motion.Point target=returning?(a==null?null:configuredPoint(p,"gautier_poste",point(child(binding(p,"gautier_large"),"post")))):v.approach;
     if(!alive(a)||target==null){diagnostic(p,"Trajet non configuré/acteur absent ; repli de l'interruption.");run(p,"function capitale:pq01/node/"+next);return 1;}
@@ -442,7 +445,18 @@ public final class Pq01Bridge {
       if(returning)face(v.actors.get("geraud"),pos(p,v.world));
       else {face(a,pos(v.actors.get("geraud").entity,v.world));face(v.actors.get("geraud"),pos(a.entity,v.world));}
       advance(v,next);
-    },reason->{diagnostic(p,"Trajet Gautier interrompu : "+reason);discard(v,"gautier");refresh(p);advance(v,next);});
+    },reason->{diagnostic(p,"Retour Gautier arrêté sur place : "+reason);advance(v,next);});
+    return 1;
+  }
+  static int startApproach(Object p){
+    if(score(p,"hcm_pq1_node")!=Pq01Ids.id("a2"))return 0;
+    View v=VIEWS.get(uuid(p));if(v==null||!same(v,p)||!v.scene)return 0;
+    if(v.approachStarted)return 1;v.approachStarted=true;
+    Actor a=v.actors.get("gautier");if(!alive(a)||v.approach==null)return 0;
+    travel(v,a,v.approach,()->{
+      Actor geraud=v.actors.get("geraud");
+      if(alive(geraud)){face(a,pos(geraud.entity,v.world));face(geraud,pos(a.entity,v.world));}
+    },reason->diagnostic(p,"Approche Gautier arrêtée sur place ; dialogue maintenu : "+reason));
     return 1;
   }
   static void travel(View v,Actor a,Pq01Motion.Point target,Runnable done,Consumer<String> failed){

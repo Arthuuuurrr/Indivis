@@ -1,8 +1,8 @@
-# Installation, configuration et déplacements des PNJ — PQ01-R3-HF6
+# Installation, configuration et déplacements des PNJ — PQ01-R3-HF7
 
-**Mise à jour du 23 octobre : remplacer le core et le journal par HF6.** Le journal doit être remplacé sur le serveur **et les clients**. Conserver le datapack `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip`. La pose actuelle, les liaisons, points, apparences et progressions sont réutilisés : aucune commande de liaison, placement ou reset à refaire pour installer ce correctif.
+**Mise à jour du 23 octobre : remplacer le core et le journal par HF7.** Le journal doit être remplacé sur le serveur **et les clients**. Conserver le datapack `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip`. La pose actuelle, les liaisons, points, apparences et progressions sont réutilisés : aucune commande de liaison, placement ou reset à refaire pour installer ce correctif.
 
-L’archive contient uniquement les deux composants modifiés. Les sections de pose ci-dessous servent à une configuration initiale ou à un déplacement volontaire du décor. [Corrections et preuves HF6](../HOTFIX_ENCHAINEMENTS_R3_HF6.md).
+L’archive contient uniquement les deux composants modifiés. Les sections de pose ci-dessous servent à une configuration initiale ou à un déplacement volontaire du décor. [Corrections et preuves HF7](../HOTFIX_SCENE_CAPTURE_R3_HF7.md).
 
 ## 1. Les trois opérations à distinguer
 
@@ -21,12 +21,12 @@ L’archive contient uniquement les deux composants modifiés. Les sections de p
 | --- | --- |
 | Datapacks du monde serveur | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF5.zip` |
 | Datapacks du monde serveur | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip` |
-| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF6.jar` |
+| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF7.jar` |
 
 Le ZIP du core est un datapack complet, avec `pack.mcmeta` à sa racine. Le ZIP extérieur de livraison n’est pas un datapack. Le datapack hc_quetes indiqué dans le tableau est celui déjà installé, conservé sans modification.
 
 1. Fermer les dialogues et attendre la fin d’un amarrage éventuel. Sauvegarder ensemble monde et profils Nexus, puis arrêter le serveur.
-2. Remplacer l’ancien ZIP du core par le core HF6 dans les datapacks du monde, et l’ancien JAR du journal par le journal HF6 dans `mods`. Conserver hc_quetes HF4.
+2. Remplacer l’ancien ZIP du core par le core HF7 dans les datapacks du monde, et l’ancien JAR du journal par le journal HF7 dans `mods`. Conserver hc_quetes HF4.
 3. Remplacer aussi le journal sur chaque client. Garder Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants existants.
 4. Redémarrer puis reprendre au clic droit sur le PNJ. Les checkpoints et les sauvegardes de relecture sont conservés. Aucun reset ni commande de pose n’est nécessaire.
 
@@ -68,7 +68,7 @@ La liaison conserve le type, le modèle, le skin, les textures, l’équipement 
 
 `ON_INTERACTION` peut être absent ou contenir un unique déclencheur PQ01 reconnu, seul ou accompagné d’autres actions. La liaison remplace seulement ce déclencheur et conserve l’ordre, les conditions et les autres actions. Les anciennes commandes `function capitale:…`, `/function capitale:…` et les chemins `capitale:…` seuls sont reconnus pour les rôles prévus. Une interaction sans déclencheur PQ01 reconnu, ou avec plusieurs déclencheurs, est refusée et décrite sans écriture. Une liaison existante vers un autre PNJ doit être libérée avant réaffectation. Une modification externe des actions après liaison reste protégée lors d’une nouvelle liaison.
 
-L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal HF6. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud au large, la proximité attend cinq secondes après disponibilité du personnage, un déplacement horizontal d’au moins 0,75 bloc et une distance réelle au PNJ de trois blocs maximum. Le clic volontaire reste disponible immédiatement. L’interpellation ne se relance pas automatiquement après fermeture ; la reprise passe par un clic droit. Le déclencheur PQ01 de proximité du Capitaine devient sans effet : sa conversation commence au clic droit. Un ancien déclencheur PQ01 reconnu est converti et les autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
+L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal HF7. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud au large, la proximité attend cinq secondes après disponibilité du personnage, un déplacement horizontal d’au moins 0,75 bloc et une distance réelle au PNJ de trois blocs maximum. Le clic volontaire reste disponible immédiatement. L’interpellation ne se relance pas automatiquement après fermeture ; la reprise passe par un clic droit. Le déclencheur PQ01 de proximité du Capitaine devient sans effet : sa conversation commence au clic droit. Un ancien déclencheur PQ01 reconnu est converti et les autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
 
 Un PNJ impliqué dans une scène personnelle ou occupé par un autre joueur ne peut pas être lié/libéré/déplacé tant que cette utilisation dure.
 
@@ -102,7 +102,7 @@ Chaque commande ci-dessous enregistre **la position actuelle de l’admin**, san
 
 Gautier : poste et approche dans la même dimension, sur un sol praticable, à 24 blocs maximum l’un de l’autre et proches des PNJ sources. Laisser une voie réelle entre eux, compatible avec les portes et escaliers du décor. Les acteurs n’ouvrent pas les portes ; un trajet fermé produit un repli dont la raison reste dans le journal serveur. Perrin : deux points accessibles dans la même zone, à 24 blocs maximum. Aucun chemin ni coordonnée du décor n’a été inventé.
 
-Gautier attend son arrivée pour prononcer son interruption. Après « Bien, quartier-maître ! » et sa durée audio éventuelle, il rejoint réellement son poste, puis Géraud revient vers le joueur. Hugues regarde la cargaison et fait un geste d’inspection périodique sans modifier les inventaires. Anselme regarde ses instruments. Perrin marche entre A et B, avec une pause aux extrémités. Leur occupation se suspend pendant leur propre dialogue ; la scène principale garde la priorité.
+Gautier part pendant la réplique de Géraud sur le sauvetage. Son interruption peut commencer pendant qu’il marche encore ; il n’est plus nécessaire d’attendre son arrivée pour poursuivre le dialogue. À son arrêt, il reste sur place pendant la remontrance et sa dernière réponse. Après « Bien, quartier-maître ! » et sa durée audio éventuelle, il rejoint réellement son poste, puis Géraud revient vers le joueur. Hugues regarde la cargaison et fait un geste d’inspection périodique sans modifier les inventaires. Anselme regarde ses instruments. Perrin marche entre A et B, avec une pause aux extrémités. Leur occupation se suspend pendant leur propre dialogue ; la scène principale garde la priorité.
 
 ## 7. Points d’activité au quai
 
@@ -164,7 +164,7 @@ Les données de configuration sont dans `capitale:pq01_setup` : `bindings`, `poi
 /data modify storage capitale:pq01_setup move_timeout_ticks set value 300
 ```
 
-Un acteur absent, un point non configuré, un chemin refusé ou le dépassement du délai inscrit la raison dans le journal serveur et déclenche un repli qui laisse la quête avancer. Aucun diagnostic technique n’est envoyé comme réplique de PNJ. Le repli supprime l’acteur personnel concerné ; aucun PNJ original n’est téléporté pour forcer l’animation. Après correction du chemin, un admin peut réarmer uniquement l’introduction de son personnage :
+Un acteur absent, un point non configuré, un chemin refusé ou le dépassement du délai inscrit la raison dans le journal serveur et déclenche un repli qui laisse la quête avancer. Aucun diagnostic technique n’est envoyé comme réplique de PNJ. Pour Gautier, un échec du trajet conserve le même acteur au dernier point atteint pendant la conversation. Il ne réaffiche pas l’original à son poste. La fermeture annule la scène et nettoie les acteurs comme auparavant ; aucun PNJ original n’est téléporté pour forcer l’animation. Après correction du chemin, un admin peut réarmer uniquement l’introduction de son personnage :
 
 ```mcfunction
 /function capitale:pq01/admin/fermer_dialogue
@@ -185,7 +185,7 @@ Le Capitaine attend un clic droit ; il ne déclenche plus l’interpellation aut
 
 Le matelot Anselme reçoit un tag réservé PQ01. Les liaisons déjà enregistrées sont mises à jour quand le PNJ est chargé près d’un joueur, sans refaire la liaison. La quête de l’archiviste Anselme Kerrec exclut ce tag ; les autres archivistes gardent leur comportement.
 
-Gautier et Perrin utilisent une création directe d’entité puis une copie contrôlée et une navigation réelle. Le seuil d’arrivée est de 1,25 bloc, compatible avec l’arrêt du chemin vanilla observé à environ 0,97 bloc ; un nouvel échec de recalcul n’annule plus une arrivée déjà atteinte. Les originaux ne sont pas déplacés par une scène.
+Gautier et Perrin utilisent une création directe d’entité puis une copie contrôlée et une navigation réelle. Le seuil d’arrivée est de 1,5 bloc avec un écart vertical de 0,75 bloc maximum. Il accepte notamment l’arrêt natif à environ 1,31 bloc observé dans le log. Un autre étage n’est pas considéré comme une arrivée proche. Les originaux ne sont pas déplacés par une scène.
 
 ## 12. Déclenchement et reprise HF5
 
@@ -205,4 +205,12 @@ Une avance automatique reçue pendant une voix est conservée par le serveur pui
 
 La marche conserve un chemin natif actif. Elle ne le remplace plus périodiquement par un nouveau calcul susceptible de faire échouer un trajet en cours. Un refus initial bénéficie de nouvelles tentatives pendant la pose au sol ; un point à hauteur fractionnaire peut être proposé au calcul natif à la hauteur de bloc supérieure, sans changer le point sauvegardé ni téléporter l’acteur. Un blocage réel conserve un arrêt/repli borné et son diagnostic serveur.
 
-Les essais exécutés et leurs limites sont décrits dans `HOTFIX_ENCHAINEMENTS_R3_HF6.md` et `audit/validation.json`. La carte réelle et le rendu graphique complet du modpack ne sont pas disponibles dans ce banc.
+Les essais exécutés et leurs limites sont décrits dans `HOTFIX_SCENE_CAPTURE_R3_HF7.md` et `audit/validation.json`. La carte réelle et le rendu graphique complet du modpack ne sont pas disponibles dans ce banc.
+
+## 14. Scène et notifications HF7
+
+Les notifications Minecraft de connexion, reconnexion avec ancien nom et déconnexion restent dans le chat normal et n’apparaissent plus comme paroles du PNJ. Le filtre porte sur les clés de traduction de ces notifications, y compris lorsqu’elles sont enveloppées dans un autre composant de texte ; une réplique littérale contenant les mêmes mots reste intacte. Il s’applique aux conversations capturées par Dialogue b10, pas uniquement à PQ01. Le JAR Dialogue reste inchangé.
+
+Gautier commence son approche pendant la deuxième réplique de Géraud. L’arrivée ne déclenche pas à elle seule une nouvelle réplique : le dialogue garde son ordre et le temps de lecture/de voix de Géraud. À la fin de cette réplique, Gautier peut parler en marchant. Une fois arrêté, il garde son acteur, sa position et son apparence pendant l’échange. Après « Bien, quartier-maître ! », il repart à pied. Un échec d’approche, de reprise ou de retour le laisse au dernier point atteint ; aucune suppression/recréation ne simule un retour instantané au poste.
+
+La mise à jour se fait sur le **serveur et chaque client**. Les logs fournis le 24 octobre annoncent journal HF6 côté serveur et HF4 côté client ; le nouveau filtre d’affichage se trouve dans le journal HF7 côté client. Cette observation ne suffit pas à expliquer le problème de trajet, qui a sa correction serveur propre.

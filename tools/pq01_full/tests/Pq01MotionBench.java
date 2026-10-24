@@ -20,6 +20,8 @@ public final class Pq01MotionBench {
     m.tick();m.start();m.cancel();check(p.arrivals==1&&p.moves==1&&p.stops==1,"aucun callback après fin");cases++;
     p=new Port();m=motion(p,0.5,300);m.start();check(m.done()&&p.moves==0&&p.arrivals==1,"déjà arrivé");cases++;
     p=new Port();m=motion(p,8.5,300);m.start();p.at(7.5279737);p.path=false;m.tick();check(m.done()&&p.arrivals==1&&p.failures==0,"arrêt natif à 0,972 bloc accepté avant replanification");cases++;
+    p=new Port();m=motion(p,6,300);m.start();p.position=new Point("minecraft:overworld",6.1647188662826,80,1.2960907834999);p.path=false;m.tick();check(m.done()&&p.arrivals==1&&p.failures==0,"coordonnées relatives du log : arrêt à 1,307 bloc accepté");cases++;
+    p=new Port();m=motion(p,6,300);m.start();p.position=new Point("minecraft:overworld",6,79,0);m.tick();check(!m.done()&&p.arrivals==0,"un étage inférieur ne vaut pas arrivée");m.cancel();cases++;
     p=new Port();p.path=false;m=motion(p,6,300);m.start();check(!m.done()&&p.failures==0,"premier refus laisse l’acteur se poser");for(int i=0;i<59;i++)m.tick();check(!m.done(),"trois secondes de grâce avant échec");m.tick();check(m.done()&&p.failures==1&&p.arrivals==0&&p.reason.contains("aucun chemin"),"chemin réellement bloqué après tentatives bornées");cases++;
     p=new Port();p.path=false;m=motion(p,6,300);m.start();for(int i=0;i<19;i++)m.tick();p.path=true;m.tick();check(!m.done()&&p.moves==2,"refus initial transitoire récupéré");p.at(6);m.tick();check(p.arrivals==1,"arrivée après récupération initiale");cases++;
     p=new Port();p.valid=false;m=motion(p,6,300);m.start();check(m.done()&&p.moves==0&&p.failures==1,"acteur absent avant départ");cases++;

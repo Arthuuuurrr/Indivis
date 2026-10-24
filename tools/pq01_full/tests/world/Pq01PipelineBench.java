@@ -5,7 +5,7 @@ import static net.hautecapitale.quetes.sequence.SequenceBridge.*;
 import static net.hautecapitale.quetes.sequence.Pq01Bridge.*;
 /** Vraies fonctions/Brigadier/paquets/capture b10. Caméra, profil Nexus et panneau doublés. */
 public final class Pq01PipelineBench {
-  static boolean active;static Object player;static Class<?> state;static int checks,frames,commands;static String current="";
+  static boolean active,realScene;static Object player;static Class<?> state;static int checks,frames,commands;static String current="";
   static Object fixture;static final Client client=new Client();static final List<String> evidence=new ArrayList<>();
   public static final class Client {public Object field_1755=new net.hautecapitale.dialogue.client.capture.CaptureDialogueScreen();public Network method_1562(){return network;}final Network network=new Network();}
   public static final class Network {public void method_45730(String text){commands++;run(player,text);run(player,"function capitale:pq01/dispatch_self");}}
@@ -15,11 +15,11 @@ public final class Pq01PipelineBench {
   static List<?> choices(){return (List<?>)call(state,"choixCaptures");}
   static void registerOverrides(Object dispatcher){
     Object root=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal","indivispq01");
-    List<String> names=new ArrayList<>(List.of("close","approach","return","banter","reconcile"));for(String r:List.of("geraud","altheon","gautier","hugues","anselme","perrin"))names.add("camera_"+r);for(String k:Pq01Ids.keys())names.add("line_"+k);
+    List<String> names=new ArrayList<>(List.of("close","approach_early","approach","return","banter","reconcile"));for(String r:List.of("geraud","altheon","gautier","hugues","anselme","perrin"))names.add("camera_"+r);for(String k:Pq01Ids.keys())names.add("line_"+k);
     for(String name:names){Object node=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal",name);Class<?> contract=type("com.mojang.brigadier.Command");
       Object fn=Proxy.newProxyInstance(contract.getClassLoader(),new Class<?>[]{contract},(p,m,a)->{
         if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);
-        if(active)return name.equals("approach")||name.equals("return")||name.equals("banter")?0:1;
+        if(active&&(!realScene||name.startsWith("line_")||name.startsWith("camera_")||name.equals("reconcile")))return name.equals("approach")||name.equals("return")||name.equals("banter")?0:1;
         return execute(call(call(a[0],"getSource"),"method_9207"),name);
       });call(node,"executes",fn);call(root,"then",node);
     }call(dispatcher,"register",root);
@@ -96,6 +96,18 @@ public final class Pq01PipelineBench {
     // Voix déclarée sans son : aucune attente fantôme pour le client.
     run(player,"data modify storage capitale:pq01_config voices.a8 set value {sound:\"\",ticks:12000}");node("a8");
     Field f=Pq01Client.class.getDeclaredField("frame");f.setAccessible(true);check(((Pq01Pacing.Frame)f.get(null)).voiceTicks()==0,"empty sound ignores stale voice ticks");
+    int captured=((List<?>)call(state,"repliquesCapturees")).size();
+    Method onGame=type("net.hautecapitale.dialogue.client.capture.MessageCapture").getDeclaredMethod("onMessageDeJeu",type("net.minecraft.class_2561"),boolean.class);onGame.setAccessible(true);
+    for(String key:List.of("multiplayer.player.joined","multiplayer.player.joined.renamed","multiplayer.player.left")){
+      Object notice=stat("net.minecraft.class_2561","method_43469",key,new Object[]{stat("net.minecraft.class_2561","method_43470","[Étranger] Joueur test"),"Ancien nom"});
+      check(stat("net.hautecapitale.dialogue.client.capture.MessageCapture","classer",notice,"Géraud Rivet",true,List.of())==null,"woven native capture rejects "+key);
+      check(Boolean.TRUE.equals(onGame.invoke(null,notice,false)),"notification remains visible in game chat "+key);
+      check(((List<?>)call(state,"repliquesCapturees")).size()==captured,"notification adds no captured NPC reply "+key);
+      Object wrapper=stat("net.minecraft.class_2561","method_43470","");call(wrapper,"method_10852",notice);
+      check(stat("net.hautecapitale.dialogue.client.capture.MessageCapture","classer",wrapper,"Géraud Rivet",true,List.of())==null,"wrapped notification rejected "+key);
+    }
+    Object speech=stat("net.minecraft.class_2561","method_43470","[Géraud Rivet] Il a dit : joined the game.");
+    check(stat("net.hautecapitale.dialogue.client.capture.MessageCapture","classer",speech,"Géraud Rivet",true,List.of())!=null,"literal NPC speech never filtered by wording");
     active=false;String result="PASS "+checks+" pipeline checks, "+frames+" actual server frames, "+commands+" native trigger commands. Real Fabric functions, macros, scoreboard, tellraw packets and Dialogue b10 capture. Camera/panel/Nexus doubled; legacy teleport/reward bodies replaced by markers.\n";
     System.out.println(result);return result;
   }

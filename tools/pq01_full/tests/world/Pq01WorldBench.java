@@ -6,9 +6,9 @@ import java.nio.file.*;
 import static net.hautecapitale.quetes.sequence.SequenceBridge.*;
 import static net.hautecapitale.quetes.sequence.Pq01Bridge.*;
 
-/** Monde Fabric réel ; identité Nexus et émission de visibilité doublées seulement. */
+/** Monde et navigation réels ; contexte Nexus, visibilité, caméra et panneau doublés. */
 public final class Pq01WorldBench implements ModInitializer {
-  static Object server,world,player,view,source,perrinSource,actor,perrin;
+  static Object server,world,player,view,source,perrinSource,geraudSource,actor,perrin;static String pipeline;
   static Object gaRecord,perrinRecord;static int ticks,stage,checks;static boolean failed;
   static final List<String> evidence=new ArrayList<>();
   static boolean stairsSeen,slabSeen;
@@ -28,9 +28,12 @@ public final class Pq01WorldBench implements ModInitializer {
   static Object invoke(String name,Class<?>[] params,Object...args)throws Exception{Method m=Pq01Bridge.class.getDeclaredMethod(name,params);m.setAccessible(true);return m.invoke(null,args);}
   static void command(String text){call(call(server,"method_3734"),"method_44252",call(server,"method_3739"),text);}
   static Object npc(double x,double z){
+    return npc(x,64,z);
+  }
+  static Object npc(double x,double y,double z){
     Object type=stat("de.markusbordihn.easynpc.entity.ModEntityType","getEntityType",en("de.markusbordihn.easynpc.entity.ModNPCEntityType","HUMANOID"));
     Object e=call(type,"method_5883",world,en("net.minecraft.class_3730","field_16462"));
-    call(e,"method_5814",x,64d,z);call(e,"method_5977",true);check(Boolean.TRUE.equals(call(world,"method_8649",e)),"source NPC inserted");return e;
+    call(e,"method_5814",x,y,z);call(e,"method_5977",true);check(Boolean.TRUE.equals(call(world,"method_8649",e)),"source NPC inserted");return e;
   }
   static Object bindingFor(Object npc){Object n=GuardNbt.compound();GuardNbt.string(n,"uuid",uuid(npc).toString());GuardNbt.string(n,"dimension",dimension(world));GuardNbt.put(n,"post",pointNbt(pos(npc,world)));return n;}
   static Object spawn(String role)throws Exception{return invoke("spawn",new Class<?>[]{view.getClass(),String.class,Pq01Motion.Point.class},view,role,null);}
@@ -40,6 +43,7 @@ public final class Pq01WorldBench implements ModInitializer {
     Object options=stat("net.minecraft.class_8791","method_53821");
     player=make("net.minecraft.class_3222",server,world,profile,options);call(player,"method_5814",0.5d,64d,1.5d);
     command("forceload add -16 -16 32 16");command("fill -12 63 -12 20 63 12 minecraft:stone");
+    command("fill -12 64 -12 20 70 12 minecraft:air");
     // Couloir sans contournement : montée, palier, descente puis dalles basses.
     command("fill -1 64 -1 11 66 -1 minecraft:stone");command("fill -1 64 1 11 66 1 minecraft:stone");
     command("fill -1 64 -1 -1 66 1 minecraft:stone");command("fill 11 64 -1 11 66 1 minecraft:stone");
@@ -47,7 +51,7 @@ public final class Pq01WorldBench implements ModInitializer {
     command("fill 4 64 0 6 64 0 minecraft:oak_planks");
     command("setblock 7 64 0 minecraft:oak_stairs[facing=west,half=bottom]");
     command("fill 8 64 0 10 64 0 minecraft:oak_slab[type=bottom]");
-    source=npc(0.5,0.5);perrinSource=npc(0.5,4.5);
+    source=npc(0.5,0.5);perrinSource=npc(0.5,4.5);geraudSource=npc(9.5,64.5,0.5);
     Object skin=stat("de.markusbordihn.easynpc.data.skin.SkinDataEntry","createResourceLocationSkin",stat("net.minecraft.class_2960","method_60654","minecraft:textures/entity/player/wide/steve.png"));
     call(call(source,"getEasyNPCSkinData"),"setSkinDataEntry",skin);
     call(call(source,"getEasyNPCModelData"),"setModelPoseName","hf4_copy_probe");
@@ -58,7 +62,7 @@ public final class Pq01WorldBench implements ModInitializer {
   static void initActors()throws Exception{
     check(call(world,"method_66347",uuid(source))==source&&call(world,"method_66347",uuid(perrinSource))==perrinSource,"source UUIDs ready after world ticks");
     Object data=GuardNbt.compound(),bindings=GuardNbt.childOrCreate(data,"bindings");
-    GuardNbt.put(bindings,"gautier_large",bindingFor(source));GuardNbt.put(bindings,"perrin_large",bindingFor(perrinSource));GuardNbt.save(server,"capitale:pq01_setup",data);
+    GuardNbt.put(bindings,"gautier_large",bindingFor(source));GuardNbt.put(bindings,"perrin_large",bindingFor(perrinSource));GuardNbt.put(bindings,"geraud_large",bindingFor(geraudSource));GuardNbt.save(server,"capitale:pq01_setup",data);
     view=invoke("view",new Class<?>[]{Object.class},player);
     gaRecord=spawn("gautier");actor=reflect(gaRecord,"entity");perrinRecord=spawn("perrin");perrin=reflect(perrinRecord,"entity");
     check(!uuid(actor).equals(uuid(source))&&!uuid(perrin).equals(uuid(perrinSource)),"fresh UUIDs for both actors");
@@ -80,6 +84,7 @@ public final class Pq01WorldBench implements ModInitializer {
   }
   static void tick()throws Exception{
     if(server==null||failed)return;
+    if(stage==6){String scene=Pq01SceneWorldBench.tick();if(scene!=null){Files.writeString(Path.of("world-test-result.txt"),"PASS "+checks+" checks\n"+String.join("\n",evidence)+"\nReal Fabric 1.21.11 world and EasyNPC 7.16.0 navigation (stairs, corridor, slabs, outbound/return). Nexus selection and visibility networking doubled; no real client camera tested.\n"+pipeline+scene);failed=true;command("stop");}return;}
     if(stage==-1){if(++ticks>=20)initActors();return;}
     if(stage==0){if(++ticks>=20){
       Object actions=call(call(actor,"getEasyNPCActionEventData"),"getActionEventSet");Object row=child(child(call(actions,"createTag"),"ActionEventSet"),"ON_INTERACTION");
@@ -103,9 +108,7 @@ public final class Pq01WorldBench implements ModInitializer {
         check(pos(perrinSource,world).distance2(new Pq01Motion.Point(dimension(world),0.5,64,4.5))<0.001,"Perrin original never moved");
         invoke("close",new Class<?>[]{Object.class,boolean.class},player,false);
         check(Boolean.TRUE.equals(call(actor,"method_31481"))&&Boolean.TRUE.equals(call(perrin,"method_31481")),"actors discarded during production cleanup");
-        String pipeline=Pq01PipelineBench.runAll(player);
-        Files.writeString(Path.of("world-test-result.txt"),"PASS "+checks+" checks\n"+String.join("\n",evidence)+"\nReal Fabric 1.21.11 world and EasyNPC 7.16.0 navigation (stairs, corridor, slabs, outbound/return). Nexus selection and visibility networking doubled; no real client camera tested.\n"+pipeline);
-        failed=true;command("stop");
+        pipeline=Pq01PipelineBench.runAll(player);Pq01SceneWorldBench.start(player);stage=6;
       }
     }else if(++ticks>400)throw new AssertionError("world test timeout leg "+stage);
   }

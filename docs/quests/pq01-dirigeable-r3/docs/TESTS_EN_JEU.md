@@ -1,4 +1,4 @@
-# Rejouer PQ01 et effectuer la recette — HF6
+# Rejouer PQ01 et effectuer la recette — HF7
 
 ## Relecture personnelle sans récompenses
 
@@ -20,7 +20,7 @@ Cette commande restaure uniquement la sauvegarde du personnage actif et sa posit
 
 ## Parcours fonctionnel
 
-1. Nouveau personnage/relecture : approcher Géraud à trois blocs après le délai de chargement et un déplacement ; le clic volontaire peut aussi ouvrir immédiatement l’introduction ; Gautier quitte son poste, rejoint Géraud, s’arrête et lui fait face. Fermer puis rouvrir après chacune de ses deux répliques : les répliques déjà affichées ne doivent pas être répétées. Une reprise pendant la remontrance rejoint d’abord la position d’échange si nécessaire.
+1. Nouveau personnage/relecture : approcher Géraud à trois blocs après le délai de chargement et un déplacement ; le clic volontaire peut aussi ouvrir immédiatement l’introduction ; Gautier part pendant la réplique de Géraud, commence son interruption même s’il marche encore, puis s’arrête près du point prévu et reste pendant l’échange. Fermer puis rouvrir après chacune de ses deux répliques : les répliques déjà affichées ne doivent pas être répétées. Une reprise pendant la remontrance rejoint d’abord la position d’échange si nécessaire.
 2. Après sa réponse, Gautier marche à son poste ; Géraud revient vers le joueur. Vérifier le menu répétable de Géraud et l’objectif vers Althéon.
 3. Gautier, Hugues, Anselme, Perrin : chaque question et sous-question est cliquable ; questions disponibles directement sous la réponse et fermeture possible, sans fermer/reprendre entre les questions. Observer leurs occupations et leur suspension pendant leur dialogue. Aucun item n’est transféré par les gestes d’Hugues.
 4. Althéon au clic droit, sans interpellation automatique : introduction une fois, amnésie canonique explicitement posée avant la conclusion. Toutes les familles A–E et sous-questions restent répétables. Avaleiv se déverrouille après la mission décrite par Althéon, indépendamment des discussions avec les matelots.
@@ -77,7 +77,7 @@ La mise à jour conserve la progression actuelle. Pour revoir le début sur un p
 
 Les quatre trajets et la copie d’apparence ont été testés en monde isolé réel. Cette liste couvre ce qui reste à observer avec le rendu, le son et la carte utilisateur. Si un chemin est inaccessible, le diagnostic se trouve dans le log serveur ; il ne doit pas apparaître dans la bouche d’un PNJ.
 
-## Régression Géraud HF6
+## Régression Géraud HF7
 
 1. Au spawn, rester immobile plus de cinq secondes : aucune conversation automatique.
 2. Avancer en restant à plus de trois blocs réels de Géraud : aucune conversation automatique.
@@ -86,7 +86,7 @@ Les quatre trajets et la copie d’apparence ont été testés en monde isolé r
 5. Reprendre un personnage déjà bloqué sous HF4 : le clic suivant récupère la session temporaire et conserve son checkpoint. Aucun reset manuel des scores.
 6. Lancer volontairement une nouvelle relecture avec `test_debut` : la proximité est réarmée avec le même délai et la même condition de déplacement. Terminer avec `test_fin` comme décrit plus haut.
 
-## Contrôles ciblés HF6
+## Contrôles ciblés HF7
 
 - Géraud : terminer l’introduction, demander le sauvetage, le rocher, sa fonction puis le Capitaine dans la même conversation. Après chaque réponse, les autres questions doivent être visibles immédiatement. Fermer puis rouvrir doit ramener aux questions.
 - Gautier, Hugues, Anselme, Perrin : poser plusieurs questions successives. Pour les réponses de départ, laisser le PNJ terminer sa réplique avant la fermeture automatique.
@@ -94,4 +94,13 @@ Les quatre trajets et la copie d’apparence ont été testés en monde isolé r
 - Géraud au quai : poser les cinq questions avant de prendre la conclusion finale.
 - Conserver une conversation pendant plusieurs questions longues : le timeout repart à chaque nouveau passage. Une voix en cours doit retarder un choix, puis permettre son traitement sans devoir rouvrir.
 
-Les vérifications déjà exécutées figurent dans le rapport HF6. Cette recette supplémentaire concerne uniquement le rendu, la caméra, le son et les chemins de la carte réelle, absents du banc automatisé.
+Les vérifications déjà exécutées figurent dans le rapport HF7. Cette recette supplémentaire concerne uniquement le rendu, la caméra, le son et les chemins de la carte réelle, absents du banc automatisé.
+
+## Contrôles ciblés scène/capture HF7
+
+1. Pendant la réplique de Géraud « À bord d’un dirigeable… », observer le départ de Gautier. Son approche et la lecture doivent se dérouler en parallèle. Son interruption reste après la fin de la réplique de Géraud.
+2. Pendant les deux réponses de Géraud à Gautier, vérifier que le même Gautier reste au point atteint. Il repart uniquement après « Bien, quartier-maître ! ».
+3. Obstruer un trajet sur une copie de test : l’acteur doit s’arrêter sur place et le dialogue doit rester utilisable ; aucune disparition/réapparition au poste pendant la conversation.
+4. Faire rejoindre puis quitter un autre joueur pendant un dialogue : le message doit rester dans le chat et ne pas être ajouté aux répliques.
+
+Ces cas sont aussi contrôlés par un nouveau banc qui associe le contrôleur de scène de production, les fonctions Minecraft et la marche EasyNPC. La caméra et le panneau restent doublés dans le banc ; le comportement graphique complet reste à observer sur la carte réelle.
