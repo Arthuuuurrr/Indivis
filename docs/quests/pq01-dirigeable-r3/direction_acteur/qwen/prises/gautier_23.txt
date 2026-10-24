@@ -1,0 +1,8 @@
+PERSONNAGE : Gautier
+LANGUE : French
+
+INSTRUCTIONS (champ instruct) :
+Français naturel et intelligible. Jeu de dialogue réaliste, adressé à un interlocuteur proche. Variation d'intention à l'intérieur des phrases, diction nette, pauses expressives courtes. Lire exactement le texte fourni, sans annoncer le nom du personnage, l'identifiant ou les consignes. Conserver les noms propres et la ponctuation du texte. Pas de musique, bruitage, applaudissement, rire ou respiration théâtrale ajoutés. Identité de Gautier : Voix masculine adulte plutôt jeune, médium clair, diction appliquée et énergique. Compétent, ambitieux, convaincu que le règlement l'aidera à bien faire. Lorsqu'il interpelle Géraud en approche, entrer avec assurance et empressement, puis laisser la phrase en suspens comme prévu. La réprimande provoque une réponse plus rapide et brièvement embarrassée. Dans sa conversation facultative, retrouver de la tenue, défendre son service et son ambition. La timidité est ponctuelle. Intention de cette prise : Minimiser d'abord la colère de Géraud, puis admettre le mauvais moment. Hésitation brève, pas de panique.
+
+TEXTE SEUL (champ text) :
+Furieux ? Non, je ne crois pas. Enfin... il a connu de meilleurs moments pour me voir. Je pensais simplement respecter les consignes.

@@ -30,7 +30,7 @@ public final class Pq01PipelineBench {
     String insertion=(String)call(call(text,"method_10866"),"method_10955");
     if(insertion!=null&&insertion.startsWith("indivis:pq01:v1:")){current=insertion.split(":")[3];frames++;}
     if(!Pq01Client.message(text,false))return;
-    Object classified=stat("net.hautecapitale.dialogue.client.capture.MessageCapture","classer",text,call(state,"pnjNom"),true,List.of());call(state,"onMessageCapture",classified);
+    Object classified=stat("net.hautecapitale.dialogue.client.capture.MessageCapture","classer",text,call(state,"pnjNom"),true,List.of());call(state,"onMessageCapture",classified);((net.hautecapitale.dialogue.client.capture.CaptureDialogueScreen)client.field_1755).versionVue=((Number)call(state,"captureVersion")).intValue();
   }
   static void seed(String role){
     for(Object n:(Iterable<?>)call(call(fixture,"get","scores"),"getAsJsonArray"))setScore((String)call(n,"getAsString"),0);

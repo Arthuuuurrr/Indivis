@@ -84,7 +84,8 @@ public final class Pq01WorldBench implements ModInitializer {
   }
   static void tick()throws Exception{
     if(server==null||failed)return;
-    if(stage==6){String scene=Pq01SceneWorldBench.tick();if(scene!=null){Files.writeString(Path.of("world-test-result.txt"),"PASS "+checks+" checks\n"+String.join("\n",evidence)+"\nReal Fabric 1.21.11 world and EasyNPC 7.16.0 navigation (stairs, corridor, slabs, outbound/return). Nexus selection and visibility networking doubled; no real client camera tested.\n"+pipeline+scene);failed=true;command("stop");}return;}
+    if(stage==6){String scene=Pq01SceneWorldBench.tick();if(scene!=null){pipeline+=scene;Pq01AmbientWorldBench.start(player);stage=7;}return;}
+    if(stage==7){String ambient=Pq01AmbientWorldBench.tick();if(ambient!=null){Files.writeString(Path.of("world-test-result.txt"),"PASS "+checks+" checks\n"+String.join("\n",evidence)+"\nReal Fabric 1.21.11 world and EasyNPC 7.16.0 navigation (stairs, corridor, slabs, outbound/return). Nexus selection and visibility networking doubled; no real client camera tested.\n"+pipeline+ambient);failed=true;command("stop");}return;}
     if(stage==-1){if(++ticks>=20)initActors();return;}
     if(stage==0){if(++ticks>=20){
       Object actions=call(call(actor,"getEasyNPCActionEventData"),"getActionEventSet");Object row=child(child(call(actions,"createTag"),"ActionEventSet"),"ON_INTERACTION");

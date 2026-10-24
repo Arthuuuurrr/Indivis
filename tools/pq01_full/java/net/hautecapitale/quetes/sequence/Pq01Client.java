@@ -54,10 +54,13 @@ public final class Pq01Client implements ClientModInitializer {
     call(panel,"nom",NAMES.get(frame.role()));call(panel,"attente",false);
     // Une marche ou une longue voix n'est pas un silence qui ferme la session.
     state("fenetreJusquaMs",System.currentTimeMillis()+2000L);
+    // Attendre le vrai rafraîchissement de la nouvelle capture, jamais l'état de l'ancienne page.
+    if(!Objects.equals(field(screen,"versionVue"),stat(STATE,"captureVersion")))return;
+    boolean typewriter=Boolean.TRUE.equals(field(panel,"typewriter"));
     boolean last=Boolean.TRUE.equals(call(panel,"dernierePage")),typing=Boolean.TRUE.equals(call(panel,"typewriterActif"));
     boolean speaking=voicePlaying();age++;if(last&&!typing)finalPageTicks++;else finalPageTicks=0;
-    if(!last&&!typing&&!speaking){if(++pageTicks>=40){call(panel,"avancer");pageTicks=0;}}else pageTicks=0;
-    if(attempts<60&&age>=retryAt&&Pq01Pacing.ready(frame,age,finalPageTicks,last,typing,speaking)){
+    if(!last&&!typing&&!speaking){if(++pageTicks>=(typewriter?1:40)){call(panel,"avancer");pageTicks=0;}}else pageTicks=0;
+    if(attempts<60&&age>=retryAt&&Pq01Pacing.ready(frame,age,finalPageTicks,last,typing,speaking,typewriter)){
       Object network=call(client,"method_1562");if(network==null)return;
       attempts++;retryAt=age+20;call(network,"method_45730","trigger QuestChoix set "+frame.token());
     }

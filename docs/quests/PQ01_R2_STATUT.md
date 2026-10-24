@@ -1,11 +1,15 @@
 # Statut PQ01
 
-Version actuelle : **core et journal R3-HF7**, datapack hc_quetes **R3-HF4** conservé, administration alpha.3.
+Version actuelle : **journal R3-HF8**, core **R3-HF7** et datapack hc_quetes **R3-HF4** conservés, administration alpha.3.
 
-HF7 fait partir Gautier pendant Géraud et autorise son interruption pendant sa marche. Il conserve le même acteur sur place en cas d’échec de trajet ; le retour instantané apparent venait de sa suppression et de la réapparition de l’original. Les notifications de connexion/déconnexion restent dans le chat et sont exclues des paroles capturées. Les corrections HF6 des questions et enchaînements restent intégrées.
+HF8 retire l’attente ajoutée entre les répliques automatiques lorsque la frappe du texte est terminée, tout en attendant la voix et le rafraîchissement de la capture. Sans frappe progressive, le budget de lecture est conservé. Les questions restent manuelles.
 
-Remplacer core sur le serveur et journal sur le serveur et chaque client. Conserver hc_quetes HF4 et Dialogue b10. PNJ, liaisons et points restent valables ; aucune nouvelle pose ni reset.
+Perrin commence son activité dès l’étape 0. Son chemin vise le bloc exact, avec une tolérance adaptée aux points proches. Le banc valide aussi l’arrêt pendant sa conversation, la reprise, le retour, les points du quai, la désactivation et le nettoyage. Les coordonnées configurées du navire utilisateur ne figurent pas dans les logs fournis.
 
-[Causes et preuves HF7](pq01-dirigeable-r3/HOTFIX_SCENE_CAPTURE_R3_HF7.md) · [installation et pose](pq01-dirigeable-r3/docs/INSTALLATION_ET_POSE_PNJ.md) · [livraison](pq01-dirigeable-r3/README.md).
+Remplacer uniquement le journal sur le serveur et chaque client ; conserver les deux datapacks. Aucun PNJ, point ou liaison à replacer, aucune progression à réinitialiser. Les corrections de Gautier et le filtre des notifications HF7 restent intégrés.
 
-Contrôles réussis : 20 de scène couplant le contrôleur réel, les fonctions et la marche EasyNPC ; 1 042 du graphe, dont 13 sur le filtre avec le nouveau mixin appliqué ; 24 en monde réel ; 191 de capture b10 intacte. Caméra/panneau et Nexus restent doublés ; aucun rendu graphique complet ni parcours SI1 sur la carte réelle. PR #177 en brouillon ; aucun déploiement.
+Le dossier de direction d’acteur fournit six fiches de rôle en français et 92 prises avec texte canonique, intention et prompt Qwen. Aucun audio généré ou remplacé.
+
+[Causes et preuves HF8](pq01-dirigeable-r3/HOTFIX_CADENCE_PERRIN_R3_HF8.md) · [installation et pose](pq01-dirigeable-r3/docs/INSTALLATION_ET_POSE_PNJ.md) · [direction et prompts](pq01-dirigeable-r3/direction_acteur/) · [livraison](pq01-dirigeable-r3/README.md).
+
+Contrôles réussis : 15 d’ambiance par le tick et la navigation réels ; 20 de scène Gautier ; 1 042 du graphe/capture ; 24 en monde Fabric ; 191 de capture b10 intacte ; 41 de cadence client. Les deux datapacks sont identiques aux versions conservées. Les 54 adresses de fonctions documentées sont résolues. Caméra/panneau et Nexus doublés ; aucun rendu graphique complet ni parcours SI1 sur la carte réelle. PR #177 en brouillon ; aucun déploiement.

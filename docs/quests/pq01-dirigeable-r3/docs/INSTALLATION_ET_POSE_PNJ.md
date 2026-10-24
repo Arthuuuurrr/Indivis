@@ -1,8 +1,8 @@
-# Installation, configuration et déplacements des PNJ — PQ01-R3-HF7
+# Installation, configuration et déplacements des PNJ — PQ01-R3-HF8
 
-**Mise à jour du 23 octobre : remplacer le core et le journal par HF7.** Le journal doit être remplacé sur le serveur **et les clients**. Conserver le datapack `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip`. La pose actuelle, les liaisons, points, apparences et progressions sont réutilisés : aucune commande de liaison, placement ou reset à refaire pour installer ce correctif.
+**Mise à jour du 24 octobre 2026 : remplacer uniquement le mod de quêtes/journal sur le serveur et chaque client par HF8.** Conserver le core HF7 et `hc_quetes` HF4. Les liaisons, points, apparences et progressions existants sont réutilisés. Aucune commande de liaison, pose ou reset n’est requise pour cette mise à jour.
 
-L’archive contient uniquement les deux composants modifiés. Les sections de pose ci-dessous servent à une configuration initiale ou à un déplacement volontaire du décor. [Corrections et preuves HF7](../HOTFIX_SCENE_CAPTURE_R3_HF7.md).
+L’archive de correctif contient uniquement le JAR modifié, les guides et les preuves. Les commandes de pose ci-dessous restent le guide complet pour une configuration initiale ou un déplacement volontaire. [Causes et vérifications HF8](../HOTFIX_CADENCE_PERRIN_R3_HF8.md).
 
 ## 1. Les trois opérations à distinguer
 
@@ -15,24 +15,20 @@ L’archive contient uniquement les deux composants modifiés. Les sections de p
 
 **Pendant la quête, Gautier marche réellement vers le point d’approche puis vers son poste.** La commande `placer_…` sert à l’édition du décor ; elle n’est jamais appelée par le trajet de scène. L’acteur temporaire est créé à son poste réel et sa navigation doit rejoindre la destination : aucun TP de scène à travers un mur.
 
-## 2. Remplacer les fichiers
+## 2. Mettre à jour depuis HF7
 
-| Emplacement | Fichier à installer |
-| --- | --- |
-| Datapacks du monde serveur | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF5.zip` |
-| Datapacks du monde serveur | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip` |
-| `mods` serveur et clients | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF7.jar` |
-
-Le ZIP du core est un datapack complet, avec `pack.mcmeta` à sa racine. Le ZIP extérieur de livraison n’est pas un datapack. Le datapack hc_quetes indiqué dans le tableau est celui déjà installé, conservé sans modification.
+| Composant | Action | Fichier |
+| --- | --- | --- |
+| Mod de quêtes/journal, serveur **et chaque client** | Remplacer l’ancien JAR par celui inclus | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF8.jar` |
+| Core, datapacks du monde serveur | Conserver la version HF7 déjà installée | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF7.zip` |
+| Quêtes, datapacks du monde serveur | Conserver la version HF4 déjà installée | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip` |
 
 1. Fermer les dialogues et attendre la fin d’un amarrage éventuel. Sauvegarder ensemble monde et profils Nexus, puis arrêter le serveur.
-2. Remplacer l’ancien ZIP du core par le core HF7 dans les datapacks du monde, et l’ancien JAR du journal par le journal HF7 dans `mods`. Conserver hc_quetes HF4.
-3. Remplacer aussi le journal sur chaque client. Garder Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, Fabric et les autres composants existants.
-4. Redémarrer puis reprendre au clic droit sur le PNJ. Les checkpoints et les sauvegardes de relecture sont conservés. Aucun reset ni commande de pose n’est nécessaire.
+2. Remplacer uniquement le JAR du journal dans `mods` par HF8. Conserver les deux datapacks indiqués ci-dessus.
+3. Remplacer aussi ce JAR sur chaque client. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC et son interface `7.16.0`, ainsi que les autres composants.
+4. Redémarrer puis reprendre au clic droit sur le PNJ. Aucun reset ni commande de pose n’est nécessaire.
 
-Les commandes d’édition des sections suivantes s’exécutent en jeu, avec un personnage Nexus sélectionné et chargé, uniquement si l’on souhaite modifier la configuration.
-
-Le code de scène fonctionne côté serveur ; le JAR journal contient aussi ses composants clients et mixins. Ce correctif s’ajoute au journal fourni, sans créer un second mod portant le même identifiant.
+Les commandes des sections suivantes servent uniquement à modifier volontairement la configuration. Elles s’exécutent en jeu avec le personnage Nexus voulu sélectionné et chargé.
 
 ## 3. Préparer l’édition
 
@@ -214,3 +210,11 @@ Les notifications Minecraft de connexion, reconnexion avec ancien nom et déconn
 Gautier commence son approche pendant la deuxième réplique de Géraud. L’arrivée ne déclenche pas à elle seule une nouvelle réplique : le dialogue garde son ordre et le temps de lecture/de voix de Géraud. À la fin de cette réplique, Gautier peut parler en marchant. Une fois arrêté, il garde son acteur, sa position et son apparence pendant l’échange. Après « Bien, quartier-maître ! », il repart à pied. Un échec d’approche, de reprise ou de retour le laisse au dernier point atteint ; aucune suppression/recréation ne simule un retour instantané au poste.
 
 La mise à jour se fait sur le **serveur et chaque client**. Les logs fournis le 24 octobre annoncent journal HF6 côté serveur et HF4 côté client ; le nouveau filtre d’affichage se trouve dans le journal HF7 côté client. Cette observation ne suffit pas à expliquer le problème de trajet, qui a sa correction serveur propre.
+
+## Correctif HF8 : cadence et service de Perrin
+
+Les répliques automatiques enchaînent après la fin de la frappe du texte et de la voix, sans ajouter le second délai de lecture ni la seconde de repos final. La nouvelle capture doit avoir été rafraîchie avant qu’elle puisse être validée : une ancienne page ne peut pas faire sauter la suivante. Si la frappe progressive est désactivée, le budget de lecture est conservé pour laisser lire le texte affiché d’un coup. Les menus de questions restent manuels.
+
+L’ambiance peut démarrer à l’étape PQ01 0, avant la première discussion complète. Perrin vise le bloc exact de sa destination, avec une tolérance adaptée aux trajets courts. Le dialogue avec lui suspend sa marche ; son service reprend ensuite. Au quai, il utilise uniquement `perrin_a_quai` et `perrin_b_quai`. Les points déjà enregistrés sont conservés. Prévoir deux points réellement distincts sur un passage praticable ; aucun nouveau point n’est inventé par le correctif.
+
+Le réglage explicite `ambient_enabled=0` est respecté. La commande existante `/function capitale:pq01/admin/status` indique désormais aussi son état, la phase et les coordonnées de la ronde dans la dimension courante. Un point absent produit un diagnostic serveur, sans réplique technique dans une fenêtre de PNJ. Les nouveaux logs fournis ne contiennent pas les coordonnées enregistrées : ce correctif valide le contrôleur et ses cas limites, pas la géométrie du navire utilisateur.

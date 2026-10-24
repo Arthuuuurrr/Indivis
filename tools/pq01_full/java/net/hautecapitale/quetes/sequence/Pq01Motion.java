@@ -10,9 +10,10 @@ public final class Pq01Motion {
   public interface Port {
     boolean valid(); Point position(); boolean navigate(Point p); default boolean navigating(){return false;} void stop(); void arrived(); void failed(String reason);
   }
-  private final Port port; private final Point target; private final int timeout;
+  private final Port port; private final Point target; private final int timeout;private final double radius;
   private int ticks,stalled; private boolean done;private Point last;
-  public Pq01Motion(Port port,Point target,int timeout){this.port=port;this.target=target;this.timeout=Math.max(20,Math.min(1200,timeout));}
+  public Pq01Motion(Port port,Point target,int timeout){this(port,target,timeout,ARRIVAL_RADIUS);}
+  public Pq01Motion(Port port,Point target,int timeout,double radius){this.port=port;this.target=target;this.timeout=Math.max(20,Math.min(1200,timeout));this.radius=Math.max(0.2,Math.min(ARRIVAL_RADIUS,radius));}
   public void start(){
     if(done)return;
     if(!port.valid()){fail("acteur ou personnage indisponible");return;}
@@ -31,7 +32,7 @@ public final class Pq01Motion {
     if(++ticks>=timeout){fail("délai de déplacement dépassé");return;}
     if(ticks%20==0&&!port.navigating()&&!port.navigate(target)&&stalled>=60)fail("aucun chemin utilisable après plusieurs tentatives ; position="+at+", destination="+target);
   }
-  private boolean arrived(Point at){return Math.abs(at.y-target.y)<=0.75&&at.distance2(target)<=ARRIVAL_RADIUS*ARRIVAL_RADIUS;}
+  private boolean arrived(Point at){return Math.abs(at.y-target.y)<=0.75&&at.distance2(target)<=radius*radius;}
   private void finish(){done=true;port.stop();port.arrived();}
   private void fail(String reason){done=true;port.stop();port.failed(reason);}
   public void cancel(){if(!done){done=true;port.stop();}}

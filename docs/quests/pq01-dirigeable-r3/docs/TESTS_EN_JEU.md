@@ -1,4 +1,4 @@
-# Rejouer PQ01 et effectuer la recette — HF7
+# Rejouer PQ01 et effectuer la recette — HF8
 
 ## Relecture personnelle sans récompenses
 
@@ -50,13 +50,13 @@ Chaque nouveau passage renouvelle le timeout de dialogue de 3 600 ticks par déf
 
 ## Futurs doublages
 
-Les nœuds sont listés dans `DIALOGUES_ORDRE_JEU.md`, les intentions dans `DIRECTION_ACTEUR.md`, les durées de lecture suggérées dans `config/VOIX_ET_TEMPS.csv`. Aucun son nouveau n’est généré ou livré. Une fois la ressource audio réelle disponible, régler son nœud, par exemple :
+Les 92 prises et leurs textes exacts sont dans le dossier `direction_acteur` : `DIRECTION_ACTEUR_FR.md`, `PROMPTS_QWEN_FR.md` et `qwen/prises_pq01.jsonl`. Aucun son nouveau n’est généré ou livré. Une fois la ressource audio réelle disponible, régler son nœud, par exemple :
 
 ```mcfunction
 /data modify storage capitale:pq01_config voices.c1 set value {sound:"indivis:voix/altheon/pq01_c1",ticks:180}
 ```
 
-Remplacer cet identifiant d’exemple par le son réel. La durée `ticks` bloque le choix suivant jusqu’à la fin audio ; fermer reste possible. Sans son configuré, les pages linéaires avancent après leur temps de lecture ; les questions et réponses restent manuelles. Les sons d’amarrage historiques sont conservés. Indivis Voices 0.2.3 est facultatif ; sa lecture active bloque aussi l’avance automatique.
+Remplacer cet identifiant d’exemple par le son réel. La durée `ticks` bloque le choix suivant jusqu’à la fin audio ; fermer reste possible. Sans son configuré, les pages linéaires avancent dès la fin de leur frappe progressive ; si celle-ci est désactivée, le temps de lecture est conservé ; les questions et réponses restent manuelles. Les sons d’amarrage historiques sont conservés. Indivis Voices 0.2.3 est facultatif ; sa lecture active bloque aussi l’avance automatique.
 
 ## Retour arrière
 
@@ -104,3 +104,13 @@ Les vérifications déjà exécutées figurent dans le rapport HF7. Cette recett
 4. Faire rejoindre puis quitter un autre joueur pendant un dialogue : le message doit rester dans le chat et ne pas être ajouté aux répliques.
 
 Ces cas sont aussi contrôlés par un nouveau banc qui associe le contrôleur de scène de production, les fonctions Minecraft et la marche EasyNPC. La caméra et le panneau restent doublés dans le banc ; le comportement graphique complet reste à observer sur la carte réelle.
+
+## Recette ciblée HF8
+
+- Géraud A7 → A8 → questions : après la réponse du joueur sur le capitaine, lire la réplique de Géraud. Dès sa fin, la suite s’affiche sans seconde attente avec seulement « Fermer ». Les questions restent consultables successivement.
+- Althéon C1 → C2, puis C5 → C6 : pas de seconde attente après la fin de frappe. Les réponses réelles du joueur restent cliquables ; les questions facultatives ne se valident pas automatiquement.
+- Son actif : attendre la fin de la prise, y compris son chargement ; son absent : aucune durée fantôme. Frappe désactivée : laisser le budget de lecture. Fermer pendant la réplique : aucun choix tardif.
+- Perrin avant le premier échange : le service démarre déjà à l’étape 0 si l’ambiance est activée et ses points sont configurés. Observer A → B puis B → A, y compris avec des points proches.
+- Parler à Perrin pendant sa marche : arrêt pour sa conversation, reprise ensuite. Vérifier les points distincts du quai, le respect de l’ambiance désactivée et le nettoyage lors d’un changement de personnage.
+
+Ces cas sont vérifiés par le banc avec le vrai tick de production et la navigation EasyNPC. La vue, la géométrie utilisateur et l’écoute audio restent à observer dans le modpack.

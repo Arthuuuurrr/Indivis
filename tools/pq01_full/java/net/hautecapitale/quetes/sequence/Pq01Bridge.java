@@ -34,9 +34,9 @@ public final class Pq01Bridge {
       try{return k.newInstance(a);}catch(ReflectiveOperationException e){throw new IllegalStateException(c,e);}
     }throw new IllegalStateException("Constructeur absent : "+c);
   }
-  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF7] "+e);e.printStackTrace(System.err);}}
+  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF8] "+e);e.printStackTrace(System.err);}}
   static void say(Object p,String s){run(p,"tellraw @s "+quote("[PQ01] "+s));}
-  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF7] "+text);}
+  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF8] "+text);}
   static void unavailable(Object p,String reason){diagnostic(p,reason);run(p,"title @s actionbar "+quote("Cette conversation n’est pas disponible pour le moment."));}
   static Object world(Object p){return call(p,"method_51469");}
   static String dimension(Object world){return String.valueOf(call(call(world,"method_27983"),"method_29177"));}
@@ -465,11 +465,25 @@ public final class Pq01Bridge {
       public boolean valid(){return VIEWS.get(v.account)==v&&same(v,v.player)&&alive(a);}
       public Pq01Motion.Point position(){return pos(a.entity,v.world);}
       public boolean navigating(){Object nav=call(a.entity,"getGroundPathNavigation");return nav!=null&&!Boolean.TRUE.equals(call(nav,"method_6357"));}
-      public boolean navigate(Pq01Motion.Point t){try{Object nav=call(a.entity,"getGroundPathNavigation");if(nav==null)return false;if(Boolean.TRUE.equals(call(nav,"method_6337",t.x(),t.y(),t.z(),0.65d)))return true;return Math.abs(t.y()-Math.ceil(t.y()))>0.01&&Boolean.TRUE.equals(call(nav,"method_6337",t.x(),Math.ceil(t.y()),t.z(),0.65d));}catch(RuntimeException e){report(e);return false;}}
+      public boolean navigate(Pq01Motion.Point t){try{
+        Object nav=call(a.entity,"getGroundPathNavigation");if(nav==null)return false;
+        // Le service court de Perrin vise le bloc exact : le défaut natif accepte
+        // un bloc voisin et peut donc finir sans quitter son point de départ.
+        if(a.role.equals("perrin")){
+          if(Boolean.TRUE.equals(call(nav,"method_58160",t.x(),t.y(),t.z(),0,0.65d)))return true;
+          return Math.abs(t.y()-Math.ceil(t.y()))>0.01&&Boolean.TRUE.equals(call(nav,"method_58160",t.x(),Math.ceil(t.y()),t.z(),0,0.65d));
+        }
+        if(Boolean.TRUE.equals(call(nav,"method_6337",t.x(),t.y(),t.z(),0.65d)))return true;
+        return Math.abs(t.y()-Math.ceil(t.y()))>0.01&&Boolean.TRUE.equals(call(nav,"method_6337",t.x(),Math.ceil(t.y()),t.z(),0.65d));
+      }catch(RuntimeException e){report(e);return false;}}
       public void stop(){try{Pq01Bridge.stop(a);}catch(RuntimeException e){report(e);}}
       public void arrived(){done.run();}
       public void failed(String reason){failed.accept(reason);}
-    },target,integer(setup(v.player),"move_timeout_ticks",300));a.motion.start();
+    },target,integer(setup(v.player),"move_timeout_ticks",300),a.role.equals("perrin")?perrinRadius(v.player):1.5);a.motion.start();
+  }
+  static double perrinRadius(Object p){
+    Pq01Motion.Point a=configuredPoint(p,"perrin_a",null),b=configuredPoint(p,"perrin_b",null);
+    return a==null||b==null?0.65:Math.min(0.65,Math.max(0.2,Math.sqrt(a.distance2(b))*0.4));
   }
   static void advance(View v,String node){
     if(!same(v,v.player)||!dialogue(v.player)||score(v.player,"hcm_pq1_node")!=v.waitingNode){close(v.player,true);return;}
@@ -485,9 +499,11 @@ public final class Pq01Bridge {
     v.banter=true;face(a,pos(b.entity,v.world));face(b,pos(a.entity,v.world));run(p,"scoreboard players set @s hcd_pq1_banter 1200");run(p,"function capitale:pq01/node/b0");return 1;
   }
   static void status(Object p){
-    say(p,"PQ01-R3 : liaisons réelles, scènes personnelles et occupations activées.");
+    say(p,"PQ01-R3 : liaisons réelles et scènes personnelles.");
+    say(p,"Ambiance : "+(integer(setup(p),"ambient_enabled",1)==0?"désactivée":"activée")+" ; phase "+phase(p)+" ; progression PQ01 "+score(p,"hcq_pq01")+".");
     for(String r:ROLES)for(String ph:List.of("large","quai")){Object b=binding(p,r+"_"+ph);say(p,r+"_"+ph+" : "+(b==null?"À LIER":source(p,r+"_"+ph)==null?"configuré, non chargé dans cette dimension":"chargé"));}
     for(String name:POINTS)say(p,name+" : "+(child(child(setup(p),"points"),name)==null?"à configurer":"configuré"));
+    for(String key:List.of("perrin_a","perrin_b")){Pq01Motion.Point point=configuredPoint(p,key,null);say(p,key+(phase(p).equals("quai")?"_quai":"")+" : "+(point==null?"absent dans cette dimension":coords(point)));}
   }
   static void tick(Object server){
     clock++;
@@ -507,7 +523,7 @@ public final class Pq01Bridge {
       if(clock%20==0)work(v);
     }catch(Throwable e){report(e);close(v.player,true);if(online.contains(v.account)&&score(v.player,"hcm_pq1_active")==1)run(v.player,"function capitale:pq01/close_self");}
     if(clock%20==0)for(Object p:players)try{
-      if(!available(p)||score(p,"hcq_pq01")<1||score(p,"hcq_pq01")>=100||clock<GRACE.getOrDefault(uuid(p),0L))continue;
+      if(!available(p)||score(p,"hcq_pq01")<0||score(p,"hcq_pq01")>=100||clock<GRACE.getOrDefault(uuid(p),0L))continue;
       if(integer(setup(p),"ambient_enabled",1)==0)continue;
       View v=VIEWS.get(uuid(p));
       for(String role:List.of("gautier","hugues","anselme","perrin")){
@@ -533,6 +549,7 @@ public final class Pq01Bridge {
         Pq01Motion.Point target=configuredPoint(p,"anselme_instruments",null);if(target!=null)face(a,target);
       }else if(a.role.equals("perrin")){
         Pq01Motion.Point target=configuredPoint(p,a.leg?"perrin_a":"perrin_b",null);
+        if(target==null){diagnostic(p,"Service de Perrin : point "+(a.leg?"perrin_a":"perrin_b")+(v.phase.equals("quai")?"_quai":"")+" absent dans cette dimension. Voir capitale:pq01/admin/status.");continue;}
         if(target!=null)travel(v,a,target,()->{a.leg=!a.leg;a.nextWork=clock+120;},reason->{a.nextWork=clock+600;diagnostic(p,"Service de Perrin suspendu : "+reason);});
       }
     }
