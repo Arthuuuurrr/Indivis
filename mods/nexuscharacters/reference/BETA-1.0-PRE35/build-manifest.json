@@ -1,0 +1,16 @@
+{
+  "base_filename": "NexusCharacters-Indivis-1.21.11-PRE34-SI1.jar",
+  "base_sha256": "454bd4206b50737bf386d65eb09f4f0e3ad1294a1fd4e6df426f9fe205cb31d0",
+  "output_filename": "NexusCharacters-Indivis-1.21.11-PRE35-SI1.jar",
+  "output_sha256": "399a4c64a7672e60ebbaaa52044cb547f5c41576039fe5aafe2c42485e2e8a8a",
+  "patch_zip_sha256": "c8b02a0b12413c5df4bef1ae1560b02aa4cbd97604a3bde91779daf2389213f1",
+  "entries": {
+    "fabric.mod.json": "a6dcc6cb308d7c9a897d4748234f2842c1881925e39106df4d4e3477fc0a8d3b",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class": "73df02cbfaec297cca8379910798f4b9be7ab481e99d146ddda831ebe08305e3",
+    "net/tompsen/nexuscharacters/SurfaceGeometry.class": "6319236398f29631918fb50870a93f05b8c4a013b63b5d08d0395dccce5ccc1a",
+    "net/tompsen/nexuscharacters/ExactSurfaceCleaner$Cells.class": "34332ade3b858169a56e41aeacd113c7dce6636872ae574843359416817ff966",
+    "net/tompsen/nexuscharacters/ExactSurfaceCleaner.class": "734ed17676b6f36da29fdc8a272108c74e18f7fe95db4963c538325bef2abd0c",
+    "net/tompsen/nexuscharacters/ExactSurfaceClipper$Workspace.class": "d24cb1ccf3e80032043c4673e416f313f099e2e98e2b797abe35448a5db3a660",
+    "net/tompsen/nexuscharacters/ExactSurfaceClipper.class": "5ef94b245f788b48560bb5a077522935e43437fd8748afcdb9bea99ef7cc1b05"
+  }
+}
