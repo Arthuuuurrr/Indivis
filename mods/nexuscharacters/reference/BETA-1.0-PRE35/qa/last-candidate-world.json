@@ -1,0 +1,8 @@
+{
+  "run_id": "candidate-world-20261025T223737",
+  "start_utc": "2026-10-25T22:37:39.231529+00:00",
+  "end_utc": "2026-10-25T22:39:30.382332+00:00",
+  "jar_sha256": "399a4c64a7672e60ebbaaa52044cb547f5c41576039fe5aafe2c42485e2e8a8a",
+  "log": "qa/run-candidate-world-20261025T223737.log",
+  "completion": "PRE35_WORLD_PASS checks=18311 frames=1516 remote_audits=2270 remote_entities={18=[9940], 19=[9940, 9941], 20=[9940, 9941, 9942, 9943], 21=[9940, 9941, 9942, 9943, 9944, 9945, 9946, 9947], 22=[9940, 9941, 9942, 9943, 9944, 9945, 9946, 9947], 23=[9940, 9941, 9942, 9943, 9944, 9945, 9946, 9947]} diagnostics={enabled=1, methodHits=31102, methodMisses=29, methodResolutionScans=29, fieldHits=340647, fieldMisses=44, fieldHierarchyScans=53, playerCalls=3602, previewCalls=0, firstPersonCalls=952, applyCount=3607, applyNanos=24795360203, applyMaxNanos=325825345, recomputeCount=1753, recomputeNanos=24551725874, recomputeMaxNanos=322282470, activeModelStates=1} hands=952 prepared=3 hits=949"
+}

@@ -1,0 +1,8 @@
+{
+  "run_id": "baseline-perf-20261025T224208",
+  "start_utc": "2026-10-25T22:42:10.623263+00:00",
+  "end_utc": "2026-10-25T22:43:42.538103+00:00",
+  "jar_sha256": "454bd4206b50737bf386d65eb09f4f0e3ad1294a1fd4e6df426f9fe205cb31d0",
+  "log": "qa/run-baseline-perf-20261025T224208.log",
+  "completion": "PRE30_MENU_PASS captures=1 checks=13\n"
+}

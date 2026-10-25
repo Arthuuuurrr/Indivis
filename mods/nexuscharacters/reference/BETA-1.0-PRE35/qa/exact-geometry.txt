@@ -1,0 +1,1 @@
+EXACT35_PASS sample_cases=24000 grid_modes=481 assertions=4303823 polygons=169844 vertices=667290
