@@ -1,3 +1,9 @@
+# Historique de la première PRE35 — remplacée après reconstruction
+
+Le nettoyage de l’environnement a finalement supprimé le premier binaire décrit ci-dessous. Une PRE35 SI1 reconstruite a depuis été compilée, entièrement revérifiée et enregistrée comme livrable. Le rapport courant est `PRE35-verifications.md`, le manifeste courant `build-manifest.json` et les sources/tests sont désormais dans ce dossier. SHA-256 courant : `399a4c64a7672e60ebbaaa52044cb547f5c41576039fe5aafe2c42485e2e8a8a`. Ne pas réutiliser les chiffres ni l’empreinte du premier essai comme preuve de la nouvelle livraison.
+
+---
+
 # PRE35 SI1 — checkpoint du 25 octobre 2026
 
 ## Statut exact

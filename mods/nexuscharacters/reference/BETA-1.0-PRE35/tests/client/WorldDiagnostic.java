@@ -23,6 +23,9 @@ public final class WorldDiagnostic implements ClientModInitializer {
    if(c.field_1724==null||c.field_1687==null)return;
    if(reloading){if(!reload.isDone()||c.method_18506()!=null)return;reload.join();reloading=false;System.out.println("PRE30_ACTUAL_RESOURCE_RELOAD_DONE");}
    worldTick++;
+   if(worldTick==1){
+    var server=c.method_1576();server.execute(()->{for(String command:new String[]{"fill -12 99 -12 12 99 12 minecraft:stone","fill -12 100 -12 12 104 12 minecraft:air","tp @a 0 100 0 0 0","time set noon","weather clear"})server.method_3734().method_44252(server.method_3739(),command);});
+   }
    if(worldTick<30)return;
    int elapsed=worldTick-30;
    int next=elapsed<900?elapsed/50:18+(elapsed-900)/120;
@@ -160,7 +163,7 @@ public final class WorldDiagnostic implements ClientModInitializer {
    }
    if(scene==1||scene==3||scene==13||scene==14||scene==16)checkUncachedGeometry(model);
    if(scene==13||scene==16)check((Boolean)Class.forName("com.zigythebird.playeranim.util.ClientUtil").getMethod("shouldBeFirstPersonPass").invoke(null),"PAL full-model first-person pass inactive");
-   if(scene==14)check(dialogueActive(),"Actual dialogue camera inactive");
+   if(scene==14||scene==22)check(dialogueActive(),"Actual dialogue camera inactive");
    if(scene==7){
     check(after.get("firstPersonCalls").equals(before.get("firstPersonCalls")),"F1 still rendered hands");
    }

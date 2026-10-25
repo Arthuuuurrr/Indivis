@@ -13,4 +13,14 @@ with zipfile.ZipFile(base) as a,zipfile.ZipFile(new) as b:
  (R/'build-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 files=[R/'build.py',R/'run_client.py',R/'build-manifest.json',R/'compiled-patches.zip.b64',R/'qa/build-audit.json',R/'qa/exact-geometry.txt']
 files+=list((R/'src').rglob('*.java'))+list((R/'tests').rglob('*.java'))+list((R/'tools').glob('*.py'))+list((R/'tools').glob('*.java'))
-print(json.dumps([{'path':prefix+p.relative_to(R).as_posix(),'mode':'100644','type':'blob','content':p.read_text()} for p in files],ensure_ascii=False))
+files+=list((R/'runtime-tools').glob('*.py'))
+files+=[p for p in [R/'assemble.py',R/'README.md',R/'LISEZ-MOI-PRE35.txt',R/'write_report.py',R/'PRE35-verifications.md'] if p.exists()]
+files+=[p for p in Q.glob('*.json')] if (Q:=R/'qa').exists() else []
+files+=[p for p in Q.glob('*.txt')]
+for directory in ['baseline','candidate','baseline-evidence','evidence','baseline-world-evidence','world-evidence','oracle-world-evidence','future-evidence','candidate-hand','baseline-hand']:
+ files+=[p for p in (Q/directory).glob('*') if p.is_file() and p.suffix in ('.csv','.txt')]
+files=sorted(set(files))
+import sys
+start=int(sys.argv[1]) if len(sys.argv)>1 else 0
+end=int(sys.argv[2]) if len(sys.argv)>2 else len(files)
+print(json.dumps([{'path':prefix+p.relative_to(R).as_posix(),'mode':'100644','type':'blob','content':p.read_text()} for p in files[start:end]],ensure_ascii=False))

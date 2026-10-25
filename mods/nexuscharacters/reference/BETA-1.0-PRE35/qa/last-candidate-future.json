@@ -1,0 +1,8 @@
+{
+  "run_id": "candidate-future-20261025T223621",
+  "start_utc": "2026-10-25T22:36:24.245404+00:00",
+  "end_utc": "2026-10-25T22:36:49.213102+00:00",
+  "jar_sha256": "399a4c64a7672e60ebbaaa52044cb547f5c41576039fe5aafe2c42485e2e8a8a",
+  "log": "qa/run-candidate-future-20261025T223621.log",
+  "completion": "PRE30_FUTURE_ASSETS_PASS checks=23 hair=930 beard=930 outfit=930 body=2 classic+slim"
+}

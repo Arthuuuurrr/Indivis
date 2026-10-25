@@ -1,0 +1,8 @@
+{
+  "run_id": "candidate-menus-20261025T223910",
+  "start_utc": "2026-10-25T22:39:12.218467+00:00",
+  "end_utc": "2026-10-25T22:40:21.977794+00:00",
+  "jar_sha256": "399a4c64a7672e60ebbaaa52044cb547f5c41576039fe5aafe2c42485e2e8a8a",
+  "log": "qa/run-candidate-menus-20261025T223910.log",
+  "completion": "PRE30_MENU_PASS captures=23 checks=364\n"
+}

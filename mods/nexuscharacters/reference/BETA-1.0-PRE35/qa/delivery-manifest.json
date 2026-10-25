@@ -1,0 +1,17 @@
+[
+  {
+    "file": "NexusCharacters-Indivis-1.21.11-PRE35-SI1.jar",
+    "size_bytes": 28187952,
+    "sha256": "399a4c64a7672e60ebbaaa52044cb547f5c41576039fe5aafe2c42485e2e8a8a"
+  },
+  {
+    "file": "Indivis-Nexus-PRE35-SI1.zip",
+    "size_bytes": 26940167,
+    "sha256": "d1bf527b2b1544102db4c37aa413b7d764699d5f964eed24970b65928661f4ba"
+  },
+  {
+    "file": "PRE35-verifications.md",
+    "size_bytes": 9623,
+    "sha256": "17da755ca0a9d81a3dadb474f270964d031f82b791cdb981b783808b75df704d"
+  }
+]

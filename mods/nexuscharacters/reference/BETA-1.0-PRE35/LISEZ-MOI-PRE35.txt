@@ -1,0 +1,19 @@
+NexusCharacters PRE35 SI1 — Minecraft 1.21.11 / Fabric
+
+INSTALLATION CLIENT
+1. Fermer le jeu.
+2. Conserver une copie de NexusCharacters-Indivis-1.21.11-PRE34-SI1.jar hors du dossier mods.
+3. Remplacer uniquement ce JAR NexusCharacters par NexusCharacters-Indivis-1.21.11-PRE35-SI1.jar.
+4. Ne garder qu'un seul JAR NexusCharacters dans mods.
+5. Ne remplacer ni HUD OPT1, ni Spell Engine, ni Skin Layers, ni les datapacks.
+
+Le changement est un calcul de surfaces client. Aucune migration des personnages,
+aucun changement de réseau, de quêtes ou de persistance. Aucun déploiement serveur
+n'a été réalisé. Ce JAR ne prétend pas corriger les retards de ticks du serveur.
+
+Les assets sont conservés. Les futurs PNG suivent les règles de découverte existantes
+du mod ; cela ne rend pas compatibles des fichiers arbitraires mal nommés ou des UV
+ne respectant pas ces règles.
+
+Consulter PRE35-verifications.md pour les résultats mesurés et leurs limites.
+Retour arrière : fermer le jeu puis remettre le seul JAR PRE34-SI1 sauvegardé.

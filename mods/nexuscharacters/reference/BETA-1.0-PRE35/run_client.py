@@ -10,7 +10,7 @@ G=R/'qa/games'/run_id;M=G/'mods';M.mkdir(parents=True)
 for name in ['fabric-api','skinlayers','sodium','immediatelyfast']:shutil.copy2(RT/(name+'.jar'),M/(name+'.jar'))
 for p in (R/'runtime-extra').glob('*.jar'):shutil.copy2(p,M/p.name)
 shutil.copy2(candidate,M/'NexusCharacters-Test.jar')
-cp=(RT/'classpath.txt').read_text()+':'+str(RT/'fabric-loader.jar')+':'+str(RT/'client-intermediary.jar')
+cp=':'.join(p for p in (RT/'classpath.txt').read_text().split(':') if '/fabric-loader/' not in p)+':'+str(RT/'fabric-loader.jar')+':'+str(RT/'client-intermediary.jar')
 api=R/'qa/dependency-classes';api.mkdir(exist_ok=True)
 def nested(path):
  with zipfile.ZipFile(path) as z:

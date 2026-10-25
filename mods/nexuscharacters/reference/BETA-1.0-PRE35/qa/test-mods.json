@@ -1,0 +1,746 @@
+[
+  {
+    "file": "NexusCharacters-Test.jar",
+    "id": "nexuscharacters",
+    "version": "1.0.0-beta.35+indivis.1.21.11.SI1",
+    "embedded_compile_dependency": false,
+    "size_bytes": 28187952,
+    "sha256": "399a4c64a7672e60ebbaaa52044cb547f5c41576039fe5aafe2c42485e2e8a8a"
+  },
+  {
+    "file": "accessories_compat_layer-fabric-0.1.13.b1+1.21.11-HC-NULLCAP-GUARD1.jar",
+    "id": "accessories_compat_layer",
+    "version": "0.1.13.b1+hc.nullcapguard1",
+    "embedded_compile_dependency": false,
+    "size_bytes": 257807,
+    "sha256": "5134c271aa455c6fd71ad71d7bdcb3379ffdd921364b8709f7847516094802c8"
+  },
+  {
+    "file": "accessoriesfabric1.4.3beta1.21.11patched.jar",
+    "id": "accessories",
+    "version": "1.4.3-beta",
+    "embedded_compile_dependency": false,
+    "size_bytes": 1458059,
+    "sha256": "ad2b694f5cfe25cbdd0a7af295721194be3a67f8ba5d725a863f18779d98bcc3"
+  },
+  {
+    "file": "capitale_rp_hud_BETA_1_3_3_OPT1_1.21.11.jar",
+    "id": "capitale_rp_hud",
+    "version": "1.3.3-beta.1+race-health-modifier-compat.opt1",
+    "embedded_compile_dependency": false,
+    "size_bytes": 402334,
+    "sha256": "ad50aa33f2767be60ff517d7c7b965961c4392dae29a13c03b3ea5404ee6adab"
+  },
+  {
+    "file": "cloth-config.jar",
+    "id": "cloth-config",
+    "version": "21.11.153",
+    "embedded_compile_dependency": false,
+    "size_bytes": 1148427,
+    "sha256": "8a40c84e5ecde525acfb6c4e13b8002dacfca3ef9534d7faf6e8049656f423c8"
+  },
+  {
+    "file": "easy_npc-fabric-1.21.11-7.16.0(1).jar",
+    "id": "easy_npc",
+    "version": "7.16.0",
+    "embedded_compile_dependency": false,
+    "size_bytes": 3328638,
+    "sha256": "be3531fba0d3b0553e64ac8acae1906a882f41b32ac5e64386c3d6c4cbef6f8b"
+  },
+  {
+    "file": "easy_npc_config_ui-fabric-1.21.11-7.16.0(1).jar",
+    "id": "easy_npc_config_ui",
+    "version": "7.16.0",
+    "embedded_compile_dependency": false,
+    "size_bytes": 1202710,
+    "sha256": "c65b5eff3f9ac46a3de3572d2b32f7f64b00731c6ad22e02a379b8634606b774"
+  },
+  {
+    "file": "entityculling.jar",
+    "id": "entityculling",
+    "version": "1.10.2",
+    "embedded_compile_dependency": false,
+    "size_bytes": 1604207,
+    "sha256": "01cdfc8021e7f59eeb5d0d1131b782d242ee677ddc53dc62484a06a1379fec59"
+  },
+  {
+    "file": "fabric-api.jar",
+    "id": "fabric-api",
+    "version": "0.141.6+1.21.11",
+    "embedded_compile_dependency": false,
+    "size_bytes": 2426039,
+    "sha256": "bdff7fd7e220085cfad2ff9b1f40dde6534ae0b96cf378f97a374bc54cb9ed0f"
+  },
+  {
+    "file": "haute-capitale-dialogue-0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX (1)(2).jar",
+    "id": "haute_capitale_dialogue",
+    "version": "0.1.0+1.21.11.b10",
+    "embedded_compile_dependency": false,
+    "size_bytes": 200473,
+    "sha256": "a2c21f24889f96880c472d168ea55cf65e84ff154ee1bbcc22dbeaa9df1d4057"
+  },
+  {
+    "file": "haute-capitale-rpg-0.3.0+1.21.11.b2.HC.TEST3.RC3-FIREARMS-SPELLBAR.jar",
+    "id": "haute_capitale_rpg",
+    "version": "0.3.0+1.21.11.b2.HC.TEST3.RC3-FIREARMS-SPELLBAR",
+    "embedded_compile_dependency": false,
+    "size_bytes": 128069,
+    "sha256": "08f03d4db0c41286851cbd35318b91afcb0e59483a5ce2d7164aa59ebf047e40"
+  },
+  {
+    "file": "immediatelyfast.jar",
+    "id": "immediatelyfast",
+    "version": "1.14.2+1.21.11",
+    "embedded_compile_dependency": false,
+    "size_bytes": 310445,
+    "sha256": "eb5d23860c2c853d0afda9cbf686f442afda34a31d8d60b118a21597ccf38888"
+  },
+  {
+    "file": "iris.jar",
+    "id": "iris",
+    "version": "1.10.7+mc1.21.11",
+    "embedded_compile_dependency": false,
+    "size_bytes": 2807547,
+    "sha256": "58c55da18189c91a49f847d3cee451633a23b575fb69c0c5b65ddb274436cb19"
+  },
+  {
+    "file": "owo.jar",
+    "id": "owo",
+    "version": "0.13.0+1.21.11",
+    "embedded_compile_dependency": false,
+    "size_bytes": 2254955,
+    "sha256": "ded21de3e15288baad8a89f00476cf14427a1bbcdc4b184995dc78ff17e6ac40"
+  },
+  {
+    "file": "pal.jar",
+    "id": "player_animation_library",
+    "version": "1.1.10+mc.1.21.11",
+    "embedded_compile_dependency": false,
+    "size_bytes": 1150935,
+    "sha256": "47b3e8b5e17d8501df92730e0a4e1dc9894b78333a1fdebc7341f1524ea283a4"
+  },
+  {
+    "file": "puffish_skills.jar",
+    "id": "puffish_skills",
+    "version": "0.19.0",
+    "embedded_compile_dependency": false,
+    "size_bytes": 644265,
+    "sha256": "8917799ce0b8084648e2fb06513c60a2d01a2319c949b81e629ade322d82c004"
+  },
+  {
+    "file": "skinlayers.jar",
+    "id": "skinlayers3d",
+    "version": "1.10.2",
+    "embedded_compile_dependency": false,
+    "size_bytes": 1964676,
+    "sha256": "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756"
+  },
+  {
+    "file": "sodium.jar",
+    "id": "sodium",
+    "version": "0.8.7+mc1.21.11",
+    "embedded_compile_dependency": false,
+    "size_bytes": 1870358,
+    "sha256": "c08fae86b350aaa8a8f37e7347929df38f01cc2348cf31c322615564bdc53983"
+  },
+  {
+    "file": "spell_engine-fabric-1.10.5.001+1.21.11-HC-TEST3-RC17-RPG-ARMOR-X2.jar",
+    "id": "spell_engine",
+    "version": "1.10.5.001+1.21.11-HC-TEST3-RC17-RPG-ARMOR-X2",
+    "embedded_compile_dependency": false,
+    "size_bytes": 4696443,
+    "sha256": "64e31c2239b2e341c5ae514ca522814f36549c819fa88a7e7bf7a5186bc75fbd"
+  },
+  {
+    "file": "spell_power-fabric-1.6.1.002+1.21.11-HC-HAZENN-PRECISE-TEST3-RC9-CONTEXTUAL-HASTE.jar",
+    "id": "spell_power",
+    "version": "1.6.1.002+1.21.11.hc.test3.rc9",
+    "embedded_compile_dependency": false,
+    "size_bytes": 232457,
+    "sha256": "d208fd4b8de6711d53108d490ad3991b310acc9aed8af0626ac2c9034959be6b"
+  },
+  {
+    "file": "013a5849915a56f8-fabric-transfer-api-v1-6.0.25+4fc5413f3e.jar",
+    "id": "fabric-transfer-api-v1",
+    "version": "6.0.25+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 189891,
+    "sha256": "013a5849915a56f88c815b7c3b6cf66f1e1cf584fb11e0795b53b1da76ac20ea"
+  },
+  {
+    "file": "06a5e919f4af8829-kdl4j-1.0.1.jar",
+    "id": "com_github_kdl-org_kdl4j",
+    "version": "1.0.1",
+    "embedded_compile_dependency": true,
+    "size_bytes": 134695,
+    "sha256": "06a5e919f4af882910f1d6271426aa8d279a654f8347c9fdd67dafabcb08e75b"
+  },
+  {
+    "file": "07328ead3c2ef4fe-fabric-model-loading-api-v1-6.0.15+4fc5413f3e.jar",
+    "id": "fabric-model-loading-api-v1",
+    "version": "6.0.15+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 88919,
+    "sha256": "07328ead3c2ef4fe1fc443d77b2cad48e908fb9573584306dc1d6ce596bf4777"
+  },
+  {
+    "file": "143f01b5f1b7d439-Reflect-1.6.1+curseforge.jar",
+    "id": "net_lenni0451_reflect",
+    "version": "1.6.1+curseforge",
+    "embedded_compile_dependency": true,
+    "size_bytes": 207812,
+    "sha256": "143f01b5f1b7d4398c539a3f71fc4125debd3f8f4753c0922485c27ee658e041"
+  },
+  {
+    "file": "1478069c47f0fd53-fabric-command-api-v2-2.4.7+6b42a6003e.jar",
+    "id": "fabric-command-api-v2",
+    "version": "2.4.7+6b42a6003e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 33366,
+    "sha256": "1478069c47f0fd536794e7278a058276263048b7492b4425ec5d62c88a7de282"
+  },
+  {
+    "file": "1a6877d67667c869-fabric-renderer-api-v1-8.0.0+f4ffd2e53e.jar",
+    "id": "fabric-renderer-api-v1",
+    "version": "8.0.0+f4ffd2e53e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 122148,
+    "sha256": "1a6877d67667c86934203f80e460a25970bae82537b6150d074e643abf689fdd"
+  },
+  {
+    "file": "1b5f1fa7f63afad3-fabric-block-view-api-v2-1.0.39+4ebb5c083e.jar",
+    "id": "fabric-block-view-api-v2",
+    "version": "1.0.39+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 24350,
+    "sha256": "1b5f1fa7f63afad3eae7b2f75ffc1c3a7dcb129cbb4e9d946d3d1957467c0928"
+  },
+  {
+    "file": "1d115a6fd07ee28d-jcpp-1.4.14.jar",
+    "id": "org_anarres_jcpp",
+    "version": "1.4.14",
+    "embedded_compile_dependency": true,
+    "size_bytes": 76612,
+    "sha256": "1d115a6fd07ee28db7c33b87c41e912361dd037fa8e5202ccfb4ed264d668d54"
+  },
+  {
+    "file": "2340202f2a97acc6-fabric-resource-loader-v1-1.0.10+78c8b4663e.jar",
+    "id": "fabric-resource-loader-v1",
+    "version": "1.0.10+78c8b4663e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 148622,
+    "sha256": "2340202f2a97acc61c50b48e1db8c708fc55a746772cf06e999d91b7a372c3e8"
+  },
+  {
+    "file": "2527eb04394e7a13-basic-math-0.6.1.jar",
+    "id": "cloth-basic-math",
+    "version": "0.6.1",
+    "embedded_compile_dependency": true,
+    "size_bytes": 10678,
+    "sha256": "2527eb04394e7a13fa5b8884baa9319f60b07ad6229d759f9451563cd113c059"
+  },
+  {
+    "file": "261dbe5306795b51-fabric-resource-conditions-api-v1-5.0.35+4fc5413f3e.jar",
+    "id": "fabric-resource-conditions-api-v1",
+    "version": "5.0.35+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 53897,
+    "sha256": "261dbe5306795b5170d69866b996398146b785be8d5f722af5132b101b07dbd3"
+  },
+  {
+    "file": "271dbf752935be3d-mochafloats-4.1.5.jar",
+    "id": "com_zigythebird_mochafloats",
+    "version": "4.1.5",
+    "embedded_compile_dependency": true,
+    "size_bytes": 154985,
+    "sha256": "271dbf752935be3dd8797bc10569ab598e45e9d25d888f12db9cae5f789295b0"
+  },
+  {
+    "file": "2a79a1dd2ca4ea57-fabric-particles-v1-4.2.12+4fc5413f3e.jar",
+    "id": "fabric-particles-v1",
+    "version": "4.2.12+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 51933,
+    "sha256": "2a79a1dd2ca4ea575a9b82efe309de3a6443b115643d05b607711983a672e86a"
+  },
+  {
+    "file": "2ce334ea2c050f53-fabric-lifecycle-events-v1-2.6.15+4ebb5c083e.jar",
+    "id": "fabric-lifecycle-events-v1",
+    "version": "2.6.15+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 90181,
+    "sha256": "2ce334ea2c050f532443a19addf97ac3e9edcb7b1e3a4a2075dbea0207fe51b0"
+  },
+  {
+    "file": "34f65d335249abda-netty-0.1.6.jar",
+    "id": "io_wispforest_endec_netty",
+    "version": "0.1.6",
+    "embedded_compile_dependency": true,
+    "size_bytes": 10137,
+    "sha256": "34f65d335249abda5a7f14e340fd6d85f69b7c56efbfa0d68dd488850ce99931"
+  },
+  {
+    "file": "38906e57bf6ee3a2-fabric-api-lookup-api-v1-1.6.114+20dc27073e.jar",
+    "id": "fabric-api-lookup-api-v1",
+    "version": "1.6.114+20dc27073e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 47942,
+    "sha256": "38906e57bf6ee3a27f0ac21f5e3cd12c71297c8c8cf0a25657ae6d2164cd8609"
+  },
+  {
+    "file": "38c3ff7ef00686bc-fabric-block-view-api-v2-1.0.39+4ebb5c083e.jar",
+    "id": "fabric-block-view-api-v2",
+    "version": "1.0.39+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 19695,
+    "sha256": "38c3ff7ef00686bc9cb360f2c1f09d58ef171a0504343a3dc0036e7a1a68c943"
+  },
+  {
+    "file": "3ae4496363a1c308-fabric-screen-api-v1-3.1.7+4ebb5c083e.jar",
+    "id": "fabric-screen-api-v1",
+    "version": "3.1.7+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 54763,
+    "sha256": "3ae4496363a1c30811996220184fd322e919a7e309df9254adc87c0a2fd93a7d"
+  },
+  {
+    "file": "454eed39008e9cdc-fabric-convention-tags-v1-2.1.55+7f945d5b3e.jar",
+    "id": "fabric-convention-tags-v1",
+    "version": "2.1.55+7f945d5b3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 30029,
+    "sha256": "454eed39008e9cdc205d0ee581c5cda46e9efa81a2b09d450260048f089b5d83"
+  },
+  {
+    "file": "4be43e50e5926130-fabric-events-interaction-v0-4.1.1+3b89ecf63e.jar",
+    "id": "fabric-events-interaction-v0",
+    "version": "4.1.1+3b89ecf63e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 60686,
+    "sha256": "4be43e50e5926130ddea9d14f5f93ed657ff549fa553e48cb82fd65e271ed60d"
+  },
+  {
+    "file": "550d859f5f4b3235-fabric-item-group-api-v1-4.2.36+4fc5413f3e.jar",
+    "id": "fabric-item-group-api-v1",
+    "version": "4.2.36+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 51995,
+    "sha256": "550d859f5f4b3235434704fca92c8bffe38f11251147b2040e0aa9f3dadf7c63"
+  },
+  {
+    "file": "565fab753bbe219c-fabric-item-api-v1-11.6.0+67f17bb43e.jar",
+    "id": "fabric-item-api-v1",
+    "version": "11.6.0+67f17bb43e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 66469,
+    "sha256": "565fab753bbe219c27cd8c7606b351d139e2f6a59c92641cf7392870aedd29ca"
+  },
+  {
+    "file": "5a9f7470103737dc-javassist-3.30.2-GA.jar",
+    "id": "org_javassist_javassist",
+    "version": "3.30.2-GA",
+    "embedded_compile_dependency": true,
+    "size_bytes": 794951,
+    "sha256": "5a9f7470103737dc584fe504512722546559378501dbccd1f52018e8389c0efc"
+  },
+  {
+    "file": "5ce2ddaecec1605b-fabric-recipe-api-v1-8.2.4+4ebb5c083e.jar",
+    "id": "fabric-recipe-api-v1",
+    "version": "8.2.4+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 95395,
+    "sha256": "5ce2ddaecec1605b7b5b5f4e355aebcd75b36fd28f70a368b41939b393e2c9ed"
+  },
+  {
+    "file": "5e0eaa1d9419ba62-fabric-transitive-access-wideners-v1-7.1.0+014c8cec3e.jar",
+    "id": "fabric-transitive-access-wideners-v1",
+    "version": "7.1.0+014c8cec3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 9162,
+    "sha256": "5e0eaa1d9419ba627c5074ae3b104248061197fc29827e678b6682b5768f352e"
+  },
+  {
+    "file": "64ba7415f8d5f74b-fabric-message-api-v1-6.1.12+4ebb5c083e.jar",
+    "id": "fabric-message-api-v1",
+    "version": "6.1.12+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 40516,
+    "sha256": "64ba7415f8d5f74b746c83ec6da748db6d31372c224b2f3d97fca02f28399809"
+  },
+  {
+    "file": "6643736737a42cb2-fabric-block-api-v1-1.1.10+4ebb5c083e.jar",
+    "id": "fabric-block-api-v1",
+    "version": "1.1.10+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 15001,
+    "sha256": "6643736737a42cb2177e566246bdb918cd515a9a049fcac15e6c5b0ad0a1e694"
+  },
+  {
+    "file": "68ac060b87bfd50a-tiny-config-3.1.1-fabric.jar",
+    "id": "tiny_config",
+    "version": "3.1.1",
+    "embedded_compile_dependency": true,
+    "size_bytes": 28549,
+    "sha256": "68ac060b87bfd50a945f211b2bd7546dbe1d1a8641ad223b705c182bc4cb4acf"
+  },
+  {
+    "file": "68f7968d02dd2280-fabric-resource-loader-v1-1.0.10+78c8b4663e.jar",
+    "id": "fabric-resource-loader-v1",
+    "version": "1.0.10+78c8b4663e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 133612,
+    "sha256": "68f7968d02dd2280aa9c8cbee043bb99761989d90dc839f8cc0bc113d92e871e"
+  },
+  {
+    "file": "73592f1338c5dbe7-fabric-lifecycle-events-v1-2.6.15+4ebb5c083e.jar",
+    "id": "fabric-lifecycle-events-v1",
+    "version": "2.6.15+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 102434,
+    "sha256": "73592f1338c5dbe70086174dfdc9d0c76d4f3369a5003af5847eb3c9dcaa1b5c"
+  },
+  {
+    "file": "73a8b03bc767d627-mixinsquared-fabric-0.3.4.jar",
+    "id": "mixinsquared",
+    "version": "0.3.4",
+    "embedded_compile_dependency": true,
+    "size_bytes": 105397,
+    "sha256": "73a8b03bc767d6277c89113b8baa86d33f54b6e7f262093eaf2aec946c5d1838"
+  },
+  {
+    "file": "75021e96e9bb466a-fabric-data-generation-api-v1-23.5.0+88d7da613e.jar",
+    "id": "fabric-data-generation-api-v1",
+    "version": "23.5.0+88d7da613e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 142465,
+    "sha256": "75021e96e9bb466a7ec552451fa16e7cb82f7188034ec80cb85eb71af3567862"
+  },
+  {
+    "file": "758c2777045e3e35-fabric-key-binding-api-v1-1.1.7+4fc5413f3e.jar",
+    "id": "fabric-key-binding-api-v1",
+    "version": "1.1.7+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 16615,
+    "sha256": "758c2777045e3e357981ebf99cdecbcafeca21580f4736d00e95b0bf6327f45a"
+  },
+  {
+    "file": "770b05f31dc6d894-fabric-resource-loader-v0-3.3.4+4fc5413f3e.jar",
+    "id": "fabric-resource-loader-v0",
+    "version": "3.3.4+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 22146,
+    "sha256": "770b05f31dc6d894e635e513b34960cc82ccb51fe93f5c82884b7102f79d0d06"
+  },
+  {
+    "file": "836892b85727222a-fabric-api-base-1.0.5+4ebb5c083e.jar",
+    "id": "fabric-api-base",
+    "version": "1.0.5+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 32615,
+    "sha256": "836892b85727222a0efd6b554660b42f39ac5e8db70e2510108b37fb1df6e53f"
+  },
+  {
+    "file": "85e67342cfdcf883-fabric-renderer-api-v1-8.0.3+f4ffd2e53e.jar",
+    "id": "fabric-renderer-api-v1",
+    "version": "8.0.3+f4ffd2e53e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 108820,
+    "sha256": "85e67342cfdcf8834628dad70ae3b9dbbd49ee3f99791934c7528914e41f448d"
+  },
+  {
+    "file": "87233baa581a87a7-TRender-1.0.13-1.21.11-fabric-SNAPSHOT.jar",
+    "id": "trender",
+    "version": "1.0.13",
+    "embedded_compile_dependency": true,
+    "size_bytes": 383400,
+    "sha256": "87233baa581a87a70198ee3523a82a00b788650055e7579ae467f0e8d28f2cf6"
+  },
+  {
+    "file": "8a6571b1d55214ec-TRansition-1.0.13-1.21.11-fabric-SNAPSHOT.jar",
+    "id": "transition",
+    "version": "1.0.13",
+    "embedded_compile_dependency": true,
+    "size_bytes": 1267994,
+    "sha256": "8a6571b1d55214ec95b09e40eeb7aee6eee7f73912495daf71d8972773317e88"
+  },
+  {
+    "file": "8bf9ba921b8b2cb4-endec-0.1.12.jar",
+    "id": "io_wispforest_endec",
+    "version": "0.1.12",
+    "embedded_compile_dependency": true,
+    "size_bytes": 237040,
+    "sha256": "8bf9ba921b8b2cb46c0be74c2db4f6df124df6caed22d96a11465e104f757dae"
+  },
+  {
+    "file": "8e07b800ff81b68f-antlr4-runtime-4.13.1.jar",
+    "id": "org_antlr_antlr4-runtime",
+    "version": "4.13.1",
+    "embedded_compile_dependency": true,
+    "size_bytes": 330031,
+    "sha256": "8e07b800ff81b68f1581af6d5fc3f2f376889ec99f4946bef957914a5b4b4631"
+  },
+  {
+    "file": "91b86feb2a94c2ac-fabric-loot-api-v3-2.0.20+78c8b4663e.jar",
+    "id": "fabric-loot-api-v3",
+    "version": "2.0.20+78c8b4663e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 32468,
+    "sha256": "91b86feb2a94c2ac1ca9771f0c2bc08afb8a33dd0415197d044a498badece81e"
+  },
+  {
+    "file": "92156f1d0b8c45c8-fabric-registry-sync-v0-6.2.6+1718722b3e.jar",
+    "id": "fabric-registry-sync-v0",
+    "version": "6.2.6+1718722b3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 118251,
+    "sha256": "92156f1d0b8c45c8d0dc1316233aba4db3e5ed7f62db1bf2c8e44170eaffb3ca"
+  },
+  {
+    "file": "92531f3ddada790c-glsl-transformer-3.0.0-pre3.jar",
+    "id": "io_github_douira_glsl-transformer",
+    "version": "3.0.0-pre3",
+    "embedded_compile_dependency": true,
+    "size_bytes": 730183,
+    "sha256": "92531f3ddada790c4be93fe45d9908709be5ee4ea065ad770511342758fd7447"
+  },
+  {
+    "file": "93374f9c5994a7fa-fabric-networking-api-v1-5.1.6+6b6d71a53e.jar",
+    "id": "fabric-networking-api-v1",
+    "version": "5.1.6+6b6d71a53e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 209562,
+    "sha256": "93374f9c5994a7faad7deb25e74af8bec7fc93d1ec23db33e27204599b3715bc"
+  },
+  {
+    "file": "93cf0bc28aee2f13-fabric-serialization-api-v1-1.0.5+4ebb5c083e.jar",
+    "id": "fabric-serialization-api-v1",
+    "version": "1.0.5+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 19254,
+    "sha256": "93cf0bc28aee2f13eb6498f20ae995b8844f713b116a76861846830a5cede824"
+  },
+  {
+    "file": "94c437689c8204d5-fabric-renderer-indigo-5.0.3+f4ffd2e53e.jar",
+    "id": "fabric-renderer-indigo",
+    "version": "5.0.3+f4ffd2e53e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 116170,
+    "sha256": "94c437689c8204d5cd84ca51eb17eb0ca1a4cacb2dff5048c0a1c1bfb94b96de"
+  },
+  {
+    "file": "989f555b5e05923b-gson-0.1.7.jar",
+    "id": "io_wispforest_endec_gson",
+    "version": "0.1.7",
+    "embedded_compile_dependency": true,
+    "size_bytes": 21158,
+    "sha256": "989f555b5e05923b0a041f53a0e9ace511cf88e6d621946472939eaef17b6da6"
+  },
+  {
+    "file": "9f4a23660d8d8f28-jankson-0.1.7.jar",
+    "id": "io_wispforest_endec_jankson",
+    "version": "0.1.7",
+    "embedded_compile_dependency": true,
+    "size_bytes": 21560,
+    "sha256": "9f4a23660d8d8f288eba5db2ed7ade317f74c29f9f27b0ff0280e98543009721"
+  },
+  {
+    "file": "a03c124140cc2c1e-fabric-screen-handler-api-v1-1.3.162+4fc5413f3e.jar",
+    "id": "fabric-screen-handler-api-v1",
+    "version": "1.3.162+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 24091,
+    "sha256": "a03c124140cc2c1e0935741e5445f5ab258f645a9814f439e9c19f6dedd95cdb"
+  },
+  {
+    "file": "a5c549a3a97cb806-fabric-dimensions-v1-4.0.28+4fc5413f3e.jar",
+    "id": "fabric-dimensions-v1",
+    "version": "4.0.28+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 17695,
+    "sha256": "a5c549a3a97cb80607a9c37b662a7abc7d9cfe3a9ae10fe843d2ff9f1b9066f6"
+  },
+  {
+    "file": "ab8859b359de9771-fabric-resource-loader-v0-3.3.4+4fc5413f3e.jar",
+    "id": "fabric-resource-loader-v0",
+    "version": "3.3.4+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 17899,
+    "sha256": "ab8859b359de9771dc90f3edf834a9d88e8d46460888b73e18f5419610af5016"
+  },
+  {
+    "file": "ae5924b546f590d3-fabric-convention-tags-v2-2.17.3+8ef948ba3e.jar",
+    "id": "fabric-convention-tags-v2",
+    "version": "2.17.3+8ef948ba3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 265993,
+    "sha256": "ae5924b546f590d355dd758fbfc5bd92653f77b8c8412385e05227b532d69180"
+  },
+  {
+    "file": "b6cb2c19a2a5e751-fabric-tag-api-v1-1.3.0+88d7da613e.jar",
+    "id": "fabric-tag-api-v1",
+    "version": "1.3.0+88d7da613e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 48293,
+    "sha256": "b6cb2c19a2a5e751f2cc131291dedbac6bf483454ee96776270adc3e0df3f12d"
+  },
+  {
+    "file": "bab2b1a6211a0f83-tiny-config-3.1.0-fabric.jar",
+    "id": "tiny_config",
+    "version": "3.1.0",
+    "embedded_compile_dependency": true,
+    "size_bytes": 28564,
+    "sha256": "bab2b1a6211a0f83d5d33754ace3307a0c1a1b0b4fe64e7e7c066538a6b1a1b4"
+  },
+  {
+    "file": "bc97600fba10be56-fabric-rendering-v1-16.2.7+f4ffd2e53e.jar",
+    "id": "fabric-rendering-v1",
+    "version": "16.2.7+f4ffd2e53e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 176462,
+    "sha256": "bc97600fba10be56627567c0a1e0f3dfaa942b1ce55f0bfeaf7f7073ae388a8a"
+  },
+  {
+    "file": "bce4ae302479d627-fabric-api-base-1.0.5+4ebb5c083e.jar",
+    "id": "fabric-api-base",
+    "version": "1.0.5+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 27859,
+    "sha256": "bce4ae302479d627bd614b97edf69a6bc13a9f2c50509c9c92a65a6febc7db68"
+  },
+  {
+    "file": "c1d7f565255ad60d-fabric-crash-report-info-v1-0.3.23+4ebb5c083e.jar",
+    "id": "fabric-crash-report-info-v1",
+    "version": "0.3.23+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 15257,
+    "sha256": "c1d7f565255ad60db79dcc2627a8f675ae41cb142af122e01270fa439adb526d"
+  },
+  {
+    "file": "c521d8d9273362f9-TRansition-1.0.19-1.21.11-fabric-SNAPSHOT.jar",
+    "id": "transition",
+    "version": "1.0.19",
+    "embedded_compile_dependency": true,
+    "size_bytes": 1292285,
+    "sha256": "c521d8d9273362f9c159f95dd9f5939f87e837aee197859280c8f37f21e77fe1"
+  },
+  {
+    "file": "c86d6c51902243c0-fabric-content-registries-v0-10.2.14+4fc5413f3e.jar",
+    "id": "fabric-content-registries-v0",
+    "version": "10.2.14+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 63585,
+    "sha256": "c86d6c51902243c0c0622a8017658dc233bf95f0e9a6ad3932c5b2c2c1c164d9"
+  },
+  {
+    "file": "cd05ac031ef0a48e-fabric-object-builder-api-v1-21.1.40+4fc5413f3e.jar",
+    "id": "fabric-object-builder-api-v1",
+    "version": "21.1.40+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 76686,
+    "sha256": "cd05ac031ef0a48e1df066a10a621ee26f9eb3b924105a080775e2bcb1af5cec"
+  },
+  {
+    "file": "d02f0e6bebbba4db-fabric-biome-api-v1-17.1.1+4fc5413f3e.jar",
+    "id": "fabric-biome-api-v1",
+    "version": "17.1.1+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 76011,
+    "sha256": "d02f0e6bebbba4dbccc17ca5468c7565596e67b026f487a44077a012781aa993"
+  },
+  {
+    "file": "d2745bab1ce19186-fabric-key-binding-api-v1-1.1.7+4fc5413f3e.jar",
+    "id": "fabric-key-binding-api-v1",
+    "version": "1.1.7+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 20734,
+    "sha256": "d2745bab1ce19186fd46f4fe6ec62111e7b2b4057f70fc0527528e8b3a6dee37"
+  },
+  {
+    "file": "d2a97821550e1dca-fabric-rendering-v1-16.2.10+0290ad933e.jar",
+    "id": "fabric-rendering-v1",
+    "version": "16.2.10+0290ad933e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 161268,
+    "sha256": "d2a97821550e1dca3e0522fc99fa25eea0bf390fea04d1358ff5f1f7cd407518"
+  },
+  {
+    "file": "deab64e23a187b19-fabric-entity-events-v1-3.1.1+1d0ab4303e.jar",
+    "id": "fabric-entity-events-v1",
+    "version": "3.1.1+1d0ab4303e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 72111,
+    "sha256": "deab64e23a187b196e2d24a366304fa6751ab6bf0abcee814f7f1b47a6bd1568"
+  },
+  {
+    "file": "dedeb85a3f01eb4e-fabric-data-attachment-api-v1-1.8.48+eed0806f3e.jar",
+    "id": "fabric-data-attachment-api-v1",
+    "version": "1.8.48+eed0806f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 94787,
+    "sha256": "dedeb85a3f01eb4e44fc4d56cb4480d2359ca2aff95cf4baee1b8984a56b7477"
+  },
+  {
+    "file": "e1ec0dfb89f35b8d-jankson-1.2.2.jar",
+    "id": "blue_endless_jankson",
+    "version": "1.2.2",
+    "embedded_compile_dependency": true,
+    "size_bytes": 75792,
+    "sha256": "e1ec0dfb89f35b8dc4219bbe99434b05f40aad7c2e76272a32a2a2e705fa433c"
+  },
+  {
+    "file": "e453d6f33b058456-fabric-rendering-fluids-v1-3.1.43+4ebb5c083e.jar",
+    "id": "fabric-rendering-fluids-v1",
+    "version": "3.1.43+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 31654,
+    "sha256": "e453d6f33b05845633f53161cf7aeee9748b8ebfb574330600e784fd4e1d28e3"
+  },
+  {
+    "file": "e6cd68a793a1b7bb-TRender-1.0.10-1.21.11-fabric-SNAPSHOT.jar",
+    "id": "trender",
+    "version": "1.0.10",
+    "embedded_compile_dependency": true,
+    "size_bytes": 380256,
+    "sha256": "e6cd68a793a1b7bb91f3361ef0922fc66cc67b200125330dd659aa4926c9d5b7"
+  },
+  {
+    "file": "e8ab6b9a616eb894-fabric-rendering-fluids-v1-3.1.43+4ebb5c083e.jar",
+    "id": "fabric-rendering-fluids-v1",
+    "version": "3.1.43+4ebb5c083e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 26895,
+    "sha256": "e8ab6b9a616eb8949b77f592caa99d1e2c1b3307b7e44b9a9f8d74e2ed572cde"
+  },
+  {
+    "file": "efb2bc27cdd1da26-fabric-sound-api-v1-1.0.51+4fc5413f3e.jar",
+    "id": "fabric-sound-api-v1",
+    "version": "1.0.51+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 14752,
+    "sha256": "efb2bc27cdd1da261c4bab89946ed84303cb9fce9428456ab180f20837a4dd2c"
+  },
+  {
+    "file": "f4af2a7b630bc82f-fabric-loot-api-v2-3.0.73+3f89f5a53e.jar",
+    "id": "fabric-loot-api-v2",
+    "version": "3.0.73+3f89f5a53e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 20139,
+    "sha256": "f4af2a7b630bc82f25e0f1cceaa5ae3fbe60a6ebe762704ff302080fbff59636"
+  },
+  {
+    "file": "fa2d2ceebdbc24ea-fabric-game-rule-api-v1-2.0.3+4fc5413f3e.jar",
+    "id": "fabric-game-rule-api-v1",
+    "version": "2.0.3+4fc5413f3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 55248,
+    "sha256": "fa2d2ceebdbc24eaf7ad674e18ddc5d7c2289e395ae4acff1f07a778ee5be7a7"
+  },
+  {
+    "file": "fbc4dd873f2b488e-fabric-transitive-access-wideners-v1-7.0.8+0107c3da3e.jar",
+    "id": "fabric-transitive-access-wideners-v1",
+    "version": "7.0.8+0107c3da3e",
+    "embedded_compile_dependency": true,
+    "size_bytes": 11953,
+    "sha256": "fbc4dd873f2b488e24950867d09b21a8538b2f61c1dd06d47d6c58af1ed7cb60"
+  }
+]
