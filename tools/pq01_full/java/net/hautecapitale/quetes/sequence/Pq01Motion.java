@@ -29,7 +29,7 @@ public final class Pq01Motion {
     if(last!=null&&at.distance2(last)>0.0004)stalled=0;else stalled++;last=at;
     if(!at.dimension.equals(target.dimension)){fail("dimension changée");return;}
     if(arrived(at)){finish();return;}
-    if(++ticks>=timeout){fail("délai de déplacement dépassé");return;}
+    if(++ticks>=timeout){fail("délai de déplacement dépassé ; position="+at+", destination="+target+", distance="+Math.sqrt(at.distance2(target)));return;}
     if(ticks%20==0&&!port.navigating()&&!port.navigate(target)&&stalled>=60)fail("aucun chemin utilisable après plusieurs tentatives ; position="+at+", destination="+target);
   }
   private boolean arrived(Point at){return Math.abs(at.y-target.y)<=0.75&&at.distance2(target)<=radius*radius;}

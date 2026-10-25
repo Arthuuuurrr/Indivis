@@ -6,7 +6,7 @@ sys.path.insert(0,str(ROOT/'work/pq01_rebuild'))
 from model import N,IDS,ROLES
 R2=HERE/'r2'
 JAR=ROOT/'upload/haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b.jar'
-FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip','journal':'haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF10.jar'}
+FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip','journal':'haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF11.jar'}
 def sha(b):return hashlib.sha256(b).hexdigest()
 def load(p):
  with zipfile.ZipFile(p) as z:assert z.testzip() is None;return {n:z.read(n) for n in z.namelist() if not n.endswith('/')}
@@ -105,7 +105,7 @@ def build():
  vis='net/hautecapitale/quetes/visibility/QuestVisibility.class';inp=HERE/'QuestVisibility.original.class';inp.write_bytes(packs['journal'][vis]);patched=HERE/'QuestVisibility.patched.class'
  run(['java',*exports,'-cp',classes,'PatchVisibility',inp,patched],'patch.log');packs['journal'][vis]=patched.read_bytes()
  for p in sorted((classes/'net/hautecapitale').rglob('*.class')):packs['journal'][str(p.relative_to(classes))]=p.read_bytes()
- meta=json.loads(packs['journal']['fabric.mod.json']);meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF10';meta['description']+=' PQ01-R3-HF10 : filtrage réseau des scènes personnelles et actualisations regroupées.'
+ meta=json.loads(packs['journal']['fabric.mod.json']);meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF11';meta['description']+=' PQ01-R3-HF11 : marche des acteurs et reprise de scène, filtrage personnel conservé.'
  meta['entrypoints']['main'].append('net.hautecapitale.quetes.sequence.Pq01Initializer')
  meta['entrypoints'].setdefault('client',[]).append('net.hautecapitale.quetes.sequence.Pq01Client')
  dialogue=load(next((ROOT/'upload').glob('haute-capitale-dialogue*.jar')));dialogue_id=json.loads(dialogue['fabric.mod.json'])['id'];meta['depends'][dialogue_id]='>=0.1.0'

@@ -59,6 +59,7 @@ public final class Pq01MultiWorldBench implements ModInitializer {
     GuardNbt.put(points,"perrin_a",pointNbt(pos(Pq01WorldBench.perrinSource,world)));GuardNbt.put(points,"perrin_b",pointNbt(new Pq01Motion.Point(dimension(world),4.5,64,4.5)));GuardNbt.save(server,"capitale:pq01_setup",data);
     Object p=players.get(0);run(p,"function capitale:pq01/load");
     for(String key:List.of("CAP_PROFILE_LOCK","CAP_QDIALOG_OWNER","CAP_QDIALOG_KEEP","CAP_QSEQ","hcq_pq01"))run(p,"scoreboard objectives add "+key+" dummy");
+    run(p,"attribute "+uuid(Pq01WorldBench.source)+" minecraft:movement_speed base set 0.02");
     run(p,"attribute "+uuid(Pq01WorldBench.perrinSource)+" minecraft:movement_speed base set 0");
     for(Object x:players){score(x,"hcq_pq01",0);score(x,"CAP_PROFILE_LOCK",0);score(x,"hcm_pq1_active",0);score(x,"CAP_QDIALOG_OWNER",0);}
     score(players.get(2),"hcq_pq01",100);

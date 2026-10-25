@@ -1,0 +1,17 @@
+FAIL java.lang.AssertionError: leg 1 reaches destination before timeout; ticks=300 remaining=9.013878188659973 actorBase=20
+	at knot//net.hautecapitale.quetes.sequence.Pq01WalkRegressionBench.check(Pq01WalkRegressionBench.java:21)
+	at knot//net.hautecapitale.quetes.sequence.Pq01WalkRegressionBench.tick(Pq01WalkRegressionBench.java:54)
+	at knot//net.hautecapitale.quetes.sequence.Pq01WalkRegressionBench.lambda$onInitialize$2(Pq01WalkRegressionBench.java:19)
+	at knot//net.hautecapitale.quetes.sequence.Pq01Bridge.lambda$event$6(Pq01Bridge.java:108)
+	at knot/jdk.proxy2/jdk.proxy2.$Proxy32.onEndTick(Unknown Source)
+	at knot//net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.lambda$static$2(ServerTickEvents.java:55)
+	at knot//net.minecraft.server.MinecraftServer.handler$zfp000$fabric-lifecycle-events-v1$onEndTick(MinecraftServer.java:3359)
+	at knot//net.minecraft.server.MinecraftServer.method_3748(MinecraftServer.java:1040)
+	at knot//net.minecraft.class_3176.method_3748(class_3176.java:318)
+	at knot//net.minecraft.server.MinecraftServer.method_76677(MinecraftServer.java:1049)
+	at knot//net.minecraft.server.MinecraftServer.method_29741(MinecraftServer.java:771)
+	at knot//net.minecraft.server.MinecraftServer.method_29739(MinecraftServer.java:301)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+source movement speed deliberately 0.02
+real production approach starts during a2

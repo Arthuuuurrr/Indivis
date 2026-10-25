@@ -1,19 +1,17 @@
 # Statut PQ01
 
-**Framerate : régression signalée le 24 octobre 2026, cause encore non identifiée.** Le profil reçu contient uniquement le thread serveur (environ 20 TPS, MSPT médian 9,62 ms), sans rendu client. Les tests HF10 ne valident donc pas les FPS. [Analyse et capture client nécessaire](pq01-dirigeable-r3/audit/SPARK_GiYiuD2gYw_2026-10-24.md).
+Version actuelle : **journal R3-HF11**, core **R3-HF9**, datapack `hc_quetes` **R3-HF4**.
 
-Version actuelle : **journal R3-HF10**, core **R3-HF9**, datapack `hc_quetes` **R3-HF4** conservé.
+Le retour du 25 octobre signale Gautier très lent et une scène dégradée, sans problème de framerate sur ce passage. Le serveur et le client chargent HF10 ; le trajet expire après les 300 ticks prévus. Le profil client joint se termine avant la conversation, et ne mesure pas ce trajet. La vitesse réelle du PNJ source n’est pas présente dans les logs.
 
-Les scènes utilisent des copies personnelles. HF10 refuse les acteurs des autres joueurs avant les contrôles historiques et regroupe les rafraîchissements de visibilité par joueur/tick. La création de deux acteurs passe de deux parcours natifs en HF9 à un en HF10 dans le même banc. Gautier n’a plus de copie d’ambiance inactive ; ses scènes et sa marche restent disponibles.
+Un défaut de HF10 est reproduit en monde Fabric : une vitesse de décor positive à 0,02 reste héritée par la copie et l’approche expire. HF11 impose un plancher de base 0,25 uniquement aux copies mobiles Gautier/Perrin ; Gautier navigue avec un coefficient 1,0, Perrin conserve 0,65. Les originaux gardent leurs attributs et positions. Les expirations décrivent position, destination et distance restante dans le journal. Aucun TP ajouté et délai borné conservé.
 
-Les 48 contrôles multijoueur passent avec deux scènes et deux Perrin simultanés, un observateur et un arrivant tardif : aucun paquet de création d’acteur privé étranger, marche réelle, fermeture indépendante, changement de personnage et déconnexion. Le vrai QuestVisibility, son mixin d’origine, les trackers et paquets Minecraft sont exécutés. Connexions, chunks reçus et profils Nexus synthétiques ; aucun FPS graphique mesuré. La visibilité privée passait aussi dans le banc HF9 de référence : aucune fuite supposée n’est présentée comme une cause prouvée de FPS.
+Le même test passe après correction : approche à neuf blocs en 83 ticks, retour en 75 ; aller 24 blocs en 185 ticks, retour en 157. Les 12 contrôles de marche s’ajoutent aux 48 multijoueur, 1 161 de fonctions/capture/audio, 25 de scène, 26 en monde Fabric, 15 d’activité de Perrin, 44 client et 191 de capture b10 intacte.
 
-Les régressions de lecture, orientation et doublage passent : 1 161 contrôles de fonctions/capture, 25 de scène, 26 en monde réel, 15 d’activité, 44 de lecture client, 191 de capture b10 intacte. Textes, 95 identifiants, 92 prises, blocs manuels, choix verts, file audio et code client HF9 conservés.
+Les textes, blocs manuels, questions et conclusion verte, prises et hooks de doublage sont conservés. Le code client de lecture, le filtre personnel, Pq01Actors et les mixins sont identiques à HF10. Core identique à HF9 et hc_quetes identique à HF4 ; gardes et zones sûres du messager préservés. Aucun parcours complet de la séquence I sur la carte utilisateur.
 
-Perrin marche dans le banc, y compris sur un trajet d’un bloc et au quai. L’état de ses points sur la carte utilisateur reste inconnu : aucune ligne PERRIN_DIAG dans les nouveaux logs. Les échecs de ronde et points manquants produisent maintenant un diagnostic automatique sans texte parasite. Le gain de FPS du modpack et l’immobilité propre à cette carte ne sont pas déclarés résolus. Les erreurs NativeLayers23/transition Nexus du client HF5 sont documentées séparément.
+Remplacer seulement le JAR sur le serveur et chaque client. Aucune commande de pose changée, aucun reset ou reliaison. Aucun Nexus inchangé redistribué.
 
-Remplacer uniquement le JAR de quêtes/journal sur le serveur et tous les clients. Conserver core HF9 et hc_quetes HF4. Aucun reset, aucune nouvelle liaison ni pose. Les gardes, zones sûres du messager et la séquence I sont conservés ; aucun parcours complet de la carte utilisateur. Aucun Nexus inchangé redistribué.
+[Marche et preuves HF11](pq01-dirigeable-r3/HOTFIX_MARCHE_R3_HF11.md) · [installation complète](pq01-dirigeable-r3/docs/INSTALLATION_ET_POSE_PNJ.md) · [validation](pq01-dirigeable-r3/audit/hf11_validation.json).
 
-[Changements HF10](pq01-dirigeable-r3/HOTFIX_MULTIJOUEUR_R3_HF10.md) · [installation et pose](pq01-dirigeable-r3/docs/INSTALLATION_ET_POSE_PNJ.md) · [preuves](pq01-dirigeable-r3/audit/hf10_validation.json).
-
-PR nº177 en brouillon ; aucun merge ni déploiement, aucun log brut utilisateur publié.
+Le cas contrôlé ne prouve pas la vitesse du PNJ de la carte utilisateur. La géométrie du navire reste hors banc ; connexions/profils Nexus synthétiques, caméra/panneau doublés dans la scène couplée. Aucune validation de FPS revendiquée ; [analyse du précédent profil serveur](pq01-dirigeable-r3/audit/SPARK_GiYiuD2gYw_2026-10-24.md) conservée. PR nº177 en brouillon, sans merge ni déploiement. Aucun log brut utilisateur publié.

@@ -35,9 +35,9 @@ public final class Pq01Bridge {
       try{return k.newInstance(a);}catch(ReflectiveOperationException e){throw new IllegalStateException(c,e);}
     }throw new IllegalStateException("Constructeur absent : "+c);
   }
-  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF10] "+e);e.printStackTrace(System.err);}}
+  static void report(Throwable e){if(ERRORS.add(e.toString())){System.err.println("[Indivis PQ01-R3-HF11] "+e);e.printStackTrace(System.err);}}
   static void say(Object p,String s){run(p,"tellraw @s "+quote("[PQ01] "+s));}
-  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF10] "+text);}
+  static void diagnostic(Object p,String text){if(ERRORS.add(text))System.err.println("[Indivis PQ01-R3-HF11] "+text);}
   static void unavailable(Object p,String reason){diagnostic(p,reason);run(p,"title @s actionbar "+quote("Cette conversation n’est pas disponible pour le moment."));}
   static Object world(Object p){return call(p,"method_51469");}
   static String dimension(Object world){return String.valueOf(call(call(world,"method_27983"),"method_29177"));}
@@ -338,11 +338,11 @@ public final class Pq01Bridge {
       Actor a=new Actor(role,e,src,g,t,start);v.actors.put(role,a);
       if(!Boolean.TRUE.equals(call(v.world,"method_8649",e))||call(v.world,"method_66347",fresh)!=e)throw new IllegalStateException("Insertion de l'acteur refusée par le monde.");
       if(role.equals("gautier")||role.equals("perrin")){
-        // Certains PNJ décoratifs ont une vitesse de base nulle. Corriger seulement
-        // l'acteur temporaire ; ne jamais modifier les attributs du PNJ source.
+        // Un PNJ de décor peut aussi avoir une vitesse positive mais trop faible.
+        // La marche de scène a son propre plancher, limité à la copie temporaire.
         run(v.player,"scoreboard players set @s hcm_pq1_temp 0");
         run(v.player,"execute store result score @s hcm_pq1_temp run attribute "+fresh+" minecraft:movement_speed base get 1000");
-        if(score(v.player,"hcm_pq1_temp")<=0)run(v.player,"attribute "+fresh+" minecraft:movement_speed base set 0.25");
+        if(score(v.player,"hcm_pq1_temp")<250)run(v.player,"attribute "+fresh+" minecraft:movement_speed base set 0.25");
       }
       Pq01Actions.mutate(e,"ON_INTERACTION",action(role+"_"+v.phase,"interact"));
       run(v.player,"team join indivis_pq01 "+fresh);refresh(v.player);return a;
@@ -487,14 +487,15 @@ public final class Pq01Bridge {
       public boolean navigating(){Object nav=call(a.entity,"getGroundPathNavigation");return nav!=null&&!Boolean.TRUE.equals(call(nav,"method_6357"));}
       public boolean navigate(Pq01Motion.Point t){try{
         Object nav=call(a.entity,"getGroundPathNavigation");if(nav==null)return false;
+        double speed=a.role.equals("gautier")?1.0d:0.65d;
         // Le service court de Perrin vise le bloc exact : le défaut natif accepte
         // un bloc voisin et peut donc finir sans quitter son point de départ.
         if(a.role.equals("perrin")){
-          if(Boolean.TRUE.equals(call(nav,"method_58160",t.x(),t.y(),t.z(),0,0.65d)))return true;
-          return Math.abs(t.y()-Math.ceil(t.y()))>0.01&&Boolean.TRUE.equals(call(nav,"method_58160",t.x(),Math.ceil(t.y()),t.z(),0,0.65d));
+          if(Boolean.TRUE.equals(call(nav,"method_58160",t.x(),t.y(),t.z(),0,speed)))return true;
+          return Math.abs(t.y()-Math.ceil(t.y()))>0.01&&Boolean.TRUE.equals(call(nav,"method_58160",t.x(),Math.ceil(t.y()),t.z(),0,speed));
         }
-        if(Boolean.TRUE.equals(call(nav,"method_6337",t.x(),t.y(),t.z(),0.65d)))return true;
-        return Math.abs(t.y()-Math.ceil(t.y()))>0.01&&Boolean.TRUE.equals(call(nav,"method_6337",t.x(),Math.ceil(t.y()),t.z(),0.65d));
+        if(Boolean.TRUE.equals(call(nav,"method_6337",t.x(),t.y(),t.z(),speed)))return true;
+        return Math.abs(t.y()-Math.ceil(t.y()))>0.01&&Boolean.TRUE.equals(call(nav,"method_6337",t.x(),Math.ceil(t.y()),t.z(),speed));
       }catch(RuntimeException e){report(e);return false;}}
       public void stop(){try{Pq01Bridge.stop(a);}catch(RuntimeException e){report(e);}}
       public void arrived(){done.run();}
@@ -520,7 +521,7 @@ public final class Pq01Bridge {
     Pq01Motion.Point pa=configuredPoint(p,"perrin_a",null),pb=configuredPoint(p,"perrin_b",null);
     String reason=integer(setup(p),"ambient_enabled",1)==0?"ambiance désactivée":!available(p)?"personnage indisponible":score(p,"hcq_pq01")>=100?"prologue déjà terminé":src==null?"liaison absente ou source non chargée dans cette dimension":pos(src,world(p)).distance2(pos(p,world(p)))>24*24?"source à plus de 24 blocs":pa==null||pb==null?"point A/B manquant dans cette dimension":a==null?"acteur absent, attendre le prochain tick d'ambiance":dialogue(p)&&"perrin".equals(v.cameraRole)?"conversation de Perrin active":a.motion!=null&&!a.motion.done()?"navigation en cours":!a.failure.isEmpty()?a.failure:"pause entre deux trajets";
     String speed="sans acteur";if(alive(a)){run(p,"scoreboard players set @s hcm_pq1_temp 0");run(p,"execute store result score @s hcm_pq1_temp run attribute "+a.id+" minecraft:movement_speed get 1000");speed=String.valueOf(score(p,"hcm_pq1_temp")/1000d);}
-    String line="[Indivis PERRIN_DIAG HF10] phase="+phase(p)+" progression="+score(p,"hcq_pq01")+" ambient="+integer(setup(p),"ambient_enabled",1)+" player="+pos(p,world(p))+" source="+(src==null?"absente":pos(src,world(p)))+" A="+pa+" B="+pb+" actor="+(alive(a)?pos(a.entity,v.world):"absent")+" effectiveSpeed="+speed+" cause="+reason;
+    String line="[Indivis PERRIN_DIAG HF11] phase="+phase(p)+" progression="+score(p,"hcq_pq01")+" ambient="+integer(setup(p),"ambient_enabled",1)+" player="+pos(p,world(p))+" source="+(src==null?"absente":pos(src,world(p)))+" A="+pa+" B="+pb+" actor="+(alive(a)?pos(a.entity,v.world):"absent")+" effectiveSpeed="+speed+" cause="+reason;
     if(notify||ERRORS.add(line))System.out.println(line);
     if(notify)run(p,"title @s actionbar "+quote("Diagnostic de Perrin écrit dans le journal serveur."));
   }

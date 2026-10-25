@@ -2,13 +2,9 @@
   "journal": {
     "changed": [
       "fabric.mod.json",
-      "net/hautecapitale/quetes/sequence/Pq01Actors.class",
       "net/hautecapitale/quetes/sequence/Pq01Bridge$1.class",
-      "net/hautecapitale/quetes/sequence/Pq01Bridge$Actor.class",
-      "net/hautecapitale/quetes/sequence/Pq01Bridge$NearState.class",
-      "net/hautecapitale/quetes/sequence/Pq01Bridge$View.class",
       "net/hautecapitale/quetes/sequence/Pq01Bridge.class",
-      "net/hautecapitale/quetes/visibility/QuestVisibility.class"
+      "net/hautecapitale/quetes/sequence/Pq01Motion.class"
     ],
     "added": [],
     "removed": [],

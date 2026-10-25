@@ -1,20 +1,27 @@
 {
-  "source": "Three user-provided logs dated 2026-10-24, inspected locally; raw logs excluded",
-  "versions": {
-    "server": "HF9",
-    "client_A": "HF5",
-    "client_B": "HF9",
-    "Nexus": "PRE34-SI1"
+  "date": "2026-10-25",
+  "logs_inspected": 2,
+  "server_journal": "HF10",
+  "client_journal": "HF10",
+  "observed_approach_start_server": "14:00:16",
+  "observed_timeout_server": "14:00:31",
+  "observed_timeout_ticks": 300,
+  "actual_source_speed_in_logs": null,
+  "client_profile": "yLqNe1IYwS.sparkprofile",
+  "client_profile_start_paris": "2026-10-25T14:58:49.929+01:00",
+  "client_profile_end_paris": "2026-10-25T14:59:50.364+01:00",
+  "first_Geraud_conversation_client": "15:00:12",
+  "profile_covers_Gautier_scene": false,
+  "user_reported_fps_problem_this_run": false,
+  "reproduced_case": {
+    "original_source_speed": 0.02,
+    "HF10_actor_speed": 0.02,
+    "HF10_timeout_ticks": 300,
+    "HF11_actor_speed_floor": 0.25,
+    "HF11_outbound_ticks": 83,
+    "HF11_return_ticks": 75,
+    "HF11_24_block_outbound_ticks": 185,
+    "HF11_24_block_return_ticks": 157
   },
-  "findings": {
-    "native_layers_failures_client_A": 4,
-    "native_layers_failures_client_B": 0,
-    "client_A_skinlayers3d_loaded": false,
-    "client_B_skinlayers3d": "1.10.2",
-    "gautier_approach_timeouts": 1,
-    "perrin_diagnostic_lines": 0,
-    "startup_tick_delay_ms": 3053
-  },
-  "causality": "No render frame profile or sustained tick metrics; no proven sole FPS root cause. Version difference and Nexus failures are observations, not attribution.",
-  "privacy": "No player names, account UUIDs, IPs or raw logs included"
+  "causality_limit": "Weakness reproduced with a controlled source; no claim that the actual source has speed 0.02. Raw logs, names, UUIDs and network addresses excluded."
 }

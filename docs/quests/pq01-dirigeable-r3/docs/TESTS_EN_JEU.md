@@ -1,4 +1,4 @@
-# Rejouer PQ01 et effectuer la recette — HF10
+# Rejouer PQ01 et effectuer la recette — HF11
 
 ## Relecture personnelle sans récompenses
 
@@ -70,9 +70,9 @@ Tant que R3 est présent, terminer chaque relecture avec `test_fin`, fermer les 
 
 Le mode de lecture actuel est celui de cette recette HF9 : pages et blocs manuels.
 
-## Recette multijoueur HF10
+## Recette multijoueur HF11
 
-1. Installer le journal HF10 sur le serveur et tous les clients, en conservant le core HF9. Les logs reçus montraient un client HF5 et un client HF9 ; cela ne prouve pas la cause des chutes de FPS.
+1. Installer le journal HF11 sur le serveur et tous les clients, en conservant le core HF9. Les logs reçus montraient un client HF5 et un client HF9 ; cela ne prouve pas la cause des chutes de FPS.
 2. Deux joueurs parlent à Géraud en même temps. Chacun voit son Gautier approcher et rester pendant son dialogue. Un observateur, puis un joueur qui arrive pendant la scène, voient les originaux et aucun double des deux scènes.
 3. Fermer le dialogue du premier joueur : le second continue et ses acteurs restent présents. Le premier peut reprendre au clic droit.
 4. Vérifier la marche aller/retour de Perrin avant toute progression puis après l’amarrage, avec deux joueurs proches. Le dialogue de Perrin suspend sa marche ; après fermeture, son activité reprend.
@@ -80,3 +80,9 @@ Le mode de lecture actuel est celui de cette recette HF9 : pages et blocs manuel
 6. Rejouer les questions de Géraud et du capitaine, parcourir toutes les pages à son rythme, puis choisir explicitement la réponse verte.
 
 Le banc valide le suivi réseau réel et la navigation. Le gain de FPS du modpack doit être mesuré en jeu : les logs reçus ne contiennent pas de profil de rendu. Les erreurs Nexus de NativeLayers23 et de transition du client HF5 sont distinctes et ne sont pas corrigées dans ce JAR.
+
+## Recette HF11 — Gautier
+
+Après remplacement du seul JAR sur le serveur et les clients, reprendre au clic droit sur Géraud. Gautier doit commencer à marcher pendant A2, parler pendant l’approche si le joueur avance, rester pendant l’échange et revenir à son poste après sa dernière réplique. Fermer et rouvrir la conversation doit réutiliser une scène valide et laisser les autres joueurs continuer. Les blocs restent manuels et la conclusion du capitaine demeure verte.
+
+Le cas natif d’une source à vitesse 0,02 échoue à 300 ticks en HF10 et passe en HF11. Le test ne déduit pas la vitesse réelle du Gautier de la carte utilisateur. Si un autre trajet expire, conserver la nouvelle ligne avec position, destination et distance pour distinguer vitesse et obstacle.

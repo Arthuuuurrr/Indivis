@@ -1,11 +1,11 @@
-"""Livraison HF10 : seul JAR changé, guides complets et preuves synthétiques."""
+"""Livraison HF11 : seul JAR changé, guides complets et preuves synthétiques."""
 from pathlib import Path
 import hashlib,json,re,shutil,zipfile
 import build
 ROOT=build.ROOT;HERE=build.HERE;OUT=build.OUT
-NAME='Indivis_PQ01_R3_HF10_2026-10-24';DEST=ROOT/'deliverables'/NAME
+NAME='Indivis_PQ01_R3_HF11_2026-10-25';DEST=ROOT/'deliverables'/NAME
 def release():
-    audit=OUT/'hf10_audit';validation=json.loads((audit/'validation.json').read_text());assert validation['status']=='PASS'
+    audit=OUT/'hf11_audit';validation=json.loads((audit/'validation.json').read_text());assert validation['status']=='PASS'
     if DEST.exists():shutil.rmtree(DEST)
     DEST.mkdir(parents=True)
     def copy(source,name):
@@ -14,7 +14,7 @@ def release():
     assert hashlib.sha256(p.read_bytes()).hexdigest()==journal['sha256']
     assert validation['core_datapack_byte_identical_to_HF9'] and validation['quest_datapack_byte_identical_to_HF4']
     copy(p,'installation/mods/'+p.name)
-    for name,target in [('README.md','README.md'),('INSTALLATION_ET_POSE_PNJ.md','docs/INSTALLATION_ET_POSE_PNJ.md'),('HOTFIX_MULTIJOUEUR_R3_HF10.md','HOTFIX_MULTIJOUEUR_R3_HF10.md'),('TESTS_EN_JEU.md','docs/TESTS_EN_JEU.md')]:copy(HERE/'reference_docs'/('HF10_'+name),target)
+    for name,target in [('README.md','README.md'),('INSTALLATION_ET_POSE_PNJ.md','docs/INSTALLATION_ET_POSE_PNJ.md'),('HOTFIX_MARCHE_R3_HF11.md','HOTFIX_MARCHE_R3_HF11.md'),('TESTS_EN_JEU.md','docs/TESTS_EN_JEU.md')]:copy(HERE/'reference_docs'/('HF11_'+name),target)
     for p in audit.iterdir():
         if p.is_file() and p.suffix in {'.json','.txt','.log'}:copy(p,'audit/'+p.name)
     (DEST/'SHA256SUMS').write_text(journal['sha256']+'  installation/mods/'+journal['filename']+'\n')
