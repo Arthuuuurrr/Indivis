@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "id": "elfe_sylvestre_v2",
+  "name": "Elfe des Bois — Gardienne des clairières",
+  "race": "wood_elf",
+  "skin": "player_v69_b4_e2_ec4_ey2_h09_hc03_s09_o29_fh0_fc00_mk0_mc0",
+  "height": 0.94,
+  "build": 0.88,
+  "ears": "upswept",
+  "beard": "none",
+  "slim": true
+}

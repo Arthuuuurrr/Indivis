@@ -1,0 +1,73 @@
+{
+  "collection": "morphologies-v2",
+  "mod_sha256_unchanged": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+  "original_presets_unchanged": {
+    "elfe_des_bois": "132fffbad8310a75ca8434d052555b8f3db87669ffea6b067d911163343bd59b",
+    "haut_elfe_ivoire": "9b59b34efcced11126b1611e6a63e36b2210432cd42d3f575aba2426304971bc",
+    "nain_bronze": "b106e4fadea26f1d73a13a2584081f22ec00506180493ee9de740b4936fe6bcb",
+    "naine_forge": "9546a4f82b7e518473027ce5ff663b389b0363ed72c45dc56eb143d2b8d8b74a",
+    "nordique_roux": "de8c53d7d4a9f42e5e2eaf54e70923c93a3978ceae6ea990fa940a35108d1c0d"
+  },
+  "new_presets": [
+    {
+      "version": 1,
+      "id": "haut_elfe_sentinelle_v2",
+      "name": "Haut-Elfe — Sentinelle d’argent",
+      "race": "high_elf",
+      "skin": "player_v69_b1_e3_ec6_ey2_h04_hc12_s02_o26_fh0_fc00_mk0_mc0",
+      "height": 1.07,
+      "build": 0.86,
+      "ears": "long",
+      "beard": "none",
+      "slim": false
+    },
+    {
+      "version": 1,
+      "id": "elfe_sylvestre_v2",
+      "name": "Elfe des Bois — Gardienne des clairières",
+      "race": "wood_elf",
+      "skin": "player_v69_b4_e2_ec4_ey2_h09_hc03_s09_o29_fh0_fc00_mk0_mc0",
+      "height": 0.94,
+      "build": 0.88,
+      "ears": "upswept",
+      "beard": "none",
+      "slim": true
+    },
+    {
+      "version": 1,
+      "id": "nain_artisan_v2",
+      "name": "Nain — Artisan des montagnes",
+      "race": "dwarf",
+      "skin": "player_v69_b1_e1_ec7_ey2_h03_hc02_s04_o25_fh0_fc00_mk0_mc0",
+      "height": 0.82,
+      "build": 1.15,
+      "ears": "none",
+      "beard": "braided#brown",
+      "slim": false
+    },
+    {
+      "version": 1,
+      "id": "naine_artisane_v2",
+      "name": "Naine — Artisane des montagnes",
+      "race": "dwarf",
+      "skin": "player_v69_b4_e2_ec3_ey2_h10_hc02_s04_o19_fh0_fc00_mk0_mc0",
+      "height": 0.82,
+      "build": 1.15,
+      "ears": "none",
+      "beard": "short#brown",
+      "slim": true
+    },
+    {
+      "version": 1,
+      "id": "nordique_eclaireur_v2",
+      "name": "Nordique — Éclaireur des fjords",
+      "race": "nordic",
+      "skin": "player_v69_b1_e1_ec5_ey2_h12_hc06_s03_o28_fh6_fc06_mk0_mc0",
+      "height": 1.07,
+      "build": 1.11,
+      "ears": "none",
+      "beard": "none",
+      "slim": false
+    }
+  ]
+}

@@ -17,7 +17,7 @@ final class NpcDataRegression {
   var dialog=new DialogDataEntry("quest_sentinel","Texte de quête inchangé","test_quest");npc.getEasyNPCDialogData().setDialog(dialog.getId(),dialog);
   var root=new RootModelData(new CustomRotation(0,17,0),new CustomScale(.95f,1.03f,.93f));npc.getEasyNPCModelData().setModelRootData(root);
   class_2487 original=NpcIntegrationTest.snapshot(entity);
-  for(String id:PresetStore.BUILTIN){
+  for(String id:NpcIntegrationTest.presets()){
    var p=PresetStore.load(id);NpcAppearance.apply(entity,p);
    class_2487 a=NpcIntegrationTest.snapshot(entity),b=NpcIntegrationTest.snapshot(entity); // full NBT captured independently below
    b=class_2522.method_67315(original.toString());appearance(a);appearance(b);

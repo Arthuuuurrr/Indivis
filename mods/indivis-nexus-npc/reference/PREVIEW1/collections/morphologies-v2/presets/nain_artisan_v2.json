@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "id": "nain_artisan_v2",
+  "name": "Nain — Artisan des montagnes",
+  "race": "dwarf",
+  "skin": "player_v69_b1_e1_ec7_ey2_h03_hc02_s04_o25_fh0_fc00_mk0_mc0",
+  "height": 0.82,
+  "build": 1.15,
+  "ears": "none",
+  "beard": "braided#brown",
+  "slim": false
+}

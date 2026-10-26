@@ -16,6 +16,8 @@ public final class NpcIntegrationTest implements ClientModInitializer {
  static final Path OUT=Path.of(System.getProperty("npcqa.out"));
  static final boolean RELOAD=Boolean.getBoolean("npcqa.reload");
  static final boolean FUTURE=Boolean.getBoolean("npcqa.future");
+ static final boolean COLLECTION=Boolean.getBoolean("npcqa.collection");
+ static List<String> presets(){return COLLECTION?CollectionV2.IDS:PresetStore.BUILTIN;}
  static int tick,stage,worldTick,checks,initialCharacters;
  static volatile boolean spawned;static boolean failure,done,benchmark;
  static final Map<UUID,String> ids=new ConcurrentHashMap<>();
@@ -30,8 +32,9 @@ public final class NpcIntegrationTest implements ClientModInitializer {
   if(stage==0){
    if(c.field_1755==null||c.method_18506()!=null||++tick<80)return;
    Files.createDirectories(OUT);
+   if(COLLECTION)CollectionV2.validate();
    if(RELOAD){selectCharacter();c.method_41735().method_57784("npc-isolated",()->{});stage=4;tick=0;return;}
-   for(String id:PresetStore.BUILTIN){NpcPreset p=PresetStore.load(id);check(NpcPreset.parse(p.json()).equals(p),"Preset JSON roundtrip "+id);results.add("PRESET "+p.json().replace('\n',' '));}
+   for(String id:presets()){NpcPreset p=PresetStore.load(id);check(NpcPreset.parse(p.json()).equals(p),"Preset JSON roundtrip "+id);results.add("PRESET "+p.json().replace('\n',' '));}
    try{NpcPreset.parse(PresetStore.load("haut_elfe_ivoire").json().replace("_s02_","_s00_"));throw new AssertionError("Invalid recipe silently became Steve");}catch(IllegalArgumentException expected){checks++;}
    check(!NexusNpc.admin(class_2170.method_75745(permission->false)),"No-permission source may edit");
    for(int level=0;level<=4;level++)check(NexusNpc.admin(class_2170.method_75745(class_12086.method_75010(class_12094.method_75027(level))))==(level==4),"Wrong OP level threshold "+level);
@@ -81,8 +84,10 @@ public final class NpcIntegrationTest implements ClientModInitializer {
   if(worldTick==220)capture(c,"presets-face.png");
   if(worldTick==230){var camera=new class_745(c.field_1687,new com.mojang.authlib.GameProfile(UUID.fromString("00000000-0000-0000-0000-000000000099"),"CameraQa"));camera.method_5808(0,100,10,180,0);camera.field_6241=camera.field_6259=180;camera.field_5982=180;c.method_1504(camera);}
   if(worldTick==250)capture(c,"presets-dos.png");
-  if(worldTick<260)return;
-  for(String id:PresetStore.BUILTIN)check(seen.getOrDefault(id,0)>5,"No actual EasyNPC 3D render for "+id+" seen="+seen);
+  if(COLLECTION&&worldTick==260){var camera=new class_745(c.field_1687,new com.mojang.authlib.GameProfile(UUID.fromString("00000000-0000-0000-0000-000000000098"),"CameraObliqueQa"));camera.method_5808(-4,100,0,-35,0);camera.field_6241=camera.field_6259=-35;camera.field_5982=-35;c.method_1504(camera);}
+  if(COLLECTION&&worldTick==280)capture(c,"presets-trois-quarts.png");
+  if(worldTick<(COLLECTION?290:260))return;
+  for(String id:presets())check(seen.getOrDefault(id,0)>5,"No actual EasyNPC 3D render for "+id+" seen="+seen);
   if(FUTURE)check(seen.getOrDefault("future930",0)>5,"New asset IDs were not rendered on a real EasyNPC");
   check(NpcClientBridge.cosmeticDraws>25,"Actual cosmetic feature absent");check(NpcClientBridge.cacheHits>50,"No reuse of appearance preparations");
   results.add("NPC_CLIENT_PASS checks="+checks+" seen="+seen+" preparations="+NpcClientBridge.preparations+" hits="+NpcClientBridge.cacheHits+" layers="+NpcClientBridge.cosmeticDraws);
@@ -94,7 +99,7 @@ public final class NpcIntegrationTest implements ClientModInitializer {
   var server=c.method_1576();var world=server.method_30002();
   for(String command:List.of("fill -12 99 -12 12 99 12 minecraft:stone","fill -12 100 -12 12 104 12 minecraft:air","tp @a 0 100 0 0 0","time set noon","weather clear"))server.method_3734().method_44252(server.method_3739(),command);
   int i=0;
-  for(String id:PresetStore.BUILTIN){
+  for(String id:presets()){
    NpcPreset preset=PresetStore.load(id);
    var source=server.method_3739().method_9208(new class_243((i++-2)*1.7,100,5));
    class_1297 entity=NexusNpc.spawn(source,preset);entity.method_36456(180);entity.method_36457(0);if(entity instanceof class_1309 living){living.method_5847(180);living.method_5636(180);}if(entity instanceof class_1308 mob)mob.method_5977(true);

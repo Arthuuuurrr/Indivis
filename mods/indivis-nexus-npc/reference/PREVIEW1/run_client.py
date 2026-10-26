@@ -1,11 +1,13 @@
 from pathlib import Path
 import os,json,shutil,zipfile,hashlib,subprocess,time,datetime,sys
 R=Path(__file__).resolve().parent;RT=R.parent/'pre31/runtime';J=R.parent/'pre31/jdk/bin'
-stamp=datetime.datetime.now(datetime.UTC).strftime('%Y%m%dT%H%M%S');kind=os.environ.get('NPC_QA_MODE','npc');menus=kind.startswith('menus');baseline=kind=='menus-baseline'
+stamp=datetime.datetime.now(datetime.UTC).strftime('%Y%m%dT%H%M%S');kind=os.environ.get('NPC_QA_MODE','npc');menus=kind.startswith('menus');baseline=kind=='menus-baseline';collection=kind=='collection'
 G=R/'qa/games'/stamp;M=G/'mods';M.mkdir(parents=True)
 reload_from=os.environ.get('NPC_RELOAD_FROM')
 if reload_from:
  old=Path(reload_from).resolve();shutil.copytree(old/'saves',G/'saves');shutil.copytree(old/'config/indivis-nexus-npc',G/'config/indivis-nexus-npc')
+if collection:
+ shutil.copytree(R/'collections/morphologies-v2/staging/config',G/'config',dirs_exist_ok=True)
 for p in (R/'base').glob('*.jar'):shutil.copy2(p,M/p.name)
 addon=R/'Indivis-Nexus-NPC-0.1.0-PREVIEW1-1.21.11.jar'
 if not baseline:shutil.copy2(addon,M/addon.name)
@@ -38,7 +40,8 @@ env=os.environ.copy();display=os.environ.get('NPC_DISPLAY','135');env.update(DIS
 out=G/'evidence';out.mkdir();log=R/'qa'/('client-'+stamp+'.log')
 cmd=[str(J/'java'),'-Xmx2000M','-Dnpcqa.future='+str(kind=='future').lower(),'-Dpre30.baseline='+str(baseline).lower(),'-Dpre35.noMeasurements=true','-Dnpcqa.reload='+str(bool(reload_from)).lower(),'-Dfabric.gameMappingNamespace=intermediary','-Dfabric.runtimeMappingNamespace=intermediary','-Dfabric.gameJarPath='+str(RT/'client-intermediary.jar'),'-Djava.library.path='+str(RT/'natives'),'-Dnpcqa.out='+str(out),'-Dnexuscharacters.pre30.diagnostics=true','-cp',cp,'net.fabricmc.loader.impl.launch.knot.KnotClient','--gameDir',str(G),'--assetsDir',str(RT/'assets'),'--assetIndex','29','--version','1.21.11','--username','NpcQa','--uuid','00000000000000000000000000000001','--accessToken','offline','--width','1920','--height','1080']
 xlog=(G/'xvfb.log').open('w');xs=subprocess.Popen([str(RT/'xvfb/usr/bin/Xvfb-local'),':'+display,'-screen','0','1920x1080x24','-ac','-nolisten','unix','-nolisten','local','-listen','tcp'],env=env,stdout=xlog,stderr=subprocess.STDOUT)
-cmd.insert(1,'-Dnpcqa.visual='+str(kind=='visual').lower())
+cmd.insert(1,'-Dnpcqa.visual='+str(kind=='visual' or collection).lower())
+cmd.insert(1,'-Dnpcqa.collection='+str(collection).lower())
 start=time.time();time.sleep(1);print('NPC_CLIENT_START',stamp,flush=True)
 try:
  with log.open('w') as f:result=subprocess.run(cmd,cwd=R.parent,env=env,stdout=f,stderr=subprocess.STDOUT,timeout=420)
@@ -49,7 +52,7 @@ if menus:
  assert (folder/'result.txt').stat().st_mtime>=start and '_FAILURE' not in output,'Menu regression failed'
  shutil.copytree(folder,out,dirs_exist_ok=True);shutil.copytree(geom,out/'geometry',dirs_exist_ok=True);shutil.copy2(folder/'result.txt',out/'pass.txt')
 assert result.returncode==0 and not (out/'failure.txt').exists() and (out/'pass.txt').exists(),'NPC client failure: '+str(out)
-record={'mode':kind if kind=='visual' else 'reload' if reload_from else kind,'jar_sha256':None if baseline else hashlib.sha256(addon.read_bytes()).hexdigest(),'start_utc':datetime.datetime.fromtimestamp(start,datetime.UTC).isoformat(),'end_utc':datetime.datetime.now(datetime.UTC).isoformat(),'game':str(G),'log':str(log),'pass':(out/'pass.txt').read_text()}
+record={'mode':('collection-reload' if reload_from else 'collection') if collection else kind if kind=='visual' else 'reload' if reload_from else kind,'jar_sha256':None if baseline else hashlib.sha256(addon.read_bytes()).hexdigest(),'start_utc':datetime.datetime.fromtimestamp(start,datetime.UTC).isoformat(),'end_utc':datetime.datetime.now(datetime.UTC).isoformat(),'game':str(G),'log':str(log),'pass':(out/'pass.txt').read_text()}
 (R/('qa/last-'+record['mode']+'.json')).write_text(json.dumps(record,indent=2,ensure_ascii=False)+'\n')
 shutil.copytree(out,R/('qa/evidence-'+record['mode']),dirs_exist_ok=True)
 print('NPC_CLIENT_PASS',record['mode'],record['jar_sha256'],str(out),flush=True)

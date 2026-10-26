@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "id": "naine_artisane_v2",
+  "name": "Naine — Artisane des montagnes",
+  "race": "dwarf",
+  "skin": "player_v69_b4_e2_ec3_ey2_h10_hc02_s04_o19_fh0_fc00_mk0_mc0",
+  "height": 0.82,
+  "build": 1.15,
+  "ears": "none",
+  "beard": "short#brown",
+  "slim": true
+}

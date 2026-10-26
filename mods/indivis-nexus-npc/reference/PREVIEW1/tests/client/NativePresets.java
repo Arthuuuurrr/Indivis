@@ -2,6 +2,7 @@ import java.util.*;
 import net.minecraft.*;
 import net.minecraft.server.MinecraftServer;
 import de.markusbordihn.easynpc.io.DefaultPresetDataFiles;
+import de.markusbordihn.easynpc.io.CustomPresetDataFiles;
 import de.markusbordihn.easynpc.handler.PresetHandler;
 import de.markusbordihn.easynpc.data.preset.PresetType;
 import de.markusbordihn.easynpc.entity.easynpc.EasyNPC;
@@ -10,12 +11,14 @@ import fr.indivis.nexusnpc.*;
 /** Uses EasyNPC's own discovery, loading, security, and entity-import path. */
 final class NativePresets {
  static void run(MinecraftServer server) throws Exception {
-  Set<class_2960> identifiers=new HashSet<>(DefaultPresetDataFiles.getPresetIdentifiers(server).toList());
+  boolean custom=NpcIntegrationTest.COLLECTION;
+  if(custom)CustomPresetDataFiles.refreshPresetIdentifiers();
+  Set<class_2960> identifiers=new HashSet<>((custom?CustomPresetDataFiles.getPresetIdentifiers():DefaultPresetDataFiles.getPresetIdentifiers(server)).toList());
   int i=0;
-  for(String id:PresetStore.BUILTIN){
-   var location=class_2960.method_60655("easy_npc","default_preset/indivis_nexus/"+id+".npc.snbt");
+  for(String id:NpcIntegrationTest.presets()){
+   var location=custom?identifiers.stream().filter(x->x.toString().endsWith("/"+id+".npc.snbt")).findFirst().orElseThrow(()->new AssertionError("Custom preset not discovered: "+id+" in "+identifiers)):class_2960.method_60655("easy_npc","default_preset/indivis_nexus/"+id+".npc.snbt");
    NpcIntegrationTest.check(identifiers.contains(location),"Preset absent from EasyNPC browser discovery: "+location);
-   var preset=PresetHandler.loadPreset(location,PresetType.DEFAULT,server);
+   var preset=PresetHandler.loadPreset(location,custom?PresetType.CUSTOM:PresetType.DEFAULT,server);
    NpcIntegrationTest.check(preset!=null&&preset.hasValidData(),"Native preset invalid "+location);
    UUID target=UUID.randomUUID();
    NpcIntegrationTest.check(PresetHandler.importPreset(server.method_30002(),preset,new class_243(-8+i*2,100,-8),target,null),"Native EasyNPC import failed "+id);
