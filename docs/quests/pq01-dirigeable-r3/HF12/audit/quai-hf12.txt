@@ -1,0 +1,178 @@
+PASS 176 quay migration checks
+startup legacy function bound geraud_large
+startup migrated only role action, kept unrelated action geraud_large
+startup function placed geraud_large
+startup function unbound geraud_large
+startup exact original actions restored geraud_large
+startup native bind geraud_large
+startup native unbind geraud_large
+startup legacy function bound altheon_large
+startup migrated only role action, kept unrelated action altheon_large
+startup function placed altheon_large
+startup function unbound altheon_large
+startup exact original actions restored altheon_large
+startup native bind altheon_large
+startup native unbind altheon_large
+startup legacy function bound gautier_large
+startup migrated only role action, kept unrelated action gautier_large
+startup function placed gautier_large
+startup function unbound gautier_large
+startup exact original actions restored gautier_large
+startup native bind gautier_large
+startup native unbind gautier_large
+startup legacy function bound hugues_large
+startup migrated only role action, kept unrelated action hugues_large
+startup function placed hugues_large
+startup function unbound hugues_large
+startup exact original actions restored hugues_large
+startup native bind hugues_large
+startup native unbind hugues_large
+startup legacy function bound anselme_large
+startup migrated only role action, kept unrelated action anselme_large
+startup function placed anselme_large
+startup function unbound anselme_large
+startup exact original actions restored anselme_large
+startup native bind anselme_large
+startup native unbind anselme_large
+startup legacy function bound perrin_large
+startup migrated only role action, kept unrelated action perrin_large
+startup function placed perrin_large
+startup function unbound perrin_large
+startup exact original actions restored perrin_large
+startup native bind perrin_large
+startup native unbind perrin_large
+startup legacy function bound geraud_quai
+startup migrated only role action, kept unrelated action geraud_quai
+startup function placed geraud_quai
+startup function unbound geraud_quai
+startup exact original actions restored geraud_quai
+startup native bind geraud_quai
+startup native unbind geraud_quai
+startup legacy function bound altheon_quai
+startup migrated only role action, kept unrelated action altheon_quai
+startup function placed altheon_quai
+startup function unbound altheon_quai
+startup exact original actions restored altheon_quai
+startup native bind altheon_quai
+startup native unbind altheon_quai
+startup legacy function bound gautier_quai
+startup migrated only role action, kept unrelated action gautier_quai
+startup function placed gautier_quai
+startup function unbound gautier_quai
+startup exact original actions restored gautier_quai
+startup native bind gautier_quai
+startup native unbind gautier_quai
+startup legacy function bound hugues_quai
+startup migrated only role action, kept unrelated action hugues_quai
+startup function placed hugues_quai
+startup function unbound hugues_quai
+startup exact original actions restored hugues_quai
+startup native bind hugues_quai
+startup native unbind hugues_quai
+startup legacy function bound anselme_quai
+startup migrated only role action, kept unrelated action anselme_quai
+startup function placed anselme_quai
+startup function unbound anselme_quai
+startup exact original actions restored anselme_quai
+startup native bind anselme_quai
+startup native unbind anselme_quai
+startup legacy function bound perrin_quai
+startup migrated only role action, kept unrelated action perrin_quai
+startup function placed perrin_quai
+startup function unbound perrin_quai
+startup exact original actions restored perrin_quai
+startup native bind perrin_quai
+startup native unbind perrin_quai
+wrong role from screenshot stays rejected with no write
+same NPC accepted with correct Anselme role
+two legacy triggers stay rejected with no write
+copied custom same-role action migrates to quay
+after reload legacy function bound geraud_large
+after reload migrated only role action, kept unrelated action geraud_large
+after reload function placed geraud_large
+after reload function unbound geraud_large
+after reload exact original actions restored geraud_large
+after reload native bind geraud_large
+after reload native unbind geraud_large
+after reload legacy function bound altheon_large
+after reload migrated only role action, kept unrelated action altheon_large
+after reload function placed altheon_large
+after reload function unbound altheon_large
+after reload exact original actions restored altheon_large
+after reload native bind altheon_large
+after reload native unbind altheon_large
+after reload legacy function bound gautier_large
+after reload migrated only role action, kept unrelated action gautier_large
+after reload function placed gautier_large
+after reload function unbound gautier_large
+after reload exact original actions restored gautier_large
+after reload native bind gautier_large
+after reload native unbind gautier_large
+after reload legacy function bound hugues_large
+after reload migrated only role action, kept unrelated action hugues_large
+after reload function placed hugues_large
+after reload function unbound hugues_large
+after reload exact original actions restored hugues_large
+after reload native bind hugues_large
+after reload native unbind hugues_large
+after reload legacy function bound anselme_large
+after reload migrated only role action, kept unrelated action anselme_large
+after reload function placed anselme_large
+after reload function unbound anselme_large
+after reload exact original actions restored anselme_large
+after reload native bind anselme_large
+after reload native unbind anselme_large
+after reload legacy function bound perrin_large
+after reload migrated only role action, kept unrelated action perrin_large
+after reload function placed perrin_large
+after reload function unbound perrin_large
+after reload exact original actions restored perrin_large
+after reload native bind perrin_large
+after reload native unbind perrin_large
+after reload legacy function bound geraud_quai
+after reload migrated only role action, kept unrelated action geraud_quai
+after reload function placed geraud_quai
+after reload function unbound geraud_quai
+after reload exact original actions restored geraud_quai
+after reload native bind geraud_quai
+after reload native unbind geraud_quai
+after reload legacy function bound altheon_quai
+after reload migrated only role action, kept unrelated action altheon_quai
+after reload function placed altheon_quai
+after reload function unbound altheon_quai
+after reload exact original actions restored altheon_quai
+after reload native bind altheon_quai
+after reload native unbind altheon_quai
+after reload legacy function bound gautier_quai
+after reload migrated only role action, kept unrelated action gautier_quai
+after reload function placed gautier_quai
+after reload function unbound gautier_quai
+after reload exact original actions restored gautier_quai
+after reload native bind gautier_quai
+after reload native unbind gautier_quai
+after reload legacy function bound hugues_quai
+after reload migrated only role action, kept unrelated action hugues_quai
+after reload function placed hugues_quai
+after reload function unbound hugues_quai
+after reload exact original actions restored hugues_quai
+after reload native bind hugues_quai
+after reload native unbind hugues_quai
+after reload legacy function bound anselme_quai
+after reload migrated only role action, kept unrelated action anselme_quai
+after reload function placed anselme_quai
+after reload function unbound anselme_quai
+after reload exact original actions restored anselme_quai
+after reload native bind anselme_quai
+after reload native unbind anselme_quai
+after reload legacy function bound perrin_quai
+after reload migrated only role action, kept unrelated action perrin_quai
+after reload function placed perrin_quai
+after reload function unbound perrin_quai
+after reload exact original actions restored perrin_quai
+after reload native bind perrin_quai
+after reload native unbind perrin_quai
+wrong role from screenshot stays rejected with no write
+same NPC accepted with correct Anselme role
+two legacy triggers stay rejected with no write
+copied custom same-role action migrates to quay
+Actual production initializer/commands/functions at function-permission-level=2, EasyNPC action APIs, legacy captain-quay and sailor non-quay commands. Unrelated actions preserved; wrong roles and duplicate triggers protected. Nexus profiles/connections synthetic. No client rendering tested.

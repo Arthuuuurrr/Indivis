@@ -1,7 +1,7 @@
-"""Marqueurs de disponibilité du core, ajoutés aux datapacks HF9/HF4.
+"""Marqueurs du core : QMARK1 historique ou QMARK2 avec le journal HF12.
 
-Aucun JAR n'est modifié. Les prédicats de migration sont ceux des interactions
-réelles du core : les anciens nombres d'étape ne sont pas les valeurs hcq_*.
+Les prédicats de migration restent ceux des interactions réelles du core.
+QMARK2 ajoute aussi au journal le catalogue de reconnaissance des donneurs.
 """
 from collections import defaultdict
 import json

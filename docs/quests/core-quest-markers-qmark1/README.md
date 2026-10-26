@@ -1,3 +1,5 @@
+> Archive QMARK1. Pour l’installation actuelle, voir [HF12 / QMARK2](../pq01-dirigeable-r3/HF12/README.md).
+
 # Repères des donneurs du capitale core — QMARK1
 
 26 octobre 2026 — Minecraft Fabric 1.21.11, EasyNPC 7.16.0, journal PQ01-R3-HF11.

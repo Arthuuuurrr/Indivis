@@ -108,7 +108,7 @@ def main():
     java=ROOT/'work/pq01_hf2/runtime/jre/zulu21.52.203-ca-jre21.0.12.1-linux_x64/bin/java'
     cp=os.pathsep.join(map(str,[*sorted((RT/'libraries').glob('*.jar')),*sorted((mc/'META-INF/libraries').rglob('*.jar')),game]))
     with (RT/(LABEL+'-server.log')).open('w') as log:
-        result=subprocess.run([str(java),'-Xmx2G','-Xms512M',f'-Dfabric.gameJarPath={game}','-Dfabric.log.disableAnsi=true','-cp',cp,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui'],cwd=SERVER,stdout=log,stderr=subprocess.STDOUT,timeout=180)
+        result=subprocess.run([str(java),'-XX:ActiveProcessorCount=2','-Xmx2G','-Xms512M',f'-Dfabric.gameJarPath={game}','-Dfabric.log.disableAnsi=true','-cp',cp,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui'],cwd=SERVER,stdout=log,stderr=subprocess.STDOUT,timeout=360)
     print((SERVER/'world-test-result.txt').read_text())
     shutil.copyfile(SERVER/'world-test-result.txt',RT/(LABEL+'-result.txt'))
     assert result.returncode==0

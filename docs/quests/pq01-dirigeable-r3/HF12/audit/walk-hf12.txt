@@ -1,0 +1,14 @@
+PASS 12 movement regression checks
+source movement speed deliberately 0.02
+real production approach starts during a2
+leg 1 reaches destination before timeout; ticks=83 remaining=1.439290575749219 actorBase=250
+slow source does not cause crawling for more than ten seconds
+source speed remains 0.02 after private walk
+private walking actor has usable speed floor
+leg 2 reaches destination before timeout; ticks=75 remaining=1.3894284803607695 actorBase=250
+outbound and return use native walking without jumps
+leg 3 reaches destination before timeout; ticks=185 remaining=1.451268768636356 actorBase=250
+leg 4 reaches destination before timeout; ticks=157 remaining=1.3726458980846927 actorBase=250
+24-block outbound and return never teleport
+original source never moved
+Real Fabric world, production tick/startApproach/travel, EasyNPC native navigation on stairs/slabs and full 24-block route. Source speed 0.02, private copy and source compared; connections, Nexus and capture display synthetic.

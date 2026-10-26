@@ -1,17 +1,17 @@
-# Quêtes du core et prologue — QMARK1 / journal HF11
+# Prologue et quêtes du core — HF12 / QMARK2
 
 26 octobre 2026 — Minecraft Fabric 1.21.11, EasyNPC 7.16.0, Dialogue b10.
 
-**QMARK1 : remplacer les deux datapacks serveur par core HF9_QMARK1 et hc_quetes HF4_QMARK1. Conserver le journal HF11 sur serveur et clients.** Aucun PNJ, point, liaison ou progression à réinitialiser.
+HF12 reconnaît les anciennes actions du capitaine au quai et des quatre matelots, sans perdre leurs autres actions. QMARK2 rend l'actualisation des « ! » indépendante du tick de la Séquence I et reconnaît les donneurs par leurs actions, tags et noms normalisés. Les 24 règles d'offre du core sont conservées.
 
-Les 24 quêtes du core ont un « ! » privé lorsque l'offre est accessible au personnage Nexus sélectionné. Le même repère est réutilisé pour un donneur disponible ; les étapes, rangs, délais et blocages d'acceptation viennent des interactions réelles du core. Les 224 contrôles natifs couvrent les disponibilités, les 20 donneurs, la conservation des PNJ/états et le suivi réseau avec deux propriétaires et un observateur.
+Installer les trois composants fournis : journal HF12 sur serveur et clients, core HF9_QMARK2 et hc_quetes HF4_QMARK2 côté serveur. Les liaisons et points existants sont réutilisés ; relancer uniquement les liaisons refusées.
 
-- [Installation et repères QMARK1](../core-quest-markers-qmark1/README.md)
-- [Noms connus et association des PNJ renommés](../core-quest-markers-qmark1/GUIDE_REPERES.md)
-- [Vérifications QMARK1](../core-quest-markers-qmark1/VALIDATION.md)
-- [Installation, pose et déplacements : guide complet](docs/INSTALLATION_ET_POSE_PNJ.md)
-- [Recette du prologue](docs/TESTS_EN_JEU.md)
+- [Installation et fichiers exacts](HF12/README.md)
+- [Commandes des six PNJ au quai](HF12/COMMANDES_QUAI.md)
+- [Guide complet de pose et de déplacement](HF12/INSTALLATION_ET_POSE_PNJ.md)
+- [Marqueurs et diagnostic des conditions réelles](HF12/GUIDE_REPERES.md)
+- [Vérifications et limites](HF12/VALIDATION.md)
 
-Le journal HF11 conserve le plancher de vitesse des copies mobiles de Gautier/Perrin, la navigation normale de Gautier et les optimisations personnelles HF10. QMARK1 ne modifie aucun JAR ; toutes les fonctions historiques du core restent identiques. Aucun gain de FPS n'est revendiqué.
+Validation : 233 contrôles de marqueurs, 176 de liaison après démarrage/reload, 1161 d'enchaînement, 25 de scène couplée, 15 d'ambiance, 26 de navigation, 48 multijoueurs et 12 de régression sur les sources lentes. API, NBT et capture b10 également vérifiés. Les 802 fonctions PQ01 du core, gardes, 25 biomes, fonctions MQ/SI1, mixins, visibilité et classes de dialogue client sont conservés octet par octet par rapport aux bases documentées. Le rendu graphique et les FPS du modpack utilisateur ne sont pas mesurés.
 
-[Marche et preuves HF11](HOTFIX_MARCHE_R3_HF11.md) · [Suivi GitHub nº177](https://github.com/Arthuuuurrr/Indivis/pull/177).
+Les blocs manuels, questions réouvrables, conclusion verte, préparation des doublages, marche et filtres privés des correctifs antérieurs sont conservés. [Historique de marche HF11](HOTFIX_MARCHE_R3_HF11.md) · [PR nº177](https://github.com/Arthuuuurrr/Indivis/pull/177).

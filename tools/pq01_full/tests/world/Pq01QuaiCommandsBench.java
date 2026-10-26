@@ -39,7 +39,7 @@ public final class Pq01QuaiCommandsBench implements ModInitializer {
    Object npc=NPCS.get(role);Pq01Motion.Point at=pos(npc,world);String key=role+"_"+phase;
    call(player,"method_5814",at.x()+0.3,at.y(),at.z()+0.8);
    Object original=rows(row("COMMAND",legacy(role,phase)),row("COMMAND","particle minecraft:happy_villager ~ ~1 ~ 0 0 0 0 1"));
-   Pq01Actions.mutate(npc,"ON_INTERACTION",original);original=GuardNbt.copy(actual(npc));
+   Pq01Actions.mutate(npc,"ON_INTERACTION",original);original=Pq01Nbt.copy(actual(npc));
    run(player,"function capitale:pq01/liaison/"+key);
    Object b=binding(player,key);check(b!=null&&uuid(npc).toString().equals(str(b,"uuid","")),round+" legacy function bound "+key);
    Object expected=Pq01Actions.plan(original,key,"interact");

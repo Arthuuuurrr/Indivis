@@ -1,8 +1,8 @@
-# Installation, configuration et déplacements des PNJ — QMARK1 + journal HF11
+# Installation, configuration et déplacements des PNJ — HF12 / QMARK2
 
-**QMARK1 — 26 octobre 2026 : remplacer les deux datapacks serveur par HF9_QMARK1 et HF4_QMARK1 fournis. Conserver le journal HF11 sur le serveur et chaque client.** Aucune pose, liaison du prologue ou progression à refaire. [Guide des points d'exclamation](../../core-quest-markers-qmark1/GUIDE_REPERES.md).
+**HF12 / QMARK2 — 26 octobre 2026 : remplacer le journal sur le serveur et chaque client, et les deux datapacks serveur fournis.** Les liaisons et points réussis sont réutilisés ; relancer uniquement les liaisons qui avaient été refusées. [Installation](../HF12/README.md), [commandes au quai](../HF12/COMMANDES_QUAI.md) et [diagnostic des « ! »](../HF12/GUIDE_REPERES.md).
 
-Le journal HF11 regroupe les répliques successives d’un même PNJ dans un bloc. Le texte reste affiché jusqu’à la lecture du joueur : Espace, Entrée ou clic dans le dialogue pour révéler/parcourir le texte, puis lire la suite. Les vraies réponses restent des choix. La file des prises audio conserve les hooks existants. [Marche de Gautier et vérifications HF11](https://github.com/Arthuuuurrr/Indivis/blob/feat/pq01-dirigeable-r2-20261022/docs/quests/pq01-dirigeable-r3/HOTFIX_MARCHE_R3_HF11.md).
+Le correctif regroupe les répliques successives d’un même PNJ dans un bloc. Le texte reste affiché jusqu’à la lecture du joueur : Espace, Entrée ou clic dans le dialogue pour révéler/parcourir le texte, puis lire la suite. Les vraies réponses restent des choix. La file des prises audio conserve les hooks existants. [Marche de Gautier et vérifications HF11](https://github.com/Arthuuuurrr/Indivis/blob/feat/pq01-dirigeable-r2-20261022/docs/quests/pq01-dirigeable-r3/HOTFIX_MARCHE_R3_HF11.md).
 
 ## 1. Les trois opérations à distinguer
 
@@ -15,15 +15,15 @@ Le journal HF11 regroupe les répliques successives d’un même PNJ dans un blo
 
 **Pendant la quête, Gautier marche réellement vers le point d’approche puis vers son poste.** La commande `placer_…` sert à l’édition du décor ; elle n’est jamais appelée par le trajet de scène. L’acteur temporaire est créé à son poste réel et sa navigation doit rejoindre la destination : aucun TP de scène à travers un mur.
 
-## 2. Installer QMARK1 sur le journal HF11
+## 2. Installer HF12 / QMARK2
 
-| Composant | Action | Fichier |
+| Composant | Destination | Fichier à installer |
 |---|---|---|
-| Core du monde serveur | Remplacer HF9 | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK1.zip` |
-| Quêtes du monde serveur | Remplacer HF4 | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK1.zip` |
-| Journal, serveur et chaque client | Conserver HF11 | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF11.jar` |
+| Journal | Mods du serveur et de chaque client | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF12.jar` |
+| Core | Datapacks du monde serveur | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2.zip` |
+| Quêtes | Datapacks du monde serveur | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2.zip` |
 
-Arrêter le serveur après sauvegarde, remplacer les deux datapacks sans conserver leurs anciennes copies dans le dossier actif, puis redémarrer. Les clients n'ont aucun fichier à changer pour QMARK1 si leur journal est déjà HF11. Nexus PRE34-SI1, Dialogue b10, EasyNPC 7.16.0, les voix et leurs réglages restent réutilisés. Aucun reset ni nouveau placement n'est demandé. Les commandes ci-dessous servent aux éditions volontaires du décor.
+Décompresser d'abord le ZIP de livraison et utiliser ses trois fichiers intérieurs. Arrêter le serveur, remplacer chaque ancienne version active puis redémarrer. Les deux ZIP intérieurs de datapack sont directement installables. Garder Nexus SI1 actuellement installé, Dialogue b10, EasyNPC 7.16.0 et les voix. Aucun reset, nouvelle pose ou changement de points n'est requis. Les commandes suivantes servent aux éditions volontaires du décor.
 
 ## 3. Préparer l’édition
 
@@ -59,7 +59,7 @@ La liaison conserve le type, le modèle, le skin, les textures, l’équipement 
 
 `ON_INTERACTION` peut être absent ou contenir un unique déclencheur PQ01 reconnu, seul ou accompagné d’autres actions. La liaison remplace seulement ce déclencheur et conserve l’ordre, les conditions et les autres actions. Les anciennes commandes `function capitale:…`, `/function capitale:…` et les chemins `capitale:…` seuls sont reconnus pour les rôles prévus. Une interaction sans déclencheur PQ01 reconnu, ou avec plusieurs déclencheurs, est refusée et décrite sans écriture. Une liaison existante vers un autre PNJ doit être libérée avant réaffectation. Une modification externe des actions après liaison reste protégée lors d’une nouvelle liaison.
 
-L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal HF7. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud au large, la proximité attend cinq secondes après disponibilité du personnage, un déplacement horizontal d’au moins 0,75 bloc et une distance réelle au PNJ de trois blocs maximum. Le clic volontaire reste disponible immédiatement. L’interpellation ne se relance pas automatiquement après fermeture ; la reprise passe par un clic droit. Le déclencheur PQ01 de proximité du Capitaine devient sans effet : sa conversation commence au clic droit. Un ancien déclencheur PQ01 reconnu est converti et les autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
+L’interaction utilise l’action personnalisée native EasyNPC `haute_capitale_quetes:pq01`, enregistrée par le journal. Le rôle, l’événement, la liaison du PNJ, la proximité, le personnage chargé et la propriété d’un acteur personnel sont vérifiés ; la fonction est choisie dans une liste fixe et exécutée dans le contexte du joueur. Les nouveaux déclencheurs PQ01 n’exigent aucun ajout à `executeAsUserCommandAllowList`. Pour Géraud au large, la proximité attend cinq secondes après disponibilité du personnage, un déplacement horizontal d’au moins 0,75 bloc et une distance réelle au PNJ de trois blocs maximum. Le clic volontaire reste disponible immédiatement. L’interpellation ne se relance pas automatiquement après fermeture ; la reprise passe par un clic droit. Le déclencheur PQ01 de proximité du Capitaine devient sans effet : sa conversation commence au clic droit. Un ancien déclencheur PQ01 reconnu est converti et les autres actions sont conservées. Un near personnalisé sans déclencheur reconnu reste intact. La portée et l’activation du near restent celles configurées dans EasyNPC. Le point de waypoint du rôle est aussi enregistré à la position du PNJ. Les ensembles d’actions sont mis à jour par l’API EasyNPC, avec relecture de contrôle ; l’entité complète n’est pas rechargée par une commande de données.
 
 Un PNJ impliqué dans une scène personnelle ou occupé par un autre joueur ne peut pas être lié/libéré/déplacé tant que cette utilisation dure.
 

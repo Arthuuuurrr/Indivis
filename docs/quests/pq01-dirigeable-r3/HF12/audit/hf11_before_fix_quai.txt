@@ -1,0 +1,65 @@
+FAIL java.lang.AssertionError: startup legacy function bound altheon_quai
+	at knot//net.hautecapitale.quetes.sequence.Pq01QuaiCommandsBench.check(Pq01QuaiCommandsBench.java:20)
+	at knot//net.hautecapitale.quetes.sequence.Pq01QuaiCommandsBench.bindings(Pq01QuaiCommandsBench.java:44)
+	at knot//net.hautecapitale.quetes.sequence.Pq01QuaiCommandsBench.tick(Pq01QuaiCommandsBench.java:70)
+	at knot//net.hautecapitale.quetes.sequence.Pq01QuaiCommandsBench.lambda$onInitialize$2(Pq01QuaiCommandsBench.java:18)
+	at knot//net.hautecapitale.quetes.sequence.Pq01Bridge.lambda$event$6(Pq01Bridge.java:108)
+	at knot/jdk.proxy2/jdk.proxy2.$Proxy32.onEndTick(Unknown Source)
+	at knot//net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.lambda$static$2(ServerTickEvents.java:55)
+	at knot//net.minecraft.server.MinecraftServer.handler$zfp000$fabric-lifecycle-events-v1$onEndTick(MinecraftServer.java:3359)
+	at knot//net.minecraft.server.MinecraftServer.method_3748(MinecraftServer.java:1040)
+	at knot//net.minecraft.class_3176.method_3748(class_3176.java:318)
+	at knot//net.minecraft.server.MinecraftServer.method_76677(MinecraftServer.java:1049)
+	at knot//net.minecraft.server.MinecraftServer.method_29741(MinecraftServer.java:771)
+	at knot//net.minecraft.server.MinecraftServer.method_29739(MinecraftServer.java:301)
+	at java.base/java.lang.Thread.run(Unknown Source)
+
+startup legacy function bound geraud_large
+startup migrated only role action, kept unrelated action geraud_large
+startup function placed geraud_large
+startup function unbound geraud_large
+startup exact original actions restored geraud_large
+startup native bind geraud_large
+startup native unbind geraud_large
+startup legacy function bound altheon_large
+startup migrated only role action, kept unrelated action altheon_large
+startup function placed altheon_large
+startup function unbound altheon_large
+startup exact original actions restored altheon_large
+startup native bind altheon_large
+startup native unbind altheon_large
+startup legacy function bound gautier_large
+startup migrated only role action, kept unrelated action gautier_large
+startup function placed gautier_large
+startup function unbound gautier_large
+startup exact original actions restored gautier_large
+startup native bind gautier_large
+startup native unbind gautier_large
+startup legacy function bound hugues_large
+startup migrated only role action, kept unrelated action hugues_large
+startup function placed hugues_large
+startup function unbound hugues_large
+startup exact original actions restored hugues_large
+startup native bind hugues_large
+startup native unbind hugues_large
+startup legacy function bound anselme_large
+startup migrated only role action, kept unrelated action anselme_large
+startup function placed anselme_large
+startup function unbound anselme_large
+startup exact original actions restored anselme_large
+startup native bind anselme_large
+startup native unbind anselme_large
+startup legacy function bound perrin_large
+startup migrated only role action, kept unrelated action perrin_large
+startup function placed perrin_large
+startup function unbound perrin_large
+startup exact original actions restored perrin_large
+startup native bind perrin_large
+startup native unbind perrin_large
+startup legacy function bound geraud_quai
+startup migrated only role action, kept unrelated action geraud_quai
+startup function placed geraud_quai
+startup function unbound geraud_quai
+startup exact original actions restored geraud_quai
+startup native bind geraud_quai
+startup native unbind geraud_quai

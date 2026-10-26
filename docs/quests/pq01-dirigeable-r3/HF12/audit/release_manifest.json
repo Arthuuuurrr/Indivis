@@ -1,0 +1,24 @@
+{
+  "path": "/workspace/scratch/451d7145576f/deliverables/Indivis_PQ01_HF12_QMARK2_2026-10-26.zip",
+  "bytes": 3434425,
+  "sha256": "f59a12e519d726bb7a75c311e306d467752db8fcb52400c49bb54ede35c4a342",
+  "documented_functions": 74,
+  "local_links": 8,
+  "files": {
+    "core": {
+      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2.zip",
+      "bytes": 5128752,
+      "sha256": "8aff8d9c45d275b9d281f5b915baad5e88e7a6c2147bc9806b4fff3cc7a7a8c4"
+    },
+    "quests": {
+      "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2.zip",
+      "bytes": 1516108,
+      "sha256": "72aa0cf454853f65e2cad769ba200e524c711c75260fe6a1d54c148c90788ba7"
+    },
+    "journal": {
+      "filename": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF12.jar",
+      "bytes": 492804,
+      "sha256": "c888eec4fa5dad35127dd5a5e4e6c49ec0f870063d429877f4b2a48a09f5bb60"
+    }
+  }
+}

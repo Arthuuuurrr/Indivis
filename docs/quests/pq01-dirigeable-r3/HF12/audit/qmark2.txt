@@ -1,0 +1,235 @@
+PASS 233 QMARK2 checks
+pq01 offered variant 0
+pq01 accepted: no !
+pq01 hcm_pq1_active blocks offer
+pq02 offered variant 0
+pq02 offered variant 1
+pq02 offered variant 2
+pq02 accepted: no !
+pq02 escort blocks offer
+pq02 incompatible active quest
+pq03 offered variant 0
+pq03 offered variant 1
+pq03 offered variant 2
+pq03 accepted: no !
+pq03 escort blocks offer
+pq03 incompatible active quest
+pq04 offered variant 0
+pq04 offered variant 1
+pq04 offered variant 2
+pq04 accepted: no !
+pq04 escort blocks offer
+pq04 incompatible active quest
+pq05 offered variant 0
+pq05 offered variant 1
+pq05 offered variant 2
+pq05 accepted: no !
+pq05 escort blocks offer
+pq05 incompatible active quest
+sqhcci01 offered variant 0
+sqhcci01 accepted: no !
+sqbaob01 offered variant 0
+sqbaob01 accepted: no !
+sqbaob02 offered variant 0
+sqbaob02 accepted: no !
+sqbaob03 offered variant 0
+sqbaob03 accepted: no !
+sqbaob04 offered variant 0
+sqbaob04 offered variant 1
+sqbaob04 accepted: no !
+sqhcso01 offered variant 0
+sqhcso01 offered variant 1
+sqhcso01 accepted: no !
+sqhcso01 escort blocks offer
+sqhcso02 offered variant 0
+sqhcso02 accepted: no !
+sqhcso02 escort blocks offer
+sqhcso03 offered variant 0
+sqhcso03 accepted: no !
+rqhc01 offered variant 0
+rqhc01 accepted: no !
+rqhc01 hcd_rqhc01 blocks offer
+rqhc02 offered variant 0
+rqhc02 accepted: no !
+rqhc02 escort blocks offer
+rqhc02 hcd_rqhc02 blocks offer
+dqhc01 offered variant 0
+dqhc01 accepted: no !
+dqhc01 escort blocks offer
+dqhc01 hcd_dqhc01 blocks offer
+dqhc02 offered variant 0
+dqhc02 offered variant 1
+dqhc02 accepted: no !
+veteran cooldown blocks offer
+dqhc03 offered variant 0
+dqhc03 accepted: no !
+dqhc03 escort blocks offer
+dqhc03 hcd_dqhc03 blocks offer
+dqhc04 offered variant 0
+dqhc04 accepted: no !
+dqhc04 escort blocks offer
+dqhc04 hcd_dqhc04 blocks offer
+dqhc05 offered variant 0
+dqhc05 accepted: no !
+dqhc05 escort blocks offer
+dqhc05 hcd_dqhc05 blocks offer
+sqhcvn01 offered variant 0
+sqhcvn01 offered variant 1
+sqhcvn01 accepted: no !
+sqhcvn01 escort blocks offer
+sqhcvn01 incompatible active quest
+sqhcvn02 offered variant 0
+sqhcvn02 accepted: no !
+sqhcvn02 escort blocks offer
+sqhcvn02 incompatible active quest
+sqhcvn03 offered variant 0
+sqhcvn03 accepted: no !
+sqhcvn03 escort blocks offer
+sqhcvn03 incompatible active quest
+sqhcvn04 offered variant 0
+sqhcvn04 accepted: no !
+sqhcvn04 escort blocks offer
+sqhcvn04 incompatible active quest
+Elias busy with delivery
+Roland busy with delivery
+Maelor resident requirement
+citizen no new citizenship offer
+resident no residence offer
+pq02 missing prerequisite
+pq03 missing prerequisite
+pq04 missing prerequisite
+pq05 missing prerequisite
+sqhcvn02 missing prerequisite
+sqhcvn03 missing prerequisite
+sqhcvn04 missing prerequisite
+NPC appearance/actions/properties unchanged: geraud
+discovery through actual production tick: geraud
+correct giver marker: geraud
+marker above NPC name: geraud
+NPC appearance/actions/properties unchanged: leovic
+discovery through actual production tick: leovic
+correct giver marker: leovic
+marker above NPC name: leovic
+NPC appearance/actions/properties unchanged: aurele
+discovery through actual production tick: aurele
+correct giver marker: aurele
+marker above NPC name: aurele
+NPC appearance/actions/properties unchanged: roch
+discovery through actual production tick: roch
+correct giver marker: roch
+marker above NPC name: roch
+NPC appearance/actions/properties unchanged: magistrat
+discovery through actual production tick: magistrat
+correct giver marker: magistrat
+marker above NPC name: magistrat
+NPC appearance/actions/properties unchanged: mira
+discovery through actual production tick: mira
+correct giver marker: mira
+marker above NPC name: mira
+NPC appearance/actions/properties unchanged: elias
+discovery through actual production tick: elias
+correct giver marker: elias
+marker above NPC name: elias
+NPC appearance/actions/properties unchanged: lysandre
+discovery through actual production tick: lysandre
+correct giver marker: lysandre
+marker above NPC name: lysandre
+NPC appearance/actions/properties unchanged: roland
+discovery through actual production tick: roland
+correct giver marker: roland
+marker above NPC name: roland
+NPC appearance/actions/properties unchanged: odon
+discovery through actual production tick: odon
+correct giver marker: odon
+marker above NPC name: odon
+NPC appearance/actions/properties unchanged: libraire
+discovery through actual production tick: libraire
+correct giver marker: libraire
+marker above NPC name: libraire
+NPC appearance/actions/properties unchanged: aldren
+discovery through actual production tick: aldren
+correct giver marker: aldren
+marker above NPC name: aldren
+NPC appearance/actions/properties unchanged: veilleuse
+discovery through actual production tick: veilleuse
+correct giver marker: veilleuse
+marker above NPC name: veilleuse
+NPC appearance/actions/properties unchanged: technicienne
+discovery through actual production tick: technicienne
+correct giver marker: technicienne
+marker above NPC name: technicienne
+NPC appearance/actions/properties unchanged: employe_banque
+discovery through actual production tick: employe_banque
+correct giver marker: employe_banque
+marker above NPC name: employe_banque
+NPC appearance/actions/properties unchanged: veteran
+discovery through actual production tick: veteran
+correct giver marker: veteran
+marker above NPC name: veteran
+NPC appearance/actions/properties unchanged: commis_port
+discovery through actual production tick: commis_port
+correct giver marker: commis_port
+marker above NPC name: commis_port
+NPC appearance/actions/properties unchanged: commis_messageries
+discovery through actual production tick: commis_messageries
+correct giver marker: commis_messageries
+marker above NPC name: commis_messageries
+NPC appearance/actions/properties unchanged: greffier
+discovery through actual production tick: greffier
+correct giver marker: greffier
+marker above NPC name: greffier
+NPC appearance/actions/properties unchanged: maelor
+discovery through actual production tick: maelor
+correct giver marker: maelor
+marker above NPC name: maelor
+first prologue offer tolerates missing transient active score
+daily offer tolerates missing zero cooldown as actual core interaction does
+real villager recognized by quest action with unrelated display name
+recognition preserves existing EasyNPC actions
+production marker tick never overwrites Sequence I session
+Greffier marker created by production tick without MQ context
+legacy color codes normalized for Greffier name
+exclamation survives native text parsing
+marker configured for visibility under awning and at night
+Greffier cooldown still hides marker
+Greffier offer returns after cooldown
+two owners offered, completed observer has no !
+private marker tracked correctly by observer 0
+private marker tracked correctly by observer 0
+private marker tracked correctly by observer 1
+private marker tracked correctly by observer 1
+private marker tracked correctly by observer 2
+private marker tracked correctly by observer 2
+owner received marker spawn exactly once
+all quest states and outcomes remain unchanged after 20 updates
+20 updates reuse the same marker UUID
+stationary updates cause no spawn churn
+marker does not accept or advance the quest
+marker follows moved NPC
+explicit binding supports renamed NPC and reuses marker
+profile lock removes marker
+private marker tracked correctly by observer 0
+private marker tracked correctly by observer 0
+private marker tracked correctly by observer 1
+private marker tracked correctly by observer 1
+private marker tracked correctly by observer 2
+private marker tracked correctly by observer 2
+character switch immediately rejects old marker in native tracker
+legacy cleanup removes previous character marker
+new character has independent marker
+quest completion removes A marker without touching B
+abandoned/reset quest can be offered again
+markers outside 24 blocks are removed
+private marker tracked correctly by observer 0
+private marker tracked correctly by observer 0
+private marker tracked correctly by observer 1
+private marker tracked correctly by observer 1
+private marker tracked correctly by observer 2
+private marker tracked correctly by observer 2
+disconnect cleanup removes only disconnected owner marker
+no selected character cannot see private marker
+orphan cleanup leaves no markers
+marker commands never move the NPC
+no foreign initial A spawn packet
+no foreign initial B spawn packet
+Actual production Pq01Bridge.tick without Sequence I context/tick. Native Fabric 1.21.11 functions/predicates, EasyNPC 7.16.0, real QuestVisibility/EntityTrackerMixin and spawn/destroy tracking. Nexus identities, chunk receipt and connections synthetic; no graphical rendering or FPS measurement.

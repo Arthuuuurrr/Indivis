@@ -1,3 +1,5 @@
+> Archive QMARK1. Pour l’installation actuelle, voir [HF12 / QMARK2](../../../docs/quests/pq01-dirigeable-r3/HF12/README.md).
+
 # Source du raccordement QMARK1
 
 Ce dossier montre la seule fonction historique modifiée dans hc_quetes : un appel est ajouté à la fin de runtime/second, après préparation du contexte Nexus. Il s'agit d'une source de revue, pas d'un troisième datapack à installer.

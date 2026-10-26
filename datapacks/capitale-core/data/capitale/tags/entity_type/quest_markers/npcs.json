@@ -148,6 +148,22 @@
     {
       "id": "easy_npc:zombie_villager",
       "required": false
+    },
+    {
+      "id": "easy_npc:skeleton_horse",
+      "required": false
+    },
+    {
+      "id": "easy_npc:zombie_horse",
+      "required": false
+    },
+    {
+      "id": "easy_npc:zombified_piglin",
+      "required": false
+    },
+    {
+      "id": "easy_npc:husk",
+      "required": false
     }
   ]
 }
