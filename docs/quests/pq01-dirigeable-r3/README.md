@@ -1,15 +1,17 @@
-# PQ01 — marche de Gautier — R3-HF11
+# Quêtes du core et prologue — QMARK1 / journal HF11
 
-25 octobre 2026 — Minecraft Fabric 1.21.11, EasyNPC 7.16.0, Dialogue b10.
+26 octobre 2026 — Minecraft Fabric 1.21.11, EasyNPC 7.16.0, Dialogue b10.
 
-**Remplacer uniquement le JAR de quêtes/journal sur le serveur et chaque client. Conserver le core HF9 et `hc_quetes` HF4. Aucun PNJ, point, liaison ou progression à réinitialiser.**
+**QMARK1 : remplacer les deux datapacks serveur par core HF9_QMARK1 et hc_quetes HF4_QMARK1. Conserver le journal HF11 sur serveur et clients.** Aucun PNJ, point, liaison ou progression à réinitialiser.
 
-HF11 corrige le cas d’une vitesse de décor faible mais positive, qui n’était pas traité par la correction des vitesses nulles. Le plancher s’applique uniquement aux copies mobiles de Gautier/Perrin. Gautier utilise une allure de navigation normale et conserve le même acteur pendant son approche et son retour. Les originaux, dialogues manuels, hooks de doublage et filtres personnels HF10 sont conservés.
+Les 24 quêtes du core ont un « ! » privé lorsque l'offre est accessible au personnage Nexus sélectionné. Le même repère est réutilisé pour un donneur disponible ; les étapes, rangs, délais et blocages d'acceptation viennent des interactions réelles du core. Les 224 contrôles natifs couvrent les disponibilités, les 20 donneurs, la conservation des PNJ/états et le suivi réseau avec deux propriétaires et un observateur.
 
-- [Installation et commandes complètes](docs/INSTALLATION_ET_POSE_PNJ.md)
-- [Défaut reproduit, changements et limites](HOTFIX_MARCHE_R3_HF11.md)
-- [Recette en jeu](docs/TESTS_EN_JEU.md)
+- [Installation et repères QMARK1](../core-quest-markers-qmark1/README.md)
+- [Noms connus et association des PNJ renommés](../core-quest-markers-qmark1/GUIDE_REPERES.md)
+- [Vérifications QMARK1](../core-quest-markers-qmark1/VALIDATION.md)
+- [Installation, pose et déplacements : guide complet](docs/INSTALLATION_ET_POSE_PNJ.md)
+- [Recette du prologue](docs/TESTS_EN_JEU.md)
 
-La livraison contient le seul JAR modifié et les guides/preuves. Aucun datapack ni Nexus inchangé redistribué. Le test vérifie marche, scène et suivi réseau ; la géométrie et la vitesse de la carte utilisateur ne sont pas présentes dans les fichiers reçus.
+Le journal HF11 conserve le plancher de vitesse des copies mobiles de Gautier/Perrin, la navigation normale de Gautier et les optimisations personnelles HF10. QMARK1 ne modifie aucun JAR ; toutes les fonctions historiques du core restent identiques. Aucun gain de FPS n'est revendiqué.
 
-[Suivi GitHub nº177](https://github.com/Arthuuuurrr/Indivis/pull/177).
+[Marche et preuves HF11](HOTFIX_MARCHE_R3_HF11.md) · [Suivi GitHub nº177](https://github.com/Arthuuuurrr/Indivis/pull/177).

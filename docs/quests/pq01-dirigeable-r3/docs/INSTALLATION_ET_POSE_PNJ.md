@@ -1,8 +1,8 @@
-# Installation, configuration et déplacements des PNJ — journal PQ01-R3-HF11
+# Installation, configuration et déplacements des PNJ — QMARK1 + journal HF11
 
-**Mise à jour du 25 octobre 2026 : remplacer uniquement le mod de quêtes/journal sur le serveur et chaque client par HF11. Conserver le core HF9 déjà installé.** Conserver `hc_quetes` HF4. Liaisons, points, apparences et progressions sont réutilisés. Aucune commande de liaison, pose ou reset n’est requise pour mettre à jour.
+**QMARK1 — 26 octobre 2026 : remplacer les deux datapacks serveur par HF9_QMARK1 et HF4_QMARK1 fournis. Conserver le journal HF11 sur le serveur et chaque client.** Aucune pose, liaison du prologue ou progression à refaire. [Guide des points d'exclamation](../../core-quest-markers-qmark1/GUIDE_REPERES.md).
 
-Le correctif regroupe les répliques successives d’un même PNJ dans un bloc. Le texte reste affiché jusqu’à la lecture du joueur : Espace, Entrée ou clic dans le dialogue pour révéler/parcourir le texte, puis lire la suite. Les vraies réponses restent des choix. La file des prises audio conserve les hooks existants. [Marche de Gautier et vérifications HF11](../HOTFIX_MARCHE_R3_HF11.md).
+Le journal HF11 regroupe les répliques successives d’un même PNJ dans un bloc. Le texte reste affiché jusqu’à la lecture du joueur : Espace, Entrée ou clic dans le dialogue pour révéler/parcourir le texte, puis lire la suite. Les vraies réponses restent des choix. La file des prises audio conserve les hooks existants. [Marche de Gautier et vérifications HF11](https://github.com/Arthuuuurrr/Indivis/blob/feat/pq01-dirigeable-r2-20261022/docs/quests/pq01-dirigeable-r3/HOTFIX_MARCHE_R3_HF11.md).
 
 ## 1. Les trois opérations à distinguer
 
@@ -15,20 +15,15 @@ Le correctif regroupe les répliques successives d’un même PNJ dans un bloc. 
 
 **Pendant la quête, Gautier marche réellement vers le point d’approche puis vers son poste.** La commande `placer_…` sert à l’édition du décor ; elle n’est jamais appelée par le trajet de scène. L’acteur temporaire est créé à son poste réel et sa navigation doit rejoindre la destination : aucun TP de scène à travers un mur.
 
-## 2. Installer le journal HF11 sur le core HF9
+## 2. Installer QMARK1 sur le journal HF11
 
 | Composant | Action | Fichier |
-| --- | --- | --- |
-| Core, datapacks du monde serveur | Conserver HF9, inchangé et non inclus | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9.zip` |
-| Mod de quêtes/journal, serveur **et chaque client** | Remplacer le JAR précédent | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF11.jar` |
-| Quêtes, datapacks du monde serveur | Conserver HF4 | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4.zip` |
+|---|---|---|
+| Core du monde serveur | Remplacer HF9 | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK1.zip` |
+| Quêtes du monde serveur | Remplacer HF4 | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK1.zip` |
+| Journal, serveur et chaque client | Conserver HF11 | `haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF11.jar` |
 
-1. Fermer les dialogues et attendre la fin d’un amarrage éventuel. Sauvegarder ensemble monde et profils Nexus, puis arrêter le serveur.
-2. Remplacer le seul JAR de quêtes/journal par HF11 sur le serveur. Conserver le core HF9 et `hc_quetes` HF4.
-3. Remplacer aussi le journal sur chaque client. Conserver Nexus `PRE34-SI1`, Dialogue `0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX`, EasyNPC `7.16.0`, Fabric API `0.141.6+1.21.11` et les autres composants.
-4. Redémarrer et reprendre au clic droit sur le PNJ. Aucun PNJ ou point à replacer ; aucune progression à réinitialiser.
-
-Le ZIP extérieur de livraison contient le guide et les composants. Cette livraison contient uniquement le JAR modifié, à placer dans les mods. Aucun datapack à remplacer pour passer de HF10 à HF11. Les commandes de pose suivantes servent aux modifications volontaires du décor.
+Arrêter le serveur après sauvegarde, remplacer les deux datapacks sans conserver leurs anciennes copies dans le dossier actif, puis redémarrer. Les clients n'ont aucun fichier à changer pour QMARK1 si leur journal est déjà HF11. Nexus PRE34-SI1, Dialogue b10, EasyNPC 7.16.0, les voix et leurs réglages restent réutilisés. Aucun reset ni nouveau placement n'est demandé. Les commandes ci-dessous servent aux éditions volontaires du décor.
 
 ## 3. Préparer l’édition
 

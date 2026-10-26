@@ -1,0 +1,758 @@
+{
+  "version": "QMARK1",
+  "radius": 24,
+  "interval_ticks": 20,
+  "quests": [
+    {
+      "qid": "pq01",
+      "giver": "geraud",
+      "rules": [
+        {
+          "states": {
+            "pq01": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {
+            "hcm_pq1_active": "1.."
+          }
+        }
+      ],
+      "source": "npc/geraud_rivet/interact_self",
+      "guide": false,
+      "active": null
+    },
+    {
+      "qid": "pq02",
+      "giver": "leovic",
+      "rules": [
+        {
+          "states": {
+            "pq01": "100",
+            "pq02": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "pq01": "100",
+            "pq02": "10"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "pq01": "100",
+            "pq02": "1_to_2"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/le_registre_du_port/leovic/interact_self",
+      "guide": true,
+      "active": 4
+    },
+    {
+      "qid": "pq03",
+      "giver": "aurele",
+      "rules": [
+        {
+          "states": {
+            "pq02": "100_to_",
+            "pq03": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "pq02": "100_to_",
+            "pq03": "1"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "pq02": "100_to_",
+            "pq03": "10"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/sous_le_regard_du_coeur/aurele/interact_self",
+      "guide": true,
+      "active": 3
+    },
+    {
+      "qid": "pq04",
+      "giver": "roch",
+      "rules": [
+        {
+          "states": {
+            "pq03": "100_to_",
+            "pq04": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "pq03": "100_to_",
+            "pq04": "1"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "pq03": "100_to_",
+            "pq04": "10"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/au_seuil_des_profondeurs/roch/interact_self",
+      "guide": true,
+      "active": 5
+    },
+    {
+      "qid": "pq05",
+      "giver": "magistrat",
+      "rules": [
+        {
+          "states": {
+            "pq04": "100_to_",
+            "pq05": "0"
+          },
+          "unless": {},
+          "scores": {
+            "CAP_RANGSOCIAL": "..19"
+          },
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "pq04": "100_to_",
+            "pq05": "1"
+          },
+          "unless": {},
+          "scores": {
+            "CAP_RANGSOCIAL": "..19"
+          },
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "pq04": "100_to_",
+            "pq05": "10"
+          },
+          "unless": {},
+          "scores": {
+            "CAP_RANGSOCIAL": "..19"
+          },
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/une_adresse_dans_les_profondeurs/magistrat/interact_self",
+      "guide": true,
+      "active": 6
+    },
+    {
+      "qid": "sqhcci01",
+      "giver": "magistrat",
+      "rules": [
+        {
+          "states": {
+            "sqhcci01": "0"
+          },
+          "unless": {},
+          "scores": {
+            "CAP_RANGSOCIAL": "20..29"
+          },
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/une_adresse_dans_les_profondeurs/magistrat/interact_self",
+      "guide": false,
+      "active": null
+    },
+    {
+      "qid": "sqbaob01",
+      "giver": "mira",
+      "rules": [
+        {
+          "states": {
+            "sqbaob01": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/side/bas_anneaux/q01_quartier_oublies/accept_self",
+      "guide": false,
+      "active": null
+    },
+    {
+      "qid": "sqbaob02",
+      "giver": "elias",
+      "rules": [
+        {
+          "states": {
+            "sqbaob02": "0"
+          },
+          "unless": {
+            "sqbaob03": "20"
+          },
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "npc/elias_ferbois/interact_self",
+      "guide": false,
+      "active": null
+    },
+    {
+      "qid": "sqbaob03",
+      "giver": "lysandre",
+      "rules": [
+        {
+          "states": {
+            "sqbaob03": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/side/bas_anneaux/q03_marche_mille_voix/interact_self",
+      "guide": false,
+      "active": null
+    },
+    {
+      "qid": "sqbaob04",
+      "giver": "roland",
+      "rules": [
+        {
+          "states": {
+            "sqbaob04": "0"
+          },
+          "unless": {
+            "sqbaob03": "40"
+          },
+          "scores": {},
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "sqbaob04": "0",
+            "sqbaob03": "40"
+          },
+          "unless": {
+            "sqbaob01": "102"
+          },
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "npc/roland/interact_self",
+      "guide": false,
+      "active": null
+    },
+    {
+      "qid": "sqhcso01",
+      "giver": "odon",
+      "rules": [
+        {
+          "states": {
+            "sqhcso01": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "sqhcso01": "1_to_2"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/divers/acte_dette/sieur_odon/interact_self",
+      "guide": true,
+      "active": null
+    },
+    {
+      "qid": "sqhcso02",
+      "giver": "libraire",
+      "rules": [
+        {
+          "states": {
+            "sqhcso02": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "npc/libraire/work_offer_self",
+      "guide": true,
+      "active": null
+    },
+    {
+      "qid": "sqhcso03",
+      "giver": "aldren",
+      "rules": [
+        {
+          "states": {
+            "sqhcso03": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/side/menace_orcs/interact_self",
+      "guide": false,
+      "active": null
+    },
+    {
+      "qid": "rqhc01",
+      "giver": "veilleuse",
+      "rules": [
+        {
+          "states": {
+            "rqhc01": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {
+            "hcd_rqhc01": "1.."
+          }
+        }
+      ],
+      "source": "quest/divers/lampe_manquante/veilleuse/interact_player",
+      "guide": false,
+      "active": null
+    },
+    {
+      "qid": "rqhc02",
+      "giver": "technicienne",
+      "rules": [
+        {
+          "states": {},
+          "unless": {
+            "rqhc02": "20_to_50"
+          },
+          "scores": {},
+          "not_scores": {
+            "hcd_rqhc02": "1.."
+          }
+        }
+      ],
+      "source": "quest/divers/relais_coeur/technicien/interact_self",
+      "guide": true,
+      "active": null
+    },
+    {
+      "qid": "dqhc01",
+      "giver": "employe_banque",
+      "rules": [
+        {
+          "states": {},
+          "unless": {
+            "dqhc01": "10"
+          },
+          "scores": {},
+          "not_scores": {
+            "hcd_dqhc01": "1.."
+          }
+        }
+      ],
+      "source": "quest/journalieres/banque/employe/interact_player",
+      "guide": true,
+      "active": null
+    },
+    {
+      "qid": "dqhc02",
+      "giver": "veteran",
+      "rules": [
+        {
+          "states": {
+            "dqhc02": "0"
+          },
+          "unless": {},
+          "scores": {
+            "CAP_CD_BEER_GC": "0"
+          },
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "dqhc02": "100_to_"
+          },
+          "unless": {},
+          "scores": {
+            "CAP_CD_BEER_GC": "0"
+          },
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/journalieres/biere_veteran/interact_self",
+      "guide": false,
+      "active": null
+    },
+    {
+      "qid": "dqhc03",
+      "giver": "commis_port",
+      "rules": [
+        {
+          "states": {},
+          "unless": {
+            "dqhc03": "1_to_2"
+          },
+          "scores": {},
+          "not_scores": {
+            "hcd_dqhc03": "1.."
+          }
+        }
+      ],
+      "source": "quest/journalieres/registre_port/commis/interact_self",
+      "guide": true,
+      "active": null
+    },
+    {
+      "qid": "dqhc04",
+      "giver": "commis_messageries",
+      "rules": [
+        {
+          "states": {},
+          "unless": {
+            "dqhc04": "20_to_30"
+          },
+          "scores": {},
+          "not_scores": {
+            "hcd_dqhc04": "1.."
+          }
+        }
+      ],
+      "source": "quest/journalieres/ressort_clocher/donneur/interact_self",
+      "guide": true,
+      "active": null
+    },
+    {
+      "qid": "dqhc05",
+      "giver": "greffier",
+      "rules": [
+        {
+          "states": {},
+          "unless": {
+            "dqhc05": "20"
+          },
+          "scores": {},
+          "not_scores": {
+            "hcd_dqhc05": "1.."
+          }
+        }
+      ],
+      "source": "quest/journalieres/temoignages_quais/greffier/interact_self",
+      "guide": true,
+      "active": null
+    },
+    {
+      "qid": "sqhcvn01",
+      "giver": "maelor",
+      "rules": [
+        {
+          "states": {
+            "sqhcvn01": "0"
+          },
+          "unless": {},
+          "scores": {
+            "CAP_RANGSOCIAL": "20.."
+          },
+          "not_scores": {}
+        },
+        {
+          "states": {
+            "sqhcvn01": "1_to_2"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/vent_noir/maelor/interact_self",
+      "guide": true,
+      "active": 0
+    },
+    {
+      "qid": "sqhcvn02",
+      "giver": "maelor",
+      "rules": [
+        {
+          "states": {
+            "sqhcvn01": "100",
+            "sqhcvn02": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/vent_noir/maelor/interact_self",
+      "guide": true,
+      "active": 0
+    },
+    {
+      "qid": "sqhcvn03",
+      "giver": "maelor",
+      "rules": [
+        {
+          "states": {
+            "sqhcvn02": "100",
+            "sqhcvn03": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/vent_noir/maelor/interact_self",
+      "guide": true,
+      "active": 0
+    },
+    {
+      "qid": "sqhcvn04",
+      "giver": "maelor",
+      "rules": [
+        {
+          "states": {
+            "sqhcvn03": "100",
+            "sqhcvn04": "0"
+          },
+          "unless": {},
+          "scores": {},
+          "not_scores": {}
+        }
+      ],
+      "source": "quest/vent_noir/maelor/interact_self",
+      "guide": true,
+      "active": 0
+    }
+  ],
+  "givers": {
+    "geraud": {
+      "names": [
+        "Géraud Rivet",
+        "Géraud",
+        "Quartier-maître Géraud Rivet"
+      ],
+      "tags": [
+        "hcq_pnj_geraud"
+      ]
+    },
+    "leovic": {
+      "names": [
+        "Léovic",
+        "Garde Léovic"
+      ],
+      "tags": [
+        "npc_leovic_registre_port",
+        "hcq_pnj_leovic"
+      ]
+    },
+    "aurele": {
+      "names": [
+        "Aurèle Veyrane",
+        "Aurèle"
+      ],
+      "tags": [
+        "npc_aurele_veyrane",
+        "hcq_pnj_aurele"
+      ]
+    },
+    "roch": {
+      "names": [
+        "Roch Vallet",
+        "Roch"
+      ],
+      "tags": [
+        "npc_roch_vallet",
+        "hcq_pnj_roch"
+      ]
+    },
+    "magistrat": {
+      "names": [
+        "Magistrat des Profondeurs",
+        "Magistrat"
+      ],
+      "tags": [
+        "hcq_pnj_magistrat"
+      ]
+    },
+    "mira": {
+      "names": [
+        "Mira"
+      ],
+      "tags": [
+        "npc_mira_q01",
+        "hcq_pnj_mira"
+      ]
+    },
+    "elias": {
+      "names": [
+        "Elias Ferbois",
+        "Élias Ferbois",
+        "Elias",
+        "Élias"
+      ],
+      "tags": [
+        "hcq_pnj_elias_ferbois"
+      ]
+    },
+    "lysandre": {
+      "names": [
+        "Lysandre"
+      ],
+      "tags": [
+        "hcq_pnj_lysandre"
+      ]
+    },
+    "roland": {
+      "names": [
+        "Roland"
+      ],
+      "tags": [
+        "hcq_pnj_roland"
+      ]
+    },
+    "odon": {
+      "names": [
+        "Odon Varenne",
+        "Sieur Odon",
+        "Odon"
+      ],
+      "tags": [
+        "hcq_pnj_odon",
+        "hcq_pnj_sieur_odon"
+      ]
+    },
+    "libraire": {
+      "names": [
+        "Libraire agréé",
+        "Libraire"
+      ],
+      "tags": [
+        "hcq_pnj_libraire"
+      ]
+    },
+    "aldren": {
+      "names": [
+        "Aldren le Traqueur",
+        "Aldren"
+      ],
+      "tags": [
+        "hcq_pnj_aldren"
+      ]
+    },
+    "veilleuse": {
+      "names": [
+        "Veilleuse des Profondeurs",
+        "Veilleuse"
+      ],
+      "tags": [
+        "hcq_pnj_veilleuse"
+      ]
+    },
+    "technicienne": {
+      "names": [
+        "Technicienne du Cœur",
+        "Technicienne du Coeur",
+        "Technicienne"
+      ],
+      "tags": [
+        "hcq_pnj_technicienne"
+      ]
+    },
+    "employe_banque": {
+      "names": [
+        "Employé de la Banque",
+        "Employé de banque"
+      ],
+      "tags": [
+        "hcq_pnj_employe_banque"
+      ]
+    },
+    "veteran": {
+      "names": [
+        "Vétéran de la Garde du Cœur",
+        "Vétéran de la Garde du Coeur",
+        "Vétéran"
+      ],
+      "tags": [
+        "hcq_pnj_veteran"
+      ]
+    },
+    "commis_port": {
+      "names": [
+        "Commis du Port",
+        "Commis du port"
+      ],
+      "tags": [
+        "hcq_pnj_commis_port"
+      ]
+    },
+    "commis_messageries": {
+      "names": [
+        "Commis des Messageries",
+        "Commis des messageries"
+      ],
+      "tags": [
+        "hcq_pnj_commis_messageries"
+      ]
+    },
+    "greffier": {
+      "names": [
+        "Greffier des Quais",
+        "Greffier des quais"
+      ],
+      "tags": [
+        "hcq_pnj_greffier"
+      ]
+    },
+    "maelor": {
+      "names": [
+        "Maelor Veyne",
+        "Maelor"
+      ],
+      "tags": [
+        "hcq_pnj_maelor"
+      ]
+    }
+  },
+  "guide_predicates": [
+    "hc_quetes:migration/state/pq02/20",
+    "hc_quetes:migration/state/pq03/20",
+    "hc_quetes:migration/state/pq03/40",
+    "hc_quetes:migration/state/pq04/20",
+    "hc_quetes:migration/state/pq04/50"
+  ]
+}

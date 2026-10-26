@@ -1,5 +1,7 @@
 # Rejouer PQ01 et effectuer la recette — HF11
 
+QMARK1, 26 octobre 2026 : conserver le journal HF11, remplacer les deux datapacks serveur par HF9_QMARK1 et HF4_QMARK1. [Recette des repères du core](quests/core-quest-markers-qmark1/GUIDE_REPERES.md#recette-sur-la-carte). La recette du prologue ci-dessous reste valable.
+
 ## Relecture personnelle sans récompenses
 
 Sur une copie du monde et avec le personnage voulu chargé, hors dialogue et hors transition :

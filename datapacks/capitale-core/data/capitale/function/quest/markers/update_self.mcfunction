@@ -1,0 +1,21 @@
+# QMARK1 : visibilité personnelle des offres du core.
+function capitale:quest/markers/giver/geraud with storage hc_quetes:session current
+function capitale:quest/markers/giver/leovic with storage hc_quetes:session current
+function capitale:quest/markers/giver/aurele with storage hc_quetes:session current
+function capitale:quest/markers/giver/roch with storage hc_quetes:session current
+function capitale:quest/markers/giver/magistrat with storage hc_quetes:session current
+function capitale:quest/markers/giver/mira with storage hc_quetes:session current
+function capitale:quest/markers/giver/elias with storage hc_quetes:session current
+function capitale:quest/markers/giver/lysandre with storage hc_quetes:session current
+function capitale:quest/markers/giver/roland with storage hc_quetes:session current
+function capitale:quest/markers/giver/odon with storage hc_quetes:session current
+function capitale:quest/markers/giver/libraire with storage hc_quetes:session current
+function capitale:quest/markers/giver/aldren with storage hc_quetes:session current
+function capitale:quest/markers/giver/veilleuse with storage hc_quetes:session current
+function capitale:quest/markers/giver/technicienne with storage hc_quetes:session current
+function capitale:quest/markers/giver/employe_banque with storage hc_quetes:session current
+function capitale:quest/markers/giver/veteran with storage hc_quetes:session current
+function capitale:quest/markers/giver/commis_port with storage hc_quetes:session current
+function capitale:quest/markers/giver/commis_messageries with storage hc_quetes:session current
+function capitale:quest/markers/giver/greffier with storage hc_quetes:session current
+function capitale:quest/markers/giver/maelor with storage hc_quetes:session current
