@@ -86,6 +86,8 @@ public final class SpatialSurfaceCleaner {
         final Map<Query,int[]> cache=new HashMap<>();
         final int identityMask;
         final boolean uniqueRanks;
+        final int[][] partLo=new int[6][3],partHi=new int[6][3];
+        boolean bounded=true;
         int epoch;
         Index(Grid grid) {
             IdentityHashMap<Box,Boolean> seen=new IdentityHashMap<>();
@@ -94,6 +96,13 @@ public final class SpatialSurfaceCleaner {
                 if(seen.put(b,Boolean.TRUE)==null)ordered.add(b);
             ordered.sort(Comparator.comparingInt(b->b.rank));
             boxes=ordered.toArray(Box[]::new);boolean unique=true;
+            for(int p=0;p<6;p++) {Arrays.fill(partLo[p],Integer.MAX_VALUE);Arrays.fill(partHi[p],Integer.MIN_VALUE);}
+            for(Box b:boxes)for(int axis=0;axis<3;axis++) {
+                if(!Float.isFinite(b.worldLo[axis])||!Float.isFinite(b.worldHi[axis])
+                    ||java.lang.Math.abs(b.worldLo[axis])>32||java.lang.Math.abs(b.worldHi[axis])>32)bounded=false;
+                partLo[b.part][axis]=java.lang.Math.min(partLo[b.part][axis],grid.cell(b.worldLo[axis]));
+                partHi[b.part][axis]=java.lang.Math.max(partHi[b.part][axis],grid.cell(b.worldHi[axis]));
+            }
             for(int i=1;i<boxes.length;i++)if(boxes[i-1].rank==boxes[i].rank)unique=false;
             uniqueRanks=unique;
             int size=2;while(size<boxes.length*2)size<<=1;
@@ -143,7 +152,14 @@ public final class SpatialSurfaceCleaner {
         if(!index.uniqueRanks) {
             // Equal ranks require the exact legacy identity-set tie order.
             fallbacks++;result=ExactSurfaceCleaner.cleanPRE35(input,grid,part,base,first,skipOwn);
-        } else result=cleanIndexed(input,grid,index,part,base,first,skipOwn);
+        } else {
+            var token=skipOwn&&!first?PartSurfaceReuse.lookup(input,grid,index,part,base):null;
+            if(token!=null&&token.hit()!=null)result=token.hit();
+            else {
+                result=cleanIndexed(input,grid,index,part,base,first,skipOwn);
+                if(token!=null)PartSurfaceReuse.store(token,input,result);
+            }
+        }
         if(VERIFY) {
             var reference=ExactSurfaceCleaner.cleanPRE35(input,grid,part,base,first,skipOwn);
             compare(reference,result);oracleCalls++;
