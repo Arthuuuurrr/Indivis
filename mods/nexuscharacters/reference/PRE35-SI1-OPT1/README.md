@@ -25,6 +25,11 @@ pas recouper les cellules du polygone. Ce rejet utilise les mêmes indices entie
 que PRE35, avec une garde contre l'alias des clés 21 bits. Les tables d'indices
 d'une partie ne sont créées que lorsqu'une recherche en a réellement besoin.
 
+Le test de faces extérieures conserve les projections exactes des sommets pendant
+un test polygone/volume : PRE35 les recalculait jusqu'à six fois. Le scratch est
+local à l'invocation, sans cache numérique inter-pose. Le code de découpe PRE35
+et l'oracle de faces extérieures original restent inchangés.
+
 Le code original est conservé en `ExactSurfaceCleaner.cleanPRE35`. Le mode de QA
 `-Dnexus.opt1.verify=true` compare les sorties sur les mêmes objets, valeur flottante
 par valeur flottante, sans arrondi. Ce mode n’est pas une mesure de performance.

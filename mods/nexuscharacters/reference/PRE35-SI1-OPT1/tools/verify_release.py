@@ -22,6 +22,7 @@ with zipfile.ZipFile(base) as a,zipfile.ZipFile(jar) as b:
 def record(label):
  r=json.loads((Q/('last-'+label+'.json')).read_text())
  assert r['nexus_sha256']==sha,(label,'stale JAR')
+ assert hashlib.sha256(next((Path(r['game'])/'mods').glob('NexusCharacters*.jar')).read_bytes()).hexdigest()==sha,(label,'loaded JAR mismatch')
  return r,Path(r['game'])/'evidence'
 
 comparison=json.loads((R/'qa/comparison.json').read_text())

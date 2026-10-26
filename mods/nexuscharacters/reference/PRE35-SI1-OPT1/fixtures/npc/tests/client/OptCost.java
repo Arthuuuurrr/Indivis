@@ -41,9 +41,12 @@ final class OptCost {
     Object model=frame(c,all.get(e),pose,frame+800,e);
     geometry.add("npc,"+pose+","+frame+","+e+","+RenderPerf.geometry(model));
    }
+   // Warm both changing-pose branches before any timing; otherwise late JIT
+   // compilation makes the first head-turn case incomparable across JVMs.
+   for(int f=0;f<320;f++)for(int e=0;e<3;e++)frame(c,all.get(e),f%2==0?"head_turn":"walking",30000+f,e);
    for(String pose:List.of("static","head_turn","walking"))for(int count:new int[]{1,3,8}) {
     for(int f=0;f<32;f++)for(int e=0;e<count;e++)frame(c,all.get(e),pose,2000+f,e);
-    for(int sample=0;sample<3;sample++) {
+    for(int sample=0;sample<5;sample++) {
      int frames=24;long id=Thread.currentThread().threadId(),bytes=bean.getThreadAllocatedBytes(id),cpu=bean.getCurrentThreadCpuTime(),wall=System.nanoTime(),rebuild=PosedSurfaceSupport.recomputeCount;
      for(int f=0;f<frames;f++)for(int e=0;e<count;e++)frame(c,all.get(e),pose,10000+sample*1000+f,e);
      String row="npc,"+pose+","+count+","+sample+","+frames+","+(bean.getCurrentThreadCpuTime()-cpu)+","+(System.nanoTime()-wall)+","+(bean.getThreadAllocatedBytes(id)-bytes)+","+(PosedSurfaceSupport.recomputeCount-rebuild);

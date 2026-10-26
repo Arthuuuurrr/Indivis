@@ -6,7 +6,34 @@ import net.tompsen.nexuscharacters.PosedSurfaceSupport.Grid;
 
 /** Seeded, dependency-light checks against the unmodified PRE35 method body. */
 public final class ExactIndexRegression {
+ static void exterior() {
+  java.util.Random r=new java.util.Random(0x4558544552494f52L);
+  var scratch=new SpatialSurfaceCleaner.ExteriorScratch();int checks=0;
+  float e=6.0E-5f;
+  for(int trial=0;trial<96;trial++) {
+   Matrix4f transform=new Matrix4f().translation(r.nextFloat()-.5f,r.nextFloat()-.5f,r.nextFloat()-.5f)
+     .rotateXYZ(r.nextFloat(),r.nextFloat(),r.nextFloat()).scale(.7f+r.nextFloat(),.7f+r.nextFloat(),.7f+r.nextFloat());
+   Box box=new Box(new float[]{-.2f,-.3f,-.4f},new float[]{.2f,.3f,.4f},transform,0,0);
+   for(int plane=0;plane<6;plane++)for(float offset:new float[]{0,e,-e,2*e,-2*e,java.lang.Math.nextUp(2*e),java.lang.Math.nextDown(2*e),.001f,-.001f})
+    for(int sign:new int[]{-1,1}) {
+     int axis=plane/2;float position=(plane%2==0?box.lo[axis]:box.hi[axis])+offset;
+     List<Vertex> vertices=new ArrayList<>();
+     for(int i=0;i<7;i++) {
+      float[] v={0,0,0};v[axis]=position;
+      v[(axis+1)%3]=(float)java.lang.Math.cos(i*2*java.lang.Math.PI/7)*.1f;
+      v[(axis+2)%3]=(float)java.lang.Math.sin(i*2*java.lang.Math.PI/7)*.1f;
+      vertices.add(new Vertex(v[0],v[1],v[2],i/7f,1-i/7f));
+     }
+     Vector3f normal=new Vector3f();normal.setComponent(axis,sign);
+     Polygon polygon=SurfaceGeometry.transform(List.of(new Polygon(vertices,normal,1)),transform).get(0);
+     if(scratch.same(polygon,box)!=box.sameExterior(polygon))throw new AssertionError("Exterior plane/epsilon mismatch");
+     checks++;
+    }
+  }
+  System.out.println("EXACT_EXTERIOR_PASS checks="+checks+" coplanar/near-threshold/nonuniform-transform/reversed-normal/growing-scratch");
+ }
  public static void main(String[] args) {
+  exterior();
   java.util.Random random=new java.util.Random(0x354f505431L);int cases=0;
   for(int trial=0;trial<600;trial++) {
    Grid grid=new Grid();List<Polygon> polygons=new ArrayList<>();

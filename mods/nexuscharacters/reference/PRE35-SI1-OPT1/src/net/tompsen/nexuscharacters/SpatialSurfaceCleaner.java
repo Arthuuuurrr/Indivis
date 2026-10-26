@@ -1,6 +1,7 @@
 package net.tompsen.nexuscharacters;
 
 import java.util.*;
+import org.joml.Vector3f;
 import net.tompsen.nexuscharacters.SurfaceGeometry.*;
 import net.tompsen.nexuscharacters.PosedSurfaceSupport.Grid;
 
@@ -13,6 +14,39 @@ public final class SpatialSurfaceCleaner {
     public static long calls, queries, queryHits, fallbacks, oracleCalls, oraclePolygons;
     private static final int[] EMPTY=new int[0];
     private record Query(int x0,int x1,int y0,int y1,int z0,int z1,int mask) {}
+
+    /** PRE35 Box.sameExterior repeats a vertex projection for each of six
+     * planes. Retain those exact float results for this one polygon/box test.
+     * Scratch is invocation-local, never shared between frames or threads.
+     */
+    static final class ExteriorScratch {
+        final Vector3f position=new Vector3f();
+        float[] projected=new float[12];
+        boolean same(Polygon p,Box box) {
+            if(p.normal()==null)return box.sameExterior(p);
+            var vertices=p.vertices();int computed=0;
+            if(projected.length<vertices.size()*3)projected=new float[vertices.size()*3];
+            for(int plane=0;plane<6;plane++) {
+                boolean same=true;int axis=plane/2;
+                for(int i=0;i<vertices.size();i++) {
+                    if(i==computed) {
+                        Vertex v=vertices.get(i);
+                        box.inverse.transformPosition(position.set(v.x(),v.y(),v.z()));
+                        projected[i*3]=position.x;projected[i*3+1]=position.y;projected[i*3+2]=position.z;computed++;
+                    }
+                    float coordinate=projected[i*3+axis];
+                    float distance=plane%2==0?box.lo[axis]-coordinate:coordinate-box.hi[axis];
+                    if(java.lang.Math.abs(distance)>6.0E-5f){same=false;break;}
+                }
+                if(same) {
+                    Vector3f normal=box.inverse.transformDirection(new Vector3f(p.normal())).normalize();
+                    float direction=axis==0?normal.x:axis==1?normal.y:normal.z;
+                    if(direction*(plane%2==0?-1:1)>.99f)return true;
+                }
+            }
+            return false;
+        }
+    }
 
     /** The same axis extrema as Box.near, evaluated once for an immutable piece. */
     static final class Piece {
@@ -34,11 +68,11 @@ public final class SpatialSurfaceCleaner {
                 || y1<b.worldLo[1]-SurfaceGeometry.EPS || y0>b.worldHi[1]+SurfaceGeometry.EPS
                 || z1<b.worldLo[2]-SurfaceGeometry.EPS || z0>b.worldHi[2]+SurfaceGeometry.EPS);
         }
-        boolean unchanged(Box b) {
+        boolean unchanged(Box b,ExteriorScratch scratch) {
             if(!near(b))return true;
             // Preserve PRE35's evaluation order, including its null-normal path.
             if(polygon.normal()==null)return b.sameExterior(polygon)&&b.rank<=polygon.rank();
-            return b.rank<=polygon.rank()&&b.sameExterior(polygon);
+            return b.rank<=polygon.rank()&&scratch.same(polygon,b);
         }
     }
 
@@ -183,6 +217,7 @@ public final class SpatialSurfaceCleaner {
         if(skipOwn||base)allowed&=~(1<<part);
         if(first)allowed&=1<<part;
         if(allowed==0)return new ArrayList<>(input);
+        ExteriorScratch scratch=new ExteriorScratch();
         ArrayList<Polygon> out=new ArrayList<>(input.size());
         for(Polygon source:input) {
             Piece initial=new Piece(source);
@@ -190,7 +225,7 @@ public final class SpatialSurfaceCleaner {
             for(int id:index.query(initial,grid,allowed)) {
                 Box box=index.boxes[id];
                 if(fragments==null) {
-                    if(initial.unchanged(box))continue;
+                    if(initial.unchanged(box,scratch))continue;
                     var clipped=ExactSurfaceClipper.intersecting(source,box,!skipOwn);
                     fragments=new ArrayList<>(clipped.size());
                     for(Polygon p:clipped)fragments.add(new Piece(p));
@@ -198,7 +233,7 @@ public final class SpatialSurfaceCleaner {
                     List<Piece> next=null;
                     for(int i=0;i<fragments.size();i++) {
                         Piece piece=fragments.get(i);
-                        if(piece.unchanged(box)) {if(next!=null)next.add(piece);}
+                        if(piece.unchanged(box,scratch)) {if(next!=null)next.add(piece);}
                         else {
                             if(next==null){next=new ArrayList<>();for(int j=0;j<i;j++)next.add(fragments.get(j));}
                             for(Polygon p:ExactSurfaceClipper.intersecting(piece.polygon,box,!skipOwn))next.add(new Piece(p));

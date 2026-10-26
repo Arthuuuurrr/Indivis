@@ -8,6 +8,8 @@ if reload_from:
  old=Path(reload_from).resolve();shutil.copytree(old/'saves',G/'saves');shutil.copytree(old/'config/indivis-nexus-npc',G/'config/indivis-nexus-npc')
 nexus=Path(os.environ.get('NEXUS_TEST_JAR',str(R/'base/NexusCharacters-Indivis-1.21.11-PRE35-SI1.jar'))).resolve()
 for p in (R/'base').glob('*.jar'):shutil.copy2(nexus if p.name.startswith('NexusCharacters') else p,M/p.name)
+loaded_nexus=next(M.glob('NexusCharacters*.jar'))
+loaded_nexus_sha=hashlib.sha256(loaded_nexus.read_bytes()).hexdigest()
 addon=R/'Indivis-Nexus-NPC-0.1.0-PREVIEW1-1.21.11.jar'
 if not baseline:shutil.copy2(addon,M/addon.name)
 for name in ['fabric-api','skinlayers','sodium','immediatelyfast']:shutil.copy2(RT/(name+'.jar'),M/(name+'.jar'))
@@ -43,6 +45,7 @@ cmd.insert(1,'-Dnpcqa.visual='+str(kind=='visual').lower())
 cmd.insert(1,'-Dnexus.opt1.verify='+os.environ.get('NEXUS_VERIFY','false'))
 cmd.insert(1,'-Dnpcqa.optPerf='+os.environ.get('OPT_PERF','false'))
 cmd.insert(1,'-Dnpcqa.existingHand=true')
+cmd[cmd.index('-Xmx2000M')]='-Xmx'+os.environ.get('NPC_HEAP','2000M')
 if os.environ.get('OPT_JFR')=='true':cmd.insert(1,'-XX:StartFlightRecording=filename='+str(G/'cost.jfr')+',settings=profile,dumponexit=true')
 start=time.time();time.sleep(1);print('NPC_CLIENT_START',stamp,flush=True)
 try:
@@ -55,7 +58,7 @@ if menus:
  shutil.copytree(folder,out,dirs_exist_ok=True);shutil.copytree(geom,out/'geometry',dirs_exist_ok=True);shutil.copy2(folder/'result.txt',out/'pass.txt')
 assert result.returncode==0 and not (out/'failure.txt').exists() and (out/'pass.txt').exists(),'NPC client failure: '+str(out)
 record={'mode':kind if kind=='visual' else 'reload' if reload_from else kind,'jar_sha256':None if baseline else hashlib.sha256(addon.read_bytes()).hexdigest(),'start_utc':datetime.datetime.fromtimestamp(start,datetime.UTC).isoformat(),'end_utc':datetime.datetime.now(datetime.UTC).isoformat(),'game':str(G),'log':str(log),'pass':(out/'pass.txt').read_text()}
-record['mode']=os.environ.get('NPC_RUN_LABEL',record['mode']);record['nexus_sha256']=hashlib.sha256(nexus.read_bytes()).hexdigest()
+record['mode']=os.environ.get('NPC_RUN_LABEL',record['mode']);record['nexus_sha256']=loaded_nexus_sha
 record['reload_from']=reload_from;record['fixed_facing']=kind=='visual'
 (R/('qa/last-'+record['mode']+'.json')).write_text(json.dumps(record,indent=2,ensure_ascii=False)+'\n')
 shutil.copytree(out,R/('qa/evidence-'+record['mode']),dirs_exist_ok=True)
