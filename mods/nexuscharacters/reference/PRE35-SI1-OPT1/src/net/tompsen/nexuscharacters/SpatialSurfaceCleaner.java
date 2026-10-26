@@ -11,6 +11,7 @@ public final class SpatialSurfaceCleaner {
     private SpatialSurfaceCleaner() {}
     private static final boolean VERIFY = Boolean.getBoolean("nexus.opt1.verify");
     public static long calls, queries, queryHits, fallbacks, oracleCalls, oraclePolygons;
+    private static final int[] EMPTY=new int[0];
     private record Query(int x0,int x1,int y0,int y1,int z0,int z1,int mask) {}
 
     /** The same axis extrema as Box.near, evaluated once for an immutable piece. */
@@ -113,7 +114,6 @@ public final class SpatialSurfaceCleaner {
                 identity[at]=boxes[i];identityIds[at]=i;
             }
             stamps=new int[boxes.length];work=new int[boxes.length];
-            for(int p=0;p<6;p++)cells[p]=new Cells(grid.cells[p]);
         }
         int id(Box box) {
             int at=System.identityHashCode(box)&identityMask;
@@ -121,9 +121,18 @@ public final class SpatialSurfaceCleaner {
             return identityIds[at];
         }
         int[] query(Piece p,Grid grid,int allowed) {
-            Query q=new Query(grid.cell(p.x0-SurfaceGeometry.EPS),grid.cell(p.x1+SurfaceGeometry.EPS),
-                grid.cell(p.y0-SurfaceGeometry.EPS),grid.cell(p.y1+SurfaceGeometry.EPS),
-                grid.cell(p.z0-SurfaceGeometry.EPS),grid.cell(p.z1+SurfaceGeometry.EPS),allowed);
+            int x0=grid.cell(p.x0-SurfaceGeometry.EPS),x1=grid.cell(p.x1+SurfaceGeometry.EPS),
+                y0=grid.cell(p.y0-SurfaceGeometry.EPS),y1=grid.cell(p.y1+SurfaceGeometry.EPS),
+                z0=grid.cell(p.z0-SurfaceGeometry.EPS),z1=grid.cell(p.z1+SurfaceGeometry.EPS);
+            // Exact occupied-cell exclusion. The bounded path cannot alias the
+            // legacy 21-bit grid keys; unbounded inputs retain the full lookup.
+            if(bounded&&x0>=-512&&x1<=512&&y0>=-512&&y1<=512&&z0>=-512&&z1<=512)
+                for(int part=0;part<6;part++)if((allowed&(1<<part))!=0
+                    &&(partLo[part][0]>x1||partHi[part][0]<x0
+                    ||partLo[part][1]>y1||partHi[part][1]<y0
+                    ||partLo[part][2]>z1||partHi[part][2]<z0))allowed&=~(1<<part);
+            if(allowed==0)return EMPTY;
+            Query q=new Query(x0,x1,y0,y1,z0,z1,allowed);
             int[] saved=cache.get(q);
             if(saved!=null){queryHits++;return saved;}
             queries++;
@@ -132,7 +141,8 @@ public final class SpatialSurfaceCleaner {
             for(int x=q.x0;x<=q.x1;x++)for(int y=q.y0;y<=q.y1;y++)for(int z=q.z0;z<=q.z1;z++) {
                 long key=grid.key(x,y,z);
                 for(int part=0;part<6;part++)if((allowed&(1<<part))!=0) {
-                    int[] ids=cells[part].get(key,this);if(ids==null)continue;
+                    Cells lookup=cells[part];if(lookup==null)cells[part]=lookup=new Cells(grid.cells[part]);
+                    int[] ids=lookup.get(key,this);if(ids==null)continue;
                     for(int id:ids)if(stamps[id]!=epoch){stamps[id]=epoch;work[count++]=id;}
                 }
             }

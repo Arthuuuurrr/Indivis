@@ -20,6 +20,11 @@ six profils, estimation conservatrice de 8 Mio de surfaces. Les entrées non fin
 ou hors de la plage spatiale bornée sont calculées normalement sans réutilisation.
 Le chemin première personne/local n'utilise pas ce second cache.
 
+Les recherches excluent aussi les parties dont les cellules occupées ne peuvent
+pas recouper les cellules du polygone. Ce rejet utilise les mêmes indices entiers
+que PRE35, avec une garde contre l'alias des clés 21 bits. Les tables d'indices
+d'une partie ne sont créées que lorsqu'une recherche en a réellement besoin.
+
 Le code original est conservé en `ExactSurfaceCleaner.cleanPRE35`. Le mode de QA
 `-Dnexus.opt1.verify=true` compare les sorties sur les mêmes objets, valeur flottante
 par valeur flottante, sans arrondi. Ce mode n’est pas une mesure de performance.
