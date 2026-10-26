@@ -1,4 +1,4 @@
-# Nexus PRE35 SI1 OPT1 — optimisation en cours
+# Nexus PRE35 SI1 OPT1 — validation locale terminée
 
 Issue #182. Branche `fix/nexus-posed-surface-cost`, sans fusion dans main.
 Base PRE35 SI1 SHA-256 : `399a4c64a7672e60ebbaaa52044cb547f5c41576039fe5aafe2c42485e2e8a8a`.
@@ -34,8 +34,20 @@ Le code original est conservé en `ExactSurfaceCleaner.cleanPRE35`. Le mode de Q
 `-Dnexus.opt1.verify=true` compare les sorties sur les mêmes objets, valeur flottante
 par valeur flottante, sans arrondi. Ce mode n’est pas une mesure de performance.
 
-Ne pas déployer avant validation. Les premières mesures du seul index ne suffisent
-pas : rotations de tête encore coûteuses ; deuxième passe en cours de vérification.
+Le JAR final `bdb1525d5e4448cb8127e38bdcdce063d629b7039a856bf9ea74be5ea06dea11`
+est reconstruit de façon déterministe. Les tests locaux passent : 5 400 cas de
+découpe, 10 368 cas de faces extérieures, 16 320 138 polygones comparés en jeu,
+216 états PNJ/joueurs et 466 états de régression identiques, 23 menus identiques
+pixel par pixel, nouveaux assets 930 et rechargement du monde de dix PNJ.
+
+Mesure finale chaude, sans oracle/JFR, cinq séries de 24 itérations : trois PNJ
+tête mobile 45,006 → 21,384 ms CPU (-52,49 %) ; marche 53,955 → 24,255 ms (-55,05 %).
+Il s'agit de préparation CPU groupée, pas de FPS. Tous les cas, y compris les moins
+favorables, sont dans `VERIFICATIONS_NEXUS_OPT1.md` et `qa/comparison.json`.
+Le modpack complet, les sorts et la caméra de dialogue ne sont pas reproduits.
+Le compte de QA hors ligne conserve les avertissements PRE35 de manifest/owner
+du vault ; ne pas assimiler le test NBT EasyNPC à une validation de cette persistance.
+Aucun déploiement ni fusion dans main ; PR conservée en brouillon pour revue.
 La version interne reste beta.35 et ajoute le marqueur de build OPT1 afin de
 préserver la dépendance de la liaison PREVIEW1 ; le chargement Fabric réel avec
 la liaison non modifiée a été confirmé. Les assets, protocoles et UI sont inchangés.
