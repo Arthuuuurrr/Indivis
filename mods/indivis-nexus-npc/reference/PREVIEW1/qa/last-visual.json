@@ -1,9 +1,9 @@
 {
   "mode": "visual",
   "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
-  "start_utc": "2026-10-26T13:31:50.301774+00:00",
-  "end_utc": "2026-10-26T13:34:08.034565+00:00",
-  "game": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/games/20261026T133143",
-  "log": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/client-20261026T133143.log",
-  "pass": "WORLD_RELOAD_PASS real saved world: 10 NPCs, 5 original tags, recipes and UUIDs retained\nSTATE_REUSE_PASS Nexus profile -> ordinary NPC; flags, texture, ears and beard reset\nNPC_CLIENT_PASS checks=2266 seen={elfe_des_bois=56, haut_elfe_ivoire=56, nain_bronze=56, naine_forge=56, nordique_roux=56} preparations=10 hits=131 layers=140\n"
+  "start_utc": "2026-10-26T13:38:18.544167+00:00",
+  "end_utc": "2026-10-26T13:41:21.393436+00:00",
+  "game": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/games/20261026T133804",
+  "log": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/client-20261026T133804.log",
+  "pass": "WORLD_RELOAD_PASS real saved world: 10 NPCs, 5 original tags, recipes and UUIDs retained\nSTATE_REUSE_PASS Nexus profile -> ordinary NPC; flags, texture, ears and beard reset\nNPC_CLIENT_PASS checks=2186 seen={elfe_des_bois=54, haut_elfe_ivoire=54, nain_bronze=54, naine_forge=54, nordique_roux=54} preparations=10 hits=126 layers=135\n"
 }

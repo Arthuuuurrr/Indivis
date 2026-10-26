@@ -29,7 +29,7 @@ HUD OPT1 et couches Accessories de l'instance de référence.
 | Import natif EasyNPC | Les 5 ressources sont découvertes par EasyNPC, chargées comme presets DEFAULT puis importées par son véritable gestionnaire. |
 | Véritables PNJ | 5 humanoïdes Nexus créés par le module et 5 autres importés par EasyNPC, pas des joueurs factices utilisés comme PNJ de substitution. |
 | Relief | Audit des 6 parties du modèle : maillages `NexusPosed23`, géométrie extérieure présente, couches cosmétiques effectivement appelées. Corps normal et slim. |
-| Contrôle visuel | Captures en jeu des cinq silhouettes, de face puis avec la caméra placée derrière les vrais PNJ ; pas d'image de rendu théorique utilisée comme preuve. |
+| Contrôle visuel | Captures en jeu des cinq silhouettes, de face puis avec la caméra placée derrière les vrais PNJ. L'orientation est figée dans le harnais pour la vue arrière afin d'éviter le suivi de caméra ; aucune modification de ce comportement dans le mod livré. Pas d'image de rendu théorique utilisée comme preuve. |
 | Créateur Nexus | Clic réel sur « Créer » dans le mode PNJ : recette exportée, nombre de personnages joueurs inchangé. |
 | Publication réseau | Envoi C2S réel puis lecture de la recette reçue côté serveur. Contrôle du seuil OP 4 et refus d'identifiants de chemins invalides. |
 | Application sur un PNJ existant | UUID, nom, dialogue témoin, tag de quête et données NBT hors apparence conservés. Rotation et échelle d'origine respectées. |

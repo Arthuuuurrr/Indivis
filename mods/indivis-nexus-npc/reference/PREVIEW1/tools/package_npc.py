@@ -28,4 +28,5 @@ with zipfile.ZipFile(target) as z:
  assert len([n for n in z.namelist() if n.endswith('.npc.snbt')])==5
 shutil.copy2(jar,OUT/jar.name)
 shutil.copy2(R/'RAPPORT-VERIFICATION.md',OUT/'RAPPORT-VERIFICATION.md')
-print(json.dumps({'zip':str(target),'zip_sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'zip_bytes':target.stat().st_size,'jar':str(OUT/jar.name),'report':str(OUT/'RAPPORT-VERIFICATION.md'),'entries':len(entries)}))
+release={'zip':str(target),'zip_sha256':hashlib.sha256(target.read_bytes()).hexdigest(),'zip_bytes':target.stat().st_size,'jar':str(OUT/jar.name),'jar_sha256':manifest['sha256'],'report':str(OUT/'RAPPORT-VERIFICATION.md'),'entries':len(entries)}
+(R/'qa/release.json').write_text(json.dumps(release,indent=2)+'\n');print(json.dumps(release))
