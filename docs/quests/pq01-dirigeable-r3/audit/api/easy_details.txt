@@ -1,0 +1,62 @@
+Compiled from "EasyNPC.java"
+public interface de.markusbordihn.easynpc.entity.easynpc.EasyNPC<E extends net.minecraft.class_1308> extends de.markusbordihn.easynpc.entity.easynpc.EasyNPCDataAccessors<E>, net.minecraft.class_1655 {
+  public static final org.apache.logging.log4j.Logger log;
+  public static final net.minecraft.class_2960 DEFAULT_CUSTOM_NPC_IDENTIFIER;
+  public static final java.util.Random randomNumber;
+  public static final int LEGACY_NPC_DATA_VERSION;
+  public static boolean isUsableServerSideInstance(de.markusbordihn.easynpc.entity.easynpc.EasyNPC<?>);
+  public abstract int getNPCDataVersion();
+  public abstract void setNPCDataVersion(int);
+  public default boolean isLegacyNPCData();
+  public default de.markusbordihn.easynpc.data.npc.NPCType getNPCType();
+  public default void registerEasyNPCDefaultData();
+  public abstract de.markusbordihn.easynpc.server.player.FakePlayer getFakePlayer(net.minecraft.class_3218, net.minecraft.class_2338);
+  public default net.minecraft.class_1333 getEntityLookControl();
+  public default net.minecraft.class_1314 getPathfinderMob();
+  public default net.minecraft.class_1937 getEntityLevel();
+  public default net.minecraft.class_3218 getEntityServerLevel();
+  public default boolean isClientSideInstance();
+  public default boolean isServerSideInstance();
+  public default net.minecraft.class_1309 getLivingEntity();
+  public default net.minecraft.class_1915 getMerchant();
+  public default net.minecraft.class_1603 getRangedAttackMob();
+  public default net.minecraft.class_3695 getProfiler();
+  public default net.minecraft.class_1297 getEntity();
+  public default net.minecraft.class_1308 getMob();
+  public default java.util.UUID getEntityUUID();
+  public default boolean isPersistentNPC();
+  public default net.minecraft.class_2561 getEntityTypeName();
+  public default java.lang.String getEntityTypeId();
+  public default net.minecraft.class_2960 getCustomNPCIdentifier();
+  public default net.minecraft.class_3745 getCrossbowAttackMob();
+  public default void handlePlayerJoinEvent(net.minecraft.class_3222);
+  public default void handlePlayerLeaveEvent(net.minecraft.class_3222);
+  public default void handleLivingEntityJoinEvent(net.minecraft.class_1309);
+  public default void handleLivingEntityLeaveEvent(net.minecraft.class_1309);
+  public default void handleEasyNPCJoinEvent(de.markusbordihn.easynpc.entity.easynpc.EasyNPC<?>);
+  public default void handleEasyNPCLeaveEvent(de.markusbordihn.easynpc.entity.easynpc.EasyNPC<?>);
+  public default void handleDieEvent(net.minecraft.class_1282);
+  public default void handleKillEvent();
+  public default void handleChangeDimensionEvent(net.minecraft.class_5454);
+  public default void handleHurtEvent(net.minecraft.class_1282, float);
+  public abstract <T> void defineSynchedEntityData(net.minecraft.class_2945$class_9222, de.markusbordihn.easynpc.data.synched.SynchedDataIndex, T);
+  public default <T> void setSynchedEntityData(de.markusbordihn.easynpc.data.synched.SynchedDataIndex, T);
+  public abstract <T> void setSynchedEntityData(de.markusbordihn.easynpc.data.synched.SynchedDataIndex, T, boolean);
+  public abstract <T> T getSynchedEntityData(de.markusbordihn.easynpc.data.synched.SynchedDataIndex);
+  public abstract net.minecraft.class_1355 getEntityGoalSelector();
+  public abstract net.minecraft.class_1355 getEntityTargetSelector();
+  static {};
+}
+Compiled from "StandardEasyNPC.java"
+public interface de.markusbordihn.easynpc.entity.easynpc.npc.StandardEasyNPC<T extends net.minecraft.class_1308> {
+  public default de.markusbordihn.easynpc.data.configuration.ConfigurationData getConfigurationData();
+}
+Compiled from "MobGoalSelectorManager.java"
+public class de.markusbordihn.easynpc.entity.ai.goal.MobGoalSelectorManager {
+  private static final java.util.Set<net.minecraft.class_1308> REGISTERED_TARGETING_MOBS;
+  private de.markusbordihn.easynpc.entity.ai.goal.MobGoalSelectorManager();
+  public static void addMobGoals(net.minecraft.class_1308, net.minecraft.class_1355, net.minecraft.class_1355, net.minecraft.class_1299<?>, net.minecraft.class_3218);
+  private static void addTargetingGoals(net.minecraft.class_1308, net.minecraft.class_1355);
+  private static boolean lambda$addTargetingGoals$0(net.minecraft.class_1309, net.minecraft.class_3218);
+  static {};
+}

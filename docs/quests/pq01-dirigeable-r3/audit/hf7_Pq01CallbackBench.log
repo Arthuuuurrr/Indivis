@@ -1,0 +1,2 @@
+[11:26:08] [main/INFO]: Registered custom action haute_capitale_quetes:pq01
+[11:26:08] [main/INFO]: [STDOUT]: PASS 3 assertions ; vrai CustomActionDispatcher EasyNPC 7.16.0 et proxy PQ01. Joueur réel alloué sans constructeur ; getEntity doublé à null ; aucun monde ni paquet de clic exécuté.

@@ -1,0 +1,8 @@
+PERSONNAGE : Perrin
+LANGUE : French
+
+INSTRUCTIONS (champ instruct) :
+Français naturel et intelligible. Jeu de dialogue réaliste, adressé à un interlocuteur proche. Variation d'intention à l'intérieur des phrases, diction nette, pauses expressives courtes. Lire exactement le texte fourni, sans annoncer le nom du personnage, l'identifiant ou les consignes. Conserver les noms propres et la ponctuation du texte. Pas de musique, bruitage, applaudissement, rire ou respiration théâtrale ajoutés. Identité de Perrin : Voix masculine adulte jeune, médium lumineux, sourire perceptible, débit spontané. Très à l'aise avec les inconnus, curieux et un peu indiscret. Il veut créer immédiatement une complicité. Parler du Port avec plaisir, comme d'un endroit vivant qu'il connaît. Face à l'amnésie, conserver la délicatesse : son intérêt pour l'histoire n'est jamais une moquerie. Dédramatiser les formalités sans dire qu'on peut les éviter. Intention de cette prise : Encourager la découverte de la ville avec chaleur. La plaisanterie sur les bureaux reste légère.
+
+TEXTE SEUL (champ text) :
+Alors, prêt à découvrir la Capitale ? Ne passez pas toute votre première journée dans les bureaux, tout de même. Il y a bien des choses à voir ici !

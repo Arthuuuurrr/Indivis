@@ -1,0 +1,31 @@
+{
+  "journal": {
+    "changed": [
+      "fabric.mod.json",
+      "indivis_pq01.mixins.json",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge$1.class",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge$View.class",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge.class",
+      "net/hautecapitale/quetes/sequence/Pq01Motion.class"
+    ],
+    "added": [
+      "net/hautecapitale/quetes/pq01/mixin/Pq01CaptureMixin.class",
+      "net/hautecapitale/quetes/sequence/Pq01CaptureFilter.class"
+    ],
+    "removed": [],
+    "all_mixins_and_historical_helpers_byte_identical": true
+  },
+  "core": {
+    "changed": [
+      "data/capitale/function/pq01/node/a2.mcfunction",
+      "pack.mcmeta"
+    ],
+    "added": [],
+    "removed": []
+  },
+  "quests": {
+    "changed": [],
+    "added": [],
+    "removed": []
+  }
+}

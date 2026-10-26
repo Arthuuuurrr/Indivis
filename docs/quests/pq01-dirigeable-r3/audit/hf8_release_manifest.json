@@ -1,0 +1,17 @@
+{
+  "file": "/workspace/scratch/451d7145576f/deliverables/Indivis_PQ01_R3_HF8_2026-10-24.zip",
+  "bytes": 624869,
+  "sha256": "ddd5d08dfea0d3af1e1597a38cf4d3923b1b205c04b854f914665c7f337a44aa",
+  "public_function_paths_checked": 54,
+  "voice_direction": {
+    "roles": 6,
+    "takes": 92,
+    "texts_match_canonical_nodes": true,
+    "all_takes_have_french_direction": true,
+    "no_audio_generated": true,
+    "no_datapack_hook_changed": true,
+    "file": "/workspace/scratch/451d7145576f/deliverables/Indivis_PQ01_Direction_Acteur_FR_Qwen_2026-10-24.zip",
+    "bytes": 140327,
+    "sha256": "2ce0443196ccb4fd99638339c64edf7595fc0a80670dbeafc30bc4e87b1c2595"
+  }
+}

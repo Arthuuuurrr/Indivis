@@ -1,0 +1,233 @@
+Compiled from "QuestVisibility.java"
+public final class net.hautecapitale.quetes.visibility.QuestVisibility {
+  private static final java.util.Set<java.lang.String> WATCHED;
+
+  private static final java.util.Map<java.util.UUID, java.lang.Integer> SIGNATURES;
+
+  private net.hautecapitale.quetes.visibility.QuestVisibility();
+    Code:
+       0: aload_0
+       1: invokespecial #25                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static boolean isVisibleTo(net.minecraft.class_1297, net.minecraft.class_3222);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #253                // Method net/hautecapitale/quetes/sequence/SequenceBridge.visible:(Ljava/lang/Object;Ljava/lang/Object;)Z
+       5: ifne          10
+       8: iconst_0
+       9: ireturn
+      10: aload_0
+      11: invokevirtual #37                 // Method net/minecraft/class_1297.method_5752:()Ljava/util/Set;
+      14: invokestatic  #257                // Method net/hautecapitale/quetes/sequence/SequenceBridge.filteredTags:(Ljava/util/Set;)Ljava/util/Set;
+      17: astore_2
+      18: aload_2
+      19: invokeinterface #43,  1           // InterfaceMethod java/util/Set.isEmpty:()Z
+      24: ifne          32
+      27: aload_0
+      28: aload_1
+      29: if_acmpne     34
+      32: iconst_1
+      33: ireturn
+      34: aload_1
+      35: invokevirtual #49                 // Method net/minecraft/class_3222.method_51469:()Lnet/minecraft/class_3218;
+      38: invokevirtual #55                 // Method net/minecraft/class_3218.method_14170:()Lnet/minecraft/class_2995;
+      41: astore_3
+      42: aload_2
+      43: aload_3
+      44: aload_1
+      45: invokedynamic #75,  0             // InvokeDynamic #0:applyAsInt:(Lnet/minecraft/class_269;Lnet/minecraft/class_3222;)Ljava/util/function/ToIntFunction;
+      50: invokestatic  #81                 // Method net/hautecapitale/quetes/visibility/VisibilityRule.visible:(Ljava/util/Collection;Ljava/util/function/ToIntFunction;)Z
+      53: ireturn
+
+  public static void tick(net.minecraft.server.MinecraftServer);
+    Code:
+       0: getstatic     #91                 // Field WATCHED:Ljava/util/Set;
+       3: invokeinterface #43,  1           // InterfaceMethod java/util/Set.isEmpty:()Z
+       8: ifeq          12
+      11: return
+      12: aload_0
+      13: invokevirtual #97                 // Method net/minecraft/server/MinecraftServer.method_3760:()Lnet/minecraft/class_3324;
+      16: invokevirtual #103                // Method net/minecraft/class_3324.method_14571:()Ljava/util/List;
+      19: invokeinterface #109,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      24: astore_1
+      25: aload_1
+      26: invokeinterface #114,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      31: ifeq          91
+      34: aload_1
+      35: invokeinterface #118,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      40: checkcast     #45                 // class net/minecraft/class_3222
+      43: astore_2
+      44: aload_2
+      45: invokestatic  #122                // Method signature:(Lnet/minecraft/class_3222;)I
+      48: istore_3
+      49: getstatic     #124                // Field SIGNATURES:Ljava/util/Map;
+      52: aload_2
+      53: invokevirtual #128                // Method net/minecraft/class_3222.method_5667:()Ljava/util/UUID;
+      56: iload_3
+      57: invokestatic  #134                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      60: invokeinterface #140,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      65: checkcast     #130                // class java/lang/Integer
+      68: astore        4
+      70: aload         4
+      72: ifnull        88
+      75: aload         4
+      77: invokevirtual #144                // Method java/lang/Integer.intValue:()I
+      80: iload_3
+      81: if_icmpeq     88
+      84: aload_2
+      85: invokestatic  #148                // Method refresh:(Lnet/minecraft/class_3222;)V
+      88: goto          25
+      91: return
+
+  public static void refresh(net.minecraft.class_3222);
+    Code:
+       0: aload_0
+       1: invokevirtual #49                 // Method net/minecraft/class_3222.method_51469:()Lnet/minecraft/class_3218;
+       4: invokevirtual #158                // Method net/minecraft/class_3218.method_14178:()Lnet/minecraft/class_3215;
+       7: aload_0
+       8: invokevirtual #163                // Method net/minecraft/class_3215.method_14096:(Lnet/minecraft/class_3222;)V
+      11: goto          29
+      14: astore_1
+      15: getstatic     #169                // Field net/hautecapitale/quetes/HauteCapitaleQuetes.LOGGER:Lorg/slf4j/Logger;
+      18: ldc           #171                // String [quetes] passe de visibilité impossible : {}
+      20: aload_1
+      21: invokevirtual #175                // Method java/lang/Throwable.toString:()Ljava/lang/String;
+      24: invokeinterface #181,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;)V
+      29: return
+    Exception table:
+       from    to  target type
+           0    11    14   Class java/lang/Throwable
+
+  public static void refreshAll(net.minecraft.server.MinecraftServer);
+    Code:
+       0: aload_0
+       1: invokevirtual #97                 // Method net/minecraft/server/MinecraftServer.method_3760:()Lnet/minecraft/class_3324;
+       4: invokevirtual #103                // Method net/minecraft/class_3324.method_14571:()Ljava/util/List;
+       7: invokeinterface #109,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      12: astore_1
+      13: aload_1
+      14: invokeinterface #114,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      19: ifeq          59
+      22: aload_1
+      23: invokeinterface #118,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      28: checkcast     #45                 // class net/minecraft/class_3222
+      31: astore_2
+      32: getstatic     #124                // Field SIGNATURES:Ljava/util/Map;
+      35: aload_2
+      36: invokevirtual #128                // Method net/minecraft/class_3222.method_5667:()Ljava/util/UUID;
+      39: aload_2
+      40: invokestatic  #122                // Method signature:(Lnet/minecraft/class_3222;)I
+      43: invokestatic  #134                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      46: invokeinterface #140,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      51: pop
+      52: aload_2
+      53: invokestatic  #148                // Method refresh:(Lnet/minecraft/class_3222;)V
+      56: goto          13
+      59: return
+
+  public static void watch(java.lang.String);
+    Code:
+       0: getstatic     #91                 // Field WATCHED:Ljava/util/Set;
+       3: aload_0
+       4: invokeinterface #191,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       9: pop
+      10: return
+
+  public static void forget(net.minecraft.class_3222);
+    Code:
+       0: getstatic     #124                // Field SIGNATURES:Ljava/util/Map;
+       3: aload_0
+       4: invokevirtual #128                // Method net/minecraft/class_3222.method_5667:()Ljava/util/UUID;
+       7: invokeinterface #197,  2          // InterfaceMethod java/util/Map.remove:(Ljava/lang/Object;)Ljava/lang/Object;
+      12: pop
+      13: return
+
+  public static void reset();
+    Code:
+       0: getstatic     #91                 // Field WATCHED:Ljava/util/Set;
+       3: invokeinterface #201,  1          // InterfaceMethod java/util/Set.clear:()V
+       8: getstatic     #124                // Field SIGNATURES:Ljava/util/Map;
+      11: invokeinterface #202,  1          // InterfaceMethod java/util/Map.clear:()V
+      16: return
+
+  private static int signature(net.minecraft.class_3222);
+    Code:
+       0: aload_0
+       1: invokevirtual #49                 // Method net/minecraft/class_3222.method_51469:()Lnet/minecraft/class_3218;
+       4: invokevirtual #55                 // Method net/minecraft/class_3218.method_14170:()Lnet/minecraft/class_2995;
+       7: astore_1
+       8: iconst_1
+       9: istore_2
+      10: getstatic     #91                 // Field WATCHED:Ljava/util/Set;
+      13: invokeinterface #203,  1          // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      18: astore_3
+      19: aload_3
+      20: invokeinterface #114,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      25: ifeq          61
+      28: aload_3
+      29: invokeinterface #118,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      34: checkcast     #207                // class java/lang/String
+      37: astore        4
+      39: bipush        31
+      41: iload_2
+      42: imul
+      43: aload         4
+      45: invokevirtual #210                // Method java/lang/String.hashCode:()I
+      48: iadd
+      49: aload_1
+      50: aload_0
+      51: aload         4
+      53: invokestatic  #213                // Method score:(Lnet/minecraft/class_269;Lnet/minecraft/class_3222;Ljava/lang/String;)I
+      56: iadd
+      57: istore_2
+      58: goto          19
+      61: iload_2
+      62: ireturn
+
+  private static int score(net.minecraft.class_269, net.minecraft.class_3222, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_2
+       2: invokevirtual #219                // Method net/minecraft/class_269.method_1170:(Ljava/lang/String;)Lnet/minecraft/class_266;
+       5: astore_3
+       6: aload_3
+       7: ifnonnull     12
+      10: iconst_0
+      11: ireturn
+      12: aload_0
+      13: aload_1
+      14: aload_3
+      15: invokevirtual #225                // Method net/minecraft/class_269.method_55430:(Lnet/minecraft/class_9015;Lnet/minecraft/class_266;)Lnet/minecraft/class_9013;
+      18: astore        4
+      20: aload         4
+      22: ifnonnull     29
+      25: iconst_0
+      26: goto          36
+      29: aload         4
+      31: invokeinterface #230,  1          // InterfaceMethod net/minecraft/class_9013.method_55397:()I
+      36: ireturn
+
+  private static int lambda$isVisibleTo$0(net.minecraft.class_269, net.minecraft.class_3222, java.lang.String);
+    Code:
+       0: getstatic     #91                 // Field WATCHED:Ljava/util/Set;
+       3: aload_2
+       4: invokeinterface #191,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       9: pop
+      10: aload_0
+      11: aload_1
+      12: aload_2
+      13: invokestatic  #213                // Method score:(Lnet/minecraft/class_269;Lnet/minecraft/class_3222;Ljava/lang/String;)I
+      16: ireturn
+
+  static {};
+    Code:
+       0: invokestatic  #237                // Method java/util/concurrent/ConcurrentHashMap.newKeySet:()Ljava/util/concurrent/ConcurrentHashMap$KeySetView;
+       3: putstatic     #91                 // Field WATCHED:Ljava/util/Set;
+       6: new           #9                  // class java/util/concurrent/ConcurrentHashMap
+       9: dup
+      10: invokespecial #238                // Method java/util/concurrent/ConcurrentHashMap."<init>":()V
+      13: putstatic     #124                // Field SIGNATURES:Ljava/util/Map;
+      16: return
+}

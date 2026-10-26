@@ -1,0 +1,14 @@
+REPRO missing @Mixin: net/hautecapitale/quetes/pq01/mixin/Pq01EntityMixin (visible=true)
+REPRO malformed injection at: net/hautecapitale/quetes/pq01/mixin/Pq01EntityMixin.indivisCollision
+REPRO malformed injection at: net/hautecapitale/quetes/pq01/mixin/Pq01EntityMixin.indivisPush
+REPRO malformed injection at: net/hautecapitale/quetes/pq01/mixin/Pq01EntityMixin.indivisWorldEffects
+REPRO malformed injection at: net/hautecapitale/quetes/pq01/mixin/Pq01EntityMixin.indivisNoHitOrPush
+REPRO missing @Mixin: net/hautecapitale/quetes/pq01/mixin/Pq01GoalMixin (visible=true)
+REPRO malformed injection at: net/hautecapitale/quetes/pq01/mixin/Pq01GoalMixin.indivisNoAutonomousGoals
+PASS work/pq01_full/output/haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3.jar: headers=8, missing=2, injectionHandlers=5, malformedInjectionAt=5, real Mixin Annotations.getInvisible
+REPRO missing @Mixin: net/indivis/admin/mixin/NexusProfileSaveMixin (visible=true)
+REPRO malformed injection at: net/indivis/admin/mixin/NexusProfileSaveMixin.indivisBeforeSaveHook
+PASS deliverables/indivis-admin-0.1.0-alpha.2+1.21.11.jar: headers=1, missing=1, injectionHandlers=1, malformedInjectionAt=1, real Mixin Annotations.getInvisible
+PASS work/pq01_full/output/haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF1.jar: headers=8, missing=0, injectionHandlers=5, malformedInjectionAt=0, real Mixin Annotations.getInvisible
+PASS work/admin_fix/repo/sources/indivis-admin/dist/indivis-admin-0.1.0-alpha.3+1.21.11.jar: headers=1, missing=0, injectionHandlers=1, malformedInjectionAt=0, real Mixin Annotations.getInvisible
+No Minecraft/Fabric launch or full mixin application performed by this reader test.

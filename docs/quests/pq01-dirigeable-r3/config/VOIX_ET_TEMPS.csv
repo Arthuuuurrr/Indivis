@@ -1,0 +1,96 @@
+node,role,mots,lecture_conseillee_ticks,son_par_defaut,blocage_audio_ticks_par_defaut
+a1,Géraud Rivet,19,172,,0
+a2,Géraud Rivet,28,244,,0
+a3,Gautier,17,156,,0
+a4,Géraud Rivet,2,40,,0
+a5,Géraud Rivet,15,140,,0
+a6,Gautier,3,44,,0
+a7,Géraud Rivet,15,140,,0
+a8,Géraud Rivet,31,268,,0
+ga_menu,Géraud Rivet,15,140,,0
+ga_12,Géraud Rivet,35,300,,0
+ga_14,Géraud Rivet,34,292,,0
+ga_16,Géraud Rivet,27,236,,0
+ga_18,Géraud Rivet,18,164,,0
+ga_20,Géraud Rivet,22,196,,0
+gautier_menu,Gautier,18,164,,0
+gautier_23,Gautier,23,204,,0
+gautier_25,Gautier,22,196,,0
+gautier_27,Gautier,24,212,,0
+gautier_29,Gautier,23,204,,0
+gautier_31,Gautier,18,164,,0
+gautier_33,Gautier,8,84,,0
+hugues_menu,Hugues,16,148,,0
+hugues_36,Hugues,29,252,,0
+hugues_38,Hugues,33,284,,0
+hugues_40,Hugues,30,260,,0
+hugues_42,Hugues,37,316,,0
+hugues_44,Hugues,32,276,,0
+hugues_46,Hugues,12,116,,0
+anselme_menu,Anselme,11,108,,0
+anselme_49,Anselme,47,396,,0
+anselme_51,Anselme,33,284,,0
+anselme_53,Anselme,35,300,,0
+anselme_55,Anselme,47,396,,0
+anselme_57,Anselme,28,244,,0
+anselme_59,Anselme,17,156,,0
+perrin_menu,Perrin,24,212,,0
+perrin_62,Perrin,32,276,,0
+perrin_64,Perrin,26,228,,0
+perrin_66,Perrin,29,252,,0
+perrin_68,Perrin,36,308,,0
+perrin_70,Perrin,39,332,,0
+perrin_72,Perrin,32,276,,0
+b0,Gautier,8,84,,0
+b1,Hugues,1,40,,0
+b2,Gautier,7,76,,0
+b3,Hugues,2,40,,0
+b4,Gautier,6,68,,0
+b5,Hugues,20,180,,0
+b6,Gautier,9,92,,0
+b7,Hugues,13,124,,0
+c0,Althéon Brumeforge,0,0,,0
+c1,Althéon Brumeforge,17,156,,0
+c2,Althéon Brumeforge,16,148,,0
+c3,Althéon Brumeforge,7,76,,0
+c4,Althéon Brumeforge,10,100,,0
+c5,Althéon Brumeforge,2,40,,0
+c6,Althéon Brumeforge,27,236,,0
+c_menu,Althéon Brumeforge,0,0,,0
+ca1,Althéon Brumeforge,31,268,,0
+ca2,Althéon Brumeforge,18,164,,0
+ca3,Althéon Brumeforge,16,148,,0
+cb1,Althéon Brumeforge,34,292,,0
+cb2,Althéon Brumeforge,32,276,,0
+cb3,Althéon Brumeforge,22,196,,0
+cc1,Althéon Brumeforge,20,180,,0
+cc2,Althéon Brumeforge,26,228,,0
+cd1,Althéon Brumeforge,28,244,,0
+cd2,Althéon Brumeforge,18,164,,0
+cd3,Althéon Brumeforge,27,236,,0
+cd4,Althéon Brumeforge,38,324,,0
+ce1,Althéon Brumeforge,16,148,,0
+ce2,Althéon Brumeforge,28,244,,0
+ce3,Althéon Brumeforge,8,84,,0
+cx1,Althéon Brumeforge,21,188,,0
+cx2,Althéon Brumeforge,4,52,,0
+cx3,Althéon Brumeforge,23,204,,0
+cx4,Althéon Brumeforge,15,140,,0
+e1,Géraud Rivet,15,140,,0
+e2,Géraud Rivet,22,196,,0
+e_menu,Géraud Rivet,0,0,,0
+e_127,Géraud Rivet,33,284,,0
+e_129,Géraud Rivet,31,268,,0
+e_131,Géraud Rivet,29,252,,0
+e_133,Géraud Rivet,30,260,,0
+e_135,Géraud Rivet,22,196,,0
+ex1,Géraud Rivet,9,92,,0
+ex2,Géraud Rivet,18,164,,0
+ex3,Géraud Rivet,25,220,,0
+ex4,Géraud Rivet,14,132,,0
+f_altheon,Althéon Brumeforge,26,228,,0
+f_gautier,Gautier,20,180,,0
+f_hugues,Hugues,26,228,,0
+f_anselme,Anselme,28,244,,0
+f_perrin,Perrin,30,260,,0
+f_geraud,Géraud Rivet,14,132,,0

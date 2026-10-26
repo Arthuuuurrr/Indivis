@@ -1,0 +1,8 @@
+PERSONNAGE : Anselme
+LANGUE : French
+
+INSTRUCTIONS (champ instruct) :
+Français naturel et intelligible. Jeu de dialogue réaliste, adressé à un interlocuteur proche. Variation d'intention à l'intérieur des phrases, diction nette, pauses expressives courtes. Lire exactement le texte fourni, sans annoncer le nom du personnage, l'identifiant ou les consignes. Conserver les noms propres et la ponctuation du texte. Pas de musique, bruitage, applaudissement, rire ou respiration théâtrale ajoutés. Identité de Anselme : Voix masculine adulte, médium précis, articulation nette. À l'accueil, attention encore prise par les instruments ; devenir disponible une fois le geste terminé. Spécialiste passionné et fier de son métier. Les explications prennent un peu de vitesse et de relief, tout en restant compréhensibles. Corriger « bâtiment » avec une pointe d'orgueil technique, sans rabaisser le passager. Le dirigeable est un outil habituel de son monde, pas une découverte merveilleuse. Intention de cette prise : Corriger le vocabulaire avec une pointe de fierté, puis partager son intérêt. Le sourire compense la pédanterie.
+
+TEXTE SEUL (champ text) :
+Notre bâtiment, si vous permettez. Et il est complexe, oui, ce qui n'est pas exactement la même chose. Enfin, je suppose que vous ne pouviez pas le savoir.

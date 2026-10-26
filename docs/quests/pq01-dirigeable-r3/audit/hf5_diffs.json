@@ -1,0 +1,37 @@
+{
+  "journal": {
+    "changed": [
+      "fabric.mod.json",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge$1.class",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge$Actor.class",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge$View.class",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge.class"
+    ],
+    "added": [
+      "net/hautecapitale/quetes/sequence/Pq01Bridge$NearState.class"
+    ],
+    "removed": [],
+    "all_mixins_and_historical_helpers_byte_identical": true
+  },
+  "core": {
+    "changed": [
+      "data/capitale/function/pq01/open/altheon_self.mcfunction",
+      "data/capitale/function/pq01/open/anselme_self.mcfunction",
+      "data/capitale/function/pq01/open/gautier_self.mcfunction",
+      "data/capitale/function/pq01/open/geraud_self.mcfunction",
+      "data/capitale/function/pq01/open/hugues_self.mcfunction",
+      "data/capitale/function/pq01/open/perrin_self.mcfunction",
+      "data/capitale/function/pq01/scene/resume_wait_self.mcfunction",
+      "data/capitale/function/pq01/test/start_macro.mcfunction",
+      "data/capitale/function/quest/spawn_dirigeable_couronne/geraud_large_near_self.mcfunction",
+      "pack.mcmeta"
+    ],
+    "added": [],
+    "removed": []
+  },
+  "quests": {
+    "changed": [],
+    "added": [],
+    "removed": []
+  }
+}

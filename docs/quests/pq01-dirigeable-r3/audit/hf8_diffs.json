@@ -1,0 +1,25 @@
+{
+  "journal": {
+    "changed": [
+      "fabric.mod.json",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge$1.class",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge.class",
+      "net/hautecapitale/quetes/sequence/Pq01Client.class",
+      "net/hautecapitale/quetes/sequence/Pq01Motion.class",
+      "net/hautecapitale/quetes/sequence/Pq01Pacing.class"
+    ],
+    "added": [],
+    "removed": [],
+    "all_mixins_and_historical_helpers_byte_identical": true
+  },
+  "core": {
+    "changed": [],
+    "added": [],
+    "removed": []
+  },
+  "quests": {
+    "changed": [],
+    "added": [],
+    "removed": []
+  }
+}

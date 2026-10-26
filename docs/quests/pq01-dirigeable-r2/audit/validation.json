@@ -1,0 +1,262 @@
+{
+  "status": "PASS",
+  "test_cases": 12,
+  "minecraft_runtime_test": false,
+  "nodes": 95,
+  "approved_dialogue_occurrences": 145,
+  "baseline_dependencies": {
+    "functions": 12702,
+    "tags": 3,
+    "missing_required": [],
+    "dynamic_macros": [
+      [
+        "data/hc_quetes/function/carrec/demande.mcfunction",
+        3,
+        "hc_quetes:carrec/monde_$(m)"
+      ]
+    ],
+    "external_dependencies": [
+      [
+        "data/capitale/function/reward/skills/core/registre_port_self.mcfunction",
+        2,
+        "capskills:reward/core/registre_port_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/seuil_profondeurs_self.mcfunction",
+        2,
+        "capskills:reward/core/seuil_profondeurs_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/sous_regard_coeur_self.mcfunction",
+        2,
+        "capskills:reward/core/sous_regard_coeur_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/spawn_dirigeable_self.mcfunction",
+        2,
+        "capskills:reward/core/spawn_dirigeable_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/vent_noir_q1_self.mcfunction",
+        2,
+        "capskills:reward/core/vent_noir_q1_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/vent_noir_q2_self.mcfunction",
+        2,
+        "capskills:reward/core/vent_noir_q2_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/vent_noir_q3_self.mcfunction",
+        2,
+        "capskills:reward/core/vent_noir_q3_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/vent_noir_q4_self.mcfunction",
+        2,
+        "capskills:reward/core/vent_noir_q4_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/daily/large_self.mcfunction",
+        1,
+        "capskills:reward/daily/large_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/daily/normal_self.mcfunction",
+        1,
+        "capskills:reward/daily/normal_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/daily/reduced_self.mcfunction",
+        1,
+        "capskills:reward/daily/reduced_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/daily/small_self.mcfunction",
+        1,
+        "capskills:reward/daily/small_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/daily/tiny_self.mcfunction",
+        1,
+        "capskills:reward/daily/tiny_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/banque_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/beer_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/globe_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/registre_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/relais_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/ressort_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/temoins_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/unique/acte_dette_self.mcfunction",
+        2,
+        "capskills:reward/unique/minor_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/unique/libraire_self.mcfunction",
+        2,
+        "capskills:reward/unique/minor_self"
+      ]
+    ]
+  },
+  "candidate_dependencies": {
+    "functions": 13048,
+    "tags": 3,
+    "missing_required": [],
+    "dynamic_macros": [
+      [
+        "data/hc_quetes/function/carrec/demande.mcfunction",
+        3,
+        "hc_quetes:carrec/monde_$(m)"
+      ]
+    ],
+    "external_dependencies": [
+      [
+        "data/capitale/function/reward/skills/core/registre_port_self.mcfunction",
+        2,
+        "capskills:reward/core/registre_port_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/seuil_profondeurs_self.mcfunction",
+        2,
+        "capskills:reward/core/seuil_profondeurs_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/sous_regard_coeur_self.mcfunction",
+        2,
+        "capskills:reward/core/sous_regard_coeur_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/spawn_dirigeable_self.mcfunction",
+        2,
+        "capskills:reward/core/spawn_dirigeable_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/vent_noir_q1_self.mcfunction",
+        2,
+        "capskills:reward/core/vent_noir_q1_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/vent_noir_q2_self.mcfunction",
+        2,
+        "capskills:reward/core/vent_noir_q2_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/vent_noir_q3_self.mcfunction",
+        2,
+        "capskills:reward/core/vent_noir_q3_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/core/vent_noir_q4_self.mcfunction",
+        2,
+        "capskills:reward/core/vent_noir_q4_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/daily/large_self.mcfunction",
+        1,
+        "capskills:reward/daily/large_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/daily/normal_self.mcfunction",
+        1,
+        "capskills:reward/daily/normal_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/daily/reduced_self.mcfunction",
+        1,
+        "capskills:reward/daily/reduced_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/daily/small_self.mcfunction",
+        1,
+        "capskills:reward/daily/small_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/daily/tiny_self.mcfunction",
+        1,
+        "capskills:reward/daily/tiny_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/banque_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/beer_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/globe_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/registre_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/relais_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/ressort_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/first_daily/temoins_self.mcfunction",
+        2,
+        "capskills:reward/daily/first_bonus_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/unique/acte_dette_self.mcfunction",
+        2,
+        "capskills:reward/unique/minor_self"
+      ],
+      [
+        "data/capitale/function/reward/skills/unique/libraire_self.mcfunction",
+        2,
+        "capskills:reward/unique/minor_self"
+      ]
+    ]
+  },
+  "json_files_checked": 931,
+  "preserved_entries": {
+    "core": 10326,
+    "quests": 3321
+  },
+  "movement": "REPLI_STATIQUE_AUCUN_PNJ_DEPLACE_OU_CLONE",
+  "jar_changes": 0
+}

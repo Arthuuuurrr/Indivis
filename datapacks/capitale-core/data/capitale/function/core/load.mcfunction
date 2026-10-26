@@ -1,39 +1,42 @@
-scoreboard objectives add QUEST_SPAWN dummy
-scoreboard objectives modify QUEST_SPAWN displayname {"text": "Quête — Sous pavillon de la Couronne", "color": "gold"}
+function hc_quetes:runtime/load
+function hc_quetes:migration/load
+execute as @a run function hc_quetes:migration/upgrade_self
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_pq01 displayname {"text": "Quête — Sous pavillon de la Couronne", "color": "gold"}
 scoreboard objectives add QUEST_PROLOGUE dummy
 scoreboard objectives modify QUEST_PROLOGUE displayname {"text": "Suite — Prologue", "color": "gold"}
 scoreboard objectives add QUEST_COURONNE dummy
 scoreboard objectives modify QUEST_COURONNE displayname {"text": "Quête — Couronne", "color": "gold"}
-scoreboard objectives add QUEST_GARDECOEUR dummy
-scoreboard objectives modify QUEST_GARDECOEUR displayname {"text": "Quête — Sous le regard du Cœur", "color": "gold"}
-scoreboard objectives add QUEST_GARDEPORT dummy
-scoreboard objectives modify QUEST_GARDEPORT displayname {"text": "Quête — Le registre du Port", "color": "gold"}
-scoreboard objectives add QUEST_PROFONDEURS dummy
-scoreboard objectives modify QUEST_PROFONDEURS displayname {"text": "Quête — Au seuil des Profondeurs", "color": "gold"}
-scoreboard objectives add QUEST_RESIDENCE_PROF dummy
-scoreboard objectives modify QUEST_RESIDENCE_PROF displayname {"text": "Quête — Une adresse dans les Profondeurs", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_pq03 displayname {"text": "Quête — Sous le regard du Cœur", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_pq02 displayname {"text": "Quête — Le registre du Port", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_pq04 displayname {"text": "Quête — Au seuil des Profondeurs", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_pq05 displayname {"text": "Quête — Une adresse dans les Profondeurs", "color": "gold"}
 scoreboard objectives add QUEST_JOURNALIERES dummy
 scoreboard objectives modify QUEST_JOURNALIERES displayname {"text": "Catégorie — Journalières", "color": "gold"}
-scoreboard objectives add QUEST_DAILY_BEER_GC dummy
-scoreboard objectives modify QUEST_DAILY_BEER_GC displayname {"text": "Journalière — Une bière pour la relève", "color": "gold"}
-scoreboard objectives add QUEST_DIVERS_LIBRAIRE_NOBLE dummy
-scoreboard objectives modify QUEST_DIVERS_LIBRAIRE_NOBLE displayname {"text": "Quête — Un exemplaire à remettre", "color": "gold"}
-scoreboard objectives add QUEST_DAILY_REGISTRE_PORT dummy
-scoreboard objectives modify QUEST_DAILY_REGISTRE_PORT displayname {"text": "Journalière — Le registre mal classé", "color": "gold"}
-scoreboard objectives add QUEST_DIVERS_RELAIS_COEUR dummy
-scoreboard objectives modify QUEST_DIVERS_RELAIS_COEUR displayname {"text": "Quête — Les Relais du Cœur", "color": "gold"}
-scoreboard objectives add QUEST_DIVERS_ACTE_DETTE dummy
-scoreboard objectives modify QUEST_DIVERS_ACTE_DETTE displayname {"text": "Quête — L’Acte de dette falsifié", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_dqhc02 displayname {"text": "Journalière — Une bière pour la relève", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqhcso02 displayname {"text": "Quête — Un exemplaire à remettre", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_dqhc03 displayname {"text": "Journalière — Le registre mal classé", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_rqhc02 displayname {"text": "Quête — Les Relais du Cœur", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqhcso01 displayname {"text": "Quête — L’Acte de dette falsifié", "color": "gold"}
 
 # RC9m — Quêtes secondaires Bas-Anneaux, lot indépendant Q01-Q04.
-scoreboard objectives add QUEST_SIDE_BA_Q01 dummy
-scoreboard objectives modify QUEST_SIDE_BA_Q01 displayname {"text":"Secondaire — Bas-Anneaux Q01 : Le Quartier des Oubliés","color":"gold"}
-scoreboard objectives add QUEST_SIDE_BA_Q02 dummy
-scoreboard objectives modify QUEST_SIDE_BA_Q02 displayname {"text":"Secondaire — Bas-Anneaux Q02 : Le Marteau d’Elias","color":"gold"}
-scoreboard objectives add QUEST_SIDE_BA_Q03 dummy
-scoreboard objectives modify QUEST_SIDE_BA_Q03 displayname {"text":"Secondaire — Bas-Anneaux Q03 : Le Marché des Mille Voix","color":"gold"}
-scoreboard objectives add QUEST_SIDE_BA_Q04 dummy
-scoreboard objectives modify QUEST_SIDE_BA_Q04 displayname {"text":"Secondaire — Bas-Anneaux Q04 : La Patrouille","color":"gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqbaob01 displayname {"text":"Secondaire — Bas-Anneaux Q01 : Le Quartier des Oubliés","color":"gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqbaob02 displayname {"text":"Secondaire — Bas-Anneaux Q02 : Le Marteau d’Elias","color":"gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqbaob03 displayname {"text":"Secondaire — Bas-Anneaux Q03 : Le Marché des Mille Voix","color":"gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqbaob04 displayname {"text":"Secondaire — Bas-Anneaux Q04 : La Patrouille","color":"gold"}
 scoreboard objectives add REP_BAS_ANNEAUX dummy
 scoreboard objectives modify REP_BAS_ANNEAUX displayname {"text":"Réputation — Bas-Anneaux","color":"gold"}
 scoreboard objectives add REP_BA_GARDES dummy
@@ -61,28 +64,28 @@ scoreboard objectives add CAP_JOURNAL_ACTIVE dummy
 scoreboard objectives modify CAP_JOURNAL_ACTIVE displayname {"text": "Journal — quêtes actives", "color": "gray"}
 scoreboard objectives add CAP_JOURNAL_TMP dummy
 scoreboard objectives modify CAP_JOURNAL_TMP displayname {"text": "Journal — temporaire", "color": "gray"}
-scoreboard objectives add QUEST_CITOYENNETE dummy
-scoreboard objectives modify QUEST_CITOYENNETE displayname {"text":"Objectif principal — Citoyenneté","color":"gold"}
-scoreboard objectives add QUEST_DAILY_RESSORT_CLOCHER dummy
-scoreboard objectives modify QUEST_DAILY_RESSORT_CLOCHER displayname {"text":"Journalière — Le ressort du clocher","color":"gold"}
-scoreboard objectives add QUEST_DAILY_TEMOIGNAGES_QUAIS dummy
-scoreboard objectives modify QUEST_DAILY_TEMOIGNAGES_QUAIS displayname {"text":"Journalière — Trois témoignages sur les quais","color":"gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqhcci01 displayname {"text":"Objectif principal — Citoyenneté","color":"gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_dqhc04 displayname {"text":"Journalière — Le ressort du clocher","color":"gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_dqhc05 displayname {"text":"Journalière — Trois témoignages sur les quais","color":"gold"}
 scoreboard objectives add CAP_DAILY_TICK dummy
 scoreboard objectives modify CAP_DAILY_TICK displayname {"text":"Horloge — journalières","color":"gray"}
 scoreboard objectives add CAP_PERF_TICK dummy
 scoreboard objectives modify CAP_PERF_TICK displayname {"text":"Horloge — optimisations serveur","color":"gray"}
 scoreboard objectives add CAP_CD_BEER_GC dummy
 scoreboard objectives modify CAP_CD_BEER_GC displayname {"text":"Cooldown — bière Garde du Cœur","color":"gray"}
-scoreboard objectives add CAP_CD_REGISTRE_PORT dummy
-scoreboard objectives modify CAP_CD_REGISTRE_PORT displayname {"text":"Cooldown — registre du Port","color":"gray"}
-scoreboard objectives add CAP_CD_RELAIS_COEUR dummy
-scoreboard objectives modify CAP_CD_RELAIS_COEUR displayname {"text":"Cooldown — relais du Cœur","color":"gray"}
-scoreboard objectives add CAP_CD_RESSORT_CLOCHER dummy
-scoreboard objectives modify CAP_CD_RESSORT_CLOCHER displayname {"text":"Cooldown — ressort du clocher","color":"gray"}
-scoreboard objectives add CAP_CD_TEMOIGNAGES_QUAIS dummy
-scoreboard objectives modify CAP_CD_TEMOIGNAGES_QUAIS displayname {"text":"Cooldown — témoignages des quais","color":"gray"}
-scoreboard objectives add CAP_CD_GLOBE dummy
-scoreboard objectives modify CAP_CD_GLOBE displayname {"text":"Cooldown — Lanternes du Globe","color":"gray"}
+scoreboard objectives add hcd_dqhc03 dummy
+scoreboard objectives modify hcd_dqhc03 displayname {"text":"Cooldown — registre du Port","color":"gray"}
+scoreboard objectives add hcd_rqhc02 dummy
+scoreboard objectives modify hcd_rqhc02 displayname {"text":"Cooldown — relais du Cœur","color":"gray"}
+scoreboard objectives add hcd_dqhc04 dummy
+scoreboard objectives modify hcd_dqhc04 displayname {"text":"Cooldown — ressort du clocher","color":"gray"}
+scoreboard objectives add hcd_dqhc05 dummy
+scoreboard objectives modify hcd_dqhc05 displayname {"text":"Cooldown — témoignages des quais","color":"gray"}
+scoreboard objectives add hcd_rqhc01 dummy
+scoreboard objectives modify hcd_rqhc01 displayname {"text":"Cooldown — Lanternes du Globe","color":"gray"}
 scoreboard objectives add CAP_DAILY_GLOBE_EVER dummy
 scoreboard objectives modify CAP_DAILY_GLOBE_EVER displayname {"text":"Lanternes du Globe — déjà accompli","color":"gray"}
 
@@ -91,12 +94,12 @@ scoreboard objectives add CAP_TIME_SEC dummy
 scoreboard objectives modify CAP_TIME_SEC displayname {"text":"Temps serveur Capitale — secondes","color":"gray"}
 scoreboard players add #server CAP_TIME_SEC 0
 scoreboard objectives add CAP_CD_BEER_GC_END dummy
-scoreboard objectives add CAP_CD_REGISTRE_PORT_END dummy
-scoreboard objectives add CAP_CD_RELAIS_COEUR_END dummy
-scoreboard objectives add CAP_CD_RESSORT_CLOCHER_END dummy
-scoreboard objectives add CAP_CD_TEMOIGNAGES_QUAIS_END dummy
-scoreboard objectives add CAP_CD_GLOBE_END dummy
-scoreboard objectives add CAP_CD_BANQUE_END dummy
+scoreboard objectives add hcd_dqhc03_end dummy
+scoreboard objectives add hcd_rqhc02_end dummy
+scoreboard objectives add hcd_dqhc04_end dummy
+scoreboard objectives add hcd_dqhc05_end dummy
+scoreboard objectives add hcd_rqhc01_end dummy
+scoreboard objectives add hcd_dqhc01_end dummy
 scoreboard objectives add CAP_DAILY_RELAIS_COEUR_EVER dummy
 scoreboard objectives modify CAP_DAILY_RELAIS_COEUR_EVER displayname {"text":"Relais du Cœur — déjà accompli","color":"gray"}
 scoreboard objectives add CAP_DAILY_RESSORT_CLOCHER_EVER dummy
@@ -113,14 +116,14 @@ scoreboard objectives add CAP_TEMOIN_QUAI_C dummy
 scoreboard objectives modify CAP_TEMOIN_QUAI_C displayname {"text":"Témoignage des quais — C","color":"gray"}
 scoreboard objectives add CAP_TEMOIGNAGES_COUNT dummy
 scoreboard objectives modify CAP_TEMOIGNAGES_COUNT displayname {"text":"Témoignages des quais — compteur","color":"gray"}
-scoreboard objectives add QUEST_VN_CAPITAINE dummy
-scoreboard objectives modify QUEST_VN_CAPITAINE displayname {"text": "Suite — Vent Noir I : Un capitaine sans navire", "color": "gold"}
-scoreboard objectives add QUEST_VN_DOCKS dummy
-scoreboard objectives modify QUEST_VN_DOCKS displayname {"text": "Suite — Vent Noir II : Les Ombres des Docks", "color": "gold"}
-scoreboard objectives add QUEST_VN_ASCENSION dummy
-scoreboard objectives modify QUEST_VN_ASCENSION displayname {"text": "Suite — Vent Noir III : L’Ascension", "color": "gold"}
-scoreboard objectives add QUEST_VN_NAVIRE dummy
-scoreboard objectives modify QUEST_VN_NAVIRE displayname {"text": "Suite — Vent Noir IV : Le Vent Noir", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqhcvn01 displayname {"text": "Suite — Vent Noir I : Un capitaine sans navire", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqhcvn02 displayname {"text": "Suite — Vent Noir II : Les Ombres des Docks", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqhcvn03 displayname {"text": "Suite — Vent Noir III : L’Ascension", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqhcvn04 displayname {"text": "Suite — Vent Noir IV : Le Vent Noir", "color": "gold"}
 scoreboard objectives add REP_COURONNE dummy
 scoreboard objectives modify REP_COURONNE displayname {"text": "Réputation — Couronne", "color": "gold"}
 scoreboard objectives add REP_GARDECOEUR dummy
@@ -372,10 +375,10 @@ scoreboard players add #cap_patrol_recovery NPC_PATROL_AUDIT_TICK 0
 
 
 # 1.5.4 — Journalière Banque / découverte du Cercle
-scoreboard objectives add QUEST_DAILY_BANQUE dummy
-scoreboard objectives modify QUEST_DAILY_BANQUE displayname {"text":"Journalière — La Banque","color":"gold"}
-scoreboard objectives add CAP_CD_BANQUE dummy
-scoreboard objectives modify CAP_CD_BANQUE displayname {"text":"Cooldown — Banque","color":"gray"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_dqhc01 displayname {"text":"Journalière — La Banque","color":"gold"}
+scoreboard objectives add hcd_dqhc01 dummy
+scoreboard objectives modify hcd_dqhc01 displayname {"text":"Cooldown — Banque","color":"gray"}
 scoreboard objectives add CAP_DAILY_BANQUE_EVER dummy
 scoreboard objectives modify CAP_DAILY_BANQUE_EVER displayname {"text":"Banque — déjà accompli","color":"gray"}
 scoreboard objectives add CAP_BANQUE_TIMER dummy
@@ -396,8 +399,8 @@ scoreboard objectives add CAP_GUIDE_MISS_T dummy
 scoreboard objectives modify CAP_GUIDE_MISS_T displayname {"text":"Guidage — éloignement","color":"gray"}
 
 # 1.5.4 alpha 3 — Quête des Profondeurs internes : La Lampe qui manque
-scoreboard objectives add QUEST_DIVERS_LAMPE dummy
-scoreboard objectives modify QUEST_DIVERS_LAMPE displayname {"text":"Quête — Lanternes du Globe","color":"gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_rqhc01 displayname {"text":"Quête — Lanternes du Globe","color":"gold"}
 scoreboard objectives add CAP_GLOBE_DONE dummy
 scoreboard objectives modify CAP_GLOBE_DONE displayname {"text":"Globe — lanternes recalibrées","color":"gray"}
 scoreboard objectives add CAP_GLOBE_L1 dummy
@@ -517,8 +520,8 @@ scoreboard objectives add CAP_STATIC_GUARD_RESET dummy
 scoreboard players add #next CAP_STATIC_GUARD_ID 0
 
 # Aldren le Traqueur - quete "La menace des Orcs"
-scoreboard objectives add QUEST_ALDREN_ORCS dummy
-scoreboard objectives modify QUEST_ALDREN_ORCS displayname {"text": "Quête — La menace des Orcs", "color": "gold"}
+# Création centralisée : hc_quetes:migration/load
+scoreboard objectives modify hcq_sqhcso03 displayname {"text": "Quête — La menace des Orcs", "color": "gold"}
 scoreboard objectives add CAP_ALDREN_WARR dummy
 scoreboard objectives add CAP_ALDREN_ARCH dummy
 scoreboard objectives add CAP_ALDREN_CHAMP dummy
@@ -526,3 +529,8 @@ scoreboard objectives add CAP_ALDREN_MORGRA dummy
 
 # RC9AO — raycast léger extinction feu à main nue en mode Aventure.
 scoreboard objectives add CAP_FIRE_RAY dummy
+
+function capitale:pq01/load
+
+# QMARK2 : repères pilotés par le journal HF12.
+function capitale:quest/markers/load

@@ -1,0 +1,8 @@
+PERSONNAGE : Althéon Brumeforge
+LANGUE : French
+
+INSTRUCTIONS (champ instruct) :
+Français naturel et intelligible. Jeu de dialogue réaliste, adressé à un interlocuteur proche. Variation d'intention à l'intérieur des phrases, diction nette, pauses expressives courtes. Lire exactement le texte fourni, sans annoncer le nom du personnage, l'identifiant ou les consignes. Conserver les noms propres et la ponctuation du texte. Pas de musique, bruitage, applaudissement, rire ou respiration théâtrale ajoutés. Identité de Althéon Brumeforge : Voix masculine mature, médium grave, assise et souple. Diction précise, débit posé mais vivant. L'autorité vient de la maîtrise et de l'écoute. Accueillir un passager secouru, puis prendre au sérieux son amnésie. Distinguer nettement ce qui est établi de ce qui reste inconnu. Rassurer sans promettre de guérison. Les réponses sur la mission sont factuelles ; la prudence ne cache pas un secret. À la fin, laisser apparaître une sollicitude personnelle discrète. Conserver la même identité vocale que dans MQ03. Intention de cette prise : Clore l'entretien et expliquer la suite de l'arrivée ; ordre courant, aucune commande de manœuvre ajoutée.
+
+TEXTE SEUL (champ text) :
+Très bien. Nous approchons des quais. Vous pouvez rester ici pendant la manœuvre ; Géraud vous retrouvera une fois l'amarrage terminé.

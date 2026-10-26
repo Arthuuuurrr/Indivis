@@ -1,0 +1,17 @@
+Compiled from "ScreenEvents.java"
+public final class net.fabricmc.fabric.api.client.screen.v1.ScreenEvents {
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$BeforeInit> BEFORE_INIT;
+  public static final net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterInit> AFTER_INIT;
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$Remove> remove(net.minecraft.class_437);
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$BeforeRender> beforeRender(net.minecraft.class_437);
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterBackground> afterBackground(net.minecraft.class_437);
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterRender> afterRender(net.minecraft.class_437);
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$BeforeTick> beforeTick(net.minecraft.class_437);
+  public static net.fabricmc.fabric.api.event.Event<net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterTick> afterTick(net.minecraft.class_437);
+  private net.fabricmc.fabric.api.client.screen.v1.ScreenEvents();
+  private static net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterInit lambda$static$3(net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterInit[]);
+  private static void lambda$static$2(net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterInit[], net.minecraft.class_310, net.minecraft.class_437, int, int);
+  private static net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$BeforeInit lambda$static$1(net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$BeforeInit[]);
+  private static void lambda$static$0(net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$BeforeInit[], net.minecraft.class_310, net.minecraft.class_437, int, int);
+  static {};
+}

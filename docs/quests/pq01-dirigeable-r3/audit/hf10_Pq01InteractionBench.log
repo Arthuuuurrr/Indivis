@@ -1,0 +1,3 @@
+PASS 23 assertions ; vrais Pq01Bridge, SequenceBridge et NBT ; monde, personnage Nexus et effets caméra doublés. Aucun serveur, paquet client ou rendu en jeu exécuté.
+[Indivis PQ01-R3-HF10] Phase incompatible : geraud_large, personnage=quai. Relecture explicite : capitale:pq01/admin/test_debut.
+[Indivis PQ01-R3-HF10] Personnage Nexus pas encore chargé.

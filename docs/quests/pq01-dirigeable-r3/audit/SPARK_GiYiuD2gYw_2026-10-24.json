@@ -1,0 +1,34 @@
+{
+  "input": "GiYiuD2gYw.sparkprofile",
+  "sha256": "9355b70a6a24dd573ec5ac370851e3d85555094038e4c6c3c9b9db0709948b37",
+  "duration_seconds": 120.117,
+  "sample_interval_us": 4000,
+  "platform": "Fabric 0.19.5 / Minecraft 1.21.11 server",
+  "journal": "PQ01.R3.HF10",
+  "core": "HF9",
+  "thread_names": [
+    "Server thread"
+  ],
+  "total_ticks": 2400,
+  "tps_last1m": 19.999751729415287,
+  "mspt_last1m": {
+    "mean": 11.148918643333333,
+    "max": 370.365899,
+    "min": 6.87118,
+    "median": 9.622138,
+    "p95": 13.52166
+  },
+  "recorded_player_count": 2,
+  "sampled_server_time_ms": 119980.0,
+  "server_tick_sampled_ms": 26912.0,
+  "park_sampled_ms": 91704.0,
+  "park_wall_percent": 76.43273878979831,
+  "pq01_tick_sampled_ms": 196.0,
+  "pq01_wall_percent": 0.1633605600933489,
+  "pq01_server_tick_percent": 0.7282996432818074,
+  "render_thread_present": false,
+  "fps_measurement_present": false,
+  "conclusion": "This capture does not show sustained server saturation and cannot attribute the reported client framerate regression. Server measurements do not validate client rendering performance.",
+  "next_capture": "/sparkc profiler start --timeout 60 --thread *",
+  "scope": "No production code or binaries modified during this analysis. Current HF10 sources inspected from commit 3a31456e3d9e9a178ea0bd0a21fa3fe08ec057e3."
+}

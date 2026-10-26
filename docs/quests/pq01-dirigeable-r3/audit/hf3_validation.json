@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "minecraft_server_or_world_started": false,
+  "real_minecraft_nbt_tested": true,
+  "real_easynpc_action_data_and_registry_tested": true,
+  "entity_storage_double_used": true,
+  "nbt_assertions": 80,
+  "native_api_public_member_lookups": 109,
+  "api_lookup_scope": "existence, visibilité publique et arité ; signatures publiées dans le log ; pas de test de comportement des méthodes de monde",
+  "interaction": "PASS 23 assertions ; vrais Pq01Bridge, SequenceBridge et NBT ; monde, personnage Nexus et effets caméra doublés. Aucun serveur, paquet client ou rendu en jeu exécuté.",
+  "callback": "[22:17:23] [main/INFO]: Registered custom action haute_capitale_quetes:pq01\n[22:17:24] [main/INFO]: [STDOUT]: PASS 3 assertions ; vrai CustomActionDispatcher EasyNPC 7.16.0 et proxy PQ01. Joueur réel alloué sans constructeur ; getEntity doublé à null ; aucun monde ni paquet de clic exécuté.",
+  "interaction_context_doubles_used": true,
+  "motion": "PASS 17 cas, 26 assertions sur Pq01Motion compilé. Aucun test Minecraft réel.",
+  "bytecode": "PASS ASM BasicVerifier: 175 classes, 1726 methods; no Minecraft API resolution.",
+  "datapacks_R3_byte_identical": true,
+  "diffs": {
+    "baseline": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF2.jar",
+    "baseline_sha256": "320ae69d6dca99bfc2ac4b9f0515a44d01b84e3274e9087115495c52ac235613",
+    "output": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF3.jar",
+    "output_sha256": "ec608b938930294c9c4c620a1adfb674fd4e0423bde7765d5cfe05b18d7d29da",
+    "bytes": 466018,
+    "changed": [
+      "fabric.mod.json",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge$1.class",
+      "net/hautecapitale/quetes/sequence/Pq01Bridge.class"
+    ],
+    "added": [],
+    "removed": [],
+    "identical_entries": 210,
+    "historical_helpers_and_all_mixin_classes_byte_identical": true
+  },
+  "inputs": {
+    "minecraft_intermediary": {
+      "filename": "minecraft-intermediary-1.21.11.jar",
+      "bytes": 20239649,
+      "sha256": "029d30f10c70e8a1daaac5835601c6fb767b0c7f96ca1f62e61990f1e0cfcf96"
+    },
+    "easynpc": {
+      "filename": "easy_npc-fabric-1.21.11-7.16.0(1).jar",
+      "bytes": 3328638,
+      "sha256": "be3531fba0d3b0553e64ac8acae1906a882f41b32ac5e64386c3d6c4cbef6f8b"
+    },
+    "dialogue": {
+      "filename": "haute-capitale-dialogue-0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX (1)(2).jar",
+      "bytes": 200473,
+      "sha256": "a2c21f24889f96880c472d168ea55cf65e84ff154ee1bbcc22dbeaa9df1d4057"
+    }
+  },
+  "limits": [
+    "Aucun serveur Fabric complet ni copie du monde du joueur démarré.",
+    "Le stockage d’entité est doublé dans le banc de mutation ; les conteneurs et sérialiseurs EasyNPC sont réels.",
+    "Les contextes de monde, Nexus et caméra sont doublés dans le banc positif ; le pont et ses gardes sont ceux du JAR livré.",
+    "Le dispatcher EasyNPC reçoit un joueur Minecraft réel non nul, alloué sans constructeur ; son entité de PNJ est doublée à null avant accès au monde.",
+    "Navigation, rendu caméra, paquets de clic et coexistence du modpack restent à observer en jeu."
+  ]
+}

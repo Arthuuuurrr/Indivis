@@ -1,0 +1,8 @@
+PERSONNAGE : Hugues
+LANGUE : French
+
+INSTRUCTIONS (champ instruct) :
+Français naturel et intelligible. Jeu de dialogue réaliste, adressé à un interlocuteur proche. Variation d'intention à l'intérieur des phrases, diction nette, pauses expressives courtes. Lire exactement le texte fourni, sans annoncer le nom du personnage, l'identifiant ou les consignes. Conserver les noms propres et la ponctuation du texte. Pas de musique, bruitage, applaudissement, rire ou respiration théâtrale ajoutés. Identité de Hugues : Voix masculine adulte mûre, médium grave, un peu usée mais intelligible. Vétéran débrouillard, peu impressionné par les registres, loyal à ses collègues. Humour populaire discret, porté par les intentions et les fins de phrase. L'accueil quitte une tâche agaçante pour accueillir le passager. Quand le sauvetage est évoqué, faire tomber le sourire un instant avant de revenir à un soulagement retenu. Intention de cette prise : Constater l'échec de la plaisanterie avec une résignation amusée ; clore la joute sans rire ajouté.
+
+TEXTE SEUL (champ text) :
+Et voilà. Je savais que j'aurais dû me contenter de vous dire bonjour.

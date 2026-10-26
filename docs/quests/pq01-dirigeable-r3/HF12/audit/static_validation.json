@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "json_resources_parsed": 933,
+  "function_files_in_scope": 10649,
+  "function_references_resolved": 12626,
+  "missing_function_references": [],
+  "quest_availability_rules_preserved": 24,
+  "givers": 20,
+  "biomes_byte_identical": 25,
+  "prologue_function_files_byte_identical": 802,
+  "stable_dialogue_node_ids": 95,
+  "native_client_members_checked": 27,
+  "tests": {
+    "Pq01NbtIntegrationBench": "PASS 80 assertions avec NBT Minecraft 1.21.11 et actions/registre EasyNPC 7.16.0 réels. Stockage d'entité doublé ; aucun monde ni serveur démarré.",
+    "Pq01NativeApiBench": "REAL_API_LOOKUP checks=121 failures=0; no Minecraft server/world created; existence/arity/public access checked, runtime behavior not covered.",
+    "Pq01CallbackBench": "[15:05:39] [main/INFO]: [STDOUT]: PASS 3 assertions ; vrai CustomActionDispatcher EasyNPC 7.16.0 et proxy PQ01. Joueur réel alloué sans constructeur ; getEntity doublé à null ; aucun monde ni paquet de clic exécuté.",
+    "Pq01ColorBench": "[15:06:12] [main/INFO]: [STDOUT]: PASS native Dialogue b10 choice color: Minecraft GREEN -> QUETE",
+    "motion": "PASS 22 cas, 34 assertions sur Pq01Motion compilé. Aucun test Minecraft réel.",
+    "Pq01InteractionBench": "PASS 23 assertions ; vrais Pq01Bridge, SequenceBridge et NBT ; monde, personnage Nexus et effets caméra doublés. Aucun serveur, paquet client ou rendu en jeu exécuté.",
+    "Pq01ClientBench": "PASS 44 assertions ; vrais Pq01Client/Pq01Pacing, lecture manuelle, clavier/souris, pagination, capture, voix et hint ; affichage/réseau doublés.",
+    "Pq01GeraudBench": "PASS 41 assertions de régression Géraud sur le pont livré ; monde, effets de fonctions, horloge et caméra doublés. Aucun rendu client réel.",
+    "native_capture": "[15:13:02] [main/INFO]: [STDOUT]: PASS 191 native b10 capture assertions; no graphical client."
+  },
+  "files": {
+    "core": {
+      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2.zip",
+      "bytes": 5128752,
+      "sha256": "8aff8d9c45d275b9d281f5b915baad5e88e7a6c2147bc9806b4fff3cc7a7a8c4"
+    },
+    "quests": {
+      "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2.zip",
+      "bytes": 1516108,
+      "sha256": "72aa0cf454853f65e2cad769ba200e524c711c75260fe6a1d54c148c90788ba7"
+    },
+    "journal": {
+      "filename": "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF12.jar",
+      "bytes": 492804,
+      "sha256": "c888eec4fa5dad35127dd5a5e4e6c49ec0f870063d429877f4b2a48a09f5bb60"
+    }
+  }
+}
