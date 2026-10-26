@@ -5,10 +5,11 @@ import build
 
 ROOT=build.HERE.parent.parent
 RT=ROOT/'work/pq01_hf4/runtime'
-MARKERS=os.environ.get('CORE_QUEST_MARKERS')=='1'
+QUAI=os.environ.get('PQ01_QUAI_COMMANDS')=='1'
+MARKERS=QUAI or os.environ.get('CORE_QUEST_MARKERS')=='1'
 MULTI=MARKERS or os.environ.get('PQ01_MULTIPLAYER')=='1'
 WALK=os.environ.get('PQ01_WALK_REGRESSION')=='1'
-LABEL=os.environ.get('PQ01_TEST_LABEL','qmark1' if MARKERS else 'walk-hf11' if WALK else 'multi-hf11' if MULTI else 'world-test-hf11')
+LABEL=os.environ.get('PQ01_TEST_LABEL','quai-hf12' if QUAI else 'qmark2' if MARKERS else 'walk-hf12' if WALK else 'multi-hf12' if MULTI else 'world-test-hf12')
 SERVER=RT/('server-'+LABEL+'-'+datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d%H%M%S%f'))
 def main():
     SERVER.mkdir(exist_ok=True);(SERVER/'mods').mkdir(exist_ok=True)
@@ -25,6 +26,7 @@ def main():
     sources.append(build.HERE/'tests/world/Pq01MultiWorldBench.java')
     sources.append(build.HERE/'tests/world/Pq01WalkRegressionBench.java')
     if MARKERS:sources.append(build.HERE/'tests/world/CoreQuestMarkersBench.java')
+    if QUAI:sources.append(build.HERE/'tests/world/Pq01QuaiCommandsBench.java')
     if MULTI:sources=[p for p in sources if '/world_doubles/' not in str(p)]
     subprocess.run(['java','--module','jdk.compiler/com.sun.tools.javac.Main','-proc:none','-cp',os.pathsep.join(map(str,[build.HERE/'contract_classes',build.HERE/'classes'])),'-d',str(classes),*map(str,sources)],check=True)
     export=['--add-exports','java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED']
@@ -41,6 +43,7 @@ def main():
         for name in src.namelist():
             if (classes/name).is_file():continue
             if MULTI and name=='indivis_sequence_states.tsv':out.writestr(name,src.read(name))
+            if name=='indivis_core_quest_givers.tsv':out.writestr(name,src.read(name))
             if (name.startswith('net/hautecapitale/quetes/') and (MULTI or not name.startswith('net/hautecapitale/quetes/visibility/'))):out.writestr(name,src.read(name))
             elif name=='indivis_pq01.mixins.json':
                 config=json.loads(src.read(name));config['mixins']+=config.pop('client',[]);out.writestr(name,json.dumps(config))
@@ -48,7 +51,7 @@ def main():
         configs=['indivis_pq01.mixins.json']
         if MULTI:
             configs.append('indivis_tracker_test.mixins.json');out.writestr(configs[-1],json.dumps({'required':True,'minVersion':'0.8','package':'net.hautecapitale.quetes.mixin','compatibilityLevel':'JAVA_21','mixins':['EntityTrackerMixin'],'injectors':{'defaultRequire':1}}))
-        out.writestr('fabric.mod.json',json.dumps({'schemaVersion':1,'id':'indivis_pq01_worldtest','version':'4.0.0','environment':'server','entrypoints':{'main':['net.hautecapitale.quetes.sequence.'+('CoreQuestMarkersBench' if MARKERS else 'Pq01WalkRegressionBench' if WALK else 'Pq01MultiWorldBench' if MULTI else 'Pq01WorldBench')]},'mixins':configs,'depends':{'fabricloader':'>=0.19.5','fabric-api':'*','minecraft':'1.21.11','easy_npc':'*'}}))
+        out.writestr('fabric.mod.json',json.dumps({'schemaVersion':1,'id':'indivis_pq01_worldtest','version':'4.0.0','environment':'server','entrypoints':{'main':['net.hautecapitale.quetes.sequence.'+('Pq01QuaiCommandsBench' if QUAI else 'CoreQuestMarkersBench' if MARKERS else 'Pq01WalkRegressionBench' if WALK else 'Pq01MultiWorldBench' if MULTI else 'Pq01WorldBench')]},'mixins':configs,'depends':{'fabricloader':'>=0.19.5','fabric-api':'*','minecraft':'1.21.11','easy_npc':'*'}}))
     i=1
     while (SERVER/f'world-run{i}').exists():i+=1
     # Monde de test jetable, distinct de toute carte fournie par l’utilisateur.

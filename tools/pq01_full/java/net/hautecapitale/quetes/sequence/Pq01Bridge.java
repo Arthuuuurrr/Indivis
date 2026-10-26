@@ -94,7 +94,7 @@ public final class Pq01Bridge {
     event("net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback","EVENT",a->{register(a[0]);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents$EndTick","END_SERVER_TICK",a->{tick(a[0]);return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopping","SERVER_STOPPING",a->{for(View v:new ArrayList<>(VIEWS.values()))close(v.player,true);return null;});
-    event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{VIEWS.clear();ACTORS.clear();GRACE.clear();NEAR.clear();SUPPRESS.clear();REFRESH.clear();Pq01Actors.reset();clock=0;teamReady=false;return null;});
+    event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{VIEWS.clear();ACTORS.clear();GRACE.clear();NEAR.clear();SUPPRESS.clear();REFRESH.clear();Pq01Actors.reset();CoreQuestMarkers.reset();clock=0;teamReady=false;return null;});
     event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents$Load","ENTITY_LOAD",a->{if(actor(a[0])&&!ACTORS.contains(uuid(a[0])))call(a[0],"method_31472");return null;});
     stat(DM,"onFermeture",(BiConsumer<Object,Object>)Pq01Bridge::captureClosed);
     stat(DM,"sondeMouvement",(Function<Object,Optional<Boolean>>)e->actor(e)?Optional.of(false):Optional.empty());
@@ -112,13 +112,13 @@ public final class Pq01Bridge {
   static Object objectMethod(Object p,Method m,Object[] a){return switch(m.getName()){case "toString"->"IndivisPQ01";case "hashCode"->System.identityHashCode(p);case "equals"->p==a[0];default->null;};}
   static void register(Object dispatcher){
     Object root=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal","indivispq01");
-    List<String> actions=new ArrayList<>(List.of("approach_early","approach","return","close","banter","status","diagnostic_perrin","cleanup","near_geraud","reconcile","rearm_near"));
+    List<String> actions=new ArrayList<>(List.of("approach_early","approach","return","close","banter","status","diagnostic_perrin","diagnostic_reperes","cleanup","near_geraud","reconcile","rearm_near"));
     for(String r:ROLES){actions.add("camera_"+r);for(String phase:List.of("large","quai")){for(String op:List.of("bind_","unbind_","place_"))actions.add(op+r+"_"+phase);}}
     for(String p:POINTS)actions.add("point_"+p);
     for(String key:Pq01Ids.keys())actions.add("line_"+key);
     for(String action:actions){
       Object node=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal",action);
-      if(action.startsWith("bind_")||action.startsWith("unbind_")||action.startsWith("point_")||action.startsWith("place_")||action.equals("status")||action.equals("diagnostic_perrin")||action.equals("cleanup")||action.equals("rearm_near")){
+      if(action.startsWith("bind_")||action.startsWith("unbind_")||action.startsWith("point_")||action.startsWith("place_")||action.equals("status")||action.equals("diagnostic_perrin")||action.equals("diagnostic_reperes")||action.equals("cleanup")||action.equals("rearm_near")){
         Object permission=en("net.minecraft.class_2170","field_31839");call(node,"requires",stat("net.minecraft.class_2170","method_71774",permission));
       }
       Class<?> command=type("com.mojang.brigadier.Command");
@@ -133,6 +133,7 @@ public final class Pq01Bridge {
     if(action.equals("cleanup")){for(View v:new ArrayList<>(VIEWS.values())){close(v.player,true);if(score(v.player,"hcm_pq1_active")==1)run(v.player,"function capitale:pq01/close_self");}say(p,"Scènes personnelles nettoyées. Les originaux restent en place.");return 1;}
     if(action.equals("status")){status(p);return 1;}
     if(action.equals("diagnostic_perrin")){diagnosticPerrin(p);return 1;}
+    if(action.equals("diagnostic_reperes")){CoreQuestMarkers.diagnostic(p);return 1;}
     if(action.equals("near_geraud"))return nearGeraud(p);
     if(!available(p))throw new IllegalStateException("Sélectionnez un personnage Nexus chargé.");
     if(action.equals("rearm_near")){NEAR.remove(uuid(p));return 1;}
@@ -152,7 +153,7 @@ public final class Pq01Bridge {
   }
   static String hook(String role,String phase){
     if(role.equals("geraud"))return "function capitale:npc/geraud_rivet/interact_self";
-    if(role.equals("altheon"))return "function capitale:quest/spawn_dirigeable_couronne/capitaine_large/interact_self";
+    if(role.equals("altheon"))return "function capitale:quest/spawn_dirigeable_couronne/capitaine_"+phase+"/interact_self";
     int i=List.of("gautier","hugues","anselme","perrin").indexOf(role)+1;
     return "function capitale:quest/spawn_dirigeable_couronne/matelots/matelot_0"+i+(phase.equals("quai")?"_quai_self":"_self");
   }
@@ -575,6 +576,7 @@ public final class Pq01Bridge {
     GRACE.keySet().retainAll(online);
     NEAR.keySet().retainAll(online);
     REFRESH.keySet().retainAll(online);
+    if(clock%20==0)CoreQuestMarkers.tick(players);
     flushVisibility();
   }
   static void work(View v){

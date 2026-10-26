@@ -27,15 +27,29 @@ final class Pq01Actions {
   }
   static boolean recognized(Object row,String key,String event){
     String kind=Pq01Bridge.str(row,"Type",""),text=Pq01Bridge.str(row,"Cmd","");
-    if(kind.equals("CUSTOM"))return text.strip().equals(command(key,event));
+    if(kind.equals("CUSTOM")){
+      if(text.strip().equals(command(key,event)))return true;
+      String[] words=text.strip().split("\\s+");
+      // Copie d'un PNJ au large vers le quai : migration administrative du même
+      // rôle uniquement. Les contrôles UUID, monde et phase du clic restent inchangés.
+      return event.equals("interact")&&words.length==3&&words[0].equals(ID)&&words[2].equals("interact")
+        &&validKey(words[1])&&role(words[1]).equals(role(key));
+    }
     if(!kind.equals("COMMAND"))return false;
     text=normalizedCommand(text);
     if(text.equals(function(key,event)))return true;
+    if(event.equals("interact")){
+      String role=role(key),base="function capitale:quest/spawn_dirigeable_couronne/";
+      if(role.equals("altheon"))return text.equals(base+"capitaine_large/interact_self")||text.equals(base+"capitaine_quai/interact_self");
+      int sailor=List.of("gautier","hugues","anselme","perrin").indexOf(role)+1;
+      if(sailor>0)return text.equals(base+"matelots/matelot_0"+sailor+"_self")||text.equals(base+"matelots/matelot_0"+sailor+"_quai_self");
+    }
     if(event.equals("near")&&key.equals("altheon_large")&&text.equals("function capitale:quest/spawn_dirigeable_couronne/capitaine_large/near_self"))return true;
     if(event.equals("interact")&&key.equals("geraud_large"))return text.equals("function capitale:quest/spawn_dirigeable_couronne/geraud_large_start_self");
     if(event.equals("interact")&&key.equals("geraud_quai"))return text.equals("function capitale:quest/spawn_dirigeable_couronne/geraud_quai_interact_self");
     return false;
   }
+  private static String role(String key){return key.substring(0,key.lastIndexOf('_'));}
   static Object row(Object previous,String key,String event){
     Object n=previous==null?GuardNbt.compound():Pq01Nbt.copy(previous);
     GuardNbt.string(n,"Type","CUSTOM");GuardNbt.string(n,"Cmd",command(key,event));

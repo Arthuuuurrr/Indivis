@@ -14,7 +14,7 @@ NPC_TYPES = ['allay', 'bogged', 'cat', 'chicken', 'creeper', 'drowned',
              'pillager', 'skeleton', 'stray', 'wither_skeleton', 'slime',
              'spider', 'cave_spider', 'villager', 'wandering_trader', 'vex',
              'vindicator', 'witch', 'wolf', 'zombie', 'zombie_husk',
-             'zombie_villager']
+             'zombie_villager', 'skeleton_horse', 'zombie_horse', 'zombified_piglin', 'husk']
 
 GIVERS = {
  'geraud': (['Géraud Rivet', 'Géraud', 'Quartier-maître Géraud Rivet'], ['hcq_pnj_geraud']),
@@ -99,15 +99,16 @@ def path(s): return 'data/capitale/function/quest/markers/'+s+'.mcfunction'
 def pred(qid, state): return 'hc_quetes:migration/state/'+qid+'/'+state
 def json_bytes(o): return (json.dumps(o, ensure_ascii=False, indent=2)+'\n').encode()
 
-def apply(packs):
+def apply(packs,version=1):
  core, quests = packs['core'], packs['quests']
  import re
+ context=('capitale:quest_markers' if version==2 else 'hc_quetes:session')+' current'
  guide = core['data/capitale/function/quest/guidage/sync_self.mcfunction'].decode()
  guide_predicates = re.findall(r'execute if predicate (\S+) run scoreboard players set @s CAP_GUIDE_LOCK 1', guide)
  assert len(guide_predicates)==5, 'La règle de guidage a changé : réauditer les disponibilités.'
  generated = {}
  def f(name, lines):
-  generated[path(name)] = ('# QMARK1 : visibilité personnelle des offres du core.\n'+'\n'.join(lines)+'\n').encode()
+  generated[path(name)] = ('# QMARK'+str(version)+' : visibilité personnelle des offres du core.\n'+'\n'.join(lines)+'\n').encode()
  f('guide_free', ['execute if predicate '+p+' run return 0' for p in guide_predicates]+['return 1'])
  by_giver = defaultdict(list)
  for q in Q:
@@ -128,41 +129,76 @@ def apply(packs):
    lines.append('execute '+' '.join(cond)+' run return 1')
   f('available/'+q['qid'],lines+['return 0'])
   by_giver[q['giver']].append(q['qid'])
- f('update_self', ['function '+PREFIX+'giver/'+giver+' with storage hc_quetes:session current' for giver in GIVERS])
+ f('update_self', ['function '+PREFIX+'giver/'+giver+' with storage '+context for giver in GIVERS])
  npc_filter='type=#capitale:quest_markers/npcs,tag=!hcm_private,distance=..24,sort=nearest,limit=1'
  owner='tag=cap_qmark,tag=hcm_owner_$(owner)'
  current=owner+',tag=hcm_character_$(character)'
  for giver,(names,tags) in GIVERS.items():
-  f('giver/'+giver, ['execute if function '+PREFIX+'available/'+qid+' run return run function '+PREFIX+'locate/'+giver+' with storage hc_quetes:session current' for qid in by_giver[giver]]+['return 0'])
+  f('giver/'+giver, ['execute if function '+PREFIX+'available/'+qid+' run return run function '+PREFIX+'locate/'+giver+' with storage '+context for qid in by_giver[giver]]+['return 0'])
+  if version==2:f('giver_available/'+giver, ['execute if function '+PREFIX+'available/'+qid+' run return 1' for qid in by_giver[giver]]+['return 0'])
   selectors=[f'@e[{npc_filter},tag=cap_qgiver_{giver}]']+[f'@e[{npc_filter},tag={t}]' for t in tags]+[f'@e[{npc_filter},name={json.dumps(n,ensure_ascii=False)}]' for n in names]
-  f('locate/'+giver, ['execute at '+sel+' run return run function '+PREFIX+'at/'+giver+' with storage hc_quetes:session current' for sel in selectors]+['return 0'])
+  f('locate/'+giver, ['execute at '+sel+' run return run function '+PREFIX+'at/'+giver+' with storage '+context for sel in selectors]+['return 0'])
   selector='@e[type=minecraft:text_display,'+current+',tag=cap_qgiver_'+giver+',limit=1]'
   tag_list=['hcm_private','cap_qmark','cap_qmark_live','cap_qgiver_'+giver,'hcm_owner_$(owner)','hcm_character_$(character)']
-  nbt='{Tags:'+json.dumps(tag_list,separators=(',',':'))+',text:{text:"!",color:"yellow",bold:true},billboard:"center",shadow:1b,see_through:0b,background:0,line_width:64,view_range:0.4f,teleport_duration:20}'
+  if version==2:tag_list.append('cap_qmark_v2')
+  style='see_through:1b,brightness:{block:15,sky:15}' if version==2 else 'see_through:0b'
+  height='3.05' if version==2 else '2.6'
+  nbt='{Tags:'+json.dumps(tag_list,separators=(',',':'))+',text:{text:"!",color:"yellow",bold:true},billboard:"center",shadow:1b,'+style+',background:0,line_width:64,view_range:0.4f,teleport_duration:20}'
+  migration=['$execute as '+selector+' unless entity @s[tag=cap_qmark_v2] run data merge entity @s {see_through:1b,brightness:{block:15,sky:15}}',
+             '$tag '+selector+' add cap_qmark_v2'] if version==2 else []
   f('at/'+giver,[
-   '$execute positioned ~ ~2.6 ~ unless entity '+selector+' run summon minecraft:text_display ~ ~ ~ '+nbt,
+   '$execute positioned ~ ~'+height+' ~ unless entity '+selector+' run summon minecraft:text_display ~ ~ ~ '+nbt,
+   *migration,
    '$tag '+selector+' add cap_qmark_live',
-   '$execute positioned ~ ~2.6 ~ as '+selector+' unless entity @s[distance=..0.05] run tp @s ~ ~ ~',
+   '$execute positioned ~ ~'+height+' ~ as '+selector+' unless entity @s[distance=..0.05] run tp @s ~ ~ ~',
    'return 1'])
   f('liaison/'+giver,[
    '# Facultatif : seulement pour un PNJ renommé qui ne possède aucun alias connu.',
-   'tag @e[type=#capitale:quest_markers/npcs,tag=!hcm_private,distance=..4,sort=nearest,limit=1] add cap_qgiver_'+giver])
+   'tag @e[type=#capitale:quest_markers/npcs,tag=!hcm_private,distance=..4,sort=nearest,limit=1] add cap_qgiver_'+giver,
+   *(['tag @e[type=#capitale:quest_markers/npcs,tag=!hcm_private,distance=..4,sort=nearest,limit=1] remove hcm_qmark_auto_'+giver] if version==2 else [])])
   f('liberer/'+giver,['tag @e[type=#capitale:quest_markers/npcs,tag=cap_qgiver_'+giver+',distance=..4,sort=nearest,limit=1] remove cap_qgiver_'+giver])
  f('tick_self',[
+  *(['$data modify storage capitale:quest_markers current set value {owner:"$(owner)",character:"$(character)"}'] if version==2 else []),
   '$tag @e[type=minecraft:text_display,'+owner+'] remove cap_qmark_live',
-  'execute unless score @s CAP_PROFILE_LOCK matches 1.. at @s run function '+PREFIX+'update_self with storage hc_quetes:session current',
+  'execute unless score @s CAP_PROFILE_LOCK matches 1.. at @s run function '+PREFIX+'update_self with storage '+context,
   '$kill @e[type=minecraft:text_display,'+owner+',tag=!cap_qmark_live]'])
  # L'entrée s'exécute après le contexte Nexus du joueur courant ; aucun sélecteur @p.
  second='data/hc_quetes/function/runtime/second.mcfunction'
  hook='function '+PREFIX+'tick_self with storage hc_quetes:session current\n'
  assert hook.encode() not in quests[second]
- quests[second]+=b'\n# QMARK1 : offres du core, personnage Nexus courant.\n'+hook.encode()
+ if version==1:quests[second]+=b'\n# QMARK1 : offres du core, personnage Nexus courant.\n'+hook.encode()
+ else:
+  f('version',['return 2'])
+  f('load',['scoreboard objectives add hcm_qmark_probe dummy','data modify storage capitale:quest_markers version set value 2'])
+  core['data/capitale/function/core/load.mcfunction']+='\n# QMARK2 : repères pilotés par le journal HF12.\nfunction capitale:quest/markers/load\n'.encode()
  # Les noms et tags ne recherchent que les types EasyNPC ; aucune sérialisation NBT par tick.
  generated['data/capitale/tags/entity_type/quest_markers/npcs.json']=json_bytes({'replace':False,'values':[{'id':'easy_npc:'+t,'required':False} for t in NPC_TYPES]})
  core.update(generated)
- catalog={'version':'QMARK1','radius':24,'interval_ticks':20,'quests':Q,'givers':{g:{'names':n,'tags':t} for g,(n,t) in GIVERS.items()},'guide_predicates':guide_predicates}
- core['docs/quest_markers/QMARK1_CATALOGUE.json']=json_bytes(catalog)
+ catalog={'version':'QMARK'+str(version),'radius':24,'interval_ticks':20,'quests':Q,'givers':{g:{'names':n,'tags':t} for g,(n,t) in GIVERS.items()},'guide_predicates':guide_predicates}
+ if version==2:
+  # Déduire les alias d'interaction sans exécuter leurs fonctions et sans toucher aux PNJ.
+  texts={n.split('/')[1]+':'+n.split('/function/',1)[1][:-11]:b.decode() for n,b in core.items() if '/function/' in n and n.endswith('.mcfunction')}
+  reach={k:set() for k in texts}
+  for q in Q:reach['capitale:'+q['source']].add(q['giver'])
+  edges={k:set(re.findall(r'(?:^|\brun )function ([a-z0-9_:/.-]+)',v,re.M))&set(texts) for k,v in texts.items()}
+  while True:
+   changed=False
+   for k,targets in edges.items():
+    merged=reach[k].union(*(reach[t] for t in targets))
+    if merged!=reach[k]:reach[k]=merged;changed=True
+   if not changed:break
+  commands={k:next(iter(v)) for k,v in reach.items() if len(v)==1 and (k.endswith(('/interact_self','/interact_player','/work_offer_self','/quest_self')) or any(k=='capitale:'+q['source'] for q in Q))}
+  commands.update({'capitale:npc/'+g+'/interact_self':g for g in ['mira','lysandre','roland','aldren']})
+  commands['capitale:npc/elias_ferbois/interact_self']='elias'
+  catalog['command_aliases']=dict(sorted(commands.items()))
+  rows=[]
+  for giver,(names,tags) in GIVERS.items():
+   rows.extend('name\t'+giver+'\t'+n for n in names)
+   rows.extend('tag\t'+giver+'\t'+t for t in tags)
+  rows.extend('function\t'+giver+'\t'+command for command,giver in sorted(commands.items()))
+  packs['journal']['indivis_core_quest_givers.tsv']=('\n'.join(rows)+'\n').encode()
+ core['docs/quest_markers/'+catalog['version']+'_CATALOGUE.json']=json_bytes(catalog)
  for kind in ['core','quests']:
-  meta=json.loads(packs[kind]['pack.mcmeta']);meta['pack']['description']+=' — QMARK1 : ! personnels des donneurs du core'
+  meta=json.loads(packs[kind]['pack.mcmeta']);meta['pack']['description']+=' — '+catalog['version']+' : ! personnels des donneurs du core'
   packs[kind]['pack.mcmeta']=json_bytes(meta)
  return catalog
