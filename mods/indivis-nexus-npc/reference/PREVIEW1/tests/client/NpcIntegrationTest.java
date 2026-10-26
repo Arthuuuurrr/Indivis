@@ -15,8 +15,9 @@ import fr.indivis.nexusnpc.client.*;
 public final class NpcIntegrationTest implements ClientModInitializer {
  static final Path OUT=Path.of(System.getProperty("npcqa.out"));
  static final boolean RELOAD=Boolean.getBoolean("npcqa.reload");
+ static final boolean FUTURE=Boolean.getBoolean("npcqa.future");
  static int tick,stage,worldTick,checks,initialCharacters;
- static volatile boolean spawned;static boolean failure,done;
+ static volatile boolean spawned;static boolean failure,done,benchmark;
  static final Map<UUID,String> ids=new ConcurrentHashMap<>();
  static final Map<String,Integer> seen=new TreeMap<>();
  static final Map<String,Set<String>> hashes=new TreeMap<>();
@@ -58,7 +59,11 @@ public final class NpcIntegrationTest implements ClientModInitializer {
   if(stage==4){if(++tick<30)return;c.method_1576().execute(()->{try{
    int count=0,sentinels=0;
    for(var entity:c.method_1576().method_30002().method_27909())if(entity instanceof EasyNPC<?> npc){var p=NpcAppearance.read(npc.getEasyNPCSkinData().getSkinDataEntry());if(p==null)continue;check(p.preset().equals(PresetStore.load(p.preset().id())),"Saved world recipe changed");ids.put(entity.method_5667(),p.preset().id());count++;if(entity.method_5752().contains("quest_sentinel_do_not_change"))sentinels++;}
-   check(count==10&&sentinels==5,"World reload count/tags differ "+count+"/"+sentinels);results.add("WORLD_RELOAD_PASS real saved world: 10 NPCs, 5 original tags, recipes and UUIDs retained");spawned=true;
+   check(count==10&&sentinels==5,"World reload count/tags differ "+count+"/"+sentinels);
+   Set<UUID> diskIds=new HashSet<>();try(var paths=Files.list(OUT.getParent().resolve("saves/npc-isolated/easy_npc/npcs"))){paths.filter(p->p.toString().endsWith(".npc.nbt")).forEach(p->diskIds.add(UUID.fromString(p.getFileName().toString().substring(0,36))));}
+   check(diskIds.equals(ids.keySet()),"World reload regenerated NPC UUIDs");
+   var server=c.method_1576();for(String cmd:List.of("tp @a 0 100 0 0 0","time set noon","weather clear"))server.method_3734().method_44252(server.method_3739(),cmd);
+   results.add("WORLD_RELOAD_PASS real saved world: 10 NPCs, 5 original tags, recipes and UUIDs retained");spawned=true;
   }catch(Throwable e){fail(e);}});stage=3;return;}
   if(stage==2){
    if(++tick<30)return;
@@ -71,8 +76,14 @@ public final class NpcIntegrationTest implements ClientModInitializer {
   if(worldTick==100){c.method_1576().execute(()->{for(var entry:ids.entrySet()){var entity=c.method_1576().method_30002().method_73284(entry.getKey());if(entity instanceof class_1309 living)living.method_6104(class_1268.field_5808);}});capture(c,"races-action.png");}
   if(worldTick==150){check(PresetStore.load("qa_export").id().equals("qa_export"),"C2S upload missing on server");NpcClientBridge.clear();GenericSkinLayerSupport.clearCaches();}
   if(worldTick==200)capture(c,"races-after-clear.png");
+  if(worldTick==205){NpcCost.cacheIsolation(c);if(RELOAD&&!Boolean.getBoolean("npcqa.visual"))NpcCost.run(c);}
+  if(worldTick==210)c.field_1690.field_1842=true;
+  if(worldTick==220)capture(c,"presets-face.png");
+  if(worldTick==230){var camera=new class_745(c.field_1687,new com.mojang.authlib.GameProfile(UUID.fromString("00000000-0000-0000-0000-000000000099"),"CameraQa"));camera.method_5808(0,100,10,180,0);camera.field_6241=camera.field_6259=180;camera.field_5982=180;c.method_1504(camera);}
+  if(worldTick==250)capture(c,"presets-dos.png");
   if(worldTick<260)return;
   for(String id:PresetStore.BUILTIN)check(seen.getOrDefault(id,0)>5,"No actual EasyNPC 3D render for "+id+" seen="+seen);
+  if(FUTURE)check(seen.getOrDefault("future930",0)>5,"New asset IDs were not rendered on a real EasyNPC");
   check(NpcClientBridge.cosmeticDraws>25,"Actual cosmetic feature absent");check(NpcClientBridge.cacheHits>50,"No reuse of appearance preparations");
   results.add("NPC_CLIENT_PASS checks="+checks+" seen="+seen+" preparations="+NpcClientBridge.preparations+" hits="+NpcClientBridge.cacheHits+" layers="+NpcClientBridge.cosmeticDraws);
   Files.write(OUT.resolve("pass.txt"),results);Files.writeString(OUT.resolve("hashes.json"),NpcPreset.JSON.toJson(hashes));System.out.println(results.get(results.size()-1));done=true;c.method_1490();
@@ -104,10 +115,15 @@ public final class NpcIntegrationTest implements ClientModInitializer {
    NpcAppearance.apply(entity,preset);
   }
   NativePresets.run(server);NpcDataRegression.run(world);
+  if(FUTURE){
+   check(DynamicAssetCatalog.hairAssetName(930).equals("hair_930.png")&&DynamicAssetCatalog.facialHairName(930).equals("beard_930.png")&&DynamicAssetCatalog.outfitAllowed(930),"New asset discovery failed");
+   var p=new NpcPreset(1,"future930","Nouveaux assets 930","human","player_v69_b2_e1_ec0_ey2_h930_hc02_s04_o930_fh930_fc00_mk0_mc0",1,1,"none","none",true).validated();PresetStore.saveNew(p);
+   var entity=NexusNpc.spawn(server.method_3739().method_9208(new class_243(0,100,3)),p);if(entity instanceof class_1308 mob)mob.method_5977(true);ids.put(entity.method_5667(),p.id());results.add("FUTURE_ASSETS hair=930 beard=930 outfit=930, real EasyNPC and dynamic catalog");
+  }
   spawned=true;System.out.println("NPC_SERVER_APPLY_PASS entities="+ids.size());
  }
  public static void audit(Object model,Object state){
-  if(!(state instanceof NpcRenderState flag)||!flag.indivis$hasNexusPreset()||failure)return;
+  if(!(state instanceof NpcRenderState flag)||!flag.indivis$hasNexusPreset()||failure||benchmark)return;
   try{
    Object e=SurfaceGeometry.call(state,"getTransitionEntity");if(!(e instanceof class_1297 entity))return;
    String id=ids.get(entity.method_5667());if(id==null)return;

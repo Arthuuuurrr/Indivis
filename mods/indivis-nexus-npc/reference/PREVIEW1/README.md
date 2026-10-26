@@ -1,7 +1,9 @@
 # Indivis Nexus NPC — prototype PREVIEW1
 
 Issue #180. Module compagnon pour Nexus PRE35 SI1 et EasyNPC 7.16.0 sous Fabric Minecraft 1.21.11.
-Développement et vérifications en cours ; aucun déploiement et aucune fusion dans main.
+Préversion visuelle ; aucun déploiement et aucune fusion dans main. Les fonctions
+et la restauration ont été testées sur de vrais EasyNPC. La charge CPU des poses
+animées reste élevée : ne pas considérer le module comme optimisé pour une foule.
 
 ## Périmètre
 
@@ -46,11 +48,14 @@ automatique sur les PNJ existants. Avant désinstallation, `reset` permet de ret
 l'apparence précédente des PNJ modifiés ; garder le module tant que la recette 3D
 doit rester affichée.
 
-## Éléments à vérifier avant livraison
+## Vérifications et limites
 
-Rendu réel, corps normal/slim, export dans l'éditeur, publication C2S, données NBT
-hors apparence inchangées, reset, rechargement de monde/ressources et charge de rendu.
-Les chiffres PRE35 obtenus sur des joueurs ne sont pas des mesures de ce prototype PNJ.
+Rendu réel normal/slim, export par clic dans l'éditeur, publication C2S OP 4,
+NBT hors apparence conservé, reset, rechargement du monde et invalidation des caches
+ont été contrôlés par le harnais livré. Les mesures CPU 1/4/8 EasyNPC sont propres
+à ce prototype, et non reprises des anciens tests de joueurs PRE35.
+Voir GUIDE-PNJ-NEXUS.md et RAPPORT-VERIFICATION.md pour le périmètre exact et les
+points non verrouillés : foule, shaders, serveur dédié et pack de production complet.
 
 ## Compilation
 
@@ -58,3 +63,10 @@ Java 21, Minecraft 1.21.11 remappé intermediary et dépendances Fabric dans `..
 Placer les trois JAR d'origine dans `base/`, puis `python3 build.py`.
 Les dépendances et assets tiers ne sont pas redistribués. Le JAR Nexus de base reste
 strictement identique au SHA-256 `399a4c64a7672e60ebbaaa52044cb547f5c41576039fe5aafe2c42485e2e8a8a`.
+
+Le harnais `run_client.py` réutilise les helpers de tests PRE35 du commit
+`88443aa03842afdc557475ea1c3448d8d3249199` (PR #179), à placer dans
+`../nexus-pre35/tests/client/`. Les scripts de bootstrap correspondants sont dans
+`mods/nexuscharacters/reference/BETA-1.0-PRE35/runtime-tools/` à ce même commit.
+Ils servent uniquement aux essais isolés, pas au mod livré. Les fichiers JAR
+de référence restent nécessaires pour compiler et pour lancer ces essais.

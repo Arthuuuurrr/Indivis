@@ -1,0 +1,3 @@
+WORLD_RELOAD_PASS real saved world: 10 NPCs, 5 original tags, recipes and UUIDs retained
+STATE_REUSE_PASS Nexus profile -> ordinary NPC; flags, texture, ears and beard reset
+NPC_CLIENT_PASS checks=2266 seen={elfe_des_bois=56, haut_elfe_ivoire=56, nain_bronze=56, naine_forge=56, nordique_roux=56} preparations=10 hits=131 layers=140

@@ -1,0 +1,9 @@
+{
+  "pixel_identical_menus": 23,
+  "geometry_rows": {
+    "geometry.csv": 320,
+    "pose-geometry.csv": 91
+  },
+  "failures": [],
+  "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047"
+}
