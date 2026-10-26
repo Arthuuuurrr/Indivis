@@ -1,0 +1,12 @@
+{
+  "mode": "opt-menus",
+  "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+  "start_utc": "2026-10-26T19:28:10.536597+00:00",
+  "end_utc": "2026-10-26T19:30:39.522938+00:00",
+  "game": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/games/20261026T192741",
+  "log": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/client-20261026T192741.log",
+  "pass": "PRE30_MENU_PASS captures=23 checks=364\n",
+  "nexus_sha256": "bdb1525d5e4448cb8127e38bdcdce063d629b7039a856bf9ea74be5ea06dea11",
+  "reload_from": null,
+  "fixed_facing": false
+}

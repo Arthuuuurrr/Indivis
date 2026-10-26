@@ -27,7 +27,12 @@ def record(label):
 
 comparison=json.loads((R/'qa/comparison.json').read_text())
 assert comparison['candidate_nexus_sha256']==sha
+assert comparison['samples_per_case']==5
 assert comparison['geometry_states']==216 and not comparison['geometry_differences']
+timed,te=record('opt-candidate')
+assert not (Path(timed['game'])/'cost.jfr').exists(),'Final timing was recorded with JFR enabled'
+timed_counts=dict(line.split('=') for line in (te/'opt-counters.txt').read_text().splitlines())
+assert int(timed_counts['oracleCalls'])==0,'Final timing still has the exact oracle enabled'
 oracle,oe=record('opt-oracle2')
 counters=dict(line.split('=') for line in (oe/'opt-counters.txt').read_text().splitlines())
 reuse=dict(line.split('=') for line in (oe/'opt-reuse.txt').read_text().splitlines())
@@ -42,6 +47,7 @@ for i in range(23):
  a=Image.open(be/name).convert('RGB');b=Image.open(me/name).convert('RGB')
  assert a.size==b.size
  box=ImageChops.difference(a,b).getbbox();pixel.append({'file':name,'difference_box':box})
+assert all(v['difference_box'] is None for v in pixel),'Menu pixels differ from PRE35'
 geometry=[]
 for name in ('geometry.csv','pose-geometry.csv'):
  a=(be/'geometry'/name).read_bytes();b=(me/'geometry'/name).read_bytes()
@@ -52,6 +58,8 @@ assert a==b,'First-person geometry differs'
 geometry.append({'file':'arm-geometry.csv','states':len(a.splitlines())})
 
 future,fe=record('opt-future');visual,ve=record('opt-visual-reload')
+assert 'FUTURE_ASSETS hair=930 beard=930 outfit=930' in future['pass']
+assert 'future930' in future['pass']
 assert visual['reload_from'] and visual['fixed_facing']
 assert 'WORLD_RELOAD_PASS' in visual['pass']
 result={'sha256':sha,'base_sha256':hashlib.sha256(base.read_bytes()).hexdigest(),

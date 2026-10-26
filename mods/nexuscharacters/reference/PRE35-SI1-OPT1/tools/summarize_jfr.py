@@ -1,6 +1,6 @@
 """Aggregate Java execution samples only while our native workload is on-stack."""
 from pathlib import Path
-import subprocess,json,collections,sys,re
+import subprocess,json,collections,sys,re,hashlib
 R=Path(__file__).resolve().parents[1];J=R.parent/'pre31/jdk/bin'
 source=Path(sys.argv[1]).resolve()
 data=json.loads(subprocess.check_output([str(J/'jfr'),'print','--json','--stack-depth','256','--events','jdk.ExecutionSample',str(source)]))
@@ -22,7 +22,9 @@ for event in data['recording']['events']:
  if names:tops[names[0]]+=1
  for n in set(n for n in names if n.startswith('net.tompsen.nexuscharacters.')):nexus[n]+=1
  if frames:kinds[frames[0].get('type','unknown')]+=1
-result={'workload_samples':total,'truncated_stacks':truncated,'log_time_window':[start,end],
+result={'nexus_sha256':hashlib.sha256(next((source.parent/'mods').glob('NexusCharacters*.jar')).read_bytes()).hexdigest(),
+ 'scope':'Intermediate diagnostic recording; not the final unprofiled benchmark',
+ 'workload_samples':total,'truncated_stacks':truncated,'log_time_window':[start,end],
  'threads':threads,'first_event_time':data['recording']['events'][0]['values']['startTime'],'top_frames':tops.most_common(35),
  'inclusive_nexus_frames':nexus.most_common(45),'top_frame_kind':kinds,
  'note':'Inclusive frames overlap; not additive. Java samples, not GPU/FPS.'}

@@ -1,0 +1,12 @@
+{
+  "mode": "opt-visual-reload",
+  "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+  "start_utc": "2026-10-26T19:31:54.072544+00:00",
+  "end_utc": "2026-10-26T19:32:57.611464+00:00",
+  "game": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/games/20261026T193150",
+  "log": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/client-20261026T193150.log",
+  "pass": "WORLD_RELOAD_PASS real saved world: 10 NPCs, 5 original tags, recipes and UUIDs retained\nSTATE_REUSE_PASS Nexus profile -> ordinary NPC; flags, texture, ears and beard reset\nNPC_CLIENT_PASS checks=3546 seen={elfe_des_bois=88, haut_elfe_ivoire=88, nain_bronze=88, naine_forge=88, nordique_roux=88} preparations=10 hits=211 layers=220\n",
+  "nexus_sha256": "bdb1525d5e4448cb8127e38bdcdce063d629b7039a856bf9ea74be5ea06dea11",
+  "reload_from": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/games/20261026T191909",
+  "fixed_facing": true
+}

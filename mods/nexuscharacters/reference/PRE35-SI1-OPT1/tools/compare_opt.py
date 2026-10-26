@@ -15,6 +15,11 @@ def samples(folder):
  return groups
 x,y=samples(A),samples(B);assert x.keys()==y.keys()
 assert all(len(v)==5 for v in [*x.values(),*y.values()]),'Final timing requires five samples per case'
+for groups in [x,y]:
+ for key,entries in groups.items():
+  for entry in entries:
+   expected=0 if key[1]=='static' else int(entry['frames'])*key[2]
+   assert int(entry['recomputes'])==expected,('Pose workload was not exact/unique',key,entry)
 rows=[]
 for key in x:
  def cpu(sample):return int(sample['cpu_ns'])/int(sample['frames'])/1e6
@@ -27,7 +32,7 @@ for key in x:
    'recomputes_before':[int(v['recomputes']) for v in x[key]],'recomputes_after':[int(v['recomputes']) for v in y[key]]})
 result={'scope':'Grouped extraction + native model preparation; real EasyNPC / OtherClientPlayer; 320 unique three-entity warm-up frames, then 32 per-case warm-up frames, 5 samples x 24 frames; no GPU/FPS claim',
   'baseline_nexus_sha256':old['nexus_sha256'],'candidate_nexus_sha256':new['nexus_sha256'],'geometry_states':len(a),
-  'geometry_differences':differences,'rows':rows,'baseline':old,'candidate':new}
+  'samples_per_case':5,'geometry_differences':differences,'rows':rows,'baseline':old,'candidate':new}
 (R/'qa/comparison.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
 print('GEOMETRY_COMPARISON',len(a),'differences',len(differences))
 for row in rows:print(json.dumps(row))

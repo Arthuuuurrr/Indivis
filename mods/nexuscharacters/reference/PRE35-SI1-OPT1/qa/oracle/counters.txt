@@ -1,0 +1,6 @@
+calls=65056
+queries=3774361
+queryHits=2716664
+fallbacks=0
+oracleCalls=65056
+oraclePolygons=16320138
