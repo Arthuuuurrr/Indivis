@@ -17,7 +17,7 @@ public record NpcPreset(int version,String id,String name,String race,String ski
   CharacterRace r=Arrays.stream(CharacterRace.values()).filter(x->x.id().equals(race)).findFirst().orElseThrow(()->new IllegalArgumentException("Race Nexus inconnue"));
   if(r==CharacterRace.VILLAGER)throw new IllegalArgumentException("Le prototype est réservé aux modèles humanoïdes Nexus");
   if(!Float.isFinite(height)||!Float.isFinite(build)||height<r.minHeight()-.0001f||height>r.maxHeight()+.0001f||build<r.minBuild()-.0001f||build>r.maxBuild()+.0001f)throw new IllegalArgumentException("Morphologie hors des limites de la race Nexus");
-  if(skin==null||!skin.matches("player_v[0-9]+_[a-zA-Z0-9_]{1,220}"))throw new IllegalArgumentException("Le preset doit utiliser une apparence Nexus, pas un skin de compte");
+  if(skin==null||!(Appearance69Support.isId(skin)||Appearance68Support.isId(skin)||Appearance65Support.isId(skin)))throw new IllegalArgumentException("Recette Nexus invalide ou version non prise en charge");
   if(ears==null||beard==null||ears.length()>96||beard.length()>128)throw new IllegalArgumentException("Cosmétiques invalides");
   if(!CharacterCosmetics.normalizeEar(r,ears).equals(ears)||!CharacterCosmetics.normalizeBeard(r,beard).equals(beard))throw new IllegalArgumentException("Cosmétiques incompatibles avec la race");
   return this;
