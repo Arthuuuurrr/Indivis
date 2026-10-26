@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "id": "haut_elfe_sentinelle_v2",
+  "name": "Haut-Elfe — Sentinelle d’argent",
+  "race": "high_elf",
+  "skin": "player_v69_b1_e3_ec6_ey2_h04_hc12_s02_o26_fh0_fc00_mk0_mc0",
+  "height": 1.07,
+  "build": 0.86,
+  "ears": "long",
+  "beard": "none",
+  "slim": false
+}

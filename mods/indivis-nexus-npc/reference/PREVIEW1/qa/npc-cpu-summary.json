@@ -1,0 +1,41 @@
+{
+  "scope": "One grouped CPU pass over the listed number of real EasyNPC entities. Extraction + native model preparation; no GPU, world or cosmetic submission. Walking uses synthetic changing poses.",
+  "samples": [
+    {
+      "pose": "static",
+      "npcs": 1,
+      "median_cpu_ms_per_group_pass": 0.393,
+      "median_allocated_MiB_per_group_pass": 0.01
+    },
+    {
+      "pose": "static",
+      "npcs": 4,
+      "median_cpu_ms_per_group_pass": 2.005,
+      "median_allocated_MiB_per_group_pass": 0.04
+    },
+    {
+      "pose": "static",
+      "npcs": 8,
+      "median_cpu_ms_per_group_pass": 7.557,
+      "median_allocated_MiB_per_group_pass": 0.081
+    },
+    {
+      "pose": "walking",
+      "npcs": 1,
+      "median_cpu_ms_per_group_pass": 28.61,
+      "median_allocated_MiB_per_group_pass": 11.061
+    },
+    {
+      "pose": "walking",
+      "npcs": 4,
+      "median_cpu_ms_per_group_pass": 101.476,
+      "median_allocated_MiB_per_group_pass": 40.704
+    },
+    {
+      "pose": "walking",
+      "npcs": 8,
+      "median_cpu_ms_per_group_pass": 314.052,
+      "median_allocated_MiB_per_group_pass": 81.538
+    }
+  ]
+}

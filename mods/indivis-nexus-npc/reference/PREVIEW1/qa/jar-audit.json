@@ -1,0 +1,11 @@
+{
+  "native_presets": 5,
+  "recipes": 5,
+  "foreign_classes_or_assets": [],
+  "client_mixins_only": [
+    {
+      "config": "indivis-nexus-npc.mixins.json",
+      "environment": "client"
+    }
+  ]
+}

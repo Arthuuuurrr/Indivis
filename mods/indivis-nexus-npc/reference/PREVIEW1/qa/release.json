@@ -1,0 +1,9 @@
+{
+  "zip": "/workspace/scratch/22564d9fe6f6/nexus-npc/release/Indivis-PNJ-Nexus-PREVIEW1.zip",
+  "zip_sha256": "97fdf9f58d105578212aa8a466791057c94131e9ea5e7ad8e5a1a3d4d39dc303",
+  "zip_bytes": 850170,
+  "jar": "/workspace/scratch/22564d9fe6f6/nexus-npc/release/Indivis-Nexus-NPC-0.1.0-PREVIEW1-1.21.11.jar",
+  "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+  "report": "/workspace/scratch/22564d9fe6f6/nexus-npc/release/RAPPORT-VERIFICATION.md",
+  "entries": 20
+}

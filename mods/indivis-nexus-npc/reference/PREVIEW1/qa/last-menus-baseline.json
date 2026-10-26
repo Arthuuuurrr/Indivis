@@ -1,0 +1,9 @@
+{
+  "mode": "menus-baseline",
+  "jar_sha256": null,
+  "start_utc": "2026-10-26T13:19:18.079933+00:00",
+  "end_utc": "2026-10-26T13:23:59.867297+00:00",
+  "game": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/games/20261026T131859",
+  "log": "/workspace/scratch/22564d9fe6f6/nexus-npc/qa/client-20261026T131859.log",
+  "pass": "PRE30_MENU_PASS captures=23 checks=364\n"
+}

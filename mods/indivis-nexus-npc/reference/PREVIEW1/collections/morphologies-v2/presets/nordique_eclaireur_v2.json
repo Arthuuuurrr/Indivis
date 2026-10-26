@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "id": "nordique_eclaireur_v2",
+  "name": "Nordique — Éclaireur des fjords",
+  "race": "nordic",
+  "skin": "player_v69_b1_e1_ec5_ey2_h12_hc06_s03_o28_fh6_fc06_mk0_mc0",
+  "height": 1.07,
+  "build": 1.11,
+  "ears": "none",
+  "beard": "none",
+  "slim": false
+}
