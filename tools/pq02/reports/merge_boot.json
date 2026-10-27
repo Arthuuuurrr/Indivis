@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "production_jar_sha256": "51067b5affdd4f11a3b228664cb94789b951a4fefddd311ca49d79cb6c56b9ce",
+  "main_startup_checks": 8,
+  "duplicate_companion_rejected": true,
+  "production_metadata_and_entrypoints_unchanged_in_smoke_test": true,
+  "dependency_substitutes": [
+    "NexusCharacters metadata only",
+    "Puffish metadata only",
+    "RPG metadata only"
+  ],
+  "players": "none",
+  "graphical_client": "not run"
+}

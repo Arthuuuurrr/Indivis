@@ -1,14 +1,20 @@
 # Indivis — Rapport d’intégration PQ02 R1
 
-Livraison du **27 octobre 2026**, Fabric/Minecraft **1.21.11**, Java **21**. Version installable destinée à la recette sur une copie du serveur. Aucun déploiement sur le serveur d’Arthur n’a été effectué.
+Livraison **intégrée** du **27 octobre 2026**, Fabric/Minecraft **1.21.11**, Java **21**. Version installable destinée à la recette sur une copie du serveur. Aucun déploiement sur le serveur d’Arthur n’a été effectué.
 
 ## Résultat et périmètre
 
 PQ02 est refondue selon le kit Work v1.2 et le script narratif v1.0 : accueil, trajet, sujets facultatifs, entretien à trois, inscription, trajet court vers l’ascenseur, séparation et retour ultérieur. Le graphe comporte **111 nœuds et 225 citations**, lus directement dans le texte fourni. Les seuls ajouts éditoriaux sont quatre libellés de navigation : Parlez-moi encore de votre expérience., Revenons au Port., Revenons aux Sentinelles., Revenons aux formalités.
 
-Le mod compagnon `indivis_pq02` apporte l’état de scène, les acteurs personnels et l’adaptation de capture. Il utilise le moteur Dialogue b10, les outils d’acteur de HF12 et EasyNPC 7.16.0. Il est compilé en Java 21 contre les véritables classes Minecraft intermédiaires, Fabric et les JAR fournis. Les JAR du journal HF12, de Dialogue, de Nexus et de Nexus NPC sont **inchangés** et ne sont pas redistribués.
+Le mod de quêtes `haute_capitale_quetes` intègre maintenant les composants PQ02 pour l’état de scène, les acteurs personnels et l’adaptation de capture. Il utilise le moteur Dialogue b10, les outils d’acteur de HF12 et EasyNPC 7.16.0. Il est compilé en Java 21 contre les véritables classes Minecraft intermédiaires, Fabric et les JAR fournis. Le JAR de quêtes HF12 est remplacé par sa version fusionnée : **184 classes historiques et 222 entrées d’origine conservées octet pour octet**, seule la métadonnée `fabric.mod.json` est adaptée parmi les entrées originales. Les 22 entrées PQ02 ajoutées sont identiques au compagnon validé. Dialogue, Nexus et Nexus NPC restent inchangés et ne sont pas redistribués.
 
 La solution privée est nécessaire : le guide mondial de l’ancien core ne peut pas conduire deux joueurs indépendamment ni s’arrêter pour les questions d’un seul. Le trajet et ses repères restent ceux de l’installation ; le déplacement est désormais du pathfinding réel sur une copie du PNJ. L’ancien guide mondial est stationné, pas utilisé comme escorte concurrente.
+
+## Fusion au mod de quêtes existant
+
+Un seul JAR `haute-capitale-quetes-HF12-PQ02-R1-1.21.11.jar` remplace HF12 et le compagnon PQ02, sur serveur et clients. Les points d’entrée de HF12 sont préservés dans leur ordre, puis ceux de PQ02 sont ajoutés une seule fois. Les mixins et le graphe narratif sont directement intégrés : aucun mod PQ02 imbriqué et aucun second identifiant Fabric. Les dépendances historiques, la configuration et les identifiants persistants du journal restent présents. Une incompatibilité explicite empêche de charger simultanément le compagnon obsolète.
+
+Les deux datapacks R1 sont strictement identiques à la première livraison. Cette fusion ne change aucun dialogue, aucune fonction, aucune récompense ni donnée de personnage. Les vérifications et empreintes propres à l’assemblage figurent dans `merge.json` ; le banc narratif est relancé avec toutes les classes dans le seul JAR de quêtes. Le test de démarrage utilise ensuite le JAR de production **sans modifier ses métadonnées, points d’entrée ou mixins**, avec des déclarations de dépendances Nexus/Puffish/RPG réservées au banc et aucun joueur. Ce test ne valide pas les API de ces trois modules tiers ni un client graphique.
 
 ## Autorité des fichiers et audit préalable
 
@@ -83,7 +89,7 @@ Pas de recherche globale de PNJ à chaque tick, pas de téléportation permanent
 
 Les six variantes de menu sont `hugues_menu`, `hugues_36`, `hugues_38`, `hugues_40`, `hugues_42`, `hugues_44`. Dans chacune : une seule ligne d’affichage est retirée ; la seule branche `pick=6 → banter_self` devient `pick=6 → return 0`. Les autres numéros restent inchangés, notamment le congé en 7.
 
-**12 fichiers PQ01 modifiés, tous consacrés à cette suppression.** Les accroches, les répliques, les autres réponses, les scènes, les caméras, la navigation, les fonctions de banter et le JAR HF12 sont conservés. Le diff compare chaque fichier modifié à la transformation attendue exacte ; tous les autres fichiers du répertoire PQ01 sont identiques. Les six menus et les six invocations résiduelles du choix 6 ont aussi été exécutés nativement.
+**12 fichiers PQ01 modifiés, tous consacrés à cette suppression.** Les accroches, les répliques, les autres réponses, les scènes, les caméras, la navigation, les fonctions de banter et le bytecode historique HF12 sont conservés. Le diff compare chaque fichier modifié à la transformation attendue exacte ; tous les autres fichiers du répertoire PQ01 sont identiques. Les six menus et les six invocations résiduelles du choix 6 ont aussi été exécutés nativement.
 
 ## Séquence I : retour vers Althéon et Archives
 
@@ -102,6 +108,7 @@ Le banc natif vérifie les deux entrées du capitaine, 10→20→30→40, la Sen
 | Java : règles pures et politique Nexus réelle | **145 PASS** | 108 combinaisons, bornes, mémoire, politique PRE35, trames de lecture, pause et échec borné du contrôleur. |
 | Serveur Fabric/EasyNPC natif jetable | **1609 PASS** | Acteurs et navigation réels, trackers/paquets, sessions et mixins, deux escortes, menus, déconnexion/reprise, récompenses et chaîne MQ03. |
 | Capture b10 et adaptateur client en mode sans rendu | PASS | 111 nœuds, toutes citations et choix, changements de locuteur, déclencheurs et avancement explicite du client. Écran et moteur caméra doublés. |
+| Démarrage du JAR fusionné de production intact | **8 PASS + garde anti-doublon PASS** | Identifiant unique, quatre commandes et trois initialiseurs réels ; Nexus/Puffish/RPG déclarés par des métadonnées de test, sans leurs API de jeu. |
 | Client graphique sur carte Indivis, FPS, voix enregistrées | **Non réalisé** | Carte, exports PNJ, configurations et client graphique cible non fournis au banc. |
 
 Le serveur de test a réellement démarré et s’est arrêté sous Fabric Loader 0.19.5, Fabric API 0.141.6+1.21.11 et EasyNPC 7.16.0. Les **connexions, accusés de réception des chunks et sélections/restaurations Nexus sont synthétiques**. Les classes de règles de persistance Nexus sont celles du JAR réel. Le test A→B→A n’est donc pas présenté comme un test du sélecteur graphique Nexus ni de toute sa sérialisation disque.
@@ -117,7 +124,7 @@ Le serveur de test hors ligne émet une erreur de récupération des clés publi
 | core fourni → PQ02 R1 | 50 | 12 | 0 | 11274 |
 | hc_quetes fourni → PQ02 R1 | 2 | 0 | 0 | 3321 |
 
-`diffs.json` donne chaque chemin et sa justification. `datapacks.patch` contient le diff textuel complet. `coverage.json` relie les nœuds aux lignes du script ; `COUVERTURE.md` en donne une vue lisible. `build.json` et `SHA256SUMS.txt` identifient exactement les binaires testés. Le diff unifié a été appliqué à des copies des originaux : tous les fichiers obtenus correspondent octet pour octet aux deux archives de sortie. Les JAR de production ne contiennent aucune classe de test ; les binaires internes de la livraison sont ceux du banc réussi (`archive_qa.json`).
+`diffs.json` donne chaque chemin et sa justification. `datapacks.patch` contient le diff textuel complet. `coverage.json` relie les nœuds aux lignes du script ; `COUVERTURE.md` en donne une vue lisible. `merge.json` et `SHA256SUMS.txt` identifient exactement les binaires intégrés testés. `build.json` conserve la trace des composants intermédiaires. Le diff unifié a été appliqué à des copies des originaux : tous les fichiers obtenus correspondent octet pour octet aux deux archives de sortie. Les JAR de production ne contiennent aucune classe de test ; les binaires internes de la livraison sont ceux du banc réussi (`archive_qa.json`).
 
 `INSTALLATION.md` détaille serveur/clients, liaisons, reprise, migration et retour arrière. L’archive de sources fournit les sources nouvelles, les bancs et les scripts. La reproduction demande les entrées originales nommées dans `build.py` et le script narratif du kit ; les dépendances du banc sont téléchargées depuis leurs distributions officielles ou reprises des fichiers fournis, jamais installées sur le serveur utilisateur.
 

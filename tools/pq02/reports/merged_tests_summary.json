@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "journal": "haute-capitale-quetes-HF12-PQ02-R1-1.21.11.jar",
+  "sha256": "51067b5affdd4f11a3b228664cb94789b951a4fefddd311ca49d79cb6c56b9ce",
+  "preserved_hf12_classes": 184,
+  "preserved_hf12_resources": 222,
+  "pq02_entries_identical": 22,
+  "native_checks": 1609,
+  "full_main_startup_checks": 8,
+  "duplicate_guard_checks": 1,
+  "mod_ids": [
+    "haute_capitale_quetes"
+  ],
+  "datapacks_changed_by_merge": false,
+  "limitations": [
+    "Gameplay test connections and Nexus selection synthetic",
+    "External currency/CapSkills/bonus implementations substituted only in gameplay fixture",
+    "Full metadata smoke uses declarative Nexus/Puffish/RPG providers, no players or their APIs",
+    "No rendered client, FPS or user map tested"
+  ]
+}

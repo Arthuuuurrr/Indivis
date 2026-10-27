@@ -1,0 +1,85 @@
+{
+  "status": "PASS_BYTE_PRESERVATION_NATIVE_1609_AND_FULL_MAIN_STARTUP",
+  "file": "haute-capitale-quetes-HF12-PQ02-R1-1.21.11.jar",
+  "sha256": "51067b5affdd4f11a3b228664cb94789b951a4fefddd311ca49d79cb6c56b9ce",
+  "bytes": 553557,
+  "id": "haute_capitale_quetes",
+  "version": "0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1",
+  "source_hf12_sha256": "c888eec4fa5dad35127dd5a5e4e6c49ec0f870063d429877f4b2a48a09f5bb60",
+  "source_pq02_sha256": "fa185eb6258749886b9e6776a8cef0df778f8709325804b215e5881675289474",
+  "original_entries_preserved": 222,
+  "original_classes_preserved": 184,
+  "pq02_entries_identical": 22,
+  "added": [
+    "indivis_pq02.mixins.json",
+    "indivis_pq02_graph.json",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02DialogueCloseMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02EntityMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02VisibilityMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02WaypointMixin.class",
+    "net/hautecapitale/quetes/sequence/Pq02Client.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Choice.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Graph.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Node.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data.class",
+    "net/hautecapitale/quetes/sequence/Pq02Motion$Port.class",
+    "net/hautecapitale/quetes/sequence/Pq02Motion.class",
+    "net/hautecapitale/quetes/sequence/Pq02Pacing$Frame.class",
+    "net/hautecapitale/quetes/sequence/Pq02Pacing.class",
+    "net/hautecapitale/quetes/sequence/Pq02Rules$Delta.class",
+    "net/hautecapitale/quetes/sequence/Pq02Rules.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$1.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$Actor.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$Near.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$View.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime.class"
+  ],
+  "changed_original": [
+    "fabric.mod.json"
+  ],
+  "entrypoints": {
+    "main": [
+      "net.hautecapitale.quetes.HauteCapitaleQuetes",
+      "net.hautecapitale.quetes.sequence.Pq01Initializer",
+      "net.hautecapitale.quetes.sequence.Pq02Runtime"
+    ],
+    "client": [
+      "net.hautecapitale.quetes.client.HauteCapitaleQuetesClient",
+      "net.hautecapitale.quetes.sequence.Pq01Client",
+      "net.hautecapitale.quetes.sequence.Pq02Client"
+    ]
+  },
+  "mixins": [
+    "haute_capitale_quetes.mixins.json",
+    {
+      "config": "haute_capitale_quetes.client.mixins.json",
+      "environment": "client"
+    },
+    "indivis_pq01.mixins.json",
+    "indivis_pq02.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": ">=0.141.6",
+    "nexuscharacters": ">=1.0.0-beta.34",
+    "puffish_skills": "0.17.3",
+    "easy_npc": "7.16.0",
+    "haute_capitale_dialogue": ">=0.1.0"
+  },
+  "breaks": {
+    "indivis_pq02": "*"
+  },
+  "datapacks_unchanged": {
+    "core": "d38f56d1c53408d7f9d812354d29f083c9adb5e90cd3aba8484c4064e0171886",
+    "quests": "154cbdf0105296f5a94ccf6d54d7f9292c8f6fde05f9419cb7ff62225cec0fde"
+  },
+  "tests": {
+    "native": 1609,
+    "full_production_main_startup": 8,
+    "obsolete_companion_guard": 1,
+    "client_rendered": false,
+    "user_map_tested": false
+  }
+}

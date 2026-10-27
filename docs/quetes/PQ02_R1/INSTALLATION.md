@@ -1,27 +1,33 @@
 # Indivis — PQ02 R1 : installation et recette
 
-Version ciblée : Minecraft/Fabric **1.21.11**, Java **21**. Base : core **HF9_QMARK2** et journal datapack **HF4_QMARK2** fournis pour cette demande. Le mod de quêtes **HF12** reste en place.
+Version ciblée : Minecraft/Fabric **1.21.11**, Java **21**. Base : core **HF9_QMARK2** et journal datapack **HF4_QMARK2** fournis pour cette demande. Le mod de quêtes **HF12 est remplacé par sa version intégrant PQ02**, sans compagnon séparé.
 
 ## Fichiers à installer
 
-Décompresser **l’archive de livraison** `Indivis_PQ02_R1_Installation.zip`. Elle contient les deux vrais datapacks et le nouveau mod. Ne pas déposer cette archive de livraison elle-même dans `datapacks`.
+Décompresser **l’archive de livraison** `Indivis_PQ02_R1_Installation_Integree.zip`. Elle contient les deux datapacks et le mod de quêtes fusionné. Ne pas déposer cette archive de livraison elle-même dans `datapacks`.
 
 | Destination | Fichier fourni | Action |
 | --- | --- | --- |
 | Serveur : `<monde>/datapacks/` | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1.zip` | Remplacer le core HF9_QMARK2 fourni, y compris s’il était décompressé. Garder une seule copie de ce core. |
 | Serveur : `<monde>/datapacks/` | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1.zip` | Remplacer le datapack de journal HF4_QMARK2 fourni. |
-| Serveur : `mods/` | `indivis-pq02-1.0.0+1.21.11.jar` | Ajouter ce mod compagnon. |
-| **Chaque client** : `mods/` | **Le même** `indivis-pq02-1.0.0+1.21.11.jar` | Ajouter pour la capture, les noms des locuteurs et la lecture manuelle. |
+| Serveur : `mods/` | `haute-capitale-quetes-HF12-PQ02-R1-1.21.11.jar` | Remplacer l’ancien JAR de quêtes HF12 et retirer le compagnon `indivis-pq02` s’il a été installé. |
+| **Chaque client** : `mods/` | **Le même** `haute-capitale-quetes-HF12-PQ02-R1-1.21.11.jar` | Remplacer l’ancien JAR de quêtes HF12 et retirer `indivis-pq02`, comme sur le serveur. |
 
 Les deux ZIP internes sont directement utilisables comme datapacks : leur `pack.mcmeta` est à la racine. Ne pas conserver en parallèle leur ancienne version ni un dossier issu de l’ancienne extraction.
 
-Conserver **sans les remplacer** : NexusCharacters PRE35-SI1-OPT1, quêtes HF12, Dialogue b10, EasyNPC 7.16.0, le module RPG et les dépendances déjà fonctionnelles. Nexus NPC PREVIEW1 n’est pas modifié. La monnaie reste `capitale_currency:martin_dor`. Les fonctions CapSkills et les tirages du Port existants restent requis pour leurs récompenses. Aucun de ces JAR inchangés n’est redistribué dans cette livraison.
+Conserver **sans les remplacer** : NexusCharacters PRE35-SI1-OPT1, Dialogue b10, EasyNPC 7.16.0, le module RPG et les dépendances déjà fonctionnelles. Nexus NPC PREVIEW1 n’est pas modifié. La monnaie reste `capitale_currency:martin_dor`. Les fonctions CapSkills et les tirages du Port existants restent requis pour leurs récompenses. Les JAR de ces autres modules ne sont pas redistribués dans cette livraison.
+
+## Si la première livraison PQ02 R1 est déjà installée
+
+Remplacer uniquement les deux anciens JAR (`haute-capitale-quetes` HF12 et `indivis-pq02`) par le **seul** JAR fusionné, sur le serveur et chaque client. Les deux datapacks R1 sont identiques à ceux de la première livraison : leurs empreintes n’ont pas changé. Les PNJ, les liaisons et la progression déjà enregistrée sont conservés ; aucune réinitialisation ni réinstallation des personnages n’est nécessaire. Redémarrer complètement.
+
+Le JAR garde l’identifiant `haute_capitale_quetes`, les mêmes configurations et données. Fabric refuse explicitement sa coexistence avec l’ancien compagnon `indivis_pq02` pour éviter deux moteurs PQ02 simultanés.
 
 ## Ordre d’installation
 
 1. Arrêter le serveur. Conserver ensemble une sauvegarde du monde, des données des personnages Nexus, des configurations et des anciens fichiers remplacés. Une sauvegarde des seuls datapacks ne permet pas de revenir en arrière sur les personnages qui auront joué.
-2. Effectuer les remplacements et ajouter le nouveau mod côté serveur **et clients**.
-3. Redémarrer complètement le serveur et les clients. Les mixins du nouveau mod exigent un redémarrage ; un simple `/reload` ne les installe pas.
+2. Installer les deux datapacks et remplacer le mod de quêtes côté serveur **et clients**, et retirer le compagnon PQ02.
+3. Redémarrer complètement le serveur et les clients. Les mixins du mod de quêtes fusionné exigent un redémarrage ; un simple `/reload` ne les installe pas.
 4. Préparer les liaisons ci-dessous avec un administrateur. Utiliser les PNJ et les marqueurs **déjà présents**, sans réinstaller PQ01 ou la séquence I.
 
 ## Préparation des PNJ existants
@@ -103,7 +109,7 @@ Les nouveaux scores `CAP_PQ2_*` et l’ancien `CAP_LEOVIC_GIFT` sont pris en cha
 
 ## Retour arrière
 
-Arrêter le serveur, retirer `indivis-pq02` des mods serveur et clients, remettre les **deux** datapacks précédents et restaurer la sauvegarde cohérente du monde et des personnages. Le guide historique et les nouvelles données de personnage font partie de cet état ; ne pas restaurer seulement les ZIP après des essais avec des personnages réels. Refaire un démarrage complet.
+Arrêter le serveur, retirer le JAR fusionné des mods serveur et clients, remettre le JAR de quêtes et les **deux** datapacks de la sauvegarde et restaurer la sauvegarde cohérente du monde et des personnages. Le guide historique et les nouvelles données de personnage font partie de cet état ; ne pas restaurer seulement les ZIP après des essais avec des personnages réels. Refaire un démarrage complet.
 
 ## Données encore nécessaires à une validation de la carte
 
