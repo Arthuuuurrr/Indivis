@@ -1,0 +1,8 @@
+{
+  "candidate_sha256": "278d0b3971021bde2938274f9998c3067d389cab274b8d68019d0c427dfb21b5",
+  "java": "openjdk version \"21.0.13\" 2026-10-20 LTS\nOpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode, sharing)\n",
+  "output": [
+    "OPT2_REGRESSION_PASS checks=516151 full-32-bit-keys/bounds/empty-answers/growth/initialization/reentrancy/missing-classes\n",
+    "EXACT_EXTERIOR_PASS checks=10368 coplanar/near-threshold/nonuniform-transform/reversed-normal/growing-scratch\nEXACT_INDEX_PASS cases=5400 polygons=454381 fallbacks=774\n"
+  ]
+}

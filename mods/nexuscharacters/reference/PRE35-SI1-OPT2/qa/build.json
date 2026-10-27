@@ -1,0 +1,21 @@
+{
+  "jar": "/workspace/scratch/22564d9fe6f6/opt2/out/NexusCharacters-Indivis-1.21.11-PRE35-SI1-OPT2.jar",
+  "sha256": "278d0b3971021bde2938274f9998c3067d389cab274b8d68019d0c427dfb21b5",
+  "base_sha256": "bdb1525d5e4448cb8127e38bdcdce063d629b7039a856bf9ea74be5ea06dea11",
+  "changed_entries": [
+    "fabric.mod.json",
+    "net/tompsen/nexuscharacters/GenericSkinLayerSupport.class",
+    "net/tompsen/nexuscharacters/LowerJointSupport.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Cells.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$ExteriorScratch.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Index.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Piece.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner.class"
+  ],
+  "added_entries": [
+    "net/tompsen/nexuscharacters/CellQueryCache.class",
+    "net/tompsen/nexuscharacters/RenderClassLookup.class"
+  ],
+  "unchanged_assets": 4966,
+  "classes": "/workspace/scratch/22564d9fe6f6/opt2/build/classes-do9q_l4v/patch"
+}
