@@ -1,0 +1,35 @@
+{
+  "runtime": "/tmp/indivis_pq02_runtime",
+  "jdk": {
+    "availability_type": "CA",
+    "distro_version": [
+      21,
+      54,
+      107,
+      0
+    ],
+    "download_url": "https://cdn.azul.com/zulu/bin/zulu21.54.107-ca-jdk21.0.13-linux_x64.tar.gz",
+    "java_version": [
+      21,
+      0,
+      13
+    ],
+    "latest": true,
+    "name": "zulu21.54.107-ca-jdk21.0.13-linux_x64.tar.gz",
+    "openjdk_build_number": 9,
+    "package_uuid": "49ed08a4-fae7-463d-b2e8-a2d48f176153",
+    "product": "zulu"
+  },
+  "server": {
+    "sha1": "64bb6d763bed0a9f1d632ec347938594144943ed",
+    "size": 56327581,
+    "url": "https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632ec347938594144943ed/server.jar"
+  },
+  "server_mappings": {
+    "sha1": "5621e9253f05fd57872bbe7f8ddf5f9a7d525955",
+    "size": 8678606,
+    "url": "https://piston-data.mojang.com/v1/objects/5621e9253f05fd57872bbe7f8ddf5f9a7d525955/server.txt"
+  },
+  "fabric_loader_version": "0.19.5",
+  "fabric_api_version": "0.141.6+1.21.11"
+}
