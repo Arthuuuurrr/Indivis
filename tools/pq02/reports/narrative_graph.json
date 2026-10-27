@@ -1,0 +1,4606 @@
+{
+  "schema": 1,
+  "script_sha256": "da3fc5e8dd487fc0ab7f8244a6bc40eb8bf2f69af581ce331a248171374b6790",
+  "nodes": [
+    {
+      "id": 1,
+      "key": "a01",
+      "speaker": "leovic",
+      "lines": [
+        "Vous devez être le passager du capitaine Brumeforge. Je me trompe ?"
+      ],
+      "source_lines": [
+        54
+      ],
+      "choices": [
+        {
+          "text": "Oui. Merci d'avoir pris le temps de venir me chercher.",
+          "target": "a02a",
+          "effect": "arrival:1",
+          "condition": "",
+          "source_line": 58
+        },
+        {
+          "text": "On m'a dit que quelqu'un devait m'attendre. C'est vous ?",
+          "target": "a02b",
+          "effect": "arrival:2",
+          "condition": "",
+          "source_line": 59
+        },
+        {
+          "text": "Qui me le demande ?",
+          "target": "a02c",
+          "effect": "arrival:3",
+          "condition": "",
+          "source_line": 60
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A01",
+      "condition": ""
+    },
+    {
+      "id": 2,
+      "key": "a02a",
+      "speaker": "leovic",
+      "lines": [
+        "C'est la moindre des choses. Léovic, de la Garde du Port. On m'a chargé de vous accompagner pour quelques formalités.",
+        "Le capitaine Brumeforge nous a transmis ce qu'il savait de votre sauvetage. Une drôle d'affaire, à ce que j'ai compris.",
+        "Mais je ne vais pas vous faire répéter sur ce quai tout ce que vous avez déjà raconté à bord.",
+        "Avant de partir, souhaitez-vous éclaircir quelque chose ?"
+      ],
+      "source_lines": [
+        62,
+        72,
+        74,
+        76
+      ],
+      "choices": [
+        {
+          "text": "Quelles formalités ?",
+          "target": "a04",
+          "effect": "",
+          "condition": "",
+          "source_line": 80
+        },
+        {
+          "text": "Je suis libre de circuler ?",
+          "target": "a05",
+          "effect": "",
+          "condition": "",
+          "source_line": 81
+        },
+        {
+          "text": "Que savez-vous exactement de mon sauvetage ?",
+          "target": "a06",
+          "effect": "",
+          "condition": "",
+          "source_line": 82
+        },
+        {
+          "text": "En quoi consiste votre travail ?",
+          "target": "a07",
+          "effect": "subject_guard",
+          "condition": "",
+          "source_line": 83
+        },
+        {
+          "text": "Nous pouvons y aller.",
+          "target": "a08",
+          "effect": "",
+          "condition": "",
+          "source_line": 84
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A02A",
+      "condition": ""
+    },
+    {
+      "id": 3,
+      "key": "a02b",
+      "speaker": "leovic",
+      "lines": [
+        "C'est bien moi. Léovic, de la Garde du Port. Le capitaine nous a prévenus de votre arrivée ; je vais vous accompagner auprès des autorités.",
+        "Le capitaine Brumeforge nous a transmis ce qu'il savait de votre sauvetage. Une drôle d'affaire, à ce que j'ai compris.",
+        "Mais je ne vais pas vous faire répéter sur ce quai tout ce que vous avez déjà raconté à bord.",
+        "Avant de partir, souhaitez-vous éclaircir quelque chose ?"
+      ],
+      "source_lines": [
+        64,
+        72,
+        74,
+        76
+      ],
+      "choices": [
+        {
+          "text": "Quelles formalités ?",
+          "target": "a04",
+          "effect": "",
+          "condition": "",
+          "source_line": 80
+        },
+        {
+          "text": "Je suis libre de circuler ?",
+          "target": "a05",
+          "effect": "",
+          "condition": "",
+          "source_line": 81
+        },
+        {
+          "text": "Que savez-vous exactement de mon sauvetage ?",
+          "target": "a06",
+          "effect": "",
+          "condition": "",
+          "source_line": 82
+        },
+        {
+          "text": "En quoi consiste votre travail ?",
+          "target": "a07",
+          "effect": "subject_guard",
+          "condition": "",
+          "source_line": 83
+        },
+        {
+          "text": "Nous pouvons y aller.",
+          "target": "a08",
+          "effect": "",
+          "condition": "",
+          "source_line": 84
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A02B",
+      "condition": ""
+    },
+    {
+      "id": 4,
+      "key": "a02c",
+      "speaker": "leovic",
+      "lines": [
+        "Léovic, de la Garde du Port. Rassurez-vous : je ne viens pas vous arrêter. Il nous faut simplement régler votre situation.",
+        "Le capitaine Brumeforge nous a transmis ce qu'il savait de votre sauvetage. Une drôle d'affaire, à ce que j'ai compris.",
+        "Mais je ne vais pas vous faire répéter sur ce quai tout ce que vous avez déjà raconté à bord.",
+        "Avant de partir, souhaitez-vous éclaircir quelque chose ?"
+      ],
+      "source_lines": [
+        66,
+        72,
+        74,
+        76
+      ],
+      "choices": [
+        {
+          "text": "Quelles formalités ?",
+          "target": "a04",
+          "effect": "",
+          "condition": "",
+          "source_line": 80
+        },
+        {
+          "text": "Je suis libre de circuler ?",
+          "target": "a05",
+          "effect": "",
+          "condition": "",
+          "source_line": 81
+        },
+        {
+          "text": "Que savez-vous exactement de mon sauvetage ?",
+          "target": "a06",
+          "effect": "",
+          "condition": "",
+          "source_line": 82
+        },
+        {
+          "text": "En quoi consiste votre travail ?",
+          "target": "a07",
+          "effect": "subject_guard",
+          "condition": "",
+          "source_line": 83
+        },
+        {
+          "text": "Nous pouvons y aller.",
+          "target": "a08",
+          "effect": "",
+          "condition": "",
+          "source_line": 84
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A02C",
+      "condition": ""
+    },
+    {
+      "id": 5,
+      "key": "a_menu",
+      "speaker": "leovic",
+      "lines": [],
+      "source_lines": [],
+      "choices": [
+        {
+          "text": "Quelles formalités ?",
+          "target": "a04",
+          "effect": "",
+          "condition": "",
+          "source_line": 80
+        },
+        {
+          "text": "Je suis libre de circuler ?",
+          "target": "a05",
+          "effect": "",
+          "condition": "",
+          "source_line": 81
+        },
+        {
+          "text": "Que savez-vous exactement de mon sauvetage ?",
+          "target": "a06",
+          "effect": "",
+          "condition": "",
+          "source_line": 82
+        },
+        {
+          "text": "En quoi consiste votre travail ?",
+          "target": "a07",
+          "effect": "subject_guard",
+          "condition": "",
+          "source_line": 83
+        },
+        {
+          "text": "Nous pouvons y aller.",
+          "target": "a08",
+          "effect": "",
+          "condition": "",
+          "source_line": 84
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A-MENU",
+      "condition": ""
+    },
+    {
+      "id": 6,
+      "key": "a04",
+      "speaker": "leovic",
+      "lines": [
+        "Nous devons enregistrer votre arrivée et établir ce que nous pouvons de votre situation. Sans documents, il faut passer par le magistrat."
+      ],
+      "source_lines": [
+        86
+      ],
+      "choices": [
+        {
+          "text": "Et si je ne connais même pas mon nom ?",
+          "target": "a04a",
+          "effect": "",
+          "condition": "",
+          "source_line": 90
+        },
+        {
+          "text": "Quel statut pourra-t-il m'accorder ?",
+          "target": "a04b",
+          "effect": "",
+          "condition": "",
+          "source_line": 91
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "a_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 92
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A04",
+      "condition": ""
+    },
+    {
+      "id": 7,
+      "key": "a04a",
+      "speaker": "leovic",
+      "lines": [
+        "Nous commencerons avec ce qui est certain. Vous avez été recueilli par un bâtiment impérial, et le capitaine peut témoigner des circonstances de votre arrivée. Ce n'est déjà pas rien."
+      ],
+      "source_lines": [
+        94
+      ],
+      "choices": [
+        {
+          "text": "Revenons aux formalités.",
+          "target": "a04",
+          "effect": "",
+          "condition": ""
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "a_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 92
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A04A",
+      "condition": ""
+    },
+    {
+      "id": 8,
+      "key": "a04b",
+      "speaker": "leovic",
+      "lines": [
+        "Probablement celui de Visiteur, du moins pour commencer. Le magistrat confirmera ce qu'il est possible de consigner."
+      ],
+      "source_lines": [
+        96
+      ],
+      "choices": [
+        {
+          "text": "Revenons aux formalités.",
+          "target": "a04",
+          "effect": "",
+          "condition": ""
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "a_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 92
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A04B",
+      "condition": ""
+    },
+    {
+      "id": 9,
+      "key": "a05",
+      "speaker": "leovic",
+      "lines": [
+        "Vous n'êtes pas prisonnier, si c'est ce qui vous inquiète. Mais mieux vaut régulariser votre présence avant de partir à la découverte de la capitale."
+      ],
+      "source_lines": [
+        98
+      ],
+      "choices": [
+        {
+          "text": "Et ensuite ?",
+          "target": "a05b",
+          "effect": "",
+          "condition": "",
+          "source_line": 100
+        },
+        {
+          "text": "Revenons à mes autres questions.",
+          "target": "a_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 100
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A05",
+      "condition": ""
+    },
+    {
+      "id": 10,
+      "key": "a05b",
+      "speaker": "leovic",
+      "lines": [
+        "Ensuite, vous pourrez circuler dans les secteurs ouverts aux visiteurs. Certains accès restent réglementés, comme partout."
+      ],
+      "source_lines": [
+        102
+      ],
+      "choices": [
+        {
+          "text": "Quelles formalités ?",
+          "target": "a04",
+          "effect": "",
+          "condition": "",
+          "source_line": 80
+        },
+        {
+          "text": "Je suis libre de circuler ?",
+          "target": "a05",
+          "effect": "",
+          "condition": "",
+          "source_line": 81
+        },
+        {
+          "text": "Que savez-vous exactement de mon sauvetage ?",
+          "target": "a06",
+          "effect": "",
+          "condition": "",
+          "source_line": 82
+        },
+        {
+          "text": "En quoi consiste votre travail ?",
+          "target": "a07",
+          "effect": "subject_guard",
+          "condition": "",
+          "source_line": 83
+        },
+        {
+          "text": "Nous pouvons y aller.",
+          "target": "a08",
+          "effect": "",
+          "condition": "",
+          "source_line": 84
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A05B",
+      "condition": ""
+    },
+    {
+      "id": 11,
+      "key": "a06",
+      "speaker": "leovic",
+      "lines": [
+        "Vous avez été retrouvé inconscient sur un îlot, puis ramené à bord du dirigeable. Pour le reste, le rapport ne contient pas de miracle : il ne dit rien de ce que vous-même ignorez encore."
+      ],
+      "source_lines": [
+        104
+      ],
+      "choices": [
+        {
+          "text": "Le capitaine vous a parlé de mon amnésie ?",
+          "target": "a06b",
+          "effect": "",
+          "condition": "",
+          "source_line": 106
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "a_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 106
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A06",
+      "condition": ""
+    },
+    {
+      "id": 12,
+      "key": "a06b",
+      "speaker": "leovic",
+      "lines": [
+        "Oui. Et je n'ai aucune raison de vous demander d'inventer une histoire pour combler les blancs."
+      ],
+      "source_lines": [
+        108
+      ],
+      "choices": [
+        {
+          "text": "Quelles formalités ?",
+          "target": "a04",
+          "effect": "",
+          "condition": "",
+          "source_line": 80
+        },
+        {
+          "text": "Je suis libre de circuler ?",
+          "target": "a05",
+          "effect": "",
+          "condition": "",
+          "source_line": 81
+        },
+        {
+          "text": "Que savez-vous exactement de mon sauvetage ?",
+          "target": "a06",
+          "effect": "",
+          "condition": "",
+          "source_line": 82
+        },
+        {
+          "text": "En quoi consiste votre travail ?",
+          "target": "a07",
+          "effect": "subject_guard",
+          "condition": "",
+          "source_line": 83
+        },
+        {
+          "text": "Nous pouvons y aller.",
+          "target": "a08",
+          "effect": "",
+          "condition": "",
+          "source_line": 84
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A06B",
+      "condition": ""
+    },
+    {
+      "id": 13,
+      "key": "a07",
+      "speaker": "leovic",
+      "lines": [
+        "Nous maintenons l'ordre dans le Port : quais, entrepôts, arrivées, disputes entre équipages... Il y a suffisamment à faire sans se mêler de tout le reste de la capitale."
+      ],
+      "source_lines": [
+        110
+      ],
+      "choices": [
+        {
+          "text": "Quelles formalités ?",
+          "target": "a04",
+          "effect": "",
+          "condition": "",
+          "source_line": 80
+        },
+        {
+          "text": "Je suis libre de circuler ?",
+          "target": "a05",
+          "effect": "",
+          "condition": "",
+          "source_line": 81
+        },
+        {
+          "text": "Que savez-vous exactement de mon sauvetage ?",
+          "target": "a06",
+          "effect": "",
+          "condition": "",
+          "source_line": 82
+        },
+        {
+          "text": "En quoi consiste votre travail ?",
+          "target": "a07",
+          "effect": "subject_guard",
+          "condition": "",
+          "source_line": 83
+        },
+        {
+          "text": "Nous pouvons y aller.",
+          "target": "a08",
+          "effect": "",
+          "condition": "",
+          "source_line": 84
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A07",
+      "condition": ""
+    },
+    {
+      "id": 14,
+      "key": "a08",
+      "speaker": "leovic",
+      "lines": [
+        "Vous vous sentez capable de marcher un peu ?"
+      ],
+      "source_lines": [
+        114
+      ],
+      "choices": [
+        {
+          "text": "Oui. Allons-y.",
+          "target": "a09",
+          "effect": "",
+          "condition": "",
+          "source_line": 118
+        },
+        {
+          "text": "Je préférerais souffler encore un instant.",
+          "target": "a08a",
+          "effect": "",
+          "condition": "",
+          "source_line": 119
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-A08",
+      "condition": ""
+    },
+    {
+      "id": 15,
+      "key": "a08a",
+      "speaker": "leovic",
+      "lines": [
+        "Prenez votre temps. Je ne vais pas vous faire traverser le quartier à moitié conscient. Faites-moi signe quand vous serez prêt."
+      ],
+      "source_lines": [
+        121
+      ],
+      "choices": [],
+      "next": "event:rest",
+      "camera": "leovic",
+      "editorial": "P02-A08A",
+      "condition": ""
+    },
+    {
+      "id": 16,
+      "key": "a09",
+      "speaker": "leovic",
+      "lines": [
+        "Très bien. Suivez-moi, et restez à proximité. Les quais ne sont pas toujours commodes pour quelqu'un qui découvre la ville."
+      ],
+      "source_lines": [
+        123
+      ],
+      "choices": [],
+      "next": "event:start_walk",
+      "camera": "leovic",
+      "editorial": "P02-A09",
+      "condition": ""
+    },
+    {
+      "id": 17,
+      "key": "t_menu",
+      "speaker": "leovic",
+      "lines": [],
+      "source_lines": [],
+      "choices": [
+        {
+          "text": "Vous connaissez bien le Port ?",
+          "target": "t02",
+          "effect": "",
+          "condition": "",
+          "source_line": 141
+        },
+        {
+          "text": "Il y a toujours autant de monde ?",
+          "target": "t03",
+          "effect": "",
+          "condition": "port",
+          "source_line": 142
+        },
+        {
+          "text": "Parlez-moi un peu de votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 143
+        },
+        {
+          "text": "Vous me parliez de ces Sentinelles...",
+          "target": "t05",
+          "effect": "",
+          "condition": "sentinel",
+          "source_line": 144
+        },
+        {
+          "text": "Racontez-moi une de vos histoires de patrouille.",
+          "target": "t06",
+          "effect": "",
+          "condition": "anecdote",
+          "source_line": 145
+        },
+        {
+          "text": "Reprenons notre route.",
+          "target": "t_resume",
+          "effect": "",
+          "condition": "",
+          "source_line": 146
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T-MENU",
+      "condition": ""
+    },
+    {
+      "id": 18,
+      "key": "t01",
+      "speaker": "leovic",
+      "lines": [
+        "Entre les cargaisons, les équipages et les voyageurs, il y a toujours quelqu'un pour vous passer sous le nez. Les débardeurs ne s'arrêtent pas volontiers pour laisser passer les promeneurs."
+      ],
+      "source_lines": [
+        133
+      ],
+      "choices": [],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T01",
+      "condition": ""
+    },
+    {
+      "id": 19,
+      "key": "t02",
+      "speaker": "leovic",
+      "lines": [
+        "À force d'y passer mes journées, encore heureux ! Je connais quelques-uns de ces quais presque aussi bien que ma propre maison."
+      ],
+      "source_lines": [
+        150
+      ],
+      "choices": [
+        {
+          "text": "Vous travaillez ici depuis longtemps ?",
+          "target": "t02a",
+          "effect": "anecdote",
+          "condition": "",
+          "source_line": 154
+        },
+        {
+          "text": "Et vous aimez ce travail ?",
+          "target": "t02b",
+          "effect": "",
+          "condition": "",
+          "source_line": 155
+        },
+        {
+          "text": "Et cette agitation, c'est habituel ?",
+          "target": "t03",
+          "effect": "",
+          "condition": "",
+          "source_line": 156
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 157
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T02",
+      "condition": ""
+    },
+    {
+      "id": 20,
+      "key": "t02a",
+      "speaker": "leovic",
+      "lines": [
+        "Suffisamment pour avoir vu changer quelques enseignes, plusieurs capitaines et un nombre incalculable de nouvelles recrues. Certains ne tiennent pas un mois avant de demander leur mutation."
+      ],
+      "source_lines": [
+        159
+      ],
+      "choices": [
+        {
+          "text": "Et vous, vous n'avez jamais songé à partir ?",
+          "target": "t02a_stay",
+          "effect": "",
+          "condition": "",
+          "source_line": 161
+        },
+        {
+          "text": "Pourquoi cherchent-ils à partir ?",
+          "target": "t02a_leave",
+          "effect": "",
+          "condition": "",
+          "source_line": 161
+        },
+        {
+          "text": "Autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 161
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T02A",
+      "condition": ""
+    },
+    {
+      "id": 21,
+      "key": "t02a_stay",
+      "speaker": "leovic",
+      "lines": [
+        "J'ai mes habitudes et je connais les gens d'ici. Ce serait dommage de tout quitter pour quelques rues plus tranquilles."
+      ],
+      "source_lines": [
+        163
+      ],
+      "choices": [
+        {
+          "text": "Parlez-moi encore de votre expérience.",
+          "target": "t02",
+          "effect": "",
+          "condition": ""
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 157
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T02A-STAY",
+      "condition": ""
+    },
+    {
+      "id": 22,
+      "key": "t02a_leave",
+      "speaker": "leovic",
+      "lines": [
+        "Le bruit, les horaires, les disputes... Et le service au Port n'est pas ce qu'il y a de plus prestigieux. Certains espèrent mieux. Je ne leur en veux pas."
+      ],
+      "source_lines": [
+        165
+      ],
+      "choices": [
+        {
+          "text": "Parlez-moi encore de votre expérience.",
+          "target": "t02",
+          "effect": "",
+          "condition": ""
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 157
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T02A-LEAVE",
+      "condition": ""
+    },
+    {
+      "id": 23,
+      "key": "t02b",
+      "speaker": "leovic",
+      "lines": [
+        "Oui. Les journées se ressemblent rarement. Il faut parfois de la patience, mais je m'ennuierais sans doute ailleurs."
+      ],
+      "source_lines": [
+        169
+      ],
+      "choices": [
+        {
+          "text": "Parlez-moi encore de votre expérience.",
+          "target": "t02",
+          "effect": "",
+          "condition": ""
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 157
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T02B",
+      "condition": ""
+    },
+    {
+      "id": 24,
+      "key": "t03",
+      "speaker": "leovic",
+      "lines": [
+        "Presque. Des jours calmes, il y en a, mais le commerce et les voyageurs ne s'arrêtent jamais bien longtemps."
+      ],
+      "source_lines": [
+        173
+      ],
+      "choices": [
+        {
+          "text": "Il y a beaucoup d'étrangers ?",
+          "target": "t03a",
+          "effect": "",
+          "condition": "",
+          "source_line": 177
+        },
+        {
+          "text": "Cela doit compliquer votre travail.",
+          "target": "t03b",
+          "effect": "",
+          "condition": "",
+          "source_line": 178
+        },
+        {
+          "text": "Vous aimez toute cette agitation ?",
+          "target": "t02b",
+          "effect": "",
+          "condition": "",
+          "source_line": 179
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 180
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T03",
+      "condition": ""
+    },
+    {
+      "id": 25,
+      "key": "t03a",
+      "speaker": "leovic",
+      "lines": [
+        "Certains passent pour vendre ou acheter, d'autres viennent travailler ou tenter leur chance dans l'Empire. Et beaucoup voyagent simplement d'une province à l'autre. Vous entendrez toutes sortes de langues ici."
+      ],
+      "source_lines": [
+        182
+      ],
+      "choices": [
+        {
+          "text": "Revenons au Port.",
+          "target": "t03",
+          "effect": "",
+          "condition": ""
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 180
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T03A",
+      "condition": ""
+    },
+    {
+      "id": 26,
+      "key": "t03b",
+      "speaker": "leovic",
+      "lines": [
+        "Il faut savoir distinguer une menace véritable de deux marins qui ont simplement trop bu. Si nous arrêtions tous ceux qui élèvent la voix, il nous faudrait construire une deuxième prison."
+      ],
+      "source_lines": [
+        184
+      ],
+      "choices": [
+        {
+          "text": "Revenons au Port.",
+          "target": "t03",
+          "effect": "",
+          "condition": ""
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 180
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T03B",
+      "condition": ""
+    },
+    {
+      "id": 27,
+      "key": "t04",
+      "speaker": "leovic",
+      "lines": [
+        "La Garde du Port s'occupe de ce quartier. Nous servons l'Empire, mais nous ne sommes pas l'armée régulière. Notre métier, c'est surtout d'empêcher que les problèmes ordinaires ne deviennent graves."
+      ],
+      "source_lines": [
+        188
+      ],
+      "choices": [
+        {
+          "text": "Qui forme alors l'armée impériale ?",
+          "target": "t04a",
+          "effect": "",
+          "condition": "",
+          "source_line": 192
+        },
+        {
+          "text": "Votre travail est-il moins important que le leur ?",
+          "target": "t04b",
+          "effect": "",
+          "condition": "",
+          "source_line": 193
+        },
+        {
+          "text": "Vous commandez d'autres gardes ?",
+          "target": "t04c",
+          "effect": "",
+          "condition": "",
+          "source_line": 194
+        },
+        {
+          "text": "Pourquoi faut-il plusieurs gardes ?",
+          "target": "t04d",
+          "effect": "",
+          "condition": "",
+          "source_line": 195
+        },
+        {
+          "text": "Une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 196
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04",
+      "condition": ""
+    },
+    {
+      "id": 28,
+      "key": "t04a",
+      "speaker": "leovic",
+      "lines": [
+        "La Garde du Cœur. Elle rassemble l'essentiel de l'armée impériale et plusieurs de ses unités les plus prestigieuses. Vous croiserez certainement des Sentinelles aux abords des lieux surveillés."
+      ],
+      "source_lines": [
+        198
+      ],
+      "choices": [
+        {
+          "text": "Pourquoi sont-ils si réputés ?",
+          "target": "t04a_reputation",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        },
+        {
+          "text": "Vous travaillez parfois ensemble ?",
+          "target": "t04a_cooperation",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        },
+        {
+          "text": "Revenons à votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04A",
+      "condition": ""
+    },
+    {
+      "id": 29,
+      "key": "t04a_reputation",
+      "speaker": "leovic",
+      "lines": [
+        "Leur discipline, leur formation, leur équipement... Certains accomplissent des missions qui dépassent de loin nos patrouilles quotidiennes."
+      ],
+      "source_lines": [
+        202
+      ],
+      "choices": [
+        {
+          "text": "Revenons à votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        },
+        {
+          "text": "Une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 196
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04A-REPUTATION",
+      "condition": ""
+    },
+    {
+      "id": 30,
+      "key": "t04a_cooperation",
+      "speaker": "leovic",
+      "lines": [
+        "Lorsque les circonstances l'exigent, oui. Pour un différend entre marchands, je préfère encore trouver une solution avec mes collègues."
+      ],
+      "source_lines": [
+        204
+      ],
+      "choices": [
+        {
+          "text": "Revenons à votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        },
+        {
+          "text": "Une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 196
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04A-COOPERATION",
+      "condition": ""
+    },
+    {
+      "id": 31,
+      "key": "t04b",
+      "speaker": "leovic",
+      "lines": [
+        "Moins prestigieux, peut-être. Mais allez demander aux négociants s'ils aimeraient retrouver chaque matin leurs entrepôts sans surveillance."
+      ],
+      "source_lines": [
+        208
+      ],
+      "choices": [
+        {
+          "text": "Votre travail me paraît aussi nécessaire que celui des Sentinelles.",
+          "target": "t04b_a",
+          "effect": "guard:1",
+          "condition": "",
+          "source_line": 212
+        },
+        {
+          "text": "Je comprends mieux la différence.",
+          "target": "t04b_b",
+          "effect": "guard:2",
+          "condition": "",
+          "source_line": 213
+        },
+        {
+          "text": "Mais vous avez moins de responsabilités militaires, non ?",
+          "target": "t04b_c",
+          "effect": "guard:3",
+          "condition": "",
+          "source_line": 214
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04B",
+      "condition": ""
+    },
+    {
+      "id": 32,
+      "key": "t04b_a",
+      "speaker": "leovic",
+      "lines": [
+        "C'est exactement ainsi que je vois les choses. Pas besoin de porter la même armure pour être utile à la cité."
+      ],
+      "source_lines": [
+        216
+      ],
+      "choices": [
+        {
+          "text": "Revenons à votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        },
+        {
+          "text": "Une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 196
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04B-A",
+      "condition": ""
+    },
+    {
+      "id": 33,
+      "key": "t04b_b",
+      "speaker": "leovic",
+      "lines": [
+        "C'est l'essentiel. Nous avons chacun nos devoirs."
+      ],
+      "source_lines": [
+        218
+      ],
+      "choices": [
+        {
+          "text": "Revenons à votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        },
+        {
+          "text": "Une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 196
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04B-B",
+      "condition": ""
+    },
+    {
+      "id": 34,
+      "key": "t04b_c",
+      "speaker": "leovic",
+      "lines": [
+        "Sur ce point, vous avez raison. Et tant mieux : nous ne sommes pas là pour remplacer les soldats du Cœur."
+      ],
+      "source_lines": [
+        220
+      ],
+      "choices": [
+        {
+          "text": "Revenons à votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        },
+        {
+          "text": "Une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 196
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04B-C",
+      "condition": ""
+    },
+    {
+      "id": 35,
+      "key": "t04c",
+      "speaker": "leovic",
+      "lines": [
+        "Quelques responsabilités, oui. Mais je ne dirige pas le Port, si c'est ce que vous imaginez. Il y a des officiers au-dessus de moi."
+      ],
+      "source_lines": [
+        224
+      ],
+      "choices": [
+        {
+          "text": "Vous préférez le terrain ?",
+          "target": "t04c_field",
+          "effect": "",
+          "condition": "",
+          "source_line": 226
+        },
+        {
+          "text": "Qui vous a chargé de m'accompagner ?",
+          "target": "t04c_mission",
+          "effect": "",
+          "condition": "",
+          "source_line": 226
+        },
+        {
+          "text": "Autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 226
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04C",
+      "condition": ""
+    },
+    {
+      "id": 36,
+      "key": "t04c_field",
+      "speaker": "leovic",
+      "lines": [
+        "Je préfère régler un problème sur place plutôt que de le découvrir trois jours plus tard dans un rapport."
+      ],
+      "source_lines": [
+        228
+      ],
+      "choices": [
+        {
+          "text": "Revenons à votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        },
+        {
+          "text": "Une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 196
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04C-FIELD",
+      "condition": ""
+    },
+    {
+      "id": 37,
+      "key": "t04c_mission",
+      "speaker": "leovic",
+      "lines": [
+        "Votre arrivée a été signalée à nos services. Il fallait quelqu'un qui connaisse les formalités ; on m'a confié cette tâche."
+      ],
+      "source_lines": [
+        230
+      ],
+      "choices": [
+        {
+          "text": "Revenons à votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        },
+        {
+          "text": "Une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 196
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04C-MISSION",
+      "condition": ""
+    },
+    {
+      "id": 38,
+      "key": "t04d",
+      "speaker": "leovic",
+      "lines": [
+        "Parce que les missions diffèrent. Le Cœur veille sur l'Empire et ses institutions ; nous, nous connaissons ce quartier, ses accès, ses habitants et ses embarras."
+      ],
+      "source_lines": [
+        234
+      ],
+      "choices": [
+        {
+          "text": "Revenons à votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 200
+        },
+        {
+          "text": "Une autre question.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 196
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T04D",
+      "condition": ""
+    },
+    {
+      "id": 39,
+      "key": "t_sentinel_observed",
+      "speaker": "leovic",
+      "lines": [
+        "Vous voyez ces gardes ? Ce sont des Sentinelles du Cœur. Elles surveillent certains bâtiments et les accès qui demandent une autorisation particulière."
+      ],
+      "source_lines": [
+        240
+      ],
+      "choices": [],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T05-OBSERVATION",
+      "condition": ""
+    },
+    {
+      "id": 40,
+      "key": "t05",
+      "speaker": "leovic",
+      "lines": [
+        "Vous en verrez près des Archives, entre autres endroits sensibles. Nous continuons à assurer l'ordre dans le reste du quartier ; leurs responsabilités sont plus ciblées ici."
+      ],
+      "source_lines": [
+        244
+      ],
+      "choices": [
+        {
+          "text": "Elles ne font pas partie de votre garde ?",
+          "target": "t05a",
+          "effect": "",
+          "condition": "",
+          "source_line": 248
+        },
+        {
+          "text": "Pourquoi leur confier ces accès ?",
+          "target": "t05b",
+          "effect": "",
+          "condition": "",
+          "source_line": 249
+        },
+        {
+          "text": "Elles ont l'air mieux équipées.",
+          "target": "t05c",
+          "effect": "",
+          "condition": "",
+          "source_line": 250
+        },
+        {
+          "text": "Revenons aux autres sujets.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 251
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T05",
+      "condition": "sentinel"
+    },
+    {
+      "id": 41,
+      "key": "t05a",
+      "speaker": "leovic",
+      "lines": [
+        "Non. Deux corps différents. Et il nous arrive naturellement de travailler ensemble quand la situation le demande."
+      ],
+      "source_lines": [
+        253
+      ],
+      "choices": [
+        {
+          "text": "Revenons aux Sentinelles.",
+          "target": "t05",
+          "effect": "",
+          "condition": ""
+        },
+        {
+          "text": "Revenons aux autres sujets.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 251
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T05A",
+      "condition": "sentinel"
+    },
+    {
+      "id": 42,
+      "key": "t05b",
+      "speaker": "leovic",
+      "lines": [
+        "Certains lieux abritent des fonds précieux ou accueillent des personnes importantes. On n'y entre pas aussi librement que sur les quais."
+      ],
+      "source_lines": [
+        255
+      ],
+      "choices": [
+        {
+          "text": "Revenons aux Sentinelles.",
+          "target": "t05",
+          "effect": "",
+          "condition": ""
+        },
+        {
+          "text": "Revenons aux autres sujets.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 251
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T05B",
+      "condition": "sentinel"
+    },
+    {
+      "id": 43,
+      "key": "t05c",
+      "speaker": "leovic",
+      "lines": [
+        "Il faut reconnaître qu'elles ont fière allure. Mais une belle armure ne rend pas les rondes moins longues."
+      ],
+      "source_lines": [
+        257
+      ],
+      "choices": [
+        {
+          "text": "Revenons aux Sentinelles.",
+          "target": "t05",
+          "effect": "",
+          "condition": ""
+        },
+        {
+          "text": "Revenons aux autres sujets.",
+          "target": "t_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 251
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T05C",
+      "condition": "sentinel"
+    },
+    {
+      "id": 44,
+      "key": "t06",
+      "speaker": "leovic",
+      "lines": [
+        "Un jour, deux négociants se sont disputés pendant une bonne heure au sujet d'une cargaison. Ils avaient tous les deux des papiers parfaitement en règle."
+      ],
+      "source_lines": [
+        261
+      ],
+      "choices": [
+        {
+          "text": "Comment avez-vous résolu l'affaire ?",
+          "target": "t06a",
+          "effect": "",
+          "condition": "",
+          "source_line": 265
+        },
+        {
+          "text": "L'un des deux mentait ?",
+          "target": "t06b",
+          "effect": "",
+          "condition": "",
+          "source_line": 266
+        },
+        {
+          "text": "Cela vous arrive souvent ?",
+          "target": "t06c",
+          "effect": "",
+          "condition": "",
+          "source_line": 267
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T06",
+      "condition": "anecdote"
+    },
+    {
+      "id": 45,
+      "key": "t06a",
+      "speaker": "leovic",
+      "lines": [
+        "Nous avons fini par vérifier les marques sur les caisses. Les deux avaient raison... mais ils ne parlaient pas de la même cargaison.",
+        "Enfin, je préfère cette querelle-là à une vraie affaire criminelle. Au moins, personne n'a été blessé."
+      ],
+      "source_lines": [
+        269,
+        275
+      ],
+      "choices": [
+        {
+          "text": "Vous connaissez bien le Port ?",
+          "target": "t02",
+          "effect": "",
+          "condition": "",
+          "source_line": 141
+        },
+        {
+          "text": "Il y a toujours autant de monde ?",
+          "target": "t03",
+          "effect": "",
+          "condition": "port",
+          "source_line": 142
+        },
+        {
+          "text": "Parlez-moi un peu de votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 143
+        },
+        {
+          "text": "Vous me parliez de ces Sentinelles...",
+          "target": "t05",
+          "effect": "",
+          "condition": "sentinel",
+          "source_line": 144
+        },
+        {
+          "text": "Racontez-moi une de vos histoires de patrouille.",
+          "target": "t06",
+          "effect": "",
+          "condition": "anecdote",
+          "source_line": 145
+        },
+        {
+          "text": "Reprenons notre route.",
+          "target": "t_resume",
+          "effect": "",
+          "condition": "",
+          "source_line": 146
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T06A",
+      "condition": "anecdote"
+    },
+    {
+      "id": 46,
+      "key": "t06b",
+      "speaker": "leovic",
+      "lines": [
+        "Pas du tout. Ils s'étaient trompés de cargaison et étaient trop occupés à se disputer pour s'en rendre compte.",
+        "Enfin, je préfère cette querelle-là à une vraie affaire criminelle. Au moins, personne n'a été blessé."
+      ],
+      "source_lines": [
+        271,
+        275
+      ],
+      "choices": [
+        {
+          "text": "Vous connaissez bien le Port ?",
+          "target": "t02",
+          "effect": "",
+          "condition": "",
+          "source_line": 141
+        },
+        {
+          "text": "Il y a toujours autant de monde ?",
+          "target": "t03",
+          "effect": "",
+          "condition": "port",
+          "source_line": 142
+        },
+        {
+          "text": "Parlez-moi un peu de votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 143
+        },
+        {
+          "text": "Vous me parliez de ces Sentinelles...",
+          "target": "t05",
+          "effect": "",
+          "condition": "sentinel",
+          "source_line": 144
+        },
+        {
+          "text": "Racontez-moi une de vos histoires de patrouille.",
+          "target": "t06",
+          "effect": "",
+          "condition": "anecdote",
+          "source_line": 145
+        },
+        {
+          "text": "Reprenons notre route.",
+          "target": "t_resume",
+          "effect": "",
+          "condition": "",
+          "source_line": 146
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T06B",
+      "condition": "anecdote"
+    },
+    {
+      "id": 47,
+      "key": "t06c",
+      "speaker": "leovic",
+      "lines": [
+        "Plus souvent que je ne le souhaiterais. Et je vous épargne les histoires d'inventaire et de taxes.",
+        "Enfin, je préfère cette querelle-là à une vraie affaire criminelle. Au moins, personne n'a été blessé."
+      ],
+      "source_lines": [
+        273,
+        275
+      ],
+      "choices": [
+        {
+          "text": "Vous connaissez bien le Port ?",
+          "target": "t02",
+          "effect": "",
+          "condition": "",
+          "source_line": 141
+        },
+        {
+          "text": "Il y a toujours autant de monde ?",
+          "target": "t03",
+          "effect": "",
+          "condition": "port",
+          "source_line": 142
+        },
+        {
+          "text": "Parlez-moi un peu de votre garde.",
+          "target": "t04",
+          "effect": "",
+          "condition": "",
+          "source_line": 143
+        },
+        {
+          "text": "Vous me parliez de ces Sentinelles...",
+          "target": "t05",
+          "effect": "",
+          "condition": "sentinel",
+          "source_line": 144
+        },
+        {
+          "text": "Racontez-moi une de vos histoires de patrouille.",
+          "target": "t06",
+          "effect": "",
+          "condition": "anecdote",
+          "source_line": 145
+        },
+        {
+          "text": "Reprenons notre route.",
+          "target": "t_resume",
+          "effect": "",
+          "condition": "",
+          "source_line": 146
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T06C",
+      "condition": "anecdote"
+    },
+    {
+      "id": 48,
+      "key": "t_resume",
+      "speaker": "leovic",
+      "lines": [
+        "Bien. Restons ensemble, nous approchons."
+      ],
+      "source_lines": [
+        281
+      ],
+      "choices": [],
+      "next": "event:resume_walk",
+      "camera": "leovic",
+      "editorial": "P02-T-RESUME",
+      "condition": ""
+    },
+    {
+      "id": 49,
+      "key": "t07",
+      "speaker": "leovic",
+      "lines": [
+        "Nous approchons. Il y a une chose que je préfère vous dire avant de vous présenter.",
+        "Le magistrat vous demandera ce qu'il peut établir de votre identité et de votre arrivée. Vous n'avez pas à inventer des réponses pour combler vos pertes de mémoire."
+      ],
+      "source_lines": [
+        289,
+        291
+      ],
+      "choices": [
+        {
+          "text": "Et s'il refuse de m'inscrire ?",
+          "target": "t07a",
+          "effect": "",
+          "condition": "",
+          "source_line": 295
+        },
+        {
+          "text": "Vous pensez qu'il ne me croira pas ?",
+          "target": "t07b",
+          "effect": "",
+          "condition": "",
+          "source_line": 296
+        },
+        {
+          "text": "Je comprends. Allons-y.",
+          "target": "t07c",
+          "effect": "",
+          "condition": "",
+          "source_line": 297
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-T07",
+      "condition": ""
+    },
+    {
+      "id": 50,
+      "key": "t07a",
+      "speaker": "leovic",
+      "lines": [
+        "Nous examinerons alors les autres possibilités. Mais n'imaginons pas le pire avant même d'avoir parlé. Le capitaine peut attester votre arrivée.",
+        "Bien. Je reste avec vous pendant l'entretien."
+      ],
+      "source_lines": [
+        299,
+        303
+      ],
+      "choices": [],
+      "next": "m01a",
+      "camera": "leovic",
+      "editorial": "P02-T07A",
+      "condition": ""
+    },
+    {
+      "id": 51,
+      "key": "t07b",
+      "speaker": "leovic",
+      "lines": [
+        "Je ne vois pas pourquoi il vous accuserait de mentir. Votre situation est inhabituelle ; son travail est justement de la consigner correctement.",
+        "Bien. Je reste avec vous pendant l'entretien."
+      ],
+      "source_lines": [
+        301,
+        303
+      ],
+      "choices": [],
+      "next": "m01a",
+      "camera": "leovic",
+      "editorial": "P02-T07B",
+      "condition": ""
+    },
+    {
+      "id": 52,
+      "key": "t07c",
+      "speaker": "leovic",
+      "lines": [
+        "Bien. Je reste avec vous pendant l'entretien."
+      ],
+      "source_lines": [
+        303
+      ],
+      "choices": [],
+      "next": "m01a",
+      "camera": "leovic",
+      "editorial": "P02-T07C",
+      "condition": ""
+    },
+    {
+      "id": 53,
+      "key": "m01a",
+      "speaker": "magistrat",
+      "lines": [
+        "Léovic. Je suppose que vous ne m'amenez pas une simple déclaration de cargaison."
+      ],
+      "source_lines": [
+        315
+      ],
+      "choices": [],
+      "next": "m01b",
+      "camera": "three",
+      "editorial": "P02-M01A",
+      "condition": ""
+    },
+    {
+      "id": 54,
+      "key": "m01b",
+      "speaker": "leovic",
+      "lines": [
+        "Pas cette fois. Voici la personne recueillie par le dirigeable du capitaine Brumeforge. Vous avez dû recevoir son rapport."
+      ],
+      "source_lines": [
+        317
+      ],
+      "choices": [],
+      "next": "m01c",
+      "camera": "three",
+      "editorial": "P02-M01B",
+      "condition": ""
+    },
+    {
+      "id": 55,
+      "key": "m01c",
+      "speaker": "magistrat",
+      "lines": [
+        "En effet. Un cas peu ordinaire.",
+        "Retrouvé inconscient sur un îlot, sans document d'identité, et incapable d'expliquer ce qui s'est passé auparavant. C'est bien cela ?"
+      ],
+      "source_lines": [
+        319,
+        321
+      ],
+      "choices": [],
+      "next": "m01d",
+      "camera": "three",
+      "editorial": "P02-M01C",
+      "condition": ""
+    },
+    {
+      "id": 56,
+      "key": "m01d",
+      "speaker": "leovic",
+      "lines": [
+        "Ce sont les circonstances confirmées par le capitaine. Pour le reste, mieux vaut entendre directement notre visiteur."
+      ],
+      "source_lines": [
+        323
+      ],
+      "choices": [],
+      "next": "m02",
+      "camera": "three",
+      "editorial": "P02-M01D",
+      "condition": ""
+    },
+    {
+      "id": 57,
+      "key": "m02",
+      "speaker": "magistrat",
+      "lines": [
+        "Très bien. Nous allons avancer avec ce que nous savons, et signaler clairement ce qui demeure incertain.",
+        "Que pouvez-vous me déclarer au sujet de votre identité ?"
+      ],
+      "source_lines": [
+        325,
+        329
+      ],
+      "choices": [
+        {
+          "text": "Je ne me souviens presque de rien.",
+          "target": "m02a",
+          "effect": "",
+          "condition": "",
+          "source_line": 333
+        },
+        {
+          "text": "Je connais le nom sous lequel je me présente, mais je ne peux rien prouver.",
+          "target": "m02b",
+          "effect": "",
+          "condition": "",
+          "source_line": 334
+        },
+        {
+          "text": "Le capitaine vous a déjà raconté ce qu'il savait.",
+          "target": "m02c",
+          "effect": "",
+          "condition": "",
+          "source_line": 335
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M02",
+      "condition": ""
+    },
+    {
+      "id": 58,
+      "key": "m02a",
+      "speaker": "magistrat",
+      "lines": [
+        "Je vois. Je ne vais pas vous demander de retrouver aujourd'hui des souvenirs qui vous échappent. Il nous faudra noter les inconnues comme telles.",
+        "Savez-vous au moins d'où vous veniez avant votre sauvetage ?"
+      ],
+      "source_lines": [
+        337,
+        347
+      ],
+      "choices": [
+        {
+          "text": "Non. Je n'en ai aucun souvenir.",
+          "target": "m03a",
+          "effect": "",
+          "condition": "",
+          "source_line": 351
+        },
+        {
+          "text": "J'aimerais pouvoir vous répondre.",
+          "target": "m03a",
+          "effect": "",
+          "condition": "",
+          "source_line": 352
+        },
+        {
+          "text": "Est-ce indispensable pour m'inscrire ?",
+          "target": "m03b",
+          "effect": "",
+          "condition": "",
+          "source_line": 353
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M02A",
+      "condition": ""
+    },
+    {
+      "id": 59,
+      "key": "m02b",
+      "speaker": "magistrat",
+      "lines": [
+        "C'est une distinction importante. Nous pouvons consigner le nom que vous déclarez ; cela ne signifie pas que toutes les pièces permettant de l'authentifier sont réunies.",
+        "Savez-vous au moins d'où vous veniez avant votre sauvetage ?"
+      ],
+      "source_lines": [
+        339,
+        347
+      ],
+      "choices": [
+        {
+          "text": "Non. Je n'en ai aucun souvenir.",
+          "target": "m03a",
+          "effect": "",
+          "condition": "",
+          "source_line": 351
+        },
+        {
+          "text": "J'aimerais pouvoir vous répondre.",
+          "target": "m03a",
+          "effect": "",
+          "condition": "",
+          "source_line": 352
+        },
+        {
+          "text": "Est-ce indispensable pour m'inscrire ?",
+          "target": "m03b",
+          "effect": "",
+          "condition": "",
+          "source_line": 353
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M02B",
+      "condition": ""
+    },
+    {
+      "id": 60,
+      "key": "m02c",
+      "speaker": "magistrat",
+      "lines": [
+        "Son rapport établit les circonstances du sauvetage. Il ne peut pas répondre à toutes les questions qui vous concernent personnellement.",
+        "Savez-vous au moins d'où vous veniez avant votre sauvetage ?"
+      ],
+      "source_lines": [
+        341,
+        347
+      ],
+      "choices": [
+        {
+          "text": "Non. Je n'en ai aucun souvenir.",
+          "target": "m03a",
+          "effect": "",
+          "condition": "",
+          "source_line": 351
+        },
+        {
+          "text": "J'aimerais pouvoir vous répondre.",
+          "target": "m03a",
+          "effect": "",
+          "condition": "",
+          "source_line": 352
+        },
+        {
+          "text": "Est-ce indispensable pour m'inscrire ?",
+          "target": "m03b",
+          "effect": "",
+          "condition": "",
+          "source_line": 353
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M02C",
+      "condition": ""
+    },
+    {
+      "id": 61,
+      "key": "m03a",
+      "speaker": "magistrat",
+      "lines": [
+        "Cette information restera donc indéterminée pour le moment.",
+        "Léovic vous a accompagné jusqu'ici. Tout s'est-il déroulé correctement ?"
+      ],
+      "source_lines": [
+        355,
+        361
+      ],
+      "choices": [
+        {
+          "text": "Oui. Léovic m'a beaucoup aidé depuis mon arrivée.",
+          "target": "m04a",
+          "effect": "magistrate:1",
+          "condition": "",
+          "source_line": 365
+        },
+        {
+          "text": "Oui, aucun problème.",
+          "target": "m04b",
+          "effect": "magistrate:2",
+          "condition": "",
+          "source_line": 366
+        },
+        {
+          "text": "J'aurais préféré ne pas avoir à passer par toutes ces formalités.",
+          "target": "m04c",
+          "effect": "magistrate:3",
+          "condition": "",
+          "source_line": 367
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M03A",
+      "condition": ""
+    },
+    {
+      "id": 62,
+      "key": "m03b",
+      "speaker": "magistrat",
+      "lines": [
+        "Elle nous serait utile, dans un cas ordinaire. Mais nous ne pouvons pas rejeter les faits connus sous prétexte que les autres nous manquent.",
+        "Léovic vous a accompagné jusqu'ici. Tout s'est-il déroulé correctement ?"
+      ],
+      "source_lines": [
+        357,
+        361
+      ],
+      "choices": [
+        {
+          "text": "Oui. Léovic m'a beaucoup aidé depuis mon arrivée.",
+          "target": "m04a",
+          "effect": "magistrate:1",
+          "condition": "",
+          "source_line": 365
+        },
+        {
+          "text": "Oui, aucun problème.",
+          "target": "m04b",
+          "effect": "magistrate:2",
+          "condition": "",
+          "source_line": 366
+        },
+        {
+          "text": "J'aurais préféré ne pas avoir à passer par toutes ces formalités.",
+          "target": "m04c",
+          "effect": "magistrate:3",
+          "condition": "",
+          "source_line": 367
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M03B",
+      "condition": ""
+    },
+    {
+      "id": 63,
+      "key": "m04a",
+      "speaker": "magistrat",
+      "lines": [
+        "C'est entendu."
+      ],
+      "source_lines": [
+        369
+      ],
+      "choices": [],
+      "next": "m04a_leovic",
+      "camera": "magistrat",
+      "editorial": "P02-M04A",
+      "condition": ""
+    },
+    {
+      "id": 64,
+      "key": "m04a_leovic",
+      "speaker": "leovic",
+      "lines": [
+        "J'ai simplement fait mon travail."
+      ],
+      "source_lines": [
+        369
+      ],
+      "choices": [],
+      "next": "m_menu",
+      "camera": "leovic",
+      "editorial": "P02-M04A-LEOVIC",
+      "condition": ""
+    },
+    {
+      "id": 65,
+      "key": "m04b",
+      "speaker": "magistrat",
+      "lines": [
+        "Très bien.",
+        "Je pense pouvoir déterminer votre statut. Souhaitez-vous une précision avant que je procède à l'inscription ?"
+      ],
+      "source_lines": [
+        371,
+        379
+      ],
+      "choices": [
+        {
+          "text": "Que deviendra mon identité si je ne retrouve pas la mémoire ?",
+          "target": "m05a",
+          "effect": "",
+          "condition": "",
+          "source_line": 383
+        },
+        {
+          "text": "Que signifie exactement être Visiteur ?",
+          "target": "m05b",
+          "effect": "status_known",
+          "condition": "",
+          "source_line": 384
+        },
+        {
+          "text": "Et si je retrouve mes souvenirs ?",
+          "target": "m05c",
+          "effect": "",
+          "condition": "",
+          "source_line": 385
+        },
+        {
+          "text": "Quelle place le rapport du capitaine occupe-t-il dans mon dossier ?",
+          "target": "m05d",
+          "effect": "",
+          "condition": "",
+          "source_line": 386
+        },
+        {
+          "text": "Vous pouvez poursuivre.",
+          "target": "m06",
+          "effect": "",
+          "condition": "",
+          "source_line": 387
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M04B",
+      "condition": ""
+    },
+    {
+      "id": 66,
+      "key": "m04c",
+      "speaker": "magistrat",
+      "lines": [
+        "Je comprends. Mais elles évitent que votre présence soit laissée dans une situation incertaine."
+      ],
+      "source_lines": [
+        373
+      ],
+      "choices": [],
+      "next": "m04c_leovic",
+      "camera": "magistrat",
+      "editorial": "P02-M04C",
+      "condition": ""
+    },
+    {
+      "id": 67,
+      "key": "m04c_leovic",
+      "speaker": "leovic",
+      "lines": [
+        "Au moins, vous n'aurez pas à recommencer toute la procédure demain."
+      ],
+      "source_lines": [
+        373
+      ],
+      "choices": [],
+      "next": "m_menu",
+      "camera": "leovic",
+      "editorial": "P02-M04C-LEOVIC",
+      "condition": ""
+    },
+    {
+      "id": 68,
+      "key": "m_menu",
+      "speaker": "magistrat",
+      "lines": [
+        "Je pense pouvoir déterminer votre statut. Souhaitez-vous une précision avant que je procède à l'inscription ?"
+      ],
+      "source_lines": [
+        379
+      ],
+      "choices": [
+        {
+          "text": "Que deviendra mon identité si je ne retrouve pas la mémoire ?",
+          "target": "m05a",
+          "effect": "",
+          "condition": "",
+          "source_line": 383
+        },
+        {
+          "text": "Que signifie exactement être Visiteur ?",
+          "target": "m05b",
+          "effect": "status_known",
+          "condition": "",
+          "source_line": 384
+        },
+        {
+          "text": "Et si je retrouve mes souvenirs ?",
+          "target": "m05c",
+          "effect": "",
+          "condition": "",
+          "source_line": 385
+        },
+        {
+          "text": "Quelle place le rapport du capitaine occupe-t-il dans mon dossier ?",
+          "target": "m05d",
+          "effect": "",
+          "condition": "",
+          "source_line": 386
+        },
+        {
+          "text": "Vous pouvez poursuivre.",
+          "target": "m06",
+          "effect": "",
+          "condition": "",
+          "source_line": 387
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M-MENU",
+      "condition": ""
+    },
+    {
+      "id": 69,
+      "key": "m_questions",
+      "speaker": "magistrat",
+      "lines": [],
+      "source_lines": [],
+      "choices": [
+        {
+          "text": "Que deviendra mon identité si je ne retrouve pas la mémoire ?",
+          "target": "m05a",
+          "effect": "",
+          "condition": "",
+          "source_line": 383
+        },
+        {
+          "text": "Que signifie exactement être Visiteur ?",
+          "target": "m05b",
+          "effect": "status_known",
+          "condition": "",
+          "source_line": 384
+        },
+        {
+          "text": "Et si je retrouve mes souvenirs ?",
+          "target": "m05c",
+          "effect": "",
+          "condition": "",
+          "source_line": 385
+        },
+        {
+          "text": "Quelle place le rapport du capitaine occupe-t-il dans mon dossier ?",
+          "target": "m05d",
+          "effect": "",
+          "condition": "",
+          "source_line": 386
+        },
+        {
+          "text": "Vous pouvez poursuivre.",
+          "target": "m06",
+          "effect": "",
+          "condition": "",
+          "source_line": 387
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M-QUESTIONS",
+      "condition": ""
+    },
+    {
+      "id": 70,
+      "key": "m05a",
+      "speaker": "magistrat",
+      "lines": [
+        "Nous conserverons les faits attestés et les renseignements que vous déclarez. Si d'autres éléments apparaissent, le dossier pourra être complété."
+      ],
+      "source_lines": [
+        389
+      ],
+      "choices": [
+        {
+          "text": "Je serai donc officiellement un inconnu ?",
+          "target": "m05a_unknown",
+          "effect": "",
+          "condition": "",
+          "source_line": 391
+        },
+        {
+          "text": "Autre question.",
+          "target": "m_questions",
+          "effect": "",
+          "condition": "",
+          "source_line": 391
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M05A",
+      "condition": ""
+    },
+    {
+      "id": 71,
+      "key": "m05a_unknown",
+      "speaker": "magistrat",
+      "lines": [
+        "Votre identité demeure incomplètement établie. C'est différent d'une absence totale d'existence administrative : nous pouvons enregistrer votre présence."
+      ],
+      "source_lines": [
+        393
+      ],
+      "choices": [
+        {
+          "text": "Que deviendra mon identité si je ne retrouve pas la mémoire ?",
+          "target": "m05a",
+          "effect": "",
+          "condition": "",
+          "source_line": 383
+        },
+        {
+          "text": "Que signifie exactement être Visiteur ?",
+          "target": "m05b",
+          "effect": "status_known",
+          "condition": "",
+          "source_line": 384
+        },
+        {
+          "text": "Et si je retrouve mes souvenirs ?",
+          "target": "m05c",
+          "effect": "",
+          "condition": "",
+          "source_line": 385
+        },
+        {
+          "text": "Quelle place le rapport du capitaine occupe-t-il dans mon dossier ?",
+          "target": "m05d",
+          "effect": "",
+          "condition": "",
+          "source_line": 386
+        },
+        {
+          "text": "Vous pouvez poursuivre.",
+          "target": "m06",
+          "effect": "",
+          "condition": "",
+          "source_line": 387
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M05A-UNKNOWN",
+      "condition": ""
+    },
+    {
+      "id": 72,
+      "key": "m05b",
+      "speaker": "magistrat",
+      "lines": [
+        "Le statut de Visiteur reconnaît votre présence dans l'Empire et vous autorise à circuler dans les secteurs ouverts à ce statut, sans vous donner accès à tous les lieux."
+      ],
+      "source_lines": [
+        395
+      ],
+      "choices": [
+        {
+          "text": "Et si je veux m'établir ici ?",
+          "target": "m05b_resident",
+          "effect": "",
+          "condition": "",
+          "source_line": 397
+        },
+        {
+          "text": "Autre question.",
+          "target": "m_questions",
+          "effect": "",
+          "condition": "",
+          "source_line": 397
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M05B",
+      "condition": ""
+    },
+    {
+      "id": 73,
+      "key": "m05b_resident",
+      "speaker": "magistrat",
+      "lines": [
+        "Il faudra alors envisager une demande de Résidence, avec ses propres conditions. Vous n'avez pas à prendre cette décision aujourd'hui."
+      ],
+      "source_lines": [
+        399
+      ],
+      "choices": [
+        {
+          "text": "Que deviendra mon identité si je ne retrouve pas la mémoire ?",
+          "target": "m05a",
+          "effect": "",
+          "condition": "",
+          "source_line": 383
+        },
+        {
+          "text": "Que signifie exactement être Visiteur ?",
+          "target": "m05b",
+          "effect": "status_known",
+          "condition": "",
+          "source_line": 384
+        },
+        {
+          "text": "Et si je retrouve mes souvenirs ?",
+          "target": "m05c",
+          "effect": "",
+          "condition": "",
+          "source_line": 385
+        },
+        {
+          "text": "Quelle place le rapport du capitaine occupe-t-il dans mon dossier ?",
+          "target": "m05d",
+          "effect": "",
+          "condition": "",
+          "source_line": 386
+        },
+        {
+          "text": "Vous pouvez poursuivre.",
+          "target": "m06",
+          "effect": "",
+          "condition": "",
+          "source_line": 387
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M05B-RESIDENT",
+      "condition": ""
+    },
+    {
+      "id": 74,
+      "key": "m05c",
+      "speaker": "magistrat",
+      "lines": [
+        "Alors vous pourrez présenter les renseignements retrouvés. Nos registres ont précisément vocation à être complétés lorsque les faits évoluent."
+      ],
+      "source_lines": [
+        401
+      ],
+      "choices": [],
+      "next": "m05c_leovic",
+      "camera": "three",
+      "editorial": "P02-M05C",
+      "condition": ""
+    },
+    {
+      "id": 75,
+      "key": "m05c_leovic",
+      "speaker": "leovic",
+      "lines": [
+        "Voilà qui rassurera notre visiteur : même les registres peuvent changer d'avis."
+      ],
+      "source_lines": [
+        403
+      ],
+      "choices": [],
+      "next": "m05c_magistrat",
+      "camera": "three",
+      "editorial": "P02-M05C-LEOVIC",
+      "condition": ""
+    },
+    {
+      "id": 76,
+      "key": "m05c_magistrat",
+      "speaker": "magistrat",
+      "lines": [
+        "Les registres, non. Ceux qui les remplissent, parfois."
+      ],
+      "source_lines": [
+        405
+      ],
+      "choices": [
+        {
+          "text": "Que deviendra mon identité si je ne retrouve pas la mémoire ?",
+          "target": "m05a",
+          "effect": "",
+          "condition": "",
+          "source_line": 383
+        },
+        {
+          "text": "Que signifie exactement être Visiteur ?",
+          "target": "m05b",
+          "effect": "status_known",
+          "condition": "",
+          "source_line": 384
+        },
+        {
+          "text": "Et si je retrouve mes souvenirs ?",
+          "target": "m05c",
+          "effect": "",
+          "condition": "",
+          "source_line": 385
+        },
+        {
+          "text": "Quelle place le rapport du capitaine occupe-t-il dans mon dossier ?",
+          "target": "m05d",
+          "effect": "",
+          "condition": "",
+          "source_line": 386
+        },
+        {
+          "text": "Vous pouvez poursuivre.",
+          "target": "m06",
+          "effect": "",
+          "condition": "",
+          "source_line": 387
+        }
+      ],
+      "next": "",
+      "camera": "three",
+      "editorial": "P02-M05C-MAGISTRAT",
+      "condition": ""
+    },
+    {
+      "id": 77,
+      "key": "m05d",
+      "speaker": "magistrat",
+      "lines": [
+        "Il atteste votre sauvetage par un bâtiment impérial. C'est une pièce utile, mais elle ne saurait certifier des événements dont l'équipage n'a pas été témoin."
+      ],
+      "source_lines": [
+        407
+      ],
+      "choices": [
+        {
+          "text": "Que deviendra mon identité si je ne retrouve pas la mémoire ?",
+          "target": "m05a",
+          "effect": "",
+          "condition": "",
+          "source_line": 383
+        },
+        {
+          "text": "Que signifie exactement être Visiteur ?",
+          "target": "m05b",
+          "effect": "status_known",
+          "condition": "",
+          "source_line": 384
+        },
+        {
+          "text": "Et si je retrouve mes souvenirs ?",
+          "target": "m05c",
+          "effect": "",
+          "condition": "",
+          "source_line": 385
+        },
+        {
+          "text": "Quelle place le rapport du capitaine occupe-t-il dans mon dossier ?",
+          "target": "m05d",
+          "effect": "",
+          "condition": "",
+          "source_line": 386
+        },
+        {
+          "text": "Vous pouvez poursuivre.",
+          "target": "m06",
+          "effect": "",
+          "condition": "",
+          "source_line": 387
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M05D",
+      "condition": ""
+    },
+    {
+      "id": 78,
+      "key": "m06",
+      "speaker": "magistrat",
+      "lines": [
+        "Au vu des circonstances attestées, je vais consigner votre arrivée et vous reconnaître le statut de Visiteur. Les éléments de votre identité que nous ne pouvons pas confirmer resteront signalés comme tels."
+      ],
+      "source_lines": [
+        411
+      ],
+      "choices": [],
+      "next": "event:register",
+      "camera": "magistrat",
+      "editorial": "P02-M06",
+      "condition": ""
+    },
+    {
+      "id": 79,
+      "key": "m06_registered",
+      "speaker": "magistrat",
+      "lines": [
+        "Votre arrivée est enregistrée. Pour la Couronne, vous êtes désormais reconnu comme Visiteur de la capitale."
+      ],
+      "source_lines": [
+        417
+      ],
+      "choices": [
+        {
+          "text": "Merci.",
+          "target": "m06a",
+          "effect": "",
+          "condition": "",
+          "source_line": 421
+        },
+        {
+          "text": "C'est tout ?",
+          "target": "m06b",
+          "effect": "",
+          "condition": "",
+          "source_line": 422
+        },
+        {
+          "text": "Je ne sais toujours pas ce que je vais faire à présent.",
+          "target": "m06c",
+          "effect": "",
+          "condition": "",
+          "source_line": 423
+        }
+      ],
+      "next": "",
+      "camera": "magistrat",
+      "editorial": "P02-M06-REGISTERED",
+      "condition": ""
+    },
+    {
+      "id": 80,
+      "key": "m06a",
+      "speaker": "magistrat",
+      "lines": [
+        "Je vous en prie. Je vous souhaite de retrouver les réponses qui vous manquent."
+      ],
+      "source_lines": [
+        425
+      ],
+      "choices": [],
+      "next": "m07",
+      "camera": "magistrat",
+      "editorial": "P02-M06A",
+      "condition": ""
+    },
+    {
+      "id": 81,
+      "key": "m06b",
+      "speaker": "magistrat",
+      "lines": [
+        "Pour aujourd'hui, oui. Votre situation est particulière, mais cela ne justifie pas de compliquer ce qui peut être établi."
+      ],
+      "source_lines": [
+        427
+      ],
+      "choices": [],
+      "next": "m07",
+      "camera": "magistrat",
+      "editorial": "P02-M06B",
+      "condition": ""
+    },
+    {
+      "id": 82,
+      "key": "m06c",
+      "speaker": "magistrat",
+      "lines": [
+        "Cela dépasse les fonctions de ce registre. Mais vous disposez désormais d'une situation reconnue : c'est un commencement."
+      ],
+      "source_lines": [
+        429
+      ],
+      "choices": [],
+      "next": "m07",
+      "camera": "magistrat",
+      "editorial": "P02-M06C",
+      "condition": ""
+    },
+    {
+      "id": 83,
+      "key": "m07",
+      "speaker": "leovic",
+      "lines": [
+        "Eh bien, voilà déjà une bonne chose de faite. Vous voyez, ce n'était pas si terrible."
+      ],
+      "source_lines": [
+        435
+      ],
+      "choices": [
+        {
+          "text": "Vous aviez raison.",
+          "target": "m07a",
+          "effect": "",
+          "condition": "",
+          "source_line": 439
+        },
+        {
+          "text": "J'espère ne pas recommencer de sitôt.",
+          "target": "m07b",
+          "effect": "",
+          "condition": "",
+          "source_line": 440
+        },
+        {
+          "text": "Et maintenant ?",
+          "target": "m07c",
+          "effect": "",
+          "condition": "",
+          "source_line": 441
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-M07",
+      "condition": ""
+    },
+    {
+      "id": 84,
+      "key": "m07a",
+      "speaker": "leovic",
+      "lines": [
+        "Cela m'arrive, de temps à autre. Mais ne le répétez pas trop à mes collègues.",
+        "Venez, je vais vous montrer où poursuivre votre chemin."
+      ],
+      "source_lines": [
+        443,
+        449
+      ],
+      "choices": [],
+      "next": "event:elevator",
+      "camera": "leovic",
+      "editorial": "P02-M07A",
+      "condition": ""
+    },
+    {
+      "id": 85,
+      "key": "m07b",
+      "speaker": "leovic",
+      "lines": [
+        "Croyez-moi, je vous comprends. Même quand on connaît les procédures, on apprécie les journées sans paperasse.",
+        "Venez, je vais vous montrer où poursuivre votre chemin."
+      ],
+      "source_lines": [
+        445,
+        449
+      ],
+      "choices": [],
+      "next": "event:elevator",
+      "camera": "leovic",
+      "editorial": "P02-M07B",
+      "condition": ""
+    },
+    {
+      "id": 86,
+      "key": "m07c",
+      "speaker": "leovic",
+      "lines": [
+        "Maintenant, il ne nous reste que quelques pas. L'ascenseur est juste à côté.",
+        "Venez, je vais vous montrer où poursuivre votre chemin."
+      ],
+      "source_lines": [
+        447,
+        449
+      ],
+      "choices": [],
+      "next": "event:elevator",
+      "camera": "leovic",
+      "editorial": "P02-M07C",
+      "condition": ""
+    },
+    {
+      "id": 87,
+      "key": "f_menu",
+      "speaker": "leovic",
+      "lines": [
+        "Voilà l'ascenseur. Il vous permettra de rejoindre le Cœur, où vous découvrirez une autre partie de la capitale."
+      ],
+      "source_lines": [
+        461
+      ],
+      "choices": [
+        {
+          "text": "Vous ne m'accompagnez pas ?",
+          "target": "f02",
+          "effect": "",
+          "condition": "",
+          "source_line": 465
+        },
+        {
+          "text": "Que vais-je trouver là-haut ?",
+          "target": "f03",
+          "effect": "",
+          "condition": "",
+          "source_line": 466
+        },
+        {
+          "text": "Où pourrai-je vous retrouver ?",
+          "target": "f04",
+          "effect": "",
+          "condition": "",
+          "source_line": 467
+        },
+        {
+          "text": "Et mon statut de Visiteur, qu'est-ce que ça change ici ?",
+          "target": "f05",
+          "effect": "",
+          "condition": "",
+          "source_line": 468
+        },
+        {
+          "text": "Je crois pouvoir continuer seul.",
+          "target": "f06",
+          "effect": "",
+          "condition": "",
+          "source_line": 469
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-F-MENU",
+      "condition": ""
+    },
+    {
+      "id": 88,
+      "key": "f_questions",
+      "speaker": "leovic",
+      "lines": [],
+      "source_lines": [],
+      "choices": [
+        {
+          "text": "Vous ne m'accompagnez pas ?",
+          "target": "f02",
+          "effect": "",
+          "condition": "",
+          "source_line": 465
+        },
+        {
+          "text": "Que vais-je trouver là-haut ?",
+          "target": "f03",
+          "effect": "",
+          "condition": "",
+          "source_line": 466
+        },
+        {
+          "text": "Où pourrai-je vous retrouver ?",
+          "target": "f04",
+          "effect": "",
+          "condition": "",
+          "source_line": 467
+        },
+        {
+          "text": "Et mon statut de Visiteur, qu'est-ce que ça change ici ?",
+          "target": "f05",
+          "effect": "",
+          "condition": "",
+          "source_line": 468
+        },
+        {
+          "text": "Je crois pouvoir continuer seul.",
+          "target": "f06",
+          "effect": "",
+          "condition": "",
+          "source_line": 469
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-F-QUESTIONS",
+      "condition": ""
+    },
+    {
+      "id": 89,
+      "key": "f02",
+      "speaker": "leovic",
+      "lines": [
+        "J'aimerais vous en montrer davantage, mais mes fonctions m'attendent au Port. Et mes collègues finiraient par remarquer mon absence."
+      ],
+      "source_lines": [
+        471
+      ],
+      "choices": [
+        {
+          "text": "Vous ne m'accompagnez pas ?",
+          "target": "f02",
+          "effect": "",
+          "condition": "",
+          "source_line": 465
+        },
+        {
+          "text": "Que vais-je trouver là-haut ?",
+          "target": "f03",
+          "effect": "",
+          "condition": "",
+          "source_line": 466
+        },
+        {
+          "text": "Où pourrai-je vous retrouver ?",
+          "target": "f04",
+          "effect": "",
+          "condition": "",
+          "source_line": 467
+        },
+        {
+          "text": "Et mon statut de Visiteur, qu'est-ce que ça change ici ?",
+          "target": "f05",
+          "effect": "",
+          "condition": "",
+          "source_line": 468
+        },
+        {
+          "text": "Je crois pouvoir continuer seul.",
+          "target": "f06",
+          "effect": "",
+          "condition": "",
+          "source_line": 469
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-F02",
+      "condition": ""
+    },
+    {
+      "id": 90,
+      "key": "f03",
+      "speaker": "leovic",
+      "lines": [
+        "Des institutions, de grandes demeures, et davantage de soldats du Cœur. L'atmosphère n'est pas tout à fait celle des quais : un peu plus solennelle, disons."
+      ],
+      "source_lines": [
+        473
+      ],
+      "choices": [
+        {
+          "text": "Vous préférez rester ici ?",
+          "target": "f03_prefer",
+          "effect": "",
+          "condition": "",
+          "source_line": 475
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "event:practical_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 475
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-F03",
+      "condition": ""
+    },
+    {
+      "id": 91,
+      "key": "f03_prefer",
+      "speaker": "leovic",
+      "lines": [
+        "Je connais mon quartier et ses habitants. Cela me convient très bien."
+      ],
+      "source_lines": [
+        477
+      ],
+      "choices": [],
+      "next": "event:practical_menu",
+      "camera": "leovic",
+      "editorial": "P02-F03-PREFER",
+      "condition": ""
+    },
+    {
+      "id": 92,
+      "key": "f04",
+      "speaker": "leovic",
+      "lines": [
+        "Vous vous souvenez de notre première rencontre, près des tentes de la garde ? C'est mon poste habituel. Je n'y reste pas à chaque instant, mais mes collègues sauront vous orienter."
+      ],
+      "source_lines": [
+        479
+      ],
+      "choices": [
+        {
+          "text": "Je pourrai revenir vous voir ?",
+          "target": "f04_return",
+          "effect": "",
+          "condition": "",
+          "source_line": 481
+        },
+        {
+          "text": "J'avais une autre question.",
+          "target": "event:practical_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 481
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-F04",
+      "condition": ""
+    },
+    {
+      "id": 93,
+      "key": "f04_return",
+      "speaker": "leovic",
+      "lines": [
+        "Bien entendu. Si je peux vous renseigner, je le ferai volontiers."
+      ],
+      "source_lines": [
+        483
+      ],
+      "choices": [],
+      "next": "event:practical_menu",
+      "camera": "leovic",
+      "editorial": "P02-F04-RETURN",
+      "condition": ""
+    },
+    {
+      "id": 94,
+      "key": "f05",
+      "speaker": "leovic",
+      "lines": [
+        "Vous pourrez circuler dans les secteurs ouverts aux visiteurs, mais pas franchir tous les accès surveillés. Si vous souhaitez vous installer durablement ici, il faudra voir plus tard pour la Résidence."
+      ],
+      "source_lines": [
+        485
+      ],
+      "choices": [],
+      "next": "event:practical_menu",
+      "camera": "leovic",
+      "editorial": "P02-F05",
+      "condition": ""
+    },
+    {
+      "id": 95,
+      "key": "f05_short",
+      "speaker": "leovic",
+      "lines": [
+        "Le magistrat vous l'a expliqué : vous êtes enregistré et libre de circuler dans les secteurs qui vous sont ouverts."
+      ],
+      "source_lines": [
+        487
+      ],
+      "choices": [],
+      "next": "event:practical_menu",
+      "camera": "leovic",
+      "editorial": "P02-F05-SHORT",
+      "condition": ""
+    },
+    {
+      "id": 96,
+      "key": "f06",
+      "speaker": "leovic",
+      "lines": [
+        "Ah, attendez. J'allais oublier une chose.",
+        "Vous êtes arrivé ici sans rien. Et avec ce qui vous est arrivé, j'imagine que trouver de quoi manger demain vous paraît déjà compliqué.",
+        "Tenez. Cinquante Martins. Ce n'est pas une fortune, mais cela devrait vous aider à commencer."
+      ],
+      "source_lines": [
+        491,
+        495,
+        497
+      ],
+      "choices": [
+        {
+          "text": "Vous me donnez votre propre argent ?",
+          "target": "f06a",
+          "effect": "gift:1",
+          "condition": "",
+          "source_line": 501
+        },
+        {
+          "text": "C'est généreux, mais je préférerais ne pas accepter.",
+          "target": "f06b",
+          "effect": "gift:2",
+          "condition": "",
+          "source_line": 502
+        },
+        {
+          "text": "Je n'oublierai pas votre générosité, Léovic.",
+          "target": "f06c",
+          "effect": "gift:3",
+          "condition": "",
+          "source_line": 503
+        },
+        {
+          "text": "Je n'avais pas demandé votre charité.",
+          "target": "f06d",
+          "effect": "gift:4",
+          "condition": "",
+          "source_line": 504
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-F06",
+      "condition": ""
+    },
+    {
+      "id": 97,
+      "key": "f06a",
+      "speaker": "leovic",
+      "lines": [
+        "Oui, ce sont mes propres pièces. Ce n'est pas une aide de l'administration ; voyez-y simplement un coup de main."
+      ],
+      "source_lines": [
+        506
+      ],
+      "choices": [
+        {
+          "text": "Dans ce cas, j'accepte. Merci.",
+          "target": "event:gift",
+          "effect": "",
+          "condition": "",
+          "source_line": 508
+        },
+        {
+          "text": "Je préfère garder mes distances avec cette proposition.",
+          "target": "f_report",
+          "effect": "",
+          "condition": "",
+          "source_line": 508
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-F06A",
+      "condition": ""
+    },
+    {
+      "id": 98,
+      "key": "f06b",
+      "speaker": "leovic",
+      "lines": [
+        "Je comprends. Je n'insisterai pas. Sachez seulement que je vous les propose de bon cœur."
+      ],
+      "source_lines": [
+        510
+      ],
+      "choices": [
+        {
+          "text": "Finalement, je vais accepter.",
+          "target": "event:gift",
+          "effect": "",
+          "condition": "",
+          "source_line": 512
+        },
+        {
+          "text": "Je préfère vraiment refuser.",
+          "target": "f_report",
+          "effect": "",
+          "condition": "",
+          "source_line": 512
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-F06B",
+      "condition": ""
+    },
+    {
+      "id": 99,
+      "key": "f06c",
+      "speaker": "leovic",
+      "lines": [
+        "Ce n'est pas grand-chose. Faites-en bon usage."
+      ],
+      "source_lines": [
+        514
+      ],
+      "choices": [],
+      "next": "event:gift",
+      "camera": "leovic",
+      "editorial": "P02-F06C",
+      "condition": ""
+    },
+    {
+      "id": 100,
+      "key": "f06d",
+      "speaker": "leovic",
+      "lines": [
+        "Je ne cherchais pas à vous offenser. Je pensais simplement vous rendre service.",
+        "Enfin, vous êtes libre d'en penser ce que vous voulez."
+      ],
+      "source_lines": [
+        516,
+        518
+      ],
+      "choices": [],
+      "next": "f_report",
+      "camera": "leovic",
+      "editorial": "P02-F06D",
+      "condition": ""
+    },
+    {
+      "id": 101,
+      "key": "f_report",
+      "speaker": "leovic",
+      "lines": [
+        "Comme vous voudrez. Mais si vous changez d'avis, vous savez où me trouver, près des tentes de la garde."
+      ],
+      "source_lines": [
+        522
+      ],
+      "choices": [],
+      "next": "f07",
+      "camera": "leovic",
+      "editorial": "P02-F-REPORT",
+      "condition": ""
+    },
+    {
+      "id": 102,
+      "key": "f07",
+      "speaker": "leovic",
+      "lines": [
+        "Bien. Je crois que nous avons fait le tour de ce qui me concernait.",
+        "Je vous souhaite de retrouver la mémoire et, surtout, de trouver votre place quelque part. Ici ou ailleurs."
+      ],
+      "source_lines": [
+        528,
+        530
+      ],
+      "choices": [
+        {
+          "text": "Merci pour tout, Léovic.",
+          "target": "f07a",
+          "effect": "",
+          "condition": "",
+          "source_line": 534
+        },
+        {
+          "text": "Peut-être à une prochaine fois.",
+          "target": "f07b",
+          "effect": "",
+          "condition": "",
+          "source_line": 535
+        },
+        {
+          "text": "Je ferai de mon mieux.",
+          "target": "f07c",
+          "effect": "",
+          "condition": "",
+          "source_line": 536
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-F07",
+      "condition": ""
+    },
+    {
+      "id": 103,
+      "key": "f07a",
+      "speaker": "leovic",
+      "lines": [
+        "Je vous en prie. Prenez soin de vous."
+      ],
+      "source_lines": [
+        538
+      ],
+      "choices": [],
+      "next": "event:complete",
+      "camera": "leovic",
+      "editorial": "P02-F07A",
+      "condition": ""
+    },
+    {
+      "id": 104,
+      "key": "f07b",
+      "speaker": "leovic",
+      "lines": [
+        "Qui sait ? Nous nous croiserons peut-être dans des circonstances moins étranges."
+      ],
+      "source_lines": [
+        540
+      ],
+      "choices": [],
+      "next": "event:complete",
+      "camera": "leovic",
+      "editorial": "P02-F07B",
+      "condition": ""
+    },
+    {
+      "id": 105,
+      "key": "f07c",
+      "speaker": "leovic",
+      "lines": [
+        "C'est déjà beaucoup. Bonne continuation."
+      ],
+      "source_lines": [
+        542
+      ],
+      "choices": [],
+      "next": "event:complete",
+      "camera": "leovic",
+      "editorial": "P02-F07C",
+      "condition": ""
+    },
+    {
+      "id": 106,
+      "key": "post_very_friendly",
+      "speaker": "leovic",
+      "lines": [
+        "Ah, vous voilà ! Je suis content de vous revoir. Alors, comment se passent vos premiers jours dans la capitale ?"
+      ],
+      "source_lines": [
+        556
+      ],
+      "choices": [
+        {
+          "text": "Que vais-je trouver là-haut ?",
+          "target": "f03",
+          "effect": "",
+          "condition": "",
+          "source_line": 466
+        },
+        {
+          "text": "Où pourrai-je vous retrouver ?",
+          "target": "f04",
+          "effect": "",
+          "condition": "",
+          "source_line": 467
+        },
+        {
+          "text": "Et mon statut de Visiteur, qu'est-ce que ça change ici ?",
+          "target": "f05",
+          "effect": "",
+          "condition": "",
+          "source_line": 468
+        },
+        {
+          "text": "À propos des pièces que vous m'aviez proposées...",
+          "target": "post_gift",
+          "effect": "",
+          "condition": "gift_pending",
+          "source_line": 567
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-POST-ACCUEIL",
+      "condition": ""
+    },
+    {
+      "id": 107,
+      "key": "post_friendly",
+      "speaker": "leovic",
+      "lines": [
+        "Tiens, une visite que je n'attendais pas ! Comment allez-vous depuis notre dernière rencontre ?"
+      ],
+      "source_lines": [
+        557
+      ],
+      "choices": [
+        {
+          "text": "Que vais-je trouver là-haut ?",
+          "target": "f03",
+          "effect": "",
+          "condition": "",
+          "source_line": 466
+        },
+        {
+          "text": "Où pourrai-je vous retrouver ?",
+          "target": "f04",
+          "effect": "",
+          "condition": "",
+          "source_line": 467
+        },
+        {
+          "text": "Et mon statut de Visiteur, qu'est-ce que ça change ici ?",
+          "target": "f05",
+          "effect": "",
+          "condition": "",
+          "source_line": 468
+        },
+        {
+          "text": "À propos des pièces que vous m'aviez proposées...",
+          "target": "post_gift",
+          "effect": "",
+          "condition": "gift_pending",
+          "source_line": 567
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-POST-ACCUEIL",
+      "condition": ""
+    },
+    {
+      "id": 108,
+      "key": "post_neutral",
+      "speaker": "leovic",
+      "lines": [
+        "Bonjour ! Vous êtes bien le rescapé du dirigeable de Brumeforge ? Comment vous portez-vous ?"
+      ],
+      "source_lines": [
+        558
+      ],
+      "choices": [
+        {
+          "text": "Que vais-je trouver là-haut ?",
+          "target": "f03",
+          "effect": "",
+          "condition": "",
+          "source_line": 466
+        },
+        {
+          "text": "Où pourrai-je vous retrouver ?",
+          "target": "f04",
+          "effect": "",
+          "condition": "",
+          "source_line": 467
+        },
+        {
+          "text": "Et mon statut de Visiteur, qu'est-ce que ça change ici ?",
+          "target": "f05",
+          "effect": "",
+          "condition": "",
+          "source_line": 468
+        },
+        {
+          "text": "À propos des pièces que vous m'aviez proposées...",
+          "target": "post_gift",
+          "effect": "",
+          "condition": "gift_pending",
+          "source_line": 567
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-POST-ACCUEIL",
+      "condition": ""
+    },
+    {
+      "id": 109,
+      "key": "post_unfriendly",
+      "speaker": "leovic",
+      "lines": [
+        "Ah, vous revoilà. J'espère que les choses se passent mieux pour vous. Que puis-je faire pour vous ?"
+      ],
+      "source_lines": [
+        559
+      ],
+      "choices": [
+        {
+          "text": "Que vais-je trouver là-haut ?",
+          "target": "f03",
+          "effect": "",
+          "condition": "",
+          "source_line": 466
+        },
+        {
+          "text": "Où pourrai-je vous retrouver ?",
+          "target": "f04",
+          "effect": "",
+          "condition": "",
+          "source_line": 467
+        },
+        {
+          "text": "Et mon statut de Visiteur, qu'est-ce que ça change ici ?",
+          "target": "f05",
+          "effect": "",
+          "condition": "",
+          "source_line": 468
+        },
+        {
+          "text": "À propos des pièces que vous m'aviez proposées...",
+          "target": "post_gift",
+          "effect": "",
+          "condition": "gift_pending",
+          "source_line": 567
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-POST-ACCUEIL",
+      "condition": ""
+    },
+    {
+      "id": 110,
+      "key": "post_menu",
+      "speaker": "leovic",
+      "lines": [],
+      "source_lines": [],
+      "choices": [
+        {
+          "text": "Que vais-je trouver là-haut ?",
+          "target": "f03",
+          "effect": "",
+          "condition": "",
+          "source_line": 466
+        },
+        {
+          "text": "Où pourrai-je vous retrouver ?",
+          "target": "f04",
+          "effect": "",
+          "condition": "",
+          "source_line": 467
+        },
+        {
+          "text": "Et mon statut de Visiteur, qu'est-ce que ça change ici ?",
+          "target": "f05",
+          "effect": "",
+          "condition": "",
+          "source_line": 468
+        },
+        {
+          "text": "À propos des pièces que vous m'aviez proposées...",
+          "target": "post_gift",
+          "effect": "",
+          "condition": "gift_pending",
+          "source_line": 567
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-POST-MENU",
+      "condition": ""
+    },
+    {
+      "id": 111,
+      "key": "post_gift",
+      "speaker": "leovic",
+      "lines": [
+        "Vous avez changé d'avis ? L'offre tient toujours, si cela peut vous aider."
+      ],
+      "source_lines": [
+        569
+      ],
+      "choices": [
+        {
+          "text": "Oui, j'accepte. Merci.",
+          "target": "event:late_gift",
+          "effect": "",
+          "condition": "",
+          "source_line": 573
+        },
+        {
+          "text": "Pas encore. Une autre fois, peut-être.",
+          "target": "post_menu",
+          "effect": "",
+          "condition": "",
+          "source_line": 574
+        }
+      ],
+      "next": "",
+      "camera": "leovic",
+      "editorial": "P02-POST-DON",
+      "condition": "gift_pending"
+    }
+  ],
+  "events": [
+    "complete",
+    "elevator",
+    "gift",
+    "late_gift",
+    "practical_menu",
+    "register",
+    "rest",
+    "resume_walk",
+    "start_walk"
+  ],
+  "navigation_additions": [
+    "Parlez-moi encore de votre expérience.",
+    "Revenons au Port.",
+    "Revenons aux Sentinelles.",
+    "Revenons aux formalités."
+  ],
+  "source_quotes_used": [
+    [
+      54,
+      0
+    ],
+    [
+      58,
+      0
+    ],
+    [
+      59,
+      0
+    ],
+    [
+      60,
+      0
+    ],
+    [
+      62,
+      0
+    ],
+    [
+      64,
+      0
+    ],
+    [
+      66,
+      0
+    ],
+    [
+      72,
+      0
+    ],
+    [
+      74,
+      0
+    ],
+    [
+      76,
+      0
+    ],
+    [
+      80,
+      0
+    ],
+    [
+      81,
+      0
+    ],
+    [
+      82,
+      0
+    ],
+    [
+      83,
+      0
+    ],
+    [
+      84,
+      0
+    ],
+    [
+      86,
+      0
+    ],
+    [
+      90,
+      0
+    ],
+    [
+      91,
+      0
+    ],
+    [
+      92,
+      0
+    ],
+    [
+      94,
+      0
+    ],
+    [
+      96,
+      0
+    ],
+    [
+      98,
+      0
+    ],
+    [
+      100,
+      0
+    ],
+    [
+      100,
+      1
+    ],
+    [
+      102,
+      1
+    ],
+    [
+      104,
+      0
+    ],
+    [
+      106,
+      0
+    ],
+    [
+      106,
+      1
+    ],
+    [
+      108,
+      0
+    ],
+    [
+      110,
+      0
+    ],
+    [
+      114,
+      0
+    ],
+    [
+      118,
+      0
+    ],
+    [
+      119,
+      0
+    ],
+    [
+      121,
+      0
+    ],
+    [
+      123,
+      0
+    ],
+    [
+      133,
+      0
+    ],
+    [
+      141,
+      0
+    ],
+    [
+      142,
+      0
+    ],
+    [
+      143,
+      0
+    ],
+    [
+      144,
+      0
+    ],
+    [
+      145,
+      0
+    ],
+    [
+      146,
+      0
+    ],
+    [
+      150,
+      0
+    ],
+    [
+      154,
+      0
+    ],
+    [
+      155,
+      0
+    ],
+    [
+      156,
+      0
+    ],
+    [
+      157,
+      0
+    ],
+    [
+      159,
+      0
+    ],
+    [
+      161,
+      0
+    ],
+    [
+      161,
+      1
+    ],
+    [
+      161,
+      2
+    ],
+    [
+      163,
+      0
+    ],
+    [
+      165,
+      0
+    ],
+    [
+      169,
+      0
+    ],
+    [
+      173,
+      0
+    ],
+    [
+      177,
+      0
+    ],
+    [
+      178,
+      0
+    ],
+    [
+      179,
+      0
+    ],
+    [
+      180,
+      0
+    ],
+    [
+      182,
+      0
+    ],
+    [
+      184,
+      0
+    ],
+    [
+      188,
+      0
+    ],
+    [
+      192,
+      0
+    ],
+    [
+      193,
+      0
+    ],
+    [
+      194,
+      0
+    ],
+    [
+      195,
+      0
+    ],
+    [
+      196,
+      0
+    ],
+    [
+      198,
+      0
+    ],
+    [
+      200,
+      0
+    ],
+    [
+      200,
+      1
+    ],
+    [
+      200,
+      2
+    ],
+    [
+      202,
+      0
+    ],
+    [
+      204,
+      0
+    ],
+    [
+      208,
+      0
+    ],
+    [
+      212,
+      0
+    ],
+    [
+      213,
+      0
+    ],
+    [
+      214,
+      0
+    ],
+    [
+      216,
+      0
+    ],
+    [
+      218,
+      0
+    ],
+    [
+      220,
+      0
+    ],
+    [
+      224,
+      0
+    ],
+    [
+      226,
+      0
+    ],
+    [
+      226,
+      1
+    ],
+    [
+      226,
+      2
+    ],
+    [
+      228,
+      0
+    ],
+    [
+      230,
+      0
+    ],
+    [
+      234,
+      0
+    ],
+    [
+      240,
+      0
+    ],
+    [
+      244,
+      0
+    ],
+    [
+      248,
+      0
+    ],
+    [
+      249,
+      0
+    ],
+    [
+      250,
+      0
+    ],
+    [
+      251,
+      0
+    ],
+    [
+      253,
+      0
+    ],
+    [
+      255,
+      0
+    ],
+    [
+      257,
+      0
+    ],
+    [
+      261,
+      0
+    ],
+    [
+      265,
+      0
+    ],
+    [
+      266,
+      0
+    ],
+    [
+      267,
+      0
+    ],
+    [
+      269,
+      0
+    ],
+    [
+      271,
+      0
+    ],
+    [
+      273,
+      0
+    ],
+    [
+      275,
+      0
+    ],
+    [
+      281,
+      0
+    ],
+    [
+      289,
+      0
+    ],
+    [
+      291,
+      0
+    ],
+    [
+      295,
+      0
+    ],
+    [
+      296,
+      0
+    ],
+    [
+      297,
+      0
+    ],
+    [
+      299,
+      0
+    ],
+    [
+      301,
+      0
+    ],
+    [
+      303,
+      0
+    ],
+    [
+      315,
+      0
+    ],
+    [
+      317,
+      0
+    ],
+    [
+      319,
+      0
+    ],
+    [
+      321,
+      0
+    ],
+    [
+      323,
+      0
+    ],
+    [
+      325,
+      0
+    ],
+    [
+      329,
+      0
+    ],
+    [
+      333,
+      0
+    ],
+    [
+      334,
+      0
+    ],
+    [
+      335,
+      0
+    ],
+    [
+      337,
+      0
+    ],
+    [
+      339,
+      0
+    ],
+    [
+      341,
+      0
+    ],
+    [
+      347,
+      0
+    ],
+    [
+      351,
+      0
+    ],
+    [
+      352,
+      0
+    ],
+    [
+      353,
+      0
+    ],
+    [
+      355,
+      0
+    ],
+    [
+      357,
+      0
+    ],
+    [
+      361,
+      0
+    ],
+    [
+      365,
+      0
+    ],
+    [
+      366,
+      0
+    ],
+    [
+      367,
+      0
+    ],
+    [
+      369,
+      0
+    ],
+    [
+      369,
+      1
+    ],
+    [
+      371,
+      0
+    ],
+    [
+      373,
+      0
+    ],
+    [
+      373,
+      1
+    ],
+    [
+      379,
+      0
+    ],
+    [
+      383,
+      0
+    ],
+    [
+      384,
+      0
+    ],
+    [
+      385,
+      0
+    ],
+    [
+      386,
+      0
+    ],
+    [
+      387,
+      0
+    ],
+    [
+      389,
+      0
+    ],
+    [
+      391,
+      0
+    ],
+    [
+      391,
+      1
+    ],
+    [
+      393,
+      0
+    ],
+    [
+      395,
+      0
+    ],
+    [
+      397,
+      0
+    ],
+    [
+      397,
+      1
+    ],
+    [
+      399,
+      0
+    ],
+    [
+      401,
+      0
+    ],
+    [
+      403,
+      0
+    ],
+    [
+      405,
+      0
+    ],
+    [
+      407,
+      0
+    ],
+    [
+      411,
+      0
+    ],
+    [
+      417,
+      0
+    ],
+    [
+      421,
+      0
+    ],
+    [
+      422,
+      0
+    ],
+    [
+      423,
+      0
+    ],
+    [
+      425,
+      0
+    ],
+    [
+      427,
+      0
+    ],
+    [
+      429,
+      0
+    ],
+    [
+      435,
+      0
+    ],
+    [
+      439,
+      0
+    ],
+    [
+      440,
+      0
+    ],
+    [
+      441,
+      0
+    ],
+    [
+      443,
+      0
+    ],
+    [
+      445,
+      0
+    ],
+    [
+      447,
+      0
+    ],
+    [
+      449,
+      0
+    ],
+    [
+      461,
+      0
+    ],
+    [
+      465,
+      0
+    ],
+    [
+      466,
+      0
+    ],
+    [
+      467,
+      0
+    ],
+    [
+      468,
+      0
+    ],
+    [
+      469,
+      0
+    ],
+    [
+      471,
+      0
+    ],
+    [
+      473,
+      0
+    ],
+    [
+      475,
+      0
+    ],
+    [
+      475,
+      1
+    ],
+    [
+      477,
+      0
+    ],
+    [
+      479,
+      0
+    ],
+    [
+      481,
+      0
+    ],
+    [
+      481,
+      1
+    ],
+    [
+      483,
+      0
+    ],
+    [
+      485,
+      0
+    ],
+    [
+      487,
+      0
+    ],
+    [
+      491,
+      0
+    ],
+    [
+      495,
+      0
+    ],
+    [
+      497,
+      0
+    ],
+    [
+      501,
+      0
+    ],
+    [
+      502,
+      0
+    ],
+    [
+      503,
+      0
+    ],
+    [
+      504,
+      0
+    ],
+    [
+      506,
+      0
+    ],
+    [
+      508,
+      0
+    ],
+    [
+      508,
+      1
+    ],
+    [
+      510,
+      0
+    ],
+    [
+      512,
+      0
+    ],
+    [
+      512,
+      1
+    ],
+    [
+      514,
+      0
+    ],
+    [
+      516,
+      0
+    ],
+    [
+      518,
+      0
+    ],
+    [
+      522,
+      0
+    ],
+    [
+      528,
+      0
+    ],
+    [
+      530,
+      0
+    ],
+    [
+      534,
+      0
+    ],
+    [
+      535,
+      0
+    ],
+    [
+      536,
+      0
+    ],
+    [
+      538,
+      0
+    ],
+    [
+      540,
+      0
+    ],
+    [
+      542,
+      0
+    ],
+    [
+      556,
+      0
+    ],
+    [
+      557,
+      0
+    ],
+    [
+      558,
+      0
+    ],
+    [
+      559,
+      0
+    ],
+    [
+      567,
+      0
+    ],
+    [
+      569,
+      0
+    ],
+    [
+      573,
+      0
+    ],
+    [
+      574,
+      0
+    ]
+  ]
+}

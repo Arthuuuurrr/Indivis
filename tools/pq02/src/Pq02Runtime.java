@@ -48,7 +48,7 @@ public final class Pq02Runtime implements ModInitializer {
   for(String action:List.of("leovic","magistrat","near","dispatch","suspend","restore","rewards_ready","status","bind_leovic","bind_magistrat","bind_sentinel","prepare_legacy","clear_scenes")){
    Object node=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal",action);
    boolean admin=action.startsWith("bind_")||Set.of("status","prepare_legacy","clear_scenes").contains(action);
-   if(admin)call(node,"requires",stat("net.minecraft.class_2170","method_71774",2));
+   if(admin)call(node,"requires",stat("net.minecraft.class_2170","method_71774",en("net.minecraft.class_2170","field_31839")));
    Class<?> c=type("com.mojang.brigadier.Command");Object cmd=Proxy.newProxyInstance(c.getClassLoader(),new Class<?>[]{c},(p,m,a)->{if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);try{return execute2(call(call(a[0],"getSource"),"method_9207"),action);}catch(Throwable t){report2(t);return 0;}});
    call(node,"executes",cmd);call(root,"then",node);
   }call(dispatcher,"register",root);
@@ -94,7 +94,7 @@ public final class Pq02Runtime implements ModInitializer {
   Object r=roleRecord(p,role);if(r!=null){if(!dimension(world(p)).equals(str(r,"dimension","")))return null;return call(world(p),"method_66347",UUID.fromString(str(r,"uuid","")));}
   String tag=role.equals("leovic")?"npc_leovic_registre_port":"hcm_pq2_source_magistrat";Object npc=unique(p,"npc",tag,128,false);
   if(npc==null){Point origin=pos(p,world(p));Object m=marker(p,role.equals("leovic")?"a":"m");if(m!=null)origin=pos(m,world(p));String token=role.equals("leovic")?"quest/le_registre_du_port/leovic/":"quest/le_registre_du_port/magistrat/register_self";
-   List<Object> found=local(p,origin,16,e->type("de.markusbordihn.easynpc.entity.easynpc.EasyNPC").isInstance(e)&&!tags(e).contains("hcm_private")&&actionText(e).contains(token));
+   List<Object> found=local(p,origin,16,e->type("de.markusbordihn.easynpc.entity.easynpc.EasyNPC").isInstance(e)&&!tags(e).contains("hcm_private")&&!tags(e).contains(TAG)&&actionText(e).contains(token));
    if(found.size()>1)throw new IllegalStateException("Liaison explicite nécessaire pour "+role+" : plusieurs PNJ compatibles");if(found.size()==1)npc=found.get(0);
   }
   if(npc!=null)saveBinding(p,role,npc);return npc;
@@ -102,7 +102,7 @@ public final class Pq02Runtime implements ModInitializer {
  static String actionText(Object e){Object set=call(call(e,"getEasyNPCActionEventData"),"getActionEventSet");return set==null?"":String.valueOf(call(set,"createTag"));}
  static void saveBinding(Object p,String role,Object npc){Object root=Pq01Nbt.copy(config(p)),r=GuardNbt.compound();GuardNbt.string(r,"uuid",uuid(npc).toString());GuardNbt.string(r,"dimension",dimension(world(p)));GuardNbt.string(r,"type",Pq01EntityFactory.registryId(npc));GuardNbt.put(r,"template",GuardNbt.entity(npc));GuardNbt.put(GuardNbt.childOrCreate(root,"roles"),role,r);GuardNbt.save(server(p),SETUP,root);}
  static void bind(Object p,String role){
-  List<Object> nearby=local(p,pos(p,world(p)),4,e->type("de.markusbordihn.easynpc.entity.easynpc.EasyNPC").isInstance(e)&&!tags(e).contains("hcm_private"));nearby.sort(Comparator.comparingDouble(e->pos(e,world(p)).distance2(pos(p,world(p)))));
+  List<Object> nearby=local(p,pos(p,world(p)),4,e->type("de.markusbordihn.easynpc.entity.easynpc.EasyNPC").isInstance(e)&&!tags(e).contains("hcm_private")&&!tags(e).contains(TAG));nearby.sort(Comparator.comparingDouble(e->pos(e,world(p)).distance2(pos(p,world(p)))));
   if(nearby.isEmpty())throw new IllegalStateException("Approchez du PNJ existant à moins de quatre blocs");Object npc=nearby.get(0);
   if(nearby.size()>1&&Math.sqrt(pos(nearby.get(1),world(p)).distance2(pos(p,world(p))))-Math.sqrt(pos(npc,world(p)).distance2(pos(p,world(p))))<0.5)throw new IllegalStateException("Sélection ambiguë : rapprochez-vous du PNJ voulu");
   if(role.equals("sentinel")){call(npc,"method_5780","hcm_pq2_sentinel");say2(p,"Sentinelle existante reconnue pour l'observation ; actions et apparence conservées.");return;}
@@ -115,7 +115,7 @@ public final class Pq02Runtime implements ModInitializer {
   Object template=Pq01Nbt.copy(child(record,"template"));UUID original=UUID.fromString(str(record,"uuid",""));if(at==null){if(src!=null)at=pos(src,v.world);else {Object m=marker(v.player,role.equals("leovic")?"a":"m");if(m==null)throw new IllegalStateException("Position source non chargée : "+role);at=pos(m,v.world);}}
   for(String field:List.of("UUID","UUIDMost","UUIDLeast","Pos","Motion","Rotation","Passengers","Leash","Brain","Tags","Home","ActionData","ObjectiveData","TradingData"))call(template,"method_10551",field);
   UUID fresh=UUID.randomUUID();stat("de.markusbordihn.easynpc.utils.CompoundTagUtils","writeUUID",template,"UUID",fresh);
-  GuardNbt.put(template,"Tags",GuardNbt.list(List.of(TAG,"hcm_pq2_"+role,"hcm_private","hcm_owner_"+v.account,"hcm_character_"+v.character,"indivis_no_hard_despawn").stream().map(GuardNbt::stringValue).toList()));
+  GuardNbt.put(template,"Tags",GuardNbt.list(List.of(TAG,"hcm_pq2_"+role,"hcm_owner_"+v.account,"hcm_character_"+v.character,"indivis_no_hard_despawn").stream().map(GuardNbt::stringValue).toList()));
   call(template,"method_10556","Invulnerable",true);call(template,"method_10556","Silent",true);call(template,"method_10556","NoAI",!role.equals("leovic"));call(template,"method_10556","NoGravity",false);call(template,"method_10556","CanPickUpLoot",false);GuardNbt.string(template,"DeathLootTable","minecraft:empty");
   LIVE.add(fresh);Object e=null,g=null,t=null;try{
    run(v.player,"summon "+str(record,"type","")+" "+at.x()+" "+at.y()+" "+at.z()+" "+template);
@@ -176,7 +176,7 @@ public final class Pq02Runtime implements ModInitializer {
  }
  static Object focus(View v,Pq02Data.Node n){Actor leo=v.actors.get("leovic");if(leo==null)leo=spawn(v,"leovic",startPosition(v));
   if(n.key.startsWith("m")||n.key.startsWith("t07")){Actor magistrate=spawn(v,"magistrat",null);faceEntity(leo.entity,pos(magistrate.entity,v.world));faceEntity(magistrate.entity,pos(leo.entity,v.world));
-   if(n.camera.equals("three")){if(v.anchor==null){Point a=pos(leo.entity,v.world),b=pos(magistrate.entity,v.world);UUID id=UUID.randomUUID();LIVE.add(id);run(v.player,"summon minecraft:armor_stand "+((a.x()+b.x())/2)+" "+((a.y()+b.y())/2+0.8)+" "+((a.z()+b.z())/2)+" {UUID:"+uuidArray(id)+",Marker:1b,Invisible:1b,NoGravity:1b,Invulnerable:1b,Tags:[\"hcm_pq2_actor\",\"hcm_private\",\"hcm_owner_"+v.account+"\",\"hcm_character_"+v.character+"\"]}");v.anchor=call(v.world,"method_66347",id);}if(v.anchor!=null)return v.anchor;}
+   if(n.camera.equals("three")){if(v.anchor==null){Point a=pos(leo.entity,v.world),b=pos(magistrate.entity,v.world);UUID id=UUID.randomUUID();LIVE.add(id);run(v.player,"summon minecraft:armor_stand "+((a.x()+b.x())/2)+" "+((a.y()+b.y())/2+0.8)+" "+((a.z()+b.z())/2)+" {UUID:"+uuidArray(id)+",Marker:1b,Invisible:1b,NoGravity:1b,Invulnerable:1b,Tags:[\"hcm_pq2_actor\",\"hcm_owner_"+v.account+"\",\"hcm_character_"+v.character+"\"]}");v.anchor=call(v.world,"method_66347",id);}if(v.anchor!=null)return v.anchor;}
    return n.camera.equals("magistrat")?magistrate.entity:leo.entity;
   }faceEntity(leo.entity,pos(v.player,v.world));return leo.entity;
  }
@@ -193,7 +193,7 @@ public final class Pq02Runtime implements ModInitializer {
   v.choices=n.choices.stream().filter(c->condition(v,c.condition)).toList();v.baseToken=1_000_000_000+((++nonce)%60_000_000)*16;
   int advance=n.next.isEmpty()?0:v.baseToken+14;List<String> texts=n.lines;String speaker=n.speaker;
   if(texts.isEmpty()){texts=v.lastLines;speaker=v.lastSpeaker;}else{v.lastLines=texts;v.lastSpeaker=speaker;}
-  if(texts.isEmpty()){texts=Pq02Data.get(stage(v.player)>=100?Pq02Rules.greeting(score(v.player,"CAP_PQ2_IMPR")):"a01").lines;}
+  if(texts.isEmpty()){int s=stage(v.player);String fallback=s>=100?Pq02Rules.greeting(score(v.player,"CAP_PQ2_IMPR")):Pq02Rules.walking(s)?"t01":s==50?"m_menu":s==60?"m07":s==90?"f_menu":"a01";texts=Pq02Data.get(fallback).lines;}
   int voiceTicks=voice(v,n.key,n.lines.isEmpty());v.voiceUntil=clock+voiceTicks;
   run(v.player,"tellraw @s {\"text\":\"\",\"insertion\":"+quote("indivis:pq02:v1:"+n.key+":"+speaker+":"+advance+":0:"+voiceTicks)+"}");
   String name=speaker.equals("magistrat")?"Magistrat":"Léovic";
@@ -208,14 +208,16 @@ public final class Pq02Runtime implements ModInitializer {
   int pick=token-v.baseToken;if(v.baseToken==0||pick<1||pick>15){run(p,"scoreboard players enable @s Pq02Choix");return 0;}
   if(pick==15){closeUi(v);if(Pq02Rules.walking(stage(p)))resume(v);else if(stage(p)>=100||Pq02Rules.introduction(stage(p)))dispose(v.account);return 1;}
   if(clock<v.voiceUntil){v.queuedChoice=token;run(p,"scoreboard players enable @s Pq02Choix");return 1;}
-  if(pick==14){if(v.node.next.isEmpty())return 0;v.baseToken=0;show(v,v.node.next);return 1;}
+  if(pick==14){if(v.node.next.isEmpty())return 0;v.baseToken=0;show(v,v.node.next);retryFrame(v);return 1;}
   if(pick>v.choices.size())return 0;Pq02Data.Choice choice=v.choices.get(pick-1);if(!condition(v,choice.condition))return 0;
-  if(!effect(v,choice.effect))return 0;v.baseToken=0;show(v,choice.target);return 1;
+  if(!effect(v,choice.effect))return 0;v.baseToken=0;show(v,choice.target);retryFrame(v);return 1;
  }
+ static void retryFrame(View v){if(v.ui&&v.session==current(v.player)&&v.pendingNode==null&&v.baseToken==0)render(v);}
+ static void addSigned(Object p,String objective,int delta){if(delta!=0)run(p,"scoreboard players "+(delta<0?"remove":"add")+" @s "+objective+" "+Math.abs(delta));}
  static boolean effect(View v,String effect){if(effect==null||effect.isEmpty())return true;Object p=v.player;
   if(effect.equals("anecdote")){score2(p,"CAP_PQ2_ANECD",1);return true;}if(effect.equals("status_known")){score2(p,"CAP_PQ2_STATUS",1);return true;}if(effect.equals("subject_guard"))return true;
   String[] words=effect.split(":");String key=Pq02Rules.DECISIONS.get(words[0]);if(key==null)return false;int value=Integer.parseInt(words[1]);if(score(p,key)!=0)return false;
-  Pq02Rules.Delta d=Pq02Rules.delta(words[0],value);score2(p,key,value);if(d.reputation()!=0){run(p,"scoreboard players add @s REP_GARDEPORT "+d.reputation());run(p,"function capitale:bounds/reputation_all_self");}if(d.impression()!=0)run(p,"scoreboard players add @s CAP_PQ2_IMPR "+d.impression());if(words[0].equals("gift"))score2(p,"CAP_PQ2_OFFER",1);return true;
+  Pq02Rules.Delta d=Pq02Rules.delta(words[0],value);score2(p,key,value);if(d.reputation()!=0){addSigned(p,"REP_GARDEPORT",d.reputation());run(p,"function capitale:bounds/reputation_all_self");}addSigned(p,"CAP_PQ2_IMPR",d.impression());if(words[0].equals("gift"))score2(p,"CAP_PQ2_OFFER",1);return true;
  }
  static void event2(View v,String name){Object p=v.player;if(!same(v))return;
   switch(name){
@@ -243,7 +245,10 @@ public final class Pq02Runtime implements ModInitializer {
   v.motion=new Pq02Motion(new Pq02Motion.Port(){
    public boolean valid(){return same(v)&&v.walking&&!v.ui&&!Boolean.TRUE.equals(call(actor.entity,"method_31481"));}
    public Point position(){return pos(actor.entity,v.world);}
-   public boolean navigate(Point p){Object nav=call(actor.entity,"getGroundPathNavigation");return nav!=null&&Boolean.TRUE.equals(call(nav,"method_6337",p.x(),p.y(),p.z(),0.8d));}
+   public boolean navigate(Point p){Object nav=call(actor.entity,"getGroundPathNavigation");if(nav==null)return false;
+    if(Boolean.TRUE.equals(call(nav,"method_58160",p.x(),p.y(),p.z(),0,0.8d)))return true;
+    return Math.abs(p.y()-Math.ceil(p.y()))>0.01&&Boolean.TRUE.equals(call(nav,"method_58160",p.x(),Math.ceil(p.y()),p.z(),0,0.8d));
+   }
    public boolean navigating(){Object nav=call(actor.entity,"getGroundPathNavigation");return nav!=null&&!Boolean.TRUE.equals(call(nav,"method_6357"));}
    public void stop(){stopActor(actor);}
    public void arrived(){if(!same(v))return;v.motion=null;v.waypoint=target;score2(v.player,"CAP_PQ2_WP",target);v.saved=null;savePosition(v);if(target==1&&score(v.player,"CAP_PQ2_PORT")==0){score2(v.player,"CAP_PQ2_PORT",1);remark(v,"t01");}if(target>=end)arrivedPhase(v);}
@@ -256,9 +261,9 @@ public final class Pq02Runtime implements ModInitializer {
  }
  static void remark(View v,String key){Pq02Data.Node n=Pq02Data.get(key);for(String text:n.lines)run(v.player,"tellraw @s [{\"text\":\"[Léovic]\",\"color\":\"yellow\"},{\"text\":"+quote(" : "+text)+",\"color\":\"white\"}]");voice(v,key,false);}
  static void observe(View v){if(v.ui||!v.walking||score(v.player,"CAP_PQ2_SENT")!=0)return;
-  List<Object> found=local(v.player,pos(v.player,v.world),12,e->type("de.markusbordihn.easynpc.entity.easynpc.EasyNPC").isInstance(e)&&!tags(e).contains("hcm_private")&&(tags(e).contains("hcm_pq2_sentinel")||tags(e).stream().anyMatch(t->t.startsWith("hcq_pnj_sentinelle_archives")||t.startsWith("hcm_guard_archives"))));
+  List<Object> found=local(v.player,pos(v.player,v.world),12,e->type("de.markusbordihn.easynpc.entity.easynpc.EasyNPC").isInstance(e)&&!tags(e).contains("hcm_private")&&!tags(e).contains(TAG)&&(tags(e).contains("hcm_pq2_sentinel")||tags(e).stream().anyMatch(t->t.startsWith("hcq_pnj_sentinelle_archives")||t.startsWith("hcm_guard_archives"))));
   double yaw=Math.toRadians(num(call(v.player,"method_36454"))),lookX=-Math.sin(yaw),lookZ=Math.cos(yaw);Point p=pos(v.player,v.world);
-  for(Object npc:found){Point at=pos(npc,v.world);if((at.x()-p.x())*lookX+(at.z()-p.z())*lookZ<0)continue;if(!Boolean.TRUE.equals(call(v.player,"method_6057",npc)))continue;score2(v.player,"CAP_PQ2_SENT",1);remark(v,"t_sentinel_observed");return;}
+  for(Object npc:found){Point at=pos(npc,v.world);if((at.x()-p.x())*lookX+(at.z()-p.z())*lookZ<0)continue;if(Boolean.TRUE.equals(call(npc,"method_5756",v.player))||!Boolean.TRUE.equals(stat("net.hautecapitale.quetes.visibility.QuestVisibility","isVisibleTo",npc,v.player))||!Boolean.TRUE.equals(call(v.player,"method_6057",npc)))continue;score2(v.player,"CAP_PQ2_SENT",1);remark(v,"t_sentinel_observed");return;}
  }
  static void closeUi(View v){v.suppress=true;try{if(v.session!=null&&v.session==current(v.player))stat(DM,"fermer",v.player,en("net.hautecapitale.dialogue.session.CloseReason","ECRAN_FERME"));}finally{v.suppress=false;}
   v.session=null;v.focus=null;v.pendingFocus=null;v.pendingNode=null;v.ui=false;v.baseToken=0;v.queuedChoice=0;
@@ -275,7 +280,10 @@ public final class Pq02Runtime implements ModInitializer {
   for(Actor a:v.actors.values()){stopActor(a);Pq01Actors.forget(a.goals);Pq01Actors.forget(a.targets);LIVE.remove(a.id);call(a.entity,"method_31472");}
   v.actors.clear();if(v.anchor!=null){LIVE.remove(uuid(v.anchor));call(v.anchor,"method_31472");}if(v.questMarker!=null){LIVE.remove(uuid(v.questMarker));call(v.questMarker,"method_31472");}HIDDEN.remove(account);DIRTY.put(account,v.player);
  }
- public static boolean visibleOriginal(class_1297 entity,class_3222 player){Set<UUID> hidden=HIDDEN.get(player.method_5667());return hidden==null||!hidden.contains(entity.method_5667());}
+ public static boolean visibleOriginal(class_1297 entity,class_3222 player){
+  if(entity.method_5752().contains(TAG)){View v=VIEWS.get(player.method_5667());return v!=null&&same(v)&&LIVE.contains(entity.method_5667())&&entity.method_5752().contains("hcm_owner_"+v.account)&&entity.method_5752().contains("hcm_character_"+v.character);}
+  Set<UUID> hidden=HIDDEN.get(player.method_5667());return hidden==null||!hidden.contains(entity.method_5667());
+ }
  public static Optional<ResolvedTarget> waypoint(Object player,String tag){
   if(!Set.of("hcm_pq2_leovic","hcm_pq2_magistrat").contains(tag))return Optional.empty();View v=VIEWS.get(uuid(player));if(v==null||!same(v))return Optional.empty();Actor a=v.actors.get(tag.endsWith("magistrat")?"magistrat":"leovic");if(a==null)return Optional.empty();Point at=pos(a.entity,v.world);
   return Optional.of(new ResolvedTarget(WaypointDef.Mode.EXACT,class_2960.method_60654(at.dimension()),at.x(),at.y(),at.z(),0,tag.endsWith("magistrat")?"Magistrat du Port":"Léovic"));
@@ -283,7 +291,7 @@ public final class Pq02Runtime implements ModInitializer {
  static void updateMarker(View v){int s=stage(v.player);boolean useful=s>=40&&s<100&&same(v)&&v.actors.containsKey("leovic");
   if(!useful){if(v.questMarker!=null){LIVE.remove(uuid(v.questMarker));call(v.questMarker,"method_31472");v.questMarker=null;}return;}
   Actor target=s==50&&v.actors.containsKey("magistrat")?v.actors.get("magistrat"):v.actors.get("leovic");Point at=pos(target.entity,v.world);Point above=new Point(at.dimension(),at.x(),at.y()+3.05,at.z());
-  if(v.questMarker==null){UUID id=UUID.randomUUID();LIVE.add(id);run(v.player,"summon minecraft:text_display "+above.x()+" "+above.y()+" "+above.z()+" {UUID:"+uuidArray(id)+",Tags:[\"hcm_pq2_actor\",\"hcm_private\",\"hcm_owner_"+v.account+"\",\"hcm_character_"+v.character+"\"],text:{text:\"?\",color:\"yellow\",bold:true},billboard:\"center\",background:0,see_through:1b,brightness:{sky:15,block:15}}");v.questMarker=call(v.world,"method_66347",id);}
+  if(v.questMarker==null){UUID id=UUID.randomUUID();LIVE.add(id);run(v.player,"summon minecraft:text_display "+above.x()+" "+above.y()+" "+above.z()+" {UUID:"+uuidArray(id)+",Tags:[\"hcm_pq2_actor\",\"hcm_owner_"+v.account+"\",\"hcm_character_"+v.character+"\"],text:{text:\"?\",color:\"yellow\",bold:true},billboard:\"center\",background:0,see_through:1b,brightness:{sky:15,block:15}}");v.questMarker=call(v.world,"method_66347",id);}
   else if(pos(v.questMarker,v.world).distance2(above)>0.0025)call(v.questMarker,"method_5814",above.x(),above.y(),above.z());
  }
  static void tick(Object server){clock++;@SuppressWarnings("unchecked") List<Object> players=(List<Object>)call(call(server,"method_3760"),"method_14571");Set<UUID> online=new HashSet<>();for(Object p:players)online.add(uuid(p));
@@ -292,7 +300,7 @@ public final class Pq02Runtime implements ModInitializer {
    v.lastStage=stage(v.player);
    if(v.pendingNode!=null&&clock>=v.frameAt){Object focus=v.pendingFocus;if(openCamera(v,focus)){v.pendingFocus=null;v.pendingNode=null;render(v);}else{v.pendingFocus=null;v.pendingNode=null;v.ui=false;pause(v);}}
    if(v.ui&&v.session!=null&&v.session!=current(v.player)){onClosing(v.player,v.session,"REMPLACEE");continue;}
-   if(v.ui){int pick=score(v.player,"Pq02Choix");if(pick!=0)dispatch(v);else if(v.queuedChoice!=0&&clock>=v.voiceUntil){int value=v.queuedChoice;v.queuedChoice=0;score2(v.player,"Pq02Choix",value);dispatch(v);}if(clock%20==0&&v.session!=null)call(v.session,"toucher",call(call(v.world,"method_8503"),"method_3780"));}
+   if(v.ui){int pick=score(v.player,"Pq02Choix");if(pick!=0)dispatch(v);else if(v.queuedChoice!=0&&clock>=v.voiceUntil){int value=v.queuedChoice;v.queuedChoice=0;score2(v.player,"Pq02Choix",value);dispatch(v);}if(clock%20==0&&v.session!=null)call(v.session,"toucher",((Number)call(call(v.world,"method_8503"),"method_3780")).longValue());}
    if(v.walking&&!v.ui){Actor a=v.actors.get("leovic");if(a!=null&&pos(a.entity,v.world).distance2(pos(v.player,v.world))>18*18){if(v.motion!=null){v.motion.pause();v.motion=null;}v.far=true;}else{v.far=false;if(v.motion!=null)v.motion.tick();else nextLeg(v);}}
    if(clock%20==0){savePosition(v);observe(v);updateMarker(v);}
   }catch(Throwable t){report2(t);pause(v);closeUi(v);v.failure=t.getMessage()==null?t.toString():t.getMessage();}
@@ -302,9 +310,10 @@ public final class Pq02Runtime implements ModInitializer {
  }
  static void flush(){if(DIRTY.isEmpty())return;for(UUID id:new HashSet<>(DIRTY.keySet())){Object p=DIRTY.get(id);if(p==null)continue;stat("net.hautecapitale.quetes.visibility.QuestVisibility","refresh",p);}DIRTY.clear();}
  static void prepareLegacy(Object p){Object a=marker(p,"a");if(a==null)throw new IllegalStateException("Charger le point A existant avant de préparer le guide historique");
-  run(p,"tag @e[type=minecraft:armor_stand,tag=guide_leovic_registre_port] remove escort_active");run(p,"tag @e[type=minecraft:armor_stand,tag=guide_leovic_registre_port] remove escort_returning");run(p,"tag @e[type=minecraft:armor_stand,tag=guide_leovic_registre_port] remove escort_moving");
-  run(p,"execute at @e[type=minecraft:marker,tag=wp_leovic_registre_port_a,limit=1] run tp @e[type=minecraft:armor_stand,tag=guide_leovic_registre_port,limit=1] ~ ~ ~");
-  for(String key:ROUTE)routePoint(p,key);say2(p,"Guide historique stationné sur le point A existant ; aucune progression ni récompense attribuée.");
+  List<Object> guides=local(p,pos(a,world(p)),256,e->Pq01EntityFactory.registryId(e).equals("minecraft:armor_stand")&&tags(e).contains("guide_leovic_registre_port"));
+  if(guides.size()>1)throw new IllegalStateException("Plusieurs guides historiques chargés ; aucune sélection arbitraire");
+  if(guides.size()==1){Object guide=guides.get(0);for(String tag:List.of("escort_active","escort_returning","escort_moving"))call(guide,"method_5738",tag);Point at=pos(a,world(p));call(guide,"method_5814",at.x(),at.y(),at.z());}
+  for(String key:ROUTE)routePoint(p,key);say2(p,guides.isEmpty()?"Aucun guide historique chargé. Repères existants mis en cache, sans création ni progression.":"Guide historique stationné sur le point A existant ; aucune progression ni récompense attribuée.");
  }
  static void diagnostic(Object p){say2(p,"Personnage="+character(p)+", verrou="+score(p,"CAP_PROFILE_LOCK")+", PQ01="+score(p,"hcq_pq01")+", PQ02="+stage(p)+", nœud="+score(p,"CAP_PQ2_NODE")+", point="+score(p,"CAP_PQ2_WP")+", pause="+score(p,"CAP_PQ2_PAUSE")+".");
   say2(p,"Décisions A/T/M/F="+score(p,"CAP_PQ2_DA")+"/"+score(p,"CAP_PQ2_DG")+"/"+score(p,"CAP_PQ2_DM")+"/"+score(p,"CAP_PQ2_DD")+", impression="+score(p,"CAP_PQ2_IMPR")+", don="+score(p,"CAP_LEOVIC_GIFT")+", offre="+score(p,"CAP_PQ2_OFFER")+".");

@@ -7,33 +7,39 @@ JAVA=next((RT/'jdk').glob('*/bin/java'));MC=RT/'bootstrap/.fabric/remappedJars/m
 JOURNAL=next(build.ROOT.joinpath('upload').glob('haute-capitale-quetes*.jar'));DIALOGUE=next(build.ROOT.joinpath('upload').glob('haute-capitale-dialogue*.jar'));NPC=next(H.joinpath('dependencies').glob('*.jar'))
 libs=[*sorted((RT/'libraries').glob('*.jar')),*sorted((RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),MC,JOURNAL,DIALOGUE,NPC,H/'output'/build.FILES['mod']]
 CP=os.pathsep.join(map(str,libs));C=H/'native_classes';shutil.rmtree(C,ignore_errors=True);C.mkdir()
-sources=[H/'tests/Pq02WorldBench.java',H/'tests/NexusCharacters.java',H/'tests/MakeSink.java']
+sources=[H/'tests/Pq02WorldBench.java',H/'tests/NexusCharacters.java',H/'tests/MakeSink.java',H/'tests/SkillsAPI.java',H/'tests/Pq02CaptureBench.java',H/'tests/Mq03Bench.java',H/'tests/HuguesBench.java',*list((H/'reference/tools/pq01_full/tests/native_capture_doubles').rglob('*.java')),H/'reference/tools/pq01_full/tests/client_doubles/net/hautecapitale/dialogue/client/capture/CaptureDialogueScreen.java']
 subprocess.run([JAVA.with_name('javac'),'--release','21','-proc:none','-cp',CP,'-d',C,*sources],check=True)
 subprocess.run([JAVA,'-cp',str(C)+os.pathsep+CP,'MakeSink',C],check=True)
 with zipfile.ZipFile(JOURNAL) as z:out={n:z.read(n) for n in z.namelist() if not n.endswith('/')}
 meta=json.loads(out['fabric.mod.json']);meta['entrypoints']={'main':['net.hautecapitale.quetes.sequence.Pq02WorldBench']};meta['depends']={'fabricloader':'>=0.19.5','fabric-api':'*','minecraft':'1.21.11','easy_npc':'7.16.0'};meta['provides']=['nexuscharacters'];meta['mixins']=['indivis_pq01.mixins.json','pq02_test_tracker.mixins.json'];out['fabric.mod.json']=json.dumps(meta).encode()
 out['pq02_test_tracker.mixins.json']=json.dumps({'required':True,'package':'net.hautecapitale.quetes.mixin','compatibilityLevel':'JAVA_21','mixins':['EntityTrackerMixin'],'injectors':{'defaultRequire':1}}).encode()
-for p in C.rglob('*.class'):out[p.relative_to(C).as_posix()]=p.read_bytes()
+for p in C.rglob('*.class'):
+ if not str(p.relative_to(C)).startswith('net/hautecapitale/dialogue/'):out[p.relative_to(C).as_posix()]=p.read_bytes()
 build.write(S/'mods/journal_test.jar',out)
+asm=RT/'libraries/asm-9.10.1.jar'
+subprocess.run([JAVA.with_name('javac'),'-cp',asm,'-d',C,H/'reference/tools/pq01_full/tests/world/StripClientEnvironment.java'],check=True)
+subprocess.run([JAVA,'-cp',str(C)+os.pathsep+str(asm),'StripClientEnvironment',DIALOGUE,C],check=True)
 with zipfile.ZipFile(DIALOGUE) as z:out={n:z.read(n) for n in z.namelist() if not n.endswith('/')}
+for p in (C/'net/hautecapitale/dialogue').rglob('*.class'):out[p.relative_to(C).as_posix()]=p.read_bytes()
 meta=json.loads(out['fabric.mod.json']);meta['entrypoints']={};meta['depends'].pop('haute_capitale_rpg',None);out['fabric.mod.json']=json.dumps(meta).encode();build.write(S/'mods/dialogue_test.jar',out)
 shutil.copyfile(NPC,S/'mods/easy_npc.jar');shutil.copyfile(RT/'fabric-api.jar',S/'mods/fabric-api.jar');shutil.copyfile(H/'output'/build.FILES['mod'],S/'mods/pq02_production.jar')
 (S/'eula.txt').write_text('eula=true\n');(S/'server.properties').write_text('online-mode=false\nserver-ip=127.0.0.1\nserver-port=25579\nview-distance=2\nsimulation-distance=2\nspawn-protection=0\nmax-tick-time=0\npause-when-empty-seconds=0\n')
 shutil.rmtree(S/'world',ignore_errors=True);P=S/'world/datapacks/pq02_fixture';P.mkdir(parents=True)
 orig={k:build.read(H/'output'/build.FILES[k]) for k in ['core','quests']};pack={'pack.mcmeta':orig['core']['pack.mcmeta']}
 # All newly changed functions plus all MQ03 runtime functions for native parser/route checks.
-paths=['data/capitale/function/pq02/','data/capitale/function/pq01/menu/hugues','data/capitale/function/pq01/choice/hugues','data/hc_quetes/function/migration/write/pq02/','data/hc_quetes/function/quests/','data/hc_quetes/function/runtime/','data/hc_quetes/predicate/']
+paths=['data/capitale/function/pq02/','data/capitale/function/pq01/menu/hugues','data/capitale/function/pq01/choice/hugues','data/hc_quetes/function/migration/write/pq02/','data/hc_quetes/function/quests/','data/hc_quetes/function/runtime/','data/hc_quetes/predicate/','data/capitale/predicate/','data/hc_quetes/tags/']
 for files in orig.values():
  for n,b in files.items():
-  if any(n.startswith(p) for p in paths):pack[n]=b
+  if any(n.startswith(p) for p in paths) or '/worldgen/biome/' in n:pack[n]=b
 for n in ['reward/skills/core/registre_port_self','reward/xp_vanilla/core/registre_port_self','bounds/reputation_all_self','bounds/rangsocial_self','access/recalculate_by_rank_self','display/prefix/sync_self','dialogue/sound/gain_quete_self','npc/altheon_brumeforge/interact_self','quest/spawn_dirigeable_couronne/capitaine_quai/interact_self','quest/spawn_dirigeable_couronne/capitaine_large/interact_self','pq01/open/altheon_self']:
  key='data/capitale/function/'+n+'.mcfunction';pack[key]=orig['core'][key]
 pack['data/capitale/function/pq02/gift_once_self.mcfunction']=pack['data/capitale/function/pq02/gift_once_self.mcfunction'].replace(b'capitale_currency:martin_dor',b'minecraft:gold_nugget')
 # External integrations are recorded substitutes, not replacements in delivered packs.
 for fn,body in {'capskills:reward/core/registre_port_self':'scoreboard players add @s fixture_skills 1\n','capitale:rewards/daily_bonus/roll/port_self':'scoreboard players add @s fixture_bonus 1\n'}.items():
  ns,path=fn.split(':');pack['data/'+ns+'/function/'+path+'.mcfunction']=body.encode()
-scores={'hcq_pq01','hcq_pq02','hcq_mq01','hcq_mq02','hcq_mq03','hcq_mq04','CAP_PROFILE_LOCK','CAP_QUETEACTIVE','CAP_QDIALOG_OWNER','CAP_QDIALOG_KEEP','CAP_QSEQ','CAP_QSEQ_TIMER','CAP_RANGSOCIAL','CAP_POINTS_TOTAL','REP_GARDEPORT','QUEST_PROLOGUE','CAP_GUIDE_LOCK','CAP_GUIDE_ID','CAP_GUIDE_MISS_T','CAPSK_REWARD_REGPORT','fixture_bonus','fixture_skills','hcq_choix'}
+scores={'hcq_pq01','hcq_pq02','hcq_mq01','hcq_mq02','hcq_mq03','hcq_mq04','CAP_PROFILE_LOCK','CAP_QUETEACTIVE','CAP_QDIALOG_OWNER','CAP_QDIALOG_KEEP','CAP_QSEQ','CAP_QSEQ_TIMER','CAP_RANGSOCIAL','CAP_POINTS_TOTAL','REP_GARDEPORT','QUEST_PROLOGUE','CAP_GUIDE_LOCK','CAP_GUIDE_ID','CAP_GUIDE_MISS_T','CAPSK_REWARD_REGPORT','fixture_bonus','fixture_skills','fixture_money','hcq_choix'}
 for b in pack.values():scores.update(re.findall(r'(?<!\S)(?:@s|#[\w]+) ([A-Za-z][A-Za-z0-9_]*)',b.decode(errors='replace')))
+pack['data/hc_quetes/function/migration/items/check_self.mcfunction']=b'return 1\n'
 # Retain real transitive core dependencies where available, stub only outside this focus.
 for _ in range(20):
  additions={}
@@ -46,6 +52,8 @@ for _ in range(20):
    additions[key]=src if src is not None else b'return 1\n'
  if not additions:break
  pack.update(additions)
+for n,b in pack.items():
+ if n.endswith('.mcfunction'):scores.update(re.findall(r'(?<!\S)(?:@s|#[\w]+) ([A-Za-z][A-Za-z0-9_]*)',b.decode(errors='replace')))
 pack['data/fixture/function/objectives.mcfunction']=('\n'.join('scoreboard objectives add '+s+' '+('trigger' if s in {'QuestChoix','hcq_choix'} else 'dummy') for s in sorted(scores))+'\n').encode()
 for n,b in pack.items():p=P/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b)
 (H/'reports/native_fixture.json').write_text(json.dumps({'functions':sum(n.endswith('.mcfunction') for n in pack),'scores':sorted(scores),'external_substitutes':['currency: gold_nugget','CapSkills: fixture counter','random port bonuses: fixture counter','Nexus selection: synthetic'],'mod_production_sha256':build.sha((H/'output'/build.FILES['mod']).read_bytes())},indent=2)+'\n')

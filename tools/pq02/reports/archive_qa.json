@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "checks": [
+    "core: applying unified diff to original reproduces every output byte",
+    "quests: applying unified diff to original reproduces every output byte",
+    "Production mod contains no test doubles or benches",
+    "Installation bundle contains exactly tested binaries, identical client/server mod"
+  ]
+}
