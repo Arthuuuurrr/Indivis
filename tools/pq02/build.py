@@ -5,7 +5,8 @@ import model
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];OUT=HERE/'output';OUT.mkdir(exist_ok=True)
 BASE={'core':ROOT/'upload/capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2(1).zip','quests':ROOT/'upload/hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2(1).zip'}
 EXPECTED={'core':'8aff8d9c45d275b9d281f5b915baad5e88e7a6c2147bc9806b4fff3cc7a7a8c4','quests':'72aa0cf454853f65e2cad769ba200e524c711c75260fe6a1d54c148c90788ba7'}
-FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1.zip','mod':'indivis-pq02-1.0.0+1.21.11.jar'}
+FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF1.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1.zip','mod':'indivis-pq02-1.0.1+1.21.11.jar'}
+JOURNAL_FILENAME='haute-capitale-quetes-HF12-PQ02-R1-HF1-1.21.11.jar'
 PERSIST=['CAP_PQ2_VER','CAP_PQ2_NODE','CAP_PQ2_DA','CAP_PQ2_DG','CAP_PQ2_DM','CAP_PQ2_DD','CAP_PQ2_IMPR','CAP_PQ2_SENT','CAP_PQ2_ANECD','CAP_PQ2_PORT','CAP_PQ2_STATUS','CAP_PQ2_OFFER','CAP_PQ2_REG','CAP_PQ2_REW','CAP_PQ2_WP','CAP_PQ2_PAUSE']
 def sha(b):return hashlib.sha256(b).hexdigest()
 def read(p):
@@ -58,7 +59,10 @@ def main():
  put('pq02/complete_once_self',['execute unless score @s hcq_pq02 matches 90 run return 0','execute unless score @s CAP_QDIALOG_OWNER matches 97 run return 0','execute unless score @s CAP_PQ2_REG matches 1 run return 0','execute unless score @s CAP_PQ2_DD matches 1..4 run return 0','execute if score @s CAP_PQ2_REW matches 1.. run return 0','execute store result score @s hcm_pq2_check run indivispq02 rewards_ready','execute unless score @s hcm_pq2_check matches 1 run return 0','scoreboard players set @s CAP_PQ2_REW 1','function capitale:reward/skills/core/registre_port_self','function capitale:rewards/daily_bonus/roll/port_self','function hc_quetes:migration/write/pq02/v100','scoreboard players set @s QUEST_PROLOGUE 30','scoreboard players set @s CAP_QUETEACTIVE 0','scoreboard players set @s CAP_GUIDE_LOCK 0','scoreboard players set @s CAP_GUIDE_ID 0','scoreboard players set @s CAP_GUIDE_MISS_T 0','title @s times 10 70 20','title @s title {"text":"Quête terminée","color":"gold","bold":true}','title @s subtitle {"text":"Le registre du Port","color":"white"}','function capitale:dialogue/sound/gain_quete_self','return 1'],'Achèvement explicite et unique ; compétences/XP/bonus conservés ; +5 supprimé')
  for role in ['leovic','magistrat','sentinel']:
   put('pq02/liaison/'+('sentinelle' if role=='sentinel' else role),['indivispq02 bind_'+role],'Association d’un PNJ existant, sans modification d’apparence ou d’action')
- for path2,cmd in [('diagnostic','status'),('preparer_guide_historique','prepare_legacy'),('nettoyer_scenes','clear_scenes')]:put('pq02/admin/'+path2,['indivispq02 '+cmd],'Administration ciblée de PQ02')
+ for path2,cmd in [('diagnostic','status'),('diagnostic_points','points'),('preparer_parcours','prepare_route'),('nettoyer_scenes','clear_scenes')]:put('pq02/admin/'+path2,['indivispq02 '+cmd],'Administration ciblée de PQ02')
+ put('pq02/admin/preparer_guide_historique',['return run function capitale:pq02/admin/preparer_parcours'],'Compatibilité : ancien nom conservé vers la préparation automatique du parcours')
+ for name,target in [('afficher_points','show_waypoints'),('masquer_points','clear_waypoints')]:
+  put('pq02/admin/'+name,['function capitale:quest/le_registre_du_port/escort/debug/'+target],'Visualisation historique des repères existants, sans déplacement des markers')
  # La seconde portion de l'escorte utilise les mêmes règles de guidage que la première.
  extra=['execute if predicate hc_quetes:migration/state/pq02/50 run scoreboard players set @s CAP_GUIDE_LOCK 1','execute if predicate hc_quetes:migration/state/pq02/50 run scoreboard players set @s CAP_GUIDE_ID 1']
  core[path('quest/guidage/sync_self')]+=('\n# PQ02-R1 : courte escorte après inscription.\n'+'\n'.join(extra)+'\n').encode();reasons[path('quest/guidage/sync_self')]='Verrou d’escorte également sur le trajet M–P'
@@ -76,7 +80,7 @@ def main():
   if objective['id']!='parler_leovic' and objective.get('waypoint',{}).get('target')=='tag:npc_leovic_registre_port':objective['waypoint']['target']='tag:hcm_pq2_leovic'
  quests[n]=(json.dumps(definition,ensure_ascii=False,indent=2)+'\n').encode();reasons['quests/'+n]='PQ02 : récompenses exactes et waypoint de l’acteur du personnage ; ID/états conservés'
  for kind in packs:
-  meta=json.loads(packs[kind]['pack.mcmeta']);meta['pack']['description']+=' — PQ02-R1 : Le registre du Port v1.0';packs[kind]['pack.mcmeta']=(json.dumps(meta,ensure_ascii=False,indent=2)+'\n').encode()
+  meta=json.loads(packs[kind]['pack.mcmeta']);meta['pack']['description']+=' — PQ02-R1 : Le registre du Port v1.0'+(' — HF1 : commandes de préparation adaptées aux repères' if kind=='core' else '');packs[kind]['pack.mcmeta']=(json.dumps(meta,ensure_ascii=False,indent=2)+'\n').encode()
  # Compilation réelle, sans réécriture des classes historiques.
  rt=Path('/tmp/indivis_pq02_runtime');java=next((rt/'jdk').glob('*/bin/java'));javac=java.with_name('javac');classes=HERE/'classes';shutil.rmtree(classes,ignore_errors=True);classes.mkdir()
  journal=ROOT/'upload/haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF12(1).jar';dialogue=ROOT/'upload/haute-capitale-dialogue-0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX(1).jar'
@@ -87,7 +91,7 @@ def main():
  r=subprocess.run(cmd,capture_output=True,text=True);(HERE/'reports/compile.log').write_text(r.stdout+r.stderr)
  if r.returncode:raise RuntimeError(r.stderr)
  mod={p.relative_to(classes).as_posix():p.read_bytes() for p in classes.rglob('*.class')};mod['indivis_pq02_graph.json']=(json.dumps(model.export(),ensure_ascii=False,indent=2)+'\n').encode()
- metadata={'schemaVersion':1,'id':'indivis_pq02','version':'1.0.0+1.21.11','name':'Indivis — PQ02 : Le registre du Port','description':'Refonte PQ02 v1.0, escortes privées, décisions et don par personnage Nexus. Requiert le core PQ02-R1.','environment':'*','entrypoints':{'main':['net.hautecapitale.quetes.sequence.Pq02Runtime'],'client':['net.hautecapitale.quetes.sequence.Pq02Client']},'mixins':['indivis_pq02.mixins.json'],'depends':{'minecraft':'1.21.11','java':'>=21','fabricloader':'>=0.19.5','fabric-api':'>=0.141.6','haute_capitale_quetes':'*','haute_capitale_dialogue':'*','easy_npc':'7.16.0','nexuscharacters':'*'}}
+ metadata={'schemaVersion':1,'id':'indivis_pq02','version':'1.0.1+1.21.11','name':'Indivis — PQ02 : Le registre du Port','description':'Refonte PQ02 v1.0, escortes privées, décisions et don par personnage Nexus. Requiert le core PQ02-R1-HF1.','environment':'*','entrypoints':{'main':['net.hautecapitale.quetes.sequence.Pq02Runtime'],'client':['net.hautecapitale.quetes.sequence.Pq02Client']},'mixins':['indivis_pq02.mixins.json'],'depends':{'minecraft':'1.21.11','java':'>=21','fabricloader':'>=0.19.5','fabric-api':'>=0.141.6','haute_capitale_quetes':'*','haute_capitale_dialogue':'*','easy_npc':'7.16.0','nexuscharacters':'*'}}
  mod['fabric.mod.json']=json.dumps(metadata,ensure_ascii=False,indent=2).encode();mod['indivis_pq02.mixins.json']=json.dumps({'required':True,'minVersion':'0.8','package':'net.hautecapitale.quetes.pq02.mixin','compatibilityLevel':'JAVA_21','mixins':['Pq02VisibilityMixin','Pq02WaypointMixin','Pq02DialogueCloseMixin','Pq02EntityMixin'],'injectors':{'defaultRequire':1}}).encode()
  for kind,p in packs.items():write(OUT/FILES[kind],p)
  write(OUT/FILES['mod'],mod)

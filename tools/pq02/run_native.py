@@ -4,10 +4,10 @@ import json,zipfile,subprocess,os,shutil,re
 import build
 H=Path(__file__).resolve().parent;RT=Path('/tmp/indivis_pq02_runtime');INTEGRATED=os.environ.get('PQ02_INTEGRATED')=='1';LABEL='merged_native' if INTEGRATED else 'native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
 JAVA=next((RT/'jdk').glob('*/bin/java'));MC=RT/'bootstrap/.fabric/remappedJars/minecraft-1.21.11-0.19.5/server-intermediary.jar'
-JOURNAL=H/'output/haute-capitale-quetes-HF12-PQ02-R1-1.21.11.jar' if INTEGRATED else next(build.ROOT.joinpath('upload').glob('haute-capitale-quetes*.jar'));DIALOGUE=next(build.ROOT.joinpath('upload').glob('haute-capitale-dialogue*.jar'));NPC=next(H.joinpath('dependencies').glob('*.jar'))
+JOURNAL=H/'output'/build.JOURNAL_FILENAME if INTEGRATED else next(build.ROOT.joinpath('upload').glob('haute-capitale-quetes*.jar'));DIALOGUE=next(build.ROOT.joinpath('upload').glob('haute-capitale-dialogue*.jar'));NPC=next(H.joinpath('dependencies').glob('*.jar'))
 libs=[*sorted((RT/'libraries').glob('*.jar')),*sorted((RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),MC,JOURNAL,DIALOGUE,NPC]+([] if INTEGRATED else [H/'output'/build.FILES['mod']])
 CP=os.pathsep.join(map(str,libs));C=H/'native_classes';shutil.rmtree(C,ignore_errors=True);C.mkdir()
-sources=[H/'tests/Pq02WorldBench.java',H/'tests/NexusCharacters.java',H/'tests/MakeSink.java',H/'tests/SkillsAPI.java',H/'tests/Pq02CaptureBench.java',H/'tests/Mq03Bench.java',H/'tests/HuguesBench.java',*list((H/'reference/tools/pq01_full/tests/native_capture_doubles').rglob('*.java')),H/'reference/tools/pq01_full/tests/client_doubles/net/hautecapitale/dialogue/client/capture/CaptureDialogueScreen.java']
+sources=[H/'tests/Pq02WorldBench.java',H/'tests/Pq02SetupBench.java',H/'tests/NexusCharacters.java',H/'tests/MakeSink.java',H/'tests/SkillsAPI.java',H/'tests/Pq02CaptureBench.java',H/'tests/Mq03Bench.java',H/'tests/HuguesBench.java',*list((H/'reference/tools/pq01_full/tests/native_capture_doubles').rglob('*.java')),H/'reference/tools/pq01_full/tests/client_doubles/net/hautecapitale/dialogue/client/capture/CaptureDialogueScreen.java']
 subprocess.run([JAVA.with_name('javac'),'--release','21','-proc:none','-cp',CP,'-d',C,*sources],check=True)
 subprocess.run([JAVA,'-cp',str(C)+os.pathsep+CP,'MakeSink',C],check=True)
 with zipfile.ZipFile(JOURNAL) as z:out={n:z.read(n) for n in z.namelist() if not n.endswith('/')}

@@ -45,9 +45,9 @@ public final class Pq02Runtime implements ModInitializer {
  static Object current(Object p){return ((Optional<?>)stat(DM,"session",p)).orElse(null);}
  static void register(Object dispatcher){
   Object root=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal","indivispq02");
-  for(String action:List.of("leovic","magistrat","near","dispatch","suspend","restore","rewards_ready","status","bind_leovic","bind_magistrat","bind_sentinel","prepare_legacy","clear_scenes")){
+  for(String action:List.of("leovic","magistrat","near","dispatch","suspend","restore","rewards_ready","status","points","bind_leovic","bind_magistrat","bind_sentinel","prepare_route","prepare_legacy","clear_scenes")){
    Object node=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal",action);
-   boolean admin=action.startsWith("bind_")||Set.of("status","prepare_legacy","clear_scenes").contains(action);
+   boolean admin=action.startsWith("bind_")||Set.of("status","points","prepare_route","prepare_legacy","clear_scenes").contains(action);
    if(admin)call(node,"requires",stat("net.minecraft.class_2170","method_71774",en("net.minecraft.class_2170","field_31839")));
    Class<?> c=type("com.mojang.brigadier.Command");Object cmd=Proxy.newProxyInstance(c.getClassLoader(),new Class<?>[]{c},(p,m,a)->{if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);try{return execute2(call(call(a[0],"getSource"),"method_9207"),action);}catch(Throwable t){report2(t);return 0;}});
    call(node,"executes",cmd);call(root,"then",node);
@@ -59,7 +59,8 @@ public final class Pq02Runtime implements ModInitializer {
   if(action.equals("restore")){dispose(uuid(p));return 1;}
   if(action.equals("rewards_ready")){return (score(p,"CAPSK_REWARD_REGPORT")>0||CoreQuestMarkers.functionPresent(p,"capskills:reward/core/registre_port_self"))&&CoreQuestMarkers.functionPresent(p,"capitale:pq02/gift_once_self")?1:0;}
   if(action.equals("clear_scenes")){suspend(p);dispose(uuid(p));flush();return 1;}
-  if(action.equals("prepare_legacy")){prepareLegacy(p);return 1;}
+  if(action.equals("prepare_legacy")||action.equals("prepare_route"))return Pq02Setup.prepare(p);
+  if(action.equals("points")){Pq02Setup.describe(p);return 1;}
   if(action.startsWith("bind_")){bind(p,action.substring(5));return 1;}
   if(!ready(p))return 0;
   ensure(p);
@@ -309,15 +310,9 @@ public final class Pq02Runtime implements ModInitializer {
   flush();
  }
  static void flush(){if(DIRTY.isEmpty())return;for(UUID id:new HashSet<>(DIRTY.keySet())){Object p=DIRTY.get(id);if(p==null)continue;stat("net.hautecapitale.quetes.visibility.QuestVisibility","refresh",p);}DIRTY.clear();}
- static void prepareLegacy(Object p){Object a=marker(p,"a");if(a==null)throw new IllegalStateException("Charger le point A existant avant de préparer le guide historique");
-  List<Object> guides=local(p,pos(a,world(p)),256,e->Pq01EntityFactory.registryId(e).equals("minecraft:armor_stand")&&tags(e).contains("guide_leovic_registre_port"));
-  if(guides.size()>1)throw new IllegalStateException("Plusieurs guides historiques chargés ; aucune sélection arbitraire");
-  if(guides.size()==1){Object guide=guides.get(0);for(String tag:List.of("escort_active","escort_returning","escort_moving"))call(guide,"method_5738",tag);Point at=pos(a,world(p));call(guide,"method_5814",at.x(),at.y(),at.z());}
-  for(String key:ROUTE)routePoint(p,key);say2(p,guides.isEmpty()?"Aucun guide historique chargé. Repères existants mis en cache, sans création ni progression.":"Guide historique stationné sur le point A existant ; aucune progression ni récompense attribuée.");
- }
  static void diagnostic(Object p){say2(p,"Personnage="+character(p)+", verrou="+score(p,"CAP_PROFILE_LOCK")+", PQ01="+score(p,"hcq_pq01")+", PQ02="+stage(p)+", nœud="+score(p,"CAP_PQ2_NODE")+", point="+score(p,"CAP_PQ2_WP")+", pause="+score(p,"CAP_PQ2_PAUSE")+".");
   say2(p,"Décisions A/T/M/F="+score(p,"CAP_PQ2_DA")+"/"+score(p,"CAP_PQ2_DG")+"/"+score(p,"CAP_PQ2_DM")+"/"+score(p,"CAP_PQ2_DD")+", impression="+score(p,"CAP_PQ2_IMPR")+", don="+score(p,"CAP_LEOVIC_GIFT")+", offre="+score(p,"CAP_PQ2_OFFER")+".");
-  List<String> missing=new ArrayList<>();for(String key:ROUTE)if(!OPTIONAL.contains(key)&&routePoint(p,key)==null)missing.add(key);say2(p,"Repères manquants/non chargés : "+missing+" ; sources configurées="+(child(config(p),"roles")!=null)+".");
+  Pq02Setup.summary(p);say2(p,"Sources configurées="+(child(config(p),"roles")!=null)+". Positions détaillées : /function capitale:pq02/admin/diagnostic_points");
   View v=VIEWS.get(uuid(p));if(v!=null)say2(p,"Acteurs="+v.actors.size()+", UI="+v.ui+", marche="+v.walking+", attente joueur="+v.far+", anomalie="+v.failure+".");
  }
 }

@@ -1,4 +1,41 @@
-PASS 1609 native checks
+PASS 1646 native checks
+setup HF1: fixture is outside former local marker lookup
+setup HF1: preparation succeeds far from loaded A and at a different altitude
+setup HF1: legacy guide parks on existing A, never on administrator position
+setup HF1: legacy motion states removed
+setup HF1: existing markers remain in place
+setup HF1: public Leovic position unchanged by setup
+setup HF1: armor stand carrying A tag is ignored as a route marker
+setup HF1: unrelated setup data retained
+setup HF1: loaded coordinates copied exactly to cache
+setup HF1: point diagnostics expose roles, coordinates and loaded status
+setup HF1: operator requirement enforced for prepare_route
+setup HF1: operator requirement enforced for prepare_legacy
+setup HF1: operator requirement enforced for points
+setup HF1: operator requirement enforced for status
+setup HF1: preparation adapts to changed existing marker coordinates
+setup HF1: cached point remains usable when its marker is not loaded/recognized
+setup HF1: diagnostic distinguishes remembered from loaded points
+setup HF1: missing required point refuses completion and leaves guide untouched
+setup HF1: missing point never gets invented fallback coordinates
+setup HF1: cache from another dimension is rejected
+setup HF1: restored marker repairs preparation without changing progression
+setup HF1: duplicate marker refuses both guide move and cache mutation
+setup HF1: duplicate legacy guide is not chosen arbitrarily
+setup HF1: optional H approach markers do not prevent preparation
+setup HF1: cached but unloaded A defers legacy parking without teleport to unloaded marker
+setup HF1: active scene prevents legacy guide relocation
+setup HF1: old direct command remains compatible
+setup HF1: datapack function exists: preparer_parcours
+setup HF1: datapack function exists: preparer_guide_historique
+setup HF1: datapack function exists: diagnostic
+setup HF1: datapack function exists: diagnostic_points
+setup HF1: datapack function exists: afficher_points
+setup HF1: datapack function exists: masquer_points
+setup HF1: old function forwards through actual function dispatcher
+setup HF1: visualization uses existing historical waypoint function
+setup HF1: hiding visualization preserves all real route markers
+setup HF1: admin commands do not start quest, alter reputation, give money or change character state
 native DialogueManager opens camera for a01
 first interaction auto-binds even after original capture
 native DialogueManager opens camera for a01
@@ -1608,5 +1645,5 @@ no PQ02 runtime exception
 no placeholder dialogue sent
 no placeholder dialogue sent
 no placeholder dialogue sent
-Frame counts={class_3222['PQ02_B'/337, l='ServerLevel[world]', x=17.74, y=64.00, z=2.50]=6, class_3222['PQ02_A'/336, l='ServerLevel[world]', x=8.50, y=64.00, z=9.50]=722, class_3222['PQ02_Observer'/338, l='ServerLevel[world]', x=0.50, y=64.00, z=8.50]=0}
+Frame counts={class_3222['PQ02_A'/34, l='ServerLevel[world]', x=8.50, y=64.00, z=9.50]=722, class_3222['PQ02_B'/35, l='ServerLevel[world]', x=17.74, y=64.00, z=2.50]=6, class_3222['PQ02_Observer'/36, l='ServerLevel[world]', x=0.50, y=64.00, z=8.50]=0}
 Native Fabric 1.21.11 / EasyNPC 7.16, original HF12 classes and production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

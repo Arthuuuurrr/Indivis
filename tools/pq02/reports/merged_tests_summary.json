@@ -1,11 +1,13 @@
 {
   "status": "PASS",
-  "journal": "haute-capitale-quetes-HF12-PQ02-R1-1.21.11.jar",
-  "sha256": "51067b5affdd4f11a3b228664cb94789b951a4fefddd311ca49d79cb6c56b9ce",
+  "revision": "PQ02 R1 HF1",
+  "journal": "haute-capitale-quetes-HF12-PQ02-R1-HF1-1.21.11.jar",
+  "sha256": "807dc8b5ce286c74b3137a2161fb59b941fcc99eadb8ae5a16cc8b3bef64b24d",
   "preserved_hf12_classes": 184,
   "preserved_hf12_resources": 222,
-  "pq02_entries_identical": 22,
-  "native_checks": 1609,
+  "pq02_entries_identical_to_build_component": 24,
+  "native_checks": 1646,
+  "new_admin_native_checks": 37,
   "full_main_startup_checks": 8,
   "duplicate_guard_checks": 1,
   "mod_ids": [

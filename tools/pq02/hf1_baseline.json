@@ -1,0 +1,52 @@
+{
+  "baseline": "PQ02 R1 integrated installer, 27 October 2026",
+  "core_original_sha256": "d38f56d1c53408d7f9d812354d29f083c9adb5e90cd3aba8484c4064e0171886",
+  "core_preserved_count": 11334,
+  "core_preserved_manifest_sha256": "c199045e33111d7154ff82f1879956e1534a48b53d790069cf550b72bcc5c37b",
+  "changed_r1_entries": {
+    "pack.mcmeta": "2b8bdde89df1daca2cbc6460f5d74f3ecc7932d2a03d076e3dffc6e994519baf",
+    "data/capitale/function/pq02/admin/preparer_guide_historique.mcfunction": "bcb22320c4ca4216ab6427fb043a386336a1bb445359aaec4424400081de1602"
+  },
+  "added_admin_functions": [
+    "preparer_parcours",
+    "diagnostic_points",
+    "afficher_points",
+    "masquer_points"
+  ],
+  "quests_sha256": "154cbdf0105296f5a94ccf6d54d7f9292c8f6fde05f9419cb7ff62225cec0fde",
+  "preserved_sources": {
+    "src/Pq02Rules.java": "0cc5acc5e0610ab561718683d3784bffa2a6d979b72f8b895845ab7cf5c52779",
+    "src/Pq02Motion.java": "2697c0bb761f633de904c873a40b0d951670303ddb042a4d22417dae8ca53556",
+    "src/Pq02Client.java": "ef0400371ae5b6af2b46c15f2613d52c42b29e6bc251d3a21be2d75fc9ca1426",
+    "src/Pq02Pacing.java": "836fac9f79091eb846fe6c291f96ce2e34ed0e7a140ca2fc74be1ee75cc815c2",
+    "src/Pq02Data.java": "ef75d05a6340b350408f27d6c73c68eb8bae661dd77a9af8d459e3b5ac0f2fcd",
+    "src/mixin/Pq02WaypointMixin.java": "188b47dfd2dccf615f3be964dec9acb2b97a23bbb9f4ba54612ad3fb703e022b",
+    "src/mixin/Pq02DialogueCloseMixin.java": "62edee1dbbcb238d4100277429b3e4195b5e5fc0c73ee6072cd43d691a4bd73b",
+    "src/mixin/Pq02VisibilityMixin.java": "7b30520732e8236062931d78b9cc2904f44b4699d6f415947c7e306df2341bd0",
+    "src/mixin/Pq02EntityMixin.java": "3df0ac789dfae001bc7237055d6e5ae5f26f19d4f21c32186919fb2639f916e3"
+  },
+  "pq02_r1_entries": {
+    "indivis_pq02.mixins.json": "5012f2dce3915dc9821b7d8019a49e24738aaba32ccd2c93f749949faaac8e7d",
+    "indivis_pq02_graph.json": "67a76faee5ea2ea14cc0992ee8185edff663aac16449f5531f94d72f8be61196",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02DialogueCloseMixin.class": "3d1fd4a1dc20034a032b103c797933e492ec19f5ef044be2345042eef5e5731e",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02EntityMixin.class": "d72525b086720627230c1b023d1bf80fc22d332978bb3c309987afe7ba1de55f",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02VisibilityMixin.class": "8ae1784fd6c3d32f792ca4f9122e8a3ad21122177a6d777c3806630c19cdb9dc",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02WaypointMixin.class": "f97350697366bfd96198df0ff46f086c9480347d671d200f274ff3f9dce5c9b1",
+    "net/hautecapitale/quetes/sequence/Pq02Client.class": "adf8d6f8bacf4c7b046ca0475d7c85fff3c9994c3c4d42a0b808518372e084bf",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Choice.class": "1e1cc7c6f19044ba29a02ca59aefe5e4d4e49bb0bc6ab9eefd3c6300bf5530cc",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Graph.class": "704791ad7663b777e5d807799839d5d9f7e7a6c110edd3de9d10e3ed2c295100",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Node.class": "6a5904d9866239cb60453aff79f0257daceeeaf31352dce460ada490e576f6d7",
+    "net/hautecapitale/quetes/sequence/Pq02Data.class": "b007ef7e20ab6875f7e64d6cfe68922c396169d6d63e65a2e3ef509cb8a9a573",
+    "net/hautecapitale/quetes/sequence/Pq02Motion$Port.class": "97884fdeff635ad4a1072fefb29aee300e8a54ff8c5b852afb9fbdaf944cbab1",
+    "net/hautecapitale/quetes/sequence/Pq02Motion.class": "2bb2d29bd425b0a21d6c89a0d18a117463006cb4beba3e985be9b8b6209271b5",
+    "net/hautecapitale/quetes/sequence/Pq02Pacing$Frame.class": "d9252b1259ddf0b55b629ec06d7d9549e380c7ca8f4c392561feb8756d868b76",
+    "net/hautecapitale/quetes/sequence/Pq02Pacing.class": "66172092667a18d1c13d990f731a1845f5e3f389c36a453d22358f9d0fd69966",
+    "net/hautecapitale/quetes/sequence/Pq02Rules$Delta.class": "5df86b3636a519c2e708190fbcaf8079cb1375ae9f68a52384dc02234345807e",
+    "net/hautecapitale/quetes/sequence/Pq02Rules.class": "66bd288a7958d1d78fe63765ab473c67b339f59f59b19930ce8899a219acf4d9",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$1.class": "ece3140187ce5c22c3c25cd1833c3751b323305fae6cfcc11bc7e00ec011cbb7",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$Actor.class": "ebab3af65fb2d3ec7aa03c3d04e6c4706036ab5c8adfe0f6b37b5f37641c291b",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$Near.class": "b81384a3e3147e8ea401bda3aef408f2301de0bc6fa4ce0fac6486b2293b447b",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$View.class": "3d0604887d9d98f4a5c7b6d0b95e7f1f1b5e1fab8ff66462c60ff49926893219",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime.class": "baaf6f5ca8f3dc7fe8977ab682a80ddb70b5209b6fb068b8d5aa8099499de6b9"
+  }
+}

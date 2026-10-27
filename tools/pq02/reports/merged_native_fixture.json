@@ -1,5 +1,5 @@
 {
-  "functions": 1005,
+  "functions": 1011,
   "scores": [
     "ACCESS_ARCHIVES",
     "ACCESS_BANQUE",
@@ -384,5 +384,5 @@
     "Nexus selection: synthetic"
   ],
   "integrated": true,
-  "mod_production_sha256": "51067b5affdd4f11a3b228664cb94789b951a4fefddd311ca49d79cb6c56b9ce"
+  "mod_production_sha256": "807dc8b5ce286c74b3137a2161fb59b941fcc99eadb8ae5a16cc8b3bef64b24d"
 }

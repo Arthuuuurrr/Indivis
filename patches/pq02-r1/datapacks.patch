@@ -132,10 +132,25 @@
  $tellraw @s {"text":"[Je vous laisse à vos caisses.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b7)"}}
  $tellraw @s {"text":"[Fermer la conversation]","color":"gray","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b15)"}}
 --- /dev/null
++++ b/core/data/capitale/function/pq02/admin/afficher_points.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Visualisation historique des repères existants, sans déplacement des markers
++function capitale:quest/le_registre_du_port/escort/debug/show_waypoints
+--- /dev/null
 +++ b/core/data/capitale/function/pq02/admin/diagnostic.mcfunction
 @@ -0,0 +1,2 @@
 +# PQ02-R1 — Administration ciblée de PQ02
 +indivispq02 status
+--- /dev/null
++++ b/core/data/capitale/function/pq02/admin/diagnostic_points.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Administration ciblée de PQ02
++indivispq02 points
+--- /dev/null
++++ b/core/data/capitale/function/pq02/admin/masquer_points.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Visualisation historique des repères existants, sans déplacement des markers
++function capitale:quest/le_registre_du_port/escort/debug/clear_waypoints
 --- /dev/null
 +++ b/core/data/capitale/function/pq02/admin/nettoyer_scenes.mcfunction
 @@ -0,0 +1,2 @@
@@ -144,8 +159,13 @@
 --- /dev/null
 +++ b/core/data/capitale/function/pq02/admin/preparer_guide_historique.mcfunction
 @@ -0,0 +1,2 @@
++# PQ02-R1 — Compatibilité : ancien nom conservé vers la préparation automatique du parcours
++return run function capitale:pq02/admin/preparer_parcours
+--- /dev/null
++++ b/core/data/capitale/function/pq02/admin/preparer_parcours.mcfunction
+@@ -0,0 +1,2 @@
 +# PQ02-R1 — Administration ciblée de PQ02
-+indivispq02 prepare_legacy
++indivispq02 prepare_route
 --- /dev/null
 +++ b/core/data/capitale/function/pq02/complete_once_self.mcfunction
 @@ -0,0 +1,22 @@
@@ -703,7 +723,7 @@
  {
    "pack": {
 -    "description": "Indivis — Core 1.5.7 — norme v2 + Séquence I — candidat SI1 — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — HF5 : proximité et reprise Géraud — HF6 : questions et enchaînements — HF7 : approche de Gautier et capture des dialogues — HF9 : blocs de lecture et file de doublage — QMARK2 : ! personnels des donneurs du core",
-+    "description": "Indivis — Core 1.5.7 — norme v2 + Séquence I — candidat SI1 — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — HF5 : proximité et reprise Géraud — HF6 : questions et enchaînements — HF7 : approche de Gautier et capture des dialogues — HF9 : blocs de lecture et file de doublage — QMARK2 : ! personnels des donneurs du core — PQ02-R1 : Le registre du Port v1.0",
++    "description": "Indivis — Core 1.5.7 — norme v2 + Séquence I — candidat SI1 — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — HF5 : proximité et reprise Géraud — HF6 : questions et enchaînements — HF7 : approche de Gautier et capture des dialogues — HF9 : blocs de lecture et file de doublage — QMARK2 : ! personnels des donneurs du core — PQ02-R1 : Le registre du Port v1.0 — HF1 : commandes de préparation adaptées aux repères",
      "min_format": [
        94,
        1

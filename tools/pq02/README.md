@@ -1,8 +1,8 @@
-# PQ02 R1 — Le registre du Port
+# PQ02 R1 HF1 — Le registre du Port
 
-Implémentation du kit Work v1.2 et du script PQ02 v1.0, sur copies des deux archives de production fournies. Cible : Fabric 1.21.11, Java 21. PQ02 est intégrée au mod de quêtes HF12, côté serveur et clients. Le compagnon séparé n’est plus à installer. Les 184 classes historiques de HF12 et les classes PQ02 sont conservées octet pour octet.
+Implémentation du kit Work v1.2 et du script PQ02 v1.0, sur copies des deux archives de production fournies. Cible : Fabric 1.21.11, Java 21. PQ02 est intégrée au mod de quêtes HF12, côté serveur et clients. Le compagnon séparé n’est plus à installer. Les 184 classes historiques de HF12 restent conservées octet pour octet. HF1 adapte uniquement l’administration aux repères existants : préparation à distance, coordonnées détaillées, cache et refus des doublons ; les règles, dialogues, déplacements et mixins de R1 sont conservés.
 
-Les procédures de joueur et d’administrateur sont dans `INSTALLATION.md`. L’audit, les limites et les preuves figurent dans `RAPPORT.md` et `reports/`. Dans GitHub, ces documents sont aussi dans `docs/quetes/PQ02_R1/` ; `patches/pq02-r1/` contient les seules ressources modifiées. Les anciens répertoires de datapacks du dépôt ne sont pas substitués à l’archive serveur fournie.
+Les procédures de joueur et d’administrateur sont dans `INSTALLATION.md` et `COMMANDES_PQ02.md`. L’audit, les limites et les preuves figurent dans `RAPPORT.md` et `reports/`. Dans GitHub, ces documents sont aussi dans `docs/quetes/PQ02_R1/` ; `patches/pq02-r1/` contient les seules ressources modifiées. Les anciens répertoires de datapacks du dépôt ne sont pas substitués à l’archive serveur fournie.
 
 ## Reproduire
 
@@ -18,10 +18,11 @@ python work/pq02/test_static.py
 python work/pq02/merge_journal.py
 PQ02_INTEGRATED=1 python work/pq02/run_native.py
 python work/pq02/test_merged_boot.py
+python work/pq02/verify_hf1.py
 python work/pq02/package_merged.py
 ```
 
-Adapter le préfixe `work/` en `tools/` si nécessaire. Java 21 et le serveur officiel, Fabric Loader/API et les bibliothèques sont préparés sous `/tmp/indivis_pq02_runtime`. Les fonctions tests et les connexions synthétiques restent dans un monde jetable, jamais dans le core livré. Les journaux et résultats sont dans `reports/` ; les archives finales dans `delivery/`.
+Adapter le préfixe `work/` en `tools/` si nécessaire. Java 21 et le serveur officiel, Fabric Loader/API et les bibliothèques sont préparés sous `/tmp/indivis_pq02_runtime`. Les fonctions tests et les connexions synthétiques restent dans un monde jetable, jamais dans le core livré. Les journaux et résultats sont dans `reports/` ; les archives finales dans `delivery_merged/`.
 
 Le banc ne lance pas de client graphique et n’utilise pas la carte Indivis. Les comptes/connexions, le sélecteur Nexus et les intégrations économiques externes y sont explicitement simulés. Les règles PRE35, les classes HF12, le serveur Minecraft, les entités/navigation EasyNPC, les fonctions testées, les trackers de visibilité et les sessions/captures b10 sont réels. Les annotations d’environnement client sont retirées seulement de la copie b10 du banc ; les fichiers de production ne contiennent aucune doublure.
 
@@ -32,3 +33,5 @@ Le banc ne lance pas de client graphique et n’utilise pas la carte Indivis. Le
 `build.py` produit les composants compilés intermédiaires ; `merge_journal.py` les assemble dans HF12 avec un seul identifiant Fabric. `package_delivery.py` conserve la trace du conditionnement compagnon antérieur ; la livraison actuelle utilise `package_merged.py`. Les essais de démarrage conservent le JAR fusionné de production intact et vérifient aussi le refus du compagnon en doublon.
 
 Les quatre mixins de production sont limités à la visibilité des acteurs PQ02, leur physique, leurs cibles de waypoint et la fermeture de leur session Dialogue. PQ01 reste inchangé hors des 12 fichiers du seul choix 6 de Hugues. MQ03 reçoit uniquement la priorité manquante du capitaine au quai, identique à celle du capitaine au large.
+
+`hf1_baseline.json` contient les empreintes agrégées de la livraison R1 pour vérifier la conservation de 11 334 entrées de core et du datapack hc_quetes sans exiger de redistribuer ces anciennes archives. `verify_hf1.py` applique aussi le patch à des copies des originaux et compare chaque fichier au ZIP livré. `Pq02SetupBench` exerce les nouvelles commandes sur le vrai serveur, notamment depuis plus de 800 blocs et hors de l’ancienne bande verticale de recherche ; ces coordonnées appartiennent au banc jetable.

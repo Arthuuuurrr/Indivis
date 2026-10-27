@@ -1,4 +1,4 @@
-# Indivis — Rapport d’intégration PQ02 R1
+# Indivis — Rapport d’intégration PQ02 R1 HF1
 
 Livraison **intégrée** du **27 octobre 2026**, Fabric/Minecraft **1.21.11**, Java **21**. Version installable destinée à la recette sur une copie du serveur. Aucun déploiement sur le serveur d’Arthur n’a été effectué.
 
@@ -6,15 +6,25 @@ Livraison **intégrée** du **27 octobre 2026**, Fabric/Minecraft **1.21.11**, J
 
 PQ02 est refondue selon le kit Work v1.2 et le script narratif v1.0 : accueil, trajet, sujets facultatifs, entretien à trois, inscription, trajet court vers l’ascenseur, séparation et retour ultérieur. Le graphe comporte **111 nœuds et 225 citations**, lus directement dans le texte fourni. Les seuls ajouts éditoriaux sont quatre libellés de navigation : Parlez-moi encore de votre expérience., Revenons au Port., Revenons aux Sentinelles., Revenons aux formalités.
 
-Le mod de quêtes `haute_capitale_quetes` intègre maintenant les composants PQ02 pour l’état de scène, les acteurs personnels et l’adaptation de capture. Il utilise le moteur Dialogue b10, les outils d’acteur de HF12 et EasyNPC 7.16.0. Il est compilé en Java 21 contre les véritables classes Minecraft intermédiaires, Fabric et les JAR fournis. Le JAR de quêtes HF12 est remplacé par sa version fusionnée : **184 classes historiques et 222 entrées d’origine conservées octet pour octet**, seule la métadonnée `fabric.mod.json` est adaptée parmi les entrées originales. Les 22 entrées PQ02 ajoutées sont identiques au compagnon validé. Dialogue, Nexus et Nexus NPC restent inchangés et ne sont pas redistribués.
+Le mod de quêtes `haute_capitale_quetes` intègre les composants PQ02 pour l’état de scène, les acteurs personnels et l’adaptation de capture. Il utilise le moteur Dialogue b10, les outils d’acteur de HF12 et EasyNPC 7.16.0. Il est compilé en Java 21 contre les véritables classes Minecraft intermédiaires, Fabric et les JAR fournis. Le JAR de quêtes HF12 est remplacé par sa version fusionnée : **184 classes historiques et 222 entrées d’origine conservées octet pour octet**, seule la métadonnée `fabric.mod.json` est adaptée parmi les entrées originales. Les 24 entrées PQ02 intégrées sont identiques au composant intermédiaire compilé, qui n’est pas à installer séparément. Dialogue, Nexus et Nexus NPC restent inchangés et ne sont pas redistribués.
 
 La solution privée est nécessaire : le guide mondial de l’ancien core ne peut pas conduire deux joueurs indépendamment ni s’arrêter pour les questions d’un seul. Le trajet et ses repères restent ceux de l’installation ; le déplacement est désormais du pathfinding réel sur une copie du PNJ. L’ancien guide mondial est stationné, pas utilisé comme escorte concurrente.
 
 ## Fusion au mod de quêtes existant
 
-Un seul JAR `haute-capitale-quetes-HF12-PQ02-R1-1.21.11.jar` remplace HF12 et le compagnon PQ02, sur serveur et clients. Les points d’entrée de HF12 sont préservés dans leur ordre, puis ceux de PQ02 sont ajoutés une seule fois. Les mixins et le graphe narratif sont directement intégrés : aucun mod PQ02 imbriqué et aucun second identifiant Fabric. Les dépendances historiques, la configuration et les identifiants persistants du journal restent présents. Une incompatibilité explicite empêche de charger simultanément le compagnon obsolète.
+Un seul JAR `haute-capitale-quetes-HF12-PQ02-R1-HF1-1.21.11.jar` remplace HF12 et le compagnon PQ02, sur serveur et clients. Les points d’entrée de HF12 sont préservés dans leur ordre, puis ceux de PQ02 sont ajoutés une seule fois. Les mixins et le graphe narratif sont directement intégrés : aucun mod PQ02 imbriqué et aucun second identifiant Fabric. Les dépendances historiques, la configuration et les identifiants persistants du journal restent présents. Une incompatibilité explicite empêche de charger simultanément le compagnon obsolète.
 
-Les deux datapacks R1 sont strictement identiques à la première livraison. Cette fusion ne change aucun dialogue, aucune fonction, aucune récompense ni donnée de personnage. Les vérifications et empreintes propres à l’assemblage figurent dans `merge.json` ; le banc narratif est relancé avec toutes les classes dans le seul JAR de quêtes. Le test de démarrage utilise ensuite le JAR de production **sans modifier ses métadonnées, points d’entrée ou mixins**, avec des déclarations de dépendances Nexus/Puffish/RPG réservées au banc et aucun joueur. Ce test ne valide pas les API de ces trois modules tiers ni un client graphique.
+Le datapack `hc_quetes` R1 reste strictement identique. Le core passe à **R1 HF1** pour ses seules commandes administratives. Les vérifications et empreintes propres à l’assemblage figurent dans `merge.json` ; le banc narratif est relancé avec toutes les classes dans le seul JAR de quêtes. Le test de démarrage utilise ensuite le JAR de production **sans modifier ses métadonnées, points d’entrée ou mixins**, avec des déclarations de dépendances Nexus/Puffish/RPG réservées au banc et aucun joueur. Ce test ne valide pas les API de ces trois modules tiers ni un client graphique.
+
+## HF1 : commandes adaptées aux repères existants
+
+`preparer_parcours` remplace l’exigence de proximité du point A par une lecture ponctuelle des véritables markers déjà chargés dans la dimension. Les coordonnées actuelles priment sur le cache. Les autres repères connus restent utilisables seulement dans leur dimension ; les coordonnées absentes ne sont jamais inventées. Aucune coordonnée des captures d’Arthur n’est inscrite dans le code. Les armures de visualisation ne sont pas assimilées aux markers ou à l’ancien guide invisible.
+
+L’ancien nom `preparer_guide_historique` reste un alias. Si le parcours est complet, l’ancien guide unique peut être stationné sur A sans imposer que l’administrateur soit près de A. Un doublon de marker ou de guide refuse la préparation avant écriture ou déplacement. Une absence requise permet de conserver les points déjà relevés, mais ne stationne pas le guide. Si A est uniquement mémorisé ou si une scène est active, le stationnement est différé avec un message explicite. Cette préparation ne démarre pas l’escorte et ne touche pas aux scores de quête ou aux récompenses.
+
+`diagnostic_points` affiche rôle, coordonnées et statut chargé/mémorisé/absent/ambigu sans écrire de données. `diagnostic` conserve l’état du personnage et de la scène, avec un bilan des repères. `afficher_points` et `masquer_points` donnent accès aux fonctions historiques de visualisation sans modifier les markers.
+
+Depuis R1 : **2 entrées existantes de core changées** (métadonnées et alias), **4 fonctions d’administration ajoutées**, **11 334 entrées conservées** et aucune suppression. Le graphe narratif, les règles, le contrôleur de déplacement, le client et les quatre mixins restent identiques à R1. Le runtime reçoit les nouveaux raccords administratifs et appelle `Pq02Setup` uniquement depuis les commandes. L’itération des entités chargées n’est ajoutée à aucun tick de jeu. Les 37 contrôles spécifiques vérifient notamment la préparation à plus de 800 blocs, hors de l’ancienne bande verticale, le déplacement d’un marker existant, le cache, les absences, les doublons, les permissions opérateur, l’alias et le nettoyage des seules visualisations.
 
 ## Autorité des fichiers et audit préalable
 
@@ -104,9 +114,9 @@ Le banc natif vérifie les deux entrées du capitaine, 10→20→30→40, la Sen
 | Niveau | Résultat | Portée exacte |
 | --- | --- | --- |
 | ZIP/JAR, JSON, métadonnées, racines, compilation | PASS | Entrées authentifiées et compilation réelle Java 21, pas des contrats fictifs. |
-| Contrôles statiques automatisés | **246 PASS** | Périmètre des diffs, conservation MQ/PQ01, états/identifiants du journal, graphes et références. |
+| Contrôles statiques automatisés | **262 PASS** | Périmètre des diffs, conservation MQ/PQ01, états/identifiants du journal, graphes, références et conservation du périmètre R1 hors administration. |
 | Java : règles pures et politique Nexus réelle | **145 PASS** | 108 combinaisons, bornes, mémoire, politique PRE35, trames de lecture, pause et échec borné du contrôleur. |
-| Serveur Fabric/EasyNPC natif jetable | **1609 PASS** | Acteurs et navigation réels, trackers/paquets, sessions et mixins, deux escortes, menus, déconnexion/reprise, récompenses et chaîne MQ03. |
+| Serveur Fabric/EasyNPC natif jetable | **1646 PASS** | Les 1609 contrôles précédents et 37 nouveaux contrôles d’administration ; acteurs et navigation réels, trackers/paquets, sessions et mixins, deux escortes, menus, déconnexion/reprise, récompenses et chaîne MQ03. |
 | Capture b10 et adaptateur client en mode sans rendu | PASS | 111 nœuds, toutes citations et choix, changements de locuteur, déclencheurs et avancement explicite du client. Écran et moteur caméra doublés. |
 | Démarrage du JAR fusionné de production intact | **8 PASS + garde anti-doublon PASS** | Identifiant unique, quatre commandes et trois initialiseurs réels ; Nexus/Puffish/RPG déclarés par des métadonnées de test, sans leurs API de jeu. |
 | Client graphique sur carte Indivis, FPS, voix enregistrées | **Non réalisé** | Carte, exports PNJ, configurations et client graphique cible non fournis au banc. |
@@ -121,13 +131,14 @@ Le serveur de test hors ligne émet une erreur de récupération des clés publi
 
 | Archive | Modifiés | Ajoutés | Supprimés | Inchangés |
 | --- | --- | --- | --- | --- |
-| core fourni → PQ02 R1 | 50 | 12 | 0 | 11274 |
+| core fourni → PQ02 R1 HF1 | 50 | 16 | 0 | 11274 |
 | hc_quetes fourni → PQ02 R1 | 2 | 0 | 0 | 3321 |
+| core PQ02 R1 → HF1 | 2 | 4 | 0 | 11334 |
 
 `diffs.json` donne chaque chemin et sa justification. `datapacks.patch` contient le diff textuel complet. `coverage.json` relie les nœuds aux lignes du script ; `COUVERTURE.md` en donne une vue lisible. `merge.json` et `SHA256SUMS.txt` identifient exactement les binaires intégrés testés. `build.json` conserve la trace des composants intermédiaires. Le diff unifié a été appliqué à des copies des originaux : tous les fichiers obtenus correspondent octet pour octet aux deux archives de sortie. Les JAR de production ne contiennent aucune classe de test ; les binaires internes de la livraison sont ceux du banc réussi (`archive_qa.json`).
 
-`INSTALLATION.md` détaille serveur/clients, liaisons, reprise, migration et retour arrière. L’archive de sources fournit les sources nouvelles, les bancs et les scripts. La reproduction demande les entrées originales nommées dans `build.py` et le script narratif du kit ; les dépendances du banc sont téléchargées depuis leurs distributions officielles ou reprises des fichiers fournis, jamais installées sur le serveur utilisateur.
+`INSTALLATION.md` détaille serveur/clients, liaisons, reprise, migration et retour arrière ; `COMMANDES_PQ02.md` donne les commandes adaptées aux points. `hf1.json` et `hf1_baseline.json` documentent les comparaisons avec R1. L’archive de sources fournit les sources nouvelles, les bancs et les scripts. La reproduction demande les entrées originales nommées dans `build.py` et le script narratif du kit ; les dépendances du banc sont téléchargées depuis leurs distributions officielles ou reprises des fichiers fournis, jamais installées sur le serveur utilisateur.
 
 ## Limites et données manquantes
 
-Il manque une copie exploitable de la carte ou les exports des PNJ et des marqueurs A–P pour certifier les obstacles, positions, comportements publics et cadrages réels. Les configurations et les fichiers audio sont nécessaires à une recette des doublages. Les implémentations tierces de monnaie/CapSkills/RPG n’ont pas été exécutées intégralement dans ce banc : leurs appels de production sont conservés. La livraison est **installable et testée dans le périmètre décrit**, pas déclarée sans risque de régression sur un modpack et une carte qui n’ont pas été lancés ici.
+Les captures du parcours et les coordonnées partielles A/D fournies ensuite permettent d’en comprendre l’implantation, mais ne constituent pas une copie jouable de la carte ni un export complet des PNJ et des markers. Il manque ces données pour certifier les obstacles, comportements publics et cadrages réels. Les configurations et les fichiers audio sont nécessaires à une recette des doublages. Les implémentations tierces de monnaie/CapSkills/RPG n’ont pas été exécutées intégralement dans ce banc : leurs appels de production sont conservés. La livraison est **installable et testée dans le périmètre décrit**, pas déclarée sans risque de régression sur un modpack et une carte qui n’ont pas été lancés ici.

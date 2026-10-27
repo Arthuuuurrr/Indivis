@@ -1,0 +1,846 @@
+--- a/core/data/capitale/function/core/load.mcfunction
++++ b/core/data/capitale/function/core/load.mcfunction
+@@ -534,3 +534,6 @@
+ 
+ # QMARK2 : repères pilotés par le journal HF12.
+ function capitale:quest/markers/load
++
++# PQ02-R1
++function capitale:pq02/load
+--- a/core/data/capitale/function/npc/leovic/near_self.mcfunction
++++ b/core/data/capitale/function/npc/leovic/near_self.mcfunction
+@@ -1,4 +1,3 @@
+-# RC9ak — wrapper Near Distance universel.
+-# Fonctionne si EasyNPC l'exécute comme joueur OU comme PNJ.
+-execute if entity @s[type=player] run function capitale:quest/le_registre_du_port/leovic/near_offer_self
+-execute unless entity @s[type=player] at @s as @a[distance=..12,limit=1,sort=nearest] run function capitale:quest/le_registre_du_port/leovic/near_offer_self
++# PQ02-R1 — PQ02 : contexte de chaque joueur proche, aucune sélection globale du plus proche
++execute if entity @s[type=minecraft:player] run function capitale:quest/le_registre_du_port/leovic/near_offer_self
++execute unless entity @s[type=minecraft:player] at @s as @a[distance=..3] at @s run function capitale:quest/le_registre_du_port/leovic/near_offer_self
+--- a/core/data/capitale/function/pq01/choice/hugues_36.mcfunction
++++ b/core/data/capitale/function/pq01/choice/hugues_36.mcfunction
+@@ -4,6 +4,6 @@
+ execute if score @s hcm_pq1_pick matches 3 run return run function capitale:pq01/node/hugues_40
+ execute if score @s hcm_pq1_pick matches 4 run return run function capitale:pq01/node/hugues_42
+ execute if score @s hcm_pq1_pick matches 5 run return run function capitale:pq01/node/hugues_44
+-execute if score @s hcm_pq1_pick matches 6 run return run function capitale:pq01/banter_self
++execute if score @s hcm_pq1_pick matches 6 run return 0
+ execute if score @s hcm_pq1_pick matches 7 run return run function capitale:pq01/node/hugues_46
+ tellraw @s {"text":"Ce choix ne correspond plus à cette conversation.","color":"gray"}
+--- a/core/data/capitale/function/pq01/choice/hugues_38.mcfunction
++++ b/core/data/capitale/function/pq01/choice/hugues_38.mcfunction
+@@ -4,6 +4,6 @@
+ execute if score @s hcm_pq1_pick matches 3 run return run function capitale:pq01/node/hugues_40
+ execute if score @s hcm_pq1_pick matches 4 run return run function capitale:pq01/node/hugues_42
+ execute if score @s hcm_pq1_pick matches 5 run return run function capitale:pq01/node/hugues_44
+-execute if score @s hcm_pq1_pick matches 6 run return run function capitale:pq01/banter_self
++execute if score @s hcm_pq1_pick matches 6 run return 0
+ execute if score @s hcm_pq1_pick matches 7 run return run function capitale:pq01/node/hugues_46
+ tellraw @s {"text":"Ce choix ne correspond plus à cette conversation.","color":"gray"}
+--- a/core/data/capitale/function/pq01/choice/hugues_40.mcfunction
++++ b/core/data/capitale/function/pq01/choice/hugues_40.mcfunction
+@@ -4,6 +4,6 @@
+ execute if score @s hcm_pq1_pick matches 3 run return run function capitale:pq01/node/hugues_40
+ execute if score @s hcm_pq1_pick matches 4 run return run function capitale:pq01/node/hugues_42
+ execute if score @s hcm_pq1_pick matches 5 run return run function capitale:pq01/node/hugues_44
+-execute if score @s hcm_pq1_pick matches 6 run return run function capitale:pq01/banter_self
++execute if score @s hcm_pq1_pick matches 6 run return 0
+ execute if score @s hcm_pq1_pick matches 7 run return run function capitale:pq01/node/hugues_46
+ tellraw @s {"text":"Ce choix ne correspond plus à cette conversation.","color":"gray"}
+--- a/core/data/capitale/function/pq01/choice/hugues_42.mcfunction
++++ b/core/data/capitale/function/pq01/choice/hugues_42.mcfunction
+@@ -4,6 +4,6 @@
+ execute if score @s hcm_pq1_pick matches 3 run return run function capitale:pq01/node/hugues_40
+ execute if score @s hcm_pq1_pick matches 4 run return run function capitale:pq01/node/hugues_42
+ execute if score @s hcm_pq1_pick matches 5 run return run function capitale:pq01/node/hugues_44
+-execute if score @s hcm_pq1_pick matches 6 run return run function capitale:pq01/banter_self
++execute if score @s hcm_pq1_pick matches 6 run return 0
+ execute if score @s hcm_pq1_pick matches 7 run return run function capitale:pq01/node/hugues_46
+ tellraw @s {"text":"Ce choix ne correspond plus à cette conversation.","color":"gray"}
+--- a/core/data/capitale/function/pq01/choice/hugues_44.mcfunction
++++ b/core/data/capitale/function/pq01/choice/hugues_44.mcfunction
+@@ -4,6 +4,6 @@
+ execute if score @s hcm_pq1_pick matches 3 run return run function capitale:pq01/node/hugues_40
+ execute if score @s hcm_pq1_pick matches 4 run return run function capitale:pq01/node/hugues_42
+ execute if score @s hcm_pq1_pick matches 5 run return run function capitale:pq01/node/hugues_44
+-execute if score @s hcm_pq1_pick matches 6 run return run function capitale:pq01/banter_self
++execute if score @s hcm_pq1_pick matches 6 run return 0
+ execute if score @s hcm_pq1_pick matches 7 run return run function capitale:pq01/node/hugues_46
+ tellraw @s {"text":"Ce choix ne correspond plus à cette conversation.","color":"gray"}
+--- a/core/data/capitale/function/pq01/choice/hugues_menu.mcfunction
++++ b/core/data/capitale/function/pq01/choice/hugues_menu.mcfunction
+@@ -4,6 +4,6 @@
+ execute if score @s hcm_pq1_pick matches 3 run return run function capitale:pq01/node/hugues_40
+ execute if score @s hcm_pq1_pick matches 4 run return run function capitale:pq01/node/hugues_42
+ execute if score @s hcm_pq1_pick matches 5 run return run function capitale:pq01/node/hugues_44
+-execute if score @s hcm_pq1_pick matches 6 run return run function capitale:pq01/banter_self
++execute if score @s hcm_pq1_pick matches 6 run return 0
+ execute if score @s hcm_pq1_pick matches 7 run return run function capitale:pq01/node/hugues_46
+ tellraw @s {"text":"Ce choix ne correspond plus à cette conversation.","color":"gray"}
+--- a/core/data/capitale/function/pq01/menu/hugues_36.mcfunction
++++ b/core/data/capitale/function/pq01/menu/hugues_36.mcfunction
+@@ -4,6 +4,5 @@
+ $tellraw @s {"text":"[Vous n'aimez pas votre travail ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b3)"}}
+ $tellraw @s {"text":"[Vous connaissiez déjà Avaleiv ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b4)"}}
+ $tellraw @s {"text":"[Vous étiez là lorsqu'on m'a secouru ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b5)"}}
+-$tellraw @s {"text":"[Écouter leur échange sur les procédures.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b6)"}}
+ $tellraw @s {"text":"[Je vous laisse à vos caisses.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b7)"}}
+ $tellraw @s {"text":"[Fermer la conversation]","color":"gray","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b15)"}}
+--- a/core/data/capitale/function/pq01/menu/hugues_38.mcfunction
++++ b/core/data/capitale/function/pq01/menu/hugues_38.mcfunction
+@@ -4,6 +4,5 @@
+ $tellraw @s {"text":"[Vous n'aimez pas votre travail ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b3)"}}
+ $tellraw @s {"text":"[Vous connaissiez déjà Avaleiv ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b4)"}}
+ $tellraw @s {"text":"[Vous étiez là lorsqu'on m'a secouru ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b5)"}}
+-$tellraw @s {"text":"[Écouter leur échange sur les procédures.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b6)"}}
+ $tellraw @s {"text":"[Je vous laisse à vos caisses.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b7)"}}
+ $tellraw @s {"text":"[Fermer la conversation]","color":"gray","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b15)"}}
+--- a/core/data/capitale/function/pq01/menu/hugues_40.mcfunction
++++ b/core/data/capitale/function/pq01/menu/hugues_40.mcfunction
+@@ -4,6 +4,5 @@
+ $tellraw @s {"text":"[Vous n'aimez pas votre travail ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b3)"}}
+ $tellraw @s {"text":"[Vous connaissiez déjà Avaleiv ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b4)"}}
+ $tellraw @s {"text":"[Vous étiez là lorsqu'on m'a secouru ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b5)"}}
+-$tellraw @s {"text":"[Écouter leur échange sur les procédures.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b6)"}}
+ $tellraw @s {"text":"[Je vous laisse à vos caisses.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b7)"}}
+ $tellraw @s {"text":"[Fermer la conversation]","color":"gray","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b15)"}}
+--- a/core/data/capitale/function/pq01/menu/hugues_42.mcfunction
++++ b/core/data/capitale/function/pq01/menu/hugues_42.mcfunction
+@@ -4,6 +4,5 @@
+ $tellraw @s {"text":"[Vous n'aimez pas votre travail ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b3)"}}
+ $tellraw @s {"text":"[Vous connaissiez déjà Avaleiv ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b4)"}}
+ $tellraw @s {"text":"[Vous étiez là lorsqu'on m'a secouru ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b5)"}}
+-$tellraw @s {"text":"[Écouter leur échange sur les procédures.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b6)"}}
+ $tellraw @s {"text":"[Je vous laisse à vos caisses.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b7)"}}
+ $tellraw @s {"text":"[Fermer la conversation]","color":"gray","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b15)"}}
+--- a/core/data/capitale/function/pq01/menu/hugues_44.mcfunction
++++ b/core/data/capitale/function/pq01/menu/hugues_44.mcfunction
+@@ -4,6 +4,5 @@
+ $tellraw @s {"text":"[Vous n'aimez pas votre travail ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b3)"}}
+ $tellraw @s {"text":"[Vous connaissiez déjà Avaleiv ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b4)"}}
+ $tellraw @s {"text":"[Vous étiez là lorsqu'on m'a secouru ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b5)"}}
+-$tellraw @s {"text":"[Écouter leur échange sur les procédures.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b6)"}}
+ $tellraw @s {"text":"[Je vous laisse à vos caisses.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b7)"}}
+ $tellraw @s {"text":"[Fermer la conversation]","color":"gray","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b15)"}}
+--- a/core/data/capitale/function/pq01/menu/hugues_menu.mcfunction
++++ b/core/data/capitale/function/pq01/menu/hugues_menu.mcfunction
+@@ -4,6 +4,5 @@
+ $tellraw @s {"text":"[Vous n'aimez pas votre travail ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b3)"}}
+ $tellraw @s {"text":"[Vous connaissiez déjà Avaleiv ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b4)"}}
+ $tellraw @s {"text":"[Vous étiez là lorsqu'on m'a secouru ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b5)"}}
+-$tellraw @s {"text":"[Écouter leur échange sur les procédures.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b6)"}}
+ $tellraw @s {"text":"[Je vous laisse à vos caisses.]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b7)"}}
+ $tellraw @s {"text":"[Fermer la conversation]","color":"gray","click_event":{"action":"run_command","command":"/trigger QuestChoix set $(b15)"}}
+--- /dev/null
++++ b/core/data/capitale/function/pq02/admin/afficher_points.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Visualisation historique des repères existants, sans déplacement des markers
++function capitale:quest/le_registre_du_port/escort/debug/show_waypoints
+--- /dev/null
++++ b/core/data/capitale/function/pq02/admin/diagnostic.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Administration ciblée de PQ02
++indivispq02 status
+--- /dev/null
++++ b/core/data/capitale/function/pq02/admin/diagnostic_points.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Administration ciblée de PQ02
++indivispq02 points
+--- /dev/null
++++ b/core/data/capitale/function/pq02/admin/masquer_points.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Visualisation historique des repères existants, sans déplacement des markers
++function capitale:quest/le_registre_du_port/escort/debug/clear_waypoints
+--- /dev/null
++++ b/core/data/capitale/function/pq02/admin/nettoyer_scenes.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Administration ciblée de PQ02
++indivispq02 clear_scenes
+--- /dev/null
++++ b/core/data/capitale/function/pq02/admin/preparer_guide_historique.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Compatibilité : ancien nom conservé vers la préparation automatique du parcours
++return run function capitale:pq02/admin/preparer_parcours
+--- /dev/null
++++ b/core/data/capitale/function/pq02/admin/preparer_parcours.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Administration ciblée de PQ02
++indivispq02 prepare_route
+--- /dev/null
++++ b/core/data/capitale/function/pq02/complete_once_self.mcfunction
+@@ -0,0 +1,22 @@
++# PQ02-R1 — Achèvement explicite et unique ; compétences/XP/bonus conservés ; +5 supprimé
++execute unless score @s hcq_pq02 matches 90 run return 0
++execute unless score @s CAP_QDIALOG_OWNER matches 97 run return 0
++execute unless score @s CAP_PQ2_REG matches 1 run return 0
++execute unless score @s CAP_PQ2_DD matches 1..4 run return 0
++execute if score @s CAP_PQ2_REW matches 1.. run return 0
++execute store result score @s hcm_pq2_check run indivispq02 rewards_ready
++execute unless score @s hcm_pq2_check matches 1 run return 0
++scoreboard players set @s CAP_PQ2_REW 1
++function capitale:reward/skills/core/registre_port_self
++function capitale:rewards/daily_bonus/roll/port_self
++function hc_quetes:migration/write/pq02/v100
++scoreboard players set @s QUEST_PROLOGUE 30
++scoreboard players set @s CAP_QUETEACTIVE 0
++scoreboard players set @s CAP_GUIDE_LOCK 0
++scoreboard players set @s CAP_GUIDE_ID 0
++scoreboard players set @s CAP_GUIDE_MISS_T 0
++title @s times 10 70 20
++title @s title {"text":"Quête terminée","color":"gold","bold":true}
++title @s subtitle {"text":"Le registre du Port","color":"white"}
++function capitale:dialogue/sound/gain_quete_self
++return 1
+--- /dev/null
++++ b/core/data/capitale/function/pq02/gift_once_self.mcfunction
+@@ -0,0 +1,10 @@
++# PQ02-R1 — Don personnel unique, ancien bonus de port conservé, aucun effet de réputation
++execute unless score @s CAP_QDIALOG_OWNER matches 97 run return 0
++execute unless score @s hcq_pq02 matches 90..100 run return 0
++execute unless score @s CAP_PQ2_OFFER matches 1 run return 0
++execute if score @s CAP_LEOVIC_GIFT matches 1.. run return 0
++scoreboard players set @s CAP_LEOVIC_GIFT 1
++give @s capitale_currency:martin_dor 50
++function capitale:rewards/daily_bonus/roll/port_self
++execute at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 1.15 1.15
++return 1
+--- /dev/null
++++ b/core/data/capitale/function/pq02/liaison/leovic.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Association d’un PNJ existant, sans modification d’apparence ou d’action
++indivispq02 bind_leovic
+--- /dev/null
++++ b/core/data/capitale/function/pq02/liaison/magistrat.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Association d’un PNJ existant, sans modification d’apparence ou d’action
++indivispq02 bind_magistrat
+--- /dev/null
++++ b/core/data/capitale/function/pq02/liaison/sentinelle.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Association d’un PNJ existant, sans modification d’apparence ou d’action
++indivispq02 bind_sentinel
+--- /dev/null
++++ b/core/data/capitale/function/pq02/load.mcfunction
+@@ -0,0 +1,21 @@
++# PQ02-R1 — Objectifs persistants et trigger isolé, aucun score de joueur réinitialisé
++scoreboard objectives add CAP_PQ2_VER dummy
++scoreboard objectives add CAP_PQ2_NODE dummy
++scoreboard objectives add CAP_PQ2_DA dummy
++scoreboard objectives add CAP_PQ2_DG dummy
++scoreboard objectives add CAP_PQ2_DM dummy
++scoreboard objectives add CAP_PQ2_DD dummy
++scoreboard objectives add CAP_PQ2_IMPR dummy
++scoreboard objectives add CAP_PQ2_SENT dummy
++scoreboard objectives add CAP_PQ2_ANECD dummy
++scoreboard objectives add CAP_PQ2_PORT dummy
++scoreboard objectives add CAP_PQ2_STATUS dummy
++scoreboard objectives add CAP_PQ2_OFFER dummy
++scoreboard objectives add CAP_PQ2_REG dummy
++scoreboard objectives add CAP_PQ2_REW dummy
++scoreboard objectives add CAP_PQ2_WP dummy
++scoreboard objectives add CAP_PQ2_PAUSE dummy
++scoreboard objectives add hcm_pq2_ui dummy
++scoreboard objectives add hcm_pq2_check dummy
++scoreboard objectives add Pq02Choix trigger
++data modify storage capitale:pq02_setup version set value 1
+--- /dev/null
++++ b/core/data/capitale/function/pq02/open_leovic.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Ouverture/reprise du dialogue de Léovic
++indivispq02 leovic
+--- /dev/null
++++ b/core/data/capitale/function/pq02/open_magistrat.mcfunction
+@@ -0,0 +1,2 @@
++# PQ02-R1 — Entretien à trois au poste existant du magistrat
++indivispq02 magistrat
+--- /dev/null
++++ b/core/data/capitale/function/pq02/register_once_self.mcfunction
+@@ -0,0 +1,12 @@
++# PQ02-R1 — Inscription idempotente, Visiteur minimum, aucun rang abaissé
++execute unless score @s hcq_pq02 matches 50 run return 0
++execute unless score @s CAP_QDIALOG_OWNER matches 97 run return 0
++execute if score @s CAP_PQ2_REG matches 1.. run return 0
++scoreboard players set @s CAP_PQ2_REG 1
++scoreboard players add @s CAP_RANGSOCIAL 0
++execute if score @s CAP_RANGSOCIAL matches ..9 run scoreboard players set @s CAP_RANGSOCIAL 10
++function capitale:bounds/rangsocial_self
++function capitale:access/recalculate_by_rank_self
++function capitale:display/prefix/sync_self
++function hc_quetes:migration/write/pq02/v40
++return 1
+--- a/core/data/capitale/function/profiles/after_load_self.mcfunction
++++ b/core/data/capitale/function/profiles/after_load_self.mcfunction
+@@ -2,3 +2,6 @@
+ # Hook futur mod capitale_profiles — appelé APRÈS chargement du profil choisi.
+ function capitale:profiles/resync_after_profile_load_self
+ tellraw @s {"text":"Profil chargé. Données RP resynchronisées.","color":"green"}
++
++# PQ02-R1 : nettoyage de session uniquement, aucune progression.
++indivispq02 restore
+--- a/core/data/capitale/function/profiles/before_save_self.mcfunction
++++ b/core/data/capitale/function/profiles/before_save_self.mcfunction
+@@ -1,3 +1,5 @@
++# PQ02-R1 — PQ02 : suspension et fermeture avant la sauvegarde Nexus du personnage
++indivispq02 suspend
+ # Hook mod profils — appelé AVANT sauvegarde du profil actif.
+ # À garder silencieux autant que possible pour éviter le spam en cas d’appel automatique.
+ function capitale:profiles/pre_save_runtime_flush_self
+--- a/core/data/capitale/function/quest/guidage/sync_self.mcfunction
++++ b/core/data/capitale/function/quest/guidage/sync_self.mcfunction
+@@ -10,3 +10,7 @@
+ execute if predicate hc_quetes:migration/state/pq04/20 run scoreboard players set @s CAP_GUIDE_ID 3
+ execute if predicate hc_quetes:migration/state/pq04/50 run scoreboard players set @s CAP_GUIDE_LOCK 1
+ execute if predicate hc_quetes:migration/state/pq04/50 run scoreboard players set @s CAP_GUIDE_ID 4
++
++# PQ02-R1 : courte escorte après inscription.
++execute if predicate hc_quetes:migration/state/pq02/50 run scoreboard players set @s CAP_GUIDE_LOCK 1
++execute if predicate hc_quetes:migration/state/pq02/50 run scoreboard players set @s CAP_GUIDE_ID 1
+--- a/core/data/capitale/function/quest/le_registre_du_port/escort/tick.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/escort/tick.mcfunction
+@@ -1,43 +1,2 @@
+-scoreboard players add @e[type=armor_stand,tag=guide_leovic_registre_port] NPC_PATROL_STATE 0
+-scoreboard players add @e[type=armor_stand,tag=guide_leovic_registre_port] NPC_PATROL_CD 0
+-scoreboard players remove @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,scores={NPC_PATROL_CD=1..}] NPC_PATROL_CD 1
+-scoreboard players remove @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,scores={NPC_PATROL_CD=1..}] NPC_PATROL_CD 1
+-scoreboard players remove @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,scores={NPC_RETURN_TIMER=1..}] NPC_RETURN_TIMER 1
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,scores={NPC_RETURN_TIMER=0}] run function capitale:quest/le_registre_du_port/escort/failsafe_to_a
+-function capitale:quest/le_registre_du_port/escort/move_tick
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=0,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_0
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=1,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_1
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=2,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_2
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=3,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_3
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=4,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_4
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=5,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_5
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=6,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_6
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=60,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_60
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=7,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_7
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=61,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_61
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=8,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_8
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=9,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_9
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=10,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_10
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=11,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_11
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=12,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_12
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=13,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_13
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=14,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_14
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_active,tag=!escort_moving,scores={NPC_PATROL_STATE=15,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/next_15
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=15,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_15
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=14,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_14
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=13,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_13
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=12,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_12
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=11,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_11
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=10,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_10
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=9,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_9
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=8,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_8
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=61,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_61
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=7,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_7
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=60,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_60
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=6,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_6
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=5,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_5
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=4,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_4
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=3,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_3
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=2,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_2
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=1,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_1
+-execute as @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,tag=!escort_moving,scores={NPC_PATROL_STATE=0,NPC_PATROL_CD=0}] at @s if entity @e[tag=npc_leovic_registre_port,distance=..2] run function capitale:quest/le_registre_du_port/escort/return_0
++# PQ02-R1 — PQ02 : ancien guide mondial désactivé ; parcours A–P repris par instance personnelle
++return 0
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/accept_body_154_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/accept_body_154_self.mcfunction
+@@ -1,7 +1,2 @@
+-function capitale:player/ensure_runtime_self
+-scoreboard players set @s CAP_FLAG 0
+-execute if score @s CAP_QUETEACTIVE matches 0 run scoreboard players set @s CAP_FLAG 1
+-execute if score @s CAP_QUETEACTIVE matches 4 run scoreboard players set @s CAP_FLAG 1
+-execute if score @s CAP_FLAG matches 1 run function capitale:quest/le_registre_du_port/leovic/accept_commit_self
+-execute unless score @s CAP_FLAG matches 1 run function capitale:quest/blocked_active_self
+-execute unless score @s CAP_FLAG matches 1 run function capitale:quest/dialogue/clear_self
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/accept_commit_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/accept_commit_self.mcfunction
+@@ -1,8 +1,2 @@
+-function capitale:quest/dialogue/clear_self
+-function hc_quetes:migration/write/pq02/v20
+-scoreboard players set @s QUEST_PROLOGUE 20
+-scoreboard players set @s CAP_QUETEACTIVE 4
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Venez. Le magistrat siège à l’entrée des bureaux d’enregistrement du Port, près du comptoir administratif, sous la grande horloge des Archives.","color":"white"}]
+-scoreboard players set @s CAP_QSEQ 512
+-scoreboard players set @s CAP_QSEQ_TIMER 20
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/accept_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/accept_self.mcfunction
+@@ -1,3 +1,2 @@
+-function capitale:quest/guidage/sync_self
+-execute if score @s CAP_GUIDE_LOCK matches 1.. run function capitale:quest/blocked_guide_self
+-execute unless score @s CAP_GUIDE_LOCK matches 1.. run function capitale:quest/le_registre_du_port/leovic/accept_body_154_self
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/arrive_ascenseur_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/arrive_ascenseur_self.mcfunction
+@@ -1,14 +1,2 @@
+-scoreboard players set @s CAP_GUIDE_LOCK 0
+-scoreboard players set @s CAP_GUIDE_ID 0
+-scoreboard players set @s CAP_GUIDE_MISS_T 0
+-
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Voilà l’ascenseur. Avant que je reprenne ma ronde, venez me reparler : votre arrivée mérite d’être close proprement.","color":"white"}]
+-function hc_quetes:migration/write/pq02/v60
+-scoreboard players set @s CAP_QUETEACTIVE 0
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s {"text":"[Quête] Le registre du Port — Reparlez à Léovic devant l’ascenseur.","color":"gold"}
+-title @s times 5 50 15
+-title @s title {"text":"Objectif mis à jour","color":"gold","bold":true}
+-title @s subtitle {"text":"Reparlez à Léovic.","color":"white"}
+-execute at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 1.15 1.35
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/complete_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/complete_self.mcfunction
+@@ -1,5 +1,2 @@
+-
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Vous êtes en règle. Cet ascenseur vous déposera au milieu du Cœur mécanique de la cité. Ne vous écartez pas des voies autorisées : les gardes du Cœur vous indiqueront la suite.","color":"white"}]
+-scoreboard players set @s CAP_QSEQ 601
+-scoreboard players set @s CAP_QSEQ_TIMER 20
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/decline_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/decline_self.mcfunction
+@@ -1,7 +1,2 @@
+-function capitale:quest/dialogue/clear_self
+-function hc_quetes:migration/write/pq02/v2
+-function capitale:dialogue/random/roll_3_self
+-function capitale:dialogue/sound/parole_quete_self
+-execute if score @s CAP_DLG_RNG matches 1 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Comme vous voudrez. Sachez seulement que les gens d’ici n’aiment guère les étrangers dont aucun registre ne garde trace. Revenez me voir si vous changez d’avis.","color":"white"}]
+-execute if score @s CAP_DLG_RNG matches 2 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Vous pouvez tarder, mais le Port finit toujours par demander un nom et une ligne d’encre. Je resterai sur les quais.","color":"white"}]
+-execute if score @s CAP_DLG_RNG matches 3 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Très bien. Mais sans registre, chaque passage vous semblera plus étroit qu’il ne devrait.","color":"white"}]
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/explain_registration_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/explain_registration_self.mcfunction
+@@ -1,4 +1,2 @@
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : La Capitale reçoit marchands, ouvriers, messagers et curieux. Elle s’en accommode mieux quand chacun laisse au moins un nom sur un registre.","color":"white"}]
+-scoreboard players set @s CAP_QSEQ 501
+-scoreboard players set @s CAP_QSEQ_TIMER 20
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/gift_after_quest_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/gift_after_quest_self.mcfunction
+@@ -1,9 +1,2 @@
+-function capitale:player/ensure_runtime_self
+-scoreboard players set @s CAP_LEOVIC_GIFT 1
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Vous revoilà. Tenez :","color":"white"},{"text":"50 Martins d’Or","color":"yellow"},{"text":". Ce n’est pas une fortune, mais les premiers jours dans une ville pareille coûtent toujours plus qu’on ne l’imagine. Gardez-les.","color":"white"}]
+-give @s capitale_currency:martin_dor 50
+-function capitale:rewards/daily_bonus/roll/port_self
+-execute at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 1.15 1.15
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Et si vous cherchez un travail honnête, repassez parfois. Les quais manquent rarement de bras, d’yeux attentifs… ou de gens capables de garder leur sang-froid.","color":"white"}]
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/interact_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/interact_self.mcfunction
+@@ -1,36 +1,2 @@
+-function capitale:player/ensure_runtime_self
+-# RC9af — routeur Léovic protégé : une seule branche de dialogue par interaction.
+-# hcq_pq02=10 = objectif récent « parler à Léovic sur les quais ».
+-# CAP_RANGSOCIAL ne bloque plus l’offre : le prologue récent peut déjà initialiser Visiteur (=10).
+-scoreboard players set @s CAP_FLAG 0
+-
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq01/_to_99 run scoreboard players set @s CAP_FLAG 10
+-execute if score @s CAP_FLAG matches 10 run function capitale:dialogue/sound/parole_quete_self
+-execute if score @s CAP_FLAG matches 10 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Nous parlerons quand vous aurez quitté le dirigeable pour de bon.","color":"white"}]
+-
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq01/100 if predicate hc_quetes:migration/state/pq02/0 run scoreboard players set @s CAP_FLAG 20
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq01/100 if predicate hc_quetes:migration/state/pq02/10 run scoreboard players set @s CAP_FLAG 20
+-execute if score @s CAP_FLAG matches 20 run function capitale:quest/le_registre_du_port/leovic/offer_self
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq01/100 if predicate hc_quetes:migration/state/pq02/1_to_2 run scoreboard players set @s CAP_FLAG 21
+-execute if score @s CAP_FLAG matches 21 run function capitale:quest/le_registre_du_port/leovic/reoffer_self
+-
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq02/20 run scoreboard players set @s CAP_FLAG 30
+-execute if score @s CAP_FLAG matches 30 run function capitale:dialogue/sound/parole_quete_self
+-execute if score @s CAP_FLAG matches 30 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Restez près de moi. Le magistrat n’est plus très loin.","color":"white"}]
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq02/30 run scoreboard players set @s CAP_FLAG 40
+-execute if score @s CAP_FLAG matches 40 run function capitale:dialogue/sound/parole_quete_self
+-execute if score @s CAP_FLAG matches 40 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Nous y sommes. Présentez-vous au magistrat du Port ; je vous attends ici.","color":"white"}]
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq02/40 run scoreboard players set @s CAP_FLAG 50
+-execute if score @s CAP_FLAG matches 50 run function capitale:quest/le_registre_du_port/leovic/lead_to_ascenseur_self
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq02/50 run scoreboard players set @s CAP_FLAG 60
+-execute if score @s CAP_FLAG matches 60 run function capitale:dialogue/sound/parole_quete_self
+-execute if score @s CAP_FLAG matches 60 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Encore quelques pas. L’ascenseur du Cercle commercial est juste devant nous.","color":"white"}]
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq02/60 run scoreboard players set @s CAP_FLAG 70
+-execute if score @s CAP_FLAG matches 70 run function capitale:quest/le_registre_du_port/leovic/complete_self
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq02/100_to_ if score @s CAP_LEOVIC_GIFT matches 0 if entity @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,limit=1] run scoreboard players set @s CAP_FLAG 80
+-execute if score @s CAP_FLAG matches 80 run function capitale:quest/le_registre_du_port/leovic/postquest_returning_self
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq02/100_to_ if score @s CAP_LEOVIC_GIFT matches 0 unless entity @e[type=armor_stand,tag=guide_leovic_registre_port,tag=escort_returning,limit=1] run scoreboard players set @s CAP_FLAG 81
+-execute if score @s CAP_FLAG matches 81 run function capitale:quest/le_registre_du_port/leovic/gift_after_quest_self
+-execute if score @s CAP_FLAG matches 0 if predicate hc_quetes:migration/state/pq02/100_to_ if score @s CAP_LEOVIC_GIFT matches 1.. run scoreboard players set @s CAP_FLAG 82
+-execute if score @s CAP_FLAG matches 82 run function capitale:quest/le_registre_du_port/leovic/postquest_self
+-scoreboard players set @s CAP_FLAG 0
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/lead_to_ascenseur_commit_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/lead_to_ascenseur_commit_self.mcfunction
+@@ -1,5 +1,2 @@
+-
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Voilà qui est fait. Vous êtes désormais inscrit ; la Capitale saura au moins quel nom placer sur ses registres.","color":"white"}]
+-scoreboard players set @s CAP_QSEQ 611
+-scoreboard players set @s CAP_QSEQ_TIMER 20
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/lead_to_ascenseur_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/lead_to_ascenseur_self.mcfunction
+@@ -1,6 +1,2 @@
+-function capitale:player/ensure_runtime_self
+-scoreboard players set @s CAP_FLAG 0
+-execute if score @s CAP_QUETEACTIVE matches 0 run scoreboard players set @s CAP_FLAG 1
+-execute if score @s CAP_QUETEACTIVE matches 4 run scoreboard players set @s CAP_FLAG 1
+-execute if score @s CAP_FLAG matches 1 run function capitale:quest/le_registre_du_port/leovic/lead_to_ascenseur_commit_self
+-execute unless score @s CAP_FLAG matches 1 run function capitale:quest/blocked_active_self
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/near_offer_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/near_offer_self.mcfunction
+@@ -1,4 +1,2 @@
+-function capitale:player/ensure_runtime_self
+-# RC9af — near distance compatible avec l’état d’attente hcq_pq02=10.
+-execute if predicate hc_quetes:migration/state/pq01/100 if predicate hc_quetes:migration/state/pq02/0 run function capitale:quest/le_registre_du_port/leovic/offer_self
+-execute if predicate hc_quetes:migration/state/pq01/100 if predicate hc_quetes:migration/state/pq02/10 run function capitale:quest/le_registre_du_port/leovic/offer_self
++# PQ02-R1 — PQ02 : interpellation ciblée, bornée à trois blocs et reprise au clic
++indivispq02 near
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/offer_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/offer_self.mcfunction
+@@ -1,9 +1,2 @@
+-hcd_interpellation nearest_named Léovic
+-function capitale:player/ensure_runtime_self
+-function hc_quetes:migration/write/pq02/v1
+-scoreboard players set @s CAP_QUETEACTIVE 4
+-function capitale:quest/objective/parler_leovic_quais_self
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Vous descendez du dirigeable de la Couronne ? Alors vous êtes nouveau au Port. Si personne ne vous a encore inscrit, je peux vous mener au magistrat.","color":"white"}]
+-scoreboard players set @s CAP_QSEQ 502
+-scoreboard players set @s CAP_QSEQ_TIMER 20
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/open_choices_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/open_choices_self.mcfunction
+@@ -1,5 +1,2 @@
+-function capitale:quest/dialogue/clear_self
+-scoreboard players set @s CAP_QDIALOG_OWNER 2
+-scoreboard players set @s CAP_QDIALOG_KEEP 1
+-function capitale:quest/dialogue/anchor/create_self
+-function capitale:quest/le_registre_du_port/leovic/show_choices_self
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/postquest_returning_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/postquest_returning_self.mcfunction
+@@ -1,5 +1,2 @@
+-function capitale:dialogue/random/roll_2_self
+-execute if score @s CAP_DLG_RNG matches 1 run function capitale:dialogue/sound/parole_quete_self
+-execute if score @s CAP_DLG_RNG matches 1 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Je regagne mon poste. Repassez me voir sur les quais lorsque j’y serai revenu.","color":"white"}]
+-execute if score @s CAP_DLG_RNG matches 2 run function capitale:dialogue/sound/parole_quete_self
+-execute if score @s CAP_DLG_RNG matches 2 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Je reprends la route du Port. Si vous avez encore affaire à moi, attendez que je retrouve les quais.","color":"white"}]
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/postquest_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/postquest_self.mcfunction
+@@ -1,5 +1,2 @@
+-function capitale:dialogue/random/roll_2_self
+-execute if score @s CAP_DLG_RNG matches 1 run function capitale:dialogue/sound/parole_quete_self
+-execute if score @s CAP_DLG_RNG matches 1 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Les registres sont en ordre et vous savez désormais où commence vraiment la ville. Si les quais vous ramènent un jour vers moi, je trouverai sans doute de quoi occuper une paire de mains fiables.","color":"white"}]
+-execute if score @s CAP_DLG_RNG matches 2 run function capitale:dialogue/sound/parole_quete_self
+-execute if score @s CAP_DLG_RNG matches 2 run tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Votre nom est désormais posé là où il faut. Revenez aux quais si vous cherchez plus tard un ouvrage honnête à rendre.","color":"white"}]
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/reoffer_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/reoffer_self.mcfunction
+@@ -1,3 +1,2 @@
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Vous avez changé d’avis ? Le magistrat reçoit encore les arrivants près des bureaux d’enregistrement.","color":"white"}]
+-function capitale:quest/le_registre_du_port/leovic/open_choices_self
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/leovic/show_choices_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/leovic/show_choices_self.mcfunction
+@@ -1,2 +1,2 @@
+-scoreboard players enable @s QuestChoix
+-tellraw @s [{"text":"[Choix] ","color":"gray"},{"text":"[Menez-moi au magistrat.]","color":"green","click_event":{"action":"run_command","command":"/trigger QuestChoix set 10"},"hover_event":{"action":"show_text","value":"Accepter l’accompagnement de Léovic."}},{"text":"   ","color":"gray"},{"text":"[Pourquoi faut-il s’enregistrer ?]","color":"yellow","click_event":{"action":"run_command","command":"/trigger QuestChoix set 11"},"hover_event":{"action":"show_text","value":"Demander à Léovic pourquoi la Capitale tient ses registres."}},{"text":"   ","color":"gray"},{"text":"[Je verrai plus tard.]","color":"red","click_event":{"action":"run_command","command":"/trigger QuestChoix set 12"},"hover_event":{"action":"show_text","value":"Reporter cette aide sans la rendre indisponible."}}]
++# PQ02-R1 — PQ02 : entrée historique vers le dialogue validé, aucun don ni achèvement implicite
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/magistrat/register_commit_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/magistrat/register_commit_self.mcfunction
+@@ -1,3 +1,5 @@
++# PQ02-R1 — PQ02 : entretien assisté prioritaire, autres inscriptions et citoyenneté inchangées
++execute if score @s hcq_pq02 matches 40..90 run return run function capitale:pq02/open_magistrat
+ 
+ execute if score @s CAP_RANGSOCIAL matches ..9 run scoreboard players set @s CAP_RANGSOCIAL 10
+ function capitale:bounds/rangsocial_self
+--- a/core/data/capitale/function/quest/le_registre_du_port/magistrat/register_paid_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/magistrat/register_paid_self.mcfunction
+@@ -1,3 +1,5 @@
++# PQ02-R1 — PQ02 : entretien assisté prioritaire, autres inscriptions et citoyenneté inchangées
++execute if score @s hcq_pq02 matches 40..90 run return run function capitale:pq02/open_magistrat
+ 
+ scoreboard players set @s CAP_JCOINS 0
+ execute store result score @s CAP_JCOINS run clear @s capitale_currency:martin_dor 0
+--- a/core/data/capitale/function/quest/le_registre_du_port/magistrat/register_paid_success_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/magistrat/register_paid_success_self.mcfunction
+@@ -1,3 +1,5 @@
++# PQ02-R1 — PQ02 : entretien assisté prioritaire, autres inscriptions et citoyenneté inchangées
++execute if score @s hcq_pq02 matches 40..90 run return run function capitale:pq02/open_magistrat
+ 
+ clear @s capitale_currency:martin_dor 100
+ scoreboard players set @s CAP_JCOINS 0
+--- a/core/data/capitale/function/quest/le_registre_du_port/magistrat/register_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/magistrat/register_self.mcfunction
+@@ -1,3 +1,5 @@
++# PQ02-R1 — PQ02 : entretien assisté prioritaire, autres inscriptions et citoyenneté inchangées
++execute if score @s hcq_pq02 matches 40..90 run return run function capitale:pq02/open_magistrat
+ function capitale:player/ensure_runtime_self
+ # RC9af — routeur Magistrat du Port protégé : une seule branche de dialogue par interaction.
+ # L’enregistrement assisté par Léovic prime sur le rang initialisé par le prologue.
+--- a/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_accept_l2_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_accept_l2_self.mcfunction
+@@ -1,9 +1,2 @@
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s {"text":"[Quête] Le registre du Port — Suivez Léovic jusqu’au magistrat.","color":"gold"}
+-title @s times 5 50 15
+-title @s title {"text":"Le registre du Port","color":"gold","bold":true}
+-title @s subtitle {"text":"Suivez Léovic jusqu’au magistrat.","color":"white"}
+-execute at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 1.15 1.35
+-function capitale:quest/le_registre_du_port/escort/start_self
+-scoreboard players set @s CAP_QSEQ 0
+-scoreboard players set @s CAP_QSEQ_TIMER 0
++# PQ02-R1 — PQ02 : ancienne séquence automatique retirée ; progression explicite, aucun +5
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_completion_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_completion_self.mcfunction
+@@ -1,18 +1,2 @@
+-scoreboard players set @s CAP_GUIDE_LOCK 0
+-scoreboard players set @s CAP_GUIDE_ID 0
+-scoreboard players set @s CAP_GUIDE_MISS_T 0
+-scoreboard players add @s REP_GARDEPORT 5
+-function capitale:bounds/reputation_all_self
+-function hc_quetes:migration/write/pq02/v100
+-scoreboard players set @s QUEST_PROLOGUE 30
+-scoreboard players set @s CAP_QUETEACTIVE 0
+-title @s times 10 70 20
+-title @s title {"text":"Quête terminée","color":"gold","bold":true}
+-title @s subtitle {"text":"Le registre du Port","color":"white"}
+-function capitale:dialogue/sound/gain_quete_self
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s {"text":"[Quête] Terminée : Le registre du Port. Réputation Garde du Port +5.","color":"gold"}
+-function capitale:rewards/daily_bonus/roll/port_self
+-function capitale:reward/skills/core/registre_port_self
+-scoreboard players set @s CAP_QSEQ 602
+-scoreboard players set @s CAP_QSEQ_TIMER 60
++# PQ02-R1 — PQ02 : ancienne séquence automatique retirée ; progression explicite, aucun +5
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_offer_l2_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_offer_l2_self.mcfunction
+@@ -1,5 +1,2 @@
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Dialogue de quête]","color":"light_purple"},{"text":" Léovic vous adresse une proposition.","color":"gray"}]
+-function capitale:quest/le_registre_du_port/leovic/open_choices_self
+-scoreboard players set @s CAP_QSEQ 0
+-scoreboard players set @s CAP_QSEQ_TIMER 0
++# PQ02-R1 — PQ02 : ancienne séquence automatique retirée ; progression explicite, aucun +5
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_reafficher_choix_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_reafficher_choix_self.mcfunction
+@@ -1,7 +1,2 @@
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Sans inscription, les portes restent ouvertes, mais les regards se ferment plus vite. Si vous le souhaitez, je vous accompagne.","color":"white"}]
+-scoreboard players set @s CAP_QSEQ 0
+-scoreboard players set @s CAP_QSEQ_TIMER 0
+-scoreboard players set @s CAP_QDIALOG_OWNER 2
+-scoreboard players set @s CAP_QDIALOG_KEEP 1
+-function capitale:quest/le_registre_du_port/leovic/show_choices_self
++# PQ02-R1 — PQ02 : ancienne séquence automatique retirée ; progression explicite, aucun +5
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_return_after_completion_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_return_after_completion_self.mcfunction
+@@ -1,4 +1,2 @@
+-
+-function capitale:quest/le_registre_du_port/escort/return_start
+-scoreboard players set @s CAP_QSEQ 0
+-scoreboard players set @s CAP_QSEQ_TIMER 0
++# PQ02-R1 — PQ02 : ancienne séquence automatique retirée ; progression explicite, aucun +5
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_to_ascenseur_self.mcfunction
++++ b/core/data/capitale/function/quest/le_registre_du_port/sequence/leovic_to_ascenseur_self.mcfunction
+@@ -1,14 +1,2 @@
+-
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s [{"text":"[Garde Léovic]","color":"#FF8C00"},{"text":" : Suivez-moi encore un instant. Je vais vous montrer l’ascenseur qui mène vers le Cercle commercial.","color":"white"}]
+-function capitale:dialogue/sound/parole_quete_self
+-tellraw @s {"text":"[Quête] Le registre du Port — Suivez Léovic jusqu’à l’ascenseur du Cercle commercial.","color":"gold"}
+-title @s times 5 50 15
+-title @s title {"text":"Objectif mis à jour","color":"gold","bold":true}
+-title @s subtitle {"text":"Suivez Léovic jusqu’à l’ascenseur du Cercle commercial.","color":"white"}
+-execute at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 1.15 1.35
+-function hc_quetes:migration/write/pq02/v50
+-scoreboard players set @s CAP_QUETEACTIVE 4
+-function capitale:quest/le_registre_du_port/escort/start_to_ascenseur_self
+-scoreboard players set @s CAP_QSEQ 0
+-scoreboard players set @s CAP_QSEQ_TIMER 0
++# PQ02-R1 — PQ02 : ancienne séquence automatique retirée ; progression explicite, aucun +5
++indivispq02 leovic
+--- a/core/data/capitale/function/quest/markers/guide_free.mcfunction
++++ b/core/data/capitale/function/quest/markers/guide_free.mcfunction
+@@ -4,4 +4,5 @@
+ execute if predicate hc_quetes:migration/state/pq03/40 run return 0
+ execute if predicate hc_quetes:migration/state/pq04/20 run return 0
+ execute if predicate hc_quetes:migration/state/pq04/50 run return 0
++execute if predicate hc_quetes:migration/state/pq02/50 run return 0
+ return 1
+--- a/core/data/capitale/function/quest/spawn_dirigeable_couronne/capitaine_quai/interact_self.mcfunction
++++ b/core/data/capitale/function/quest/spawn_dirigeable_couronne/capitaine_quai/interact_self.mcfunction
+@@ -1,3 +1,5 @@
++# PQ02-R1 — Raccord MQ03 : même priorité que le routeur au large, sans changement de stade ou de texte MQ
++execute if score @s hcq_mq03 matches 10..30 run return run function hc_quetes:runtime/interact/altheon_brumeforge
+ function capitale:player/ensure_runtime_self
+ execute if predicate hc_quetes:migration/state/pq01/40_to_99 run function capitale:dialogue/random/roll_2_self
+ execute if predicate hc_quetes:migration/state/pq01/40_to_99 if score @s CAP_DLG_RNG matches 1 run function capitale:dialogue/sound/parole_quete_self
+--- a/core/docs/quest_markers/QMARK2_CATALOGUE.json
++++ b/core/docs/quest_markers/QMARK2_CATALOGUE.json
+@@ -753,7 +753,8 @@
+     "hc_quetes:migration/state/pq03/20",
+     "hc_quetes:migration/state/pq03/40",
+     "hc_quetes:migration/state/pq04/20",
+-    "hc_quetes:migration/state/pq04/50"
++    "hc_quetes:migration/state/pq04/50",
++    "hc_quetes:migration/state/pq02/50"
+   ],
+   "command_aliases": {
+     "capitale:npc/aldren/interact_self": "aldren",
+--- a/core/pack.mcmeta
++++ b/core/pack.mcmeta
+@@ -1,6 +1,6 @@
+ {
+   "pack": {
+-    "description": "Indivis — Core 1.5.7 — norme v2 + Séquence I — candidat SI1 — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — HF5 : proximité et reprise Géraud — HF6 : questions et enchaînements — HF7 : approche de Gautier et capture des dialogues — HF9 : blocs de lecture et file de doublage — QMARK2 : ! personnels des donneurs du core",
++    "description": "Indivis — Core 1.5.7 — norme v2 + Séquence I — candidat SI1 — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — HF5 : proximité et reprise Géraud — HF6 : questions et enchaînements — HF7 : approche de Gautier et capture des dialogues — HF9 : blocs de lecture et file de doublage — QMARK2 : ! personnels des donneurs du core — PQ02-R1 : Le registre du Port v1.0 — HF1 : commandes de préparation adaptées aux repères",
+     "min_format": [
+       94,
+       1
+--- a/quests/data/hc_quetes/hcq_quests/pq_02_registre_port.json
++++ b/quests/data/hc_quetes/hcq_quests/pq_02_registre_port.json
+@@ -4,26 +4,26 @@
+   "type": "MAIN",
+   "giver": "Garde Léovic",
+   "zone": "Port de la Capitale",
+-  "description": "Descendu du dirigeable de la Couronne, vous ne figurez sur aucun registre du Port : les portes restent ouvertes, mais les regards se ferment vite pour un inconnu. Le garde Léovic, posté sur les quais près du dirigeable, propose de vous mener lui-même au magistrat pour y faire inscrire votre nom. Une fois en règle, il vous montrera l'ascenseur qui monte vers le Cœur de la cité.",
++  "description": "Léovic, de la Garde du Port, vous attend près des tentes pour régulariser votre arrivée auprès du magistrat, sous les Archives. Il vous indiquera ensuite l'ascenseur voisin qui mène au Cœur.",
+   "can_abandon": false,
+   "prerequisites": [
+     "pq_01_sous_pavillon_couronne"
+   ],
+   "rewards": [
+     {
+-      "text": "Réputation de la Garde du Port +5"
++      "text": "Réputation de la Garde du Port : de −1 à +3 selon vos décisions"
+     },
+     {
+       "text": "165 points d’expérience"
+     },
+     {
+-      "text": "Inscription au registre du Port (rang de Visiteur)"
++      "text": "Inscription au registre du Port (Visiteur, sans rétrogradation)"
+     },
+     {
+       "text": "Un bonus du port (tirage aléatoire)"
+     },
+     {
+-      "text": "Si vous reparlez à Léovic une fois revenu sur les quais : 50 Martins d’or et un second bonus du port"
++      "text": "Don personnel facultatif de Léovic : 50 Martins d’or, une fois par personnage, avec le second bonus du port existant"
+     }
+   ],
+   "source": {
+@@ -48,7 +48,7 @@
+     {
+       "id": "parler_leovic",
+       "type": "TALK_TO_NPC",
+-      "text": "Parler à Léovic sur les quais, près du dirigeable, et accepter son escorte",
++      "text": "Parler à Léovic près des tentes de la Garde du Port et accepter son escorte",
+       "done": {
+         "objective": "hcq_pq02",
+         "min": 40,
+@@ -71,14 +71,14 @@
+       },
+       "waypoint": {
+         "mode": "EXACT",
+-        "target": "tag:npc_leovic_registre_port",
++        "target": "tag:hcm_pq2_leovic",
+         "label": "Suivre Léovic"
+       }
+     },
+     {
+       "id": "magistrat",
+       "type": "TALK_TO_NPC",
+-      "text": "Se présenter au magistrat du Port, aux bureaux d’enregistrement",
++      "text": "S'entretenir avec le magistrat sous les Archives, en présence de Léovic",
+       "done": {
+         "objective": "hcq_pq02",
+         "min": 60,
+@@ -93,7 +93,7 @@
+     {
+       "id": "retour_leovic",
+       "type": "TALK_TO_NPC",
+-      "text": "Retourner voir Léovic devant les bureaux d’enregistrement",
++      "text": "Conclure l'entretien avec Léovic et gagner l'ascenseur voisin",
+       "done": {
+         "objective": "hcq_pq02",
+         "min": 70,
+@@ -101,14 +101,14 @@
+       },
+       "waypoint": {
+         "mode": "EXACT",
+-        "target": "tag:npc_leovic_registre_port",
++        "target": "tag:hcm_pq2_leovic",
+         "label": "Garde Léovic"
+       }
+     },
+     {
+       "id": "suivre_ascenseur",
+       "type": "CUSTOM",
+-      "text": "Suivre Léovic jusqu’à l’ascenseur du Cercle commercial",
++      "text": "Suivre Léovic jusqu'à l'ascenseur voisin, vers le Cœur",
+       "done": {
+         "objective": "hcq_pq02",
+         "min": 90,
+@@ -116,7 +116,7 @@
+       },
+       "waypoint": {
+         "mode": "EXACT",
+-        "target": "tag:npc_leovic_registre_port",
++        "target": "tag:hcm_pq2_leovic",
+         "label": "Suivre Léovic"
+       }
+     },
+@@ -131,9 +131,9 @@
+       },
+       "waypoint": {
+         "mode": "EXACT",
+-        "target": "tag:npc_leovic_registre_port",
++        "target": "tag:hcm_pq2_leovic",
+         "label": "Garde Léovic"
+       }
+     }
+   ]
+-}
+\ No newline at end of file
++}
+--- a/quests/pack.mcmeta
++++ b/quests/pack.mcmeta
+@@ -3,6 +3,6 @@
+     "pack_format": 94,
+     "min_format": 94,
+     "max_format": 94,
+-    "description": "Indivis — Quêtes b22 — norme v2 + Séquence I — candidat SI1b — reconnaissance et liaison des gardes existants — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — QMARK2 : ! personnels des donneurs du core"
++    "description": "Indivis — Quêtes b22 — norme v2 + Séquence I — candidat SI1b — reconnaissance et liaison des gardes existants — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — QMARK2 : ! personnels des donneurs du core — PQ02-R1 : Le registre du Port v1.0"
+   }
+ }

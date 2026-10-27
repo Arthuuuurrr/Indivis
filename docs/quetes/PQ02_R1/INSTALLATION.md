@@ -1,17 +1,17 @@
-# Indivis — PQ02 R1 : installation et recette
+# Indivis — PQ02 R1 HF1 : installation et recette
 
 Version ciblée : Minecraft/Fabric **1.21.11**, Java **21**. Base : core **HF9_QMARK2** et journal datapack **HF4_QMARK2** fournis pour cette demande. Le mod de quêtes **HF12 est remplacé par sa version intégrant PQ02**, sans compagnon séparé.
 
 ## Fichiers à installer
 
-Décompresser **l’archive de livraison** `Indivis_PQ02_R1_Installation_Integree.zip`. Elle contient les deux datapacks et le mod de quêtes fusionné. Ne pas déposer cette archive de livraison elle-même dans `datapacks`.
+Décompresser **l’archive de livraison** `Indivis_PQ02_R1_HF1_Installation_Integree.zip`. Elle contient les deux datapacks et le mod de quêtes fusionné. Ne pas déposer cette archive de livraison elle-même dans `datapacks`.
 
 | Destination | Fichier fourni | Action |
 | --- | --- | --- |
-| Serveur : `<monde>/datapacks/` | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1.zip` | Remplacer le core HF9_QMARK2 fourni, y compris s’il était décompressé. Garder une seule copie de ce core. |
+| Serveur : `<monde>/datapacks/` | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF1.zip` | Remplacer le core précédent, y compris s’il était décompressé. Garder une seule copie de ce core. |
 | Serveur : `<monde>/datapacks/` | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1.zip` | Remplacer le datapack de journal HF4_QMARK2 fourni. |
-| Serveur : `mods/` | `haute-capitale-quetes-HF12-PQ02-R1-1.21.11.jar` | Remplacer l’ancien JAR de quêtes HF12 et retirer le compagnon `indivis-pq02` s’il a été installé. |
-| **Chaque client** : `mods/` | **Le même** `haute-capitale-quetes-HF12-PQ02-R1-1.21.11.jar` | Remplacer l’ancien JAR de quêtes HF12 et retirer `indivis-pq02`, comme sur le serveur. |
+| Serveur : `mods/` | `haute-capitale-quetes-HF12-PQ02-R1-HF1-1.21.11.jar` | Remplacer l’ancien JAR de quêtes et retirer le compagnon `indivis-pq02` s’il a été installé. |
+| **Chaque client** : `mods/` | **Le même** `haute-capitale-quetes-HF12-PQ02-R1-HF1-1.21.11.jar` | Remplacer l’ancien JAR de quêtes et retirer `indivis-pq02`, comme sur le serveur. |
 
 Les deux ZIP internes sont directement utilisables comme datapacks : leur `pack.mcmeta` est à la racine. Ne pas conserver en parallèle leur ancienne version ni un dossier issu de l’ancienne extraction.
 
@@ -19,7 +19,7 @@ Conserver **sans les remplacer** : NexusCharacters PRE35-SI1-OPT1, Dialogue b10,
 
 ## Si la première livraison PQ02 R1 est déjà installée
 
-Remplacer uniquement les deux anciens JAR (`haute-capitale-quetes` HF12 et `indivis-pq02`) par le **seul** JAR fusionné, sur le serveur et chaque client. Les deux datapacks R1 sont identiques à ceux de la première livraison : leurs empreintes n’ont pas changé. Les PNJ, les liaisons et la progression déjà enregistrée sont conservés ; aucune réinitialisation ni réinstallation des personnages n’est nécessaire. Redémarrer complètement.
+Remplacer le **core R1 par le core R1 HF1 côté serveur**, puis le JAR de quêtes par le **seul** JAR fusionné HF1 sur le serveur et chaque client. Le datapack **`hc_quetes` R1 est inchangé** : le conserver s’il est déjà installé. Retirer `indivis-pq02` s’il est encore présent. Les PNJ, les liaisons et la progression enregistrée sont conservés ; aucune réinitialisation ni réinstallation des personnages n’est nécessaire. Redémarrer complètement.
 
 Le JAR garde l’identifiant `haute_capitale_quetes`, les mêmes configurations et données. Fabric refuse explicitement sa coexistence avec l’ancien compagnon `indivis_pq02` pour éviter deux moteurs PQ02 simultanés.
 
@@ -48,14 +48,39 @@ Près du **magistrat existant sous les Archives**, même distance :
 
 Ces commandes enregistrent son UUID, son type et son apparence pour les copies personnelles. Elles ne remplacent ni ses actions publiques ni son skin. Une sélection ambiguë est refusée. Effectuer ces liaisons avant la première scène, sans autre escorte PQ02 en cours. Une reconnaissance automatique des anciens tags/actions est également prévue ; la liaison explicite rend la préparation vérifiable.
 
-Revenir près du **point A existant** du trajet :
+Depuis **n’importe quel point du parcours dans la même dimension**, préparer les repères existants :
 
 ```mcfunction
-/function capitale:pq02/admin/preparer_guide_historique
+/function capitale:pq02/admin/preparer_parcours
+/function capitale:pq02/admin/diagnostic_points
 /function capitale:pq02/admin/diagnostic
 ```
 
-La préparation retire les états d’ancienne escorte du guide armor stand, s’il est chargé, et le stationne au point A existant. Elle ne téléporte pas le PNJ public. Si l’ancien PNJ suit ce guide par sa configuration EasyNPC, son comportement de retour au poste reste celui de cette configuration. Les coordonnées des marqueurs chargés sont mises en cache. Charger les portions du parcours et relancer le diagnostic si des repères sont signalés absents ; aucune coordonnée de remplacement n’est inventée.
+La préparation recherche les véritables entités **`minecraft:marker` chargées dans la dimension**, sans dépendre de la position, de l’altitude ou du repère regardé par l’administrateur. Elle mémorise leurs positions réelles, conserve les positions déjà mémorisées pour les repères non chargés et refuse les doublons. Elle ne charge aucun chunk. Si des points requis sont absents, parcourir les portions concernées et relancer `preparer_parcours` : les positions déjà obtenues restent mémorisées. Aucune coordonnée de remplacement n’est inventée et aucun waypoint n’est déplacé.
+
+Le diagnostic détaillé indique, pour chaque point, son rôle, ses coordonnées et son état **chargé / mémorisé / absent / ambigu**. Il est en lecture seule. Le diagnostic général conserve aussi les informations de personnage, scène et progression.
+
+L’ancien guide est un **armor stand invisible portant `guide_leovic_registre_port`**. Les petites armures visibles A, D, H, etc. ne sont que des visualisations et ne sont jamais sélectionnées comme guides ou markers par la préparation. Si le parcours est complet, qu’un seul ancien guide est chargé et que A est chargé, la commande retire ses états de marche et le stationne sur **A**, même si elle est exécutée près de D, M ou P. Elle diffère ce stationnement si A est seulement mémorisé ou si une scène PQ02 est active. Elle ne téléporte pas directement le PNJ public ; son éventuel suivi de l’ancien guide dépend de sa configuration EasyNPC existante.
+
+**La préparation ne démarre pas la quête.** Léovic reste à son poste hors escorte ; sa copie personnelle démarre après l’acceptation dans le dialogue. L’ancienne commande `/function capitale:pq02/admin/preparer_guide_historique` reste disponible comme alias de `preparer_parcours`.
+
+Pour afficher ou masquer les armures de visualisation sans modifier les vrais repères :
+
+```mcfunction
+/function capitale:pq02/admin/afficher_points
+/function capitale:pq02/admin/masquer_points
+```
+
+| Points existants | Rôle dans le trajet |
+| --- | --- |
+| A | Départ près du poste de Léovic ; stationnement de l’ancien guide |
+| B, C | Progression sur le quai |
+| D | Première pause de lore |
+| E, F, G | Suite du quai |
+| H−, H, H+ | Approche, seconde pause et sortie ; H−/H+ facultatifs |
+| I, J, K, L | Approche du magistrat |
+| M | Arrivée au magistrat |
+| N, O, P | Trajet jusqu’à l’ascenseur ; arrivée à P |
 
 Le trajet requis est **A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P** ; les deux repères historiques `h_before` et `h_after` sont utilisés lorsqu’ils existent. Le magistrat reste à M, l’ascenseur à P. Les fonctions de placement historiques de ces points restent disponibles et inchangées. Le mod privilégie toujours un marqueur chargé à son ancienne valeur en cache.
 
