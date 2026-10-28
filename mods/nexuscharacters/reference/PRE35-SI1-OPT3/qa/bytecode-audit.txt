@@ -1,0 +1,1 @@
+OPT3_BYTECODE_AUDIT_PASS unchanged_original_methods=33 retained_OPT2_apply_and_clipper; only Grid.add fast-enumeration invalidation removed for comparison; only Index constructor excluded

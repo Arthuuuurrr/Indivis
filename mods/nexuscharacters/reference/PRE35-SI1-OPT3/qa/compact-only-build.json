@@ -1,0 +1,17 @@
+{
+  "jar": "/workspace/scratch/22564d9fe6f6/opt3/out/compact-only-experiment.jar",
+  "sha256": "1d667c3df2a018ff9c63ea3a4468fb593a47086c0b98adea134343f689ff8271",
+  "base_sha256": "7491ec3feb751b37ff0fe3773b4bb6d75c631220913c97b8e22143d9356fc116",
+  "changed_entries": [
+    "fabric.mod.json",
+    "net/tompsen/nexuscharacters/ExactSurfaceClipper.class"
+  ],
+  "added_entries": [
+    "net/tompsen/nexuscharacters/CompactSurfaceClipper$Workspace.class",
+    "net/tompsen/nexuscharacters/CompactSurfaceClipper.class"
+  ],
+  "unchanged_assets": 4966,
+  "classes": "/workspace/scratch/22564d9fe6f6/opt3/build/classes-eh8ud5i7/patch",
+  "compact": true,
+  "volumes": false
+}

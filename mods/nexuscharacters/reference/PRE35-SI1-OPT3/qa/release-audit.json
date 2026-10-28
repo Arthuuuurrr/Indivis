@@ -1,0 +1,145 @@
+{
+  "sha256": "de06ecab0f5cf7ccee29043bff2ccb5fd2b7425c173da145c1f27559b49def7b",
+  "unchanged_assets": 4966,
+  "pixel_identical_menus": [
+    "menu-00.png",
+    "menu-01.png",
+    "menu-02.png",
+    "menu-03.png",
+    "menu-04.png",
+    "menu-05.png",
+    "menu-06.png",
+    "menu-07.png",
+    "menu-08.png",
+    "menu-09.png",
+    "menu-10.png",
+    "menu-11.png",
+    "menu-12.png",
+    "menu-13.png",
+    "menu-14.png",
+    "menu-15.png",
+    "menu-16.png",
+    "menu-17.png",
+    "menu-18.png",
+    "menu-19.png",
+    "menu-20.png",
+    "menu-21.png",
+    "menu-22.png"
+  ],
+  "geometry": {
+    "geometry.csv": 320,
+    "pose-geometry.csv": 91,
+    "arms": 55
+  },
+  "oracle": {
+    "calls": 9400,
+    "queries": 716487,
+    "queryHits": 584595,
+    "fallbacks": 0,
+    "oracleCalls": 9400,
+    "oraclePolygons": 12630284
+  },
+  "reuse": {
+    "hits": 300,
+    "stores": 8790,
+    "evictions": 341,
+    "peakBytes": 8387440
+  },
+  "transforms": {
+    "oracleCalls": 24645,
+    "oraclePolygons": 4134855
+  },
+  "volumes": {
+    "hits": 2068,
+    "misses": 2552,
+    "evictions": 2305,
+    "peakBytes": 5279760,
+    "oracleCalls": 770,
+    "oracleBoxes": 5511424,
+    "fallbacks": 0
+  },
+  "compact_clipper": {
+    "oracleCalls": 9521350,
+    "oraclePolygons": 10239800
+  },
+  "records": {
+    "opt3-perf": {
+      "mode": "opt3-perf",
+      "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+      "start_utc": "2026-10-28T14:38:22.867475+00:00",
+      "end_utc": "2026-10-28T14:40:04.245752+00:00",
+      "game": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/games/20261028T143821",
+      "log": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/client-20261028T143821.log",
+      "pass": "PRESET {   \"version\": 1,   \"id\": \"haut_elfe_ivoire\",   \"name\": \"Haut-Elfe \u2014 Veilleur d\u2019ivoire\",   \"race\": \"high_elf\",   \"skin\": \"player_v69_b2_e2_ec5_ey2_h08_hc11_s02_o15_fh0_fc00_mk0_mc0\",   \"height\": 1.12,   \"build\": 0.76,   \"ears\": \"long\",   \"beard\": \"none\",   \"slim\": true }\nPRESET {   \"version\": 1,   \"id\": \"naine_forge\",   \"name\": \"Naine \u2014 Artisane du bronze\",   \"race\": \"dwarf\",   \"skin\": \"player_v69_b2_e2_ec7_ey2_h07_hc07_s06_o19_fh0_fc00_mk0_mc0\",   \"height\": 0.8,   \"build\": 1.22,   \"ears\": \"none\",   \"beard\": \"full#red\",   \"slim\": true }\nPRESET {   \"version\": 1,   \"id\": \"nain_bronze\",   \"name\": \"Nain \u2014 Ma\u00eetre des forges\",   \"race\": \"dwarf\",   \"skin\": \"player_v69_b1_e1_ec7_ey2_h03_hc07_s06_o25_fh0_fc00_mk0_mc0\",   \"height\": 0.78,   \"build\": 1.25,   \"ears\": \"none\",   \"beard\": \"braided#red\",   \"slim\": false }\nPRESET {   \"version\": 1,   \"id\": \"nordique_roux\",   \"name\": \"Nordique \u2014 Veilleur des fjords\",   \"race\": \"nordic\",   \"skin\": \"player_v69_b1_e1_ec5_ey2_h07_hc07_s03_o23_fh2_fc07_mk0_mc0\",   \"height\": 1.12,   \"build\": 1.22,   \"ears\": \"none\",   \"beard\": \"none\",   \"slim\": false }\nPRESET {   \"version\": 1,   \"id\": \"elfe_des_bois\",   \"name\": \"Elfe des Bois \u2014 \u00c9claireuse sylvestre\",   \"race\": \"wood_elf\",   \"skin\": \"player_v69_b2_e2_ec4_ey2_h08_hc02_s08_o29_fh0_fc00_mk0_mc0\",   \"height\": 0.98,   \"build\": 0.78,   \"ears\": \"upswept\",   \"beard\": \"none\",   \"slim\": true }\nSERVER_MORPH haut_elfe_ivoire default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=0.76, y=1.12, z=0.76]]\nSERVER_MORPH naine_forge default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.22, y=0.8, z=1.22]]\nSERVER_MORPH nain_bronze default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.25, y=0.78, z=1.25]]\nSERVER_MORPH nordique_roux default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.22, y=1.12, z=1.22]]\nSERVER_MORPH elfe_des_bois default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=0.78, y=0.98, z=0.78]]\nNATIVE_EASYNPC_PASS discovered_loaded_imported=5\nNPC_DATA_PASS 5 applications; original UUID/name/dialogue/tags/model rotation preserved; entity NBT reload; full reset\nSTATE_REUSE_PASS Nexus profile -> ordinary NPC; flags, texture, ears and beard reset\nOPT2_LIVE_CONFIG_PASS bodyVoxelWidthSize 1.05 -> 1.15 -> 1.05 on actual EasyNPC model\nOPT_WORKLOAD_PASS real NPC/player model preparation; static/head_turn/walking; unique poses; no GPU FPS claim\nNPC_CLIENT_PASS checks=9909 seen={elfe_des_bois=242, haut_elfe_ivoire=242, nain_bronze=242, naine_forge=242, nordique_roux=242} preparations=15 hits=25585 layers=675\n",
+      "nexus_sha256": "de06ecab0f5cf7ccee29043bff2ccb5fd2b7425c173da145c1f27559b49def7b",
+      "reload_from": null,
+      "fixed_facing": false
+    },
+    "opt3-menus": {
+      "mode": "opt3-menus",
+      "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+      "start_utc": "2026-10-28T14:40:06.435425+00:00",
+      "end_utc": "2026-10-28T14:41:07.806142+00:00",
+      "game": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/games/20261028T144004",
+      "log": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/client-20261028T144004.log",
+      "pass": "PRE30_MENU_PASS captures=23 checks=364\n",
+      "nexus_sha256": "de06ecab0f5cf7ccee29043bff2ccb5fd2b7425c173da145c1f27559b49def7b",
+      "reload_from": null,
+      "fixed_facing": false
+    },
+    "opt3-oracle-future": {
+      "mode": "opt3-oracle-future",
+      "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+      "start_utc": "2026-10-28T14:41:09.692564+00:00",
+      "end_utc": "2026-10-28T14:42:05.289986+00:00",
+      "game": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/games/20261028T144107",
+      "log": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/client-20261028T144107.log",
+      "pass": "PRESET {   \"version\": 1,   \"id\": \"haut_elfe_ivoire\",   \"name\": \"Haut-Elfe \u2014 Veilleur d\u2019ivoire\",   \"race\": \"high_elf\",   \"skin\": \"player_v69_b2_e2_ec5_ey2_h08_hc11_s02_o15_fh0_fc00_mk0_mc0\",   \"height\": 1.12,   \"build\": 0.76,   \"ears\": \"long\",   \"beard\": \"none\",   \"slim\": true }\nPRESET {   \"version\": 1,   \"id\": \"naine_forge\",   \"name\": \"Naine \u2014 Artisane du bronze\",   \"race\": \"dwarf\",   \"skin\": \"player_v69_b2_e2_ec7_ey2_h07_hc07_s06_o19_fh0_fc00_mk0_mc0\",   \"height\": 0.8,   \"build\": 1.22,   \"ears\": \"none\",   \"beard\": \"full#red\",   \"slim\": true }\nPRESET {   \"version\": 1,   \"id\": \"nain_bronze\",   \"name\": \"Nain \u2014 Ma\u00eetre des forges\",   \"race\": \"dwarf\",   \"skin\": \"player_v69_b1_e1_ec7_ey2_h03_hc07_s06_o25_fh0_fc00_mk0_mc0\",   \"height\": 0.78,   \"build\": 1.25,   \"ears\": \"none\",   \"beard\": \"braided#red\",   \"slim\": false }\nPRESET {   \"version\": 1,   \"id\": \"nordique_roux\",   \"name\": \"Nordique \u2014 Veilleur des fjords\",   \"race\": \"nordic\",   \"skin\": \"player_v69_b1_e1_ec5_ey2_h07_hc07_s03_o23_fh2_fc07_mk0_mc0\",   \"height\": 1.12,   \"build\": 1.22,   \"ears\": \"none\",   \"beard\": \"none\",   \"slim\": false }\nPRESET {   \"version\": 1,   \"id\": \"elfe_des_bois\",   \"name\": \"Elfe des Bois \u2014 \u00c9claireuse sylvestre\",   \"race\": \"wood_elf\",   \"skin\": \"player_v69_b2_e2_ec4_ey2_h08_hc02_s08_o29_fh0_fc00_mk0_mc0\",   \"height\": 0.98,   \"build\": 0.78,   \"ears\": \"upswept\",   \"beard\": \"none\",   \"slim\": true }\nSERVER_MORPH haut_elfe_ivoire default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=0.76, y=1.12, z=0.76]]\nSERVER_MORPH naine_forge default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.22, y=0.8, z=1.22]]\nSERVER_MORPH nain_bronze default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.25, y=0.78, z=1.25]]\nSERVER_MORPH nordique_roux default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.22, y=1.12, z=1.22]]\nSERVER_MORPH elfe_des_bois default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=0.78, y=0.98, z=0.78]]\nNATIVE_EASYNPC_PASS discovered_loaded_imported=5\nNPC_DATA_PASS 5 applications; original UUID/name/dialogue/tags/model rotation preserved; entity NBT reload; full reset\nFUTURE_ASSETS hair=930 beard=930 outfit=930, real EasyNPC and dynamic catalog\nSTATE_REUSE_PASS Nexus profile -> ordinary NPC; flags, texture, ears and beard reset\nOPT2_LIVE_CONFIG_PASS bodyVoxelWidthSize 1.05 -> 1.15 -> 1.05 on actual EasyNPC model\nOPT2_ORACLE_STRESS_PASS live NPC/player states=456 changing poses; not a timing measurement\nNPC_CLIENT_PASS checks=4794 seen={elfe_des_bois=96, future930=96, haut_elfe_ivoire=98, nain_bronze=98, naine_forge=98, nordique_roux=98} preparations=18 hits=564 layers=317\n",
+      "nexus_sha256": "de06ecab0f5cf7ccee29043bff2ccb5fd2b7425c173da145c1f27559b49def7b",
+      "reload_from": null,
+      "fixed_facing": false
+    },
+    "opt3-reload": {
+      "mode": "opt3-reload",
+      "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+      "start_utc": "2026-10-28T14:42:07.187479+00:00",
+      "end_utc": "2026-10-28T14:42:47.558975+00:00",
+      "game": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/games/20261028T144205",
+      "log": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/client-20261028T144205.log",
+      "pass": "WORLD_RELOAD_PASS real saved world: 10 NPCs, 5 original tags, recipes and UUIDs retained\nSTATE_REUSE_PASS Nexus profile -> ordinary NPC; flags, texture, ears and beard reset\nOPT2_LIVE_CONFIG_PASS bodyVoxelWidthSize 1.05 -> 1.15 -> 1.05 on actual EasyNPC model\nNPC_CLIENT_PASS checks=8509 seen={elfe_des_bois=212, haut_elfe_ivoire=212, nain_bronze=212, naine_forge=212, nordique_roux=212} preparations=15 hits=516 layers=530\n",
+      "nexus_sha256": "de06ecab0f5cf7ccee29043bff2ccb5fd2b7425c173da145c1f27559b49def7b",
+      "reload_from": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/games/20261028T143821",
+      "fixed_facing": true
+    }
+  },
+  "build": {
+    "jar": "/workspace/scratch/22564d9fe6f6/opt3/out/NexusCharacters-Indivis-1.21.11-PRE35-SI1-OPT3.jar",
+    "sha256": "de06ecab0f5cf7ccee29043bff2ccb5fd2b7425c173da145c1f27559b49def7b",
+    "base_sha256": "7491ec3feb751b37ff0fe3773b4bb6d75c631220913c97b8e22143d9356fc116",
+    "changed_entries": [
+      "fabric.mod.json",
+      "net/tompsen/nexuscharacters/ExactSurfaceClipper.class",
+      "net/tompsen/nexuscharacters/PoseScratch$Workspace.class",
+      "net/tompsen/nexuscharacters/PosedSurfaceSupport$Grid.class",
+      "net/tompsen/nexuscharacters/PosedSurfaceSupport.class",
+      "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Index.class"
+    ],
+    "added_entries": [
+      "net/tompsen/nexuscharacters/CompactSurfaceClipper$Workspace.class",
+      "net/tompsen/nexuscharacters/CompactSurfaceClipper.class",
+      "net/tompsen/nexuscharacters/PartVolumeCache$Entry.class",
+      "net/tompsen/nexuscharacters/PartVolumeCache$Pool.class",
+      "net/tompsen/nexuscharacters/PartVolumeCache.class"
+    ],
+    "unchanged_assets": 4966,
+    "classes": "/workspace/scratch/22564d9fe6f6/opt3/build/classes-esbgordz/patch",
+    "compact": true,
+    "volumes": true
+  },
+  "limitations": [
+    "Software GL, not production FPS.",
+    "Full modpack, spells/dialogue camera and authenticated Mojang account not reproduced.",
+    "Synthetic offline vault manifest/owner warnings retained; player-vault persistence not validated.",
+    "World reload checks actual EasyNPC UUIDs/recipes/tags."
+  ]
+}
