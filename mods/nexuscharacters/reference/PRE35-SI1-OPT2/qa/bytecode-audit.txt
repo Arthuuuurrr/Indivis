@@ -1,0 +1,1 @@
+OPT2_BYTECODE_ORACLE_PASS original_methods=13 unchanged_except_transform_name; original class fields/interfaces/nest unchanged

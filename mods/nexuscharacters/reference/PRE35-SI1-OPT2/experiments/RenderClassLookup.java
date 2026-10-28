@@ -3,7 +3,8 @@ package net.tompsen.nexuscharacters;
 import java.util.concurrent.ConcurrentHashMap;
 import java.lang.invoke.MethodHandles;
 
-/** Only the three literal class lookups on hot client paths are redirected.
+/** Rejected OPT2 experiment. NOT compiled into the final release.
+ * Only the three literal class lookups on hot client paths are redirected.
  * Resolve/initialise using the same Nexus loader; never cache lookup failures,
  * config values, model objects or resource-dependent appearance information.
  */
@@ -26,3 +27,4 @@ public final class RenderClassLookup {
         return existing==null?resolved:existing;
     }
 }
+

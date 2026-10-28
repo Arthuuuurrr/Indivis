@@ -1,0 +1,4 @@
+hits=300
+stores=9392
+evictions=375
+peakBytes=8385112

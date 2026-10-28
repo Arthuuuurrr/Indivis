@@ -5,7 +5,8 @@ import org.joml.Vector3f;
 import net.tompsen.nexuscharacters.SurfaceGeometry.*;
 import net.tompsen.nexuscharacters.PosedSurfaceSupport.Grid;
 
-/** Exact PRE35 subtraction with per-grid integer candidates and per-piece bounds.
+/** Rejected OPT2 experiment. NOT compiled into the final release.
+ * Exact PRE35 subtraction with per-grid integer candidates and per-piece bounds.
  * No pose quantisation, geometric tolerance change, skipped animation, or LOD.
  */
 public final class SpatialSurfaceCleaner {
@@ -277,4 +278,5 @@ public final class SpatialSurfaceCleaner {
         }
     }
 }
+
 

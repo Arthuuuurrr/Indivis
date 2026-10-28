@@ -1,6 +1,7 @@
 package net.tompsen.nexuscharacters;
 
-/** Invocation-owned exact seven-integer query cache. No packed coordinates,
+/** Rejected OPT2 experiment. NOT compiled into the final release.
+ * Invocation-owned exact seven-integer query cache. No packed coordinates,
  * temporary key objects, global state or cached mutable model references.
  * As in OPT1, at most 4096 answers survive for the lifetime of one Grid index.
  */
@@ -67,3 +68,4 @@ final class CellQueryCache {
         h=(h^g)*0x85ebca6b;h^=h>>>16;return h;
     }
 }
+
