@@ -1,0 +1,19 @@
+{
+  "jar": "/workspace/scratch/22564d9fe6f6/opt3/out/NexusCharacters-Indivis-1.21.11-PRE35-SI1-OPT3.jar",
+  "sha256": "eec035c0e266cb0fe932d150d93a30415872e959980b8f7deca84dd7a24864c3",
+  "base_sha256": "7491ec3feb751b37ff0fe3773b4bb6d75c631220913c97b8e22143d9356fc116",
+  "changed_entries": [
+    "fabric.mod.json",
+    "net/tompsen/nexuscharacters/PoseScratch$Workspace.class",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport$Grid.class",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Index.class"
+  ],
+  "added_entries": [
+    "net/tompsen/nexuscharacters/PartVolumeCache$Entry.class",
+    "net/tompsen/nexuscharacters/PartVolumeCache$Pool.class",
+    "net/tompsen/nexuscharacters/PartVolumeCache.class"
+  ],
+  "unchanged_assets": 4966,
+  "classes": "/workspace/scratch/22564d9fe6f6/opt3/build/classes-6034t78g/patch"
+}

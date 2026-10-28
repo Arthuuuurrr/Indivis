@@ -1,0 +1,24 @@
+{
+  "jar": "NexusCharacters-Indivis-1.21.11-PRE35-SI1-OPT1.jar",
+  "sha256": "bdb1525d5e4448cb8127e38bdcdce063d629b7039a856bf9ea74be5ea06dea11",
+  "base_sha256": "399a4c64a7672e60ebbaaa52044cb547f5c41576039fe5aafe2c42485e2e8a8a",
+  "changed_entries": [
+    "fabric.mod.json",
+    "net/tompsen/nexuscharacters/PoseScratch$Workspace.class",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport$Grid.class",
+    "net/tompsen/nexuscharacters/ExactSurfaceCleaner.class",
+    "net/tompsen/nexuscharacters/PartSurfaceReuse$Entry.class",
+    "net/tompsen/nexuscharacters/PartSurfaceReuse$Pool.class",
+    "net/tompsen/nexuscharacters/PartSurfaceReuse$Profile.class",
+    "net/tompsen/nexuscharacters/PartSurfaceReuse$Token.class",
+    "net/tompsen/nexuscharacters/PartSurfaceReuse.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Cells.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$ExteriorScratch.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Index.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Piece.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Query.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner.class"
+  ],
+  "classes": "/workspace/scratch/22564d9fe6f6/nexus-opt1/build/classes-22_vhumz/patch",
+  "byte_identical_assets": true
+}

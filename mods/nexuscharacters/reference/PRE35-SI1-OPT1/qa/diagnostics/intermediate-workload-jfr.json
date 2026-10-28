@@ -1,0 +1,375 @@
+{
+  "nexus_sha256": "ff2a8a34b701612e0e0f979216054d57d2ca4039622bb1a9e67bf221c29f9836",
+  "scope": "Intermediate diagnostic recording; not the final unprofiled benchmark",
+  "workload_samples": 4515,
+  "truncated_stacks": 0,
+  "log_time_window": [
+    "20:12:07",
+    "20:13:21"
+  ],
+  "threads": {
+    "main": 5759,
+    "ForkJoinPool-1-worker-2": 2,
+    "ForkJoinPool-1-worker-5": 2,
+    "ForkJoinPool-1-worker-7": 2,
+    "ForkJoinPool-1-worker-1": 1,
+    "ForkJoinPool-1-worker-4": 1,
+    "ForkJoinPool-1-worker-3": 1,
+    "JFR Periodic Tasks": 5,
+    "Datafixer Bootstrap": 21,
+    "process reaper": 1,
+    "Download-2": 2,
+    "Worker-Main-5": 62,
+    "Worker-Main-7": 61,
+    "Worker-Main-2": 61,
+    "Worker-Main-1": 78,
+    "Worker-Main-4": 71,
+    "Worker-Main-6": 95,
+    "Worker-Main-3": 95,
+    "CullThread": 7,
+    "Server thread": 501,
+    "IO-Worker-9": 5,
+    "IO-Worker-4": 1,
+    "Netty Local IO #2": 14,
+    "Netty Local IO #1": 15,
+    "IO-Worker-7": 2,
+    "Chunk Render Task Executor #0": 6,
+    "Chunk Render Task Executor #1": 4,
+    "NexusChars-Persistence-v0710": 1,
+    "IO-Worker-12": 8,
+    "IO-Worker-11": 1,
+    "IO-Worker-10": 7,
+    "pool-1-thread-1": 1
+  },
+  "first_event_time": "2026-10-26T20:10:55.415401138+01:00",
+  "top_frames": [
+    [
+      "org.joml.Vector3f.mulPosition",
+      745
+    ],
+    [
+      "net.tompsen.nexuscharacters.ExactSurfaceClipper.intersecting",
+      375
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner.cleanIndexed",
+      345
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Piece.<init>",
+      343
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Piece.unchanged",
+      302
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry.transform",
+      229
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Cells.get",
+      183
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.query",
+      150
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry.valid",
+      141
+    ],
+    [
+      "org.joml.Vector3f.mulPositionGeneric",
+      116
+    ],
+    [
+      "net.tompsen.nexuscharacters.PosedSurfaceSupport$Grid.add",
+      98
+    ],
+    [
+      "net.tompsen.nexuscharacters.PartSurfaceReuse.lookup",
+      90
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry$Box.sameExterior",
+      87
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry$Box.<init>",
+      80
+    ],
+    [
+      "net.tompsen.nexuscharacters.PrimitiveSurfaceWriter.write",
+      79
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.id",
+      68
+    ],
+    [
+      "java.util.DualPivotQuicksort.insertionSort",
+      60
+    ],
+    [
+      "java.util.HashMap.get",
+      58
+    ],
+    [
+      "java.util.DualPivotQuicksort.mixedInsertionSort",
+      54
+    ],
+    [
+      "java.util.HashMap.computeIfAbsent",
+      53
+    ],
+    [
+      "java.util.IdentityHashMap.put",
+      45
+    ],
+    [
+      "java.util.DualPivotQuicksort.sort",
+      44
+    ],
+    [
+      "java.lang.ThreadLocal$ThreadLocalMap.getEntry",
+      38
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.<init>",
+      35
+    ],
+    [
+      "java.util.HashMap.getNode",
+      35
+    ],
+    [
+      "java.util.ArrayList.grow",
+      32
+    ],
+    [
+      "java.lang.invoke.LambdaForm$MH.0x00007f037838e400.guard",
+      31
+    ],
+    [
+      "java.util.HashMap.resize",
+      30
+    ],
+    [
+      "java.util.HashMap$HashIterator.nextNode",
+      29
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Cells.<init>",
+      26
+    ],
+    [
+      "java.util.ImmutableCollections$List12.get",
+      26
+    ],
+    [
+      "java.lang.PublicMethods$Key.matches",
+      25
+    ],
+    [
+      "java.util.IdentityHashMap.resize",
+      23
+    ],
+    [
+      "java.lang.AbstractStringBuilder.inflateIfNeededFor",
+      22
+    ],
+    [
+      "java.lang.ThreadLocal$ThreadLocalMap.getEntryAfterMiss",
+      21
+    ]
+  ],
+  "inclusive_nexus_frames": [
+    [
+      "net.tompsen.nexuscharacters.GenericSkinLayerSupport.player",
+      4368
+    ],
+    [
+      "net.tompsen.nexuscharacters.GenericSkinLayerSupport.apply",
+      4360
+    ],
+    [
+      "net.tompsen.nexuscharacters.PosedSurfaceSupport.apply",
+      4357
+    ],
+    [
+      "net.tompsen.nexuscharacters.PoseScratch.apply",
+      4357
+    ],
+    [
+      "net.tompsen.nexuscharacters.PosedSurfaceSupport.applyPRE30",
+      4354
+    ],
+    [
+      "net.tompsen.nexuscharacters.ExactSurfaceCleaner.clean",
+      3345
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner.clean",
+      3345
+    ],
+    [
+      "net.tompsen.nexuscharacters.PosedSurfaceSupport.clean",
+      3345
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner.cleanIndexed",
+      2989
+    ],
+    [
+      "net.tompsen.nexuscharacters.ExactSurfaceClipper.intersecting",
+      1136
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.query",
+      741
+    ],
+    [
+      "net.tompsen.nexuscharacters.ExactSurfaceClipper.project",
+      599
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry.transform",
+      464
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Piece.unchanged",
+      414
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Piece.<init>",
+      345
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Cells.get",
+      251
+    ],
+    [
+      "net.tompsen.nexuscharacters.PosedSurfaceSupport$Grid.add",
+      235
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry$Vertex.transform",
+      228
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.<init>",
+      197
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry.valid",
+      146
+    ],
+    [
+      "net.tompsen.nexuscharacters.PartSurfaceReuse.lookup",
+      144
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry.write",
+      143
+    ],
+    [
+      "net.tompsen.nexuscharacters.PrimitiveSurfaceWriter.write",
+      143
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry$Box.<init>",
+      130
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry$Box.sameExterior",
+      112
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.id",
+      68
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Cells.<init>",
+      46
+    ],
+    [
+      "net.tompsen.nexuscharacters.PartSurfaceReuse$Entry.matches",
+      34
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry$Polygon.equals",
+      24
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry$Vertex.equals",
+      21
+    ],
+    [
+      "net.tompsen.nexuscharacters.PartSurfaceReuse.store",
+      14
+    ],
+    [
+      "net.tompsen.nexuscharacters.PartSurfaceReuse$Entry.<init>",
+      12
+    ],
+    [
+      "net.tompsen.nexuscharacters.PartSurfaceReuse.estimate",
+      12
+    ],
+    [
+      "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Query.equals",
+      10
+    ],
+    [
+      "net.tompsen.nexuscharacters.PartSurfaceReuse$Profile.matches",
+      10
+    ],
+    [
+      "net.tompsen.nexuscharacters.PartSurfaceReuse.shape",
+      10
+    ],
+    [
+      "net.tompsen.nexuscharacters.PreparedSurfaceCache$Frame.matches",
+      8
+    ],
+    [
+      "net.tompsen.nexuscharacters.PreparedSurfaceCache.restore",
+      8
+    ],
+    [
+      "net.tompsen.nexuscharacters.SurfaceGeometry.set",
+      8
+    ],
+    [
+      "net.tompsen.nexuscharacters.ReflectionAccess.surfaceSet",
+      8
+    ],
+    [
+      "net.tompsen.nexuscharacters.ReflectionAccess.field",
+      5
+    ],
+    [
+      "net.tompsen.nexuscharacters.SkinLayersDynamicSkinBridge.resolve",
+      5
+    ],
+    [
+      "net.tompsen.nexuscharacters.RemoteAppearanceSupport.apply",
+      4
+    ],
+    [
+      "net.tompsen.nexuscharacters.PrimitiveSurfaceWriter.add",
+      3
+    ],
+    [
+      "net.tompsen.nexuscharacters.PreparedSurfaceCache.shape",
+      3
+    ]
+  ],
+  "top_frame_kind": {
+    "JIT compiled": 2449,
+    "Inlined": 2055,
+    "Interpreted": 11
+  },
+  "note": "Inclusive frames overlap; not additive. Java samples, not GPU/FPS."
+}

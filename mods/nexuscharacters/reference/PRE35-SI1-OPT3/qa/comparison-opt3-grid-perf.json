@@ -1,0 +1,231 @@
+{
+  "base_sha256": "7491ec3feb751b37ff0fe3773b4bb6d75c631220913c97b8e22143d9356fc116",
+  "candidate_sha256": "eec035c0e266cb0fe932d150d93a30415872e959980b8f7deca84dd7a24864c3",
+  "geometry_states": 216,
+  "geometry_differences": [],
+  "baseline": {
+    "mode": "opt2-reference-perf",
+    "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+    "start_utc": "2026-10-28T14:28:05.652499+00:00",
+    "end_utc": "2026-10-28T14:29:52.170285+00:00",
+    "game": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/games/20261028T142803",
+    "log": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/client-20261028T142803.log",
+    "pass": "PRESET {   \"version\": 1,   \"id\": \"haut_elfe_ivoire\",   \"name\": \"Haut-Elfe \u2014 Veilleur d\u2019ivoire\",   \"race\": \"high_elf\",   \"skin\": \"player_v69_b2_e2_ec5_ey2_h08_hc11_s02_o15_fh0_fc00_mk0_mc0\",   \"height\": 1.12,   \"build\": 0.76,   \"ears\": \"long\",   \"beard\": \"none\",   \"slim\": true }\nPRESET {   \"version\": 1,   \"id\": \"naine_forge\",   \"name\": \"Naine \u2014 Artisane du bronze\",   \"race\": \"dwarf\",   \"skin\": \"player_v69_b2_e2_ec7_ey2_h07_hc07_s06_o19_fh0_fc00_mk0_mc0\",   \"height\": 0.8,   \"build\": 1.22,   \"ears\": \"none\",   \"beard\": \"full#red\",   \"slim\": true }\nPRESET {   \"version\": 1,   \"id\": \"nain_bronze\",   \"name\": \"Nain \u2014 Ma\u00eetre des forges\",   \"race\": \"dwarf\",   \"skin\": \"player_v69_b1_e1_ec7_ey2_h03_hc07_s06_o25_fh0_fc00_mk0_mc0\",   \"height\": 0.78,   \"build\": 1.25,   \"ears\": \"none\",   \"beard\": \"braided#red\",   \"slim\": false }\nPRESET {   \"version\": 1,   \"id\": \"nordique_roux\",   \"name\": \"Nordique \u2014 Veilleur des fjords\",   \"race\": \"nordic\",   \"skin\": \"player_v69_b1_e1_ec5_ey2_h07_hc07_s03_o23_fh2_fc07_mk0_mc0\",   \"height\": 1.12,   \"build\": 1.22,   \"ears\": \"none\",   \"beard\": \"none\",   \"slim\": false }\nPRESET {   \"version\": 1,   \"id\": \"elfe_des_bois\",   \"name\": \"Elfe des Bois \u2014 \u00c9claireuse sylvestre\",   \"race\": \"wood_elf\",   \"skin\": \"player_v69_b2_e2_ec4_ey2_h08_hc02_s08_o29_fh0_fc00_mk0_mc0\",   \"height\": 0.98,   \"build\": 0.78,   \"ears\": \"upswept\",   \"beard\": \"none\",   \"slim\": true }\nSERVER_MORPH haut_elfe_ivoire default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=0.76, y=1.12, z=0.76]]\nSERVER_MORPH naine_forge default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.22, y=0.8, z=1.22]]\nSERVER_MORPH nain_bronze default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.25, y=0.78, z=1.25]]\nSERVER_MORPH nordique_roux default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.22, y=1.12, z=1.22]]\nSERVER_MORPH elfe_des_bois default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=0.78, y=0.98, z=0.78]]\nNATIVE_EASYNPC_PASS discovered_loaded_imported=5\nNPC_DATA_PASS 5 applications; original UUID/name/dialogue/tags/model rotation preserved; entity NBT reload; full reset\nSTATE_REUSE_PASS Nexus profile -> ordinary NPC; flags, texture, ears and beard reset\nOPT2_LIVE_CONFIG_PASS bodyVoxelWidthSize 1.05 -> 1.15 -> 1.05 on actual EasyNPC model\nOPT_WORKLOAD_PASS real NPC/player model preparation; static/head_turn/walking; unique poses; no GPU FPS claim\nNPC_CLIENT_PASS checks=8869 seen={elfe_des_bois=216, haut_elfe_ivoire=216, nain_bronze=216, naine_forge=216, nordique_roux=216} preparations=15 hits=25505 layers=595\n",
+    "nexus_sha256": "7491ec3feb751b37ff0fe3773b4bb6d75c631220913c97b8e22143d9356fc116",
+    "reload_from": null,
+    "fixed_facing": false
+  },
+  "candidate": {
+    "mode": "opt3-grid-perf",
+    "jar_sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+    "start_utc": "2026-10-28T14:25:31.246735+00:00",
+    "end_utc": "2026-10-28T14:27:22.172269+00:00",
+    "game": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/games/20261028T142528",
+    "log": "/workspace/scratch/22564d9fe6f6/opt2/previous/npc/qa/client-20261028T142528.log",
+    "pass": "PRESET {   \"version\": 1,   \"id\": \"haut_elfe_ivoire\",   \"name\": \"Haut-Elfe \u2014 Veilleur d\u2019ivoire\",   \"race\": \"high_elf\",   \"skin\": \"player_v69_b2_e2_ec5_ey2_h08_hc11_s02_o15_fh0_fc00_mk0_mc0\",   \"height\": 1.12,   \"build\": 0.76,   \"ears\": \"long\",   \"beard\": \"none\",   \"slim\": true }\nPRESET {   \"version\": 1,   \"id\": \"naine_forge\",   \"name\": \"Naine \u2014 Artisane du bronze\",   \"race\": \"dwarf\",   \"skin\": \"player_v69_b2_e2_ec7_ey2_h07_hc07_s06_o19_fh0_fc00_mk0_mc0\",   \"height\": 0.8,   \"build\": 1.22,   \"ears\": \"none\",   \"beard\": \"full#red\",   \"slim\": true }\nPRESET {   \"version\": 1,   \"id\": \"nain_bronze\",   \"name\": \"Nain \u2014 Ma\u00eetre des forges\",   \"race\": \"dwarf\",   \"skin\": \"player_v69_b1_e1_ec7_ey2_h03_hc07_s06_o25_fh0_fc00_mk0_mc0\",   \"height\": 0.78,   \"build\": 1.25,   \"ears\": \"none\",   \"beard\": \"braided#red\",   \"slim\": false }\nPRESET {   \"version\": 1,   \"id\": \"nordique_roux\",   \"name\": \"Nordique \u2014 Veilleur des fjords\",   \"race\": \"nordic\",   \"skin\": \"player_v69_b1_e1_ec5_ey2_h07_hc07_s03_o23_fh2_fc07_mk0_mc0\",   \"height\": 1.12,   \"build\": 1.22,   \"ears\": \"none\",   \"beard\": \"none\",   \"slim\": false }\nPRESET {   \"version\": 1,   \"id\": \"elfe_des_bois\",   \"name\": \"Elfe des Bois \u2014 \u00c9claireuse sylvestre\",   \"race\": \"wood_elf\",   \"skin\": \"player_v69_b2_e2_ec4_ey2_h08_hc02_s08_o29_fh0_fc00_mk0_mc0\",   \"height\": 0.98,   \"build\": 0.78,   \"ears\": \"upswept\",   \"beard\": \"none\",   \"slim\": true }\nSERVER_MORPH haut_elfe_ivoire default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=0.76, y=1.12, z=0.76]]\nSERVER_MORPH naine_forge default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.22, y=0.8, z=1.22]]\nSERVER_MORPH nain_bronze default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.25, y=0.78, z=1.25]]\nSERVER_MORPH nordique_roux default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=1.22, y=1.12, z=1.22]]\nSERVER_MORPH elfe_des_bois default=CustomScale[x=1.0, y=1.0, z=1.0] root=RootModelData[rotation=CustomRotation[x=0.0, y=0.0, z=0.0, locked=false], scale=CustomScale[x=0.78, y=0.98, z=0.78]]\nNATIVE_EASYNPC_PASS discovered_loaded_imported=5\nNPC_DATA_PASS 5 applications; original UUID/name/dialogue/tags/model rotation preserved; entity NBT reload; full reset\nSTATE_REUSE_PASS Nexus profile -> ordinary NPC; flags, texture, ears and beard reset\nOPT2_LIVE_CONFIG_PASS bodyVoxelWidthSize 1.05 -> 1.15 -> 1.05 on actual EasyNPC model\nOPT_WORKLOAD_PASS real NPC/player model preparation; static/head_turn/walking; unique poses; no GPU FPS claim\nNPC_CLIENT_PASS checks=8453 seen={elfe_des_bois=204, haut_elfe_ivoire=206, nain_bronze=206, naine_forge=206, nordique_roux=206} preparations=15 hits=25484 layers=574\n",
+    "nexus_sha256": "eec035c0e266cb0fe932d150d93a30415872e959980b8f7deca84dd7a24864c3",
+    "reload_from": null,
+    "fixed_facing": false
+  },
+  "rows": [
+    {
+      "kind": "npc",
+      "pose": "static",
+      "entities": 1,
+      "opt2_cpu_ms": 0.02963,
+      "opt3_cpu_ms": 0.0387,
+      "cpu_reduction_pct": -30.6,
+      "opt2_allocated_MiB": 0.00948,
+      "opt3_allocated_MiB": 0.00948,
+      "allocation_reduction_pct": 0.0
+    },
+    {
+      "kind": "npc",
+      "pose": "static",
+      "entities": 3,
+      "opt2_cpu_ms": 0.07749,
+      "opt3_cpu_ms": 0.07877,
+      "cpu_reduction_pct": -1.64,
+      "opt2_allocated_MiB": 0.02826,
+      "opt3_allocated_MiB": 0.02819,
+      "allocation_reduction_pct": 0.24
+    },
+    {
+      "kind": "npc",
+      "pose": "static",
+      "entities": 8,
+      "opt2_cpu_ms": 0.17315,
+      "opt3_cpu_ms": 0.17422,
+      "cpu_reduction_pct": -0.62,
+      "opt2_allocated_MiB": 0.07459,
+      "opt3_allocated_MiB": 0.07441,
+      "allocation_reduction_pct": 0.25
+    },
+    {
+      "kind": "npc",
+      "pose": "head_turn",
+      "entities": 1,
+      "opt2_cpu_ms": 3.50005,
+      "opt3_cpu_ms": 3.21682,
+      "cpu_reduction_pct": 8.09,
+      "opt2_allocated_MiB": 3.29232,
+      "opt3_allocated_MiB": 3.4335,
+      "allocation_reduction_pct": -4.29
+    },
+    {
+      "kind": "npc",
+      "pose": "head_turn",
+      "entities": 3,
+      "opt2_cpu_ms": 13.66664,
+      "opt3_cpu_ms": 13.64581,
+      "cpu_reduction_pct": 0.15,
+      "opt2_allocated_MiB": 13.14046,
+      "opt3_allocated_MiB": 14.28251,
+      "allocation_reduction_pct": -8.69
+    },
+    {
+      "kind": "npc",
+      "pose": "head_turn",
+      "entities": 8,
+      "opt2_cpu_ms": 36.17084,
+      "opt3_cpu_ms": 37.12054,
+      "cpu_reduction_pct": -2.63,
+      "opt2_allocated_MiB": 35.79062,
+      "opt3_allocated_MiB": 40.8184,
+      "allocation_reduction_pct": -14.05
+    },
+    {
+      "kind": "npc",
+      "pose": "walking",
+      "entities": 1,
+      "opt2_cpu_ms": 4.1346,
+      "opt3_cpu_ms": 4.22282,
+      "cpu_reduction_pct": -2.13,
+      "opt2_allocated_MiB": 3.98538,
+      "opt3_allocated_MiB": 4.50294,
+      "allocation_reduction_pct": -12.99
+    },
+    {
+      "kind": "npc",
+      "pose": "walking",
+      "entities": 3,
+      "opt2_cpu_ms": 16.75036,
+      "opt3_cpu_ms": 17.24136,
+      "cpu_reduction_pct": -2.93,
+      "opt2_allocated_MiB": 15.99783,
+      "opt3_allocated_MiB": 18.14212,
+      "allocation_reduction_pct": -13.4
+    },
+    {
+      "kind": "npc",
+      "pose": "walking",
+      "entities": 8,
+      "opt2_cpu_ms": 45.45871,
+      "opt3_cpu_ms": 47.93463,
+      "cpu_reduction_pct": -5.45,
+      "opt2_allocated_MiB": 43.31147,
+      "opt3_allocated_MiB": 49.40166,
+      "allocation_reduction_pct": -14.06
+    },
+    {
+      "kind": "player",
+      "pose": "static",
+      "entities": 1,
+      "opt2_cpu_ms": 0.11914,
+      "opt3_cpu_ms": 0.14659,
+      "cpu_reduction_pct": -23.04,
+      "opt2_allocated_MiB": 0.03776,
+      "opt3_allocated_MiB": 0.0378,
+      "allocation_reduction_pct": -0.1
+    },
+    {
+      "kind": "player",
+      "pose": "static",
+      "entities": 3,
+      "opt2_cpu_ms": 0.37699,
+      "opt3_cpu_ms": 0.39644,
+      "cpu_reduction_pct": -5.16,
+      "opt2_allocated_MiB": 0.1107,
+      "opt3_allocated_MiB": 0.11095,
+      "allocation_reduction_pct": -0.23
+    },
+    {
+      "kind": "player",
+      "pose": "static",
+      "entities": 8,
+      "opt2_cpu_ms": 0.75143,
+      "opt3_cpu_ms": 0.87242,
+      "cpu_reduction_pct": -16.1,
+      "opt2_allocated_MiB": 0.29121,
+      "opt3_allocated_MiB": 0.29176,
+      "allocation_reduction_pct": -0.19
+    },
+    {
+      "kind": "player",
+      "pose": "head_turn",
+      "entities": 1,
+      "opt2_cpu_ms": 3.40224,
+      "opt3_cpu_ms": 3.3204,
+      "cpu_reduction_pct": 2.41,
+      "opt2_allocated_MiB": 3.30451,
+      "opt3_allocated_MiB": 3.43125,
+      "allocation_reduction_pct": -3.84
+    },
+    {
+      "kind": "player",
+      "pose": "head_turn",
+      "entities": 3,
+      "opt2_cpu_ms": 13.98321,
+      "opt3_cpu_ms": 15.19754,
+      "cpu_reduction_pct": -8.68,
+      "opt2_allocated_MiB": 13.23944,
+      "opt3_allocated_MiB": 15.68283,
+      "allocation_reduction_pct": -18.46
+    },
+    {
+      "kind": "player",
+      "pose": "head_turn",
+      "entities": 8,
+      "opt2_cpu_ms": 42.21248,
+      "opt3_cpu_ms": 44.50531,
+      "cpu_reduction_pct": -5.43,
+      "opt2_allocated_MiB": 39.94748,
+      "opt3_allocated_MiB": 46.03981,
+      "allocation_reduction_pct": -15.25
+    },
+    {
+      "kind": "player",
+      "pose": "walking",
+      "entities": 1,
+      "opt2_cpu_ms": 4.35968,
+      "opt3_cpu_ms": 4.4405,
+      "cpu_reduction_pct": -1.85,
+      "opt2_allocated_MiB": 4.01039,
+      "opt3_allocated_MiB": 4.52852,
+      "allocation_reduction_pct": -12.92
+    },
+    {
+      "kind": "player",
+      "pose": "walking",
+      "entities": 3,
+      "opt2_cpu_ms": 17.40191,
+      "opt3_cpu_ms": 18.0655,
+      "cpu_reduction_pct": -3.81,
+      "opt2_allocated_MiB": 16.1063,
+      "opt3_allocated_MiB": 18.55903,
+      "allocation_reduction_pct": -15.23
+    },
+    {
+      "kind": "player",
+      "pose": "walking",
+      "entities": 8,
+      "opt2_cpu_ms": 47.02003,
+      "opt3_cpu_ms": 48.40129,
+      "cpu_reduction_pct": -2.94,
+      "opt2_allocated_MiB": 43.5397,
+      "opt3_allocated_MiB": 49.96365,
+      "allocation_reduction_pct": -14.75
+    }
+  ],
+  "scope": "Render thread CPU for grouped state extraction and native model preparation, not total frame time/FPS. 320 global warm-up frames; 1500 static/64 moving per-case; five samples of 24 unique frames."
+}

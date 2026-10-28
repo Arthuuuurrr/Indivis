@@ -1,0 +1,2 @@
+EXACT_EXTERIOR_PASS checks=10368 coplanar/near-threshold/nonuniform-transform/reversed-normal/growing-scratch
+EXACT_INDEX_PASS cases=5400 polygons=454508 fallbacks=774

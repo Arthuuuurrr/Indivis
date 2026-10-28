@@ -1,0 +1,9 @@
+{
+  "candidate_sha256": "de06ecab0f5cf7ccee29043bff2ccb5fd2b7425c173da145c1f27559b49def7b",
+  "output": [
+    "EXACT_TRANSFORM_PASS cases=2400 polygons=28800 raw-floats/UV/normals/ranks/ownership/singular/non-finite\n",
+    "EXACT_EXTERIOR_PASS checks=10368 coplanar/near-threshold/nonuniform-transform/reversed-normal/growing-scratch\nEXACT_INDEX_PASS cases=5400 polygons=454564 fallbacks=774\n",
+    "EXACT_VOLUMES_PASS cases=1035 hits=5550 misses=660 peak=8206640 fallbacks=1\n",
+    "EXACT_COMPACT_CLIP_PASS cases=6192 escapedOwnership=60 raw-floats/UV/normals/rank/nonfinite/singular/large-input\n"
+  ]
+}
