@@ -1,5 +1,5 @@
 {
-  "functions": 1011,
+  "functions": 1020,
   "scores": [
     "ACCESS_ARCHIVES",
     "ACCESS_BANQUE",
@@ -191,6 +191,7 @@
     "ShopChoix",
     "actionbar",
     "add",
+    "capitale_currency",
     "container",
     "fixture_bonus",
     "fixture_money",
@@ -383,6 +384,7 @@
     "random port bonuses: fixture counter",
     "Nexus selection: synthetic"
   ],
+  "fixture_only_security": "function root allowed for native EasyNPC command executor tests; no production security files included",
   "integrated": true,
-  "mod_production_sha256": "807dc8b5ce286c74b3137a2161fb59b941fcc99eadb8ae5a16cc8b3bef64b24d"
+  "mod_production_sha256": "78b76966458ff4d51e8cfd0fd222a0873f51389cf731292d121fb0e87d3be736"
 }

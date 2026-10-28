@@ -1,17 +1,17 @@
-[23:00:27] [main/INFO]: Loading Minecraft 1.21.11 with Fabric Loader 0.19.5
-[23:00:27] [main/INFO]: Fabric is preparing JARs on first launch, this may take a few seconds...
-[23:00:27] [main/WARN]: Mod resolution failed
-[23:00:27] [main/INFO]: Immediate reason: [NEG_HARD_DEP haute_capitale_quetes 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF1 {breaks indivis_pq02 @ [*]}, ROOT_FORCELOAD_SINGLE haute_capitale_quetes 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF1, ROOT_FORCELOAD_SINGLE indivis_pq02 1.0.1+1.21.11]
-[23:00:27] [main/INFO]: Reason: [NEG_HARD_DEP haute_capitale_quetes 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF1 {breaks indivis_pq02 @ [*]}]
-[23:00:27] [main/INFO]: SERVER environment disabled: [fabric-model-loading-api-v1, fabric-renderer-api-v1, fabric-sound-api-v1, fabric-screen-api-v1, fabric-rendering-v1, fabric-key-binding-api-v1, fabric-renderer-indigo]
-[23:00:27] [main/INFO]: Fix: add [], remove [], replace [[haute_capitale_quetes 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF1] -> add:haute_capitale_quetes 1 ([(-∞,∞)])]
-[23:00:27] [main/ERROR]: Incompatible mods found!
+[16:53:54] [main/INFO]: Loading Minecraft 1.21.11 with Fabric Loader 0.19.5
+[16:53:54] [main/INFO]: Fabric is preparing JARs on first launch, this may take a few seconds...
+[16:53:54] [main/WARN]: Mod resolution failed
+[16:53:54] [main/INFO]: Immediate reason: [NEG_HARD_DEP haute_capitale_quetes 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF2 {breaks indivis_pq02 @ [*]}, ROOT_FORCELOAD_SINGLE haute_capitale_quetes 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF2, ROOT_FORCELOAD_SINGLE indivis_pq02 1.0.2+1.21.11]
+[16:53:54] [main/INFO]: Reason: [NEG_HARD_DEP haute_capitale_quetes 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF2 {breaks indivis_pq02 @ [*]}]
+[16:53:54] [main/INFO]: SERVER environment disabled: [fabric-model-loading-api-v1, fabric-renderer-api-v1, fabric-sound-api-v1, fabric-screen-api-v1, fabric-rendering-v1, fabric-key-binding-api-v1, fabric-renderer-indigo]
+[16:53:54] [main/INFO]: Fix: add [], remove [], replace [[haute_capitale_quetes 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF2] -> add:haute_capitale_quetes 1 ([(-∞,∞)])]
+[16:53:54] [main/ERROR]: Incompatible mods found!
 net.fabricmc.loader.impl.FormattedException: Some of your mods are incompatible with the game or each other!
 A potential solution has been determined, this may resolve your problem:
-	 - Replace mod 'Haute Capitale — Journal de quêtes' (haute_capitale_quetes) 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF1 with any version that is compatible with:
-		 - indivis_pq02 1.0.1+1.21.11
+	 - Replace mod 'Haute Capitale — Journal de quêtes' (haute_capitale_quetes) 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF2 with any version that is compatible with:
+		 - indivis_pq02 1.0.2+1.21.11
 More details:
-	 - Mod 'Haute Capitale — Journal de quêtes' (haute_capitale_quetes) 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF1 is incompatible with any version of mod 'Indivis — PQ02 : Le registre du Port' (indivis_pq02), yet a conflicting version is present: 1.0.1+1.21.11!
+	 - Mod 'Haute Capitale — Journal de quêtes' (haute_capitale_quetes) 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF2 is incompatible with any version of mod 'Indivis — PQ02 : Le registre du Port' (indivis_pq02), yet a conflicting version is present: 1.0.2+1.21.11!
 	at net.fabricmc.loader.impl.FormattedException.ofLocalized(FormattedException.java:51)
 	at net.fabricmc.loader.impl.FabricLoaderImpl.load(FabricLoaderImpl.java:202)
 	at net.fabricmc.loader.impl.launch.knot.Knot.init(Knot.java:142)

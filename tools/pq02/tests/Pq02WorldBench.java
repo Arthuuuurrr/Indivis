@@ -54,7 +54,7 @@ public final class Pq02WorldBench implements ModInitializer {
  static void advance(Object p){pick(p,14);}
  @SuppressWarnings("unchecked") static void production(){List<Object> online=(List<Object>)call(call(srv,"method_3760"),"method_14571");Pq02Runtime.tick(srv);}
  static void testTick()throws Exception{if(srv==null||finished)return;t++;if(t<20)return;
-  if(t==20){seed(a,30);seed(b,30);seed(observer,100);run(a,"function capitale:pq02/load");Pq02SetupBench.run();
+  if(t==20){seed(a,30);seed(b,30);seed(observer,100);run(a,"function capitale:pq02/load");if(Boolean.getBoolean("pq02.repro.entry")){Pq02EntryBench.reproduce();return;}Pq02SetupBench.run();Pq02EntryBench.verify();
    // Reproduce auto-capture before first role binding (original b10 behavior).
    stat(DM,"ouvrir",a,leo,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));open(a,"leovic");settle(a);ok(v(a).node.key.equals("a01"),"first interaction auto-binds even after original capture");
    open(b,"leovic");settle(b);pick(a,1);pick(b,3);ok(score(a,"REP_GARDEPORT")==1&&score(a,"CAP_PQ2_IMPR")==1&&score(b,"REP_GARDEPORT")==0,"arrival effects are private");

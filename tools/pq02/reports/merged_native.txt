@@ -1,4 +1,4 @@
-PASS 1646 native checks
+PASS 1665 native checks
 setup HF1: fixture is outside former local marker lookup
 setup HF1: preparation succeeds far from loaded A and at a different altitude
 setup HF1: legacy guide parks on existing A, never on administrator position
@@ -36,6 +36,25 @@ setup HF1: old function forwards through actual function dispatcher
 setup HF1: visualization uses existing historical waypoint function
 setup HF1: hiding visualization preserves all real route markers
 setup HF1: admin commands do not start quest, alter reputation, give money or change character state
+native DialogueManager opens camera for a01
+entry HF2: native EasyNPC command executor and function open first PQ02 dialogue
+entry HF2: no actor creation exception from nested function entry
+entry HF2: repeated function requests are coalesced per account
+native DialogueManager opens camera for a01
+entry HF2: repeated function requests retain exactly one private actor
+native DialogueManager opens camera for a01
+entry HF2: public datapack function also opens PQ02
+entry HF2: function route uses a separate actor for another character
+entry HF2: character switch cancels pending interaction
+entry HF2: profile lock cancels pending interaction
+entry HF2: stage change cancels stale interaction before spawning
+entry HF2: profile save suspends pending interaction
+entry HF2: restore/cleanup cancels pending interaction without an actor
+entry HF2: disconnect cancels pending interaction
+entry HF2: closed source camera does not reopen on deferred execution
+native DialogueManager opens camera for t07
+entry HF2: native magistrate function creates both private actors and three-person focus
+entry HF2: entry tests finish without orphan views, requests or runtime errors
 native DialogueManager opens camera for a01
 first interaction auto-binds even after original capture
 native DialogueManager opens camera for a01
@@ -1645,5 +1664,5 @@ no PQ02 runtime exception
 no placeholder dialogue sent
 no placeholder dialogue sent
 no placeholder dialogue sent
-Frame counts={class_3222['PQ02_A'/34, l='ServerLevel[world]', x=8.50, y=64.00, z=9.50]=722, class_3222['PQ02_B'/35, l='ServerLevel[world]', x=17.74, y=64.00, z=2.50]=6, class_3222['PQ02_Observer'/36, l='ServerLevel[world]', x=0.50, y=64.00, z=8.50]=0}
+Frame counts={class_3222['PQ02_B'/47, l='ServerLevel[world]', x=17.74, y=64.00, z=2.50]=7, class_3222['PQ02_A'/46, l='ServerLevel[world]', x=8.50, y=64.00, z=9.50]=725, class_3222['PQ02_Observer'/48, l='ServerLevel[world]', x=0.50, y=64.00, z=8.50]=0}
 Native Fabric 1.21.11 / EasyNPC 7.16, original HF12 classes and production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

@@ -28,8 +28,8 @@ public final class Pq02Runtime implements ModInitializer {
   event("net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback","EVENT",a->{register(a[0]);return null;});
   event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents$EndTick","END_SERVER_TICK",a->{tick(a[0]);return null;});
   event("net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents$Disconnect","DISCONNECT",a->{Object p=call(a[0],"method_32311");suspend(p);dispose(uuid(p));flush();return null;});
-  event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopping","SERVER_STOPPING",a->{for(View v:new ArrayList<>(VIEWS.values())){pause(v);savePosition(v);closeUi(v);dispose(v.account);}flush();return null;});
-  event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{VIEWS.clear();LIVE.clear();HIDDEN.clear();DIRTY.clear();ERRORS.clear();NEAR.clear();clock=0;teamReady=false;return null;});
+  event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopping","SERVER_STOPPING",a->{Pq02Entries.clear();for(View v:new ArrayList<>(VIEWS.values())){pause(v);savePosition(v);closeUi(v);dispose(v.account);}flush();return null;});
+  event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{Pq02Entries.clear();VIEWS.clear();LIVE.clear();HIDDEN.clear();DIRTY.clear();ERRORS.clear();NEAR.clear();clock=0;teamReady=false;return null;});
   event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents$Load","ENTITY_LOAD",a->{Object e=a[0];if(tags(e).contains(TAG)&&!LIVE.contains(uuid(e)))call(e,"method_31472");return null;});
   customActions();
  }
@@ -62,11 +62,7 @@ public final class Pq02Runtime implements ModInitializer {
   if(action.equals("prepare_legacy")||action.equals("prepare_route"))return Pq02Setup.prepare(p);
   if(action.equals("points")){Pq02Setup.describe(p);return 1;}
   if(action.startsWith("bind_")){bind(p,action.substring(5));return 1;}
-  if(!ready(p))return 0;
-  ensure(p);
-  if(action.equals("near")){near(p);return 1;}
-  if(action.equals("dispatch")){View v=VIEWS.get(uuid(p));return v==null?0:dispatch(v);}
-  if(action.equals("leovic")||action.equals("magistrat")){open(p,action);return 1;}return 0;
+  return Pq02Entries.handles(action)?Pq02Entries.submit(p,action):0;
  }
  static final Map<UUID,Near> NEAR=new HashMap<>();
  record Near(UUID character,Point origin,int at){}
@@ -276,8 +272,8 @@ public final class Pq02Runtime implements ModInitializer {
   if(!same(v))return;score2(player,"hcm_pq2_ui",0);score2(player,"Pq02Choix",0);if(score(player,"CAP_QDIALOG_OWNER")==97){score2(player,"CAP_QDIALOG_OWNER",0);score2(player,"CAP_QDIALOG_KEEP",0);}
   if(reason.equals("ECRAN_FERME")&&Pq02Rules.walking(stage(player)))resume(v);else{pause(v);if(stage(player)>=100||Pq02Rules.introduction(stage(player)))dispose(v.account);}
  }
- public static void suspend(Object p){View v=VIEWS.get(uuid(p));if(v==null)return;pause(v);savePosition(v);closeUi(v);dispose(v.account);}
- static void dispose(UUID account){View v=VIEWS.remove(account);if(v==null)return;v.disposed=true;v.walking=false;if(v.motion!=null)v.motion.pause();
+ public static void suspend(Object p){Pq02Entries.cancel(uuid(p));View v=VIEWS.get(uuid(p));if(v==null)return;pause(v);savePosition(v);closeUi(v);dispose(v.account);}
+ static void dispose(UUID account){Pq02Entries.cancel(account);View v=VIEWS.remove(account);if(v==null)return;v.disposed=true;v.walking=false;if(v.motion!=null)v.motion.pause();
   for(Actor a:v.actors.values()){stopActor(a);Pq01Actors.forget(a.goals);Pq01Actors.forget(a.targets);LIVE.remove(a.id);call(a.entity,"method_31472");}
   v.actors.clear();if(v.anchor!=null){LIVE.remove(uuid(v.anchor));call(v.anchor,"method_31472");}if(v.questMarker!=null){LIVE.remove(uuid(v.questMarker));call(v.questMarker,"method_31472");}HIDDEN.remove(account);DIRTY.put(account,v.player);
  }
@@ -296,6 +292,7 @@ public final class Pq02Runtime implements ModInitializer {
   else if(pos(v.questMarker,v.world).distance2(above)>0.0025)call(v.questMarker,"method_5814",above.x(),above.y(),above.z());
  }
  static void tick(Object server){clock++;@SuppressWarnings("unchecked") List<Object> players=(List<Object>)call(call(server,"method_3760"),"method_14571");Set<UUID> online=new HashSet<>();for(Object p:players)online.add(uuid(p));
+  Pq02Entries.tick(players);
   for(View v:new ArrayList<>(VIEWS.values()))try{
    if(!online.contains(v.account)||!same(v)||!Boolean.TRUE.equals(call(v.player,"method_5805"))){if(same(v))pause(v);savePosition(v);closeUi(v);dispose(v.account);continue;}
    v.lastStage=stage(v.player);

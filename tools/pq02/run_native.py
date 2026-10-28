@@ -2,12 +2,13 @@
 from pathlib import Path
 import json,zipfile,subprocess,os,shutil,re
 import build
-H=Path(__file__).resolve().parent;RT=Path('/tmp/indivis_pq02_runtime');INTEGRATED=os.environ.get('PQ02_INTEGRATED')=='1';LABEL='merged_native' if INTEGRATED else 'native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
+H=Path(__file__).resolve().parent;RT=Path('/tmp/indivis_pq02_runtime');INTEGRATED=os.environ.get('PQ02_INTEGRATED')=='1';REPRO=os.environ.get('PQ02_REPRO_ENTRY')=='1';LABEL='hf2_repro' if REPRO else 'merged_native' if INTEGRATED else 'native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
 JAVA=next((RT/'jdk').glob('*/bin/java'));MC=RT/'bootstrap/.fabric/remappedJars/minecraft-1.21.11-0.19.5/server-intermediary.jar'
 JOURNAL=H/'output'/build.JOURNAL_FILENAME if INTEGRATED else next(build.ROOT.joinpath('upload').glob('haute-capitale-quetes*.jar'));DIALOGUE=next(build.ROOT.joinpath('upload').glob('haute-capitale-dialogue*.jar'));NPC=next(H.joinpath('dependencies').glob('*.jar'))
-libs=[*sorted((RT/'libraries').glob('*.jar')),*sorted((RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),MC,JOURNAL,DIALOGUE,NPC]+([] if INTEGRATED else [H/'output'/build.FILES['mod']])
+if REPRO and os.environ.get('PQ02_REPRO_JAR'):JOURNAL=Path(os.environ['PQ02_REPRO_JAR']).resolve()
+libs=[*sorted((RT/'libraries').glob('*.jar')),*sorted((RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),MC,JOURNAL,DIALOGUE,NPC]+([H/'output'/build.JOURNAL_FILENAME] if REPRO else [])+([] if INTEGRATED else [H/'output'/build.FILES['mod']])
 CP=os.pathsep.join(map(str,libs));C=H/'native_classes';shutil.rmtree(C,ignore_errors=True);C.mkdir()
-sources=[H/'tests/Pq02WorldBench.java',H/'tests/Pq02SetupBench.java',H/'tests/NexusCharacters.java',H/'tests/MakeSink.java',H/'tests/SkillsAPI.java',H/'tests/Pq02CaptureBench.java',H/'tests/Mq03Bench.java',H/'tests/HuguesBench.java',*list((H/'reference/tools/pq01_full/tests/native_capture_doubles').rglob('*.java')),H/'reference/tools/pq01_full/tests/client_doubles/net/hautecapitale/dialogue/client/capture/CaptureDialogueScreen.java']
+sources=[H/'tests/Pq02WorldBench.java',H/'tests/Pq02SetupBench.java',H/'tests/Pq02EntryBench.java',H/'tests/NexusCharacters.java',H/'tests/MakeSink.java',H/'tests/SkillsAPI.java',H/'tests/Pq02CaptureBench.java',H/'tests/Mq03Bench.java',H/'tests/HuguesBench.java',*list((H/'reference/tools/pq01_full/tests/native_capture_doubles').rglob('*.java')),H/'reference/tools/pq01_full/tests/client_doubles/net/hautecapitale/dialogue/client/capture/CaptureDialogueScreen.java']
 subprocess.run([JAVA.with_name('javac'),'--release','21','-proc:none','-cp',CP,'-d',C,*sources],check=True)
 subprocess.run([JAVA,'-cp',str(C)+os.pathsep+CP,'MakeSink',C],check=True)
 with zipfile.ZipFile(JOURNAL) as z:out={n:z.read(n) for n in z.namelist() if not n.endswith('/')}
@@ -28,6 +29,13 @@ shutil.copyfile(NPC,S/'mods/easy_npc.jar');shutil.copyfile(RT/'fabric-api.jar',S
 if not INTEGRATED:shutil.copyfile(H/'output'/build.FILES['mod'],S/'mods/pq02_production.jar')
 else:assert not (S/'mods/pq02_production.jar').exists(),'Stale standalone PQ02 in integrated fixture'
 (S/'eula.txt').write_text('eula=true\n');(S/'server.properties').write_text('online-mode=false\nserver-ip=127.0.0.1\nserver-port=25579\nview-distance=2\nsimulation-distance=2\nspawn-protection=0\nmax-tick-time=0\npause-when-empty-seconds=0\n')
+# Fixture only: production already allows its quest functions. Do not ship or alter user security.
+security=S/'config/easy_npc/security.cfg';security.parent.mkdir(parents=True,exist_ok=True)
+lines=security.read_text().splitlines() if security.exists() else []
+lines=[line for line in lines if not line.startswith('executeAsUserCommandAllowList.GAMEMASTERS=')]
+lines=[line if not line.startswith('unsafeNpcCommands=') else 'unsafeNpcCommands='+','.join(s for s in line.partition('=')[2].split(',') if s!='function') for line in lines]
+if not any(line.startswith('unsafeNpcCommands=') for line in lines):lines.append('unsafeNpcCommands=ban,ban-ip,debug,deop,forceload,kick,op,reload,save-all,stop,whitelist')
+lines.append('executeAsUserCommandAllowList.GAMEMASTERS=function');security.write_text('\n'.join(lines)+'\n')
 shutil.rmtree(S/'world',ignore_errors=True);P=S/'world/datapacks/pq02_fixture';P.mkdir(parents=True)
 orig={k:build.read(H/'output'/build.FILES[k]) for k in ['core','quests']};pack={'pack.mcmeta':orig['core']['pack.mcmeta']}
 # All newly changed functions plus all MQ03 runtime functions for native parser/route checks.
@@ -35,7 +43,7 @@ paths=['data/capitale/function/pq02/','data/capitale/function/pq01/menu/hugues',
 for files in orig.values():
  for n,b in files.items():
   if any(n.startswith(p) for p in paths) or '/worldgen/biome/' in n:pack[n]=b
-for n in ['reward/skills/core/registre_port_self','reward/xp_vanilla/core/registre_port_self','bounds/reputation_all_self','bounds/rangsocial_self','access/recalculate_by_rank_self','display/prefix/sync_self','dialogue/sound/gain_quete_self','npc/altheon_brumeforge/interact_self','quest/spawn_dirigeable_couronne/capitaine_quai/interact_self','quest/spawn_dirigeable_couronne/capitaine_large/interact_self','pq01/open/altheon_self']:
+for n in ['quest/le_registre_du_port/leovic/interact_self','quest/le_registre_du_port/magistrat/register_self','reward/skills/core/registre_port_self','reward/xp_vanilla/core/registre_port_self','bounds/reputation_all_self','bounds/rangsocial_self','access/recalculate_by_rank_self','display/prefix/sync_self','dialogue/sound/gain_quete_self','npc/altheon_brumeforge/interact_self','quest/spawn_dirigeable_couronne/capitaine_quai/interact_self','quest/spawn_dirigeable_couronne/capitaine_large/interact_self','pq01/open/altheon_self']:
  key='data/capitale/function/'+n+'.mcfunction';pack[key]=orig['core'][key]
 pack['data/capitale/function/pq02/gift_once_self.mcfunction']=pack['data/capitale/function/pq02/gift_once_self.mcfunction'].replace(b'capitale_currency:martin_dor',b'minecraft:gold_nugget')
 # External integrations are recorded substitutes, not replacements in delivered packs.
@@ -58,12 +66,14 @@ for _ in range(20):
  pack.update(additions)
 for n,b in pack.items():
  if n.endswith('.mcfunction'):scores.update(re.findall(r'(?<!\S)(?:@s|#[\w]+) ([A-Za-z][A-Za-z0-9_]*)',b.decode(errors='replace')))
+for n,b in list(pack.items()):
+ if n.endswith('.mcfunction'):pack[n]=b.replace(b'capitale_currency:martin_dor',b'minecraft:gold_nugget')
 pack['data/fixture/function/objectives.mcfunction']=('\n'.join('scoreboard objectives add '+s+' '+('trigger' if s in {'QuestChoix','hcq_choix'} else 'dummy') for s in sorted(scores))+'\n').encode()
 for n,b in pack.items():p=P/n;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b)
-(H/('reports/'+LABEL+'_fixture.json')).write_text(json.dumps({'functions':sum(n.endswith('.mcfunction') for n in pack),'scores':sorted(scores),'external_substitutes':['currency: gold_nugget','CapSkills: fixture counter','random port bonuses: fixture counter','Nexus selection: synthetic'],'integrated':INTEGRATED,'mod_production_sha256':build.sha((JOURNAL if INTEGRATED else H/'output'/build.FILES['mod']).read_bytes())},indent=2)+'\n')
+(H/('reports/'+LABEL+'_fixture.json')).write_text(json.dumps({'functions':sum(n.endswith('.mcfunction') for n in pack),'scores':sorted(scores),'external_substitutes':['currency: gold_nugget','CapSkills: fixture counter','random port bonuses: fixture counter','Nexus selection: synthetic'],'fixture_only_security':'function root allowed for native EasyNPC command executor tests; no production security files included','integrated':INTEGRATED,'mod_production_sha256':build.sha((JOURNAL if INTEGRATED else H/'output'/build.FILES['mod']).read_bytes())},indent=2)+'\n')
 GAME=RT/'minecraft_bundle/META-INF/versions/1.21.11/server-1.21.11.jar';CP=os.pathsep.join(map(str,[*sorted((RT/'libraries').glob('*.jar')),*sorted((RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),GAME]))
 result=S/'world-test-result.txt';result.unlink(missing_ok=True)
-with (H/('reports/'+LABEL+'_server.log')).open('w') as f:r=subprocess.run([JAVA,'-XX:ActiveProcessorCount=2','-Xmx2G',f'-Dfabric.gameJarPath={GAME}','-Dfabric.log.disableAnsi=true','-cp',CP,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui'],cwd=S,stdout=f,stderr=subprocess.STDOUT,timeout=360)
+with (H/('reports/'+LABEL+'_server.log')).open('w') as f:r=subprocess.run([JAVA,'-XX:ActiveProcessorCount=2','-Xmx2G',*(['-Dpq02.repro.entry=true'] if REPRO else []),f'-Dfabric.gameJarPath={GAME}','-Dfabric.log.disableAnsi=true','-cp',CP,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui'],cwd=S,stdout=f,stderr=subprocess.STDOUT,timeout=360)
 if result.exists():shutil.copyfile(result,H/('reports/'+LABEL+'.txt'));print(result.read_text())
 else:print((H/('reports/'+LABEL+'_server.log')).read_text()[-7000:])
 assert r.returncode==0 and result.exists() and result.read_text().startswith('PASS')

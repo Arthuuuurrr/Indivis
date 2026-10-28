@@ -1,17 +1,17 @@
-# Indivis — PQ02 R1 HF1 : installation et recette
+# Indivis — PQ02 R1 HF2 : installation et recette
 
 Version ciblée : Minecraft/Fabric **1.21.11**, Java **21**. Base : core **HF9_QMARK2** et journal datapack **HF4_QMARK2** fournis pour cette demande. Le mod de quêtes **HF12 est remplacé par sa version intégrant PQ02**, sans compagnon séparé.
 
 ## Fichiers à installer
 
-Décompresser **l’archive de livraison** `Indivis_PQ02_R1_HF1_Installation_Integree.zip`. Elle contient les deux datapacks et le mod de quêtes fusionné. Ne pas déposer cette archive de livraison elle-même dans `datapacks`.
+Décompresser **l’archive de livraison** `Indivis_PQ02_R1_HF2_Installation_Integree.zip`. Elle contient les deux datapacks et le mod de quêtes fusionné. Ne pas déposer cette archive de livraison elle-même dans `datapacks`.
 
 | Destination | Fichier fourni | Action |
 | --- | --- | --- |
 | Serveur : `<monde>/datapacks/` | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF1.zip` | Remplacer le core précédent, y compris s’il était décompressé. Garder une seule copie de ce core. |
 | Serveur : `<monde>/datapacks/` | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1.zip` | Remplacer le datapack de journal HF4_QMARK2 fourni. |
-| Serveur : `mods/` | `haute-capitale-quetes-HF12-PQ02-R1-HF1-1.21.11.jar` | Remplacer l’ancien JAR de quêtes et retirer le compagnon `indivis-pq02` s’il a été installé. |
-| **Chaque client** : `mods/` | **Le même** `haute-capitale-quetes-HF12-PQ02-R1-HF1-1.21.11.jar` | Remplacer l’ancien JAR de quêtes et retirer `indivis-pq02`, comme sur le serveur. |
+| Serveur : `mods/` | `haute-capitale-quetes-HF12-PQ02-R1-HF2-1.21.11.jar` | Remplacer l’ancien JAR de quêtes et retirer le compagnon `indivis-pq02` s’il a été installé. |
+| **Chaque client** : `mods/` | **Le même** `haute-capitale-quetes-HF12-PQ02-R1-HF2-1.21.11.jar` | Remplacer l’ancien JAR de quêtes et retirer `indivis-pq02`, comme sur le serveur. |
 
 Les deux ZIP internes sont directement utilisables comme datapacks : leur `pack.mcmeta` est à la racine. Ne pas conserver en parallèle leur ancienne version ni un dossier issu de l’ancienne extraction.
 
@@ -22,6 +22,10 @@ Conserver **sans les remplacer** : NexusCharacters PRE35-SI1-OPT1, Dialogue b10,
 Remplacer le **core R1 par le core R1 HF1 côté serveur**, puis le JAR de quêtes par le **seul** JAR fusionné HF1 sur le serveur et chaque client. Le datapack **`hc_quetes` R1 est inchangé** : le conserver s’il est déjà installé. Retirer `indivis-pq02` s’il est encore présent. Les PNJ, les liaisons et la progression enregistrée sont conservés ; aucune réinitialisation ni réinstallation des personnages n’est nécessaire. Redémarrer complètement.
 
 Le JAR garde l’identifiant `haute_capitale_quetes`, les mêmes configurations et données. Fabric refuse explicitement sa coexistence avec l’ancien compagnon `indivis_pq02` pour éviter deux moteurs PQ02 simultanés.
+
+## Si le core HF1 est déjà préparé
+
+Le correctif **HF2 remplace uniquement le JAR de quêtes sur serveur et clients**, puis exige un redémarrage complet. Le core HF1 et `hc_quetes` R1 sont identiques ; conserver les deux. Les liaisons, les 18 repères et la progression n’ont pas à être réinitialisés. Reprendre ensuite le clic normal sur Léovic. Le détail de la correction et les limites de test sont dans `CORRECTIF_PQ02_HF2.md`.
 
 ## Ordre d’installation
 

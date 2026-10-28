@@ -62,7 +62,10 @@ coverage=[]
 for key,n in model.N.items():coverage.append({'editorial_id':n['editorial'],'runtime':key,'source_lines':n['source_lines'],'camera':n['camera'],'condition':n['condition'],'next':n['next'],'choices':n['choices']})
 (H/'reports/coverage.json').write_text(json.dumps(coverage,ensure_ascii=False,indent=2)+'\n')
 rt=Path('/tmp/indivis_pq02_runtime');java=next((rt/'jdk').glob('*/bin/java'));classes=H/'test_classes';classes.mkdir(exist_ok=True)
-libs=[*sorted((rt/'libraries').glob('*.jar')),*sorted((rt/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),rt/'bootstrap/.fabric/remappedJars/minecraft-1.21.11-0.19.5/server-intermediary.jar',H/'output'/build.FILES['mod'],*H.parents[1].joinpath('upload').glob('*.jar')]
+nexus=H/'dependencies/recovered_nexus/NexusCharacters-Indivis-1.21.11-PRE35-SI1-OPT1(1).jar'
+if not nexus.exists():nexus=H.parents[1]/'upload/NexusCharacters-Indivis-1.21.11-PRE35-SI1-OPT1(1).jar'
+assert build.sha(nexus.read_bytes())=='bdb1525d5e4448cb8127e38bdcdce063d629b7039a856bf9ea74be5ea06dea11','Incomplete or unexpected Nexus PRE35 test input'
+libs=[*sorted((rt/'libraries').glob('*.jar')),*sorted((rt/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),rt/'bootstrap/.fabric/remappedJars/minecraft-1.21.11-0.19.5/server-intermediary.jar',H/'output'/build.FILES['mod'],nexus,*H.parents[1].joinpath('upload').glob('haute-capitale-*.jar')]
 cp=os.pathsep.join(map(str,libs));subprocess.run([java.with_name('javac'),'--release','21','-proc:none','-cp',cp,'-d',classes,H/'tests/RulesBench.java'],check=True)
 r=subprocess.run([java,'-cp',str(classes)+os.pathsep+cp,'net.hautecapitale.quetes.sequence.RulesBench'],capture_output=True,text=True,check=True)
 (H/'reports/rules.txt').write_text(r.stdout);ok(r.stdout.startswith('PASS'),'real Java21 pure tests and actual Nexus policy pass')

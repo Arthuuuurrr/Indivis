@@ -1,6 +1,8 @@
-# PQ02 R1 HF1 — commandes et repères
+# PQ02 R1 HF2 — commandes et repères
 
-Minecraft/Fabric **1.21.11**, Java **21**. Installer le core **PQ02 R1 HF1** et le mod de quêtes fusionné **HF12-PQ02-R1-HF1** avant d’utiliser les nouvelles commandes. Aucun nouveau mod compagnon n’est ajouté. Si `hc_quetes` PQ02 R1 est déjà installé, le conserver.
+Minecraft/Fabric **1.21.11**, Java **21**. Installer le core **PQ02 R1 HF1** et le mod de quêtes fusionné **HF12-PQ02-R1-HF2** avant d’utiliser les nouvelles commandes. Aucun nouveau mod compagnon n’est ajouté. Si `hc_quetes` PQ02 R1 est déjà installé, le conserver.
+
+**Passage de HF1 à HF2 : remplacer seulement le JAR de quêtes et redémarrer. Les commandes et liaisons déjà enregistrées restent valables.**
 
 ## Préparation initiale
 

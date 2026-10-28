@@ -9,6 +9,7 @@ import static net.hautecapitale.quetes.sequence.Pq02WorldBench.*;
 
 /** Commandes administratives exercées sur les vraies entités et le dispatcher natif. */
 final class Pq02SetupBench {
+ static void cmd(String command){call(call(call(srv,"method_3734"),"method_9235"),"execute",command,call(srv,"method_3739"));}
  static void check(boolean value,String description){ok(value,"setup HF1: "+description);}
  static void forget(String key){Object root=Pq01Nbt.copy(config(a));call(child(root,"points"),"method_10551",key);GuardNbt.save(srv,SETUP,root);}
  static void function(String name){SequenceBridge.run(a,"function capitale:pq02/admin/"+name);}

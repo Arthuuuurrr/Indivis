@@ -33,8 +33,8 @@ def main():
  meta['depends'].update({'minecraft':'1.21.11','fabricloader':'>=0.19.5','fabric-api':'>=0.141.6','easy_npc':'7.16.0'})
  assert 'haute_capitale_quetes' not in meta['depends']
  meta.setdefault('breaks',{})['indivis_pq02']='*'
- meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF1'
- meta['description']+=' PQ02-R1-HF1 intégré : Le registre du Port, escortes privées, dialogues et récompenses par personnage ; préparation adaptée aux repères existants.'
+ meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF2'
+ meta['description']+=' PQ02-R1-HF2 intégré : Le registre du Port, escortes privées, dialogues et récompenses par personnage ; préparation adaptée aux repères existants ; ouverture de dialogue hors du contexte des fonctions imbriquées.'
  result['fabric.mod.json']=(json.dumps(meta,ensure_ascii=False,indent=2)+'\n').encode()
  build.write(OUTPUT,result)
  actual=read(OUTPUT)

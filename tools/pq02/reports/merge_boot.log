@@ -1,5 +1,5 @@
-[23:00:28] [main/INFO]: Loading Minecraft 1.21.11 with Fabric Loader 0.19.5
-[23:00:28] [main/INFO]: Loading 48 mods:
+[16:53:55] [main/INFO]: Loading Minecraft 1.21.11 with Fabric Loader 0.19.5
+[16:53:55] [main/INFO]: Loading 48 mods:
 	- easy_npc 7.16.0
 	- fabric-api 0.141.6+1.21.11
 	   |-- fabric-api-base 1.0.5+4ebb5c083e
@@ -41,125 +41,125 @@
 	- fabricloader 0.19.5
 	   \-- mixinextras 0.5.5
 	- haute_capitale_dialogue 0.1.0+1.21.11.b10
-	- haute_capitale_quetes 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF1
+	- haute_capitale_quetes 0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF2
 	- haute_capitale_rpg 0.3.0
 	- java 21
 	- merge_boot_test 1.0.0
 	- minecraft 1.21.11
 	- nexuscharacters 1.0.0-beta.35
 	- puffish_skills 0.17.3
-[23:00:28] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/tmp/indivis_pq02_runtime/libraries/sponge-mixin-0.17.4+mixin.0.8.7.jar Service=Knot/Fabric Env=SERVER
-[23:00:28] [main/WARN]: Reference map 'easy_npc.refmap.json' for easy_npc.fabric.mixins.json could not be read. If this is a development environment you can ignore this message
-[23:00:28] [main/INFO]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
-[23:00:34] [main/INFO]: Initializing Easy NPC (Fabric) ...
-[23:00:34] [main/INFO]: 🗣 Register Easy NPC: Core Debug Manager ...
-[23:00:34] [main/INFO]: 🗣 Register Easy NPC: Core Constants ...
-[23:00:34] [main/INFO]: 🗣 Register Easy NPC: Core Configuration ...
-[23:00:34] [main/INFO]: [Config] Creating configuration folder ./config/easy_npc
-[23:00:34] [main/INFO]: [Config] Registering common configuration ...
-[23:00:34] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/dialog_options.cfg
-[23:00:34] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/npc_base.cfg
-[23:00:34] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/remote_texture.cfg
-[23:00:34] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/render_entity_type_support.cfg
-[23:00:34] [main/INFO]: Initialized 741 supported and 261 unsupported entity types from defaults.
-[23:00:34] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/security.cfg
-[23:00:34] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/spawner_type.cfg
-[23:00:34] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/storage.cfg
-[23:00:34] [main/INFO]: [Config] Registering server configuration ...
-[23:00:34] [main/INFO]: 🗣 Register Easy NPC: Core Common Data Files ...
-[23:00:34] [main/INFO]: 🗣 Register Easy NPC: Core Common data folders ...
-[23:00:34] [main/INFO]: 🗣 Register Easy NPC: Core Entity Data Serializers ...
-[23:00:34] [main/INFO]: Registered entity data serializer ActionEventSet with id easy_npc:actioneventset using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer class_2487 with id easy_npc:class_2487 using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer PendingActionSet with id easy_npc:pendingactionset using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer StateDataSet with id easy_npc:statedataset using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer DialogDataSet with id easy_npc:dialogdataset using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer DisplayAttributeDataSet with id easy_npc:displayattributedataset using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer EntityAttributes with id easy_npc:entityattributes using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer ProgressionData with id easy_npc:progressiondata using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer class_1916 with id easy_npc:class_1916 using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer ModelPose with id easy_npc:modelpose using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer ModelAnimationData with id easy_npc:modelanimationdata using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer RootModelData with id easy_npc:rootmodeldata using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer ObjectiveDataSet with id easy_npc:objectivedataset using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer CustomPosition with id easy_npc:customposition using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer Profession with id easy_npc:profession using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer RenderDataEntry with id easy_npc:renderdataentry using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer CustomScale with id easy_npc:customscale using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer SkinDataEntry with id easy_npc:skindataentry using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer SkinType with id easy_npc:skintype using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer SkinUUID with id easy_npc:skinuuid using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer SoundDataSet with id easy_npc:sounddataset using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer TargetedEntitySet with id easy_npc:targetedentityset using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer TargetedPlayerSet with id easy_npc:targetedplayerset using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer TradingDataSet with id easy_npc:tradingdataset using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer TradingType with id easy_npc:tradingtype using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer UUID with id easy_npc:uuid using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer ModelVisibilityDataCapable with id easy_npc:modelvisibilitydatacapable using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer ModelRotationDataCapable with id easy_npc:modelrotationdatacapable using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer ModelPositionDataCapable with id easy_npc:modelpositiondatacapable using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: Registered entity data serializer ModelScaleDataCapable with id easy_npc:modelscaledatacapable using FabricTrackedDataRegistry
-[23:00:34] [main/INFO]: 🗣 Register Easy NPC: Core Compatibility Handler ...
-[23:00:34] [main/INFO]: 🗣 Register Easy NPC: Core Compat Handler ...
-[23:00:34] [main/INFO]: [Compat Manager] Epic Fight mod with id 'epicfight' loaded: false
-[23:00:34] [main/INFO]: [Compat Manager] Cobblemon mod with id 'cobblemon' loaded: false
-[23:00:34] [main/INFO]: [Compat Manager] Easy Model Entities mod with id 'easy_model_entities' loaded: false
-[23:00:34] [main/INFO]: 🗣 Register Easy NPC: Core Entity Types ...
-[23:00:35] [main/INFO]: Registered 32 raw entity types.
-[23:00:35] [main/INFO]: Registered 37 NPC entity types.
-[23:00:35] [main/INFO]: Registered 4 custom entity types.
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Blocks ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Blocks Entities ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Items ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Configuration Items ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Test Items ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Consumable Items ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Block Items ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Weapon Items ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Spawn Egg Items ...
-[23:00:35] [main/INFO]: Registered 37 NPC spawn eggs.
-[23:00:35] [main/INFO]: Registered 4 custom spawn eggs.
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Command register event ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Server Events ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Registering Server Entity Events ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Menu Handler ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Menu Types ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Menu Types ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Mod Data Components ...
-[23:00:35] [main/INFO]: Easy NPC Data Components ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Network Handler ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core NetworkHandler ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Network Handler ...
-[23:00:35] [main/INFO]: Registering network messages for SERVER side ...
-[23:00:35] [main/INFO]: Registering client network handler ...
-[23:00:35] [main/INFO]: Registering client payload type class_9154[id=easy_npc:open_menu_callback_message] with net.minecraft.class_9139$1@44bff016
-[23:00:35] [main/INFO]: Registering client payload type class_9154[id=easy_npc:sync_data] with net.minecraft.class_9139$1@73442b0f
-[23:00:35] [main/INFO]: Registering client payload type class_9154[id=easy_npc:speech_bubble] with net.minecraft.class_9139$1@56417800
-[23:00:35] [main/INFO]: Registering client payload type class_9154[id=easy_npc:highlight_easy_npc] with net.minecraft.class_9139$1@11f862fd
-[23:00:35] [main/INFO]: Registering client payload type class_9154[id=easy_npc:shoulder_npc] with net.minecraft.class_9139$1@4ac752d6
-[23:00:35] [main/INFO]: Registering server network handler ...
-[23:00:35] [main/INFO]: Registering server payload type class_9154[id=easy_npc:trigger_action_event] with net.minecraft.class_9139$1@727322b5
-[23:00:35] [main/INFO]: Registering server payload type class_9154[id=easy_npc:dialog_button_action] with net.minecraft.class_9139$1@3f09b360
-[23:00:35] [main/INFO]: Registering server payload type class_9154[id=easy_npc:open_menu_message] with net.minecraft.class_9139$1@53eadb43
-[23:00:35] [main/INFO]: Registering server payload type class_9154[id=easy_npc:request_data_sync] with net.minecraft.class_9139$1@627b9c7d
-[23:00:35] [main/INFO]: Registering client network handler for Server -> Client messages.
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Client Network Message Handler ...
-[23:00:35] [main/INFO]: 🗣 Register Easy NPC: Core Argument Types ...
-[23:00:35] [main/INFO]: Capture des dialogues de chat : ouverture sur clic armée (phase haute_capitale_dialogue:avant).
-[23:00:35] [main/INFO]: Pont Easy NPC prêt : type de menu haute_capitale_dialogue:dialogue_easy_npc.
-[23:00:35] [main/INFO]: Dialogue RPG initialisé (sessions, réseau, gardes).
-[23:00:35] [main/INFO]: Registered custom action haute_capitale_quetes:start
-[23:00:35] [main/INFO]: Registered custom action haute_capitale_quetes:objective
-[23:00:35] [main/INFO]: Registered custom action haute_capitale_quetes:progress
-[23:00:35] [main/INFO]: Registered custom action haute_capitale_quetes:complete
-[23:00:35] [main/INFO]: Registered custom action haute_capitale_quetes:track
-[23:00:35] [main/INFO]: Registered custom action haute_capitale_quetes:abandon
-[23:00:35] [main/INFO]: [quetes] actions Easy NPC enregistrées : start, objective, progress, complete, track, abandon
-[23:00:35] [main/INFO]: [quetes] journal de quêtes prêt
-[23:00:35] [main/INFO]: Registered custom action haute_capitale_quetes:pq01
-[23:00:35] [main/INFO]: Registered custom action indivis:pq02
-[23:00:36] [main/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[23:00:36] [Yggdrasil Key Fetcher/ERROR]: Failed to request yggdrasil public key
+[16:53:56] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=file:/tmp/indivis_pq02_runtime/libraries/sponge-mixin-0.17.4+mixin.0.8.7.jar Service=Knot/Fabric Env=SERVER
+[16:53:56] [main/WARN]: Reference map 'easy_npc.refmap.json' for easy_npc.fabric.mixins.json could not be read. If this is a development environment you can ignore this message
+[16:53:56] [main/INFO]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.5).
+[16:54:05] [main/INFO]: Initializing Easy NPC (Fabric) ...
+[16:54:05] [main/INFO]: 🗣 Register Easy NPC: Core Debug Manager ...
+[16:54:05] [main/INFO]: 🗣 Register Easy NPC: Core Constants ...
+[16:54:05] [main/INFO]: 🗣 Register Easy NPC: Core Configuration ...
+[16:54:05] [main/INFO]: [Config] Creating configuration folder ./config/easy_npc
+[16:54:05] [main/INFO]: [Config] Registering common configuration ...
+[16:54:05] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/dialog_options.cfg
+[16:54:05] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/npc_base.cfg
+[16:54:05] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/remote_texture.cfg
+[16:54:05] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/render_entity_type_support.cfg
+[16:54:05] [main/INFO]: Initialized 741 supported and 261 unsupported entity types from defaults.
+[16:54:05] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/security.cfg
+[16:54:05] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/spawner_type.cfg
+[16:54:05] [main/INFO]: [Config] Creating configuration file ./config/easy_npc/storage.cfg
+[16:54:05] [main/INFO]: [Config] Registering server configuration ...
+[16:54:05] [main/INFO]: 🗣 Register Easy NPC: Core Common Data Files ...
+[16:54:05] [main/INFO]: 🗣 Register Easy NPC: Core Common data folders ...
+[16:54:05] [main/INFO]: 🗣 Register Easy NPC: Core Entity Data Serializers ...
+[16:54:05] [main/INFO]: Registered entity data serializer ActionEventSet with id easy_npc:actioneventset using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer class_2487 with id easy_npc:class_2487 using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer PendingActionSet with id easy_npc:pendingactionset using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer StateDataSet with id easy_npc:statedataset using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer DialogDataSet with id easy_npc:dialogdataset using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer DisplayAttributeDataSet with id easy_npc:displayattributedataset using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer EntityAttributes with id easy_npc:entityattributes using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer ProgressionData with id easy_npc:progressiondata using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer class_1916 with id easy_npc:class_1916 using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer ModelPose with id easy_npc:modelpose using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer ModelAnimationData with id easy_npc:modelanimationdata using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer RootModelData with id easy_npc:rootmodeldata using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer ObjectiveDataSet with id easy_npc:objectivedataset using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer CustomPosition with id easy_npc:customposition using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer Profession with id easy_npc:profession using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer RenderDataEntry with id easy_npc:renderdataentry using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer CustomScale with id easy_npc:customscale using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer SkinDataEntry with id easy_npc:skindataentry using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer SkinType with id easy_npc:skintype using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer SkinUUID with id easy_npc:skinuuid using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer SoundDataSet with id easy_npc:sounddataset using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer TargetedEntitySet with id easy_npc:targetedentityset using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer TargetedPlayerSet with id easy_npc:targetedplayerset using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer TradingDataSet with id easy_npc:tradingdataset using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer TradingType with id easy_npc:tradingtype using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer UUID with id easy_npc:uuid using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer ModelVisibilityDataCapable with id easy_npc:modelvisibilitydatacapable using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer ModelRotationDataCapable with id easy_npc:modelrotationdatacapable using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer ModelPositionDataCapable with id easy_npc:modelpositiondatacapable using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: Registered entity data serializer ModelScaleDataCapable with id easy_npc:modelscaledatacapable using FabricTrackedDataRegistry
+[16:54:05] [main/INFO]: 🗣 Register Easy NPC: Core Compatibility Handler ...
+[16:54:05] [main/INFO]: 🗣 Register Easy NPC: Core Compat Handler ...
+[16:54:05] [main/INFO]: [Compat Manager] Epic Fight mod with id 'epicfight' loaded: false
+[16:54:05] [main/INFO]: [Compat Manager] Cobblemon mod with id 'cobblemon' loaded: false
+[16:54:05] [main/INFO]: [Compat Manager] Easy Model Entities mod with id 'easy_model_entities' loaded: false
+[16:54:05] [main/INFO]: 🗣 Register Easy NPC: Core Entity Types ...
+[16:54:06] [main/INFO]: Registered 32 raw entity types.
+[16:54:06] [main/INFO]: Registered 37 NPC entity types.
+[16:54:06] [main/INFO]: Registered 4 custom entity types.
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Blocks ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Blocks Entities ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Items ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Configuration Items ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Test Items ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Consumable Items ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Block Items ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Weapon Items ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Spawn Egg Items ...
+[16:54:06] [main/INFO]: Registered 37 NPC spawn eggs.
+[16:54:06] [main/INFO]: Registered 4 custom spawn eggs.
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Command register event ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Server Events ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Registering Server Entity Events ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Menu Handler ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Menu Types ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Menu Types ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Mod Data Components ...
+[16:54:06] [main/INFO]: Easy NPC Data Components ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Network Handler ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core NetworkHandler ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Network Handler ...
+[16:54:06] [main/INFO]: Registering network messages for SERVER side ...
+[16:54:06] [main/INFO]: Registering client network handler ...
+[16:54:06] [main/INFO]: Registering client payload type class_9154[id=easy_npc:open_menu_callback_message] with net.minecraft.class_9139$1@16b01c9f
+[16:54:06] [main/INFO]: Registering client payload type class_9154[id=easy_npc:sync_data] with net.minecraft.class_9139$1@31a4280a
+[16:54:06] [main/INFO]: Registering client payload type class_9154[id=easy_npc:speech_bubble] with net.minecraft.class_9139$1@7fa64429
+[16:54:06] [main/INFO]: Registering client payload type class_9154[id=easy_npc:highlight_easy_npc] with net.minecraft.class_9139$1@34db71a9
+[16:54:06] [main/INFO]: Registering client payload type class_9154[id=easy_npc:shoulder_npc] with net.minecraft.class_9139$1@70f420ae
+[16:54:06] [main/INFO]: Registering server network handler ...
+[16:54:06] [main/INFO]: Registering server payload type class_9154[id=easy_npc:trigger_action_event] with net.minecraft.class_9139$1@1ce563d0
+[16:54:06] [main/INFO]: Registering server payload type class_9154[id=easy_npc:dialog_button_action] with net.minecraft.class_9139$1@687849c4
+[16:54:06] [main/INFO]: Registering server payload type class_9154[id=easy_npc:open_menu_message] with net.minecraft.class_9139$1@7e53a1
+[16:54:06] [main/INFO]: Registering server payload type class_9154[id=easy_npc:request_data_sync] with net.minecraft.class_9139$1@5926a3a8
+[16:54:06] [main/INFO]: Registering client network handler for Server -> Client messages.
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Client Network Message Handler ...
+[16:54:06] [main/INFO]: 🗣 Register Easy NPC: Core Argument Types ...
+[16:54:07] [main/INFO]: Capture des dialogues de chat : ouverture sur clic armée (phase haute_capitale_dialogue:avant).
+[16:54:07] [main/INFO]: Pont Easy NPC prêt : type de menu haute_capitale_dialogue:dialogue_easy_npc.
+[16:54:07] [main/INFO]: Dialogue RPG initialisé (sessions, réseau, gardes).
+[16:54:07] [main/INFO]: Registered custom action haute_capitale_quetes:start
+[16:54:07] [main/INFO]: Registered custom action haute_capitale_quetes:objective
+[16:54:07] [main/INFO]: Registered custom action haute_capitale_quetes:progress
+[16:54:07] [main/INFO]: Registered custom action haute_capitale_quetes:complete
+[16:54:07] [main/INFO]: Registered custom action haute_capitale_quetes:track
+[16:54:07] [main/INFO]: Registered custom action haute_capitale_quetes:abandon
+[16:54:07] [main/INFO]: [quetes] actions Easy NPC enregistrées : start, objective, progress, complete, track, abandon
+[16:54:07] [main/INFO]: [quetes] journal de quêtes prêt
+[16:54:07] [main/INFO]: Registered custom action haute_capitale_quetes:pq01
+[16:54:07] [main/INFO]: Registered custom action indivis:pq02
+[16:54:07] [main/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[16:54:07] [Yggdrasil Key Fetcher/ERROR]: Failed to request yggdrasil public key
 com.mojang.authlib.exceptions.MinecraftClientException: Failed to read from https://api.minecraftservices.com/publickeys due to api.minecraftservices.com
 	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:111)
 	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:56)
@@ -192,55 +192,55 @@ Caused by: java.net.UnknownHostException: api.minecraftservices.com
 	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:307)
 	at knot//com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:82)
 	... 9 more
-[23:00:37] [main/INFO]: No existing world data, creating new world
-[23:00:37] [Worker-Main-1/INFO]: 🗣 Register Easy NPC: Core /easy_npc commands for Easy NPC ...
-[23:00:38] [main/INFO]: Loaded 1470 recipes
-[23:00:38] [main/INFO]: Loaded 1584 advancements
-[23:00:38] [main/INFO]: [montures] 0 monture(s), 0 marchand(s), 0 erreur(s)
-[23:00:38] [main/INFO]: [quetes] 0 fiche(s) de quête, 0 POI, 0 erreur(s)
-[23:00:38] [main/INFO]: Applied 0 biome modifications to 0 of 65 new biomes in 1.766 ms
-[23:00:38] [Server thread/INFO]: 🗣 Register Easy NPC: Core Server is starting Events ...
-[23:00:38] [Server thread/INFO]: 🗣 Register Easy NPC: Core Server data folders ...
-[23:00:38] [Server thread/INFO]: [Pose Manager] Cleared all pose data.
-[23:00:38] [Server thread/INFO]: 🗣 Register Easy NPC: Core Registered 76 pose data entries.
-[23:00:38] [Server thread/INFO]: Gestionnaire de menu Easy NPC enveloppé (MenuHandler).
-[23:00:38] [Server thread/INFO]: Starting minecraft server version 1.21.11
-[23:00:38] [Server thread/INFO]: Loading properties
-[23:00:38] [Server thread/INFO]: Default game type: SURVIVAL
-[23:00:38] [Server thread/INFO]: Generating keypair
-[23:00:38] [Server thread/INFO]: Starting Minecraft server on 127.0.0.1:25579
-[23:00:38] [Server thread/WARN]: Failed to find a usable hardware address from the network interfaces; using random bytes: 21:38:40:ba:da:15:73:6a
-[23:00:38] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[23:00:38] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[23:00:38] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[23:00:38] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[23:00:38] [Server thread/INFO]: Preparing level "world"
-[23:00:38] [Server thread/INFO]: Selecting global world spawn...
-[23:00:50] [Server thread/INFO]: Loading 0 persistent chunks...
-[23:00:50] [Server thread/INFO]: Preparing spawn area: 100%
-[23:00:50] [Server thread/INFO]: Time elapsed: 11521 ms
-[23:00:50] [Server thread/INFO]: Done (11.826s)! For help, type "help"
-[23:00:50] [Server thread/INFO]: 🗣 Register Easy NPC: Core Server started Events ...
-[23:00:50] [Server thread/INFO]: Created NPC storage folder at ./world/./easy_npc/npcs
-[23:00:50] [Server thread/INFO]: [NPC Entity Manager] Initialized with 0 tracked NPC entities
-[23:00:50] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK one quest mod ID; no PQ02 companion
-[23:00:50] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK command initialized indivispq01
-[23:00:50] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK command initialized indivispq02
-[23:00:50] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK command initialized indivissequence
-[23:00:50] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK command initialized hcd_interpellation
-[23:00:50] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK real main initializer ran Pq01Bridge
-[23:00:50] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK real main initializer ran Pq02Runtime
-[23:00:50] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK real main initializer ran SequenceBridge
-[23:00:50] [Server thread/INFO]: Stopping the server
-[23:00:50] [Server thread/INFO]: 🗣 Register Easy NPC: Core Server is stopping, saving all dirty NPCs...
-[23:00:50] [Server thread/INFO]: 🗣 Register Easy NPC: Core Server stop handling finished in 2 ms
-[23:00:50] [Server thread/INFO]: Stopping server
-[23:00:50] [Server thread/INFO]: Saving players
-[23:00:50] [Server thread/INFO]: Saving worlds
-[23:00:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[23:00:51] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[23:00:51] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[23:00:51] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[23:00:51] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[23:00:51] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[23:00:51] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[16:54:08] [main/INFO]: No existing world data, creating new world
+[16:54:10] [Worker-Main-1/INFO]: 🗣 Register Easy NPC: Core /easy_npc commands for Easy NPC ...
+[16:54:11] [main/INFO]: Loaded 1470 recipes
+[16:54:11] [main/INFO]: Loaded 1584 advancements
+[16:54:11] [main/INFO]: [montures] 0 monture(s), 0 marchand(s), 0 erreur(s)
+[16:54:11] [main/INFO]: [quetes] 0 fiche(s) de quête, 0 POI, 0 erreur(s)
+[16:54:11] [main/INFO]: Applied 0 biome modifications to 0 of 65 new biomes in 2.709 ms
+[16:54:11] [Server thread/INFO]: 🗣 Register Easy NPC: Core Server is starting Events ...
+[16:54:11] [Server thread/INFO]: 🗣 Register Easy NPC: Core Server data folders ...
+[16:54:11] [Server thread/INFO]: [Pose Manager] Cleared all pose data.
+[16:54:11] [Server thread/INFO]: 🗣 Register Easy NPC: Core Registered 76 pose data entries.
+[16:54:11] [Server thread/INFO]: Gestionnaire de menu Easy NPC enveloppé (MenuHandler).
+[16:54:11] [Server thread/INFO]: Starting minecraft server version 1.21.11
+[16:54:11] [Server thread/INFO]: Loading properties
+[16:54:11] [Server thread/INFO]: Default game type: SURVIVAL
+[16:54:11] [Server thread/INFO]: Generating keypair
+[16:54:11] [Server thread/INFO]: Starting Minecraft server on 127.0.0.1:25579
+[16:54:12] [Server thread/WARN]: Failed to find a usable hardware address from the network interfaces; using random bytes: ea:f6:80:4d:5a:0a:7c:47
+[16:54:12] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[16:54:12] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[16:54:12] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[16:54:12] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[16:54:12] [Server thread/INFO]: Preparing level "world"
+[16:54:12] [Server thread/INFO]: Selecting global world spawn...
+[16:54:30] [Server thread/INFO]: Loading 0 persistent chunks...
+[16:54:30] [Server thread/INFO]: Preparing spawn area: 100%
+[16:54:30] [Server thread/INFO]: Time elapsed: 17687 ms
+[16:54:30] [Server thread/INFO]: Done (18.060s)! For help, type "help"
+[16:54:30] [Server thread/INFO]: 🗣 Register Easy NPC: Core Server started Events ...
+[16:54:30] [Server thread/INFO]: Created NPC storage folder at ./world/./easy_npc/npcs
+[16:54:30] [Server thread/INFO]: [NPC Entity Manager] Initialized with 0 tracked NPC entities
+[16:54:30] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK one quest mod ID; no PQ02 companion
+[16:54:30] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK command initialized indivispq01
+[16:54:30] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK command initialized indivispq02
+[16:54:30] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK command initialized indivissequence
+[16:54:30] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK command initialized hcd_interpellation
+[16:54:30] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK real main initializer ran Pq01Bridge
+[16:54:30] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK real main initializer ran Pq02Runtime
+[16:54:30] [Server thread/INFO]: [STDOUT]: MERGE BOOT CHECK real main initializer ran SequenceBridge
+[16:54:30] [Server thread/INFO]: Stopping the server
+[16:54:30] [Server thread/INFO]: 🗣 Register Easy NPC: Core Server is stopping, saving all dirty NPCs...
+[16:54:30] [Server thread/INFO]: 🗣 Register Easy NPC: Core Server stop handling finished in 2 ms
+[16:54:30] [Server thread/INFO]: Stopping server
+[16:54:30] [Server thread/INFO]: Saving players
+[16:54:30] [Server thread/INFO]: Saving worlds
+[16:54:30] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[16:54:32] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[16:54:32] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[16:54:32] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[16:54:32] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[16:54:32] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[16:54:32] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved

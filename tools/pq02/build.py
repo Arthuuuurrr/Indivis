@@ -5,8 +5,8 @@ import model
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1];OUT=HERE/'output';OUT.mkdir(exist_ok=True)
 BASE={'core':ROOT/'upload/capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2(1).zip','quests':ROOT/'upload/hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2(1).zip'}
 EXPECTED={'core':'8aff8d9c45d275b9d281f5b915baad5e88e7a6c2147bc9806b4fff3cc7a7a8c4','quests':'72aa0cf454853f65e2cad769ba200e524c711c75260fe6a1d54c148c90788ba7'}
-FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF1.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1.zip','mod':'indivis-pq02-1.0.1+1.21.11.jar'}
-JOURNAL_FILENAME='haute-capitale-quetes-HF12-PQ02-R1-HF1-1.21.11.jar'
+FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF1.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1.zip','mod':'indivis-pq02-1.0.2+1.21.11.jar'}
+JOURNAL_FILENAME='haute-capitale-quetes-HF12-PQ02-R1-HF2-1.21.11.jar'
 PERSIST=['CAP_PQ2_VER','CAP_PQ2_NODE','CAP_PQ2_DA','CAP_PQ2_DG','CAP_PQ2_DM','CAP_PQ2_DD','CAP_PQ2_IMPR','CAP_PQ2_SENT','CAP_PQ2_ANECD','CAP_PQ2_PORT','CAP_PQ2_STATUS','CAP_PQ2_OFFER','CAP_PQ2_REG','CAP_PQ2_REW','CAP_PQ2_WP','CAP_PQ2_PAUSE']
 def sha(b):return hashlib.sha256(b).hexdigest()
 def read(p):
@@ -91,7 +91,7 @@ def main():
  r=subprocess.run(cmd,capture_output=True,text=True);(HERE/'reports/compile.log').write_text(r.stdout+r.stderr)
  if r.returncode:raise RuntimeError(r.stderr)
  mod={p.relative_to(classes).as_posix():p.read_bytes() for p in classes.rglob('*.class')};mod['indivis_pq02_graph.json']=(json.dumps(model.export(),ensure_ascii=False,indent=2)+'\n').encode()
- metadata={'schemaVersion':1,'id':'indivis_pq02','version':'1.0.1+1.21.11','name':'Indivis — PQ02 : Le registre du Port','description':'Refonte PQ02 v1.0, escortes privées, décisions et don par personnage Nexus. Requiert le core PQ02-R1-HF1.','environment':'*','entrypoints':{'main':['net.hautecapitale.quetes.sequence.Pq02Runtime'],'client':['net.hautecapitale.quetes.sequence.Pq02Client']},'mixins':['indivis_pq02.mixins.json'],'depends':{'minecraft':'1.21.11','java':'>=21','fabricloader':'>=0.19.5','fabric-api':'>=0.141.6','haute_capitale_quetes':'*','haute_capitale_dialogue':'*','easy_npc':'7.16.0','nexuscharacters':'*'}}
+ metadata={'schemaVersion':1,'id':'indivis_pq02','version':'1.0.2+1.21.11','name':'Indivis — PQ02 : Le registre du Port','description':'Refonte PQ02 v1.0, escortes privées, décisions et don par personnage Nexus. Requiert le core PQ02-R1-HF1.','environment':'*','entrypoints':{'main':['net.hautecapitale.quetes.sequence.Pq02Runtime'],'client':['net.hautecapitale.quetes.sequence.Pq02Client']},'mixins':['indivis_pq02.mixins.json'],'depends':{'minecraft':'1.21.11','java':'>=21','fabricloader':'>=0.19.5','fabric-api':'>=0.141.6','haute_capitale_quetes':'*','haute_capitale_dialogue':'*','easy_npc':'7.16.0','nexuscharacters':'*'}}
  mod['fabric.mod.json']=json.dumps(metadata,ensure_ascii=False,indent=2).encode();mod['indivis_pq02.mixins.json']=json.dumps({'required':True,'minVersion':'0.8','package':'net.hautecapitale.quetes.pq02.mixin','compatibilityLevel':'JAVA_21','mixins':['Pq02VisibilityMixin','Pq02WaypointMixin','Pq02DialogueCloseMixin','Pq02EntityMixin'],'injectors':{'defaultRequire':1}}).encode()
  for kind,p in packs.items():write(OUT/FILES[kind],p)
  write(OUT/FILES['mod'],mod)

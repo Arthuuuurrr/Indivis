@@ -24,7 +24,7 @@ with zipfile.ZipFile(mods/'merge-boot-test.jar','w') as z:
  z.writestr('fabric.mod.json',json.dumps({'schemaVersion':1,'id':'merge_boot_test','version':'1.0.0','entrypoints':{'main':['MergeBoot']},'depends':{'fabric-api':'*'}}))
 GAME=RT/'minecraft_bundle/META-INF/versions/1.21.11/server-1.21.11.jar';cp=os.pathsep.join(map(str,[*sorted((RT/'libraries').glob('*.jar')),*sorted((RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),GAME]))
 command=[JAVA,'-XX:ActiveProcessorCount=2','-Xmx2G',f'-Dfabric.gameJarPath={GAME}','-Dfabric.log.disableAnsi=true','-cp',cp,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui']
-(BASE/'eula.txt').write_text('eula=true\n');(BASE/'server.properties').write_text('online-mode=false\nserver-ip=127.0.0.1\nserver-port=25579\nview-distance=2\nsimulation-distance=2\nmax-tick-time=0\npause-when-empty-seconds=0\n')
+(BASE/'eula.txt').write_text('eula=true\n');(BASE/'server.properties').write_text('online-mode=false\nserver-ip=127.0.0.1\nserver-port=25581\nview-distance=2\nsimulation-distance=2\nmax-tick-time=0\npause-when-empty-seconds=0\n')
 # Wrong installation must be rejected by Fabric before loading duplicate runtimes.
 shutil.copyfile(merge_journal.COMPANION,mods/'obsolete-pq02-companion.jar')
 with (H/'reports/merge_duplicate_guard.log').open('w') as f:r=subprocess.run(command,cwd=BASE,stdout=f,stderr=subprocess.STDOUT,timeout=90)

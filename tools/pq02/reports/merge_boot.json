@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "production_jar_sha256": "807dc8b5ce286c74b3137a2161fb59b941fcc99eadb8ae5a16cc8b3bef64b24d",
+  "production_jar_sha256": "78b76966458ff4d51e8cfd0fd222a0873f51389cf731292d121fb0e87d3be736",
   "main_startup_checks": 8,
   "duplicate_companion_rejected": true,
   "production_metadata_and_entrypoints_unchanged_in_smoke_test": true,

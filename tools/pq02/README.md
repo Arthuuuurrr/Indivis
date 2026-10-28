@@ -1,4 +1,4 @@
-# PQ02 R1 HF1 — Le registre du Port
+# PQ02 R1 HF2 — Le registre du Port
 
 Implémentation du kit Work v1.2 et du script PQ02 v1.0, sur copies des deux archives de production fournies. Cible : Fabric 1.21.11, Java 21. PQ02 est intégrée au mod de quêtes HF12, côté serveur et clients. Le compagnon séparé n’est plus à installer. Les 184 classes historiques de HF12 restent conservées octet pour octet. HF1 adapte uniquement l’administration aux repères existants : préparation à distance, coordonnées détaillées, cache et refus des doublons ; les règles, dialogues, déplacements et mixins de R1 sont conservés.
 
@@ -19,6 +19,7 @@ python work/pq02/merge_journal.py
 PQ02_INTEGRATED=1 python work/pq02/run_native.py
 python work/pq02/test_merged_boot.py
 python work/pq02/verify_hf1.py
+python work/pq02/verify_hf2.py
 python work/pq02/package_merged.py
 ```
 
@@ -35,3 +36,5 @@ Le banc ne lance pas de client graphique et n’utilise pas la carte Indivis. Le
 Les quatre mixins de production sont limités à la visibilité des acteurs PQ02, leur physique, leurs cibles de waypoint et la fermeture de leur session Dialogue. PQ01 reste inchangé hors des 12 fichiers du seul choix 6 de Hugues. MQ03 reçoit uniquement la priorité manquante du capitaine au quai, identique à celle du capitaine au large.
 
 `hf1_baseline.json` contient les empreintes agrégées de la livraison R1 pour vérifier la conservation de 11 334 entrées de core et du datapack hc_quetes sans exiger de redistribuer ces anciennes archives. `verify_hf1.py` applique aussi le patch à des copies des originaux et compare chaque fichier au ZIP livré. `Pq02SetupBench` exerce les nouvelles commandes sur le vrai serveur, notamment depuis plus de 800 blocs et hors de l’ancienne bande verticale de recherche ; ces coordonnées appartiennent au banc jetable.
+
+HF2 corrige l’entrée par fonction Minecraft : les requêtes de dialogue sont drainées à la fin du tick serveur, hors du contexte des commandes imbriquées. Les deux datapacks restent identiques à HF1. `Pq02EntryBench` passe par le gestionnaire natif de commandes EasyNPC et les fonctions réelles. Le cas d’échec antérieur est conservé dans `reports/hf2_repro*` ; pour le reproduire, utiliser `PQ02_INTEGRATED=1 PQ02_REPRO_ENTRY=1 PQ02_REPRO_JAR=/chemin/absolu/haute-capitale-quetes-HF12-PQ02-R1-HF1-1.21.11.jar python work/pq02/run_native.py`. Le JAR HF1 attendu porte l’empreinte inscrite dans `hf2_baseline.json` ; il n’est pas redistribué comme version installable. `CORRECTIF_PQ02_HF2.md` décrit l’installation sans réinitialisation.
