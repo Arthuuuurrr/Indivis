@@ -1,17 +1,20 @@
 {
   "status": "PASS",
-  "revision": "PQ02 R1 HF3",
-  "journal": "haute-capitale-quetes-HF12-PQ02-R1-HF3-1.21.11.jar",
-  "sha256": "f06ed47cd917ea1672afcc403b5d9a53e3fa17ab95ae84abcd4db26767f9c9cf",
+  "revision": "PQ02 R1 HF4",
+  "journal": "haute-capitale-quetes-HF12-PQ02-R1-HF4-1.21.11.jar",
+  "sha256": "a401eec8b5fbe1396c651715cd457a01ff86cb531c5bcc5686352b44a9f19285",
   "preserved_hf12_classes": 182,
   "preserved_hf12_resources": 220,
-  "pq02_entries_identical_to_build_component": 26,
-  "native_checks": 1697,
+  "pq02_entries_identical_to_build_component": 29,
+  "native_checks": 2425,
   "admin_native_checks": 37,
   "function_entry_native_checks": 15,
-  "new_screen_native_checks": 17,
-  "new_gautier_native_checks": 15,
-  "headless_absent_screen_scenario_reproduced": true,
+  "focus_readiness_native_checks": 12,
+  "real_client_protocol_checks": 566,
+  "client_protocol_nodes": 111,
+  "gautier_native_checks": 15,
+  "gautier_hf3_byte_identical": true,
+  "hf3_adverse_order_failure_reproduced": true,
   "live_gui_removal_origin_identified": false,
   "full_main_startup_checks": 8,
   "duplicate_guard_checks": 1,
@@ -20,9 +23,10 @@
   ],
   "datapacks_changed_since_hf1": false,
   "limitations": [
-    "Gameplay test connections and Nexus selection synthetic",
-    "External currency/CapSkills/bonus implementations substituted only in gameplay fixture",
-    "Full metadata smoke uses declarative Nexus/Puffish/RPG providers, no players or their APIs",
-    "No rendered client, FPS or user map tested"
+    "Client protocol uses real b10 state and Fabric message events with graphical client/world/screen and C2S output doubled",
+    "Native gameplay suite simulates readiness acknowledgement; protocol suite exercises real client acknowledgement generation separately",
+    "Connections/chunk receipt/Nexus selection synthetic; external economic integrations substituted in gameplay fixture",
+    "No rendered Minecraft, actual Indivis map, FPS or recorded audio playback tested",
+    "Full metadata smoke uses declarative Nexus/Puffish/RPG providers, no players or their APIs"
   ]
 }

@@ -1,4 +1,4 @@
-PASS 1697 native checks
+PASS 2425 native checks
 setup HF1: fixture is outside former local marker lookup
 setup HF1: preparation succeeds far from loaded A and at a different altitude
 setup HF1: legacy guide parks on existing A, never on administrator position
@@ -37,12 +37,15 @@ setup HF1: visualization uses existing historical waypoint function
 setup HF1: hiding visualization preserves all real route markers
 setup HF1: admin commands do not start quest, alter reputation, give money or change character state
 native DialogueManager opens camera for a01
+client readiness acknowledged for a01
 entry HF2: native EasyNPC command executor and function open first PQ02 dialogue
 entry HF2: no actor creation exception from nested function entry
 entry HF2: repeated function requests are coalesced per account
 native DialogueManager opens camera for a01
+client readiness acknowledged for a01
 entry HF2: repeated function requests retain exactly one private actor
 native DialogueManager opens camera for a01
+client readiness acknowledged for a01
 entry HF2: public datapack function also opens PQ02
 entry HF2: function route uses a separate actor for another character
 entry HF2: character switch cancels pending interaction
@@ -53,26 +56,47 @@ entry HF2: restore/cleanup cancels pending interaction without an actor
 entry HF2: disconnect cancels pending interaction
 entry HF2: closed source camera does not reopen on deferred execution
 native DialogueManager opens camera for t07
+client readiness acknowledged for t07
 entry HF2: native magistrate function creates both private actors and three-person focus
 entry HF2: entry tests finish without orphan views, requests or runtime errors
+focus HF4: no page or choice token before client readiness
+focus HF4: wrong readiness token rejected
+focus HF4: another player cannot acknowledge this focus
+focus HF4: profile lock rejects readiness
+focus HF4: character switch rejects old readiness
+focus HF4: non-OP readiness command acknowledges the native session
+focus HF4: first page released after acknowledgement
+focus HF4: duplicate acknowledgement after render is harmless
+focus HF4: reopened conversation requires its own acknowledgement
+focus HF4: missing acknowledgement times out without advancing quest
+focus HF4: timeout preserves narrative decisions and rewards
+focus HF4: malformed client readiness envelope rejected
 native DialogueManager opens camera for a01
+client readiness acknowledged for a01
 first interaction auto-binds even after original capture
 native DialogueManager opens camera for a01
+client readiness acknowledged for a01
 native trigger accepted a02a #1
 native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
 native trigger accepted a02c #3
 native DialogueManager opens camera for a02c
+client readiness acknowledged for a02c
 arrival effects are private
 stale token rejected
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 node rendered a08
 native trigger accepted a09 #1
 native DialogueManager opens camera for a09
+client readiness acknowledged for a09
 native trigger accepted a09 #14
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 node rendered a08
 native trigger accepted a09 #1
 native DialogueManager opens camera for a09
+client readiness acknowledged for a09
 native trigger accepted a09 #14
 explicit acceptance starts both escort routes
 one native EasyNPC actor per character
@@ -83,111 +107,156 @@ source appearance copied: SkinData
 source appearance copied: ModelData
 real pathfinding moved actor without teleport
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 disconnect cleans B actor and leaves A scene active
 actor remains stopped through long optional menu
 open menu remains active and never advances quest
 native DialogueManager opens camera for t04b
+client readiness acknowledged for t04b
 node rendered t04b
 native trigger accepted t04b_a #1
 native DialogueManager opens camera for t04b_a
+client readiness acknowledged for t04b_a
 guard decision once
 native DialogueManager opens camera for t04b_a
+client readiness acknowledged for t04b_a
 repeated guard topic skips spent decision
 native close mixin resumes escort
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 reconnect restores saved waypoint and exact scene position
+native DialogueManager opens camera for t07
+client readiness acknowledged for t07
 first leg visits existing M endpoint
 arrival saves new stage even without position change
 native DialogueManager opens camera for t07
+client readiness acknowledged for t07
 node rendered t07
 native trigger accepted t07c #3
 native DialogueManager opens camera for t07c
+client readiness acknowledged for t07c
 native trigger accepted m01a #14
 native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
 native three-person camera anchor selected
 native trigger accepted m01b #14
 native DialogueManager opens camera for m01b
+client readiness acknowledged for m01b
 native trigger accepted m01c #14
 native DialogueManager opens camera for m01c
+client readiness acknowledged for m01c
 native trigger accepted m01d #14
 native DialogueManager opens camera for m01d
+client readiness acknowledged for m01d
 native trigger accepted m02 #14
 native DialogueManager opens camera for m02
+client readiness acknowledged for m02
 magistrate introduction has all four speaker blocks
 native trigger accepted m02b #2
 native DialogueManager opens camera for m02b
+client readiness acknowledged for m02b
 native trigger accepted m03a #1
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 native trigger accepted m04a #1
 native DialogueManager opens camera for m04a
+client readiness acknowledged for m04a
 native trigger accepted m04a_leovic #14
 native DialogueManager opens camera for m04a_leovic
+client readiness acknowledged for m04a_leovic
 native trigger accepted m_menu #14
 native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
 magistrate positive affects only personal impression
 native DialogueManager opens camera for m06
+client readiness acknowledged for m06
 node rendered m06
 native trigger accepted m06_registered #14
 native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
 magistrate registers minimum Visitor once
 native trigger accepted m06c #3
 native DialogueManager opens camera for m06c
+client readiness acknowledged for m06c
 native trigger accepted m07 #14
 native DialogueManager opens camera for m07
+client readiness acknowledged for m07
 native trigger accepted m07a #1
 native DialogueManager opens camera for m07a
+client readiness acknowledged for m07a
 native trigger accepted m07a #14
 M to elevator uses actual second escort phase
+native DialogueManager opens camera for f_menu
+client readiness acknowledged for f_menu
 short escort reaches existing P elevator endpoint
 native DialogueManager opens camera for f06
+client readiness acknowledged for f06
 node rendered f06
 native trigger accepted f06d #4
 native DialogueManager opens camera for f06d
+client readiness acknowledged for f06d
 native trigger accepted f_report #14
 native DialogueManager opens camera for f_report
+client readiness acknowledged for f_report
 native trigger accepted f07 #14
 native DialogueManager opens camera for f07
+client readiness acknowledged for f07
 native trigger accepted f07a #1
 native DialogueManager opens camera for f07a
+client readiness acknowledged for f07a
 native trigger accepted f07a #14
 final contempt sums with previous positives and completes quest; scores=100/1/2 reg=1 dd=4 rew=1 dep=1 owner=0
 actual original vanilla XP wrapper grants 165 points once
 refusal gives no gift and preserves completion rewards once
 native DialogueManager opens camera for post_friendly
+client readiness acknowledged for post_friendly
 return greeting uses global impression after contempt
 native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
 node rendered post_gift
 native trigger accepted post_menu #1
 native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
 gift actually gives exactly 50 currency substitute items
 later gift adds second existing bonus without reputation replay
 replayed gift does not duplicate money
 repeated gift and completion calls remain idempotent
 native DialogueManager opens camera for a01
+client readiness acknowledged for a01
 same account second character has independent story and gift
 native trigger accepted a02b #2
 native DialogueManager opens camera for a02b
+client readiness acknowledged for a02b
 native DialogueManager opens camera for post_friendly
+client readiness acknowledged for post_friendly
 synthetic A-B-A profile restore returns first character memory
 legacy completed/gifted profile keeps original reputation and awards
 native DialogueManager opens camera for a01
+client readiness acknowledged for a01
 b10 capture contains real text for a01
 b10 speaker for a01
 b10 exact quote captured a01
 b10 has all choices and close for a01
 native DialogueManager opens camera for a01
+client readiness acknowledged for a01
 graph native branch a01 #1
 native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
 branch delta exact a01 #1
 native DialogueManager opens camera for a01
+client readiness acknowledged for a01
 graph native branch a01 #2
 native DialogueManager opens camera for a02b
+client readiness acknowledged for a02b
 branch delta exact a01 #2
 native DialogueManager opens camera for a01
+client readiness acknowledged for a01
 graph native branch a01 #3
 native DialogueManager opens camera for a02c
+client readiness acknowledged for a02c
 branch delta exact a01 #3
 native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
 b10 capture contains real text for a02a
 b10 speaker for a02a
 b10 exact quote captured a02a
@@ -196,21 +265,32 @@ b10 exact quote captured a02a
 b10 exact quote captured a02a
 b10 has all choices and close for a02a
 native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
 graph native branch a02a #1
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
 graph native branch a02a #2
 native DialogueManager opens camera for a05
+client readiness acknowledged for a05
 native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
 graph native branch a02a #3
 native DialogueManager opens camera for a06
+client readiness acknowledged for a06
 native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
 graph native branch a02a #4
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
 graph native branch a02a #5
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 native DialogueManager opens camera for a02b
+client readiness acknowledged for a02b
 b10 capture contains real text for a02b
 b10 speaker for a02b
 b10 exact quote captured a02b
@@ -219,21 +299,32 @@ b10 exact quote captured a02b
 b10 exact quote captured a02b
 b10 has all choices and close for a02b
 native DialogueManager opens camera for a02b
+client readiness acknowledged for a02b
 graph native branch a02b #1
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 native DialogueManager opens camera for a02b
+client readiness acknowledged for a02b
 graph native branch a02b #2
 native DialogueManager opens camera for a05
+client readiness acknowledged for a05
 native DialogueManager opens camera for a02b
+client readiness acknowledged for a02b
 graph native branch a02b #3
 native DialogueManager opens camera for a06
+client readiness acknowledged for a06
 native DialogueManager opens camera for a02b
+client readiness acknowledged for a02b
 graph native branch a02b #4
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 native DialogueManager opens camera for a02b
+client readiness acknowledged for a02b
 graph native branch a02b #5
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 native DialogueManager opens camera for a02c
+client readiness acknowledged for a02c
 b10 capture contains real text for a02c
 b10 speaker for a02c
 b10 exact quote captured a02c
@@ -242,1191 +333,1753 @@ b10 exact quote captured a02c
 b10 exact quote captured a02c
 b10 has all choices and close for a02c
 native DialogueManager opens camera for a02c
+client readiness acknowledged for a02c
 graph native branch a02c #1
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 native DialogueManager opens camera for a02c
+client readiness acknowledged for a02c
 graph native branch a02c #2
 native DialogueManager opens camera for a05
+client readiness acknowledged for a05
 native DialogueManager opens camera for a02c
+client readiness acknowledged for a02c
 graph native branch a02c #3
 native DialogueManager opens camera for a06
+client readiness acknowledged for a06
 native DialogueManager opens camera for a02c
+client readiness acknowledged for a02c
 graph native branch a02c #4
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 native DialogueManager opens camera for a02c
+client readiness acknowledged for a02c
 graph native branch a02c #5
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 b10 capture contains real text for a_menu
 b10 speaker for a_menu
 b10 has all choices and close for a_menu
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 graph native branch a_menu #1
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 graph native branch a_menu #2
 native DialogueManager opens camera for a05
+client readiness acknowledged for a05
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 graph native branch a_menu #3
 native DialogueManager opens camera for a06
+client readiness acknowledged for a06
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 graph native branch a_menu #4
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 graph native branch a_menu #5
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 b10 capture contains real text for a04
 b10 speaker for a04
 b10 exact quote captured a04
 b10 has all choices and close for a04
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 graph native branch a04 #1
 native DialogueManager opens camera for a04a
+client readiness acknowledged for a04a
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 graph native branch a04 #2
 native DialogueManager opens camera for a04b
+client readiness acknowledged for a04b
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 graph native branch a04 #3
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 native DialogueManager opens camera for a04a
+client readiness acknowledged for a04a
 b10 capture contains real text for a04a
 b10 speaker for a04a
 b10 exact quote captured a04a
 b10 has all choices and close for a04a
 native DialogueManager opens camera for a04a
+client readiness acknowledged for a04a
 graph native branch a04a #1
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 native DialogueManager opens camera for a04a
+client readiness acknowledged for a04a
 graph native branch a04a #2
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 native DialogueManager opens camera for a04b
+client readiness acknowledged for a04b
 b10 capture contains real text for a04b
 b10 speaker for a04b
 b10 exact quote captured a04b
 b10 has all choices and close for a04b
 native DialogueManager opens camera for a04b
+client readiness acknowledged for a04b
 graph native branch a04b #1
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 native DialogueManager opens camera for a04b
+client readiness acknowledged for a04b
 graph native branch a04b #2
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 native DialogueManager opens camera for a05
+client readiness acknowledged for a05
 b10 capture contains real text for a05
 b10 speaker for a05
 b10 exact quote captured a05
 b10 has all choices and close for a05
 native DialogueManager opens camera for a05
+client readiness acknowledged for a05
 graph native branch a05 #1
 native DialogueManager opens camera for a05b
+client readiness acknowledged for a05b
 native DialogueManager opens camera for a05
+client readiness acknowledged for a05
 graph native branch a05 #2
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 native DialogueManager opens camera for a05b
+client readiness acknowledged for a05b
 b10 capture contains real text for a05b
 b10 speaker for a05b
 b10 exact quote captured a05b
 b10 has all choices and close for a05b
 native DialogueManager opens camera for a05b
+client readiness acknowledged for a05b
 graph native branch a05b #1
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 native DialogueManager opens camera for a05b
+client readiness acknowledged for a05b
 graph native branch a05b #2
 native DialogueManager opens camera for a05
+client readiness acknowledged for a05
 native DialogueManager opens camera for a05b
+client readiness acknowledged for a05b
 graph native branch a05b #3
 native DialogueManager opens camera for a06
+client readiness acknowledged for a06
 native DialogueManager opens camera for a05b
+client readiness acknowledged for a05b
 graph native branch a05b #4
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 native DialogueManager opens camera for a05b
+client readiness acknowledged for a05b
 graph native branch a05b #5
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 native DialogueManager opens camera for a06
+client readiness acknowledged for a06
 b10 capture contains real text for a06
 b10 speaker for a06
 b10 exact quote captured a06
 b10 has all choices and close for a06
 native DialogueManager opens camera for a06
+client readiness acknowledged for a06
 graph native branch a06 #1
 native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
 native DialogueManager opens camera for a06
+client readiness acknowledged for a06
 graph native branch a06 #2
 native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
 native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
 b10 capture contains real text for a06b
 b10 speaker for a06b
 b10 exact quote captured a06b
 b10 has all choices and close for a06b
 native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
 graph native branch a06b #1
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
 graph native branch a06b #2
 native DialogueManager opens camera for a05
+client readiness acknowledged for a05
 native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
 graph native branch a06b #3
 native DialogueManager opens camera for a06
+client readiness acknowledged for a06
 native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
 graph native branch a06b #4
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
 graph native branch a06b #5
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 b10 capture contains real text for a07
 b10 speaker for a07
 b10 exact quote captured a07
 b10 has all choices and close for a07
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 graph native branch a07 #1
 native DialogueManager opens camera for a04
+client readiness acknowledged for a04
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 graph native branch a07 #2
 native DialogueManager opens camera for a05
+client readiness acknowledged for a05
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 graph native branch a07 #3
 native DialogueManager opens camera for a06
+client readiness acknowledged for a06
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 graph native branch a07 #4
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 native DialogueManager opens camera for a07
+client readiness acknowledged for a07
 graph native branch a07 #5
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 b10 capture contains real text for a08
 b10 speaker for a08
 b10 exact quote captured a08
 b10 has all choices and close for a08
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 graph native branch a08 #1
 native DialogueManager opens camera for a09
+client readiness acknowledged for a09
 native DialogueManager opens camera for a08
+client readiness acknowledged for a08
 graph native branch a08 #2
 native DialogueManager opens camera for a08a
+client readiness acknowledged for a08a
 native DialogueManager opens camera for a08a
+client readiness acknowledged for a08a
 b10 capture contains real text for a08a
 b10 speaker for a08a
 b10 exact quote captured a08a
 b10 has all choices and close for a08a
 native DialogueManager opens camera for a08a
+client readiness acknowledged for a08a
 graph native advance a08a
 native DialogueManager opens camera for a09
+client readiness acknowledged for a09
 b10 capture contains real text for a09
 b10 speaker for a09
 b10 exact quote captured a09
 b10 has all choices and close for a09
 native DialogueManager opens camera for a09
+client readiness acknowledged for a09
 graph native advance a09
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 b10 capture contains real text for t_menu
 b10 speaker for t_menu
 b10 has all choices and close for t_menu
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 graph native branch t_menu #1
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 graph native branch t_menu #2
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 graph native branch t_menu #3
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 graph native branch t_menu #4
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 graph native branch t_menu #5
 native DialogueManager opens camera for t06
+client readiness acknowledged for t06
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 graph native branch t_menu #6
 native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
 native DialogueManager opens camera for t01
+client readiness acknowledged for t01
 b10 capture contains real text for t01
 b10 speaker for t01
 b10 exact quote captured t01
 b10 has all choices and close for t01
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 b10 capture contains real text for t02
 b10 speaker for t02
 b10 exact quote captured t02
 b10 has all choices and close for t02
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 graph native branch t02 #1
 native DialogueManager opens camera for t02a
+client readiness acknowledged for t02a
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 graph native branch t02 #2
 native DialogueManager opens camera for t02b
+client readiness acknowledged for t02b
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 graph native branch t02 #3
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 graph native branch t02 #4
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t02a
+client readiness acknowledged for t02a
 b10 capture contains real text for t02a
 b10 speaker for t02a
 b10 exact quote captured t02a
 b10 has all choices and close for t02a
 native DialogueManager opens camera for t02a
+client readiness acknowledged for t02a
 graph native branch t02a #1
 native DialogueManager opens camera for t02a_stay
+client readiness acknowledged for t02a_stay
 native DialogueManager opens camera for t02a
+client readiness acknowledged for t02a
 graph native branch t02a #2
 native DialogueManager opens camera for t02a_leave
+client readiness acknowledged for t02a_leave
 native DialogueManager opens camera for t02a
+client readiness acknowledged for t02a
 graph native branch t02a #3
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t02a_stay
+client readiness acknowledged for t02a_stay
 b10 capture contains real text for t02a_stay
 b10 speaker for t02a_stay
 b10 exact quote captured t02a_stay
 b10 has all choices and close for t02a_stay
 native DialogueManager opens camera for t02a_stay
+client readiness acknowledged for t02a_stay
 graph native branch t02a_stay #1
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 native DialogueManager opens camera for t02a_stay
+client readiness acknowledged for t02a_stay
 graph native branch t02a_stay #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t02a_leave
+client readiness acknowledged for t02a_leave
 b10 capture contains real text for t02a_leave
 b10 speaker for t02a_leave
 b10 exact quote captured t02a_leave
 b10 has all choices and close for t02a_leave
 native DialogueManager opens camera for t02a_leave
+client readiness acknowledged for t02a_leave
 graph native branch t02a_leave #1
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 native DialogueManager opens camera for t02a_leave
+client readiness acknowledged for t02a_leave
 graph native branch t02a_leave #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t02b
+client readiness acknowledged for t02b
 b10 capture contains real text for t02b
 b10 speaker for t02b
 b10 exact quote captured t02b
 b10 has all choices and close for t02b
 native DialogueManager opens camera for t02b
+client readiness acknowledged for t02b
 graph native branch t02b #1
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 native DialogueManager opens camera for t02b
+client readiness acknowledged for t02b
 graph native branch t02b #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 b10 capture contains real text for t03
 b10 speaker for t03
 b10 exact quote captured t03
 b10 has all choices and close for t03
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 graph native branch t03 #1
 native DialogueManager opens camera for t03a
+client readiness acknowledged for t03a
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 graph native branch t03 #2
 native DialogueManager opens camera for t03b
+client readiness acknowledged for t03b
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 graph native branch t03 #3
 native DialogueManager opens camera for t02b
+client readiness acknowledged for t02b
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 graph native branch t03 #4
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t03a
+client readiness acknowledged for t03a
 b10 capture contains real text for t03a
 b10 speaker for t03a
 b10 exact quote captured t03a
 b10 has all choices and close for t03a
 native DialogueManager opens camera for t03a
+client readiness acknowledged for t03a
 graph native branch t03a #1
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 native DialogueManager opens camera for t03a
+client readiness acknowledged for t03a
 graph native branch t03a #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t03b
+client readiness acknowledged for t03b
 b10 capture contains real text for t03b
 b10 speaker for t03b
 b10 exact quote captured t03b
 b10 has all choices and close for t03b
 native DialogueManager opens camera for t03b
+client readiness acknowledged for t03b
 graph native branch t03b #1
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 native DialogueManager opens camera for t03b
+client readiness acknowledged for t03b
 graph native branch t03b #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 b10 capture contains real text for t04
 b10 speaker for t04
 b10 exact quote captured t04
 b10 has all choices and close for t04
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 graph native branch t04 #1
 native DialogueManager opens camera for t04a
+client readiness acknowledged for t04a
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 graph native branch t04 #2
 native DialogueManager opens camera for t04b
+client readiness acknowledged for t04b
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 graph native branch t04 #3
 native DialogueManager opens camera for t04c
+client readiness acknowledged for t04c
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 graph native branch t04 #4
 native DialogueManager opens camera for t04d
+client readiness acknowledged for t04d
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 graph native branch t04 #5
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t04a
+client readiness acknowledged for t04a
 b10 capture contains real text for t04a
 b10 speaker for t04a
 b10 exact quote captured t04a
 b10 has all choices and close for t04a
 native DialogueManager opens camera for t04a
+client readiness acknowledged for t04a
 graph native branch t04a #1
 native DialogueManager opens camera for t04a_reputation
+client readiness acknowledged for t04a_reputation
 native DialogueManager opens camera for t04a
+client readiness acknowledged for t04a
 graph native branch t04a #2
 native DialogueManager opens camera for t04a_cooperation
+client readiness acknowledged for t04a_cooperation
 native DialogueManager opens camera for t04a
+client readiness acknowledged for t04a
 graph native branch t04a #3
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t04a_reputation
+client readiness acknowledged for t04a_reputation
 b10 capture contains real text for t04a_reputation
 b10 speaker for t04a_reputation
 b10 exact quote captured t04a_reputation
 b10 has all choices and close for t04a_reputation
 native DialogueManager opens camera for t04a_reputation
+client readiness acknowledged for t04a_reputation
 graph native branch t04a_reputation #1
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t04a_reputation
+client readiness acknowledged for t04a_reputation
 graph native branch t04a_reputation #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t04a_cooperation
+client readiness acknowledged for t04a_cooperation
 b10 capture contains real text for t04a_cooperation
 b10 speaker for t04a_cooperation
 b10 exact quote captured t04a_cooperation
 b10 has all choices and close for t04a_cooperation
 native DialogueManager opens camera for t04a_cooperation
+client readiness acknowledged for t04a_cooperation
 graph native branch t04a_cooperation #1
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t04a_cooperation
+client readiness acknowledged for t04a_cooperation
 graph native branch t04a_cooperation #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t04b
+client readiness acknowledged for t04b
 b10 capture contains real text for t04b
 b10 speaker for t04b
 b10 exact quote captured t04b
 b10 has all choices and close for t04b
 native DialogueManager opens camera for t04b
+client readiness acknowledged for t04b
 graph native branch t04b #1
 native DialogueManager opens camera for t04b_a
+client readiness acknowledged for t04b_a
 branch delta exact t04b #1
 native DialogueManager opens camera for t04b
+client readiness acknowledged for t04b
 graph native branch t04b #2
 native DialogueManager opens camera for t04b_b
+client readiness acknowledged for t04b_b
 branch delta exact t04b #2
 native DialogueManager opens camera for t04b
+client readiness acknowledged for t04b
 graph native branch t04b #3
 native DialogueManager opens camera for t04b_c
+client readiness acknowledged for t04b_c
 branch delta exact t04b #3
 native DialogueManager opens camera for t04b_a
+client readiness acknowledged for t04b_a
 b10 capture contains real text for t04b_a
 b10 speaker for t04b_a
 b10 exact quote captured t04b_a
 b10 has all choices and close for t04b_a
 native DialogueManager opens camera for t04b_a
+client readiness acknowledged for t04b_a
 graph native branch t04b_a #1
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t04b_a
+client readiness acknowledged for t04b_a
 graph native branch t04b_a #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t04b_b
+client readiness acknowledged for t04b_b
 b10 capture contains real text for t04b_b
 b10 speaker for t04b_b
 b10 exact quote captured t04b_b
 b10 has all choices and close for t04b_b
 native DialogueManager opens camera for t04b_b
+client readiness acknowledged for t04b_b
 graph native branch t04b_b #1
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t04b_b
+client readiness acknowledged for t04b_b
 graph native branch t04b_b #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t04b_c
+client readiness acknowledged for t04b_c
 b10 capture contains real text for t04b_c
 b10 speaker for t04b_c
 b10 exact quote captured t04b_c
 b10 has all choices and close for t04b_c
 native DialogueManager opens camera for t04b_c
+client readiness acknowledged for t04b_c
 graph native branch t04b_c #1
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t04b_c
+client readiness acknowledged for t04b_c
 graph native branch t04b_c #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t04c
+client readiness acknowledged for t04c
 b10 capture contains real text for t04c
 b10 speaker for t04c
 b10 exact quote captured t04c
 b10 has all choices and close for t04c
 native DialogueManager opens camera for t04c
+client readiness acknowledged for t04c
 graph native branch t04c #1
 native DialogueManager opens camera for t04c_field
+client readiness acknowledged for t04c_field
 native DialogueManager opens camera for t04c
+client readiness acknowledged for t04c
 graph native branch t04c #2
 native DialogueManager opens camera for t04c_mission
+client readiness acknowledged for t04c_mission
 native DialogueManager opens camera for t04c
+client readiness acknowledged for t04c
 graph native branch t04c #3
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t04c_field
+client readiness acknowledged for t04c_field
 b10 capture contains real text for t04c_field
 b10 speaker for t04c_field
 b10 exact quote captured t04c_field
 b10 has all choices and close for t04c_field
 native DialogueManager opens camera for t04c_field
+client readiness acknowledged for t04c_field
 graph native branch t04c_field #1
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t04c_field
+client readiness acknowledged for t04c_field
 graph native branch t04c_field #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t04c_mission
+client readiness acknowledged for t04c_mission
 b10 capture contains real text for t04c_mission
 b10 speaker for t04c_mission
 b10 exact quote captured t04c_mission
 b10 has all choices and close for t04c_mission
 native DialogueManager opens camera for t04c_mission
+client readiness acknowledged for t04c_mission
 graph native branch t04c_mission #1
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t04c_mission
+client readiness acknowledged for t04c_mission
 graph native branch t04c_mission #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t04d
+client readiness acknowledged for t04d
 b10 capture contains real text for t04d
 b10 speaker for t04d
 b10 exact quote captured t04d
 b10 has all choices and close for t04d
 native DialogueManager opens camera for t04d
+client readiness acknowledged for t04d
 graph native branch t04d #1
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t04d
+client readiness acknowledged for t04d
 graph native branch t04d #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t_sentinel_observed
+client readiness acknowledged for t_sentinel_observed
 b10 capture contains real text for t_sentinel_observed
 b10 speaker for t_sentinel_observed
 b10 exact quote captured t_sentinel_observed
 b10 has all choices and close for t_sentinel_observed
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 b10 capture contains real text for t05
 b10 speaker for t05
 b10 exact quote captured t05
 b10 has all choices and close for t05
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 graph native branch t05 #1
 native DialogueManager opens camera for t05a
+client readiness acknowledged for t05a
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 graph native branch t05 #2
 native DialogueManager opens camera for t05b
+client readiness acknowledged for t05b
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 graph native branch t05 #3
 native DialogueManager opens camera for t05c
+client readiness acknowledged for t05c
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 graph native branch t05 #4
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t05a
+client readiness acknowledged for t05a
 b10 capture contains real text for t05a
 b10 speaker for t05a
 b10 exact quote captured t05a
 b10 has all choices and close for t05a
 native DialogueManager opens camera for t05a
+client readiness acknowledged for t05a
 graph native branch t05a #1
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 native DialogueManager opens camera for t05a
+client readiness acknowledged for t05a
 graph native branch t05a #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t05b
+client readiness acknowledged for t05b
 b10 capture contains real text for t05b
 b10 speaker for t05b
 b10 exact quote captured t05b
 b10 has all choices and close for t05b
 native DialogueManager opens camera for t05b
+client readiness acknowledged for t05b
 graph native branch t05b #1
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 native DialogueManager opens camera for t05b
+client readiness acknowledged for t05b
 graph native branch t05b #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t05c
+client readiness acknowledged for t05c
 b10 capture contains real text for t05c
 b10 speaker for t05c
 b10 exact quote captured t05c
 b10 has all choices and close for t05c
 native DialogueManager opens camera for t05c
+client readiness acknowledged for t05c
 graph native branch t05c #1
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 native DialogueManager opens camera for t05c
+client readiness acknowledged for t05c
 graph native branch t05c #2
 native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
 native DialogueManager opens camera for t06
+client readiness acknowledged for t06
 b10 capture contains real text for t06
 b10 speaker for t06
 b10 exact quote captured t06
 b10 has all choices and close for t06
 native DialogueManager opens camera for t06
+client readiness acknowledged for t06
 graph native branch t06 #1
 native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
 native DialogueManager opens camera for t06
+client readiness acknowledged for t06
 graph native branch t06 #2
 native DialogueManager opens camera for t06b
+client readiness acknowledged for t06b
 native DialogueManager opens camera for t06
+client readiness acknowledged for t06
 graph native branch t06 #3
 native DialogueManager opens camera for t06c
+client readiness acknowledged for t06c
 native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
 b10 capture contains real text for t06a
 b10 speaker for t06a
 b10 exact quote captured t06a
 b10 exact quote captured t06a
 b10 has all choices and close for t06a
 native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
 graph native branch t06a #1
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
 graph native branch t06a #2
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
 graph native branch t06a #3
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
 graph native branch t06a #4
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
 graph native branch t06a #5
 native DialogueManager opens camera for t06
+client readiness acknowledged for t06
 native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
 graph native branch t06a #6
 native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
 native DialogueManager opens camera for t06b
+client readiness acknowledged for t06b
 b10 capture contains real text for t06b
 b10 speaker for t06b
 b10 exact quote captured t06b
 b10 exact quote captured t06b
 b10 has all choices and close for t06b
 native DialogueManager opens camera for t06b
+client readiness acknowledged for t06b
 graph native branch t06b #1
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 native DialogueManager opens camera for t06b
+client readiness acknowledged for t06b
 graph native branch t06b #2
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 native DialogueManager opens camera for t06b
+client readiness acknowledged for t06b
 graph native branch t06b #3
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t06b
+client readiness acknowledged for t06b
 graph native branch t06b #4
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 native DialogueManager opens camera for t06b
+client readiness acknowledged for t06b
 graph native branch t06b #5
 native DialogueManager opens camera for t06
+client readiness acknowledged for t06
 native DialogueManager opens camera for t06b
+client readiness acknowledged for t06b
 graph native branch t06b #6
 native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
 native DialogueManager opens camera for t06c
+client readiness acknowledged for t06c
 b10 capture contains real text for t06c
 b10 speaker for t06c
 b10 exact quote captured t06c
 b10 exact quote captured t06c
 b10 has all choices and close for t06c
 native DialogueManager opens camera for t06c
+client readiness acknowledged for t06c
 graph native branch t06c #1
 native DialogueManager opens camera for t02
+client readiness acknowledged for t02
 native DialogueManager opens camera for t06c
+client readiness acknowledged for t06c
 graph native branch t06c #2
 native DialogueManager opens camera for t03
+client readiness acknowledged for t03
 native DialogueManager opens camera for t06c
+client readiness acknowledged for t06c
 graph native branch t06c #3
 native DialogueManager opens camera for t04
+client readiness acknowledged for t04
 native DialogueManager opens camera for t06c
+client readiness acknowledged for t06c
 graph native branch t06c #4
 native DialogueManager opens camera for t05
+client readiness acknowledged for t05
 native DialogueManager opens camera for t06c
+client readiness acknowledged for t06c
 graph native branch t06c #5
 native DialogueManager opens camera for t06
+client readiness acknowledged for t06
 native DialogueManager opens camera for t06c
+client readiness acknowledged for t06c
 graph native branch t06c #6
 native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
 native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
 b10 capture contains real text for t_resume
 b10 speaker for t_resume
 b10 exact quote captured t_resume
 b10 has all choices and close for t_resume
 native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
 graph native advance t_resume
 native DialogueManager opens camera for t07
+client readiness acknowledged for t07
 b10 capture contains real text for t07
 b10 speaker for t07
 b10 exact quote captured t07
 b10 exact quote captured t07
 b10 has all choices and close for t07
 native DialogueManager opens camera for t07
+client readiness acknowledged for t07
 graph native branch t07 #1
 native DialogueManager opens camera for t07a
+client readiness acknowledged for t07a
 native DialogueManager opens camera for t07
+client readiness acknowledged for t07
 graph native branch t07 #2
 native DialogueManager opens camera for t07b
+client readiness acknowledged for t07b
 native DialogueManager opens camera for t07
+client readiness acknowledged for t07
 graph native branch t07 #3
 native DialogueManager opens camera for t07c
+client readiness acknowledged for t07c
 native DialogueManager opens camera for t07a
+client readiness acknowledged for t07a
 b10 capture contains real text for t07a
 b10 speaker for t07a
 b10 exact quote captured t07a
 b10 exact quote captured t07a
 b10 has all choices and close for t07a
 native DialogueManager opens camera for t07a
+client readiness acknowledged for t07a
 graph native advance t07a
 native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
 native DialogueManager opens camera for t07b
+client readiness acknowledged for t07b
 b10 capture contains real text for t07b
 b10 speaker for t07b
 b10 exact quote captured t07b
 b10 exact quote captured t07b
 b10 has all choices and close for t07b
 native DialogueManager opens camera for t07b
+client readiness acknowledged for t07b
 graph native advance t07b
 native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
 native DialogueManager opens camera for t07c
+client readiness acknowledged for t07c
 b10 capture contains real text for t07c
 b10 speaker for t07c
 b10 exact quote captured t07c
 b10 has all choices and close for t07c
 native DialogueManager opens camera for t07c
+client readiness acknowledged for t07c
 graph native advance t07c
 native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
 native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
 b10 capture contains real text for m01a
 b10 speaker for m01a
 b10 exact quote captured m01a
 b10 has all choices and close for m01a
 native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
 graph native advance m01a
 native DialogueManager opens camera for m01b
+client readiness acknowledged for m01b
 native DialogueManager opens camera for m01b
+client readiness acknowledged for m01b
 b10 capture contains real text for m01b
 b10 speaker for m01b
 b10 exact quote captured m01b
 b10 has all choices and close for m01b
 native DialogueManager opens camera for m01b
+client readiness acknowledged for m01b
 graph native advance m01b
 native DialogueManager opens camera for m01c
+client readiness acknowledged for m01c
 native DialogueManager opens camera for m01c
+client readiness acknowledged for m01c
 b10 capture contains real text for m01c
 b10 speaker for m01c
 b10 exact quote captured m01c
 b10 exact quote captured m01c
 b10 has all choices and close for m01c
 native DialogueManager opens camera for m01c
+client readiness acknowledged for m01c
 graph native advance m01c
 native DialogueManager opens camera for m01d
+client readiness acknowledged for m01d
 native DialogueManager opens camera for m01d
+client readiness acknowledged for m01d
 b10 capture contains real text for m01d
 b10 speaker for m01d
 b10 exact quote captured m01d
 b10 has all choices and close for m01d
 native DialogueManager opens camera for m01d
+client readiness acknowledged for m01d
 graph native advance m01d
 native DialogueManager opens camera for m02
+client readiness acknowledged for m02
 native DialogueManager opens camera for m02
+client readiness acknowledged for m02
 b10 capture contains real text for m02
 b10 speaker for m02
 b10 exact quote captured m02
 b10 exact quote captured m02
 b10 has all choices and close for m02
 native DialogueManager opens camera for m02
+client readiness acknowledged for m02
 graph native branch m02 #1
 native DialogueManager opens camera for m02a
+client readiness acknowledged for m02a
 native DialogueManager opens camera for m02
+client readiness acknowledged for m02
 graph native branch m02 #2
 native DialogueManager opens camera for m02b
+client readiness acknowledged for m02b
 native DialogueManager opens camera for m02
+client readiness acknowledged for m02
 graph native branch m02 #3
 native DialogueManager opens camera for m02c
+client readiness acknowledged for m02c
 native DialogueManager opens camera for m02a
+client readiness acknowledged for m02a
 b10 capture contains real text for m02a
 b10 speaker for m02a
 b10 exact quote captured m02a
 b10 exact quote captured m02a
 b10 has all choices and close for m02a
 native DialogueManager opens camera for m02a
+client readiness acknowledged for m02a
 graph native branch m02a #1
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 native DialogueManager opens camera for m02a
+client readiness acknowledged for m02a
 graph native branch m02a #2
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 native DialogueManager opens camera for m02a
+client readiness acknowledged for m02a
 graph native branch m02a #3
 native DialogueManager opens camera for m03b
+client readiness acknowledged for m03b
 native DialogueManager opens camera for m02b
+client readiness acknowledged for m02b
 b10 capture contains real text for m02b
 b10 speaker for m02b
 b10 exact quote captured m02b
 b10 exact quote captured m02b
 b10 has all choices and close for m02b
 native DialogueManager opens camera for m02b
+client readiness acknowledged for m02b
 graph native branch m02b #1
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 native DialogueManager opens camera for m02b
+client readiness acknowledged for m02b
 graph native branch m02b #2
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 native DialogueManager opens camera for m02b
+client readiness acknowledged for m02b
 graph native branch m02b #3
 native DialogueManager opens camera for m03b
+client readiness acknowledged for m03b
 native DialogueManager opens camera for m02c
+client readiness acknowledged for m02c
 b10 capture contains real text for m02c
 b10 speaker for m02c
 b10 exact quote captured m02c
 b10 exact quote captured m02c
 b10 has all choices and close for m02c
 native DialogueManager opens camera for m02c
+client readiness acknowledged for m02c
 graph native branch m02c #1
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 native DialogueManager opens camera for m02c
+client readiness acknowledged for m02c
 graph native branch m02c #2
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 native DialogueManager opens camera for m02c
+client readiness acknowledged for m02c
 graph native branch m02c #3
 native DialogueManager opens camera for m03b
+client readiness acknowledged for m03b
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 b10 capture contains real text for m03a
 b10 speaker for m03a
 b10 exact quote captured m03a
 b10 exact quote captured m03a
 b10 has all choices and close for m03a
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 graph native branch m03a #1
 native DialogueManager opens camera for m04a
+client readiness acknowledged for m04a
 branch delta exact m03a #1
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 graph native branch m03a #2
 native DialogueManager opens camera for m04b
+client readiness acknowledged for m04b
 branch delta exact m03a #2
 native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
 graph native branch m03a #3
 native DialogueManager opens camera for m04c
+client readiness acknowledged for m04c
 branch delta exact m03a #3
 native DialogueManager opens camera for m03b
+client readiness acknowledged for m03b
 b10 capture contains real text for m03b
 b10 speaker for m03b
 b10 exact quote captured m03b
 b10 exact quote captured m03b
 b10 has all choices and close for m03b
 native DialogueManager opens camera for m03b
+client readiness acknowledged for m03b
 graph native branch m03b #1
 native DialogueManager opens camera for m04a
+client readiness acknowledged for m04a
 branch delta exact m03b #1
 native DialogueManager opens camera for m03b
+client readiness acknowledged for m03b
 graph native branch m03b #2
 native DialogueManager opens camera for m04b
+client readiness acknowledged for m04b
 branch delta exact m03b #2
 native DialogueManager opens camera for m03b
+client readiness acknowledged for m03b
 graph native branch m03b #3
 native DialogueManager opens camera for m04c
+client readiness acknowledged for m04c
 branch delta exact m03b #3
 native DialogueManager opens camera for m04a
+client readiness acknowledged for m04a
 b10 capture contains real text for m04a
 b10 speaker for m04a
 b10 exact quote captured m04a
 b10 has all choices and close for m04a
 native DialogueManager opens camera for m04a
+client readiness acknowledged for m04a
 graph native advance m04a
 native DialogueManager opens camera for m04a_leovic
+client readiness acknowledged for m04a_leovic
 native DialogueManager opens camera for m04a_leovic
+client readiness acknowledged for m04a_leovic
 b10 capture contains real text for m04a_leovic
 b10 speaker for m04a_leovic
 b10 exact quote captured m04a_leovic
 b10 has all choices and close for m04a_leovic
 native DialogueManager opens camera for m04a_leovic
+client readiness acknowledged for m04a_leovic
 graph native advance m04a_leovic
 native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
 native DialogueManager opens camera for m04b
+client readiness acknowledged for m04b
 b10 capture contains real text for m04b
 b10 speaker for m04b
 b10 exact quote captured m04b
 b10 exact quote captured m04b
 b10 has all choices and close for m04b
 native DialogueManager opens camera for m04b
+client readiness acknowledged for m04b
 graph native branch m04b #1
 native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
 native DialogueManager opens camera for m04b
+client readiness acknowledged for m04b
 graph native branch m04b #2
 native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
 native DialogueManager opens camera for m04b
+client readiness acknowledged for m04b
 graph native branch m04b #3
 native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
 native DialogueManager opens camera for m04b
+client readiness acknowledged for m04b
 graph native branch m04b #4
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 native DialogueManager opens camera for m04b
+client readiness acknowledged for m04b
 graph native branch m04b #5
 native DialogueManager opens camera for m06
+client readiness acknowledged for m06
 native DialogueManager opens camera for m04c
+client readiness acknowledged for m04c
 b10 capture contains real text for m04c
 b10 speaker for m04c
 b10 exact quote captured m04c
 b10 has all choices and close for m04c
 native DialogueManager opens camera for m04c
+client readiness acknowledged for m04c
 graph native advance m04c
 native DialogueManager opens camera for m04c_leovic
+client readiness acknowledged for m04c_leovic
 native DialogueManager opens camera for m04c_leovic
+client readiness acknowledged for m04c_leovic
 b10 capture contains real text for m04c_leovic
 b10 speaker for m04c_leovic
 b10 exact quote captured m04c_leovic
 b10 has all choices and close for m04c_leovic
 native DialogueManager opens camera for m04c_leovic
+client readiness acknowledged for m04c_leovic
 graph native advance m04c_leovic
 native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
 native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
 b10 capture contains real text for m_menu
 b10 speaker for m_menu
 b10 exact quote captured m_menu
 b10 has all choices and close for m_menu
 native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
 graph native branch m_menu #1
 native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
 native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
 graph native branch m_menu #2
 native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
 native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
 graph native branch m_menu #3
 native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
 native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
 graph native branch m_menu #4
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
 graph native branch m_menu #5
 native DialogueManager opens camera for m06
+client readiness acknowledged for m06
 native DialogueManager opens camera for m_questions
+client readiness acknowledged for m_questions
 b10 capture contains real text for m_questions
 b10 speaker for m_questions
 b10 has all choices and close for m_questions
 native DialogueManager opens camera for m_questions
+client readiness acknowledged for m_questions
 graph native branch m_questions #1
 native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
 native DialogueManager opens camera for m_questions
+client readiness acknowledged for m_questions
 graph native branch m_questions #2
 native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
 native DialogueManager opens camera for m_questions
+client readiness acknowledged for m_questions
 graph native branch m_questions #3
 native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
 native DialogueManager opens camera for m_questions
+client readiness acknowledged for m_questions
 graph native branch m_questions #4
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 native DialogueManager opens camera for m_questions
+client readiness acknowledged for m_questions
 graph native branch m_questions #5
 native DialogueManager opens camera for m06
+client readiness acknowledged for m06
 native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
 b10 capture contains real text for m05a
 b10 speaker for m05a
 b10 exact quote captured m05a
 b10 has all choices and close for m05a
 native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
 graph native branch m05a #1
 native DialogueManager opens camera for m05a_unknown
+client readiness acknowledged for m05a_unknown
 native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
 graph native branch m05a #2
 native DialogueManager opens camera for m_questions
+client readiness acknowledged for m_questions
 native DialogueManager opens camera for m05a_unknown
+client readiness acknowledged for m05a_unknown
 b10 capture contains real text for m05a_unknown
 b10 speaker for m05a_unknown
 b10 exact quote captured m05a_unknown
 b10 has all choices and close for m05a_unknown
 native DialogueManager opens camera for m05a_unknown
+client readiness acknowledged for m05a_unknown
 graph native branch m05a_unknown #1
 native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
 native DialogueManager opens camera for m05a_unknown
+client readiness acknowledged for m05a_unknown
 graph native branch m05a_unknown #2
 native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
 native DialogueManager opens camera for m05a_unknown
+client readiness acknowledged for m05a_unknown
 graph native branch m05a_unknown #3
 native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
 native DialogueManager opens camera for m05a_unknown
+client readiness acknowledged for m05a_unknown
 graph native branch m05a_unknown #4
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 native DialogueManager opens camera for m05a_unknown
+client readiness acknowledged for m05a_unknown
 graph native branch m05a_unknown #5
 native DialogueManager opens camera for m06
+client readiness acknowledged for m06
 native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
 b10 capture contains real text for m05b
 b10 speaker for m05b
 b10 exact quote captured m05b
 b10 has all choices and close for m05b
 native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
 graph native branch m05b #1
 native DialogueManager opens camera for m05b_resident
+client readiness acknowledged for m05b_resident
 native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
 graph native branch m05b #2
 native DialogueManager opens camera for m_questions
+client readiness acknowledged for m_questions
 native DialogueManager opens camera for m05b_resident
+client readiness acknowledged for m05b_resident
 b10 capture contains real text for m05b_resident
 b10 speaker for m05b_resident
 b10 exact quote captured m05b_resident
 b10 has all choices and close for m05b_resident
 native DialogueManager opens camera for m05b_resident
+client readiness acknowledged for m05b_resident
 graph native branch m05b_resident #1
 native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
 native DialogueManager opens camera for m05b_resident
+client readiness acknowledged for m05b_resident
 graph native branch m05b_resident #2
 native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
 native DialogueManager opens camera for m05b_resident
+client readiness acknowledged for m05b_resident
 graph native branch m05b_resident #3
 native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
 native DialogueManager opens camera for m05b_resident
+client readiness acknowledged for m05b_resident
 graph native branch m05b_resident #4
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 native DialogueManager opens camera for m05b_resident
+client readiness acknowledged for m05b_resident
 graph native branch m05b_resident #5
 native DialogueManager opens camera for m06
+client readiness acknowledged for m06
 native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
 b10 capture contains real text for m05c
 b10 speaker for m05c
 b10 exact quote captured m05c
 b10 has all choices and close for m05c
 native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
 graph native advance m05c
 native DialogueManager opens camera for m05c_leovic
+client readiness acknowledged for m05c_leovic
 native DialogueManager opens camera for m05c_leovic
+client readiness acknowledged for m05c_leovic
 b10 capture contains real text for m05c_leovic
 b10 speaker for m05c_leovic
 b10 exact quote captured m05c_leovic
 b10 has all choices and close for m05c_leovic
 native DialogueManager opens camera for m05c_leovic
+client readiness acknowledged for m05c_leovic
 graph native advance m05c_leovic
 native DialogueManager opens camera for m05c_magistrat
+client readiness acknowledged for m05c_magistrat
 native DialogueManager opens camera for m05c_magistrat
+client readiness acknowledged for m05c_magistrat
 b10 capture contains real text for m05c_magistrat
 b10 speaker for m05c_magistrat
 b10 exact quote captured m05c_magistrat
 b10 has all choices and close for m05c_magistrat
 native DialogueManager opens camera for m05c_magistrat
+client readiness acknowledged for m05c_magistrat
 graph native branch m05c_magistrat #1
 native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
 native DialogueManager opens camera for m05c_magistrat
+client readiness acknowledged for m05c_magistrat
 graph native branch m05c_magistrat #2
 native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
 native DialogueManager opens camera for m05c_magistrat
+client readiness acknowledged for m05c_magistrat
 graph native branch m05c_magistrat #3
 native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
 native DialogueManager opens camera for m05c_magistrat
+client readiness acknowledged for m05c_magistrat
 graph native branch m05c_magistrat #4
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 native DialogueManager opens camera for m05c_magistrat
+client readiness acknowledged for m05c_magistrat
 graph native branch m05c_magistrat #5
 native DialogueManager opens camera for m06
+client readiness acknowledged for m06
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 b10 capture contains real text for m05d
 b10 speaker for m05d
 b10 exact quote captured m05d
 b10 has all choices and close for m05d
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 graph native branch m05d #1
 native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 graph native branch m05d #2
 native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 graph native branch m05d #3
 native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 graph native branch m05d #4
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
 graph native branch m05d #5
 native DialogueManager opens camera for m06
+client readiness acknowledged for m06
 native DialogueManager opens camera for m06
+client readiness acknowledged for m06
 b10 capture contains real text for m06
 b10 speaker for m06
 b10 exact quote captured m06
 b10 has all choices and close for m06
 native DialogueManager opens camera for m06
+client readiness acknowledged for m06
 graph native advance m06
 native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
 native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
 b10 capture contains real text for m06_registered
 b10 speaker for m06_registered
 b10 exact quote captured m06_registered
 b10 has all choices and close for m06_registered
 native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
 graph native branch m06_registered #1
 native DialogueManager opens camera for m06a
+client readiness acknowledged for m06a
 native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
 graph native branch m06_registered #2
 native DialogueManager opens camera for m06b
+client readiness acknowledged for m06b
 native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
 graph native branch m06_registered #3
 native DialogueManager opens camera for m06c
+client readiness acknowledged for m06c
 native DialogueManager opens camera for m06a
+client readiness acknowledged for m06a
 b10 capture contains real text for m06a
 b10 speaker for m06a
 b10 exact quote captured m06a
 b10 has all choices and close for m06a
 native DialogueManager opens camera for m06a
+client readiness acknowledged for m06a
 graph native advance m06a
 native DialogueManager opens camera for m07
+client readiness acknowledged for m07
 native DialogueManager opens camera for m06b
+client readiness acknowledged for m06b
 b10 capture contains real text for m06b
 b10 speaker for m06b
 b10 exact quote captured m06b
 b10 has all choices and close for m06b
 native DialogueManager opens camera for m06b
+client readiness acknowledged for m06b
 graph native advance m06b
 native DialogueManager opens camera for m07
+client readiness acknowledged for m07
 native DialogueManager opens camera for m06c
+client readiness acknowledged for m06c
 b10 capture contains real text for m06c
 b10 speaker for m06c
 b10 exact quote captured m06c
 b10 has all choices and close for m06c
 native DialogueManager opens camera for m06c
+client readiness acknowledged for m06c
 graph native advance m06c
 native DialogueManager opens camera for m07
+client readiness acknowledged for m07
 native DialogueManager opens camera for m07
+client readiness acknowledged for m07
 b10 capture contains real text for m07
 b10 speaker for m07
 b10 exact quote captured m07
 b10 has all choices and close for m07
 native DialogueManager opens camera for m07
+client readiness acknowledged for m07
 graph native branch m07 #1
 native DialogueManager opens camera for m07a
+client readiness acknowledged for m07a
 native DialogueManager opens camera for m07
+client readiness acknowledged for m07
 graph native branch m07 #2
 native DialogueManager opens camera for m07b
+client readiness acknowledged for m07b
 native DialogueManager opens camera for m07
+client readiness acknowledged for m07
 graph native branch m07 #3
 native DialogueManager opens camera for m07c
+client readiness acknowledged for m07c
 native DialogueManager opens camera for m07a
+client readiness acknowledged for m07a
 b10 capture contains real text for m07a
 b10 speaker for m07a
 b10 exact quote captured m07a
 b10 exact quote captured m07a
 b10 has all choices and close for m07a
 native DialogueManager opens camera for m07a
+client readiness acknowledged for m07a
 graph native advance m07a
 native DialogueManager opens camera for m07b
+client readiness acknowledged for m07b
 b10 capture contains real text for m07b
 b10 speaker for m07b
 b10 exact quote captured m07b
 b10 exact quote captured m07b
 b10 has all choices and close for m07b
 native DialogueManager opens camera for m07b
+client readiness acknowledged for m07b
 graph native advance m07b
 native DialogueManager opens camera for m07c
+client readiness acknowledged for m07c
 b10 capture contains real text for m07c
 b10 speaker for m07c
 b10 exact quote captured m07c
 b10 exact quote captured m07c
 b10 has all choices and close for m07c
 native DialogueManager opens camera for m07c
+client readiness acknowledged for m07c
 graph native advance m07c
 native DialogueManager opens camera for f_menu
+client readiness acknowledged for f_menu
 b10 capture contains real text for f_menu
 b10 speaker for f_menu
 b10 exact quote captured f_menu
 b10 has all choices and close for f_menu
 native DialogueManager opens camera for f_menu
+client readiness acknowledged for f_menu
 graph native branch f_menu #1
 native DialogueManager opens camera for f02
+client readiness acknowledged for f02
 native DialogueManager opens camera for f_menu
+client readiness acknowledged for f_menu
 graph native branch f_menu #2
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 native DialogueManager opens camera for f_menu
+client readiness acknowledged for f_menu
 graph native branch f_menu #3
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 native DialogueManager opens camera for f_menu
+client readiness acknowledged for f_menu
 graph native branch f_menu #4
 native DialogueManager opens camera for f05
+client readiness acknowledged for f05
 native DialogueManager opens camera for f_menu
+client readiness acknowledged for f_menu
 graph native branch f_menu #5
 native DialogueManager opens camera for f06
+client readiness acknowledged for f06
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 b10 capture contains real text for f_questions
 b10 speaker for f_questions
 b10 has all choices and close for f_questions
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 graph native branch f_questions #1
 native DialogueManager opens camera for f02
+client readiness acknowledged for f02
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 graph native branch f_questions #2
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 graph native branch f_questions #3
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 graph native branch f_questions #4
 native DialogueManager opens camera for f05
+client readiness acknowledged for f05
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 graph native branch f_questions #5
 native DialogueManager opens camera for f06
+client readiness acknowledged for f06
 native DialogueManager opens camera for f02
+client readiness acknowledged for f02
 b10 capture contains real text for f02
 b10 speaker for f02
 b10 exact quote captured f02
 b10 has all choices and close for f02
 native DialogueManager opens camera for f02
+client readiness acknowledged for f02
 graph native branch f02 #1
 native DialogueManager opens camera for f02
+client readiness acknowledged for f02
 native DialogueManager opens camera for f02
+client readiness acknowledged for f02
 graph native branch f02 #2
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 native DialogueManager opens camera for f02
+client readiness acknowledged for f02
 graph native branch f02 #3
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 native DialogueManager opens camera for f02
+client readiness acknowledged for f02
 graph native branch f02 #4
 native DialogueManager opens camera for f05
+client readiness acknowledged for f05
 native DialogueManager opens camera for f02
+client readiness acknowledged for f02
 graph native branch f02 #5
 native DialogueManager opens camera for f06
+client readiness acknowledged for f06
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 b10 capture contains real text for f03
 b10 speaker for f03
 b10 exact quote captured f03
 b10 has all choices and close for f03
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 graph native branch f03 #1
 native DialogueManager opens camera for f03_prefer
+client readiness acknowledged for f03_prefer
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 graph native branch f03 #2
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 native DialogueManager opens camera for f03_prefer
+client readiness acknowledged for f03_prefer
 b10 capture contains real text for f03_prefer
 b10 speaker for f03_prefer
 b10 exact quote captured f03_prefer
 b10 has all choices and close for f03_prefer
 native DialogueManager opens camera for f03_prefer
+client readiness acknowledged for f03_prefer
 graph native advance f03_prefer
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 b10 capture contains real text for f04
 b10 speaker for f04
 b10 exact quote captured f04
 b10 has all choices and close for f04
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 graph native branch f04 #1
 native DialogueManager opens camera for f04_return
+client readiness acknowledged for f04_return
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 graph native branch f04 #2
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 native DialogueManager opens camera for f04_return
+client readiness acknowledged for f04_return
 b10 capture contains real text for f04_return
 b10 speaker for f04_return
 b10 exact quote captured f04_return
 b10 has all choices and close for f04_return
 native DialogueManager opens camera for f04_return
+client readiness acknowledged for f04_return
 graph native advance f04_return
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 native DialogueManager opens camera for f05
+client readiness acknowledged for f05
 b10 capture contains real text for f05
 b10 speaker for f05
 b10 exact quote captured f05
 b10 has all choices and close for f05
 native DialogueManager opens camera for f05
+client readiness acknowledged for f05
 graph native advance f05
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 native DialogueManager opens camera for f05_short
+client readiness acknowledged for f05_short
 b10 capture contains real text for f05_short
 b10 speaker for f05_short
 b10 exact quote captured f05_short
 b10 has all choices and close for f05_short
 native DialogueManager opens camera for f05_short
+client readiness acknowledged for f05_short
 graph native advance f05_short
 native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
 native DialogueManager opens camera for f06
+client readiness acknowledged for f06
 b10 capture contains real text for f06
 b10 speaker for f06
 b10 exact quote captured f06
@@ -1434,224 +2087,299 @@ b10 exact quote captured f06
 b10 exact quote captured f06
 b10 has all choices and close for f06
 native DialogueManager opens camera for f06
+client readiness acknowledged for f06
 graph native branch f06 #1
 native DialogueManager opens camera for f06a
+client readiness acknowledged for f06a
 branch delta exact f06 #1
 native DialogueManager opens camera for f06
+client readiness acknowledged for f06
 graph native branch f06 #2
 native DialogueManager opens camera for f06b
+client readiness acknowledged for f06b
 branch delta exact f06 #2
 native DialogueManager opens camera for f06
+client readiness acknowledged for f06
 graph native branch f06 #3
 native DialogueManager opens camera for f06c
+client readiness acknowledged for f06c
 branch delta exact f06 #3
 native DialogueManager opens camera for f06
+client readiness acknowledged for f06
 graph native branch f06 #4
 native DialogueManager opens camera for f06d
+client readiness acknowledged for f06d
 branch delta exact f06 #4
 native DialogueManager opens camera for f06a
+client readiness acknowledged for f06a
 b10 capture contains real text for f06a
 b10 speaker for f06a
 b10 exact quote captured f06a
 b10 has all choices and close for f06a
 native DialogueManager opens camera for f06a
+client readiness acknowledged for f06a
 graph native branch f06a #1
 native DialogueManager opens camera for f07
+client readiness acknowledged for f07
 native DialogueManager opens camera for f06a
+client readiness acknowledged for f06a
 graph native branch f06a #2
 native DialogueManager opens camera for f_report
+client readiness acknowledged for f_report
 native DialogueManager opens camera for f06b
+client readiness acknowledged for f06b
 b10 capture contains real text for f06b
 b10 speaker for f06b
 b10 exact quote captured f06b
 b10 has all choices and close for f06b
 native DialogueManager opens camera for f06b
+client readiness acknowledged for f06b
 graph native branch f06b #1
 native DialogueManager opens camera for f07
+client readiness acknowledged for f07
 native DialogueManager opens camera for f06b
+client readiness acknowledged for f06b
 graph native branch f06b #2
 native DialogueManager opens camera for f_report
+client readiness acknowledged for f_report
 native DialogueManager opens camera for f06c
+client readiness acknowledged for f06c
 b10 capture contains real text for f06c
 b10 speaker for f06c
 b10 exact quote captured f06c
 b10 has all choices and close for f06c
 native DialogueManager opens camera for f06c
+client readiness acknowledged for f06c
 graph native advance f06c
 native DialogueManager opens camera for f07
+client readiness acknowledged for f07
 native DialogueManager opens camera for f06d
+client readiness acknowledged for f06d
 b10 capture contains real text for f06d
 b10 speaker for f06d
 b10 exact quote captured f06d
 b10 exact quote captured f06d
 b10 has all choices and close for f06d
 native DialogueManager opens camera for f06d
+client readiness acknowledged for f06d
 graph native advance f06d
 native DialogueManager opens camera for f_report
+client readiness acknowledged for f_report
 native DialogueManager opens camera for f_report
+client readiness acknowledged for f_report
 b10 capture contains real text for f_report
 b10 speaker for f_report
 b10 exact quote captured f_report
 b10 has all choices and close for f_report
 native DialogueManager opens camera for f_report
+client readiness acknowledged for f_report
 graph native advance f_report
 native DialogueManager opens camera for f07
+client readiness acknowledged for f07
 native DialogueManager opens camera for f07
+client readiness acknowledged for f07
 b10 capture contains real text for f07
 b10 speaker for f07
 b10 exact quote captured f07
 b10 exact quote captured f07
 b10 has all choices and close for f07
 native DialogueManager opens camera for f07
+client readiness acknowledged for f07
 graph native branch f07 #1
 native DialogueManager opens camera for f07a
+client readiness acknowledged for f07a
 native DialogueManager opens camera for f07
+client readiness acknowledged for f07
 graph native branch f07 #2
 native DialogueManager opens camera for f07b
+client readiness acknowledged for f07b
 native DialogueManager opens camera for f07
+client readiness acknowledged for f07
 graph native branch f07 #3
 native DialogueManager opens camera for f07c
+client readiness acknowledged for f07c
 native DialogueManager opens camera for f07a
+client readiness acknowledged for f07a
 b10 capture contains real text for f07a
 b10 speaker for f07a
 b10 exact quote captured f07a
 b10 has all choices and close for f07a
 native DialogueManager opens camera for f07a
+client readiness acknowledged for f07a
 graph native advance f07a
 native DialogueManager opens camera for f07b
+client readiness acknowledged for f07b
 b10 capture contains real text for f07b
 b10 speaker for f07b
 b10 exact quote captured f07b
 b10 has all choices and close for f07b
 native DialogueManager opens camera for f07b
+client readiness acknowledged for f07b
 graph native advance f07b
 native DialogueManager opens camera for f07c
+client readiness acknowledged for f07c
 b10 capture contains real text for f07c
 b10 speaker for f07c
 b10 exact quote captured f07c
 b10 has all choices and close for f07c
 native DialogueManager opens camera for f07c
+client readiness acknowledged for f07c
 graph native advance f07c
 native DialogueManager opens camera for post_very_friendly
+client readiness acknowledged for post_very_friendly
 b10 capture contains real text for post_very_friendly
 b10 speaker for post_very_friendly
 b10 exact quote captured post_very_friendly
 b10 has all choices and close for post_very_friendly
 native DialogueManager opens camera for post_very_friendly
+client readiness acknowledged for post_very_friendly
 graph native branch post_very_friendly #1
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 native DialogueManager opens camera for post_very_friendly
+client readiness acknowledged for post_very_friendly
 graph native branch post_very_friendly #2
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 native DialogueManager opens camera for post_very_friendly
+client readiness acknowledged for post_very_friendly
 graph native branch post_very_friendly #3
 native DialogueManager opens camera for f05
+client readiness acknowledged for f05
 native DialogueManager opens camera for post_very_friendly
+client readiness acknowledged for post_very_friendly
 graph native branch post_very_friendly #4
 native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
 native DialogueManager opens camera for post_friendly
+client readiness acknowledged for post_friendly
 b10 capture contains real text for post_friendly
 b10 speaker for post_friendly
 b10 exact quote captured post_friendly
 b10 has all choices and close for post_friendly
 native DialogueManager opens camera for post_friendly
+client readiness acknowledged for post_friendly
 graph native branch post_friendly #1
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 native DialogueManager opens camera for post_friendly
+client readiness acknowledged for post_friendly
 graph native branch post_friendly #2
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 native DialogueManager opens camera for post_friendly
+client readiness acknowledged for post_friendly
 graph native branch post_friendly #3
 native DialogueManager opens camera for f05
+client readiness acknowledged for f05
 native DialogueManager opens camera for post_friendly
+client readiness acknowledged for post_friendly
 graph native branch post_friendly #4
 native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
 native DialogueManager opens camera for post_neutral
+client readiness acknowledged for post_neutral
 b10 capture contains real text for post_neutral
 b10 speaker for post_neutral
 b10 exact quote captured post_neutral
 b10 has all choices and close for post_neutral
 native DialogueManager opens camera for post_neutral
+client readiness acknowledged for post_neutral
 graph native branch post_neutral #1
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 native DialogueManager opens camera for post_neutral
+client readiness acknowledged for post_neutral
 graph native branch post_neutral #2
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 native DialogueManager opens camera for post_neutral
+client readiness acknowledged for post_neutral
 graph native branch post_neutral #3
 native DialogueManager opens camera for f05
+client readiness acknowledged for f05
 native DialogueManager opens camera for post_neutral
+client readiness acknowledged for post_neutral
 graph native branch post_neutral #4
 native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
 native DialogueManager opens camera for post_unfriendly
+client readiness acknowledged for post_unfriendly
 b10 capture contains real text for post_unfriendly
 b10 speaker for post_unfriendly
 b10 exact quote captured post_unfriendly
 b10 has all choices and close for post_unfriendly
 native DialogueManager opens camera for post_unfriendly
+client readiness acknowledged for post_unfriendly
 graph native branch post_unfriendly #1
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 native DialogueManager opens camera for post_unfriendly
+client readiness acknowledged for post_unfriendly
 graph native branch post_unfriendly #2
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 native DialogueManager opens camera for post_unfriendly
+client readiness acknowledged for post_unfriendly
 graph native branch post_unfriendly #3
 native DialogueManager opens camera for f05
+client readiness acknowledged for f05
 native DialogueManager opens camera for post_unfriendly
+client readiness acknowledged for post_unfriendly
 graph native branch post_unfriendly #4
 native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
 native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
 b10 capture contains real text for post_menu
 b10 speaker for post_menu
 b10 has all choices and close for post_menu
 native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
 graph native branch post_menu #1
 native DialogueManager opens camera for f03
+client readiness acknowledged for f03
 native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
 graph native branch post_menu #2
 native DialogueManager opens camera for f04
+client readiness acknowledged for f04
 native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
 graph native branch post_menu #3
 native DialogueManager opens camera for f05
+client readiness acknowledged for f05
 native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
 graph native branch post_menu #4
 native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
 native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
 b10 capture contains real text for post_gift
 b10 speaker for post_gift
 b10 exact quote captured post_gift
 b10 has all choices and close for post_gift
 native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
 graph native branch post_gift #1
 native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
 native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
 graph native branch post_gift #2
 native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
 all 111 nodes pass native b10 capture
 all narrative choices and manual edges dispatched natively: 290
 native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
 client refuses advance during typewriter
 client refuses advance before final page
 client accepts explicit final-page advance
 native DialogueManager opens camera for m01b
+client readiness acknowledged for m01b
 real PQ02 client adapter advances correct native frame
-screen HF3: private frame consumed without chat text
-screen HF3: involuntary removal restores the same private capture screen
-screen HF3: recovery preserves session and page version
-screen HF3: native b10 monitor keeps the recovered conversation open
-screen HF3: at most one recovery per server frame
-screen HF3: private frame consumed without chat text
-screen HF3: explicit Escape is never reopened
-screen HF3: explicit Escape reaches native b10 end handling
-screen HF3: private frame consumed without chat text
-screen HF3: server termination is never reopened
-screen HF3: private frame consumed without chat text
-screen HF3: another menu retains focus
-screen HF3: foreign menu return remains governed by native flags
-screen HF3: private frame consumed without chat text
-screen HF3: stale session frame cannot reopen a screen
-screen HF3: private frame consumed without chat text
-screen HF3: screen marked deliberately closed cannot recover
 Hugues native menu hugues_menu: 5 questions, farewell and close; no option6
 Hugues residual choice6 neutral in hugues_menu
 Hugues native menu hugues_36: 5 questions, farewell and close; no option6
@@ -1696,5 +2424,5 @@ Gautier HF3: camera returns to Geraud while Gautier walks away
 Gautier HF3: Gautier reaches his post by navigation
 Gautier HF3: arrival does not replay or advance Geraud's dialogue
 Gautier HF3: closing one scene keeps the other player's actor
-Frame counts={class_3222['PQ02_B'/240, l='ServerLevel[world]', x=17.74, y=64.00, z=2.50]=7, class_3222['PQ02_A'/239, l='ServerLevel[world]', x=8.50, y=64.00, z=9.50]=725, class_3222['PQ02_Observer'/241, l='ServerLevel[world]', x=0.50, y=64.00, z=8.50]=0}
+Frame counts={class_3222['PQ02_A'/24, l='ServerLevel[world]', x=8.50, y=64.00, z=9.50]=726, class_3222['PQ02_Observer'/26, l='ServerLevel[world]', x=0.50, y=64.00, z=8.50]=0, class_3222['PQ02_B'/25, l='ServerLevel[world]', x=17.74, y=64.00, z=2.50]=7}
 Native Fabric 1.21.11 / EasyNPC 7.16, HF12 classes preserved except the two authorized Gautier timing classes; production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

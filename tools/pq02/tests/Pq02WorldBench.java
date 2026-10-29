@@ -7,7 +7,7 @@ import net.hautecapitale.quetes.sequence.Pq01Motion.Point;
 import static net.hautecapitale.quetes.sequence.Pq02Runtime.*;
 /** Vrai serveur et navigation EasyNPC, caméras/sessions/visibilité natifs ; connexions/profils synthétiques. */
 public final class Pq02WorldBench implements ModInitializer {
- static Object srv,w,leo,mag,sentinel,captain;static Object a,b,observer;static int t,checks,phase,wait;static boolean finished,foreign;
+ static boolean autoFocusAck=true;static Object srv,w,leo,mag,sentinel,captain;static Object a,b,observer;static int t,checks,phase,wait;static boolean finished,foreign;
  static Point publicStart,pauseAt,disconnectedAt;static Object retiredB;static int disconnectedWp;static UUID charA=UUID.randomUUID(),charB=UUID.randomUUID();static final List<String> evidence=new ArrayList<>();
  static final Map<Object,Object> owners=new IdentityHashMap<>();static final Map<Object,Set<Integer>> tracked=new IdentityHashMap<>();static final Map<Object,List<String>> messages=new IdentityHashMap<>();
  static final List<Object> players=new ArrayList<>();static final Map<Object,Integer> frames=new IdentityHashMap<>();static final Map<Object,Map<Integer,Integer>> spawnCounts=new IdentityHashMap<>();
@@ -32,7 +32,7 @@ public final class Pq02WorldBench implements ModInitializer {
   if(n.equals("net.minecraft.class_8042")){for(Object part:(Iterable<?>)call(packet,"method_48324"))packet(sink,part);}
   if(n.equals("net.minecraft.class_2604")){int id=((Number)call(packet,"method_11167")).intValue();tracked.get(p).add(id);spawnCounts.get(p).merge(id,1,Integer::sum);Object e=call(w,"method_66347",call(packet,"method_11164"));if(e!=null&&tags(e).contains(TAG)&&!tags(e).contains("hcm_owner_"+uuid(p)))foreign=true;}
   if(n.equals("net.minecraft.class_2716"))for(Object id:(Iterable<?>)call(packet,"method_36548"))tracked.get(p).remove(((Number)id).intValue());
-  if(n.equals("net.minecraft.class_7439")){Object text=call(packet,"comp_763");messages.get(p).add(String.valueOf(call(text,"getString")));String in=(String)call(call(text,"method_10866"),"method_10955");if(in!=null&&in.startsWith("indivis:pq02:v1:"))frames.merge(p,1,Integer::sum);Pq02CaptureBench.packet(p,text);}
+  if(n.equals("net.minecraft.class_7439")){Object text=call(packet,"comp_763");messages.get(p).add(String.valueOf(call(text,"getString")));String in=(String)call(call(text,"method_10866"),"method_10955");if(in!=null&&in.startsWith(Pq02Focus.PREFIX)&&autoFocusAck){var request=Pq02Focus.parse(in);if(request!=null)acknowledgeFocus(p,request.token());}if(in!=null&&in.startsWith("indivis:pq02:v1:"))frames.merge(p,1,Integer::sum);Pq02CaptureBench.packet(p,text);}
  }
  static int entityId(Object e){return ((Number)call(e,"method_5628")).intValue();}
  static void trackers()throws Exception{Object manager=get(call(w,"method_14178"),"field_17254");for(Object p:players)call(get(get(p,"field_13987"),"field_45026"),"method_52387",p,call(leo,"method_31476"));for(Object tr:((Map<?,?>)get(manager,"field_18242")).values())for(Object p:players)call(tr,"method_18736",p);}
@@ -48,13 +48,13 @@ public final class Pq02WorldBench implements ModInitializer {
  }
  static void seed(Object p,int s){run(p,"function fixture:objectives");score2(p,"hcq_pq01",100);score2(p,"CAP_PROFILE_LOCK",0);score2(p,"hcq_pq02",s);score2(p,"CAP_PQ2_VER",1);score2(p,"CAP_QDIALOG_OWNER",0);score2(p,"CAP_PQ2_PAUSE",1);}
  static View v(Object p){return VIEWS.get(uuid(p));}
- static void settle(Object p){View v=v(p);if(v!=null&&v.pendingNode!=null){clock++;v.frameAt=clock;Object f=v.pendingFocus;ok(openCamera(v,f),"native DialogueManager opens camera for "+v.node.key);v.pendingFocus=null;v.pendingNode=null;render(v);}}
+ static void settle(Object p){View v=v(p);if(v!=null&&v.pendingNode!=null){clock++;v.frameAt=clock;Object f=v.pendingFocus;ok(openCamera(v,f),"native DialogueManager opens camera for "+v.node.key);if(!focusReady(v)){requestFocus(v);if(autoFocusAck)acknowledgeFocus(p,v.focusToken);}ok(focusReady(v),"client readiness acknowledged for "+v.node.key);v.pendingFocus=null;v.pendingNode=null;render(v);}}
  static void showKey(Object p,String key){show(v(p),key);settle(p);ok(v(p).node.key.equals(key),"node rendered "+key);}
  static void pick(Object p,int n){View v=v(p);int previous=v.baseToken;run(p,"trigger Pq02Choix set "+(previous+n));ok(dispatch(v)==1,"native trigger accepted "+v.node.key+" #"+n);settle(p);}
  static void advance(Object p){pick(p,14);}
  @SuppressWarnings("unchecked") static void production(){List<Object> online=(List<Object>)call(call(srv,"method_3760"),"method_14571");Pq02Runtime.tick(srv);}
  static void testTick()throws Exception{if(srv==null||finished)return;t++;if(t<20)return;
-  if(t==20){seed(a,30);seed(b,30);seed(observer,100);run(a,"function capitale:pq02/load");if(Boolean.getBoolean("pq02.repro.entry")){Pq02EntryBench.reproduce();return;}if(Boolean.getBoolean("pq02.repro.screen")){Pq02ScreenBench.reproduce();finished=true;Files.writeString(Path.of("world-test-result.txt"),"PASS REPRODUCED_HF2_ABSENT_SCREEN_ECRAN_FERME\n"+String.join("\n",evidence));cmd("stop");return;}Pq02SetupBench.run();Pq02EntryBench.verify();
+  if(t==20){seed(a,30);seed(b,30);seed(observer,100);run(a,"function capitale:pq02/load");if(Boolean.getBoolean("pq02.repro.entry")){Pq02EntryBench.reproduce();return;}if(Boolean.getBoolean("pq02.repro.screen")){Pq02ScreenBench.reproduce();finished=true;Files.writeString(Path.of("world-test-result.txt"),"PASS REPRODUCED_HF2_ABSENT_SCREEN_ECRAN_FERME\n"+String.join("\n",evidence));cmd("stop");return;}Pq02SetupBench.run();Pq02EntryBench.verify();Pq02FocusBench.verify();
    // Reproduce auto-capture before first role binding (original b10 behavior).
    stat(DM,"ouvrir",a,leo,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));open(a,"leovic");settle(a);ok(v(a).node.key.equals("a01"),"first interaction auto-binds even after original capture");
    open(b,"leovic");settle(b);pick(a,1);pick(b,3);ok(score(a,"REP_GARDEPORT")==1&&score(a,"CAP_PQ2_IMPR")==1&&score(b,"REP_GARDEPORT")==0,"arrival effects are private");
@@ -89,7 +89,7 @@ public final class Pq02WorldBench implements ModInitializer {
    net.tompsen.nexuscharacters.NexusCharacters.select(a,charA);for(var row:savedScores.entrySet())score2(a,row.getKey(),row.getValue());open(a,"leovic");settle(a);ok(v(a).node.key.equals("post_friendly")&&score(a,"CAP_LEOVIC_GIFT")==1,"synthetic A-B-A profile restore returns first character memory");
    // Legacy migration is conservative: no invented decision bonus, preserve previous gift.
    suspend(observer);seed(observer,100);score2(observer,"CAP_PQ2_VER",0);score2(observer,"REP_GARDEPORT",12);score2(observer,"CAP_LEOVIC_GIFT",1);ensure(observer);ok(score(observer,"REP_GARDEPORT")==12&&score(observer,"CAP_PQ2_REW")==1&&score(observer,"CAP_LEOVIC_GIFT")==1,"legacy completed/gifted profile keeps original reputation and awards");
-   suspend(a);suspend(b);Pq02CaptureBench.runAll(a);Pq02ScreenBench.verify();HuguesBench.runAll(a);Mq03Bench.runAll(a,observer);trackers();ok(pos(leo,w).distance2(publicStart)<0.001,"public Leovic never moved");ok(!foreign,"no foreign private entity spawn packets during two escorts");ok(ERRORS.isEmpty(),"no PQ02 runtime exception");
+   suspend(a);suspend(b);Pq02CaptureBench.runAll(a);HuguesBench.runAll(a);Mq03Bench.runAll(a,observer);trackers();ok(pos(leo,w).distance2(publicStart)<0.001,"public Leovic never moved");ok(!foreign,"no foreign private entity spawn packets during two escorts");ok(ERRORS.isEmpty(),"no PQ02 runtime exception");
    for(Object p:players)ok(!messages.get(p).contains("..."),"no placeholder dialogue sent");
    Pq01GautierBench.start(a,observer);phase=7;return;
   }

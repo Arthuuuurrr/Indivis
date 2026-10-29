@@ -19,7 +19,7 @@ public final class Pq02Runtime implements ModInitializer {
  static final class Actor {final String role;final UUID id,source;final Object entity,goals,targets;Actor(String r,Object e,UUID source,Object g,Object t){role=r;entity=e;id=uuid(e);this.source=source;goals=g;targets=t;}}
  static final class View {
   final Object player,world;final UUID account,character;final Map<String,Actor> actors=new HashMap<>();final Set<UUID> hidden=new HashSet<>();
-  Object session,focus,pendingFocus,anchor,questMarker;Pq02Data.Node node;List<Pq02Data.Choice> choices=List.of();List<String> lastLines=List.of();String lastSpeaker="leovic",pendingNode;
+  Object session,focus,pendingFocus,anchor,questMarker,acknowledgedSession;int focusToken,focusSince,focusRetry;Pq02Data.Node node;List<Pq02Data.Choice> choices=List.of();List<String> lastLines=List.of();String lastSpeaker="leovic",pendingNode;
   Pq02Motion motion;Point saved;int savedStage=-1,savedWaypoint=-1,waypoint,baseToken,voiceUntil,queuedChoice,frameAt,lastStage;boolean ui,suppress,walking,far,disposed;String failure="";
   View(Object p){player=p;world=world(p);account=uuid(p);character=character(p);waypoint=score(p,"CAP_PQ2_WP");lastStage=stage(p);}
  }
@@ -51,7 +51,10 @@ public final class Pq02Runtime implements ModInitializer {
    if(admin)call(node,"requires",stat("net.minecraft.class_2170","method_71774",en("net.minecraft.class_2170","field_31839")));
    Class<?> c=type("com.mojang.brigadier.Command");Object cmd=Proxy.newProxyInstance(c.getClassLoader(),new Class<?>[]{c},(p,m,a)->{if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);try{return execute2(call(call(a[0],"getSource"),"method_9207"),action);}catch(Throwable t){report2(t);return 0;}});
    call(node,"executes",cmd);call(root,"then",node);
-  }call(dispatcher,"register",root);
+  }
+  Object ready=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal","ready"),token=stat("com.mojang.brigadier.builder.RequiredArgumentBuilder","argument","token",stat("com.mojang.brigadier.arguments.IntegerArgumentType","integer",1));
+  Class<?> command=type("com.mojang.brigadier.Command");Object ack=Proxy.newProxyInstance(command.getClassLoader(),new Class<?>[]{command},(p,m,a)->{if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);try{return acknowledgeFocus(call(call(a[0],"getSource"),"method_9207"),((Number)stat("com.mojang.brigadier.arguments.IntegerArgumentType","getInteger",a[0],"token")).intValue());}catch(Throwable t){report2(t);return 0;}});
+  call(token,"executes",ack);call(ready,"then",token);call(root,"then",ready);call(dispatcher,"register",root);
  }
  public static int execute2(Object p,String action){
   if(action.equals("status")){diagnostic(p);return 1;}
@@ -184,9 +187,14 @@ public final class Pq02Runtime implements ModInitializer {
   if(pos(focus,v.world).distance2(pos(v.player,v.world))>max*max)throw new IllegalStateException("Caméra hors de portée : rejoindre le guide avant de reprendre");
   if(v.focus==focus&&v.session!=null&&v.session==current(v.player))return true;
   v.suppress=true;try{v.session=stat(DM,"ouvrir",v.player,focus,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));v.focus=v.session==null?null:focus;}finally{v.suppress=false;}
+  if(v.session!=null){v.acknowledgedSession=null;v.focusToken=1_000_000_000+((++nonce)%60_000_000)*16;v.focusSince=clock;v.focusRetry=clock;}
   return v.session!=null;
  }
- static void render(View v){if(!same(v)||v.node==null)return;Pq02Data.Node n=v.node;
+ static boolean focusReady(View v){return same(v)&&v.session!=null&&v.session==current(v.player)&&v.acknowledgedSession==v.session;}
+ static int acknowledgeFocus(Object player,int token){View v=VIEWS.get(uuid(player));if(v==null||!same(v)||v.pendingNode==null||v.session==null||v.session!=current(player)||v.focusToken!=token||!Pq02Rules.validNode(v.pendingNode,stage(player)))return 0;v.acknowledgedSession=v.session;return 1;}
+ static void requestFocus(View v){if(v.session==null||clock<v.focusRetry)return;v.focusRetry=clock+20;int id=((Number)Pq01Client.field(v.session,"id")).intValue();UUID actor=(UUID)Pq01Client.field(v.session,"pnj");run(v.player,"tellraw @s {\"text\":\"\",\"insertion\":"+quote(Pq02Focus.encode(new Pq02Focus.Request(id,actor,v.focusToken)))+"}");}
+
+ static void render(View v){if(!same(v)||v.node==null||!focusReady(v))return;Pq02Data.Node n=v.node;
   v.choices=n.choices.stream().filter(c->condition(v,c.condition)).toList();v.baseToken=1_000_000_000+((++nonce)%60_000_000)*16;
   int advance=n.next.isEmpty()?0:v.baseToken+14;List<String> texts=n.lines;String speaker=n.speaker;
   if(texts.isEmpty()){texts=v.lastLines;speaker=v.lastSpeaker;}else{v.lastLines=texts;v.lastSpeaker=speaker;}
@@ -263,12 +271,12 @@ public final class Pq02Runtime implements ModInitializer {
   for(Object npc:found){Point at=pos(npc,v.world);if((at.x()-p.x())*lookX+(at.z()-p.z())*lookZ<0)continue;if(Boolean.TRUE.equals(call(npc,"method_5756",v.player))||!Boolean.TRUE.equals(stat("net.hautecapitale.quetes.visibility.QuestVisibility","isVisibleTo",npc,v.player))||!Boolean.TRUE.equals(call(v.player,"method_6057",npc)))continue;score2(v.player,"CAP_PQ2_SENT",1);remark(v,"t_sentinel_observed");return;}
  }
  static void closeUi(View v){v.suppress=true;try{if(v.session!=null&&v.session==current(v.player))stat(DM,"fermer",v.player,en("net.hautecapitale.dialogue.session.CloseReason","ECRAN_FERME"));}finally{v.suppress=false;}
-  v.session=null;v.focus=null;v.pendingFocus=null;v.pendingNode=null;v.ui=false;v.baseToken=0;v.queuedChoice=0;
+  v.session=null;v.acknowledgedSession=null;v.focusToken=0;v.focus=null;v.pendingFocus=null;v.pendingNode=null;v.ui=false;v.baseToken=0;v.queuedChoice=0;
   if(same(v)){score2(v.player,"hcm_pq2_ui",0);score2(v.player,"Pq02Choix",0);if(score(v.player,"CAP_QDIALOG_OWNER")==97){score2(v.player,"CAP_QDIALOG_OWNER",0);score2(v.player,"CAP_QDIALOG_KEEP",0);}}
  }
  /** Le hook reçoit la véritable raison b10 : aucune reprise sur mort, remplacement ou déconnexion. */
  public static void onClosing(Object player,Object session,String reason){View v=VIEWS.get(uuid(player));if(v==null||v.suppress||v.session!=session)return;
-  v.session=null;v.focus=null;v.pendingFocus=null;v.pendingNode=null;v.ui=false;v.baseToken=0;v.queuedChoice=0;
+  v.session=null;v.acknowledgedSession=null;v.focusToken=0;v.focus=null;v.pendingFocus=null;v.pendingNode=null;v.ui=false;v.baseToken=0;v.queuedChoice=0;
   if(!same(v))return;score2(player,"hcm_pq2_ui",0);score2(player,"Pq02Choix",0);if(score(player,"CAP_QDIALOG_OWNER")==97){score2(player,"CAP_QDIALOG_OWNER",0);score2(player,"CAP_QDIALOG_KEEP",0);}
   if(reason.equals("ECRAN_FERME")&&Pq02Rules.walking(stage(player)))resume(v);else{pause(v);if(stage(player)>=100||Pq02Rules.introduction(stage(player)))dispose(v.account);}
  }
@@ -296,7 +304,11 @@ public final class Pq02Runtime implements ModInitializer {
   for(View v:new ArrayList<>(VIEWS.values()))try{
    if(!online.contains(v.account)||!same(v)||!Boolean.TRUE.equals(call(v.player,"method_5805"))){if(same(v))pause(v);savePosition(v);closeUi(v);dispose(v.account);continue;}
    v.lastStage=stage(v.player);
-   if(v.pendingNode!=null&&clock>=v.frameAt){Object focus=v.pendingFocus;if(openCamera(v,focus)){v.pendingFocus=null;v.pendingNode=null;render(v);}else{v.pendingFocus=null;v.pendingNode=null;v.ui=false;pause(v);}}
+   if(v.pendingNode!=null&&clock>=v.frameAt){Object focus=v.pendingFocus;if(openCamera(v,focus)){
+    if(focusReady(v)){v.pendingFocus=null;v.pendingNode=null;render(v);}
+    else if(clock-v.focusSince>200){System.err.println("[PQ02 focus] confirmation absente : joueur="+v.account+", personnage="+v.character+", nœud="+v.pendingNode+", session="+Pq01Client.field(v.session,"id"));pause(v);closeUi(v);}
+    else requestFocus(v);
+   }else{v.pendingFocus=null;v.pendingNode=null;v.ui=false;pause(v);}}
    if(v.ui&&v.session!=null&&v.session!=current(v.player)){onClosing(v.player,v.session,"REMPLACEE");continue;}
    if(v.ui){int pick=score(v.player,"Pq02Choix");if(pick!=0)dispatch(v);else if(v.queuedChoice!=0&&clock>=v.voiceUntil){int value=v.queuedChoice;v.queuedChoice=0;score2(v.player,"Pq02Choix",value);dispatch(v);}if(clock%20==0&&v.session!=null)call(v.session,"toucher",((Number)call(call(v.world,"method_8503"),"method_3780")).longValue());}
    if(v.walking&&!v.ui){Actor a=v.actors.get("leovic");if(a!=null&&pos(a.entity,v.world).distance2(pos(v.player,v.world))>18*18){if(v.motion!=null){v.motion.pause();v.motion=null;}v.far=true;}else{v.far=false;if(v.motion!=null)v.motion.tick();else nextLeg(v);}}

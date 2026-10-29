@@ -1,0 +1,40 @@
+{
+  "inputs": [
+    {
+      "file": "latest - 2026-10-29T174648.294.log",
+      "role": "server",
+      "sha256": "c50cbfdef72e5c94250fd90cbe92caf6228ab483de978139298a117a2f7db5fd",
+      "quest_version": "HF12-PQ02-R1-HF3",
+      "dialogue_version": "b10"
+    },
+    {
+      "file": "latest(20261029-164715).log",
+      "role": "client",
+      "sha256": "f1a351dd83f6fa80b14026315d5fb9f78cf8277ca92b7c276ef1758165ffb372",
+      "quest_version": "HF12-PQ02-R1-HF3",
+      "dialogue_version": "b10"
+    }
+  ],
+  "observed_server_sessions": [
+    {
+      "public_session": 4,
+      "private_session": 5,
+      "opened": "16:46:14",
+      "closed": "16:46:16",
+      "reason": "ECRAN_FERME"
+    },
+    {
+      "public_session": 6,
+      "private_session": 7,
+      "opened": "16:46:17",
+      "closed": "16:46:21",
+      "reason": "ECRAN_FERME"
+    }
+  ],
+  "pq02_choice_command_observed": false,
+  "specific_gui_removal_caller_known": false,
+  "hf3_legacy_test": "With exact HF3 JAR: a PQ02 page arriving before native SessionOpen is dropped, then empty capture expires (FERMEE). This demonstrates an actual lifecycle weakness, not exact reproduction of the supplied ECRAN_FERME caller.",
+  "hf4_change": "Client readiness acknowledgement for every PQ02 camera before initial page; client START tick protects empty waiting capture; bounded diagnostic stack on unexpected screen removal.",
+  "gautier": "User reports improvement; two HF3 classes preserved byte-for-byte.",
+  "privacy": "No account names, addresses or full user logs included in this summary."
+}

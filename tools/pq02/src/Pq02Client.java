@@ -13,8 +13,6 @@ public final class Pq02Client implements ClientModInitializer {
   private static final Map<String,Field> FIELDS=new HashMap<>();
   private static Pq02Pacing.Frame frame;
   private static Object frameSession;
-  private static Object frameScreen;
-  private static boolean screenRecovered;
   private static int age,finalPageTicks,retryAt,attempts,pageTicks;
   private static boolean advanceRequested;
   private static Object voices;private static boolean voicesChecked;
@@ -27,6 +25,8 @@ public final class Pq02Client implements ClientModInitializer {
       if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);
       try{return message(a[0],Boolean.TRUE.equals(a[1]));}catch(RuntimeException e){report(e);return true;}
     });call(event,"register",phase,listener);
+    event("net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents$Disconnect","DISCONNECT",a->{Pq02FocusClient.clear();frame=null;advanceRequested=false;return null;});
+    event("net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents$StartTick","START_CLIENT_TICK",a->{Pq02FocusClient.keepAlive();return null;});
     event("net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents$EndTick","END_CLIENT_TICK",a->{tickClient(a[0]);return null;});
     event("net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterInit","AFTER_INIT",a->{installInput(a[1]);return null;});
   }
@@ -36,6 +36,7 @@ public final class Pq02Client implements ClientModInitializer {
   }
   static void installInput(Object screen){
     if(!captureScreen(screen))return;
+    listen(stat("net.fabricmc.fabric.api.client.screen.v1.ScreenEvents","remove",screen),"net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$Remove",a->{Pq02FocusClient.removed(a[0]);return null;});
     listen(stat("net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents","allowKeyPress",screen),"net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents$AllowKeyPress",a->!key(a[0],a[1]));
     listen(stat("net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents","allowMouseClick",screen),"net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents$AllowMouseClick",a->!mouse(a[0],a[1]));
     listen(stat("net.fabricmc.fabric.api.client.screen.v1.ScreenEvents","afterRender",screen),"net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterRender",a->{hint(a[0],a[1]);return null;});
@@ -52,29 +53,23 @@ public final class Pq02Client implements ClientModInitializer {
   static boolean message(Object text,boolean overlay){
     if(overlay)return true;
     String insertion=(String)call(call(text,"method_10866"),"method_10955");
+    if(insertion!=null&&insertion.startsWith(Pq02Focus.PREFIX)){Pq02FocusClient.receive(insertion);return false;}
     if(insertion==null||!insertion.startsWith("indivis:pq02:v1:"))return true;
     Pq02Pacing.Frame parsed=Pq02Pacing.parse(insertion);
     if(parsed==null||!Boolean.TRUE.equals(stat(STATE,"captureActive")))return false;
     frame=parsed;frameSession=field(type(STATE),"sessionId");age=0;finalPageTicks=0;pageTicks=0;retryAt=0;attempts=0;advanceRequested=false;
-    frameScreen=field(type(STATE),"ecranCourant");screenRecovered=false;
+    Pq02FocusClient.page(frameSession);
+    System.out.println("[PQ02 page] reçue : session="+frameSession+", nœud="+frame.key()+", locuteur="+frame.role());
     stat(STATE,"onChoixEnvoye",false,""); // remise de page sans réponse fictive dans l'historique.
     state("pnjNom",NAMES.get(frame.role()));
     return false; // trame vide, jamais un texte de PNJ ni une ligne de chat.
   }
   static void tickClient(Object client){
+    Pq02FocusClient.tick(client);
     if(frame==null)return;
-    if(!currentFrame()){frame=null;frameScreen=null;advanceRequested=false;return;}
+    if(!currentFrame()){frame=null;advanceRequested=false;return;}
     Object screen=field(client,"field_1755");
-    // Un retrait d'écran sans demande de fin ne doit pas terminer la nouvelle
-    // session privée. Réutiliser une seule fois son écran et sa page, sans
-    // rouvrir après Échap, un congé, un autre menu ou une fin serveur.
-    if(screen==null&&!screenRecovered&&captureScreen(frameScreen)
-        &&!Boolean.TRUE.equals(field(frameScreen,"fermetureNotifiee"))
-        &&!Boolean.TRUE.equals(field(type(STATE),"ecranEtrangerVu"))){
-      screenRecovered=true;call(client,"method_1507",frameScreen);screen=field(client,"field_1755");
-    }
     if(!captureScreen(screen))return;
-    frameScreen=screen;
     Object panel=field(screen,"panneau");if(panel==null)return;
     call(panel,"nom",NAMES.get(frame.role()));call(panel,"attente",false);
     // Une marche ou une longue voix n'est pas un silence qui ferme la session.

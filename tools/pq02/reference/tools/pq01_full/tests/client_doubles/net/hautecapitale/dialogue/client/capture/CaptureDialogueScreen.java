@@ -1,6 +1,7 @@
 package net.hautecapitale.dialogue.client.capture;
-public final class CaptureDialogueScreen extends net.minecraft.class_437 {
+public final class CaptureDialogueScreen extends net.minecraft.class_437 implements net.hautecapitale.dialogue.client.screen.EcranDialogue {
   public final Panel panneau=new Panel();public int versionVue=1;
+  public String libelleDialogue(){return "capture";} public void choisir(int index){} public java.util.List<String> reponsesDebug(){return java.util.List.of();}
   public boolean fermetureNotifiee;
   public CaptureDialogueScreen(){}
   public CaptureDialogueScreen(String name){panneau.name=name;}

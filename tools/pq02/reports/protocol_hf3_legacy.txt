@@ -1,0 +1,17 @@
+[18:31:50] [main/INFO]: Capture des dialogues de chat prête.
+[18:31:50] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=1, mode=CAPTURE, ecran=aucun)
+[18:31:50] [main/INFO]: [etat] ouvrir #1 Léovic (etat=ENTERING_DIALOGUE, session=1, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[18:31:50] [main/INFO]: [etat] onServeurFerme #1 REMPLACEE (etat=DIALOGUE_ACTIVE, session=1, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[18:31:50] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=1, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[18:31:50] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=1, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[18:31:50] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=1, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[18:31:50] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=1, mode=CAPTURE, ecran=aucun)
+[18:31:50] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=2, mode=CAPTURE, ecran=aucun)
+[18:31:50] [main/INFO]: [etat] ouvrir #2 Léovic (etat=ENTERING_DIALOGUE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK HF3 loses a page delivered before the new native session opens
+[18:31:50] [main/INFO]: [etat] demanderFin FERMEE (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[18:31:50] [main/INFO]: [etat] sortirLocalement 350 ms, raison FERMEE (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=aucun)
+[18:31:50] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=2, mode=CAPTURE, ecran=aucun)
+[18:31:50] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=2, mode=CAPTURE, ecran=aucun)
+PROTOCOL CHECK native b10 ends the empty capture after expiry
+PASS 2 HF3 adverse-order checks; fixture does not identify the original GUI-removal caller

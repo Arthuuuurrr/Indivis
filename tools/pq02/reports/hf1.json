@@ -29,7 +29,7 @@
   "r1_pq02_compiled_entries_changed": [
     "net/hautecapitale/quetes/sequence/Pq02Client.class",
     "net/hautecapitale/quetes/sequence/Pq02Runtime$1.class",
-    "net/hautecapitale/quetes/sequence/Pq02Runtime$Near.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$View.class",
     "net/hautecapitale/quetes/sequence/Pq02Runtime.class"
   ],
   "r1_pq02_compiled_entries_identical": [
@@ -50,7 +50,7 @@
     "net/hautecapitale/quetes/sequence/Pq02Rules$Delta.class",
     "net/hautecapitale/quetes/sequence/Pq02Rules.class",
     "net/hautecapitale/quetes/sequence/Pq02Runtime$Actor.class",
-    "net/hautecapitale/quetes/sequence/Pq02Runtime$View.class"
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$Near.class"
   ],
   "new_admin_classes": [
     "net/hautecapitale/quetes/sequence/Pq02Setup$Scan.class",
