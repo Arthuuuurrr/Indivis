@@ -1,0 +1,1577 @@
+{
+  "status": "PASS",
+  "checks": 388,
+  "resources": 1291,
+  "pq01_nodes": 94,
+  "pq01_direct_edges": 317,
+  "quest_scope": [
+    "PQ01",
+    "PQ02",
+    "PQ03",
+    "PQ04",
+    "PQ05"
+  ],
+  "missing_internal_functions": [],
+  "sha256": {
+    "core": "592ad598e9cb8164782adbfa873e325172fdb2c81458f3252de5e75f28851a9d",
+    "quests": "154cbdf0105296f5a94ccf6d54d7f9292c8f6fde05f9419cb7ff62225cec0fde"
+  },
+  "evidence": [
+    {
+      "ok": true,
+      "label": "Toutes les références littérales internes du prologue existent"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture a1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite a1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul a1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite a1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture a2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite a2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul a2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite a2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture a3"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite a3"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul a3"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite a3"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture a4"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite a4"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul a4"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite a4"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture a5"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite a5"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul a5"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite a5"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture a6"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite a6"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul a6"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite a6"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture a7"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite a7"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul a7"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite a7"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture a8"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite a8"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul a8"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite a8"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture anselme_49"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite anselme_49"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul anselme_49"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite anselme_49"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture anselme_51"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite anselme_51"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul anselme_51"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite anselme_51"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture anselme_53"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite anselme_53"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul anselme_53"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite anselme_53"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture anselme_55"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite anselme_55"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul anselme_55"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite anselme_55"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture anselme_57"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite anselme_57"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul anselme_57"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite anselme_57"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture anselme_59"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite anselme_59"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul anselme_59"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite anselme_59"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture anselme_menu"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite anselme_menu"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul anselme_menu"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite anselme_menu"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture b0"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite b0"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul b0"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite b0"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture b1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite b1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul b1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite b1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture b2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite b2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul b2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite b2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture b3"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite b3"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul b3"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite b3"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture b4"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite b4"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul b4"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite b4"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture b5"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite b5"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul b5"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite b5"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture b6"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite b6"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul b6"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite b6"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture b7"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite b7"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul b7"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite b7"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture c1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite c1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul c1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite c1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture c2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite c2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul c2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite c2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture c3"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite c3"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul c3"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite c3"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture c4"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite c4"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul c4"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite c4"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture c5"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite c5"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul c5"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite c5"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture c6"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite c6"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul c6"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite c6"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture c_menu"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite c_menu"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul c_menu"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite c_menu"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ca1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ca1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ca1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ca1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ca2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ca2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ca2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ca2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ca3"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ca3"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ca3"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ca3"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cb1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cb1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cb1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cb1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cb2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cb2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cb2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cb2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cb3"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cb3"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cb3"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cb3"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cc1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cc1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cc1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cc1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cc2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cc2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cc2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cc2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cd1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cd1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cd1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cd1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cd2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cd2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cd2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cd2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cd3"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cd3"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cd3"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cd3"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cd4"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cd4"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cd4"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cd4"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ce1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ce1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ce1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ce1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ce2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ce2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ce2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ce2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ce3"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ce3"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ce3"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ce3"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cx1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cx1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cx1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cx1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cx2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cx2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cx2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cx2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cx3"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cx3"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cx3"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cx3"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture cx4"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite cx4"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul cx4"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite cx4"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture e1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite e1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul e1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite e1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture e2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite e2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul e2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite e2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture e_127"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite e_127"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul e_127"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite e_127"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture e_129"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite e_129"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul e_129"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite e_129"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture e_131"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite e_131"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul e_131"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite e_131"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture e_133"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite e_133"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul e_133"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite e_133"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture e_135"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite e_135"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul e_135"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite e_135"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture e_menu"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite e_menu"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul e_menu"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite e_menu"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ex1"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ex1"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ex1"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ex1"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ex2"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ex2"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ex2"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ex2"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ex3"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ex3"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ex3"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ex3"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ex4"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ex4"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ex4"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ex4"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture f_altheon"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite f_altheon"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul f_altheon"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite f_altheon"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture f_anselme"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite f_anselme"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul f_anselme"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite f_anselme"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture f_gautier"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite f_gautier"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul f_gautier"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite f_gautier"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture f_geraud"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite f_geraud"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul f_geraud"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite f_geraud"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture f_hugues"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite f_hugues"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul f_hugues"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite f_hugues"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture f_perrin"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite f_perrin"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul f_perrin"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite f_perrin"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ga_12"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ga_12"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ga_12"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ga_12"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ga_14"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ga_14"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ga_14"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ga_14"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ga_16"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ga_16"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ga_16"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ga_16"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ga_18"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ga_18"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ga_18"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ga_18"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ga_20"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ga_20"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ga_20"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ga_20"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture ga_menu"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite ga_menu"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul ga_menu"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite ga_menu"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture gautier_23"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite gautier_23"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul gautier_23"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite gautier_23"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture gautier_25"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite gautier_25"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul gautier_25"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite gautier_25"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture gautier_27"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite gautier_27"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul gautier_27"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite gautier_27"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture gautier_29"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite gautier_29"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul gautier_29"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite gautier_29"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture gautier_31"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite gautier_31"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul gautier_31"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite gautier_31"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture gautier_33"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite gautier_33"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul gautier_33"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite gautier_33"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture gautier_menu"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite gautier_menu"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul gautier_menu"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite gautier_menu"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture hugues_36"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite hugues_36"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul hugues_36"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite hugues_36"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture hugues_38"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite hugues_38"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul hugues_38"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite hugues_38"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture hugues_40"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite hugues_40"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul hugues_40"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite hugues_40"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture hugues_42"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite hugues_42"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul hugues_42"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite hugues_42"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture hugues_44"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite hugues_44"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul hugues_44"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite hugues_44"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture hugues_46"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite hugues_46"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul hugues_46"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite hugues_46"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture hugues_menu"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite hugues_menu"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul hugues_menu"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite hugues_menu"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture perrin_62"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite perrin_62"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul perrin_62"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite perrin_62"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture perrin_64"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite perrin_64"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul perrin_64"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite perrin_64"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture perrin_66"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite perrin_66"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul perrin_66"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite perrin_66"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture perrin_68"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite perrin_68"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul perrin_68"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite perrin_68"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture perrin_70"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite perrin_70"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul perrin_70"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite perrin_70"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture perrin_72"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite perrin_72"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul perrin_72"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite perrin_72"
+    },
+    {
+      "ok": true,
+      "label": "Trame de lecture perrin_menu"
+    },
+    {
+      "ok": true,
+      "label": "Réplique ou menu de questions explicite perrin_menu"
+    },
+    {
+      "ok": true,
+      "label": "Aucun bloc de suspension seul perrin_menu"
+    },
+    {
+      "ok": true,
+      "label": "Fermeture explicite perrin_menu"
+    },
+    {
+      "ok": true,
+      "label": "94 blocs PQ01 analysés et un alias c0"
+    },
+    {
+      "ok": true,
+      "label": "Identifiants PQ01 uniques et complets hors alias c0"
+    },
+    {
+      "ok": true,
+      "label": "c0 redirige immédiatement vers c1"
+    },
+    {
+      "ok": true,
+      "label": "Tous les choix directs PQ01 visent un nœud existant"
+    },
+    {
+      "ok": true,
+      "label": "Questions encore accessibles après une réponse : geraud"
+    },
+    {
+      "ok": true,
+      "label": "Questions encore accessibles après une réponse : gautier"
+    },
+    {
+      "ok": true,
+      "label": "Questions encore accessibles après une réponse : hugues"
+    },
+    {
+      "ok": true,
+      "label": "Questions encore accessibles après une réponse : anselme"
+    },
+    {
+      "ok": true,
+      "label": "Questions encore accessibles après une réponse : perrin"
+    },
+    {
+      "ok": true,
+      "label": "Choix de clôture du capitaine vert et explicite"
+    },
+    {
+      "ok": true,
+      "label": "Choix 6 de Hugues absent des menus"
+    }
+  ],
+  "limits": [
+    "Literal internal references only; runtime macros and pathfinding need native checks",
+    "PQ03–PQ05 stories unchanged; no real map or public NPC export available"
+  ]
+}

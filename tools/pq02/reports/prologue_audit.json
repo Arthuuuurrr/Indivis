@@ -1,0 +1,57 @@
+{
+  "status": "PASS_WITH_DOCUMENTED_LIMITS",
+  "date": "2026-10-29",
+  "production_revision": "HF12-PQ02-R1-HF4",
+  "production_jar_sha256": "a401eec8b5fbe1396c651715cd457a01ff86cb531c5bcc5686352b44a9f19285",
+  "production_files_changed": [],
+  "new_checks": {
+    "static_checks": 388,
+    "internal_prologue_functions": 1291,
+    "pq01_dialogue_blocks": 94,
+    "pq01_direct_choices": 317,
+    "pq01_client_protocol_checks": 584,
+    "pq01_server_assertions": 1159,
+    "native_loaded_functions": 2312
+  },
+  "same_jar_previous_pq02_validation": {
+    "native_assertions": 2425,
+    "client_protocol_assertions": 566,
+    "native_readiness_assertions": 12,
+    "gautier_assertions": 15,
+    "pq02_blocks": 111
+  },
+  "datapack_sha256": {
+    "core": "592ad598e9cb8164782adbfa873e325172fdb2c81458f3252de5e75f28851a9d",
+    "quests": "154cbdf0105296f5a94ccf6d54d7f9292c8f6fde05f9419cb7ff62225cec0fde"
+  },
+  "nexus_opt3_score_policy_unchanged_from_test_reference": true,
+  "native_scope": [
+    "94 PQ01 blocks",
+    "317 direct choice routes through trigger and production dispatch",
+    "Geraud stationary spawn guard and movement proximity",
+    "Perrin A-B-A real EasyNPC navigation for two players",
+    "Perrin owner isolation and public zero-speed preservation",
+    "PQ01 completion to canonical PQ02=30 and once-only Crown reputation",
+    "PQ03/PQ04/PQ05 offer conditions and final prologue normalization"
+  ],
+  "reserved_findings": [
+    {
+      "id": "GUI_LEOVIC",
+      "status": "UNRESOLVED_IN_LIVE_CLIENT",
+      "detail": "HF4 native and protocol checks pass; actual caller of original ECRAN_FERME is absent from supplied logs; no rendered client was run."
+    },
+    {
+      "id": "LEGACY_SHARED_ESCORTS",
+      "status": "STATIC_DESIGN_CONFIRMED_LIVE_CONFLICT_NOT_REPRODUCED",
+      "detail": "Aurele/Roch/Colin use global guide armor stands and reset their route state in start functions; their per-character lock does not itself establish per-player scene isolation. No real-map two-player escort tested."
+    }
+  ],
+  "limits": [
+    "Graphics, actual map obstacles, cameras as rendered, FPS and voice playback not tested",
+    "Native players/connections and Nexus selection are synthetic; no full character selector or disk serialization test",
+    "Protocol uses real b10 state/Fabric events but graphical surfaces, client world/entities and C2S output are doubled",
+    "All direct PQ01 branches tested with their optional Avaleiv knowledge enabled; banter entry remains removed from Hugues menus",
+    "PQ03-PQ05: function/reference integrity, offer conditions and normalization verified; complete map-dependent escorts/payment flow not executed",
+    "The initial audit fixture expected PQ02=10 instead of canonical30 and later used an undeclared result objective; corrected in the test fixture only before the final passing run"
+  ]
+}

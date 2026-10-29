@@ -1,0 +1,75 @@
+{
+  "sha256": "de06ecab0f5cf7ccee29043bff2ccb5fd2b7425c173da145c1f27559b49def7b",
+  "changed_classes_from_test_reference_opt1": [
+    "net/tompsen/nexuscharacters/PoseScratch$Workspace.class",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport$Grid.class",
+    "net/tompsen/nexuscharacters/PosedSurfaceSupport.class",
+    "net/tompsen/nexuscharacters/SurfaceGeometry.class",
+    "net/tompsen/nexuscharacters/ExactSurfaceClipper.class",
+    "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Index.class"
+  ],
+  "added_classes": [
+    "net/tompsen/nexuscharacters/CompactSurfaceClipper$Workspace.class",
+    "net/tompsen/nexuscharacters/CompactSurfaceClipper.class",
+    "net/tompsen/nexuscharacters/ExactTransformSupport.class",
+    "net/tompsen/nexuscharacters/PartVolumeCache$Entry.class",
+    "net/tompsen/nexuscharacters/PartVolumeCache$Pool.class",
+    "net/tompsen/nexuscharacters/PartVolumeCache.class"
+  ],
+  "removed_classes": [],
+  "score_policy_classes": {
+    "net/tompsen/nexuscharacters/ClementQuestSyncV1$SavedScore.class": {
+      "sha256": "cf7f543a53b388ab03289285e5e262592442e8fc206737c9be4b39e490307f1b",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/HCProfilePolicyV0621.class": {
+      "sha256": "3d727f9de6b18038d49ae8888d56dbbfa71ae1e1819d22fda6b53cb58dd9cb94",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/PersistenceCompatV078.class": {
+      "sha256": "2c7f8c63847d0b4106018eecc0848c27e3f4932a80496b8def82075f9c5f33c4",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/PersistenceDiagnosticsV0624.class": {
+      "sha256": "c232750e5ed08f34189814b8031ad8d4a0f99eb6f1d565431ecb2d842deb7f09",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/PersistenceEngineV0710$FileMeta.class": {
+      "sha256": "f43229acc6ff53ce4bc74ae211fa451b5b51b4c15765eb446c416eac93fa1881",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/PersistenceEngineV0710.class": {
+      "sha256": "9660f3ee1924aec4eed39d6e31c80feb64be6b45d971d078c687d832a95f422b",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/PersistenceIoV0619.class": {
+      "sha256": "d8ce051f4184a087ad153f4ccf0ccc0e340a233b429003f36735f4dbb564c16f",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/PersistenceIoV0621.class": {
+      "sha256": "805493a594581c09a2d2bdb345a2aedec34a589fae3849b4691907392a2ee8ec",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/PersistenceIoV0622.class": {
+      "sha256": "ea39db34e27729fd5048279c3411bd6eff7ca6973b1264fe10f21045d34b1980",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/PersistenceLifecycleV0710.class": {
+      "sha256": "f3ef60fd8d28c4c470d82d6aade7f5734b55271b91d6feb669f64790bd83265b",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/PersistenceQueueV0710.class": {
+      "sha256": "86933a4cd123d6acacb7d1f5ab32e4c191b392c536131d77c00fb9e3724dbca0",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/PersistenceScoreV0619.class": {
+      "sha256": "2499bd0d402e434c851469dc270858cfdb02b5908ef87296432009831ff50ad8",
+      "identical_to_opt1": true
+    },
+    "net/tompsen/nexuscharacters/V2QuestPolicy.class": {
+      "sha256": "3e72844b5947b847509de60dc636c2e54c1ec66c4bda13362185e9f5edabb05f",
+      "identical_to_opt1": true
+    }
+  },
+  "scope": "Binary comparison of installed OPT3 input against OPT1 test reference, no selector UI launched"
+}
