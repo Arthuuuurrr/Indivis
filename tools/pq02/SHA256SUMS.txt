@@ -1,4 +1,4 @@
 # SHA-256 — livraison intégrée (un seul mod de quêtes)
 592ad598e9cb8164782adbfa873e325172fdb2c81458f3252de5e75f28851a9d  capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF1.zip
 154cbdf0105296f5a94ccf6d54d7f9292c8f6fde05f9419cb7ff62225cec0fde  hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1.zip
-78b76966458ff4d51e8cfd0fd222a0873f51389cf731292d121fb0e87d3be736  haute-capitale-quetes-HF12-PQ02-R1-HF2-1.21.11.jar
+f06ed47cd917ea1672afcc403b5d9a53e3fa17ab95ae84abcd4db26767f9c9cf  haute-capitale-quetes-HF12-PQ02-R1-HF3-1.21.11.jar

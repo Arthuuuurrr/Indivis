@@ -1,5 +1,5 @@
 {
-  "functions": 1020,
+  "functions": 1035,
   "scores": [
     "ACCESS_ARCHIVES",
     "ACCESS_BANQUE",
@@ -386,5 +386,5 @@
   ],
   "fixture_only_security": "function root allowed for native EasyNPC command executor tests; no production security files included",
   "integrated": true,
-  "mod_production_sha256": "78b76966458ff4d51e8cfd0fd222a0873f51389cf731292d121fb0e87d3be736"
+  "mod_production_sha256": "f06ed47cd917ea1672afcc403b5d9a53e3fa17ab95ae84abcd4db26767f9c9cf"
 }

@@ -1,22 +1,38 @@
-# Indivis — Rapport d’intégration PQ02 R1 HF2
+# Indivis — Rapport d’intégration PQ02 R1 HF3
 
-Livraison **intégrée** du **28 octobre 2026**, Fabric/Minecraft **1.21.11**, Java **21**. Version installable destinée à la recette sur une copie du serveur. Aucun déploiement sur le serveur d’Arthur n’a été effectué.
+Livraison **intégrée** du **29 octobre 2026**, Fabric/Minecraft **1.21.11**, Java **21**. Version installable destinée à la recette sur une copie du serveur. Aucun déploiement sur le serveur d’Arthur n’a été effectué.
 
 ## Résultat et périmètre
 
 PQ02 est refondue selon le kit Work v1.2 et le script narratif v1.0 : accueil, trajet, sujets facultatifs, entretien à trois, inscription, trajet court vers l’ascenseur, séparation et retour ultérieur. Le graphe comporte **111 nœuds et 225 citations**, lus directement dans le texte fourni. Les seuls ajouts éditoriaux sont quatre libellés de navigation : Parlez-moi encore de votre expérience., Revenons au Port., Revenons aux Sentinelles., Revenons aux formalités.
 
-Le mod de quêtes `haute_capitale_quetes` intègre les composants PQ02 pour l’état de scène, les acteurs personnels et l’adaptation de capture. Il utilise le moteur Dialogue b10, les outils d’acteur de HF12 et EasyNPC 7.16.0. Il est compilé en Java 21 contre les véritables classes Minecraft intermédiaires, Fabric et les JAR fournis. Le JAR de quêtes HF12 est remplacé par sa version fusionnée : **184 classes historiques et 222 entrées d’origine conservées octet pour octet**, seule la métadonnée `fabric.mod.json` est adaptée parmi les entrées originales. Les 26 entrées PQ02 intégrées sont identiques au composant intermédiaire compilé, qui n’est pas à installer séparément. Dialogue, Nexus et Nexus NPC restent inchangés et ne sont pas redistribués.
+Le mod de quêtes `haute_capitale_quetes` intègre les composants PQ02 pour l’état de scène, les acteurs personnels et l’adaptation de capture. Il utilise le moteur Dialogue b10, les outils d’acteur de HF12 et EasyNPC 7.16.0. Il est compilé en Java 21 contre les véritables classes Minecraft intermédiaires, Fabric et les JAR fournis. Le JAR de quêtes HF12 est remplacé par sa version fusionnée : **182 classes historiques et 220 entrées d’origine conservées octet pour octet**. Deux classes de la passerelle PQ01 changent pour le rythme de Gautier, ainsi que la métadonnée `fabric.mod.json`. Les 26 entrées PQ02 intégrées sont identiques au composant intermédiaire compilé, qui n’est pas à installer séparément. Dialogue, Nexus et Nexus NPC restent inchangés et ne sont pas redistribués.
 
 La solution privée est nécessaire : le guide mondial de l’ancien core ne peut pas conduire deux joueurs indépendamment ni s’arrêter pour les questions d’un seul. Le trajet et ses repères restent ceux de l’installation ; le déplacement est désormais du pathfinding réel sur une copie du PNJ. L’ancien guide mondial est stationné, pas utilisé comme escorte concurrente.
 
 ## Fusion au mod de quêtes existant
 
-Un seul JAR `haute-capitale-quetes-HF12-PQ02-R1-HF2-1.21.11.jar` remplace HF12 et le compagnon PQ02, sur serveur et clients. Les points d’entrée de HF12 sont préservés dans leur ordre, puis ceux de PQ02 sont ajoutés une seule fois. Les mixins et le graphe narratif sont directement intégrés : aucun mod PQ02 imbriqué et aucun second identifiant Fabric. Les dépendances historiques, la configuration et les identifiants persistants du journal restent présents. Une incompatibilité explicite empêche de charger simultanément le compagnon obsolète.
+Un seul JAR `haute-capitale-quetes-HF12-PQ02-R1-HF3-1.21.11.jar` remplace HF12 et le compagnon PQ02, sur serveur et clients. Les points d’entrée de HF12 sont préservés dans leur ordre, puis ceux de PQ02 sont ajoutés une seule fois. Les mixins et le graphe narratif sont directement intégrés : aucun mod PQ02 imbriqué et aucun second identifiant Fabric. Les dépendances historiques, la configuration et les identifiants persistants du journal restent présents. Une incompatibilité explicite empêche de charger simultanément le compagnon obsolète.
 
 Le datapack `hc_quetes` reste en **R1**, et le core en **R1 HF1**. Les deux archives sont strictement identiques à la livraison HF1. Les vérifications et empreintes propres à l’assemblage figurent dans `merge.json` ; le banc narratif est relancé avec toutes les classes dans le seul JAR de quêtes. Le test de démarrage utilise ensuite le JAR de production **sans modifier ses métadonnées, points d’entrée ou mixins**, avec des déclarations de dépendances Nexus/Puffish/RPG réservées au banc et aucun joueur. Ce test ne valide pas les API de ces trois modules tiers ni un client graphique.
 
-## HF2 : premier dialogue de Léovic corrigé
+## HF3 : écran de Léovic et reprise de Géraud
+
+Les logs client et serveur du 29 octobre montrent que HF2 crée maintenant la copie privée de Léovic et ouvre sa session. Les trois essais se terminent ensuite avec `ECRAN_FERME` après deux ou trois secondes, sans commande de choix PQ02 dans les journaux fournis. Ces logs ne permettent pas d’identifier l’opération précise qui retire l’écran sur le client ; cette limite est conservée dans `hf3_log_findings.json`.
+
+HF3 protège la session contre ce retrait d’écran : l’adaptateur garde l’écran associé à la trame serveur et le rétablit une seule fois si l’écran courant est devenu nul, si aucune fermeture volontaire n’a été notifiée et si la session est toujours la même. La page, les choix et leur version sont conservés. Une fin explicite, une fin serveur, un menu étranger ou une autre session ne sont pas réouverts. Aucun point de quête ni effet de récompense n’est déclenché par cette récupération. Le coût est borné à un contrôle sur la trame active, sans recherche d’entités.
+
+La passerelle PQ01 reçoit deux ajustements : la vitesse de navigation de la copie de Gautier passe de 1,00 à 1,25 ; après « Bien, quartier-maître ! », Géraud reprend pendant que Gautier retourne à son poste. La progression n’attend plus que Gautier ait fini ce retour. Les dialogues et le parcours restent ceux du core. Les deux seuls changements dans la source de la passerelle sont établis par `hf3_pq01.patch` et contrôlés par `verify_hf3.py`. Perrin et les autres comportements restent inchangés.
+
+Le banc de régression retire volontairement un écran de capture et exécute le moniteur natif b10 : **HF2 envoie ECRAN_FERME ; HF3 rétablit l’écran et conserve la conversation**. Il vérifie également Échap, la fin serveur, les autres menus, un identifiant de session périmé et la borne d’une seule récupération. L’état b10 est réel ; écran Minecraft, moteur graphique et sortie C2S sont doublés. Seul l’appel C2S est redirigé vers un enregistreur dans la copie de test de DialogueClientState ; aucun JAR Dialogue modifié n’est livré.
+
+Le test de Gautier fait réellement marcher sa copie EasyNPC, exécute sa réplique d’approche, vérifie la vitesse 1,25, le maintien au point de dialogue, la reprise immédiate de Géraud, le retour sans téléportation, l’absence de relecture à l’arrivée, l’isolation de deux scènes et la conservation des positions des PNJ publics.
+
+Depuis HF2, le diff du JAR est limité à **quatre entrées** : métadonnée, adaptateur client PQ02, passerelle PQ01 et sa classe de navigation anonyme. **245 autres entrées sont identiques**, aucune n’est ajoutée ni retirée. Les deux datapacks, le runtime serveur PQ02, le graphe, les règles, les déplacements PQ02 et tous les mixins sont identiques à HF2.
+
+**Installation déjà préparée en HF1/HF2 : remplacer seulement le JAR de quêtes sur le serveur et chaque client, puis redémarrer complètement. Aucune commande, liaison, pose ou remise à zéro à refaire.** `PQ02_HF3.zip` contient le seul mod modifié et les instructions ; l’archive complète conserve les deux packs HF1/R1 inchangés.
+
+## Historique HF2 : premier dialogue de Léovic corrigé
 
 Le log serveur du 28 octobre contient à 16:27:20 l’exception `Copie EasyNPC non créée : leovic`. Le diagnostic du personnage confirme pourtant PQ01=100, PQ02=30, verrou=0 et tous les repères requis. Le défaut ne vient donc pas d’un prérequis de quête ni de la préparation du parcours.
 
@@ -28,7 +44,7 @@ Le diff binaire avec HF1 est limité à la métadonnée, aux classes du runtime 
 
 **Installation HF1 déjà préparée : remplacer uniquement le JAR de quêtes sur le serveur et les clients, puis redémarrer.** Aucun placement, aucune liaison et aucune remise à zéro ne sont à refaire. `PQ02_HF2.zip` contient ce seul mod et les instructions. L’archive d’installation complète contient aussi les deux datapacks inchangés pour une nouvelle installation.
 
-## HF1 : commandes adaptées aux repères existants
+## Historique HF1 : commandes adaptées aux repères existants
 
 `preparer_parcours` remplace l’exigence de proximité du point A par une lecture ponctuelle des véritables markers déjà chargés dans la dimension. Les coordonnées actuelles priment sur le cache. Les autres repères connus restent utilisables seulement dans leur dimension ; les coordonnées absentes ne sont jamais inventées. Aucune coordonnée des captures d’Arthur n’est inscrite dans le code. Les armures de visualisation ne sont pas assimilées aux markers ou à l’ancien guide invisible.
 
@@ -126,9 +142,9 @@ Le banc natif vérifie les deux entrées du capitaine, 10→20→30→40, la Sen
 | Niveau | Résultat | Portée exacte |
 | --- | --- | --- |
 | ZIP/JAR, JSON, métadonnées, racines, compilation | PASS | Entrées authentifiées et compilation réelle Java 21, pas des contrats fictifs. |
-| Contrôles statiques automatisés | **262 PASS** | Périmètre des diffs, conservation MQ/PQ01, états/identifiants du journal, graphes, références et conservation du périmètre R1 hors administration. |
+| Contrôles statiques automatisés | **261 PASS** | Périmètre des diffs, conservation MQ/PQ01, états/identifiants du journal, graphes, références et conservation du périmètre R1 hors administration. |
 | Java : règles pures et politique Nexus réelle | **145 PASS** | 108 combinaisons, bornes, mémoire, politique PRE35, trames de lecture, pause et échec borné du contrôleur. |
-| Serveur Fabric/EasyNPC natif jetable | **1665 PASS** | 1646 contrôles précédents, 15 assertions d’entrée par fonction et 4 contrôles supplémentaires de session/caméra ; acteurs et navigation réels, trackers/paquets, sessions et mixins, deux escortes, menus, déconnexion/reprise, récompenses et chaîne MQ03. |
+| Serveur Fabric/EasyNPC natif jetable | **1697 PASS** | 1665 contrôles précédents, 17 contrôles du cycle d’écran et 15 du rythme de Gautier ; acteurs et navigation réels, trackers/paquets, sessions et mixins, deux escortes, menus, déconnexion/reprise, récompenses et chaîne MQ03. |
 | Reproduction de l’échec HF1 | **PASS : défaut reproduit** | JAR HF1 exact, gestionnaire de commandes EasyNPC et véritable fonction Minecraft ; la même entrée passe avec HF2. |
 | Capture b10 et adaptateur client en mode sans rendu | PASS | 111 nœuds, toutes citations et choix, changements de locuteur, déclencheurs et avancement explicite du client. Écran et moteur caméra doublés. |
 | Démarrage du JAR fusionné de production intact | **8 PASS + garde anti-doublon PASS** | Identifiant unique, quatre commandes et trois initialiseurs réels ; Nexus/Puffish/RPG déclarés par des métadonnées de test, sans leurs API de jeu. |
@@ -140,7 +156,7 @@ Dans le banc uniquement, la monnaie est remplacée par des pépites d’or pour 
 
 Le test d’entrée HF2 passe par le véritable `CommandExecutor.executePlayerCommand` d’EasyNPC, les fonctions du core et les captures natives Dialogue b10, sans affichage graphique. La configuration de sécurité du monde jetable autorise explicitement la commande `function` au niveau opérateur pour ce banc. Cette configuration de test n’est pas livrée et ne modifie pas celle du serveur d’Arthur.
 
-Le serveur de test hors ligne émet une erreur de récupération des clés publiques Mojang due à son environnement réseau ; elle n’empêche pas le démarrage. Le rapport natif final HF2 ne contient aucun échec de chargement de fonction, aucune exception du runtime PQ02 ni erreur de mixin. `hf2_repro_server.log` conserve volontairement l’exception du JAR HF1 pour établir la reproduction du défaut ; il ne s’agit pas du journal de validation HF2.
+Le serveur de test hors ligne émet une erreur de récupération des clés publiques Mojang due à son environnement réseau ; elle n’empêche pas le démarrage. Le rapport natif final HF3 ne contient aucun échec de chargement de fonction, aucune exception du runtime PQ02 ni erreur de mixin. `hf2_repro_server.log` conserve volontairement l’exception du JAR HF1 pour établir la reproduction du défaut ; il ne s’agit pas du journal de validation HF2.
 
 ## Diff et fichiers livrés
 
@@ -149,13 +165,13 @@ Le serveur de test hors ligne émet une erreur de récupération des clés publi
 | core fourni → PQ02 R1 HF1 | 50 | 16 | 0 | 11274 |
 | hc_quetes fourni → PQ02 R1 | 2 | 0 | 0 | 3321 |
 | core PQ02 R1 → HF1 | 2 | 4 | 0 | 11334 |
-| core HF1 → livraison HF2 | 0 | 0 | 0 | 11340 |
-| hc_quetes R1 → livraison HF2 | 0 | 0 | 0 | 3323 |
+| core HF1 → livraison HF3 | 0 | 0 | 0 | 11340 |
+| hc_quetes R1 → livraison HF3 | 0 | 0 | 0 | 3323 |
 
 `diffs.json` donne chaque chemin et sa justification. `datapacks.patch` contient le diff textuel complet. `coverage.json` relie les nœuds aux lignes du script ; `COUVERTURE.md` en donne une vue lisible. `merge.json` et `SHA256SUMS.txt` identifient exactement les binaires intégrés testés. `build.json` conserve la trace des composants intermédiaires. Le diff unifié a été appliqué à des copies des originaux : tous les fichiers obtenus correspondent octet pour octet aux deux archives de sortie. Les JAR de production ne contiennent aucune classe de test ; les binaires internes de la livraison sont ceux du banc réussi (`archive_qa.json`).
 
-`INSTALLATION.md` détaille serveur/clients, liaisons, reprise, migration et retour arrière ; `COMMANDES_PQ02.md` donne les commandes adaptées aux points. `CORRECTIF_PQ02_HF2.md` détaille la mise à jour du seul JAR. `hf1.json` et `hf1_baseline.json` documentent les comparaisons avec R1 ; `hf2.json` et `hf2_baseline.json` établissent le périmètre exact du correctif et les 15 assertions nouvelles. L’archive de sources fournit les sources nouvelles, les bancs et les scripts. La reproduction demande les entrées originales nommées dans `build.py` et le script narratif du kit ; les dépendances du banc sont téléchargées depuis leurs distributions officielles ou reprises des fichiers fournis, jamais installées sur le serveur utilisateur.
+`INSTALLATION.md` détaille serveur/clients, liaisons, reprise, migration et retour arrière ; `COMMANDES_PQ02.md` donne les commandes adaptées aux points. `CORRECTIF_PQ02_HF3.md` détaille la mise à jour du seul JAR. `hf1.json` et `hf1_baseline.json` documentent les comparaisons avec R1 ; `hf2.json` et `hf2_baseline.json` conservent l’historique du correctif d’entrée. `hf3.json` et `hf3_baseline.json` établissent les quatre entrées modifiées et les 32 nouvelles assertions ; `CORRECTIF_PQ02_HF3.md` décrit la mise à jour actuelle. L’archive de sources fournit les sources nouvelles, les bancs et les scripts. La reproduction demande les entrées originales nommées dans `build.py` et le script narratif du kit ; les dépendances du banc sont téléchargées depuis leurs distributions officielles ou reprises des fichiers fournis, jamais installées sur le serveur utilisateur.
 
 ## Limites et données manquantes
 
-Les captures du parcours et les coordonnées partielles A/D fournies ensuite permettent d’en comprendre l’implantation, mais ne constituent pas une copie jouable de la carte ni un export complet des PNJ et des markers. Il manque ces données pour certifier les obstacles, comportements publics et cadrages réels. Les configurations et les fichiers audio sont nécessaires à une recette des doublages. Les implémentations tierces de monnaie/CapSkills/RPG n’ont pas été exécutées intégralement dans ce banc : leurs appels de production sont conservés. La livraison est **installable et testée dans le périmètre décrit**, pas déclarée sans risque de régression sur un modpack et une carte qui n’ont pas été lancés ici.
+Les captures du parcours et les coordonnées du parcours fournies ensuite permettent d’en comprendre l’implantation, mais ne constituent pas une copie jouable de la carte ni un export complet des PNJ et des markers. Il manque ces données pour certifier les obstacles, comportements publics et cadrages réels. Les configurations et les fichiers audio sont nécessaires à une recette des doublages. Les implémentations tierces de monnaie/CapSkills/RPG n’ont pas été exécutées intégralement dans ce banc : leurs appels de production sont conservés. La livraison est **installable et testée dans le périmètre décrit**, pas déclarée sans risque de régression sur un modpack et une carte qui n’ont pas été lancés ici.

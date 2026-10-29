@@ -1,13 +1,12 @@
 {
   "status": "PASS",
-  "checks": 262,
+  "checks": 261,
   "evidence": [
     "HF1: all other R1 core entries byte-identical (aggregate original hashes)",
     "HF1: four new admin functions and only two changed existing entries",
     "HF1: hc_quetes archive byte-identical to R1",
     "HF1: gameplay source preserved src/Pq02Rules.java",
     "HF1: gameplay source preserved src/Pq02Motion.java",
-    "HF1: gameplay source preserved src/Pq02Client.java",
     "HF1: gameplay source preserved src/Pq02Pacing.java",
     "HF1: gameplay source preserved src/Pq02Data.java",
     "HF1: gameplay source preserved src/mixin/Pq02WaypointMixin.java",

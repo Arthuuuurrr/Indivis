@@ -16,7 +16,7 @@ final class Pq02SetupBench {
  static long debugCount(){long count=0;for(Object e:((net.minecraft.class_3218)w).method_27909())if(tags(e).contains("debug_leovic_registre_port"))count++;return count;}
  static void run(){
   Point playerBefore=pos(a,w),publicBefore=pos(leo,w);Object pointA=marker(a,"a"),pointD=marker(a,"d"),pointHBefore=marker(a,"h_before"),pointHAfter=marker(a,"h_after");Point originalA=pos(pointA,w),originalD=pos(pointD,w);
-  cmd("summon minecraft:armor_stand 35 64 4 {Tags:[\"guide_leovic_registre_port\",\"escort_active\",\"escort_moving\"],NoGravity:1b,Invisible:1b,Marker:1b}");
+  cmd("summon minecraft:armor_stand 13 64 4 {Tags:[\"guide_leovic_registre_port\",\"escort_active\",\"escort_moving\"],NoGravity:1b,Invisible:1b,Marker:1b}");
   Object guide=Pq02Setup.scan(a).guides().get(0);
   cmd("summon minecraft:armor_stand 8 64 9 {Tags:[\"wp_leovic_registre_port_a\",\"fixture_fake_marker\"],NoGravity:1b,Marker:1b}");
   Object root=Pq01Nbt.copy(config(a));GuardNbt.string(root,"fixture_preserved","yes");GuardNbt.save(srv,SETUP,root);

@@ -54,7 +54,7 @@ public final class Pq02WorldBench implements ModInitializer {
  static void advance(Object p){pick(p,14);}
  @SuppressWarnings("unchecked") static void production(){List<Object> online=(List<Object>)call(call(srv,"method_3760"),"method_14571");Pq02Runtime.tick(srv);}
  static void testTick()throws Exception{if(srv==null||finished)return;t++;if(t<20)return;
-  if(t==20){seed(a,30);seed(b,30);seed(observer,100);run(a,"function capitale:pq02/load");if(Boolean.getBoolean("pq02.repro.entry")){Pq02EntryBench.reproduce();return;}Pq02SetupBench.run();Pq02EntryBench.verify();
+  if(t==20){seed(a,30);seed(b,30);seed(observer,100);run(a,"function capitale:pq02/load");if(Boolean.getBoolean("pq02.repro.entry")){Pq02EntryBench.reproduce();return;}if(Boolean.getBoolean("pq02.repro.screen")){Pq02ScreenBench.reproduce();finished=true;Files.writeString(Path.of("world-test-result.txt"),"PASS REPRODUCED_HF2_ABSENT_SCREEN_ECRAN_FERME\n"+String.join("\n",evidence));cmd("stop");return;}Pq02SetupBench.run();Pq02EntryBench.verify();
    // Reproduce auto-capture before first role binding (original b10 behavior).
    stat(DM,"ouvrir",a,leo,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));open(a,"leovic");settle(a);ok(v(a).node.key.equals("a01"),"first interaction auto-binds even after original capture");
    open(b,"leovic");settle(b);pick(a,1);pick(b,3);ok(score(a,"REP_GARDEPORT")==1&&score(a,"CAP_PQ2_IMPR")==1&&score(b,"REP_GARDEPORT")==0,"arrival effects are private");
@@ -89,10 +89,14 @@ public final class Pq02WorldBench implements ModInitializer {
    net.tompsen.nexuscharacters.NexusCharacters.select(a,charA);for(var row:savedScores.entrySet())score2(a,row.getKey(),row.getValue());open(a,"leovic");settle(a);ok(v(a).node.key.equals("post_friendly")&&score(a,"CAP_LEOVIC_GIFT")==1,"synthetic A-B-A profile restore returns first character memory");
    // Legacy migration is conservative: no invented decision bonus, preserve previous gift.
    suspend(observer);seed(observer,100);score2(observer,"CAP_PQ2_VER",0);score2(observer,"REP_GARDEPORT",12);score2(observer,"CAP_LEOVIC_GIFT",1);ensure(observer);ok(score(observer,"REP_GARDEPORT")==12&&score(observer,"CAP_PQ2_REW")==1&&score(observer,"CAP_LEOVIC_GIFT")==1,"legacy completed/gifted profile keeps original reputation and awards");
-   suspend(a);suspend(b);Pq02CaptureBench.runAll(a);HuguesBench.runAll(a);Mq03Bench.runAll(a,observer);trackers();ok(pos(leo,w).distance2(publicStart)<0.001,"public Leovic never moved");ok(!foreign,"no foreign private entity spawn packets during two escorts");ok(ERRORS.isEmpty(),"no PQ02 runtime exception");
+   suspend(a);suspend(b);Pq02CaptureBench.runAll(a);Pq02ScreenBench.verify();HuguesBench.runAll(a);Mq03Bench.runAll(a,observer);trackers();ok(pos(leo,w).distance2(publicStart)<0.001,"public Leovic never moved");ok(!foreign,"no foreign private entity spawn packets during two escorts");ok(ERRORS.isEmpty(),"no PQ02 runtime exception");
    for(Object p:players)ok(!messages.get(p).contains("..."),"no placeholder dialogue sent");
-   ((List<?>)call(call(srv,"method_3760"),"method_14571")).clear();finished=true;Files.writeString(Path.of("world-test-result.txt"),"PASS "+checks+" native checks\n"+String.join("\n",evidence)+"\nFrame counts="+frames+"\nNative Fabric 1.21.11 / EasyNPC 7.16, original HF12 classes and production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.\n");cmd("stop");
+   Pq01GautierBench.start(a,observer);phase=7;return;
   }
+  if(phase==7&&Pq01GautierBench.tick()){finish();}
+ }
+ static void finish()throws Exception{
+   ((List<?>)call(call(srv,"method_3760"),"method_14571")).clear();finished=true;Files.writeString(Path.of("world-test-result.txt"),"PASS "+checks+" native checks\n"+String.join("\n",evidence)+"\nFrame counts="+frames+"\nNative Fabric 1.21.11 / EasyNPC 7.16, HF12 classes preserved except the two authorized Gautier timing classes; production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.\n");cmd("stop");
  }
  static void fail(Throwable e){if(finished)return;finished=true;e.printStackTrace();try{var sw=new java.io.StringWriter();e.printStackTrace(new java.io.PrintWriter(sw));Files.writeString(Path.of("world-test-result.txt"),"FAIL "+sw+"\n"+String.join("\n",evidence));if(srv!=null){((List<?>)call(call(srv,"method_3760"),"method_14571")).clear();cmd("stop");};}catch(Exception ignored){}}
 }

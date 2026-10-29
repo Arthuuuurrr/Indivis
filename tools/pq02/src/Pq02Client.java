@@ -13,6 +13,8 @@ public final class Pq02Client implements ClientModInitializer {
   private static final Map<String,Field> FIELDS=new HashMap<>();
   private static Pq02Pacing.Frame frame;
   private static Object frameSession;
+  private static Object frameScreen;
+  private static boolean screenRecovered;
   private static int age,finalPageTicks,retryAt,attempts,pageTicks;
   private static boolean advanceRequested;
   private static Object voices;private static boolean voicesChecked;
@@ -54,15 +56,25 @@ public final class Pq02Client implements ClientModInitializer {
     Pq02Pacing.Frame parsed=Pq02Pacing.parse(insertion);
     if(parsed==null||!Boolean.TRUE.equals(stat(STATE,"captureActive")))return false;
     frame=parsed;frameSession=field(type(STATE),"sessionId");age=0;finalPageTicks=0;pageTicks=0;retryAt=0;attempts=0;advanceRequested=false;
+    frameScreen=field(type(STATE),"ecranCourant");screenRecovered=false;
     stat(STATE,"onChoixEnvoye",false,""); // remise de page sans réponse fictive dans l'historique.
     state("pnjNom",NAMES.get(frame.role()));
     return false; // trame vide, jamais un texte de PNJ ni une ligne de chat.
   }
   static void tickClient(Object client){
     if(frame==null)return;
-    if(!currentFrame()){frame=null;advanceRequested=false;return;}
+    if(!currentFrame()){frame=null;frameScreen=null;advanceRequested=false;return;}
     Object screen=field(client,"field_1755");
+    // Un retrait d'écran sans demande de fin ne doit pas terminer la nouvelle
+    // session privée. Réutiliser une seule fois son écran et sa page, sans
+    // rouvrir après Échap, un congé, un autre menu ou une fin serveur.
+    if(screen==null&&!screenRecovered&&captureScreen(frameScreen)
+        &&!Boolean.TRUE.equals(field(frameScreen,"fermetureNotifiee"))
+        &&!Boolean.TRUE.equals(field(type(STATE),"ecranEtrangerVu"))){
+      screenRecovered=true;call(client,"method_1507",frameScreen);screen=field(client,"field_1755");
+    }
     if(!captureScreen(screen))return;
+    frameScreen=screen;
     Object panel=field(screen,"panneau");if(panel==null)return;
     call(panel,"nom",NAMES.get(frame.role()));call(panel,"attente",false);
     // Une marche ou une longue voix n'est pas un silence qui ferme la session.

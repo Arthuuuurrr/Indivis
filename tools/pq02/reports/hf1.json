@@ -19,7 +19,6 @@
   "source_gameplay_and_mixins_unchanged": [
     "src/Pq02Rules.java",
     "src/Pq02Motion.java",
-    "src/Pq02Client.java",
     "src/Pq02Pacing.java",
     "src/Pq02Data.java",
     "src/mixin/Pq02WaypointMixin.java",
@@ -28,6 +27,7 @@
     "src/mixin/Pq02EntityMixin.java"
   ],
   "r1_pq02_compiled_entries_changed": [
+    "net/hautecapitale/quetes/sequence/Pq02Client.class",
     "net/hautecapitale/quetes/sequence/Pq02Runtime$1.class",
     "net/hautecapitale/quetes/sequence/Pq02Runtime$Near.class",
     "net/hautecapitale/quetes/sequence/Pq02Runtime.class"
@@ -39,7 +39,6 @@
     "net/hautecapitale/quetes/pq02/mixin/Pq02EntityMixin.class",
     "net/hautecapitale/quetes/pq02/mixin/Pq02VisibilityMixin.class",
     "net/hautecapitale/quetes/pq02/mixin/Pq02WaypointMixin.class",
-    "net/hautecapitale/quetes/sequence/Pq02Client.class",
     "net/hautecapitale/quetes/sequence/Pq02Data$Choice.class",
     "net/hautecapitale/quetes/sequence/Pq02Data$Graph.class",
     "net/hautecapitale/quetes/sequence/Pq02Data$Node.class",

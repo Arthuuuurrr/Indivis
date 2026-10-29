@@ -15,9 +15,10 @@ for name,digest in baseline['pq02_r1_entries'].items():
  assert name in jar
  if build.sha(jar[name])==digest:same.append(name)
  else:
-  assert '/Pq02Runtime' in name,name
+  assert '/Pq02Runtime' in name or '/Pq02Client' in name,name
   changed.append(name)
-for name,digest in baseline['preserved_sources'].items():assert build.sha((H/name).read_bytes())==digest
+for name,digest in baseline['preserved_sources'].items():
+ if name!='src/Pq02Client.java':assert build.sha((H/name).read_bytes())==digest
 patch=[];original={kind:build.read(path) for kind,path in build.BASE.items()};current={'core':core,'quests':quests}
 for kind in ['core','quests']:
  for n,b in sorted(current[kind].items()):
@@ -32,7 +33,7 @@ subprocess.run(['git','apply',str(patchfile.resolve())],cwd=qa,check=True,captur
 for kind,files in current.items():
  actual={p.relative_to(qa/kind).as_posix():p.read_bytes() for p in (qa/kind).rglob('*') if p.is_file()}
  assert actual==files,kind
-report={'status':'PASS','revision':'PQ02 R1 HF1','r1_core_delta':{'changed':list(baseline['changed_r1_entries']),'added':added,'removed':[],'unchanged':len(preserved)},'hc_quetes_identical_to_r1':True,'source_gameplay_and_mixins_unchanged':list(baseline['preserved_sources']),'r1_pq02_compiled_entries_changed':changed,'r1_pq02_compiled_entries_identical':same,'new_admin_classes':[n for n in jar if '/Pq02Setup' in n],'patch_applied_to_original_copies':True,'all_applied_files_equal_output':True,'global_entity_scan_added_to_tick':False}
+report={'status':'PASS','revision':'PQ02 R1 HF1','r1_core_delta':{'changed':list(baseline['changed_r1_entries']),'added':added,'removed':[],'unchanged':len(preserved)},'hc_quetes_identical_to_r1':True,'source_gameplay_and_mixins_unchanged':[n for n in baseline['preserved_sources'] if n!='src/Pq02Client.java'],'r1_pq02_compiled_entries_changed':changed,'r1_pq02_compiled_entries_identical':same,'new_admin_classes':[n for n in jar if '/Pq02Setup' in n],'patch_applied_to_original_copies':True,'all_applied_files_equal_output':True,'global_entity_scan_added_to_tick':False}
 (R/'hf1.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
 (R/'archive_qa.json').write_text(json.dumps({'status':'PASS','patch_applied_to_original_copies':True,'all_files_byte_identical_after_patch':True,'archives':{kind:{'filename':build.FILES[kind],'sha256':build.sha((H/'output'/build.FILES[kind]).read_bytes()),'files':len(files)} for kind,files in current.items()},'single_mod_filename':merge_journal.OUTPUT.name,'single_mod_sha256':merge_journal.sha(merge_journal.OUTPUT),'hf12_classes_identical':json.loads((R/'merge.json').read_text())['original_classes_preserved']},ensure_ascii=False,indent=2)+'\n')
 print(json.dumps(report,ensure_ascii=False,indent=2))

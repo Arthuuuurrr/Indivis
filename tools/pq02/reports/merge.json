@@ -1,14 +1,14 @@
 {
   "status": "PASS_BYTE_PRESERVATION_NATIVE_AND_FULL_MAIN_STARTUP",
-  "file": "haute-capitale-quetes-HF12-PQ02-R1-HF2-1.21.11.jar",
-  "sha256": "78b76966458ff4d51e8cfd0fd222a0873f51389cf731292d121fb0e87d3be736",
-  "bytes": 562104,
+  "file": "haute-capitale-quetes-HF12-PQ02-R1-HF3-1.21.11.jar",
+  "sha256": "f06ed47cd917ea1672afcc403b5d9a53e3fa17ab95ae84abcd4db26767f9c9cf",
+  "bytes": 562240,
   "id": "haute_capitale_quetes",
-  "version": "0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF2",
+  "version": "0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF3",
   "source_hf12_sha256": "c888eec4fa5dad35127dd5a5e4e6c49ec0f870063d429877f4b2a48a09f5bb60",
-  "source_pq02_sha256": "78bfd02cb6dfaa0f8dd8d9619db18bd6677be5ec38209955eafcb11e27553e22",
-  "original_entries_preserved": 222,
-  "original_classes_preserved": 184,
+  "source_pq02_sha256": "714aa5cf7c2e2a4a7d40a9c59b2655c731cf8a4eb1c4b3f4aed8c43d169e97f0",
+  "original_entries_preserved": 220,
+  "original_classes_preserved": 182,
   "pq02_entries_identical": 26,
   "added": [
     "indivis_pq02.mixins.json",
@@ -39,8 +39,14 @@
     "net/hautecapitale/quetes/sequence/Pq02Setup.class"
   ],
   "changed_original": [
-    "fabric.mod.json"
+    "fabric.mod.json",
+    "net/hautecapitale/quetes/sequence/Pq01Bridge.class",
+    "net/hautecapitale/quetes/sequence/Pq01Bridge$1.class"
   ],
+  "pq01_patch_sources": [
+    "src_pq01/Pq01Bridge.java"
+  ],
+  "pq01_scope": "Gautier speed 1.0 to 1.25; Geraud resumes while Gautier returns to post",
   "entrypoints": {
     "main": [
       "net.hautecapitale.quetes.HauteCapitaleQuetes",
@@ -80,9 +86,11 @@
     "quests": "154cbdf0105296f5a94ccf6d54d7f9292c8f6fde05f9419cb7ff62225cec0fde"
   },
   "tests": {
-    "native": 1665,
+    "native": 1697,
     "admin_native": 37,
-    "new_entry_native": 15,
+    "function_entry_native": 15,
+    "screen_lifecycle_native": 17,
+    "gautier_native": 15,
     "full_production_main_startup": 8,
     "obsolete_companion_guard": 1,
     "client_rendered": false,

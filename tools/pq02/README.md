@@ -1,6 +1,6 @@
-# PQ02 R1 HF2 — Le registre du Port
+# PQ02 R1 HF3 — Le registre du Port
 
-Implémentation du kit Work v1.2 et du script PQ02 v1.0, sur copies des deux archives de production fournies. Cible : Fabric 1.21.11, Java 21. PQ02 est intégrée au mod de quêtes HF12, côté serveur et clients. Le compagnon séparé n’est plus à installer. Les 184 classes historiques de HF12 restent conservées octet pour octet. HF1 adapte uniquement l’administration aux repères existants : préparation à distance, coordonnées détaillées, cache et refus des doublons ; les règles, dialogues, déplacements et mixins de R1 sont conservés.
+Implémentation du kit Work v1.2 et du script PQ02 v1.0, sur copies des deux archives de production fournies. Cible : Fabric 1.21.11, Java 21. PQ02 est intégrée au mod de quêtes HF12, côté serveur et clients. Le compagnon séparé n’est plus à installer. 182 des 184 classes historiques de HF12 restent identiques ; deux classes de la passerelle PQ01 sont corrigées pour le rythme de Gautier. HF1 adapte uniquement l’administration aux repères existants : préparation à distance, coordonnées détaillées, cache et refus des doublons ; les règles, dialogues, déplacements et mixins de R1 sont conservés.
 
 Les procédures de joueur et d’administrateur sont dans `INSTALLATION.md` et `COMMANDES_PQ02.md`. L’audit, les limites et les preuves figurent dans `RAPPORT.md` et `reports/`. Dans GitHub, ces documents sont aussi dans `docs/quetes/PQ02_R1/` ; `patches/pq02-r1/` contient les seules ressources modifiées. Les anciens répertoires de datapacks du dépôt ne sont pas substitués à l’archive serveur fournie.
 
@@ -19,7 +19,7 @@ python work/pq02/merge_journal.py
 PQ02_INTEGRATED=1 python work/pq02/run_native.py
 python work/pq02/test_merged_boot.py
 python work/pq02/verify_hf1.py
-python work/pq02/verify_hf2.py
+python work/pq02/verify_hf3.py
 python work/pq02/package_merged.py
 ```
 
@@ -38,3 +38,10 @@ Les quatre mixins de production sont limités à la visibilité des acteurs PQ02
 `hf1_baseline.json` contient les empreintes agrégées de la livraison R1 pour vérifier la conservation de 11 334 entrées de core et du datapack hc_quetes sans exiger de redistribuer ces anciennes archives. `verify_hf1.py` applique aussi le patch à des copies des originaux et compare chaque fichier au ZIP livré. `Pq02SetupBench` exerce les nouvelles commandes sur le vrai serveur, notamment depuis plus de 800 blocs et hors de l’ancienne bande verticale de recherche ; ces coordonnées appartiennent au banc jetable.
 
 HF2 corrige l’entrée par fonction Minecraft : les requêtes de dialogue sont drainées à la fin du tick serveur, hors du contexte des commandes imbriquées. Les deux datapacks restent identiques à HF1. `Pq02EntryBench` passe par le gestionnaire natif de commandes EasyNPC et les fonctions réelles. Le cas d’échec antérieur est conservé dans `reports/hf2_repro*` ; pour le reproduire, utiliser `PQ02_INTEGRATED=1 PQ02_REPRO_ENTRY=1 PQ02_REPRO_JAR=/chemin/absolu/haute-capitale-quetes-HF12-PQ02-R1-HF1-1.21.11.jar python work/pq02/run_native.py`. Le JAR HF1 attendu porte l’empreinte inscrite dans `hf2_baseline.json` ; il n’est pas redistribué comme version installable. `CORRECTIF_PQ02_HF2.md` décrit l’installation sans réinitialisation.
+
+
+## HF3 — fenêtre de Léovic et rythme de Gautier
+
+Le client conserve l’écran de la trame PQ02 et le récupère une seule fois après un retrait sans fin volontaire. La navigation de Gautier passe à 1,25 et Géraud reprend pendant son retour au poste. `src_pq01/Pq01Bridge.java` ne diffère de la référence HF12 que sur ces deux points ; le constructeur n’en remplace que les classes principale et de navigation. Les packs restent identiques à HF2. Les limites du diagnostic et du banc sont dans `CORRECTIF_PQ02_HF3.md` et `reports/hf3.json`.
+
+`Pq02ScreenBench` exerce l’état réel b10 avec un écran sans rendu et enregistre les sorties C2S dans le banc uniquement. Pour reproduire le chemin ECRAN_FERME de HF2 après retrait volontaire de l’écran par le test : `PQ02_INTEGRATED=1 PQ02_REPRO_SCREEN=1 PQ02_REPRO_JAR=/chemin/absolu/haute-capitale-quetes-HF12-PQ02-R1-HF2-1.21.11.jar python work/pq02/run_native.py`. Les logs utilisateur ne donnent pas l’origine exacte du retrait d’écran. `Pq01GautierBench` utilise de vrais acteurs/navigation EasyNPC et les fonctions natives PQ01, avec deux propriétaires distincts.
