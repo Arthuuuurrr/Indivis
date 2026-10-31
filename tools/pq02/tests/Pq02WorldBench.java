@@ -54,6 +54,7 @@ public final class Pq02WorldBench implements ModInitializer {
  static void advance(Object p){pick(p,14);}
  @SuppressWarnings("unchecked") static void production(){List<Object> online=(List<Object>)call(call(srv,"method_3760"),"method_14571");Pq02Runtime.tick(srv);}
  static void testTick()throws Exception{if(srv==null||finished)return;t++;if(t<20)return;
+  if(t==20&&!System.getProperty("pq02.screen.guard","").isEmpty()){Pq02ScreenGuardBench.runAll(System.getProperty("pq02.screen.guard").equals("legacy"));finish();return;}
   if(t==20&&Boolean.getBoolean("pq02.prologue.only")){seed(a,30);seed(b,30);seed(observer,100);run(a,"function capitale:pq02/load");Pq01AuditBench.start(a,observer);phase=8;return;}
   if(t==20){seed(a,30);seed(b,30);seed(observer,100);run(a,"function capitale:pq02/load");if(Boolean.getBoolean("pq02.repro.entry")){Pq02EntryBench.reproduce();return;}if(Boolean.getBoolean("pq02.repro.screen")){Pq02ScreenBench.reproduce();finished=true;Files.writeString(Path.of("world-test-result.txt"),"PASS REPRODUCED_HF2_ABSENT_SCREEN_ECRAN_FERME\n"+String.join("\n",evidence));cmd("stop");return;}Pq02SetupBench.run();Pq02EntryBench.verify();Pq02FocusBench.verify();
    // Reproduce auto-capture before first role binding (original b10 behavior).

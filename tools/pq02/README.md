@@ -1,4 +1,4 @@
-# PQ02 R1 HF4 — Le registre du Port
+# PQ02 R1 HF5 — Le registre du Port
 
 Implémentation du kit Work v1.2 et du script PQ02 v1.0, sur copies des deux archives de production fournies. Cible : Fabric 1.21.11, Java 21. PQ02 est intégrée au mod de quêtes HF12, côté serveur et clients. Le compagnon séparé n’est plus à installer. 182 des 184 classes historiques de HF12 restent identiques ; deux classes de la passerelle PQ01 sont corrigées pour le rythme de Gautier. HF1 adapte uniquement l’administration aux repères existants : préparation à distance, coordonnées détaillées, cache et refus des doublons ; les règles, dialogues, déplacements et mixins de R1 sont conservés.
 
@@ -18,10 +18,10 @@ python work/pq02/test_static.py
 python work/pq02/merge_journal.py
 PQ02_INTEGRATED=1 python work/pq02/run_native.py
 python work/pq02/test_merged_boot.py
-python work/pq02/verify_hf1.py
 python work/pq02/run_protocol.py
-PQ02_PROTOCOL_LEGACY=1 PQ02_PROTOCOL_JAR=/chemin/vers/HF3.jar python work/pq02/run_protocol.py
-python work/pq02/verify_hf4.py
+PQ02_INTEGRATED=1 PQ02_SCREEN_GUARD=legacy PQ02_GUARD_JAR=/chemin/vers/HF4.jar python work/pq02/run_native.py
+PQ02_INTEGRATED=1 PQ02_SCREEN_GUARD=guard python work/pq02/run_native.py
+python work/pq02/verify_hf5.py
 python work/pq02/package_merged.py
 ```
 
@@ -59,3 +59,9 @@ La réception des pages est précédée d’une confirmation de disponibilité d
 `AUDIT_PROLOGUE_2026-10-29.md` détaille les 388 contrôles statiques sur PQ01–PQ05, les 584 assertions de protocole client PQ01 et les 1 159 assertions serveur supplémentaires, dont 94 blocs, 317 choix directs et le service de Perrin à deux joueurs. Aucune archive de jeu n’est modifiée par cet audit. La fermeture de Léovic dans le client réel et les escortes historiques partagées d’Aurèle/Roch/Colin gardent les réserves indiquées dans le rapport.
 
 Après préparation du runtime : `python work/pq02/audit_prologue.py`, puis `PQ01_PROTOCOL_AUDIT=1 python work/pq02/run_protocol.py`, `PROLOGUE_AUDIT=1 PROLOGUE_AUDIT_ONLY=1 PQ02_INTEGRATED=1 python work/pq02/run_native.py` et `python work/pq02/verify_prologue_audit.py`. Les résultats sont séparés de ceux de HF4, dans `reports/prologue_audit*`. Les branches facultatives PQ01 sont exercées avec la connaissance d’Avaleiv activée. Les surfaces graphiques et connexions sont doublées ; aucun test graphique sur la carte.
+
+## HF5 — fenêtre de Léovic
+
+Le mixin client `Pq02ScreenLifecycleMixin` protège la capture possédée par PQ02 avant un `setScreen(null)` sans fin volontaire et conserve le retour natif après un menu étranger très bref. Il n’ajoute aucun état persistant ni changement de trajet. Lire `CORRECTIF_PQ02_HF5.md` et `reports/hf5.json`. La provenance de l’appel sur le client réel n’est pas identifiée.
+
+Pour la reproduction sur l’ancien binaire, utiliser `PQ02_INTEGRATED=1 PQ02_SCREEN_GUARD=legacy PQ02_GUARD_JAR=/chemin/vers/HF4.jar python work/pq02/run_native.py`. Le mode `guard` active la liste de mixins client uniquement dans le serveur jetable ; le JAR livré reste inchangé et client seulement. Les surfaces graphiques sont doublées. Le JAR HF4 exact n’est pas redistribué comme version installable.

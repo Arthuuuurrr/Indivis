@@ -31,6 +31,21 @@ public final class Pq02Client implements ClientModInitializer {
     event("net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterInit","AFTER_INIT",a->{installInput(a[1]);return null;});
   }
   static boolean captureScreen(Object screen){return screen!=null&&screen.getClass().getName().equals("net.hautecapitale.dialogue.client.capture.CaptureDialogueScreen");}
+  /** Appelé avant setScreen(null), avant tout retrait et avant le moniteur b10. */
+  public static boolean blockScreenReset(Object client,Object nextScreen){
+    if(nextScreen!=null)return false;
+    Object screen=field(client,"field_1755");
+    Pq02Focus.Request expected=Pq02FocusClient.pending;
+    if(expected==null||!Boolean.TRUE.equals(stat(STATE,"captureActive"))||Boolean.TRUE.equals(Pq02FocusClient.state("finEnvoyee")))return false;
+    if(!Objects.equals(Pq02FocusClient.state("sessionId"),expected.session())||!Objects.equals(Pq02FocusClient.state("pnjUuid"),expected.actor()))return false;
+    if(!captureScreen(screen)){
+      // Le menu peut avoir été ouvert et fermé entre deux ticks b10.
+      // Mémoriser cette visite pour conserver son retour natif, sans le bloquer.
+      if(screen!=null)state("ecranEtrangerVu",true);
+      return false;
+    }
+    return !Boolean.TRUE.equals(field(screen,"fermetureNotifiee"));
+  }
   static void listen(Object event,String contract,EventHandler handler){
     Class<?> c=type(contract);Object listener=Proxy.newProxyInstance(c.getClassLoader(),new Class<?>[]{c},(p,m,a)->{if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);try{return handler.run(a);}catch(RuntimeException e){report(e);return m.getReturnType()==boolean.class?true:null;}});call(event,"register",listener);
   }

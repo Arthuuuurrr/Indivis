@@ -1,11 +1,11 @@
 {
   "status": "PASS",
-  "revision": "PQ02 R1 HF4",
-  "journal": "haute-capitale-quetes-HF12-PQ02-R1-HF4-1.21.11.jar",
-  "sha256": "a401eec8b5fbe1396c651715cd457a01ff86cb531c5bcc5686352b44a9f19285",
+  "revision": "PQ02 R1 HF5",
+  "journal": "haute-capitale-quetes-HF12-PQ02-R1-HF5-1.21.11.jar",
+  "sha256": "7de6f0888cb7f531c1c4cd6a1ba7ef2b0c1f1ea8dcae906499f0fc726d1b4e2c",
   "preserved_hf12_classes": 182,
   "preserved_hf12_resources": 220,
-  "pq02_entries_identical_to_build_component": 29,
+  "pq02_entries_identical_to_build_component": 30,
   "native_checks": 2425,
   "admin_native_checks": 37,
   "function_entry_native_checks": 15,
@@ -14,7 +14,9 @@
   "client_protocol_nodes": 111,
   "gautier_native_checks": 15,
   "gautier_hf3_byte_identical": true,
-  "hf3_adverse_order_failure_reproduced": true,
+  "hf4_screen_reset_failure_reproduced": true,
+  "screen_guard_native_checks": 63,
+  "client_mixin_applied_by_knot": true,
   "live_gui_removal_origin_identified": false,
   "full_main_startup_checks": 8,
   "duplicate_guard_checks": 1,
@@ -23,10 +25,11 @@
   ],
   "datapacks_changed_since_hf1": false,
   "limitations": [
-    "Client protocol uses real b10 state and Fabric message events with graphical client/world/screen and C2S output doubled",
-    "Native gameplay suite simulates readiness acknowledgement; protocol suite exercises real client acknowledgement generation separately",
-    "Connections/chunk receipt/Nexus selection synthetic; external economic integrations substituted in gameplay fixture",
-    "No rendered Minecraft, actual Indivis map, FPS or recorded audio playback tested",
+    "Minecraft screen/client world/entities and graphics are doubled, native b10 lifecycle and production mixin are exercised through Knot",
+    "Test mixin client list is enabled in the server-side fixture only; production stays client only",
+    "Actual Fabric message pipeline is exercised separately for all111 PQ02 nodes; no full graphical network client/server was launched",
+    "Connections/Nexus selection and external economic integrations retain documented fixture substitutions",
+    "No rendered Indivis map, FPS, sound playback or actual original GUI-reset caller tested",
     "Full metadata smoke uses declarative Nexus/Puffish/RPG providers, no players or their APIs"
   ]
 }

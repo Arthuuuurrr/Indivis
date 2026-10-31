@@ -386,5 +386,5 @@
   ],
   "fixture_only_security": "function root allowed for native EasyNPC command executor tests; no production security files included",
   "integrated": true,
-  "mod_production_sha256": "a401eec8b5fbe1396c651715cd457a01ff86cb531c5bcc5686352b44a9f19285"
+  "mod_production_sha256": "7de6f0888cb7f531c1c4cd6a1ba7ef2b0c1f1ea8dcae906499f0fc726d1b4e2c"
 }

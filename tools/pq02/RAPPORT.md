@@ -1,22 +1,36 @@
-# Indivis — Rapport d’intégration PQ02 R1 HF4
+# Indivis — Rapport d’intégration PQ02 R1 HF5
 
-Livraison **intégrée** du **29 octobre 2026**, Fabric/Minecraft **1.21.11**, Java **21**. Version installable destinée à la recette sur une copie du serveur. Aucun déploiement sur le serveur d’Arthur n’a été effectué.
+Livraison **intégrée** du **31 octobre 2026**, Fabric/Minecraft **1.21.11**, Java **21**. Version installable destinée à la recette sur une copie du serveur. Aucun déploiement sur le serveur d’Arthur n’a été effectué.
 
 ## Résultat et périmètre
 
 PQ02 est refondue selon le kit Work v1.2 et le script narratif v1.0 : accueil, trajet, sujets facultatifs, entretien à trois, inscription, trajet court vers l’ascenseur, séparation et retour ultérieur. Le graphe comporte **111 nœuds et 225 citations**, lus directement dans le texte fourni. Les seuls ajouts éditoriaux sont quatre libellés de navigation : Parlez-moi encore de votre expérience., Revenons au Port., Revenons aux Sentinelles., Revenons aux formalités.
 
-Le mod de quêtes `haute_capitale_quetes` intègre les composants PQ02 pour l’état de scène, les acteurs personnels et l’adaptation de capture. Il utilise le moteur Dialogue b10, les outils d’acteur de HF12 et EasyNPC 7.16.0. Il est compilé en Java 21 contre les véritables classes Minecraft intermédiaires, Fabric et les JAR fournis. Le JAR de quêtes HF12 est remplacé par sa version fusionnée : **182 classes historiques et 220 entrées d’origine conservées octet pour octet**. Deux classes de la passerelle PQ01 changent pour le rythme de Gautier, ainsi que la métadonnée `fabric.mod.json`. Les 29 entrées PQ02 intégrées sont identiques au composant intermédiaire compilé, qui n’est pas à installer séparément. Dialogue, Nexus et Nexus NPC restent inchangés et ne sont pas redistribués.
+Le mod de quêtes `haute_capitale_quetes` intègre les composants PQ02 pour l’état de scène, les acteurs personnels et l’adaptation de capture. Il utilise le moteur Dialogue b10, les outils d’acteur de HF12 et EasyNPC 7.16.0. Il est compilé en Java 21 contre les véritables classes Minecraft intermédiaires, Fabric et les JAR fournis. Le JAR de quêtes HF12 est remplacé par sa version fusionnée : **182 classes historiques et 220 entrées d’origine conservées octet pour octet**. Deux classes de la passerelle PQ01 changent pour le rythme de Gautier, ainsi que la métadonnée `fabric.mod.json`. Les 30 entrées PQ02 intégrées sont identiques au composant intermédiaire compilé, qui n’est pas à installer séparément. Dialogue, Nexus et Nexus NPC restent inchangés et ne sont pas redistribués.
 
 La solution privée est nécessaire : le guide mondial de l’ancien core ne peut pas conduire deux joueurs indépendamment ni s’arrêter pour les questions d’un seul. Le trajet et ses repères restent ceux de l’installation ; le déplacement est désormais du pathfinding réel sur une copie du PNJ. L’ancien guide mondial est stationné, pas utilisé comme escorte concurrente.
 
 ## Fusion au mod de quêtes existant
 
-Un seul JAR `haute-capitale-quetes-HF12-PQ02-R1-HF4-1.21.11.jar` remplace HF12 et le compagnon PQ02, sur serveur et clients. Les points d’entrée de HF12 sont préservés dans leur ordre, puis ceux de PQ02 sont ajoutés une seule fois. Les mixins et le graphe narratif sont directement intégrés : aucun mod PQ02 imbriqué et aucun second identifiant Fabric. Les dépendances historiques, la configuration et les identifiants persistants du journal restent présents. Une incompatibilité explicite empêche de charger simultanément le compagnon obsolète.
+Un seul JAR `haute-capitale-quetes-HF12-PQ02-R1-HF5-1.21.11.jar` remplace HF12 et le compagnon PQ02, sur serveur et clients. Les points d’entrée de HF12 sont préservés dans leur ordre, puis ceux de PQ02 sont ajoutés une seule fois. Les mixins et le graphe narratif sont directement intégrés : aucun mod PQ02 imbriqué et aucun second identifiant Fabric. Les dépendances historiques, la configuration et les identifiants persistants du journal restent présents. Une incompatibilité explicite empêche de charger simultanément le compagnon obsolète.
 
 Le datapack `hc_quetes` reste en **R1**, et le core en **R1 HF1**. Les deux archives sont strictement identiques à la livraison HF1. Les vérifications et empreintes propres à l’assemblage figurent dans `merge.json` ; le banc narratif est relancé avec toutes les classes dans le seul JAR de quêtes. Le test de démarrage utilise ensuite le JAR de production **sans modifier ses métadonnées, points d’entrée ou mixins**, avec des déclarations de dépendances Nexus/Puffish/RPG réservées au banc et aucun joueur. Ce test ne valide pas les API de ces trois modules tiers ni un client graphique.
 
-## HF4 : confirmation de disponibilité avant chaque page initiale de caméra
+## HF5 : protéger la fenêtre avant son retrait
+
+Le 31 octobre, Arthur confirme que le menu de Léovic se ferme encore avec le même symptôme après HF4. Aucun nouveau log n’est demandé. Le contrôle HF4 agissait avant l’émission des pages ; il ne protégeait pas une page déjà reçue.
+
+Avec le JAR HF4 exact, le nouveau banc ouvre réellement les sessions publique puis privée b10, confirme la disponibilité, reçoit une réplique et un choix, puis retire la fenêtre par `setScreen(null)`. Le moniteur natif b10 émet `ECRAN_FERME`. Une visite de menu étranger entièrement située entre deux ticks produit également cette fin. Ces deux reproductions totalisent **7 assertions** ; elles n’identifient pas le composant qui effectue l’appel sur le client réel.
+
+HF5 ajoute un mixin exclusivement client, à l’entrée de la méthode native de changement d’écran. Une remise à zéro de la capture PQ02 est annulée seulement si la session active et l’UUID du PNJ correspondent à sa demande de disponibilité et si aucune fin volontaire n’est engagée. La même fenêtre et la même page restent présentes. Échap et une fin serveur sont libérés ; un autre menu reste libre de s’ouvrir et de se fermer. Une visite très brève est mémorisée afin que le retour natif b10, lorsqu’il est autorisé, s’effectue même si son moniteur n’avait pas encore vu ce menu.
+
+Le nouveau contrôle passe **63 assertions** avec le mixin réellement appliqué par Fabric/Knot. Les surfaces graphiques et le monde client sont doublés ; le cycle b10 et le moteur de mixins sont réels. La liste client est rendue active uniquement dans le serveur de banc pour exercer cette injection ; le JAR livré garde cette injection côté client seulement. Le protocole complet de 111 blocs passe séparément ses 566 assertions de vrais événements Fabric. Le parcours serveur conserve ses 2 425 assertions et le démarrage du JAR intact conserve ses 8 assertions et son refus du compagnon obsolète.
+
+Le diff avec HF4 est limité à **trois entrées existantes** : métadonnée, configuration de mixin et adaptateur client PQ02 ; **une classe de mixin client est ajoutée**. Aucun fichier n’est supprimé. Le runtime serveur, le graphe, les règles, les récompenses, la persistance, le trajet, les quatre anciens mixins et Gautier sont identiques octet pour octet. Les deux datapacks sont inchangés.
+
+Depuis HF1/HF2/HF3/HF4 préparé : remplacer uniquement le JAR de quêtes sur serveur et chaque client, puis redémarrer. Aucune commande, liaison, pose ou remise à zéro. Lire `CORRECTIF_PQ02_HF5.md`. L’origine exacte de l’appel sur le client et le résultat graphique sur la carte Indivis restent à constater ; aucune certification d’un essai en jeu n’est donnée.
+
+## Historique HF4 : confirmation de disponibilité avant chaque page initiale de caméra
 
 HF3 n’a pas résolu la fermeture constatée sur le client. Les logs du dernier essai confirment HF3 sur les deux côtés, puis une session privée Léovic ouverte et terminée par ECRAN_FERME sans choix PQ02. Ils ne contiennent pas la pile de l’appel qui retire l’écran. L’ancienne correction de récupération d’écran est retirée.
 
@@ -197,3 +211,5 @@ Résultats HF4 : voir `hf4.json`, `protocol_hf4.txt` et `protocol_hf4_fixture.js
 ## Audit élargi du prologue après HF4
 
 Le contrôle supplémentaire du 29 octobre est documenté dans `AUDIT_PROLOGUE_2026-10-29.md` et `reports/prologue_audit.json` : 388 contrôles statiques, 584 assertions de protocole client PQ01 et 1 159 assertions serveur. Il couvre les 94 blocs et 317 choix directs PQ01, la proximité de Géraud, Perrin à deux joueurs, l’unicité de la réputation PQ01, l’état canonique PQ02=30 et les offres/normalisation PQ03–PQ05. Aucun fichier de jeu n’est modifié. Les escorteurs historiques Aurèle/Roch/Colin conservent un guide partagé ; leur isolation réelle à plusieurs et la fermeture de Léovic sur le client cible restent non verrouillées. Les essais ne comportent aucun rendu graphique sur la carte Indivis.
+
+Résultats de la livraison HF5 : `hf5.json`, `hf5_screen_guard_native*`, `hf4_screen_reset_repro*` et `protocol_hf5*`. Les preuves HF4 et l’audit du 29 octobre sont historiques et restent rattachés à leurs empreintes d’origine.
