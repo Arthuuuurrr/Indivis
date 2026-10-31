@@ -11,7 +11,8 @@ public final class MergeBoot implements ModInitializer {
    Object root=call(call(call(server,"method_3734"),"method_9235"),"getRoot");
    for(String name:new String[]{"indivispq01","indivispq02","indivissequence","hcd_interpellation"})check(call(root,"getChild",name)!=null,"command initialized "+name);
    for(String name:new String[]{"Pq01Bridge","Pq02Runtime","SequenceBridge"}){Field f=Class.forName("net.hautecapitale.quetes.sequence."+name).getDeclaredField("initialized");f.setAccessible(true);check(f.getBoolean(null),"real main initializer ran "+name);}
-   Files.writeString(Path.of("smoke-result.txt"),"PASS full merged production JAR startup; 8 checks. All original+PQ02 main entrypoints and mixin configs intact. Nexus/Puffish/RPG dependency declarations supplied by test-only metadata, no player/API gameplay exercised. No client rendered.\n");
+   Class<?> nexus=Class.forName("net.tompsen.nexuscharacters.NexusCharacters",false,MergeBoot.class.getClassLoader());check(java.util.Arrays.stream(nexus.getDeclaredMethods()).anyMatch(m->m.getName().contains("pq02$saveWithoutLeaving")),"checkpoint redirect applied by Knot to original Nexus OPT3 class");
+   Files.writeString(Path.of("smoke-result.txt"),"PASS full merged production JAR startup; 9 checks. All original+PQ02 main entrypoints and mixin configs intact; real OPT3 Nexus class transformed by production checkpoint mixin, Nexus account/network entrypoints disabled; Puffish/RPG metadata only. No player or rendered client.\n");
   }catch(Throwable e){e.printStackTrace();try{Files.writeString(Path.of("smoke-result.txt"),"FAIL "+e);}catch(Exception ignored){}}
   try{call(call(server,"method_3734"),"method_44252",call(server,"method_3739"),"stop");}catch(Exception e){throw new RuntimeException(e);}
  });}

@@ -4,20 +4,25 @@ import json,zipfile,subprocess,os,shutil,re
 import build
 H=Path(__file__).resolve().parent;RT=Path('/tmp/indivis_pq02_runtime');INTEGRATED=os.environ.get('PQ02_INTEGRATED')=='1';REPRO=os.environ.get('PQ02_REPRO_ENTRY')=='1';SCREEN_REPRO=os.environ.get('PQ02_REPRO_SCREEN')=='1';LABEL='hf3_screen_repro' if SCREEN_REPRO else 'hf2_repro' if REPRO else 'merged_native' if INTEGRATED else 'native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
 AUDIT=os.environ.get('PROLOGUE_AUDIT')=='1'
+PROFILE_CHECKPOINT=os.environ.get('PQ02_PROFILE_CHECKPOINT','')
 SCREEN_GUARD=os.environ.get('PQ02_SCREEN_GUARD','')
 if SCREEN_GUARD:LABEL='hf4_screen_reset_repro' if SCREEN_GUARD=='legacy' else 'hf5_screen_guard_native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
 if AUDIT:LABEL='prologue_audit_native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
+if PROFILE_CHECKPOINT:LABEL='hf5_profile_save_repro' if PROFILE_CHECKPOINT=='legacy' else 'hf6_profile_checkpoint_native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
 JAVA=next((RT/'jdk').glob('*/bin/java'));MC=RT/'bootstrap/.fabric/remappedJars/minecraft-1.21.11-0.19.5/server-intermediary.jar'
 JOURNAL=H/'output'/build.JOURNAL_FILENAME if INTEGRATED else next(build.ROOT.joinpath('upload').glob('haute-capitale-quetes*.jar'));DIALOGUE=next(build.ROOT.joinpath('upload').glob('haute-capitale-dialogue*.jar'));NPC=next(H.joinpath('dependencies').glob('*.jar'))
+NEXUS=next(H.joinpath('dependencies/audit_nexus_opt3').glob('*.jar'))
 if (REPRO or SCREEN_REPRO) and os.environ.get('PQ02_REPRO_JAR'):JOURNAL=Path(os.environ['PQ02_REPRO_JAR']).resolve()
 if SCREEN_GUARD and os.environ.get('PQ02_GUARD_JAR'):JOURNAL=Path(os.environ['PQ02_GUARD_JAR']).resolve()
-libs=[*sorted((RT/'libraries').glob('*.jar')),*sorted((RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),MC,JOURNAL,DIALOGUE,NPC]+([H/'output'/build.JOURNAL_FILENAME] if REPRO else [])+([] if INTEGRATED else [H/'output'/build.FILES['mod']])
+if PROFILE_CHECKPOINT and os.environ.get('PQ02_PROFILE_JAR'):JOURNAL=Path(os.environ['PQ02_PROFILE_JAR']).resolve()
+libs=[*sorted((RT/'libraries').glob('*.jar')),*sorted((RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),MC,JOURNAL,DIALOGUE,NPC,NEXUS]+([H/'output'/build.JOURNAL_FILENAME] if REPRO else [])+([] if INTEGRATED else [H/'output'/build.FILES['mod']])
 CP=os.pathsep.join(map(str,libs));C=H/'native_classes';shutil.rmtree(C,ignore_errors=True);C.mkdir()
 sources=[H/'tests/Pq02WorldBench.java',H/'tests/Pq02SetupBench.java',H/'tests/Pq02EntryBench.java',H/'tests/Pq02ScreenBench.java',H/'tests/Pq02ScreenNetwork.java',H/'tests/Pq01GautierBench.java',H/'tests/Pq02FocusBench.java',H/'tests/NexusCharacters.java',H/'tests/MakeSink.java',H/'tests/SkillsAPI.java',H/'tests/Pq02CaptureBench.java',H/'tests/Mq03Bench.java',H/'tests/HuguesBench.java',*list((H/'reference/tools/pq01_full/tests/native_capture_doubles').rglob('*.java')),H/'reference/tools/pq01_full/tests/client_doubles/net/hautecapitale/dialogue/client/capture/CaptureDialogueScreen.java']
 sources.append(H/'tests/Pq01AuditBench.java')
 sources=[p for p in sources if p.name not in ['class_310.java','class_634.java','DialogueCameraController.java','CameraFocus.java']]
 sources += [p for p in (H/'tests/protocol_doubles').rglob('*.java')]
 sources.append(H/'tests/Pq02ScreenGuardBench.java')
+sources.append(H/'tests/Pq02ProfileCheckpointBench.java')
 subprocess.run([JAVA.with_name('javac'),'--release','21','-proc:none','-cp',CP,'-d',C,*sources],check=True)
 subprocess.run([JAVA,'-cp',str(C)+os.pathsep+CP,'MakeSink',C],check=True)
 with zipfile.ZipFile(JOURNAL) as z:out={n:z.read(n) for n in z.namelist() if not n.endswith('/')}
@@ -31,6 +36,11 @@ out['pq02_test_tracker.mixins.json']=json.dumps({'required':True,'package':'net.
 for p in C.rglob('*.class'):
  if not str(p.relative_to(C)).startswith('net/hautecapitale/dialogue/'):out[p.relative_to(C).as_posix()]=p.read_bytes()
 build.write(S/'mods/journal_test.jar',out)
+# Original Nexus profile writer/policy/DTO and all their dependencies; its selection and startup remain synthetic.
+with zipfile.ZipFile(NEXUS) as z:nexus_out={n:z.read(n) for n in z.namelist() if not n.endswith('/')}
+nexus_out.pop('net/tompsen/nexuscharacters/NexusCharacters.class',None)
+nexus_meta=json.loads(nexus_out['fabric.mod.json']);nexus_meta['id']='nexus_profile_fixture';nexus_meta['entrypoints']={};nexus_meta['mixins']=[];nexus_meta['depends']={'minecraft':'1.21.11'}
+nexus_out['fabric.mod.json']=json.dumps(nexus_meta).encode();build.write(S/'mods/nexus-profile-fixture.jar',nexus_out)
 asm=RT/'libraries/asm-9.10.1.jar'
 subprocess.run([JAVA.with_name('javac'),'-cp',asm,'-d',C,H/'reference/tools/pq01_full/tests/world/StripClientEnvironment.java'],check=True)
 subprocess.run([JAVA,'-cp',str(C)+os.pathsep+str(asm),'StripClientEnvironment',DIALOGUE,C],check=True)
@@ -51,7 +61,7 @@ lines.append('executeAsUserCommandAllowList.GAMEMASTERS=function');security.writ
 shutil.rmtree(S/'world',ignore_errors=True);P=S/'world/datapacks/pq02_fixture';P.mkdir(parents=True)
 orig={k:build.read(H/'output'/build.FILES[k]) for k in ['core','quests']};pack={'pack.mcmeta':orig['core']['pack.mcmeta']}
 # All newly changed functions plus all MQ03 runtime functions for native parser/route checks.
-paths=['data/capitale/function/pq02/','data/capitale/function/pq01/menu/hugues','data/capitale/function/pq01/choice/hugues','data/hc_quetes/function/migration/write/pq02/','data/hc_quetes/function/quests/','data/hc_quetes/function/runtime/','data/hc_quetes/predicate/','data/capitale/predicate/','data/hc_quetes/tags/']
+paths=['data/capitale/function/profiles/','data/capitale/function/pq02/','data/capitale/function/pq01/menu/hugues','data/capitale/function/pq01/choice/hugues','data/hc_quetes/function/migration/write/pq02/','data/hc_quetes/function/quests/','data/hc_quetes/function/runtime/','data/hc_quetes/predicate/','data/capitale/predicate/','data/hc_quetes/tags/']
 if AUDIT:paths+=['data/capitale/function/pq01/','data/capitale/function/quest/spawn_dirigeable_couronne/','data/capitale/function/quest/sous_le_regard_du_coeur/','data/capitale/function/quest/au_seuil_des_profondeurs/','data/capitale/function/quest/une_adresse_dans_les_profondeurs/','data/capitale/function/quest/prologue/','data/capitale/function/quest/markers/']
 for files in orig.values():
  for n,b in files.items():
@@ -87,7 +97,7 @@ for n,b in pack.items():p=P/n;p.parent.mkdir(parents=True,exist_ok=True);p.write
 if AUDIT:shutil.copyfile(H/'audit_prologue/pq01_protocol_fixture.json',S/'pq01_protocol_fixture.json')
 GAME=RT/'minecraft_bundle/META-INF/versions/1.21.11/server-1.21.11.jar';CP=os.pathsep.join(map(str,[*sorted((RT/'libraries').glob('*.jar')),*sorted((RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),GAME]))
 result=S/'world-test-result.txt';result.unlink(missing_ok=True)
-with (H/('reports/'+LABEL+'_server.log')).open('w') as f:r=subprocess.run([JAVA,'-XX:ActiveProcessorCount=2','-Xmx2G',*(['-Dpq02.repro.entry=true'] if REPRO else []),*(['-Dpq02.repro.screen=true'] if SCREEN_REPRO else []),*(['-Dpq02.prologue.audit=true'] if AUDIT else []),*(['-Dpq02.prologue.only=true'] if os.environ.get('PROLOGUE_AUDIT_ONLY')=='1' else []),*(['-Dpq02.screen.guard='+SCREEN_GUARD] if SCREEN_GUARD else []),f'-Dfabric.gameJarPath={GAME}','-Dfabric.log.disableAnsi=true','-cp',CP,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui'],cwd=S,stdout=f,stderr=subprocess.STDOUT,timeout=360)
+with (H/('reports/'+LABEL+'_server.log')).open('w') as f:r=subprocess.run([JAVA,'-XX:ActiveProcessorCount=2','-Xmx2G',*(['-Dpq02.repro.entry=true'] if REPRO else []),*(['-Dpq02.repro.screen=true'] if SCREEN_REPRO else []),*(['-Dpq02.prologue.audit=true'] if AUDIT else []),*(['-Dpq02.prologue.only=true'] if os.environ.get('PROLOGUE_AUDIT_ONLY')=='1' else []),*(['-Dpq02.screen.guard='+SCREEN_GUARD] if SCREEN_GUARD else []),*(['-Dpq02.profile.checkpoint='+PROFILE_CHECKPOINT] if PROFILE_CHECKPOINT else []),f'-Dfabric.gameJarPath={GAME}','-Dfabric.log.disableAnsi=true','-cp',CP,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui'],cwd=S,stdout=f,stderr=subprocess.STDOUT,timeout=360)
 if result.exists():shutil.copyfile(result,H/('reports/'+LABEL+'.txt'));print(result.read_text())
 else:print((H/('reports/'+LABEL+'_server.log')).read_text()[-7000:])
 assert r.returncode==0 and result.exists() and result.read_text().startswith('PASS')

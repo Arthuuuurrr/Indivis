@@ -2424,5 +2424,5 @@ Gautier HF3: camera returns to Geraud while Gautier walks away
 Gautier HF3: Gautier reaches his post by navigation
 Gautier HF3: arrival does not replay or advance Geraud's dialogue
 Gautier HF3: closing one scene keeps the other player's actor
-Frame counts={class_3222['PQ02_B'/111, l='ServerLevel[world]', x=17.74, y=64.00, z=2.50]=7, class_3222['PQ02_Observer'/112, l='ServerLevel[world]', x=0.50, y=64.00, z=8.50]=0, class_3222['PQ02_A'/110, l='ServerLevel[world]', x=8.50, y=64.00, z=9.50]=726}
+Frame counts={class_3222['PQ02_A'/40, l='ServerLevel[world]', x=8.50, y=64.00, z=9.50]=726, class_3222['PQ02_Observer'/42, l='ServerLevel[world]', x=0.50, y=64.00, z=8.50]=0, class_3222['PQ02_B'/41, l='ServerLevel[world]', x=17.74, y=64.00, z=2.50]=7}
 Native Fabric 1.21.11 / EasyNPC 7.16, HF12 classes preserved except the two authorized Gautier timing classes; production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

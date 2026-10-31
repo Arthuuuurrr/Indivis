@@ -280,7 +280,7 @@ public final class Pq02Runtime implements ModInitializer {
   if(!same(v))return;score2(player,"hcm_pq2_ui",0);score2(player,"Pq02Choix",0);if(score(player,"CAP_QDIALOG_OWNER")==97){score2(player,"CAP_QDIALOG_OWNER",0);score2(player,"CAP_QDIALOG_KEEP",0);}
   if(reason.equals("ECRAN_FERME")&&Pq02Rules.walking(stage(player)))resume(v);else{pause(v);if(stage(player)>=100||Pq02Rules.introduction(stage(player)))dispose(v.account);}
  }
- public static void suspend(Object p){Pq02Entries.cancel(uuid(p));View v=VIEWS.get(uuid(p));if(v==null)return;pause(v);savePosition(v);closeUi(v);dispose(v.account);}
+ public static void suspend(Object p){View v=VIEWS.get(uuid(p));if(Pq02ProfileCheckpoint.preserving(p)){if(v!=null)savePosition(v);return;}Pq02Entries.cancel(uuid(p));if(v==null)return;pause(v);savePosition(v);closeUi(v);dispose(v.account);}
  static void dispose(UUID account){Pq02Entries.cancel(account);View v=VIEWS.remove(account);if(v==null)return;v.disposed=true;v.walking=false;if(v.motion!=null)v.motion.pause();
   for(Actor a:v.actors.values()){stopActor(a);Pq01Actors.forget(a.goals);Pq01Actors.forget(a.targets);LIVE.remove(a.id);call(a.entity,"method_31472");}
   v.actors.clear();if(v.anchor!=null){LIVE.remove(uuid(v.anchor));call(v.anchor,"method_31472");}if(v.questMarker!=null){LIVE.remove(uuid(v.questMarker));call(v.questMarker,"method_31472");}HIDDEN.remove(account);DIRTY.put(account,v.player);

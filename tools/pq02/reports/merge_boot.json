@@ -1,11 +1,12 @@
 {
   "status": "PASS",
-  "production_jar_sha256": "7de6f0888cb7f531c1c4cd6a1ba7ef2b0c1f1ea8dcae906499f0fc726d1b4e2c",
-  "main_startup_checks": 8,
+  "production_jar_sha256": "4f94704c1b204051a85b76836552e5a03ab71a3b071c0cfa919ff7f6d1b6cc73",
+  "main_startup_checks": 9,
   "duplicate_companion_rejected": true,
   "production_metadata_and_entrypoints_unchanged_in_smoke_test": true,
+  "nexus_periodic_mixin_applied_to_original_opt3_class": true,
   "dependency_substitutes": [
-    "NexusCharacters metadata only",
+    "Nexus original OPT3 classes, no account/network entrypoints",
     "Puffish metadata only",
     "RPG metadata only"
   ],

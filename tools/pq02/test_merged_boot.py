@@ -18,6 +18,11 @@ shutil.copyfile(RT/'fabric-api.jar',mods/'fabric-api.jar')
 shutil.copyfile(next((H/'dependencies').glob('*.jar')),mods/'easy-npc.jar')
 shutil.copyfile(next((build.ROOT/'upload').glob('haute-capitale-dialogue*.jar')),mods/'dialogue-original.jar')
 for name,version in {'nexuscharacters':'1.0.0-beta.35','puffish_skills':'0.17.3','haute_capitale_rpg':'0.3.0'}.items():
+ if name=='nexuscharacters':
+  # Load the real OPT3 class as a Mixin target, without enabling its account/network startup.
+  with zipfile.ZipFile(next((H/'dependencies/audit_nexus_opt3').glob('*.jar'))) as z:entries={n:z.read(n) for n in z.namelist() if not n.endswith('/')}
+  metadata=json.loads(entries['fabric.mod.json']);metadata['entrypoints']={};metadata['mixins']=[];metadata['depends']={'minecraft':'1.21.11'};entries['fabric.mod.json']=json.dumps(metadata).encode();build.write(mods/'nexus-original-classes-test.jar',entries)
+  continue
  with zipfile.ZipFile(mods/(name+'-declaration-test.jar'),'w') as z:z.writestr('fabric.mod.json',json.dumps({'schemaVersion':1,'id':name,'version':version,'description':'TEST ONLY: declared dependency, no implementation'}))
 with zipfile.ZipFile(mods/'merge-boot-test.jar','w') as z:
  for p in C.glob('*.class'):z.write(p,p.name)
@@ -33,5 +38,5 @@ guard=(H/'reports/merge_duplicate_guard.log').read_text();assert r.returncode!=0
 with (H/'reports/merge_boot.log').open('w') as f:r=subprocess.run(command,cwd=BASE,stdout=f,stderr=subprocess.STDOUT,timeout=180)
 result=BASE/'smoke-result.txt';assert r.returncode==0 and result.exists() and result.read_text().startswith('PASS'),(H/'reports/merge_boot.log').read_text()[-8000:]
 shutil.copyfile(result,H/'reports/merge_boot.txt')
-summary={'status':'PASS','production_jar_sha256':build.sha(merge_journal.OUTPUT.read_bytes()),'main_startup_checks':8,'duplicate_companion_rejected':True,'production_metadata_and_entrypoints_unchanged_in_smoke_test':True,'dependency_substitutes':['NexusCharacters metadata only','Puffish metadata only','RPG metadata only'],'players':'none','graphical_client':'not run'}
+summary={'status':'PASS','production_jar_sha256':build.sha(merge_journal.OUTPUT.read_bytes()),'main_startup_checks':9,'duplicate_companion_rejected':True,'production_metadata_and_entrypoints_unchanged_in_smoke_test':True,'nexus_periodic_mixin_applied_to_original_opt3_class':True,'dependency_substitutes':['Nexus original OPT3 classes, no account/network entrypoints','Puffish metadata only','RPG metadata only'],'players':'none','graphical_client':'not run'}
 (H/'reports/merge_boot.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))
