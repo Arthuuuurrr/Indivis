@@ -1,4 +1,4 @@
-# Indivis — Rapport d’intégration PQ02 R1 HF6
+# Indivis — Rapport d’intégration PQ02 R1 HF7
 
 Livraison **intégrée** du **31 octobre 2026**, Fabric/Minecraft **1.21.11**, Java **21**. Version installable destinée à la recette sur une copie du serveur. Aucun déploiement sur le serveur d’Arthur n’a été effectué.
 
@@ -12,9 +12,23 @@ La solution privée est nécessaire : le guide mondial de l’ancien core ne peu
 
 ## Fusion au mod de quêtes existant
 
-Un seul JAR `haute-capitale-quetes-HF12-PQ02-R1-HF6-1.21.11.jar` remplace HF12 et le compagnon PQ02, sur serveur et clients. Les points d’entrée de HF12 sont préservés dans leur ordre, puis ceux de PQ02 sont ajoutés une seule fois. Les mixins et le graphe narratif sont directement intégrés : aucun mod PQ02 imbriqué et aucun second identifiant Fabric. Les dépendances historiques, la configuration et les identifiants persistants du journal restent présents. Une incompatibilité explicite empêche de charger simultanément le compagnon obsolète.
+Un seul JAR `haute-capitale-quetes-HF12-PQ02-R1-HF7-1.21.11.jar` remplace HF12 et le compagnon PQ02, sur serveur et clients. Les points d’entrée de HF12 sont préservés dans leur ordre, puis ceux de PQ02 sont ajoutés une seule fois. Les mixins et le graphe narratif sont directement intégrés : aucun mod PQ02 imbriqué et aucun second identifiant Fabric. Les dépendances historiques, la configuration et les identifiants persistants du journal restent présents. Une incompatibilité explicite empêche de charger simultanément le compagnon obsolète.
 
 Le datapack `hc_quetes` reste en **R1**, et le core en **R1 HF1**. Les deux archives sont strictement identiques à la livraison HF1. Les vérifications et empreintes propres à l’assemblage figurent dans `merge.json` ; le banc narratif est relancé avec toutes les classes dans le seul JAR de quêtes. Le test de démarrage utilise ensuite le JAR de production **sans modifier ses métadonnées, points d’entrée ou mixins**, avec la classe Nexus OPT3 d’origine comme cible de mixin (initialisation des comptes/réseau désactivée), des déclarations Puffish/RPG réservées au banc et aucun joueur. Le banc séparé de sauvegarde exerce le véritable rédacteur de profils Nexus ; aucun client graphique n’est lancé.
+
+## HF7 : fermeture, action visible et départ de Léovic
+
+Les nouveaux logs montrent un parcours complet jusqu'à `a09`, après le choix « Oui. Allons-y. », puis le choix technique 15 (`1279188191`) au lieu de l'avance 14. HF6 affichait seulement « Fermer la conversation » ; ce choix détruisait la scène sans exécuter le départ. Le banc rejoue exactement les choix du log sur le véritable JAR HF6 et reproduit ce défaut.
+
+Les pages terminées par un événement affichent maintenant une action verte explicite. Les départs déjà acceptés (A09, reprise T, réponses M07) sont conservés lors d'une fermeture volontaire ; une question fermée par Échap reprend au waypoint suspendu. Les autres interruptions ne font pas avancer la quête et les validations monétaires/administratives ne sont pas déduites d'Échap. Les répliques et le graphe restent identiques.
+
+Le banc a aussi reproduit le refus d'une action privée EasyNPC lorsque b10 avait déjà ouvert la capture de cet acteur. Le routeur accepte son propre acteur, pour la même scène joueur/personnage, tout en gardant ses restrictions sur les autres sessions. La navigation réelle du banc rejoint le magistrat puis l'ascenseur avec deux acteurs distincts et le PNJ permanent à son poste. Aucun waypoint ni mécanisme de navigation n'est remplacé.
+
+Les résultats HF7 passent : **73 assertions de reproduction HF6, 305 de transitions/navigation, 398 de sauvegardes Nexus, 2 425 narratives serveur, 566 de protocole client et 9 de démarrage**, ainsi que la garde anti-doublon. Les callbacks natifs b10 de regard EasyNPC sont exercés pendant le parcours.
+
+Les classes client, Gautier, le moteur de sauvegarde HF6, le graphe, les gains et les deux datapacks sont conservés octet pour octet. Seuls la métadonnée, `Pq02Runtime` et une classe de transitions changent dans le JAR. Voir `CORRECTIF_PQ02_HF7.md` et `reports/hf7.json` pour le diff, les résultats liés au binaire et les limites (connexions/sélection/carte de fixture, aucun client graphique sur Indivis).
+
+### Historique HF6 — sauvegardes Nexus
 
 ## HF6 : cause serveur reproduite — instantanés Nexus
 

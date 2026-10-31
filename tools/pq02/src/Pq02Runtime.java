@@ -150,7 +150,7 @@ public final class Pq02Runtime implements ModInitializer {
   if(role.equals("magistrat")&&s!=50&&s!=60)return;
   source(p,role); // Le mod Dialogue peut avoir ouvert sa capture avant la première liaison.
   View v=view(p);Object other=current(p);
-  if(other!=null&&other!=v.session){UUID id=(UUID)Pq01Client.field(other,"pnj");Object r=roleRecord(p,role);if(r==null||!id.toString().equals(str(r,"uuid","")))return;}
+  if(other!=null&&other!=v.session){UUID id=(UUID)Pq01Client.field(other,"pnj");Object r=roleRecord(p,role);Actor owned=v.actors.get(role);if((owned==null||!id.equals(owned.id))&&(r==null||!id.toString().equals(str(r,"uuid",""))))return;}
   if(score(p,"CAP_QUETEACTIVE")!=0&&score(p,"CAP_QUETEACTIVE")!=4)return;
   Actor guide=spawn(v,"leovic",startPosition(v));
   if(pos(guide.entity,v.world).distance2(pos(p,v.world))>144){say2(p,"L'escorte vous attend à son dernier point du parcours.");return;}
@@ -203,15 +203,15 @@ public final class Pq02Runtime implements ModInitializer {
   run(v.player,"tellraw @s {\"text\":\"\",\"insertion\":"+quote("indivis:pq02:v1:"+n.key+":"+speaker+":"+advance+":0:"+voiceTicks)+"}");
   String name=speaker.equals("magistrat")?"Magistrat":"Léovic";
   for(String text:texts)run(v.player,"tellraw @s [{\"text\":"+quote("["+name+"]")+",\"color\":\"yellow\"},{\"text\":"+quote(" : "+text)+",\"color\":\"white\"}]");
-  for(int i=0;i<v.choices.size();i++){Pq02Data.Choice c=v.choices.get(i);run(v.player,"tellraw @s {\"text\":"+quote("["+c.text+"]")+",\"color\":"+quote(c.target.startsWith("event:")||Set.of("a08","m06","f06").contains(c.target)?"green":"white")+",\"click_event\":{\"action\":\"run_command\",\"command\":"+quote("/trigger Pq02Choix set "+(v.baseToken+i+1))+"}}");}
-  run(v.player,"tellraw @s {\"text\":\"[Fermer la conversation]\",\"color\":\"gray\",\"click_event\":{\"action\":\"run_command\",\"command\":"+quote("/trigger Pq02Choix set "+(v.baseToken+15))+"}}");
+  for(int i=0;i<v.choices.size();i++){Pq02Data.Choice c=v.choices.get(i);run(v.player,"tellraw @s {\"text\":"+quote("["+c.text+"]")+",\"color\":"+quote(c.target.startsWith("event:")||Set.of("a08","m06","f06").contains(c.target)||Pq02Transitions.movementChoice(c.target)?"green":"white")+",\"click_event\":{\"action\":\"run_command\",\"command\":"+quote("/trigger Pq02Choix set "+(v.baseToken+i+1))+"}}");}
+  String action=Pq02Transitions.label(n.next);boolean terminal=!action.isEmpty();run(v.player,"tellraw @s {\"text\":"+quote("["+(terminal?action:"Fermer la conversation")+"]")+",\"color\":"+quote(terminal?"green":"gray")+",\"click_event\":{\"action\":\"run_command\",\"command\":"+quote("/trigger Pq02Choix set "+(v.baseToken+(terminal?14:15)))+"}}");
   score2(v.player,"CAP_QDIALOG_OWNER",97);score2(v.player,"CAP_QDIALOG_KEEP",1);score2(v.player,"hcm_pq2_ui",1);score2(v.player,"Pq02Choix",0);run(v.player,"scoreboard players enable @s Pq02Choix");
  }
  static int voice(View v,String key,boolean menu){if(menu)return 0;Object r=child(child(config(v.player),"voices"),key);if(r==null)return 0;String sound=str(r,"sound","");int ticks=integer(r,"ticks",0);if(!sound.matches("[a-z0-9_.-]+:[a-z0-9_./-]+")||ticks<1||ticks>12000)return 0;run(v.player,"playsound "+sound+" voice @s ~ ~ ~ 1 1");return ticks;}
  static int dispatch(View v){Object p=v.player;int token=score(p,"Pq02Choix");score2(p,"Pq02Choix",0);
   if(!same(v)||!v.ui||v.session==null||v.session!=current(p)||v.pendingNode!=null||v.node==null||score(p,"CAP_QDIALOG_OWNER")!=97||!Pq02Rules.validNode(v.node.key,stage(p)))return 0;
   int pick=token-v.baseToken;if(v.baseToken==0||pick<1||pick>15){run(p,"scoreboard players enable @s Pq02Choix");return 0;}
-  if(pick==15){closeUi(v);if(Pq02Rules.walking(stage(p)))resume(v);else if(stage(p)>=100||Pq02Rules.introduction(stage(p)))dispose(v.account);return 1;}
+  if(pick==15){String agreed=Pq02Transitions.agreedExit(v.node.next,stage(p));if(!agreed.isEmpty()){event2(v,agreed);return 1;}closeUi(v);if(Pq02Rules.walking(stage(p)))resume(v);else if(stage(p)>=100||Pq02Rules.introduction(stage(p)))dispose(v.account);return 1;}
   if(clock<v.voiceUntil){v.queuedChoice=token;run(p,"scoreboard players enable @s Pq02Choix");return 1;}
   if(pick==14){if(v.node.next.isEmpty())return 0;v.baseToken=0;show(v,v.node.next);retryFrame(v);return 1;}
   if(pick>v.choices.size())return 0;Pq02Data.Choice choice=v.choices.get(pick-1);if(!condition(v,choice.condition))return 0;
@@ -278,7 +278,12 @@ public final class Pq02Runtime implements ModInitializer {
  public static void onClosing(Object player,Object session,String reason){View v=VIEWS.get(uuid(player));if(v==null||v.suppress||v.session!=session)return;
   v.session=null;v.acknowledgedSession=null;v.focusToken=0;v.focus=null;v.pendingFocus=null;v.pendingNode=null;v.ui=false;v.baseToken=0;v.queuedChoice=0;
   if(!same(v))return;score2(player,"hcm_pq2_ui",0);score2(player,"Pq02Choix",0);if(score(player,"CAP_QDIALOG_OWNER")==97){score2(player,"CAP_QDIALOG_OWNER",0);score2(player,"CAP_QDIALOG_KEEP",0);}
-  if(reason.equals("ECRAN_FERME")&&Pq02Rules.walking(stage(player)))resume(v);else{pause(v);if(stage(player)>=100||Pq02Rules.introduction(stage(player)))dispose(v.account);}
+  if(Pq02Transitions.playerClosed(reason)){
+   String agreed=v.node==null?"":Pq02Transitions.agreedExit(v.node.next,stage(player));
+   if(!agreed.isEmpty()){try{event2(v,agreed);}catch(RuntimeException failure){pause(v);v.failure=failure.getMessage();report2(failure);}return;}
+   if(Pq02Rules.walking(stage(player))){resume(v);return;}
+  }
+  pause(v);if(stage(player)>=100||Pq02Rules.introduction(stage(player)))dispose(v.account);
  }
  public static void suspend(Object p){View v=VIEWS.get(uuid(p));if(Pq02ProfileCheckpoint.preserving(p)){if(v!=null)savePosition(v);return;}Pq02Entries.cancel(uuid(p));if(v==null)return;pause(v);savePosition(v);closeUi(v);dispose(v.account);}
  static void dispose(UUID account){Pq02Entries.cancel(account);View v=VIEWS.remove(account);if(v==null)return;v.disposed=true;v.walking=false;if(v.motion!=null)v.motion.pause();

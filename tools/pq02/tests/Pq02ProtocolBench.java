@@ -26,7 +26,7 @@ public final class Pq02ProtocolBench {
   String name=node.speaker.equals("magistrat")?"Magistrat":"Léovic";
   for(String text:node.lines.isEmpty()?List.of("Parlons encore du Port."):node.lines)publish(class_2561.method_43470("["+name+"] : "+text));
   int pick=1;for(Pq02Data.Choice c:node.choices)publish(class_2561.method_43470("["+c.text+"]").method_10862(class_2583.field_24360.method_10958(new class_2558.class_10609("/trigger Pq02Choix set "+(1000000000+pick++)))));
-  publish(class_2561.method_43470("[Fermer la conversation]").method_10862(class_2583.field_24360.method_10958(new class_2558.class_10609("/trigger Pq02Choix set 1000000015"))));
+  String action=Pq02Transitions.label(node.next);boolean terminal=!action.isEmpty();publish(class_2561.method_43470("["+(terminal?action:"Fermer la conversation")+"]").method_10862(class_2583.field_24360.method_36139(terminal?0x55ff55:0xaaaaaa).method_10958(new class_2558.class_10609("/trigger Pq02Choix set "+(terminal?1000000014:1000000015)))));
   ((net.hautecapitale.dialogue.client.capture.CaptureDialogueScreen)class_310.method_1551().field_1755).versionVue=DialogueClientState.captureVersion();
  }
  static void legacy()throws Exception{
@@ -54,7 +54,7 @@ public final class Pq02ProtocolBench {
    for(int i=0;i<nodes%4;i++)tick();check(class_634.SENT.size()==acks,"node "+node.key+" waits for client actor");
    load(actor);tick();tick();check(class_634.SENT.size()==acks+1,"node "+node.key+" acknowledges correct focus");page(node);tick();
    check(DialogueClientState.repliquesCapturees().size()==Math.max(1,node.lines.size()),"node "+node.key+" receives entire text block");
-   check(DialogueClientState.choixCaptures().size()==node.choices.size()+1,"node "+node.key+" receives choices and close");
+   check(DialogueClientState.choixCaptures().size()==node.choices.size()+1,"node "+node.key+" receives choices and its explicit action or close");
    check(DialogueClientState.pnjNom().equals(node.speaker.equals("magistrat")?"Magistrat":"Léovic"),"node "+node.key+" retains speaker");nodes++;
   }
   check(nodes==111,"all 111 nodes pass native session and actual Fabric message pipeline");

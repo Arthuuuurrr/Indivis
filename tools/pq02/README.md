@@ -1,4 +1,4 @@
-# PQ02 R1 HF6 — Le registre du Port
+# PQ02 R1 HF7 — Le registre du Port
 
 Implémentation du kit Work v1.2 et du script PQ02 v1.0, sur copies des deux archives de production fournies. Cible : Fabric 1.21.11, Java 21. PQ02 est intégrée au mod de quêtes HF12, côté serveur et clients. Le compagnon séparé n’est plus à installer. 182 des 184 classes historiques de HF12 restent identiques ; deux classes de la passerelle PQ01 sont corrigées pour le rythme de Gautier. HF1 adapte uniquement l’administration aux repères existants : préparation à distance, coordonnées détaillées, cache et refus des doublons ; les règles, dialogues, déplacements et mixins de R1 sont conservés.
 
@@ -21,7 +21,7 @@ python work/pq02/test_merged_boot.py
 python work/pq02/run_protocol.py
 PQ02_INTEGRATED=1 PQ02_SCREEN_GUARD=legacy PQ02_GUARD_JAR=/chemin/vers/HF4.jar python work/pq02/run_native.py
 PQ02_INTEGRATED=1 PQ02_SCREEN_GUARD=guard python work/pq02/run_native.py
-python work/pq02/verify_hf6.py
+python work/pq02/verify_hf7.py
 python work/pq02/package_merged.py
 ```
 
@@ -71,3 +71,9 @@ Pour la reproduction sur l’ancien binaire, utiliser `PQ02_INTEGRATED=1 PQ02_SC
 `CORRECTIF_PQ02_HF6.md` décrit la cause désormais reproduite : le hook `before_save_self` suspendait PQ02 lors des sauvegardes Nexus périodiques (100 ticks), sans départ du personnage. `Pq02NexusCheckpointMixin` adapte le seul appel direct périodique de `ProfileStateBridge.save` dans `NexusCharacters`. Le rédacteur Nexus et les fonctions du core restent exécutés ; une scène PQ02 ou un clic valide en attente sont conservés, le verrou temporaire est restauré après cet appel. Les véritables suspensions finales restent destructives. Aucun datapack ni classe client/Gautier n'est modifié depuis HF5.
 
 Le banc charge les véritables classes Nexus OPT3 depuis `dependencies/audit_nexus_opt3/`. Leur sélection/initialisation de compte est remplacée par une fixture ; le rédacteur de profil, la politique et les fichiers produits sont réels. Pour reproduire HF5 : `PQ02_INTEGRATED=1 PQ02_PROFILE_CHECKPOINT=legacy PQ02_PROFILE_JAR=/chemin/absolu/HF5.jar python work/pq02/run_native.py`. Pour HF6 : `PQ02_INTEGRATED=1 PQ02_PROFILE_CHECKPOINT=guard python work/pq02/run_native.py`. Les modes natifs partagent un port et doivent être lancés séquentiellement. Le démarrage séparé du JAR intact vérifie aussi le mixin sur la classe OPT3 d'origine, sans activer ses connexions/comptes.
+
+## HF7 — actions explicites et départ déjà accepté
+
+`CORRECTIF_PQ02_HF7.md` décrit le défaut relevé dans les logs : `a09` affichait un bouton de fermeture (15), tandis que le départ attendait l'avance (14). HF7 affiche une action verte sur les pages de transition, conserve les départs déjà acceptés à la fermeture et reprend après Échap au waypoint courant. L'action privée EasyNPC accepte aussi une capture b10 déjà ouverte pour le même acteur possédé. Aucun déplacement, graphe, datapack, classe client ou correctif Nexus n'est réécrit.
+
+Reproduction de la trace exacte sur HF6 : `PQ02_INTEGRATED=1 PQ02_HANDOFF=legacy PQ02_HANDOFF_JAR=/chemin/absolu/HF6.jar python work/pq02/run_native.py`. Contrôle HF7 : `PQ02_INTEGRATED=1 PQ02_HANDOFF=guard python work/pq02/run_native.py`. Le banc emploie les véritables actions EasyNPC, les sessions et captures b10, puis la navigation réelle sur le trajet de fixture. Il ne rend pas la carte Indivis. Exécuter les modes natifs séquentiellement (port partagé). Les instantanés Nexus sont retestés via `PQ02_INTEGRATED=1 PQ02_PROFILE_CHECKPOINT=guard python work/pq02/run_native.py`.

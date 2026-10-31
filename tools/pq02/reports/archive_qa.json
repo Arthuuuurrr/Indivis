@@ -14,10 +14,11 @@
       "files": 3323
     }
   },
-  "single_mod_filename": "haute-capitale-quetes-HF12-PQ02-R1-HF6-1.21.11.jar",
-  "single_mod_sha256": "4f94704c1b204051a85b76836552e5a03ab71a3b071c0cfa919ff7f6d1b6cc73",
+  "single_mod_filename": "haute-capitale-quetes-HF12-PQ02-R1-HF7-1.21.11.jar",
+  "single_mod_sha256": "31add513a5cc3763d137156149f17abc70a73b017f94f6498b8132cdd02b067d",
   "hf12_classes_identical": 182,
   "hf5_archive_diff_verified": true,
   "unchanged_datapack_patch_proof_reused_from_hf1": true,
-  "hf6_archive_diff_verified": true
+  "hf6_archive_diff_verified": true,
+  "hf7_archive_diff_verified": true
 }

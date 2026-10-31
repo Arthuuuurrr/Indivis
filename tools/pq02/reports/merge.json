@@ -1,15 +1,15 @@
 {
   "status": "PASS_BYTE_PRESERVATION_NATIVE_CLIENT_PROTOCOL_AND_FULL_MAIN_STARTUP",
-  "file": "haute-capitale-quetes-HF12-PQ02-R1-HF6-1.21.11.jar",
-  "sha256": "4f94704c1b204051a85b76836552e5a03ab71a3b071c0cfa919ff7f6d1b6cc73",
-  "bytes": 573069,
+  "file": "haute-capitale-quetes-HF12-PQ02-R1-HF7-1.21.11.jar",
+  "sha256": "31add513a5cc3763d137156149f17abc70a73b017f94f6498b8132cdd02b067d",
+  "bytes": 575242,
   "id": "haute_capitale_quetes",
-  "version": "0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF6",
+  "version": "0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF7",
   "source_hf12_sha256": "c888eec4fa5dad35127dd5a5e4e6c49ec0f870063d429877f4b2a48a09f5bb60",
-  "source_pq02_sha256": "7141bd4c44a7ec0f0f20981af153633a192f4c191ba2f855729d5413e0db610a",
+  "source_pq02_sha256": "b5536d1e5bf681fef2ea0ac34e2a7b08a5346bf11c88503e6c18bbe4362aec03",
   "original_entries_preserved": 220,
   "original_classes_preserved": 182,
-  "pq02_entries_identical": 33,
+  "pq02_entries_identical": 34,
   "added": [
     "indivis_pq02.mixins.json",
     "indivis_pq02_graph.json",
@@ -43,7 +43,8 @@
     "net/hautecapitale/quetes/sequence/Pq02Runtime$View.class",
     "net/hautecapitale/quetes/sequence/Pq02Runtime.class",
     "net/hautecapitale/quetes/sequence/Pq02Setup$Scan.class",
-    "net/hautecapitale/quetes/sequence/Pq02Setup.class"
+    "net/hautecapitale/quetes/sequence/Pq02Setup.class",
+    "net/hautecapitale/quetes/sequence/Pq02Transitions.class"
   ],
   "changed_original": [
     "fabric.mod.json",
@@ -99,6 +100,7 @@
     "focus_readiness_native": 12,
     "real_client_protocol": 566,
     "profile_checkpoint_native": 398,
+    "handoff_native": 305,
     "gautier_native": 15,
     "full_production_main_startup": 9,
     "obsolete_companion_guard": 1,

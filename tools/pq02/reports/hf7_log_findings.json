@@ -1,0 +1,35 @@
+{
+  "revision": "HF6 confirmed in both logs",
+  "logs": {
+    "latest(20261031-130854).log": "4630f3a182e29905abb61674b4a03178495e79b5d007b6b8d17554d23a08820d",
+    "latest - 2026-10-31T140832.466.log": "bad217e8b54c405007907fb4e1a19742e0ebe2d9c5ac17be5adc44fd6ee92d91"
+  },
+  "client_server_clock_difference_hours": 1,
+  "trace": [
+    "a01",
+    "a02a",
+    "a07",
+    "a06",
+    "a06b",
+    "a08",
+    "a09"
+  ],
+  "protagonist_picks": [
+    1,
+    4,
+    3,
+    1,
+    5,
+    1
+  ],
+  "last_command_token": 1279188191,
+  "last_page_base_token": 1279188176,
+  "last_action_pick": 15,
+  "last_client_action": "14:08:03",
+  "last_server_close": "13:08:03 ECRAN_FERME",
+  "cause": "At a09, accepting departure has not committed event:start_walk; render offers only a close button for pick 15, which destroys the introduction view. Hidden advance 14 would start the escort.",
+  "related_audit": "Equivalent event handoffs occur at t_resume and m07a/b/c; native ESC formerly paused walking without resuming it.",
+  "scope": "Expose a meaningful green action on every event-ending page; preserve agreed non-financial departures on deliberate close and resume current waypoint on native ESC; no changes to path geometry, navigation, graph, rewards, Nexus checkpoint, PQ01 or MQ03.",
+  "additional_reproduced_interop": "HF6 rejects a real EasyNPC custom interaction on its own private actor if b10 opens a capture for that actor before the action. Its open guard previously admitted only the permanent source UUID or its already-recorded session.",
+  "interop_fix": "Admit the actor already owned by the same valid player/character view; retain the rejection for other NPC sessions."
+}
