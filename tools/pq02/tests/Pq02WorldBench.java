@@ -15,6 +15,7 @@ public final class Pq02WorldBench implements ModInitializer {
   event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents$EndTick","END_SERVER_TICK",x->{if(srv!=null&&!finished)((List<Object>)call(call(srv,"method_3760"),"method_14571")).addAll(players);return null;});
   SequenceBridge.init();Pq02Runtime.init();Pq01Bridge.init();
   net.hautecapitale.dialogue.config.DialogueConfig.load();net.hautecapitale.dialogue.network.DialogueNetwork.init();
+  if(Boolean.getBoolean("pq02.end.to.end"))net.hautecapitale.dialogue.session.DialogueManager.init();
   event("net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback","EVENT",x->{stub(x[0],"hcd_interpellation");stub(x[0],"name");return null;});
   event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStarted","SERVER_STARTED",x->{try{start(x[0]);}catch(Throwable e){fail(e);}return null;});
   event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents$EndTick","END_SERVER_TICK",x->{try{testTick();}catch(Throwable e){fail(e);}finally{if(srv!=null)((List<?>)call(call(srv,"method_3760"),"method_14571")).clear();}return null;});
@@ -44,6 +45,7 @@ public final class Pq02WorldBench implements ModInitializer {
   row=GuardNbt.compound();GuardNbt.string(row,"Type","COMMAND");GuardNbt.string(row,"Cmd","function capitale:quest/le_registre_du_port/magistrat/register_self");Pq01Actions.mutate(mag,"ON_INTERACTION",GuardNbt.list(List.of(row)));
   for(int i=0;i<ROUTE.size();i++){double x=i<=14?0.5+i*1.35:19.4+(i-14)*1.3;double z=i<=14?0.5:0.5+(i-14)*0.9;cmd("summon minecraft:marker "+x+" 64 "+z+" {Tags:[\"wp_leovic_registre_port_"+ROUTE.get(i)+"\"]}");}
   a=player("PQ02_A",charA);b=player("PQ02_B",UUID.randomUUID());observer=player("PQ02_Observer",UUID.randomUUID());
+  if(Boolean.getBoolean("pq02.end.to.end")){var map=(java.util.Map<java.util.UUID,Object>)get(call(srv,"method_3760"),"field_14354");for(Object p:players)map.put(uuid(p),p);}
 
  }
  static void seed(Object p,int s){run(p,"function fixture:objectives");score2(p,"hcq_pq01",100);score2(p,"CAP_PROFILE_LOCK",0);score2(p,"hcq_pq02",s);score2(p,"CAP_PQ2_VER",1);score2(p,"CAP_QDIALOG_OWNER",0);score2(p,"CAP_PQ2_PAUSE",1);}
@@ -54,6 +56,7 @@ public final class Pq02WorldBench implements ModInitializer {
  static void advance(Object p){pick(p,14);}
  @SuppressWarnings("unchecked") static void production(){List<Object> online=(List<Object>)call(call(srv,"method_3760"),"method_14571");Pq02Runtime.tick(srv);}
  static void testTick()throws Exception{if(srv==null||finished)return;t++;if(t<20)return;
+  if(Boolean.getBoolean("pq02.end.to.end")){if(t==20)Pq02EndToEndBench.start();if(Pq02EndToEndBench.tick())finish();return;}
   if(!System.getProperty("pq02.handoff","").isEmpty()){if(t==20)Pq02HandoffBench.start(System.getProperty("pq02.handoff").equals("legacy"));if(Pq02HandoffBench.tick())finish();return;}
   if(t==20&&!System.getProperty("pq02.profile.checkpoint","").isEmpty()){Pq02ProfileCheckpointBench.runAll(System.getProperty("pq02.profile.checkpoint").equals("legacy"));finish();return;}
   if(t==20&&!System.getProperty("pq02.screen.guard","").isEmpty()){Pq02ScreenGuardBench.runAll(System.getProperty("pq02.screen.guard").equals("legacy"));finish();return;}

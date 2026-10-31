@@ -3,7 +3,9 @@ from pathlib import Path
 import json,zipfile,subprocess,os,shutil,re
 import build
 H=Path(__file__).resolve().parent;RT=Path('/tmp/indivis_pq02_runtime');INTEGRATED=os.environ.get('PQ02_INTEGRATED')=='1';REPRO=os.environ.get('PQ02_REPRO_ENTRY')=='1';SCREEN_REPRO=os.environ.get('PQ02_REPRO_SCREEN')=='1';LABEL='hf3_screen_repro' if SCREEN_REPRO else 'hf2_repro' if REPRO else 'merged_native' if INTEGRATED else 'native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
-AUDIT=os.environ.get('PROLOGUE_AUDIT')=='1'
+STORY_AUDIT=os.environ.get('PQ02_STORY_AUDIT')=='1'
+END_TO_END=os.environ.get('PQ02_END_TO_END')=='1'
+AUDIT=os.environ.get('PROLOGUE_AUDIT')=='1' or END_TO_END
 PROFILE_CHECKPOINT=os.environ.get('PQ02_PROFILE_CHECKPOINT','')
 HANDOFF=os.environ.get('PQ02_HANDOFF','')
 SCREEN_GUARD=os.environ.get('PQ02_SCREEN_GUARD','')
@@ -11,6 +13,8 @@ if SCREEN_GUARD:LABEL='hf4_screen_reset_repro' if SCREEN_GUARD=='legacy' else 'h
 if AUDIT:LABEL='prologue_audit_native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
 if PROFILE_CHECKPOINT:LABEL='hf5_profile_save_repro' if PROFILE_CHECKPOINT=='legacy' else 'hf7_profile_checkpoint_native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
 if HANDOFF:LABEL='hf6_handoff_repro' if HANDOFF=='legacy' else 'hf7_handoff_native';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
+if STORY_AUDIT:LABEL='pq02_branches_hf7';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
+if END_TO_END:LABEL='pq02_end_to_end_hf7';S=RT/LABEL;S.mkdir(exist_ok=True);(S/'mods').mkdir(exist_ok=True)
 JAVA=next((RT/'jdk').glob('*/bin/java'));MC=RT/'bootstrap/.fabric/remappedJars/minecraft-1.21.11-0.19.5/server-intermediary.jar'
 JOURNAL=H/'output'/build.JOURNAL_FILENAME if INTEGRATED else next(build.ROOT.joinpath('upload').glob('haute-capitale-quetes*.jar'));DIALOGUE=next(build.ROOT.joinpath('upload').glob('haute-capitale-dialogue*.jar'));NPC=next(H.joinpath('dependencies').glob('*.jar'))
 NEXUS=next(H.joinpath('dependencies/audit_nexus_opt3').glob('*.jar'))
@@ -27,6 +31,7 @@ sources += [p for p in (H/'tests/protocol_doubles').rglob('*.java')]
 sources.append(H/'tests/Pq02ScreenGuardBench.java')
 sources.append(H/'tests/Pq02ProfileCheckpointBench.java')
 sources.append(H/'tests/Pq02HandoffBench.java')
+sources.append(H/'tests/Pq02EndToEndBench.java')
 subprocess.run([JAVA.with_name('javac'),'--release','21','-proc:none','-cp',CP,'-d',C,*sources],check=True)
 subprocess.run([JAVA,'-cp',str(C)+os.pathsep+CP,'MakeSink',C],check=True)
 with zipfile.ZipFile(JOURNAL) as z:out={n:z.read(n) for n in z.namelist() if not n.endswith('/')}
@@ -101,7 +106,7 @@ for n,b in pack.items():p=P/n;p.parent.mkdir(parents=True,exist_ok=True);p.write
 if AUDIT:shutil.copyfile(H/'audit_prologue/pq01_protocol_fixture.json',S/'pq01_protocol_fixture.json')
 GAME=RT/'minecraft_bundle/META-INF/versions/1.21.11/server-1.21.11.jar';CP=os.pathsep.join(map(str,[*sorted((RT/'libraries').glob('*.jar')),*sorted((RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar')),GAME]))
 result=S/'world-test-result.txt';result.unlink(missing_ok=True)
-with (H/('reports/'+LABEL+'_server.log')).open('w') as f:r=subprocess.run([JAVA,'-XX:ActiveProcessorCount=2','-Xmx2G',*(['-Dpq02.repro.entry=true'] if REPRO else []),*(['-Dpq02.repro.screen=true'] if SCREEN_REPRO else []),*(['-Dpq02.prologue.audit=true'] if AUDIT else []),*(['-Dpq02.prologue.only=true'] if os.environ.get('PROLOGUE_AUDIT_ONLY')=='1' else []),*(['-Dpq02.screen.guard='+SCREEN_GUARD] if SCREEN_GUARD else []),*(['-Dpq02.profile.checkpoint='+PROFILE_CHECKPOINT] if PROFILE_CHECKPOINT else []),*(['-Dpq02.handoff='+HANDOFF] if HANDOFF else []),f'-Dfabric.gameJarPath={GAME}','-Dfabric.log.disableAnsi=true','-cp',CP,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui'],cwd=S,stdout=f,stderr=subprocess.STDOUT,timeout=360)
+with (H/('reports/'+LABEL+'_server.log')).open('w') as f:r=subprocess.run([JAVA,'-XX:ActiveProcessorCount=2','-Xmx2G',*(['-Dpq02.repro.entry=true'] if REPRO else []),*(['-Dpq02.repro.screen=true'] if SCREEN_REPRO else []),*(['-Dpq02.prologue.audit=true'] if AUDIT else []),*(['-Dpq02.prologue.only=true'] if os.environ.get('PROLOGUE_AUDIT_ONLY')=='1' else []),*(['-Dpq02.screen.guard='+SCREEN_GUARD] if SCREEN_GUARD else []),*(['-Dpq02.profile.checkpoint='+PROFILE_CHECKPOINT] if PROFILE_CHECKPOINT else []),*(['-Dpq02.handoff='+HANDOFF] if HANDOFF else []),*(['-Dpq02.end.to.end=true'] if END_TO_END else []),f'-Dfabric.gameJarPath={GAME}','-Dfabric.log.disableAnsi=true','-cp',CP,'net.fabricmc.loader.impl.launch.knot.KnotServer','nogui'],cwd=S,stdout=f,stderr=subprocess.STDOUT,timeout=360)
 if result.exists():shutil.copyfile(result,H/('reports/'+LABEL+'.txt'));print(result.read_text())
 else:print((H/('reports/'+LABEL+'_server.log')).read_text()[-7000:])
 assert r.returncode==0 and result.exists() and result.read_text().startswith('PASS')

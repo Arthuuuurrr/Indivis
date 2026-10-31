@@ -1,5 +1,8 @@
 # PQ02 R1 HF7 — Le registre du Port
 
+> **Audit complémentaire du 31 octobre 2026 :** [parcours complet et reprises de PQ02](AUDIT_PQ02_COMPLET_2026-10-31.md). HF7 reste inchangé. Les nouveaux bancs vérifient deux parcours chronologiques, les 290 destinations, la sauvegarde/lecture Nexus OPT3 et le passage réel vers PQ03 ; résultats et limites dans le rapport.
+
+
 Implémentation du kit Work v1.2 et du script PQ02 v1.0, sur copies des deux archives de production fournies. Cible : Fabric 1.21.11, Java 21. PQ02 est intégrée au mod de quêtes HF12, côté serveur et clients. Le compagnon séparé n’est plus à installer. 182 des 184 classes historiques de HF12 restent identiques ; deux classes de la passerelle PQ01 sont corrigées pour le rythme de Gautier. HF1 adapte uniquement l’administration aux repères existants : préparation à distance, coordonnées détaillées, cache et refus des doublons ; les règles, dialogues, déplacements et mixins de R1 sont conservés.
 
 Les procédures de joueur et d’administrateur sont dans `INSTALLATION.md` et `COMMANDES_PQ02.md`. L’audit, les limites et les preuves figurent dans `RAPPORT.md` et `reports/`. Dans GitHub, ces documents sont aussi dans `docs/quetes/PQ02_R1/` ; `patches/pq02-r1/` contient les seules ressources modifiées. Les anciens répertoires de datapacks du dépôt ne sont pas substitués à l’archive serveur fournie.

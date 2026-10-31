@@ -30,15 +30,30 @@ public final class Pq02CaptureBench {
    String speaker=(String)call(state,"pnjNom");Pq02WorldBench.ok(speaker.equals(n.speaker.equals("magistrat")?"Magistrat":"Léovic")||n.lines.isEmpty(),"b10 speaker for "+n.key);
    String captured=String.join("\n",lines.stream().map(e->String.valueOf(call(e,"getString"))).toList());for(String expected:n.lines)Pq02WorldBench.ok(captured.contains(expected),"b10 exact quote captured "+n.key);
    Pq02WorldBench.ok(choices.size()==v.choices.size()+1,"b10 has all choices and close for "+n.key);captures++;
-   for(int i=0;i<n.choices.size();i++){ready(p,n);v=VIEWS.get(uuid(p));var choice=v.choices.get(i);int token=v.baseToken+i+1;score2(p,"Pq02Choix",token);Pq02WorldBench.ok(dispatch(v)==1,"graph native branch "+n.key+" #"+(i+1));Pq02WorldBench.settle(p);edges++;
+   for(int i=0;i<n.choices.size();i++){ready(p,n);v=VIEWS.get(uuid(p));var choice=v.choices.get(i);String target=resolvedKey(v,choice.target);int token=v.baseToken+i+1;score2(p,"Pq02Choix",token);Pq02WorldBench.ok(dispatch(v)==1,"graph native branch "+n.key+" #"+(i+1));Pq02WorldBench.settle(p);destination(p,target);edges++;
     if(choice.effect!=null&&choice.effect.contains(":")){String[] d=choice.effect.split(":");var delta=Pq02Rules.delta(d[0],Integer.parseInt(d[1]));Pq02WorldBench.ok(score(p,"REP_GARDEPORT")==10+delta.reputation()&&score(p,"CAP_PQ2_IMPR")==delta.impression(),"branch delta exact "+n.key+" #"+(i+1));}
    }
-   if(!n.next.isEmpty()){ready(p,n);v=VIEWS.get(uuid(p));if(n.next.equals("event:complete"))score2(p,"CAP_PQ2_DD",2);score2(p,"Pq02Choix",v.baseToken+14);Pq02WorldBench.ok(dispatch(v)==1,"graph native advance "+n.key);Pq02WorldBench.settle(p);edges++;}
+   if(!n.next.isEmpty()){ready(p,n);v=VIEWS.get(uuid(p));if(n.next.equals("event:complete"))score2(p,"CAP_PQ2_DD",2);String target=resolvedKey(v,n.next);score2(p,"Pq02Choix",v.baseToken+14);Pq02WorldBench.ok(dispatch(v)==1,"graph native advance "+n.key);Pq02WorldBench.settle(p);destination(p,target);edges++;}
   }
   Pq02WorldBench.ok(captures==Pq02Data.NODES.size(),"all 111 nodes pass native b10 capture");
   Pq02WorldBench.ok(edges>250,"all narrative choices and manual edges dispatched natively: "+edges);
   ready(p,Pq02Data.get("m01a"));screen.panneau.typing=true;Pq02WorldBench.ok(!Pq02Client.requestAdvance(screen),"client refuses advance during typewriter");screen.panneau.typing=false;screen.panneau.last=false;Pq02WorldBench.ok(!Pq02Client.requestAdvance(screen),"client refuses advance before final page");screen.panneau.last=true;
   Pq02WorldBench.ok(Pq02Client.requestAdvance(screen),"client accepts explicit final-page advance");Client client=new Client();for(int i=0;i<4;i++)Pq02Client.tickClient(client);Pq02WorldBench.settle(p);Pq02WorldBench.ok(VIEWS.get(uuid(p)).node.key.equals("m01b"),"real PQ02 client adapter advances correct native frame");
   active=false;suspend(p);
+ }
+ static void destination(Object p,String target){View v=VIEWS.get(uuid(p));boolean valid;
+  if(!target.startsWith("event:"))valid=v!=null&&v.ui&&v.pendingNode==null&&v.node.key.equals(target)&&v.session==current(p)&&v.baseToken>0;
+  else valid=switch(target.substring(6)){
+   case "rest"->v==null&&Pq02Rules.introduction(stage(p));
+   case "start_walk","resume_walk"->v!=null&&v.walking&&!v.ui&&stage(p)==40;
+   case "elevator"->v!=null&&v.walking&&!v.ui&&stage(p)==70;
+   case "register"->v!=null&&v.node.key.equals("m06_registered")&&stage(p)==60&&score(p,"CAP_PQ2_REG")==1;
+   case "gift"->v!=null&&v.node.key.equals("f07")&&score(p,"CAP_LEOVIC_GIFT")==1;
+   case "late_gift"->v!=null&&v.node.key.equals("post_menu")&&score(p,"CAP_LEOVIC_GIFT")==1;
+   case "practical_menu"->v!=null&&v.node.key.equals(stage(p)>=100?"post_menu":"f_questions");
+   case "complete"->v==null&&stage(p)==100&&score(p,"CAP_PQ2_REW")==1;
+   default->false;
+  };
+  Pq02WorldBench.ok(valid,"graph native destination reached "+target);
  }
 }

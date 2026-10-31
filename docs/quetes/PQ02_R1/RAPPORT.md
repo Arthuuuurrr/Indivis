@@ -1,5 +1,8 @@
 # Indivis — Rapport d’intégration PQ02 R1 HF7
 
+> **Audit complémentaire du 31 octobre 2026 :** [parcours complet et reprises de PQ02](AUDIT_PQ02_COMPLET_2026-10-31.md). HF7 reste inchangé. Les nouveaux bancs vérifient deux parcours chronologiques, les 290 destinations, la sauvegarde/lecture Nexus OPT3 et le passage réel vers PQ03 ; résultats et limites dans le rapport.
+
+
 Livraison **intégrée** du **31 octobre 2026**, Fabric/Minecraft **1.21.11**, Java **21**. Version installable destinée à la recette sur une copie du serveur. Aucun déploiement sur le serveur d’Arthur n’a été effectué.
 
 ## Résultat et périmètre
