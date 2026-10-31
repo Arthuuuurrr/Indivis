@@ -1,0 +1,4 @@
+PASS REPRODUCED_HF2_ABSENT_SCREEN_ECRAN_FERME
+screen HF3: private frame consumed without chat text
+screen HF3: HF2 leaves an involuntarily removed capture absent
+screen HF3: HF2 native b10 monitor sends ECRAN_FERME after absent screen

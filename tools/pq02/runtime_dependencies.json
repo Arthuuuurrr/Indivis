@@ -1,0 +1,50 @@
+{
+  "jdk.tar.gz": {
+    "url": "https://cdn.azul.com/zulu/bin/zulu21.54.107-ca-jdk21.0.13-linux_x64.tar.gz",
+    "sha256": "dd8cf0628cfb8c369b7d4fe96783e2b516482b37d2b3e140b208c91deabf1169"
+  },
+  "minecraft_server.jar": {
+    "url": "https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632ec347938594144943ed/server.jar",
+    "sha256": "f83b8e093865806f931c7e34aae41b177d4c076335263dd124c75d6d65dd1726"
+  },
+  "libraries/intermediary-1.21.11.jar": {
+    "url": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.21.11/intermediary-1.21.11.jar",
+    "sha256": "886da9b21bf26b24a18960ec868612630821f161d7e8b23cd64bbaa51298cabc"
+  },
+  "fabric-api.jar": {
+    "url": "https://maven.fabricmc.net/net/fabricmc/fabric-api/fabric-api/0.141.6+1.21.11/fabric-api-0.141.6+1.21.11.jar",
+    "sha256": "bdff7fd7e220085cfad2ff9b1f40dde6534ae0b96cf378f97a374bc54cb9ed0f"
+  },
+  "cfr.jar": {
+    "url": "https://repo.maven.apache.org/maven2/org/benf/cfr/0.152/cfr-0.152.jar",
+    "sha256": "f686e8f3ded377d7bc87d216a90e9e9512df4156e75b06c655a16648ae8765b2"
+  },
+  "libraries/asm-9.10.1.jar": {
+    "url": "https://maven.fabricmc.net/org/ow2/asm/asm/9.10.1/asm-9.10.1.jar",
+    "sha256": "ed825d10ab1399c8c0cb669e688cf0c8c82629b4c8399b58352b68e92ca10fcb"
+  },
+  "libraries/asm-analysis-9.10.1.jar": {
+    "url": "https://maven.fabricmc.net/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.jar",
+    "sha256": "dede75a21306b65974ecd8f87114ff6970f09fb794157a4ca09ab25c888c2bfc"
+  },
+  "libraries/asm-commons-9.10.1.jar": {
+    "url": "https://maven.fabricmc.net/org/ow2/asm/asm-commons/9.10.1/asm-commons-9.10.1.jar",
+    "sha256": "6d0abefb7cbf972ea16edb37ec14835372505063a45f976ab7ea889ed9497895"
+  },
+  "libraries/asm-tree-9.10.1.jar": {
+    "url": "https://maven.fabricmc.net/org/ow2/asm/asm-tree/9.10.1/asm-tree-9.10.1.jar",
+    "sha256": "3dfb0d5b6a106cd40b5b250e39935fbf2f927f4477546a5369a3ac609cf0506b"
+  },
+  "libraries/asm-util-9.10.1.jar": {
+    "url": "https://maven.fabricmc.net/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.jar",
+    "sha256": "1bb99d091fba2597dc6d51193e9bbcf0d8447e7ed96bd8f0198b18152f09655c"
+  },
+  "libraries/sponge-mixin-0.17.4+mixin.0.8.7.jar": {
+    "url": "https://maven.fabricmc.net/net/fabricmc/sponge-mixin/0.17.4+mixin.0.8.7/sponge-mixin-0.17.4+mixin.0.8.7.jar",
+    "sha256": "1f0ae44db7295f8626f33b1dc0ad7f043d8954a8d6847247875fcc5dfcecc934"
+  },
+  "libraries/fabric-loader-0.19.5.jar": {
+    "url": "https://maven.fabricmc.net/net/fabricmc/fabric-loader/0.19.5/fabric-loader-0.19.5.jar",
+    "sha256": "93044e4dd46de5d8136701292f05e868da096d2c9fddb4793e4fdbcc63efc695"
+  }
+}

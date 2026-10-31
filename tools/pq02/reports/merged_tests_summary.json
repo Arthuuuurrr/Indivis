@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "revision": "PQ02 R1 HF6",
+  "journal": "haute-capitale-quetes-HF12-PQ02-R1-HF6-1.21.11.jar",
+  "sha256": "4f94704c1b204051a85b76836552e5a03ab71a3b071c0cfa919ff7f6d1b6cc73",
+  "preserved_hf12_classes": 182,
+  "preserved_hf12_resources": 220,
+  "pq02_entries_identical_to_build_component": 33,
+  "native_checks": 2425,
+  "admin_native_checks": 37,
+  "function_entry_native_checks": 15,
+  "focus_readiness_native_checks": 12,
+  "real_client_protocol_checks": 566,
+  "client_protocol_nodes": 111,
+  "gautier_native_checks": 15,
+  "gautier_hf3_byte_identical": true,
+  "hf5_periodic_save_failure_reproduced": true,
+  "profile_checkpoint_native_checks": 398,
+  "nexus_mixin_applied_to_original_opt3_class": true,
+  "server_close_origin_reproduced": true,
+  "full_main_startup_checks": 9,
+  "duplicate_guard_checks": 1,
+  "mod_ids": [
+    "haute_capitale_quetes"
+  ],
+  "datapacks_changed_since_hf1": false,
+  "limitations": [
+    "Nexus profile writer/policy/DTO and file output are real; account selection and periodic scheduler invocation use a fixture with the same original invocation site",
+    "Production checkpoint mixin is also applied to the untouched original OPT3 class in the startup test; Nexus account/network entrypoints are disabled there",
+    "Client graphics/world/entities and C2S networking remain doubled; native b10 lifecycle and Fabric message events are real",
+    "Currency/CapSkills/random port rewards retain documented fixture substitutions in the native narrative suite",
+    "No rendered Minecraft client, user map, real camera framing, FPS or recorded voices tested",
+    "Full startup test transforms original Nexus OPT3 class, disables its account/network entrypoints, uses metadata-only Puffish/RPG, no players"
+  ]
+}

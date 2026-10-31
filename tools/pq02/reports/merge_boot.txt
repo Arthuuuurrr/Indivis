@@ -1,0 +1,1 @@
+PASS full merged production JAR startup; 9 checks. All original+PQ02 main entrypoints and mixin configs intact; real OPT3 Nexus class transformed by production checkpoint mixin, Nexus account/network entrypoints disabled; Puffish/RPG metadata only. No player or rendered client.

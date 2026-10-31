@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "jar_sha256": "a401eec8b5fbe1396c651715cd457a01ff86cb531c5bcc5686352b44a9f19285",
+  "mode": "all 111 nodes and readiness",
+  "native_classes": [
+    "DialogueClientState",
+    "MessageCapture",
+    "Fabric client message events"
+  ],
+  "substitutes": [
+    "Minecraft client/screen/world/entities without rendering",
+    "C2S send recorder"
+  ],
+  "graphical_client": false
+}

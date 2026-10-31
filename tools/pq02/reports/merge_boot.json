@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "production_jar_sha256": "4f94704c1b204051a85b76836552e5a03ab71a3b071c0cfa919ff7f6d1b6cc73",
+  "main_startup_checks": 9,
+  "duplicate_companion_rejected": true,
+  "production_metadata_and_entrypoints_unchanged_in_smoke_test": true,
+  "nexus_periodic_mixin_applied_to_original_opt3_class": true,
+  "dependency_substitutes": [
+    "Nexus original OPT3 classes, no account/network entrypoints",
+    "Puffish metadata only",
+    "RPG metadata only"
+  ],
+  "players": "none",
+  "graphical_client": "not run"
+}

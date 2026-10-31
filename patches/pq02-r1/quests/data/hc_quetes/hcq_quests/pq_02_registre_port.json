@@ -1,0 +1,139 @@
+{
+  "id": "pq_02_registre_port",
+  "title": "Le registre du Port",
+  "type": "MAIN",
+  "giver": "Garde Léovic",
+  "zone": "Port de la Capitale",
+  "description": "Léovic, de la Garde du Port, vous attend près des tentes pour régulariser votre arrivée auprès du magistrat, sous les Archives. Il vous indiquera ensuite l'ascenseur voisin qui mène au Cœur.",
+  "can_abandon": false,
+  "prerequisites": [
+    "pq_01_sous_pavillon_couronne"
+  ],
+  "rewards": [
+    {
+      "text": "Réputation de la Garde du Port : de −1 à +3 selon vos décisions"
+    },
+    {
+      "text": "165 points d’expérience"
+    },
+    {
+      "text": "Inscription au registre du Port (Visiteur, sans rétrogradation)"
+    },
+    {
+      "text": "Un bonus du port (tirage aléatoire)"
+    },
+    {
+      "text": "Don personnel facultatif de Léovic : 50 Martins d’or, une fois par personnage, avec le second bonus du port existant"
+    }
+  ],
+  "source": {
+    "kind": "SCOREBOARD",
+    "active": {
+      "objective": "hcq_pq02",
+      "min": 10,
+      "max": 90
+    },
+    "turn_in": {
+      "objective": "hcq_pq02",
+      "min": 90,
+      "max": 90
+    },
+    "completed": {
+      "objective": "hcq_pq02",
+      "min": 100,
+      "max": 100
+    }
+  },
+  "objectives": [
+    {
+      "id": "parler_leovic",
+      "type": "TALK_TO_NPC",
+      "text": "Parler à Léovic près des tentes de la Garde du Port et accepter son escorte",
+      "done": {
+        "objective": "hcq_pq02",
+        "min": 40,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "tag:npc_leovic_registre_port",
+        "label": "Garde Léovic"
+      }
+    },
+    {
+      "id": "suivre_magistrat",
+      "type": "CUSTOM",
+      "text": "Suivre Léovic jusqu’au magistrat du Port",
+      "done": {
+        "objective": "hcq_pq02",
+        "min": 50,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "tag:hcm_pq2_leovic",
+        "label": "Suivre Léovic"
+      }
+    },
+    {
+      "id": "magistrat",
+      "type": "TALK_TO_NPC",
+      "text": "S'entretenir avec le magistrat sous les Archives, en présence de Léovic",
+      "done": {
+        "objective": "hcq_pq02",
+        "min": 60,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "ZONE",
+        "target": "tag:wp_leovic_registre_port_m",
+        "label": "Magistrat du Port"
+      }
+    },
+    {
+      "id": "retour_leovic",
+      "type": "TALK_TO_NPC",
+      "text": "Conclure l'entretien avec Léovic et gagner l'ascenseur voisin",
+      "done": {
+        "objective": "hcq_pq02",
+        "min": 70,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "tag:hcm_pq2_leovic",
+        "label": "Garde Léovic"
+      }
+    },
+    {
+      "id": "suivre_ascenseur",
+      "type": "CUSTOM",
+      "text": "Suivre Léovic jusqu'à l'ascenseur voisin, vers le Cœur",
+      "done": {
+        "objective": "hcq_pq02",
+        "min": 90,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "tag:hcm_pq2_leovic",
+        "label": "Suivre Léovic"
+      }
+    },
+    {
+      "id": "reparler_leovic",
+      "type": "RETURN_TO_NPC",
+      "text": "Reparler à Léovic devant l’ascenseur",
+      "done": {
+        "objective": "hcq_pq02",
+        "min": 100,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "tag:hcm_pq2_leovic",
+        "label": "Garde Léovic"
+      }
+    }
+  ]
+}

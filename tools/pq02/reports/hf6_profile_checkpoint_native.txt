@@ -1,0 +1,401 @@
+PASS 398 native checks
+setup HF1: fixture is outside former local marker lookup
+setup HF1: preparation succeeds far from loaded A and at a different altitude
+setup HF1: legacy guide parks on existing A, never on administrator position
+setup HF1: legacy motion states removed
+setup HF1: existing markers remain in place
+setup HF1: public Leovic position unchanged by setup
+setup HF1: armor stand carrying A tag is ignored as a route marker
+setup HF1: unrelated setup data retained
+setup HF1: loaded coordinates copied exactly to cache
+setup HF1: point diagnostics expose roles, coordinates and loaded status
+setup HF1: operator requirement enforced for prepare_route
+setup HF1: operator requirement enforced for prepare_legacy
+setup HF1: operator requirement enforced for points
+setup HF1: operator requirement enforced for status
+setup HF1: preparation adapts to changed existing marker coordinates
+setup HF1: cached point remains usable when its marker is not loaded/recognized
+setup HF1: diagnostic distinguishes remembered from loaded points
+setup HF1: missing required point refuses completion and leaves guide untouched
+setup HF1: missing point never gets invented fallback coordinates
+setup HF1: cache from another dimension is rejected
+setup HF1: restored marker repairs preparation without changing progression
+setup HF1: duplicate marker refuses both guide move and cache mutation
+setup HF1: duplicate legacy guide is not chosen arbitrarily
+setup HF1: optional H approach markers do not prevent preparation
+setup HF1: cached but unloaded A defers legacy parking without teleport to unloaded marker
+setup HF1: active scene prevents legacy guide relocation
+setup HF1: old direct command remains compatible
+setup HF1: datapack function exists: preparer_parcours
+setup HF1: datapack function exists: preparer_guide_historique
+setup HF1: datapack function exists: diagnostic
+setup HF1: datapack function exists: diagnostic_points
+setup HF1: datapack function exists: afficher_points
+setup HF1: datapack function exists: masquer_points
+setup HF1: old function forwards through actual function dispatcher
+setup HF1: visualization uses existing historical waypoint function
+setup HF1: hiding visualization preserves all real route markers
+setup HF1: admin commands do not start quest, alter reputation, give money or change character state
+native DialogueManager opens camera for a01
+client readiness acknowledged for a01
+Nexus checkpoint: first page a01 active before real Nexus save
+Nexus checkpoint: actual Nexus profile snapshot written to disk
+Nexus checkpoint: periodic save retains identical view and native session
+Nexus checkpoint: periodic checkpoint restores the previous transient profile lock
+Nexus checkpoint: private actor UUID retained
+Nexus checkpoint: repeated periodic save 0 retains dialogue
+Nexus checkpoint: repeated periodic save 1 retains dialogue
+Nexus checkpoint: repeated periodic save 2 retains dialogue
+Nexus checkpoint: repeated periodic save 3 retains dialogue
+Nexus checkpoint: repeated periodic save 4 retains dialogue
+Nexus checkpoint: checkpoint never advances decisions, quest or money
+native DialogueManager opens camera for a01
+client readiness acknowledged for a01
+Nexus checkpoint: another player's scene remains independent
+native DialogueManager opens camera for a01
+client readiness acknowledged for a01
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a01
+native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a02a
+native DialogueManager opens camera for a02b
+client readiness acknowledged for a02b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a02b
+native DialogueManager opens camera for a02c
+client readiness acknowledged for a02c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a02c
+native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a_menu
+native DialogueManager opens camera for a04
+client readiness acknowledged for a04
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a04
+native DialogueManager opens camera for a04a
+client readiness acknowledged for a04a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a04a
+native DialogueManager opens camera for a04b
+client readiness acknowledged for a04b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a04b
+native DialogueManager opens camera for a05
+client readiness acknowledged for a05
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a05
+native DialogueManager opens camera for a05b
+client readiness acknowledged for a05b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a05b
+native DialogueManager opens camera for a06
+client readiness acknowledged for a06
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a06
+native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a06b
+native DialogueManager opens camera for a07
+client readiness acknowledged for a07
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a07
+native DialogueManager opens camera for a08
+client readiness acknowledged for a08
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a08
+native DialogueManager opens camera for a08a
+client readiness acknowledged for a08a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a08a
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at a09
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t_menu
+native DialogueManager opens camera for t01
+client readiness acknowledged for t01
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t01
+native DialogueManager opens camera for t02
+client readiness acknowledged for t02
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t02
+native DialogueManager opens camera for t02a
+client readiness acknowledged for t02a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t02a
+native DialogueManager opens camera for t02a_stay
+client readiness acknowledged for t02a_stay
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t02a_stay
+native DialogueManager opens camera for t02a_leave
+client readiness acknowledged for t02a_leave
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t02a_leave
+native DialogueManager opens camera for t02b
+client readiness acknowledged for t02b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t02b
+native DialogueManager opens camera for t03
+client readiness acknowledged for t03
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t03
+native DialogueManager opens camera for t03a
+client readiness acknowledged for t03a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t03a
+native DialogueManager opens camera for t03b
+client readiness acknowledged for t03b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t03b
+native DialogueManager opens camera for t04
+client readiness acknowledged for t04
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04
+native DialogueManager opens camera for t04a
+client readiness acknowledged for t04a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04a
+native DialogueManager opens camera for t04a_reputation
+client readiness acknowledged for t04a_reputation
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04a_reputation
+native DialogueManager opens camera for t04a_cooperation
+client readiness acknowledged for t04a_cooperation
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04a_cooperation
+native DialogueManager opens camera for t04b
+client readiness acknowledged for t04b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04b
+native DialogueManager opens camera for t04b_a
+client readiness acknowledged for t04b_a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04b_a
+native DialogueManager opens camera for t04b_b
+client readiness acknowledged for t04b_b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04b_b
+native DialogueManager opens camera for t04b_c
+client readiness acknowledged for t04b_c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04b_c
+native DialogueManager opens camera for t04c
+client readiness acknowledged for t04c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04c
+native DialogueManager opens camera for t04c_field
+client readiness acknowledged for t04c_field
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04c_field
+native DialogueManager opens camera for t04c_mission
+client readiness acknowledged for t04c_mission
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04c_mission
+native DialogueManager opens camera for t04d
+client readiness acknowledged for t04d
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t04d
+native DialogueManager opens camera for t_sentinel_observed
+client readiness acknowledged for t_sentinel_observed
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t_sentinel_observed
+native DialogueManager opens camera for t05
+client readiness acknowledged for t05
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t05
+native DialogueManager opens camera for t05a
+client readiness acknowledged for t05a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t05a
+native DialogueManager opens camera for t05b
+client readiness acknowledged for t05b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t05b
+native DialogueManager opens camera for t05c
+client readiness acknowledged for t05c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t05c
+native DialogueManager opens camera for t06
+client readiness acknowledged for t06
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t06
+native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t06a
+native DialogueManager opens camera for t06b
+client readiness acknowledged for t06b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t06b
+native DialogueManager opens camera for t06c
+client readiness acknowledged for t06c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t06c
+native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t_resume
+native DialogueManager opens camera for t07
+client readiness acknowledged for t07
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t07
+native DialogueManager opens camera for t07a
+client readiness acknowledged for t07a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t07a
+native DialogueManager opens camera for t07b
+client readiness acknowledged for t07b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t07b
+native DialogueManager opens camera for t07c
+client readiness acknowledged for t07c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at t07c
+native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m01a
+native DialogueManager opens camera for m01b
+client readiness acknowledged for m01b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m01b
+native DialogueManager opens camera for m01c
+client readiness acknowledged for m01c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m01c
+native DialogueManager opens camera for m01d
+client readiness acknowledged for m01d
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m01d
+native DialogueManager opens camera for m02
+client readiness acknowledged for m02
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m02
+native DialogueManager opens camera for m02a
+client readiness acknowledged for m02a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m02a
+native DialogueManager opens camera for m02b
+client readiness acknowledged for m02b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m02b
+native DialogueManager opens camera for m02c
+client readiness acknowledged for m02c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m02c
+native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m03a
+native DialogueManager opens camera for m03b
+client readiness acknowledged for m03b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m03b
+native DialogueManager opens camera for m04a
+client readiness acknowledged for m04a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m04a
+native DialogueManager opens camera for m04a_leovic
+client readiness acknowledged for m04a_leovic
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m04a_leovic
+native DialogueManager opens camera for m04b
+client readiness acknowledged for m04b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m04b
+native DialogueManager opens camera for m04c
+client readiness acknowledged for m04c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m04c
+native DialogueManager opens camera for m04c_leovic
+client readiness acknowledged for m04c_leovic
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m04c_leovic
+native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m_menu
+native DialogueManager opens camera for m_questions
+client readiness acknowledged for m_questions
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m_questions
+native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m05a
+native DialogueManager opens camera for m05a_unknown
+client readiness acknowledged for m05a_unknown
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m05a_unknown
+native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m05b
+native DialogueManager opens camera for m05b_resident
+client readiness acknowledged for m05b_resident
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m05b_resident
+native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m05c
+native DialogueManager opens camera for m05c_leovic
+client readiness acknowledged for m05c_leovic
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m05c_leovic
+native DialogueManager opens camera for m05c_magistrat
+client readiness acknowledged for m05c_magistrat
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m05c_magistrat
+native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m05d
+native DialogueManager opens camera for m06
+client readiness acknowledged for m06
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m06
+native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m06_registered
+native DialogueManager opens camera for m06a
+client readiness acknowledged for m06a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m06a
+native DialogueManager opens camera for m06b
+client readiness acknowledged for m06b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m06b
+native DialogueManager opens camera for m06c
+client readiness acknowledged for m06c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m06c
+native DialogueManager opens camera for m07
+client readiness acknowledged for m07
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m07
+native DialogueManager opens camera for m07a
+client readiness acknowledged for m07a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m07a
+native DialogueManager opens camera for m07b
+client readiness acknowledged for m07b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m07b
+native DialogueManager opens camera for m07c
+client readiness acknowledged for m07c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at m07c
+native DialogueManager opens camera for f_menu
+client readiness acknowledged for f_menu
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f_menu
+native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f_questions
+native DialogueManager opens camera for f02
+client readiness acknowledged for f02
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f02
+native DialogueManager opens camera for f03
+client readiness acknowledged for f03
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f03
+native DialogueManager opens camera for f03_prefer
+client readiness acknowledged for f03_prefer
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f03_prefer
+native DialogueManager opens camera for f04
+client readiness acknowledged for f04
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f04
+native DialogueManager opens camera for f04_return
+client readiness acknowledged for f04_return
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f04_return
+native DialogueManager opens camera for f05
+client readiness acknowledged for f05
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f05
+native DialogueManager opens camera for f05_short
+client readiness acknowledged for f05_short
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f05_short
+native DialogueManager opens camera for f06
+client readiness acknowledged for f06
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f06
+native DialogueManager opens camera for f06a
+client readiness acknowledged for f06a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f06a
+native DialogueManager opens camera for f06b
+client readiness acknowledged for f06b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f06b
+native DialogueManager opens camera for f06c
+client readiness acknowledged for f06c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f06c
+native DialogueManager opens camera for f06d
+client readiness acknowledged for f06d
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f06d
+native DialogueManager opens camera for f_report
+client readiness acknowledged for f_report
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f_report
+native DialogueManager opens camera for f07
+client readiness acknowledged for f07
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f07
+native DialogueManager opens camera for f07a
+client readiness acknowledged for f07a
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f07a
+native DialogueManager opens camera for f07b
+client readiness acknowledged for f07b
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f07b
+native DialogueManager opens camera for f07c
+client readiness acknowledged for f07c
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at f07c
+native DialogueManager opens camera for post_very_friendly
+client readiness acknowledged for post_very_friendly
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at post_very_friendly
+native DialogueManager opens camera for post_friendly
+client readiness acknowledged for post_friendly
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at post_friendly
+native DialogueManager opens camera for post_neutral
+client readiness acknowledged for post_neutral
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at post_neutral
+native DialogueManager opens camera for post_unfriendly
+client readiness acknowledged for post_unfriendly
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at post_unfriendly
+native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at post_menu
+native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
+Nexus checkpoint: real Nexus snapshot preserves session, camera actor and choices at post_gift
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+Nexus checkpoint: periodic save keeps the escort walking without restarting navigation
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+Nexus checkpoint: real final profile save still suspends and closes PQ02
+Nexus checkpoint: final save only closes its owner
+Nexus checkpoint: first click queued before periodic save
+Nexus checkpoint: periodic save retains a first click queued before actor creation
+native DialogueManager opens camera for a01
+client readiness acknowledged for a01
+Nexus checkpoint: queued first click still opens the first page after the checkpoint
+Frame counts={class_3222['PQ02_Observer'/25, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=0, class_3222['PQ02_B'/24, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=1, class_3222['PQ02_A'/23, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=115}
+Native Fabric 1.21.11 / EasyNPC 7.16, HF12 classes preserved except the two authorized Gautier timing classes; production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

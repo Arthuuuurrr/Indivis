@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-31",
+  "user_report": "Arthur reports that the Leovic menu still closes with the same symptom after HF4; no new logs requested or supplied.",
+  "earlier_logs_date": "2026-10-29",
+  "earlier_logs_mod_revision": "HF3",
+  "earlier_logs_reason": "ECRAN_FERME",
+  "baseline_hf4_sha256": "a401eec8b5fbe1396c651715cd457a01ff86cb531c5bcc5686352b44a9f19285",
+  "reproduction": "Acknowledged native capture already containing a quote and a choice is removed by setScreen(null); b10 emits ECRAN_FERME. Short foreign-menu visit between ticks reproduces it too.",
+  "original_live_caller_identified": false,
+  "change": "Pre-removal guard scoped to PQ02 session and UUID; retain deliberate close and native foreign menu return.",
+  "gautier": "Unchanged byte-for-byte."
+}

@@ -1,0 +1,13 @@
+{
+  "pack": {
+    "description": "Indivis — Core 1.5.7 — norme v2 + Séquence I — candidat SI1 — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — HF5 : proximité et reprise Géraud — HF6 : questions et enchaînements — HF7 : approche de Gautier et capture des dialogues — HF9 : blocs de lecture et file de doublage — QMARK2 : ! personnels des donneurs du core — PQ02-R1 : Le registre du Port v1.0 — HF1 : commandes de préparation adaptées aux repères",
+    "min_format": [
+      94,
+      1
+    ],
+    "max_format": [
+      94,
+      1
+    ]
+  }
+}

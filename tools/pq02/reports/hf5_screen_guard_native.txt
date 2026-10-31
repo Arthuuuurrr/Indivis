@@ -1,0 +1,66 @@
+PASS 63 native checks
+screen HF5: la session privée est confirmée avant le retrait simulé
+screen HF5: première réplique et réponse déjà présentes dans b10
+screen HF5: le mixin de production est réellement appliqué à setScreen par Knot
+screen HF5: retrait extérieur 0 bloqué avant removed
+screen HF5: retrait extérieur 1 bloqué avant removed
+screen HF5: retrait extérieur 2 bloqué avant removed
+screen HF5: retrait extérieur 3 bloqué avant removed
+screen HF5: retrait extérieur 4 bloqué avant removed
+screen HF5: retrait extérieur 5 bloqué avant removed
+screen HF5: retrait extérieur 6 bloqué avant removed
+screen HF5: retrait extérieur 7 bloqué avant removed
+screen HF5: retrait extérieur 8 bloqué avant removed
+screen HF5: retrait extérieur 9 bloqué avant removed
+screen HF5: retrait extérieur 10 bloqué avant removed
+screen HF5: retrait extérieur 11 bloqué avant removed
+screen HF5: retrait extérieur 12 bloqué avant removed
+screen HF5: retrait extérieur 13 bloqué avant removed
+screen HF5: retrait extérieur 14 bloqué avant removed
+screen HF5: retrait extérieur 15 bloqué avant removed
+screen HF5: retrait extérieur 16 bloqué avant removed
+screen HF5: retrait extérieur 17 bloqué avant removed
+screen HF5: retrait extérieur 18 bloqué avant removed
+screen HF5: retrait extérieur 19 bloqué avant removed
+screen HF5: retrait extérieur 20 bloqué avant removed
+screen HF5: retrait extérieur 21 bloqué avant removed
+screen HF5: retrait extérieur 22 bloqué avant removed
+screen HF5: retrait extérieur 23 bloqué avant removed
+screen HF5: retrait extérieur 24 bloqué avant removed
+screen HF5: retrait extérieur 25 bloqué avant removed
+screen HF5: retrait extérieur 26 bloqué avant removed
+screen HF5: retrait extérieur 27 bloqué avant removed
+screen HF5: retrait extérieur 28 bloqué avant removed
+screen HF5: retrait extérieur 29 bloqué avant removed
+screen HF5: retrait extérieur 30 bloqué avant removed
+screen HF5: retrait extérieur 31 bloqué avant removed
+screen HF5: retrait extérieur 32 bloqué avant removed
+screen HF5: retrait extérieur 33 bloqué avant removed
+screen HF5: retrait extérieur 34 bloqué avant removed
+screen HF5: session et version de page intactes après les retraits répétés
+screen HF5: aucune réplique ni réponse perdue
+screen HF5: aucune fausse fin ECRAN_FERME envoyée
+screen HF5: Échap volontaire ferme réellement la capture
+screen HF5: Échap reste transmis au serveur
+screen HF5: la session privée est confirmée avant le retrait simulé
+screen HF5: première réplique et réponse déjà présentes dans b10
+screen HF5: fin serveur conservée sans réouverture
+screen HF5: la session privée est confirmée avant le retrait simulé
+screen HF5: première réplique et réponse déjà présentes dans b10
+screen HF5: un inventaire ou menu étranger peut remplacer la capture
+screen HF5: fermeture du menu étranger autorisée
+screen HF5: retour natif b10 après le menu étranger conservé
+screen HF5: la session privée est confirmée avant le retrait simulé
+screen HF5: première réplique et réponse déjà présentes dans b10
+screen HF5: menu étranger furtif entre deux ticks : retour natif conservé
+screen HF5: la session privée est confirmée avant le retrait simulé
+screen HF5: première réplique et réponse déjà présentes dans b10
+screen HF5: capture marquée volontairement fermée libérée
+screen HF5: la session privée est confirmée avant le retrait simulé
+screen HF5: première réplique et réponse déjà présentes dans b10
+screen HF5: une autre session n’hérite pas de la protection PQ02
+screen HF5: la session privée est confirmée avant le retrait simulé
+screen HF5: première réplique et réponse déjà présentes dans b10
+screen HF5: nettoyage de connexion libère la fenêtre
+Frame counts={class_3222['PQ02_A'/170, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=0, class_3222['PQ02_B'/171, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=0, class_3222['PQ02_Observer'/172, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=0}
+Native Fabric 1.21.11 / EasyNPC 7.16, HF12 classes preserved except the two authorized Gautier timing classes; production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

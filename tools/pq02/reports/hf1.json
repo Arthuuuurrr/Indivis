@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "revision": "PQ02 R1 HF1",
+  "r1_core_delta": {
+    "changed": [
+      "pack.mcmeta",
+      "data/capitale/function/pq02/admin/preparer_guide_historique.mcfunction"
+    ],
+    "added": [
+      "data/capitale/function/pq02/admin/preparer_parcours.mcfunction",
+      "data/capitale/function/pq02/admin/diagnostic_points.mcfunction",
+      "data/capitale/function/pq02/admin/afficher_points.mcfunction",
+      "data/capitale/function/pq02/admin/masquer_points.mcfunction"
+    ],
+    "removed": [],
+    "unchanged": 11334
+  },
+  "hc_quetes_identical_to_r1": true,
+  "source_gameplay_and_mixins_unchanged": [
+    "src/Pq02Rules.java",
+    "src/Pq02Motion.java",
+    "src/Pq02Pacing.java",
+    "src/Pq02Data.java",
+    "src/mixin/Pq02WaypointMixin.java",
+    "src/mixin/Pq02DialogueCloseMixin.java",
+    "src/mixin/Pq02VisibilityMixin.java",
+    "src/mixin/Pq02EntityMixin.java"
+  ],
+  "r1_pq02_compiled_entries_changed": [
+    "net/hautecapitale/quetes/sequence/Pq02Client.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$1.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$View.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime.class"
+  ],
+  "r1_pq02_compiled_entries_identical": [
+    "indivis_pq02.mixins.json",
+    "indivis_pq02_graph.json",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02DialogueCloseMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02EntityMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02VisibilityMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02WaypointMixin.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Choice.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Graph.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Node.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data.class",
+    "net/hautecapitale/quetes/sequence/Pq02Motion$Port.class",
+    "net/hautecapitale/quetes/sequence/Pq02Motion.class",
+    "net/hautecapitale/quetes/sequence/Pq02Pacing$Frame.class",
+    "net/hautecapitale/quetes/sequence/Pq02Pacing.class",
+    "net/hautecapitale/quetes/sequence/Pq02Rules$Delta.class",
+    "net/hautecapitale/quetes/sequence/Pq02Rules.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$Actor.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$Near.class"
+  ],
+  "new_admin_classes": [
+    "net/hautecapitale/quetes/sequence/Pq02Setup$Scan.class",
+    "net/hautecapitale/quetes/sequence/Pq02Setup.class"
+  ],
+  "patch_applied_to_original_copies": true,
+  "all_applied_files_equal_output": true,
+  "global_entity_scan_added_to_tick": false
+}
