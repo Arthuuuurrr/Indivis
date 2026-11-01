@@ -1,75 +1,91 @@
-# PQ02 R1 HF8 — rapport de correction et de validation
+# Indivis — PQ02 R1 HF9 : pauses, marche et caméras
 
-Livraison du 1er novembre 2026, Fabric/Minecraft 1.21.11, Java 21. Version installable destinée à la recette sur le serveur ; aucun déploiement en production ni essai graphique sur la carte Indivis effectué ici.
+Date : 1er novembre 2026. Minecraft/Fabric **1.21.11**, Java **21**.
 
-## Règle validée avec l’utilisateur
+## Installation depuis HF8 + Fusion C1
 
-Le kit Work v1.2 et le script intégral v1.0 fournis ont été lus. Ils contenaient encore le don refusable/reportable. La précision du 1er novembre prévaut : **les 50 Martins d’Or sont versés systématiquement pendant la scène F06, avant la réponse, une seule fois par personnage**. Aucun retour auprès du Léovic permanent n’est requis.
+**Seul le JAR de quêtes change, sur le serveur et sur chaque client. Aucune commande, liaison, pose de PNJ ou réinitialisation à refaire.** Remplacer l’ancien JAR par `haute-capitale-quetes-HF12-PQ02-R1-HF9-1.21.11.jar`, garder les deux datapacks actuels et redémarrer complètement serveur et clients.
 
-Les quatre réponses sont conservées : curiosité (0/0), embarras (0/0), reconnaissance (+1/+1) et « Je ne demandais pas votre charité. » (−1/−1). Les pièces restent acquises dans les quatre cas. La formulation embarrassée et la réponse correspondante de Léovic ont été adaptées pour retirer le refus ; ces adaptations sont identifiées dans le script de travail v1.1 et `editorial_hf8.json`. Le script v1.0 fourni n’est pas écrasé.
+`PQ02_HF9.zip` contient `mods/` et la documentation. L’archive complète ajoute les mêmes datapacks HF8/Fusion C1, ainsi que les dossiers `serveur/` et `client/`. Les noms HF8 des datapacks sont intentionnels : les fichiers sont strictement conservés. Un seul mod `haute_capitale_quetes` est livré ; aucun compagnon ni dépendance n’est ajouté.
 
-## Changement de déroulement
+## Constats et modifications
 
-Après l’inscription et la marche M–P, les questions de F restent disponibles. Entrer dans F06 remet la bourse et présente A/B/C/D. Chaque réponse mène à sa réplique de Léovic puis à F07. Il n’y a plus de deuxième menu pour accepter/refuser, ni d’offre différée après la quête. Ouvrir une question pratique, un menu administratif ou charger un personnage ne verse pas d’argent.
+| Retour | Cause constatée | HF9 |
+| --- | --- | --- |
+| Absence de pauses de lore | D/H étaient des points de transit sans arrêt narratif ; les questions exigeaient un clic pendant la marche. | Arrêt réel à D puis H, orientation vers le joueur et ouverture des répliques existantes à proximité. |
+| Marche lente et arrêts entre repères | Consigne 0,8, arrêt/annulation de vitesse à chaque arrivée, prochain trajet au tick suivant ; relance inactive toutes les 20 ticks. | Consigne 1,2, soit +50 % ; passage au trajet suivant dans le même tick sans annuler l’élan ; relance inactive après 4 ticks au maximum. |
+| Cadrage de l’entretien | Ancre commune basse et profil générique avec décalage de visée ; un log signalait une caméra hors de portée. | Ancre centrée entre les deux PNJ à 1,55 bloc au-dessus de leur niveau moyen ; profils b10 propres à l’entretien, visée centrée et décalage latéral réduit ; repli sur un interlocuteur accessible. |
 
-Le versement utilise la fonction réelle du core et l’item `capitale_currency:martin_dor`, 50 unités. Le verrou `CAP_LEOVIC_GIFT` est propre au personnage Nexus. La fonction exige l’inscription validée, la scène 90 et le propriétaire de dialogue PQ02. L’achèvement exige le don reçu et la décision F06 ; le moteur ne peut plus terminer une nouvelle scène non payée.
+### Pauses de lore
 
-Les gains antérieurs restent conditionnels : A01-A +1 réputation/+1 impression, T04b-A +1/+1, M04-A 0/+1. F06-C +1/+1 et F06-D −1/−1 restent exclusifs. La réputation totale de PQ02 reste −1 à +3 ; l’impression globale −1 à +4. Aucun +5 automatique n’est réintroduit. Les 165 XP, compétences et les deux tirages historiques du Port sont conservés, un tirage à la fin et l’autre avec la bourse. Le contenu des pools reste intact ; leurs éventuelles pièces sont distinctes des 50 Martins personnels.
+- **D** : réplique T01 sur l’activité du Port, avec les rubriques de questions existantes.
+- **H** : réplique T04 sur la Garde du Port et les responsabilités des corps, avec ses questions.
+- Les deux entrées proposent directement **« Reprenons notre route. »**. Échap permet aussi de poursuivre. Les sujets facultatifs et leurs conditions ne deviennent pas obligatoires.
+- La pause attend le joueur : jusqu’à quatre blocs, dans la limite de la portée configurée, sans remplacer une autre conversation ouverte. Un texte bref au-dessus de la barre d’objets signale l’arrêt. Le joueur en retrait ne provoque pas une ouverture de caméra lointaine.
+- Aucun délai ne retire le texte. La pause est privée et ne déplace pas le Léovic public.
+- L’attente d’une pause non encore présentée est enregistrée dans le stockage de scène du personnage. Une sauvegarde/reprise la conserve ; après présentation ou départ volontaire, elle n’est pas rejouée.
+- Une ancienne escorte reprend à sa position et à son repère enregistrés. Les pauses déjà dépassées ne sont pas imposées rétroactivement.
 
-## Sauvegardes et compatibilité
+### Navigation
 
-Les 111 identifiants de nœud sont identiques à HF7 : 109 nœuds actifs et deux alias conservés uniquement pour les sauvegardes. `f_report` reprend à `f07` ; `post_gift` reprend au menu pratique sans versement. Une quête en cours à F06/F07 reçoit les pièces manquantes à la reprise de la scène, en conservant sa décision sociale. Une bourse déjà marquée reçue n’est pas recréée même si ses pièces ont été dépensées. Fermer/rouvrir, déconnecter ou sauvegarder/charger ne duplique pas le don.
+Le pathfinding reste celui d’EasyNPC/Minecraft, avec ses obstacles réels, ses objectifs A–P et sa suspension pendant les dialogues. Aucun déplacement de l’acteur par téléportation n’est ajouté. Les points ordinaires s’enchaînent ; D, H, M et P gardent leurs arrêts. Les pauses, un joueur éloigné, une erreur de chemin ou un repère indisponible arrêtent explicitement le guide.
 
-Pour un personnage ayant déjà terminé PQ02 avant HF8 : aucun recalcul de réputation, seconde récompense ou rattrapage automatique à la connexion. L’ancien menu de récupération est supprimé. Ce choix de migration conserve les dossiers historiques et ne relance pas une quête terminée.
+La relance plus courte s’applique **seulement à une navigation inactive**, au plus cinq demandes par seconde ; aucun recalcul périodique d’un chemin actif n’est ajouté. Les recherches de PNJ/repères, la visibilité et les marqueurs conservent leur architecture. La consigne +50 % ne constitue pas une mesure de vitesse sur la carte ni un résultat de FPS/MSPT.
 
-## Périmètre exact depuis HF7
+### Caméras
 
-| Fichier | Différence |
+L’entretien conserve les plans communs des échanges M01/M05c et les plans sur l’interlocuteur des autres blocs. Le point commun est remonté vers les visages, la visée n’a plus de biais horizontal, le plan commun est élargi selon la séparation des PNJ, les plans individuels réduisent le décalage d’épaule et la transition native reste progressive (450 ms). Les PNJ s’orientent vers leur interlocuteur.
+
+Les profils sont appliqués pendant l’ouverture de la seule session privée, puis l’ancienne configuration est immédiatement restaurée. Aucun réglage global ou fichier de configuration Dialogue n’est écrit. Le contrôleur b10 et son traitement des collisions restent utilisés. Si le point commun dépasse la portée d’ouverture, le cadrage utilise un acteur privé accessible ; si aucun ne l’est, le joueur doit se rapprocher sans perdre sa progression.
+
+**Le rendu n’a pas été inspecté dans un client graphique.** Les paramètres, le centrage, le choix de cible et la restauration de configuration ont été contrôlés ; les obstacles et angles réels doivent être vérifiés sur la carte Indivis.
+
+## Préservation
+
+- **249 entrées du JAR HF8 identiques**, 8 entrées modifiées, 1 ajout. La liste exacte figure dans `rapports/hf9_build.json`.
+- Tous les mixins, le client, PQ01/Gautier, le journal existant et la séquence I conservent leurs entrées binaires HF8. Aucun autre mod ne change.
+- **111 identifiants narratifs stables** ; seules les listes de réponses de T01 et T04 s’enrichissent de navigation. Les répliques du script, les autres nœuds et les décisions ne sont pas réécrits.
+- Les **50 Martins automatiques pendant F06**, les réponses, les gains conditionnels, le souvenir global et les gardes de récompense restent ceux de HF8. Aucune nouvelle récompense de lore.
+- Le **core HF8** et **hc_quetes Fusion C1** sont conservés **octet pour octet**. Les 70 fiches du journal, les corrections de Clément, Hugues et MQ01–MQ03 ne sont pas réécrits.
+- Aucun objectif scoreboard, commande d’installation ou repère n’est ajouté ou renommé. Le nouveau champ d’attente est dans le stockage de scène déjà cloisonné par personnage et propriétaire.
+
+## Résultats des contrôles exécutés
+
+| Banc sur le candidat livré | Résultat |
 | --- | --- |
-| JAR de quêtes | 4 entrées recompilées/modifiées : métadonnées, graphe, runtime PQ02 et sa classe interne. Les 253 autres entrées sont strictement identiques, dont clients, Gautier, règles, moteur de déplacement, sauvegarde Nexus et mixins. Les instructions de la classe interne de navigation sont identiques à HF7 (`javap -p -c`) ; seules ses références de lignes compilées changent. |
-| Core HF1 → HF8 | Seulement `pq02/gift_once_self`, `pq02/complete_once_self` et `pack.mcmeta`. Les 11337 autres entrées sont identiques. |
-| Journal R1 → HF8 | Description de la bourse dans la définition PQ02 et métadonnées. Identifiants, objectifs, conditions, plages et autres récompenses conservés. |
-| Texte PQ02 | 99 nœuds hors don/retrouvailles inchangés ; 691 positions de lignes de script conservées. Chaque adaptation est recensée. |
+| Compilation Java 21, assemblage du JAR HF8 et conservation | PASS |
+| Conservation/statique | **394 contrôles PASS** |
+| Règles Java et politique Nexus | **145 assertions PASS**, dont 108 combinaisons de décisions |
+| Serveur Fabric réel, JAR de production et mixins, fonctions core et Fusion C1 | **1710 assertions PASS**, dont **88 propres à HF9** et **105 propres à C1** |
+| Pipeline de messages et état b10 natifs sur les 111 nœuds | **566 assertions PASS** |
+| Registre de quêtes réel | **70 fiches, 0 erreur** |
+| Chargement des fonctions incluses dans le banc | **0 erreur de parsing**, 7832 fonctions incluses |
+| Exceptions du runtime PQ02 | **0** |
 
-PQ01 n’est pas réécrite : Hugues garde l’accroche, cinq questions et son congé ; le seul retrait éditorial reste le choix 6. Le correctif antérieur de Gautier est conservé à l’identique. Les fichiers de MQ01–MQ03 restent identiques à HF7. Le retour MQ03 vers Althéon à 10/20/30, puis les Sentinelles et l’Archivaire à 40/50, la clôture et MQ04 sont exécutés dans les bancs. Les marqueurs de quête et repères A–P ne sont pas déplacés. Aucune recherche ni boucle de versement n’est ajoutée au tick.
+Le parcours chronologique démarre par les interactions de PNJ et rejoue **deux escortes A–P**. Il contrôle les deux pauses chez chaque joueur, six secondes de maintien du dialogue à chaque pause, la reprise explicite et par Échap, une reprise disque Nexus avant l’ouverture d’une pause, les sauvegardes périodiques, les choix, l’inscription et les 50 Martins. Il vérifie aussi les cadrages paramétrés b10 et leur repli à portée, l’identité du guide privé, la stabilité du PNJ public, la suite auprès d’Aurèle, Hugues et le retour MQ03 Althéon → Archives → MQ04.
 
-## Tests exécutés sur les artefacts livrés
+Full integration core ticks=839, narrative interleavings=251. Les 105 cas C1 rejouent notamment insignes perdus, paiement des dix Martins, refus puis acceptation d’Aurèle, persistance du drapeau et nettoyage des documents de branches à deux joueurs.
 
-| Suite | Résultat |
+### Limites explicites
+
+Le monde est une fixture locale, pas la carte Indivis. Les connexions, l’accusé de réception client et la sélection Nexus sont synthétiques ; le writer/loader OPT3 est réellement exécuté. Les joueurs du test ont les permissions nécessaires aux hooks de profils fournis. Le pipeline client est testé sans moteur graphique. Monnaie remplacée par des pépites d’or, compétences/bonus par compteurs ; identité et mmospawn simulés ; sept récompenses d’équipement de mods absents ne sont pas exercées. **Aucun substitut de test n’est livré.** Le seul message ERROR du serveur de test est une récupération de clé Yggdrasil indisponible dans cet environnement ; aucun échec PQ02 ou de fonction n’est masqué.
+
+Pas de test en jeu sur le serveur utilisateur, de rendu graphique des caméras, de doublage réel, ni de benchmark FPS/MSPT annoncé. Les preuves HF8 antérieures sont historiques et ne sont pas comptées comme de nouveaux tests HF9.
+
+## Recette visuelle restante
+
+1. Sur un personnage qui n’a pas dépassé D/H, laisser Léovic marcher puis vérifier ses deux arrêts, le temps de lecture et les questions. Tester « Reprenons notre route. » et Échap.
+2. Rester quelques blocs en retrait pendant un arrêt, puis s’approcher. Vérifier qu’une autre conversation ouverte reste prioritaire.
+3. Vérifier la marche entre les repères réels, notamment virages, marches et différences de hauteur.
+4. Pendant M01/M05c puis les réponses au magistrat, inspecter les visages, les décors et les collisions de caméra avec le modpack réel.
+5. À deux joueurs, vérifier à l’écran les copies privées et les pauses indépendantes ; terminer sans revenir pour recevoir les 50 Martins.
+
+## Empreintes SHA-256
+
+| Fichier | SHA-256 |
 | --- | --- |
-| pq02_full_system_hf8 | **PASS 1475** |
-| merged_native_hf8 | **PASS 2854** |
-| hf8_profile_checkpoint_native | **PASS 398** |
-| hf8_handoff_native | **PASS 301** |
-| client_protocol | **PASS 566** |
-| static | **PASS 269** |
-| java_rules | **PASS 145** |
-| prologue_static | **PASS 388** |
-| startup | **PASS 9** |
-| duplicate_companion_guard | **PASS 1** |
+| `haute-capitale-quetes-HF12-PQ02-R1-HF9-1.21.11.jar` | `bce5ff70728f9e72617db734ecf83f1043fe343687a3806c3c3cd8841bdcae11` |
+| `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8.zip` (inchangé) | `6ff671f7b71ff696980b1fdfa4302481dec30cac7db8eca6e0fb2c9bcd4a9aa6` |
+| `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1.zip` (inchangé) | `d9a0fb0d0aecd0eb4f9bc64f9cb7bae932ddaaa7f67273b042512c22ff9e67aa` |
 
-Le banc complet conserve les JAR de quêtes et Dialogue d’origine de la version testée, avec leurs métadonnées, initialiseurs serveur et mixins, et active EasyNPC + ConfigUI. Le véritable `capitale:core/tick` tourne **773 fois**, avec **245 intercalations entre opérations narratives**. Deux joueurs suivent naturellement les 18 indices A–P. Les échanges au magistrat, l’ascenseur, la fin, les retrouvailles facultatives, le chargement Nexus A–B–A et l’offre suivante d’Aurèle sont contrôlés. Les parcours visitent 90 pages distinctes et testent une fermeture/réouverture native sur 52 pages ; les listes exactes figurent dans `hf8.json`.
-
-La suite de branches exige la destination de chacune des **280 transitions explicites** des 111 enregistrements. Les deux alias ne présentent pas leur ancien dialogue. Les **76 contrôles ciblés du versement** sont exécutés dans le banc complet et dans celui des branches : les quatre réponses, argent avant choix, fermeture, disque Nexus réel, fin sans retour, dix anciennes positions de scène, absence de double paiement, argent déjà dépensé, ancien dossier terminé et refus d’achèvement impayé.
-
-Le banc de sauvegarde vérifie les 111 positions, les sessions, jetons et acteurs pendant les instantanés périodiques Nexus ; la sauvegarde finale conserve son comportement de suspension. Le banc de transitions couvre les départs/reprises acceptés et les interruptions sans progression implicite. Les 108 combinaisons de décision font partie des 145 vérifications Java. L’analyse du prologue couvre 1 291 ressources de PQ01–PQ05 et ne trouve aucune référence littérale interne manquante.
-
-Les contrôles de protocole utilisent l’état et la capture b10 ainsi que les vrais événements Fabric, avec écran et réseau de test. Le démarrage du JAR intact passe ses neuf contrôles, dont le mixin sur la classe OPT3 originale ; Fabric refuse le compagnon PQ02 obsolète en doublon. Les empreintes exactes sont dans `SHA256SUMS.txt` et `verification/hf8.json`.
-
-## Limites des vérifications
-
-Pas de client graphique ni de carte Indivis chargée ; cadrage, obstacles réels, FPS du modpack et voix non testés.
-
-Connexions, réception des chunks, sélection Nexus et confirmation de disponibilité caméra synthétiques. Rédacteur/chargeur/politique/fichiers de profils Nexus OPT3 réels.
-
-Monnaie remplacée par des pépites d’or dans le banc ; CapSkills et tirages aléatoires comptés par fonctions de test. Ces substitutions ne sont pas livrées.
-
-Le mode complet active les initialiseurs de quêtes/Dialogue et le tick core réel avec ses dépendances transitives utiles. Les initialisations comptes/réseau Nexus, RPG et Puffish restent isolées ou déclarées par fixtures ; le modpack complet n’est pas exécuté.
-
-Les 280 transitions sont testées par pages initialisées séparément. Les deux parcours chronologiques utilisent les choix et la marche après initialisation, et ne couvrent pas toutes les combinaisons.
-
-Ces limites concernent le banc ; les substitutions ne sont pas installées dans les JAR/datapacks livrés. La recette graphique sur la carte reste décrite dans `INSTALLATION.md`. Les rapports HF1–HF7 sont historiques et leurs anciennes branches de don ne décrivent plus HF8.
-
-## Installation
-
-Remplacer le JAR de quêtes sur serveur et clients, le core sur serveur et le datapack du journal sur serveur, puis redémarrer complètement. **Aucune commande, pose, liaison ou réinitialisation à refaire.** Le mod reste intégré sous un seul identifiant. Lire `INSTALLATION.md` pour les noms exacts et `COMMANDES_PQ02.md` pour une première préparation éventuelle.
+Les preuves détaillées sont dans `rapports/`. Les instructions de première préparation restent dans `COMMANDES_PQ02.md` ; elles ne sont pas à refaire pour HF9.

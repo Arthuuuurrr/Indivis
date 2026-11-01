@@ -1,6 +1,8 @@
-# PQ02 R1 HF8 — commandes et repères
+# PQ02 R1 HF9 — commandes et repères
 
-Minecraft/Fabric **1.21.11**, Java **21**. Installer les trois fichiers HF8 selon `INSTALLATION.md`. **Aucune commande n’a changé depuis HF1/HF7 et aucune préparation déjà faite n’est à refaire.** HF8 verse les 50 Martins pendant F06 ; les commandes administratives ne donnent ni argent ni progression.
+Minecraft/Fabric **1.21.11**, Java **21**. Depuis HF8 + Fusion C1, **seul le JAR de quêtes change sur serveur et clients**. Les deux datapacks et toutes les commandes ci-dessous sont conservés. **Aucune préparation déjà faite n’est à refaire.**
+
+Les pauses D/H sont désormais effectives : Léovic attend, présente le lore à proximité et propose la reprise de la route. Aucun marker ne doit être ajouté ou déplacé. Les commandes administratives ne donnent ni argent ni progression.
 
 ## Préparation initiale
 
@@ -12,7 +14,7 @@ Minecraft/Fabric **1.21.11**, Java **21**. Installer les trois fichiers HF8 selo
 | Voir les coordonnées et l’état de chaque repère | `/function capitale:pq02/admin/diagnostic_points` | Dans la dimension du parcours ; lecture seule |
 | Voir l’état de son personnage et de sa scène | `/function capitale:pq02/admin/diagnostic` | Avec le personnage concerné |
 
-Les liaisons déjà correctes sont conservées : inutile de les refaire pour appliquer HF8. La préparation ne place aucun nouveau marker, ne déplace aucun waypoint et ne démarre pas la quête. Elle ne donne ni progression, ni réputation, ni argent.
+Les liaisons déjà correctes sont conservées : inutile de les refaire pour appliquer HF9. La préparation ne place aucun nouveau marker, ne déplace aucun waypoint et ne démarre pas la quête. Elle ne donne ni progression, ni réputation, ni argent.
 
 ## Points utilisés
 

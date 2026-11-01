@@ -1,26 +1,43 @@
-# Indivis — PQ02 R1 HF8 : installation
+# Indivis — PQ02 R1 HF9 : installation
 
-Cible : Minecraft/Fabric **1.21.11**, Java **21**. HF8 reprend les corrections de dialogue, d’escorte et de sauvegarde de HF7 et applique la décision du 1er novembre : **50 Martins versés pendant F06, quelle que soit la réponse**, sans retour pour récupérer la bourse.
+Cible : Minecraft/Fabric **1.21.11**, Java **21**. HF9 ajoute les pauses de lore D/H, accélère la marche et ajuste les cadrages de l’entretien. Les dialogues et récompenses HF8, dont les 50 Martins systématiques pendant F06, sont conservés.
 
-## Mise à jour depuis HF7 ou une version PQ02 précédente
+## Mise à jour depuis HF8 avec Fusion C1
 
-**Aucune commande, liaison, pose de PNJ ou remise à zéro à refaire.** Installer les trois fichiers suivants, après arrêt du serveur et sauvegarde cohérente du monde, des profils Nexus et des configurations.
+**Remplacer uniquement le mod de quêtes sur le serveur et sur chaque client. Aucune commande, liaison, pose de PNJ ou remise à zéro à refaire.**
 
-| Destination | Fichier | Rôle de la mise à jour |
-| --- | --- | --- |
-| Serveur et chaque client : `mods/` | `haute-capitale-quetes-HF12-PQ02-R1-HF8-1.21.11.jar` | Remplace le précédent mod de quêtes intégré ; versement et dialogues F06 corrigés. |
-| Serveur : `<monde>/datapacks/` | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8.zip` | Remplace le core HF1 : versement limité à la scène et achèvement conditionné au don reçu. |
-| Serveur : `<monde>/datapacks/` | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8.zip` | Remplace `hc_quetes` R1 : description de la récompense actualisée dans le journal. |
+1. Arrêter serveur et clients ; conserver une sauvegarde cohérente du monde, des profils Nexus et des configurations.
+2. Retirer l’ancien JAR `haute-capitale-quetes-HF12-PQ02-R1-HF8-1.21.11.jar` et mettre `haute-capitale-quetes-HF12-PQ02-R1-HF9-1.21.11.jar` dans `mods/`, serveur et clients. Garder une seule version du mod `haute_capitale_quetes`.
+3. Conserver le core HF8 et `hc_quetes` **HF8 FUSION C1** actuellement installés : ils ne changent pas. Conserver NexusCharacters OPT3, Dialogue b10, EasyNPC et ConfigUI 7.16, RPG, monnaie et compétences.
+4. Redémarrer complètement serveur et clients. Un `/reload` ne recharge pas les classes Java.
 
-Décompresser `PQ02_HF8.zip` ou l’archive complète de livraison. Les deux ZIP de datapack contenus dedans ont `pack.mcmeta` à leur racine et peuvent être installés directement. Remplacer aussi toute ancienne copie décompressée du même pack. Le dossier `mods/` du correctif contient **un seul mod de quêtes**, identifiant `haute_capitale_quetes`, à copier sur serveur et clients.
+Le petit correctif `PQ02_HF9.zip` contient un dossier `mods/` et cette notice. Il n’ajoute aucun compagnon de quêtes. Les dépendances ne sont pas redistribuées.
 
-Conserver les autres mods déjà installés : NexusCharacters OPT3, Dialogue b10, EasyNPC et ConfigUI 7.16, RPG, monnaie et compétences. Retirer l’ancien compagnon `indivis-pq02` s’il subsiste. Les dépendances ne sont pas redistribuées. La monnaie livrée reste `capitale_currency:martin_dor` ; aucune substitution de test ne figure dans la livraison.
+## Archive complète ou installation antérieure
 
-Redémarrer complètement le serveur et les clients. Un simple `/reload` ne met pas à jour les classes et mixins. Reprendre le clic normal sur Léovic, avec le personnage concerné.
+L’archive complète contient le même JAR HF9 et les deux datapacks conservés :
+
+| Destination | Fichier |
+| --- | --- |
+| Serveur et clients : `mods/` | `haute-capitale-quetes-HF12-PQ02-R1-HF9-1.21.11.jar` |
+| Serveur : `<monde>/datapacks/` | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8.zip` |
+| Serveur : `<monde>/datapacks/` | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1.zip` |
+
+Les noms HF8 des datapacks sont intentionnels : leurs octets sont inchangés. Si ces deux versions sont déjà installées, ne pas les remplacer. Si elles manquent, remplacer les anciennes versions correspondantes ; les ZIP de datapack ont `pack.mcmeta` à leur racine et peuvent être posés directement. Retirer aussi une éventuelle ancienne copie décompressée du même pack.
+
+La fusion C1 préserve les modifications de Clément. Aucun fichier Nexus, Dialogue, RPG ou monnaie n’est fourni en remplacement. Retirer l’ancien compagnon `indivis-pq02` s’il subsiste d’une livraison ancienne. Aucune substitution de test ne figure dans la livraison.
+
+## Comportement à vérifier en jeu
+
+Aux points **D puis H**, la copie personnelle de Léovic s’arrête et se tourne vers le joueur. À quatre blocs maximum, sans autre conversation ouverte, elle propose les répliques de lore déjà écrites et les questions facultatives. Le joueur dispose de « Reprenons notre route. » ; Échap permet aussi de repartir. Aucun minuteur ne fait disparaître le texte. Si le joueur est en retrait, Léovic l’attend et un bref texte au-dessus de la barre d’objets signale son arrêt.
+
+Une escorte déjà engagée reprend à son point enregistré : les pauses déjà dépassées ne sont pas rejouées. Les échanges restent privés. Les conversations de lore restent accessibles en interagissant avec Léovic pendant la marche. Le versement des 50 Martins pendant F06 et les choix de réputation restent ceux de HF8.
+
+Les réglages de caméra utilisent le contrôleur b10 existant. Le centrage et les paramètres ont été contrôlés sur serveur ; le rendu final dépend de la carte, des collisions et du client et nécessite une vérification visuelle en jeu.
 
 ## Première préparation seulement
 
-Les commandes ci-dessous restent celles de HF1/HF7. Si elles ont déjà été faites correctement, passer directement au jeu.
+Les commandes ci-dessous restent celles de HF1/HF8. Si elles ont déjà été faites correctement, passer directement au jeu.
 
 ## Préparation des PNJ existants
 

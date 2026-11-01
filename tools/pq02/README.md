@@ -1,4 +1,30 @@
-# PQ02 R1 HF8 — Le registre du Port
+# PQ02 R1 HF9 — Le registre du Port
+
+HF9 conserve la quête HF8 opérationnelle et ajoute des pauses de lore aux repères D/H, une navigation 50 % plus rapide en consigne (0,8 → 1,2), l’enchaînement immédiat des points ordinaires et des profils b10 centrés lors de l’entretien avec le magistrat. Les conversations facultatives, sauvegardes par personnage, récompenses et les 111 identifiants narratifs restent compatibles.
+
+Depuis **HF8 + hc_quetes Fusion C1**, remplacer **seulement le JAR de quêtes** sur serveur et clients. Les deux datapacks sont strictement identiques. Toutes les commandes et liaisons restent valables. Voir `INSTALLATION.md`, `COMMANDES_PQ02.md` et `CORRECTIF_PQ02_HF9.md`.
+
+Les 50 Martins restent versés pendant F06 avant la réponse ; aucun retour n’est requis pour les récupérer. Les modifications de Clément restent dans le datapack Fusion C1. Les autres quêtes, PQ01 et les mixins existants sont conservés.
+
+## Reproduction HF9
+
+Prérequis : JAR HF8 exact dans `output/` (SHA-256 dans `reports/hf9_build.json`), core HF8 dans `output/`, archive Fusion C1 dans `hf9_inputs/`, JAR tiers autorisés dans `upload/` et `dependencies/`, et les outils C1 voisins sous `tools/hc_quetes_merge_c1/` dans GitHub. Les dépendances ne sont pas redistribuées. Les archives et sources historiques HF8 restent la base ; ne pas relancer `build.py` pour produire HF9.
+
+```sh
+python3 tools/pq02/prepare_runtime_hf9.py
+python3 tools/pq02/bootstrap_hf9.py
+python3 tools/pq02/build_hf9.py
+python3 tools/pq02/verify_hf9.py
+python3 tools/pq02/run_hf9.py
+python3 tools/pq02/run_hf9_protocol.py
+python3 tools/pq02/package_hf9.py
+```
+
+`run_hf9.py` part d’un monde de test neuf pour chaque exécution et réemploie la fixture C1. Les connexions et sélections Nexus y sont synthétiques ; les fonctions, sessions b10 et fichiers de profils sont réels. Aucun client graphique ni modpack complet de production n’est déclaré testé.
+
+## Historique HF8
+
+# Livraison HF8
 
 PQ02 est intégrée au seul mod de quêtes HF12 pour Fabric 1.21.11, serveur et clients. La version HF8 applique la précision utilisateur du 1er novembre : **50 Martins personnels versés systématiquement pendant F06**, avant la réponse ; curiosité/embarras neutres, reconnaissance +1/+1, réponse sèche −1/−1. Aucun refus/report ni retour pour récupérer la bourse.
 

@@ -14,7 +14,7 @@ final class Pq02EndToEndBench {
  static void check(boolean value,String label){ok(value,"PQ02 chronological: "+label);}
  static void initial(Object p){seed(p,30);for(String key:List.of("CAP_PQ2_NODE","CAP_PQ2_WP","CAP_PQ2_DA","CAP_PQ2_DG","CAP_PQ2_DM","CAP_PQ2_DD","CAP_PQ2_IMPR","CAP_PQ2_REG","CAP_PQ2_REW","CAP_PQ2_SENT","CAP_PQ2_ANECD","CAP_PQ2_PORT","CAP_PQ2_STATUS","CAP_LEOVIC_GIFT","CAP_PQ2_OFFER","REP_GARDEPORT","fixture_bonus","fixture_skills","CAPSK_REWARD_REGPORT","CAP_QUETEACTIVE"))score2(p,key,0);}
  static void start()throws Exception{
-  initial(a);initial(b);seed(observer,100);run(a,"function capitale:pq02/load");Pq02SetupBench.run();
+  initial(a);initial(b);seed(observer,100);run(a,"function capitale:pq02/load");Pq02SetupBench.run();Pq02PacingBench.rules();
   if(!Pq02FullSystemBench.ACTIVE)Pq02HandoffBench.installLookCallbacks();
   call(call(srv,"method_3760"),"method_14582",make("net.minecraft.class_11560",call(a,"method_7334")));
   score2(b,"CAP_RANGSOCIAL",30);score2(a,"CAP_RANGSOCIAL",0);
@@ -79,10 +79,10 @@ final class Pq02EndToEndBench {
  static void magistrate(Object p,boolean positive)throws Exception{
   settle(p);record(p);check(v(p).node.key.equals("t07"),"physical arrival at M opens its real pre-interview");
   choose(p,positive?1:2);forward(p);
-  check(v(p).focus==v(p).anchor&&v(p).actors.size()==2,"three-party camera uses both existing private characters");
+  check(v(p).focus==v(p).anchor&&v(p).actors.size()==2,"three-party camera uses both existing private characters");Pq02PacingBench.camera(p,true);
   if(positive)interrupt(p);
   forward(p);forward(p);forward(p);forward(p); // four interleaved speaker blocks -> m02
-  check(v(p).node.key.equals("m02"),"magistrate opening naturally reaches identity choice");
+  check(v(p).node.key.equals("m02"),"magistrate opening naturally reaches identity choice");Pq02PacingBench.camera(p,false);
   choose(p,positive?2:3);if(positive)interrupt(p);choose(p,positive?1:3);choose(p,positive?1:3);
   if(positive){forward(p);interrupt(p);forward(p);
    for(String key:List.of("m05a","m05a_unknown","m05b","m05b_resident","m05c","m05c_leovic","m05c_magistrat","m05d")){go(p,key);interrupt(p);}
@@ -131,7 +131,7 @@ final class Pq02EndToEndBench {
  }
  static boolean tick()throws Exception{
   if(done)return true;age++;if(age>2200)throw new AssertionError("chronological timeout step="+step+" A="+(v(a)==null?"none":v(a).failure)+" B="+(v(b)==null?"none":v(b).failure));
-  Pq02HandoffBench.follow(b);if(step!=1)Pq02HandoffBench.follow(a);production();
+  if(!Pq02PacingBench.behind)Pq02HandoffBench.follow(b);if(step!=1)Pq02HandoffBench.follow(a);production();Pq02PacingBench.tick();
   for(Object p:List.of(a,b)){View v=v(p);if(v!=null){(p==a?walkedA:walkedB).add(v.waypoint);if(age%20==0&&v.ui&&v.pendingNode==null)check(v.session==current(p),"periodic b10 verification retains "+v.node.key);}}
   if(step==0&&v(a).waypoint>=2){walkingTopics(a);interact(a,"leovic");pausedActor=v(a).actors.get("leovic").entity;pausedPosition=pos(pausedActor,w);pausedWaypoint=v(a).waypoint;step=1;age=0;}
   else if(step==1&&age==220){check(v(a).ui&&!v(a).walking&&v(a).session==current(a)&&pos(pausedActor,w).distance2(pausedPosition)<0.001,"long optional menu stays stationary through actual server and native DialogueManager ticks");diskResume();Pq02HandoffBench.nativeClose(a,"ESC");check(v(a).walking&&v(a).waypoint==pausedWaypoint,"long pause resumes its original waypoint");step=2;age=0;}
@@ -141,7 +141,7 @@ final class Pq02EndToEndBench {
    check(walkedA.size()>=16&&walkedB.size()>=16,"both physical routes passed their existing intermediate waypoints");
    evidence.add("Chronological visited pages="+visited);evidence.add("Native close/reopen pages="+interrupted);evidence.add("A waypoints="+walkedA+" B waypoints="+walkedB);
    // Existing targeted regressions complement the chronological paths, without rewriting those quests.
-   followingQuest();HuguesBench.runAll(a);Mq03Bench.runAll(a,observer);Pq02AutomaticGiftBench.runAll(a);done=true;
+   Pq02PacingBench.finished();followingQuest();HuguesBench.runAll(a);Mq03Bench.runAll(a,observer);Pq02AutomaticGiftBench.runAll(a);done=true;
   }
   return done;
  }
