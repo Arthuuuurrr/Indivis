@@ -1,0 +1,408 @@
+--- a/data/hc_quetes/function/aurele/interact.mcfunction
++++ b/data/hc_quetes/function/aurele/interact.mcfunction
+@@ -3,7 +3,7 @@
+ function hc_quetes:migration/ensure/arc_n
+ scoreboard players enable @s hcq_choix
+ # Q17 : La Bete blanche du Couperet (donnee par Aurele apres La route rouverte)
+-execute if predicate hc_quetes:migration/state/arc_a/10_to_ if predicate hc_quetes:migration/state/arc_n/0 run return run function hc_quetes:carrec/aurele/intro
++execute if predicate hc_quetes:migration/state/arc_a/10_to_ if predicate hc_quetes:migration/state/arc_n/neg1_to_0 run return run function hc_quetes:carrec/aurele/intro
+ execute if predicate hc_quetes:migration/state/arc_n/1_to_8 run return run function hc_quetes:carrec/aurele/en_cours
+ execute if predicate hc_quetes:migration/state/arc_n/20_to_22 run return run function hc_quetes:carrec/aurele/etat_b
+ execute if predicate hc_quetes:migration/state/arc_n/23 run return run function hc_quetes:carrec/aurele/b_retour
+--- a/data/hc_quetes/function/aurele/q12/recaisse.mcfunction
++++ b/data/hc_quetes/function/aurele/q12/recaisse.mcfunction
+@@ -1,4 +1,21 @@
+-execute unless items entity @s container.* capitale_currency:martin_dor run return run function hc_quetes:lib/dire {pnj:"Aurèle Bonnaire",t:"Vous avez perdu la caisse. Ça arrive, et ça se paie : j'en ai une autre en réserve, contre dix Martins. Le verre vient de loin et personne ne me le remplace. Revenez avec dix Martins et nous n'en reparlerons plus."}
+-clear @s capitale_currency:martin_dor 10
+-function hc_quetes:objets/q12_caisse
+-function hc_quetes:lib/dire {pnj:"Aurèle Bonnaire",t:"Une autre caisse, pesée et marquée comme la première. Dix Martins : le verre coûte. Je note la perte et je ne la commente pas — mais ne la perdez pas deux fois, je n'en ai pas de troisième."}
++# DÉFAUT REMONTÉ EN JEU : « on ne peut pas dépenser l'or du sac à dos (ça marche pour les sorts
++# qui consomment des runes dans le sac) ».
++#
++# Cause mesurée : « items entity @s container.* » ne voit que l'inventaire principal du joueur.
++# L'intérieur d'un sac à dos est un composant que le datapack ne sait ni lire ni vider. Les runes
++# font exception parce que Spell Engine lit le conteneur en Java, pas en commande — c'est pour ça
++# que le joueur voit les deux se comporter différemment, et il a raison.
++# Rien dans un datapack ne peut retirer une pièce du fond d'un sac. Ce qui était réparable, et
++# qui était le vrai problème, c'est le mur muet : Aurèle répondait « revenez avec dix Martins » à
++# un joueur qui les avait sous les yeux, dans son sac. Il le dit maintenant.
++#
++# Second défaut trouvé dans la même ligne : elle testait la PRÉSENCE d'un Martin, pas dix. Avec
++# trois Martins en poche, le test passait, le « clear 10 » n'en retirait que trois, et la caisse
++# était livrée pour trois. On compte maintenant pour de vrai : « clear … 0 » compte sans retirer.
++execute store result score #or hcm_tick run clear @s capitale_currency:martin_dor 0
++execute if score #or hcm_tick matches 10.. run return run function hc_quetes:aurele/q12/recaisse_paye
++# Rien du tout en poche : le refus d'origine, inchangé.
++execute if score #or hcm_tick matches 0 run return run function hc_quetes:lib/dire {pnj:"Aurèle Bonnaire",t:"Vous avez perdu la caisse. Ça arrive, et ça se paie : j'en ai une autre en réserve, contre dix Martins. Le verre vient de loin et personne ne me le remplace. Revenez avec dix Martins et nous n'en reparlerons plus."}
++# Entre 1 et 9 : on dit le compte, et on dit où regarder. C'est la ligne qui répond au défaut.
++function hc_quetes:lib/dire {pnj:"Aurèle Bonnaire",t:"Ce n'est pas dix. Je compte ce que vous avez sur vous, pas ce qui dort au fond d'un sac : si votre or est dans votre sac à dos, sortez-le et reposez-le-moi sur le comptoir. Le verre coûte dix Martins, et il les coûte aussi le mardi."}
++function hc_quetes:lib/note {t:"Martins comptés dans votre inventaire : il en faut dix. Les Martins rangés dans un sac à dos ne sont pas comptés — sortez-les du sac."}
+--- a/data/hc_quetes/function/aurele/q8/kill_vasca.mcfunction
++++ b/data/hc_quetes/function/aurele/q8/kill_vasca.mcfunction
+@@ -1,4 +1,21 @@
++# DÉFAUT REMONTÉ EN JEU : « la quête la mère Aveline compliquée à finir en prenant l'insigne
++# d'Orrin Vasca, car celui-ci ne drop pas son insigne à chaque fois, obligé d'attendre et de le
++# re-tuer ».
++#
++# Deux verrous mesurés, et le second est sans issue :
++#  1. l'horloge n'appelait ce fichier que pour « hcq_cqvcep02=5 » exactement. Vasca est un point
++#     permanent : on peut le tuer AVANT d'accepter la quête. Dans ce cas rien ne se passe, et le
++#     compteur de kill est purgé au tick suivant — d'où le « obligé de le re-tuer ».
++#  2. après une première conversion réussie l'étape vaut 6, donc le re-tuer ne redonnait plus
++#     RIEN. Si l'insigne avait été perdu entre-temps — et avec un sac plein « give » le jette au
++#     sol sans un mot — il était perdu pour toujours, et la quête de Maëlle bloquée sans recours.
++#
++# Corrigé : l'horloge appelle maintenant pour « hcq_cqvcep02=5..6 », et ce fichier est rejouable. Les
++# objets uniques ne sont donnés qu'à la première mort ; l'insigne, lui, est rendu à chaque mort
++# tant que Maëlle peut encore en avoir besoin.
+ scoreboard players set @s hcc_vasca 0
++# Deuxième mort ou plus : seul l'insigne est repris, et seulement s'il manque.
++execute if predicate hc_quetes:migration/state/arc_a/6_to_ run return run function hc_quetes:aurele/q8/rend_insigne
+ function hc_quetes:migration/write/arc_a/v6
+ function hc_quetes:objets/q8_boussole
+ function hc_quetes:objets/q8_insigne
+--- a/data/hc_quetes/function/carrec/aurele/refus.mcfunction
++++ b/data/hc_quetes/function/carrec/aurele/refus.mcfunction
+@@ -1,2 +1,6 @@
++# Le refus laisse une trace : hcq_n = -1 veut dire « offre declinee ». Sans cette ligne, refuser
++# n ecrivait aucun score, et le « ! » au-dessus d Aurele revenait pour toujours — c est le defaut
++# signale en jeu. L offre reste proposable : les branches du routeur acceptent -1..0.
++scoreboard players set @s hcf_cqvcbb01_ref 1
+ function hc_quetes:lib/dire {pnj:"Aurèle Bonnaire",t:"Alors je compte les jours sans barque. Cinq, demain. Je vous donnerai le chiffre chaque fois que vous passerez devant le comptoir ; c'est un défaut, et il n'y a pas de remède."}
+ function hc_quetes:lib/dire {pnj:"Aurèle Bonnaire",t:"Ne vous excusez pas, je vous prie. Vous avez rendu un frère à cette maison ; je ne fais pas payer deux fois la même reconnaissance. L'offre reste au comptoir, elle ne s'abîme pas. Allez manger chez Rosalinde — dites-lui que c'est sur mon ardoise, et dites-lui bien que je relirai l'ardoise."}
+--- a/data/hc_quetes/function/carrec/choix.mcfunction
++++ b/data/hc_quetes/function/carrec/choix.mcfunction
+@@ -1,7 +1,7 @@
+ # Chaque ligne re-verifie l'etat (et les objets portes) : les messages cliquables restent dans le tchat.
+-execute if score @s hcq_choix matches 1101 if predicate hc_quetes:migration/state/arc_n/0 if predicate hc_quetes:migration/state/arc_a/10_to_ run function hc_quetes:carrec/aurele/accepter
+-execute if score @s hcq_choix matches 1102 if predicate hc_quetes:migration/state/arc_n/0 run function hc_quetes:carrec/aurele/refus
+-execute if score @s hcq_choix matches 1103 if predicate hc_quetes:migration/state/arc_n/0 run function hc_quetes:carrec/aurele/question
++execute if score @s hcq_choix matches 1101 if predicate hc_quetes:migration/state/arc_n/neg1_to_0 if predicate hc_quetes:migration/state/arc_a/10_to_ run function hc_quetes:carrec/aurele/accepter
++execute if score @s hcq_choix matches 1102 if predicate hc_quetes:migration/state/arc_n/neg1_to_0 run function hc_quetes:carrec/aurele/refus
++execute if score @s hcq_choix matches 1103 if predicate hc_quetes:migration/state/arc_n/neg1_to_0 run function hc_quetes:carrec/aurele/question
+ execute if score @s hcq_choix matches 1104 if predicate hc_quetes:migration/state/arc_n/42 if items entity @s container.* *[custom_data~{hc_quete:"cqvcbb01_coffre"}] if items entity @s container.* *[custom_data~{hc_quete:"cqvcbb01_cote"}] run function hc_quetes:carrec/aurele/a_recompense
+ execute if score @s hcq_choix matches 1105 if predicate hc_quetes:migration/state/arc_n/23 if items entity @s container.* *[custom_data~{hc_quete:"cqvcbb01_cote"}] run function hc_quetes:carrec/aurele/b_recompense
+ execute if score @s hcq_choix matches 1106 if predicate hc_quetes:migration/state/arc_n/64 if items entity @s container.* *[custom_data~{hc_quete:"cqvcbb01_cote"}] run function hc_quetes:carrec/aurele/c_recompense
+--- a/data/hc_quetes/function/hector/q5/prend_insigne.mcfunction
++++ b/data/hc_quetes/function/hector/q5/prend_insigne.mcfunction
+@@ -1,6 +1,12 @@
++# L'ordre a été inversé, et c'est la correction d'un défaut signalé en jeu : « la remise à Hector
++# Valmont est impossible ». L'étape passait à 6 AVANT que l'insigne soit donné (il l'était deux
++# lignes plus bas). Avec un sac plein, l'objet n'entrait jamais dans l'inventaire — et le bouton de
++# remise, lui, exige l'insigne : il s'affichait et ne faisait rien, sans un mot d'explication.
++# Maintenant : on donne, on vérifie que c'est bien entré, et l'étape n'avance qu'après.
++function hc_quetes:objets/q5_insigne
++execute unless items entity @s container.* *[custom_data~{hc_quete:"sqvccr02_insigne"}] run return run function hc_quetes:lib/note {t:"Votre sac est plein : l'insigne est tombé à vos pieds. Faites de la place, ramassez-le, puis touchez le corps à nouveau."}
+ function hc_quetes:migration/write/arc_h/v6
+ scoreboard players set @s hcq_sqvccr02_o2 4
+ function hc_quetes:lib/note {t:"Erwann Brieuc, vingt ans, 3e patrouille. Son nom est frappé à la pointe sous le col de son tabard, comme on apprend à le faire le premier jour. Une note pliée serrée dans le poing droit, l'insigne encore accroché à la ceinture : les autres sont partis sans y toucher."}
+-function hc_quetes:objets/q5_insigne
+ function hc_quetes:objets/q5_note
+ function hc_quetes:lib/objectif {t:"Rapporter le registre et l'insigne à Hector."}
+--- a/data/hc_quetes/function/hector/q5/retour.mcfunction
++++ b/data/hc_quetes/function/hector/q5/retour.mcfunction
+@@ -1,3 +1,9 @@
++# Le filet qui debloque les joueurs DEJA coinces. Un joueur a signale que la remise etait
++# impossible : il etait a l etape 6 avec la scene entiere, le « ? » au-dessus d Hector et le bouton
++# affiche, mais l insigne n etait jamais entre dans son sac — l etape avancait avant le don (racine
++# corrigee dans prend_insigne). Pour celui-la, corriger la racine ne suffit pas : il est deja a 6.
++# Hector le lui redonne ici, en silence. Pas de « return run » : la scene doit continuer.
++execute unless items entity @s container.* *[custom_data~{hc_quete:"sqvccr02_insigne"}] run function hc_quetes:objets/q5_insigne
+ function hc_quetes:lib/dire {pnj:"Hector Valmont",t:"Donne. … Jour 1 à 8, signal levé chaque soir, rien à signaler. Jour 9, plus de sel. Jour 11, Lauzac se présente avec des hommes de mer et dit venir relever le poste. Il n'a pas de scellé. Bréhal n'ouvre pas. … Il n'a pas ouvert, soldat. Brave garçon. Et ils sont entrés quand même, par les perches, pendant qu'il tenait la porte."}
+ function hc_quetes:lib/dire {pnj:"Hector Valmont",t:"Un quartier-maître qui se présente sans scellé n'est plus un quartier-maître, c'est un homme devant une porte. Bréhal le savait par cœur, je le lui ai assez répété. Ça l'a tué et il a eu raison. Les deux à la fois. C'est comme ça que ça marche, et personne ne te le dit en t'engageant."}
+ execute if score @s hcq_sqvccr02_o1 matches 1 run function hc_quetes:lib/dire {pnj:"Hector Valmont",t:"Corvin tenait la tour, tu dis. Maître d'armes. Je l'ai formé lui aussi, avant Bréhal : des bras, pas de tête, et une rancune bien rangée. Il portait le tabard à l'envers ? Alors il savait exactement ce qu'il faisait. Un homme qui déserte cache sa couleur ; un homme qui la retourne veut qu'on la voie retournée."}
+--- a/data/hc_quetes/function/lib/balayage.mcfunction
++++ b/data/hc_quetes/function/lib/balayage.mcfunction
+@@ -25,6 +25,10 @@
+ clear @a[predicate=hc_quetes:migration/state/arc_a/_to_4] *[custom_data~{hc_quete:"cqvcep02_boussole"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_a/7_to_] *[custom_data~{hc_quete:"cqvcep02_boussole"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_a/_to_4] *[custom_data~{hc_quete:"arc_common_q8_insigne"}]
++# L'insigne est le seul objet de la serie que DEUX quetes se partagent : Aurele le fait tomber,
++# Aveline le reclame. Sa borne de fin est donc celle de Maelle (8 = terminee), pas celle d'Aurele
++# — un balayage sur « hcq_cqvcep02=7.. » le confisquerait avant qu'Aveline l'ait vu.
++clear @a[predicate=hc_quetes:migration/state/arc_m/8_to_] *[custom_data~{hc_quete:"arc_common_q8_insigne"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_a/_to_4] *[custom_data~{hc_quete:"cqvcep02_cle_bronze"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_h/14_to_] *[custom_data~{hc_quete:"cqvcep02_cle_bronze"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_a/_to_7] *[custom_data~{hc_quete:"sqvcep03_caisse"}]
+@@ -47,7 +51,7 @@
+ # Anselme
+ clear @a[predicate=hc_quetes:migration/state/sqvccr04/_to_0] *[custom_data~{hc_quete:"sqvccr04_fragment"}]
+ clear @a[predicate=hc_quetes:migration/state/sqvccr04/3_to_] *[custom_data~{hc_quete:"sqvccr04_fragment"}]
+-# Dame Malaury (Q13-Q15) : q13_chronique et q14_role sont des souvenirs, jamais balayes
++# Dame Malaury (Q13-Q15) : q13_chronique et q14_role sont des souvenirs, balayes en fin de fichier
+ clear @a[predicate=hc_quetes:migration/state/arc_v/_to_39] *[custom_data~{hc_quete:"sqvchr04_cle"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_v/43_to_] *[custom_data~{hc_quete:"sqvchr04_cle"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_v/_to_23] *[custom_data~{hc_quete:"cqvchr02_registre"}]
+@@ -76,7 +80,7 @@
+ clear @a[predicate=hc_quetes:migration/state/arc_p/61_to_] *[custom_data~{hc_quete:"arc_common_q16_lanterne"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_p/_to_59] *[custom_data~{hc_quete:"arc_common_q16_rapport"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_p/62_to_] *[custom_data~{hc_quete:"arc_common_q16_rapport"}]
+-# La Bete blanche du Couperet (Q17) : q17_extrait et q17_pavillon sont des souvenirs
++# La Bete blanche du Couperet (Q17) : q17_extrait et q17_pavillon = souvenirs, voir fin de fichier
+ clear @a[predicate=hc_quetes:migration/state/arc_n/_to_5] *[custom_data~{hc_quete:"cqvcbb01_cote"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_n/65_to_] *[custom_data~{hc_quete:"cqvcbb01_cote"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_n/_to_5] *[custom_data~{hc_quete:"cqvcbb01_role"}]
+@@ -89,7 +93,7 @@
+ clear @a[predicate=hc_quetes:migration/state/arc_n/23_to_] *[custom_data~{hc_quete:"arc_common_q17_part"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_n/_to_60] *[custom_data~{hc_quete:"arc_common_q17_ordre_delmas"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_n/62_to_] *[custom_data~{hc_quete:"arc_common_q17_ordre_delmas"}]
+-# Les bannieres cyan (Q18) : q18_arret et q18_dormeurs sont des souvenirs
++# Les bannieres cyan (Q18) : q18_arret et q18_dormeurs = souvenirs, voir fin de fichier
+ clear @a[predicate=hc_quetes:migration/state/arc_c/_to_0] *[custom_data~{hc_quete:"sqvcbn01_feuillet"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_c/6_to_] *[custom_data~{hc_quete:"sqvcbn01_feuillet"}]
+ clear @a[predicate=hc_quetes:migration/state/arc_c/_to_4] *[custom_data~{hc_quete:"sqvcbn01_registre"}]
+@@ -145,3 +149,51 @@
+ # fenetre basse a ..3, pas a ..0 — demande par gen_j_route.sh.
+ clear @a[predicate=hc_quetes:migration/state/sqlpjo10/_to_3] *[custom_data~{hc_quete:"arc_common_j10_registre"}]
+ clear @a[predicate=hc_quetes:migration/state/sqlpjo10/50_to_] *[custom_data~{hc_quete:"arc_common_j10_registre"}]
++# ---------------------------------------------------------------- les 19 documents « souvenir »
++# Ils n'etaient volontairement jamais balayes — des trophees de lecture. Ils occupaient donc 19
++# cases a vie, et c'est ce qui remplissait le sac : un sac plein fait tomber au sol les objets
++# donnes par « give », sans un mot, et c'est ce qui avait casse la remise a Hector Valmont.
++# Decision prise : ils partent quand leur quete est terminee, comme les autres objets.
++# Ils se reconnaissent a « hc_id », pas au nom de l'objet — deux d'entre eux partagent un id.
++#
++# ATTENTION, deux de ces documents ne sont PAS decoratifs, et leur borne n'est pas celle de la
++# quete qui les donne. Mesure avant d'ecrire ces lignes :
++#  · q2_releve ouvre un raccourci chez ANSELME (« j'ai deja ceci : le releve d'un naturaliste »,
++#    qui vaut la premiere stele). Le balayer a la fin de Rosalinde aurait supprime ce raccourci
++#    pour tout joueur finissant Rosalinde avant d'aller voir Anselme. Borne = fin d'Anselme.
++#  · j08_copie est reconnue par Bastien pendant J09 (« tu en portes la copie, je la vois »).
++#    Borne = fin de J09, pas de J08.
++clear @a[predicate=hc_quetes:migration/state/arc_h/2_to_] *[custom_data~{hc_id:"q1_lettre"}]
++clear @a[predicate=hc_quetes:migration/state/arc_h/7_to_] *[custom_data~{hc_id:"q5_note"}]
++clear @a[predicate=hc_quetes:migration/state/arc_h/7_to_] *[custom_data~{hc_id:"q5_registre"}]
++clear @a[predicate=hc_quetes:migration/state/arc_a/7_to_] *[custom_data~{hc_id:"q8_ordre"}]
++clear @a[predicate=hc_quetes:migration/state/sqvccr04/3_to_] *[custom_data~{hc_id:"q2_releve"}]
++clear @a[scores={hcq_sqvchr01_o2=1..}] *[custom_data~{hc_id:"q13_chronique"}]
++clear @a[predicate=hc_quetes:migration/state/arc_v/43_to_] *[custom_data~{hc_id:"q14_role"}]
++# Les trois chaines a embranchements (Q16, Q17, Q18) finissent a 30 (b), 50 (a) ou 70 (c), et
++# leurs etats intermediaires montent jusqu'a 64 : une borne « 50.. » confisquerait l'objet en
++# pleine branche c. D'ou trois lignes par document, sur les trois valeurs terminales exactes.
++clear @a[predicate=hc_quetes:migration/state/arc_p/30] *[custom_data~{hc_id:"q16_ordre"}]
++clear @a[predicate=hc_quetes:migration/state/arc_p/50] *[custom_data~{hc_id:"q16_ordre"}]
++clear @a[predicate=hc_quetes:migration/state/arc_p/70_to_] *[custom_data~{hc_id:"q16_ordre"}]
++clear @a[predicate=hc_quetes:migration/state/arc_n/30] *[custom_data~{hc_id:"q17_extrait"}]
++clear @a[predicate=hc_quetes:migration/state/arc_n/50] *[custom_data~{hc_id:"q17_extrait"}]
++clear @a[predicate=hc_quetes:migration/state/arc_n/70_to_] *[custom_data~{hc_id:"q17_extrait"}]
++clear @a[predicate=hc_quetes:migration/state/arc_n/30] *[custom_data~{hc_id:"q17_pavillon"}]
++clear @a[predicate=hc_quetes:migration/state/arc_n/50] *[custom_data~{hc_id:"q17_pavillon"}]
++clear @a[predicate=hc_quetes:migration/state/arc_n/70_to_] *[custom_data~{hc_id:"q17_pavillon"}]
++clear @a[predicate=hc_quetes:migration/state/arc_c/30] *[custom_data~{hc_id:"q18_arret"}]
++clear @a[predicate=hc_quetes:migration/state/arc_c/50] *[custom_data~{hc_id:"q18_arret"}]
++clear @a[predicate=hc_quetes:migration/state/arc_c/70_to_] *[custom_data~{hc_id:"q18_arret"}]
++clear @a[predicate=hc_quetes:migration/state/arc_c/30] *[custom_data~{hc_id:"q18_dormeurs"}]
++clear @a[predicate=hc_quetes:migration/state/arc_c/50] *[custom_data~{hc_id:"q18_dormeurs"}]
++clear @a[predicate=hc_quetes:migration/state/arc_c/70_to_] *[custom_data~{hc_id:"q18_dormeurs"}]
++# Jungle : les deux branches finissent a 50 et 70, donc « 50.. » couvre les deux (idiome deja
++# employe par les 19 paires ci-dessus).
++clear @a[predicate=hc_quetes:migration/state/sqlpjo05/50_to_] *[custom_data~{hc_id:"j05_releve"}]
++clear @a[predicate=hc_quetes:migration/state/sqlpjo06/50_to_] *[custom_data~{hc_id:"j06_releve"}]
++clear @a[predicate=hc_quetes:migration/state/sqlpjo09/50_to_] *[custom_data~{hc_id:"j08_copie"}]
++clear @a[predicate=hc_quetes:migration/state/sqlpjo09/50_to_] *[custom_data~{hc_id:"j09_copie"}]
++clear @a[predicate=hc_quetes:migration/state/sqlpjo09/50_to_] *[custom_data~{hc_id:"j09_recu"}]
++clear @a[predicate=hc_quetes:migration/state/sqlpjo11/50_to_] *[custom_data~{hc_id:"j11_echantillon"}]
++clear @a[predicate=hc_quetes:migration/state/sqlpjo11/50_to_] *[custom_data~{hc_id:"j11_releve"}]
+--- a/data/hc_quetes/function/marqueurs/aurele.mcfunction
++++ b/data/hc_quetes/function/marqueurs/aurele.mcfunction
+@@ -1,7 +1,7 @@
+ # Marqueur de aurele : 0 = rien, 1 = ! (quete a prendre), 2 = ? (etape ou fin a rendre).
+ # Genere depuis aurele/interact — meme ordre et memes conditions que le dialogue. Ne pas editer.
+ scoreboard players set @s hcq_mrk_aurele 0
+-execute if predicate hc_quetes:migration/state/arc_a/10_to_ if predicate hc_quetes:migration/state/arc_n/0 run return run scoreboard players set @s hcq_mrk_aurele 1
++execute if predicate hc_quetes:migration/state/arc_a/10_to_ if predicate hc_quetes:migration/state/arc_n/0 unless score @s hcf_cqvcbb01_ref matches 1 run return run scoreboard players set @s hcq_mrk_aurele 1
+ execute if predicate hc_quetes:migration/state/arc_n/1 run return run scoreboard players set @s hcq_mrk_aurele 0
+ execute if predicate hc_quetes:migration/state/arc_n/2 run return run scoreboard players set @s hcq_mrk_aurele 0
+ execute if predicate hc_quetes:migration/state/arc_n/3_to_4 run return run scoreboard players set @s hcq_mrk_aurele 0
+--- a/data/hc_quetes/function/migration/ensure/arc_n.mcfunction
++++ b/data/hc_quetes/function/migration/ensure/arc_n.mcfunction
+@@ -2,3 +2,4 @@
+ scoreboard players add @s hcq_cqvcbb02 0
+ scoreboard players add @s hcq_cqvcbb03 0
+ scoreboard players add @s hcq_cqvcbb04 0
++scoreboard players add @s hcf_cqvcbb01_ref 0
+--- a/data/hc_quetes/function/migration/load.mcfunction
++++ b/data/hc_quetes/function/migration/load.mcfunction
+@@ -80,3 +80,4 @@
+ scoreboard objectives add hcq_sqvcso01 dummy
+ scoreboard objectives add hcq_sqvcso02 dummy
+ scoreboard objectives add hca_v2_schema dummy
++scoreboard objectives add hcf_cqvcbb01_ref dummy
+--- a/data/hc_quetes/function/migration/write/arc_n/v0.mcfunction
++++ b/data/hc_quetes/function/migration/write/arc_n/v0.mcfunction
+@@ -1,3 +1,4 @@
++scoreboard players set @s hcf_cqvcbb01_ref 0
+ # Autorité unique : états dédiés ; aucun ancien score écrit.
+ scoreboard players set @s hcq_cqvcbb01 0
+ scoreboard players set @s hcq_cqvcbb02 0
+--- a/data/hc_quetes/function/migration/write/arc_n/v1.mcfunction
++++ b/data/hc_quetes/function/migration/write/arc_n/v1.mcfunction
+@@ -1,3 +1,4 @@
++scoreboard players set @s hcf_cqvcbb01_ref 0
+ # Autorité unique : états dédiés ; aucun ancien score écrit.
+ scoreboard players set @s hcq_cqvcbb01 10
+ scoreboard players set @s hcq_cqvcbb02 0
+--- a/data/hc_quetes/function/pnj/aveline/interact.mcfunction
++++ b/data/hc_quetes/function/pnj/aveline/interact.mcfunction
+@@ -1,6 +1,10 @@
+ function hc_quetes:migration/ensure/arc_m
+ scoreboard players enable @s hcq_choix
+ execute if predicate hc_quetes:migration/state/arc_m/5 run return run function hc_quetes:pnj/aveline/premier
++# Filet de secours de l'insigne : le joueur a tué Vasca (hcq_a>=6) mais n'a plus l'insigne —
++# perdu, jeté au sol par un sac plein, ou mort avant de l'avoir ramassé. On le lui rend ici, avant
++# le test ci-dessous : « give » agit dans le même tick, donc le pardon s'enchaîne aussitôt.
++execute if predicate hc_quetes:migration/state/arc_m/6 if predicate hc_quetes:migration/state/arc_a/6_to_ run function hc_quetes:aurele/q8/rend_insigne
+ execute if predicate hc_quetes:migration/state/arc_m/6 if items entity @s container.* *[custom_data~{hc_quete:"arc_common_q8_insigne"}] run return run function hc_quetes:pnj/aveline/pardon
+ execute if predicate hc_quetes:migration/state/arc_m/6 run return run function hc_quetes:lib/dire {pnj:"La Mère Aveline",t:"Tu reviens avec les mains vides et la même bouche. Les mots des citadins sont légers : vous dites, et le feu continue derrière vous. Apporte-moi quelque chose de lourd qui appartenait à leur chef — quelque chose qu'il portait sur lui, pas une promesse — et je rappellerai mes bêtes."}
+ execute if predicate hc_quetes:migration/state/arc_m/7 run return run function hc_quetes:lib/dire {pnj:"La Mère Aveline",t:"Les mots sont finis. Ce qui te répondra maintenant, ce n'est plus une vieille femme : c'est la forêt. Derrière la cabane, dans la clairière. Je n'y serai pas sous cette figure-là."}
+--- a/data/hc_quetes/function/tick.mcfunction
++++ b/data/hc_quetes/function/tick.mcfunction
+@@ -10,7 +10,9 @@
+ execute as @a[scores={hcc_rayee=1..},predicate=hc_quetes:migration/state/arc_m/1_to_3] run function hc_quetes:maelle/q3/kill_rayee
+ execute as @a[scores={hcc_corvin=1..},predicate=hc_quetes:migration/state/arc_h/3_to_6] run function hc_quetes:hector/q5/kill_corvin
+ execute as @a[scores={hcc_geolier=1..},predicate=hc_quetes:migration/state/arc_a/5_to_6] run function hc_quetes:aurele/q8/kill_geolier
+-execute as @a[scores={hcc_vasca=1..},predicate=hc_quetes:migration/state/arc_a/5] run function hc_quetes:aurele/q8/kill_vasca
++# Fenetre elargie a 5..6 : Vasca est un point permanent, et a l.etape 6 le re-tuer est le seul
++# recours du joueur qui a perdu l.insigne (defaut remonte en jeu). kill_vasca est rejouable.
++execute as @a[scores={hcc_vasca=1..},predicate=hc_quetes:migration/state/arc_a/5_to_6] run function hc_quetes:aurele/q8/kill_vasca
+ # la sorciere tuee avant ou apres le choix devant Aveline : sa mort vaut choix de l.acier (b19)
+ execute as @a[scores={hcc_aveline=1..},predicate=hc_quetes:migration/state/arc_m/5_to_7] run function hc_quetes:maelle/q7/kill_aveline
+ execute as @a[scores={hcc_brehal=1..},predicate=hc_quetes:migration/state/arc_h/8] run function hc_quetes:hector/q9/kill_brehal
+--- a/data/hc_quetes/hcq_quests/cq_vc_ep_02_ruines_carrec.json
++++ b/data/hc_quetes/hcq_quests/cq_vc_ep_02_ruines_carrec.json
+@@ -47,9 +47,24 @@
+   },
+   "objectives": [
+     {
++      "id": "cle",
++      "type": "CUSTOM",
++      "text": "Prendre la clé des cages sur le geôlier, devant les cages, près du quai",
++      "done": {
++        "objective": "hcq_cqvcep02_o1",
++        "min": 1
++      },
++      "done_item": "cqvcep02_cle_cages",
++      "waypoint": {
++        "mode": "EXACT",
++        "target": "spawn:carrec_camp.geolier",
++        "label": "Le geôlier, devant les cages"
++      }
++    },
++    {
+       "id": "cages",
+       "type": "INTERACT",
+-      "text": "Libérer Colin : prendre la clé sur le geôlier et ouvrir les cages, près du quai",
++      "text": "Ouvrir les cages avec la clé et libérer Colin",
+       "done": {
+         "objective": "hcq_cqvcep02_o1",
+         "min": 1
+@@ -57,7 +72,7 @@
+       "waypoint": {
+         "mode": "EXACT",
+         "target": "spawn:carrec_camp.geolier",
+-        "label": "Le geôlier"
++        "label": "Les cages de Colin"
+       }
+     },
+     {
+@@ -92,4 +107,4 @@
+       }
+     }
+   ]
+-}+}
+--- a/pack.mcmeta
++++ b/pack.mcmeta
+@@ -3,6 +3,6 @@
+     "pack_format": 94,
+     "min_format": 94,
+     "max_format": 94,
+-    "description": "Indivis — Quêtes b22 — norme v2 + Séquence I — candidat SI1b — reconnaissance et liaison des gardes existants — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — QMARK2 : ! personnels des donneurs du core — PQ02-R1 : Le registre du Port v1.1 — HF8 : 50 Martins systématiques pendant la scène, sans retour requis"
++    "description": "Indivis — Quêtes b22 — norme v2 + Séquence I — candidat SI1b — reconnaissance et liaison des gardes existants — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — QMARK2 : ! personnels des donneurs du core — PQ02-R1 : Le registre du Port v1.1 — HF8 : 50 Martins systématiques pendant la scène, sans retour requis — FUSION-C1 : correctifs b22 Clément (insigne Vasca, paiement, souvenirs et cage)"
+   }
+ }
+--- a/data/hc_quetes/function/aurele/q12/recaisse_paye.mcfunction
++++ b/data/hc_quetes/function/aurele/q12/recaisse_paye.mcfunction
+@@ -0,0 +1,5 @@
++# Le paiement, séparé pour que le compte des Martins et la livraison ne puissent pas se décaler :
++# on n'arrive ici qu'avec dix Martins comptés dans l'inventaire principal.
++clear @s capitale_currency:martin_dor 10
++function hc_quetes:objets/q12_caisse
++function hc_quetes:lib/dire {pnj:"Aurèle Bonnaire",t:"Une autre caisse, pesée et marquée comme la première. Dix Martins : le verre coûte. Je note la perte et je ne la commente pas — mais ne la perdez pas deux fois, je n'en ai pas de troisième."}
+--- a/data/hc_quetes/function/aurele/q8/rend_insigne.mcfunction
++++ b/data/hc_quetes/function/aurele/q8/rend_insigne.mcfunction
+@@ -0,0 +1,14 @@
++# Rend l'insigne d'Orrin Vasca quand il manque. Deux appelants, tous deux des ÉVÉNEMENTS :
++#  · une mort de Vasca postérieure à la première (aurele/q8/kill_vasca) ;
++#  · la Mère Aveline, quand le joueur arrive les mains vides alors que Vasca est bien mort
++#    (pnj/aveline/interact).
++# Jamais depuis l'horloge : avec un sac plein, « give » jette l'objet au sol, et une horloge
++# jetterait un insigne aux pieds du joueur toutes les cinq secondes.
++execute if items entity @s container.* *[custom_data~{hc_quete:"arc_common_q8_insigne"}] run return 0
++# Plus personne n'en a besoin : la quête d'Aveline est terminée.
++execute if predicate hc_quetes:migration/state/arc_m/8_to_ run return 0
++function hc_quetes:objets/q8_insigne
++# Sac plein : « give » a jeté l'insigne aux pieds du joueur. Le dire, sinon le symptôme est muet
++# — c'est exactement le défaut qui avait cassé la remise à Hector Valmont.
++execute unless items entity @s container.* *[custom_data~{hc_quete:"arc_common_q8_insigne"}] run return run function hc_quetes:lib/note {t:"Votre sac est plein : l'insigne d'Orrin Vasca est tombé à vos pieds. Faites de la place et ramassez-le."}
++function hc_quetes:lib/note {t:"Vous reprenez l'insigne d'Orrin Vasca sur le corps : or mince sur une plaque de fer, un couperet sur une vague."}
+--- a/data/hc_quetes/predicate/migration/state/arc_a/6_to_.json
++++ b/data/hc_quetes/predicate/migration/state/arc_a/6_to_.json
+@@ -0,0 +1,10 @@
++{
++  "condition": "minecraft:entity_scores",
++  "entity": "this",
++  "scores": {
++    "hcq_cqvcep02": {
++      "min": 90,
++      "max": 100
++    }
++  }
++}--- a/data/hc_quetes/predicate/migration/state/arc_c/70_to_.json
++++ b/data/hc_quetes/predicate/migration/state/arc_c/70_to_.json
+@@ -0,0 +1,10 @@
++{
++  "condition": "minecraft:entity_scores",
++  "entity": "this",
++  "scores": {
++    "hcq_sqvcbn04": {
++      "min": 100,
++      "max": 100
++    }
++  }
++}--- a/data/hc_quetes/predicate/migration/state/arc_n/70_to_.json
++++ b/data/hc_quetes/predicate/migration/state/arc_n/70_to_.json
+@@ -0,0 +1,10 @@
++{
++  "condition": "minecraft:entity_scores",
++  "entity": "this",
++  "scores": {
++    "hcq_cqvcbb04": {
++      "min": 100,
++      "max": 100
++    }
++  }
++}--- a/data/hc_quetes/predicate/migration/state/arc_n/neg1_to_0.json
++++ b/data/hc_quetes/predicate/migration/state/arc_n/neg1_to_0.json
+@@ -0,0 +1,10 @@
++{
++  "condition": "minecraft:entity_scores",
++  "entity": "this",
++  "scores": {
++    "hcq_cqvcbb01": {
++      "min": 0,
++      "max": 0
++    }
++  }
++}--- a/data/hc_quetes/predicate/migration/state/arc_p/70_to_.json
++++ b/data/hc_quetes/predicate/migration/state/arc_p/70_to_.json
+@@ -0,0 +1,10 @@
++{
++  "condition": "minecraft:entity_scores",
++  "entity": "this",
++  "scores": {
++    "hcq_sqvcpa04": {
++      "min": 100,
++      "max": 100
++    }
++  }
++}
