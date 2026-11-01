@@ -1,8 +1,8 @@
-"""PQ02 : graphe éditorial du script v1.0, citations lues dans la source fournie."""
+"""PQ02 : script fourni v1.0 + décision utilisateur du 01/11/2026, don systématique."""
 from pathlib import Path
 import re,json,hashlib
 HERE=Path(__file__).resolve().parent
-SCRIPT=HERE/'kit/Indivis_PQ02_Script_Consolide_v1_0.md'
+SCRIPT=HERE/'kit/Indivis_PQ02_Script_Consolide_v1_1_Don_Systematique.md'
 LINES=SCRIPT.read_text().splitlines();USED=set();N={}
 def q(line,index=0):
     text=re.findall('«([^»]+)»',LINES[line-1])[index].strip();USED.add((line,index));return text
@@ -91,24 +91,26 @@ node('f04_return',[483],next='event:practical_menu')
 node('f05',[485],next='event:practical_menu')
 node('f05_short',[(487,0)],next='event:practical_menu')
 node('f06',[491,495,497],[c(501,'f06a',effect='gift:1'),c(502,'f06b',effect='gift:2'),c(503,'f06c',effect='gift:3'),c(504,'f06d',effect='gift:4')])
-node('f06a',[506],[c(508,'event:gift'),c(508,'f_report',1)])
-node('f06b',[510],[c(512,'event:gift'),c(512,'f_report',1)])
-node('f06c',[514],next='event:gift')
-node('f06d',[516,518],next='f_report')
-node('f_report',[522],next='f07')
+node('f06a',[506],next='f07')
+node('f06b',[510],next='f07')
+node('f06c',[514],next='f07')
+node('f06d',[516,518],next='f07')
+node('f_report',editorial='COMPAT-F06-REPORTER')
+N['f_report']['legacy_alias']='f07'
 node('f07',[528,530],[c(534,'f07a'),c(535,'f07b'),c(536,'f07c')])
 for k,line in [('f07a',538),('f07b',540),('f07c',542)]:node(k,[line],next='event:complete')
-POST=[c(466,'f03'),c(467,'f04'),c(468,'f05'),c(567,'post_gift',condition='gift_pending')]
+POST=[c(466,'f03'),c(467,'f04'),c(468,'f05')]
 for k,line in [('post_very_friendly',556),('post_friendly',557),('post_neutral',558),('post_unfriendly',559)]:node(k,[line],POST,editorial='P02-POST-ACCUEIL')
 node('post_menu',[],POST,editorial='P02-POST-MENU')
-node('post_gift',[569],[c(573,'event:late_gift'),c(574,'post_menu')],editorial='P02-POST-DON',condition='gift_pending')
-EVENTS={'rest','start_walk','resume_walk','register','elevator','practical_menu','gift','complete','late_gift'}
+node('post_gift',editorial='COMPAT-POST-DON')
+N['post_gift']['legacy_alias']='post_menu'
+EVENTS={'rest','start_walk','resume_walk','register','elevator','practical_menu','complete'}
 for key,n in N.items():
     targets=[ch['target'] for ch in n['choices']]+([n['next']] if n['next'] else [])
     for target in targets:assert target in N or target.startswith('event:') and target[6:] in EVENTS,(key,target)
 assert len({n['id'] for n in N.values()})==len(N)
 # Les seules formulations ajoutées sont des retours de navigation, sans réplique PNJ ajoutée.
 NAVIGATION_ADDITIONS=sorted({c['text'] for n in N.values() for c in n['choices'] if 'source_line' not in c})
-def export():return {'schema':1,'script_sha256':hashlib.sha256(SCRIPT.read_bytes()).hexdigest(),'nodes':list(N.values()),'events':sorted(EVENTS),'navigation_additions':NAVIGATION_ADDITIONS,'source_quotes_used':[list(p) for p in sorted(USED)]}
+def export():return {'schema':1,'script_sha256':hashlib.sha256(SCRIPT.read_bytes()).hexdigest(),'parent_script_sha256':hashlib.sha256((HERE/'kit/Indivis_PQ02_Script_Consolide_v1_0.md').read_bytes()).hexdigest(),'user_override':'2026-11-01 : versement systématique de 50 Martins pendant F06 ; réponse sèche −1 ; aucune récupération au retour.','nodes':list(N.values()),'events':sorted(EVENTS),'navigation_additions':NAVIGATION_ADDITIONS,'source_quotes_used':[list(p) for p in sorted(USED)]}
 if __name__=='__main__':
     data=export();(HERE/'reports/narrative_graph.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n');print('PQ02 graph:',len(N),'nodes;',len(USED),'script quotes;',len(NAVIGATION_ADDITIONS),'navigation labels')

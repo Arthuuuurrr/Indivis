@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "class": "net.hautecapitale.quetes.sequence.Pq02Runtime$1",
+  "comparison": "javap -p -c output matches frozen HF7 instructions; line-number-only class changes",
+  "sha256_disassembly": "3b6e608974b0597d65706906709dec36111d4a76d121d3c97eae6ada8069c41b"
+}

@@ -160,19 +160,31 @@ public final class Pq02Runtime implements ModInitializer {
   if(key.equals("a01")&&score(p,"CAP_PQ2_DA")>0)key=List.of("a02a","a02b","a02c").get(Math.min(3,score(p,"CAP_PQ2_DA"))-1);
   show(v,key);
  }
- static boolean condition(View v,String name){return name==null||name.isEmpty()||switch(name){case "port"->score(v.player,"CAP_PQ2_PORT")>0;case "sentinel"->score(v.player,"CAP_PQ2_SENT")>0;case "anecdote"->score(v.player,"CAP_PQ2_ANECD")>0;case "gift_pending"->stage(v.player)>=100&&score(v.player,"CAP_PQ2_OFFER")==1&&score(v.player,"CAP_LEOVIC_GIFT")==0;default->false;};}
+ static boolean condition(View v,String name){return name==null||name.isEmpty()||switch(name){case "port"->score(v.player,"CAP_PQ2_PORT")>0;case "sentinel"->score(v.player,"CAP_PQ2_SENT")>0;case "anecdote"->score(v.player,"CAP_PQ2_ANECD")>0;default->false;};}
  static String resolvedKey(View v,String key){Object p=v.player;
   if((key.equals("m03a")||key.equals("m03b"))&&score(p,"CAP_PQ2_DM")>0)return "m04"+List.of("a","b","c").get(Math.min(3,score(p,"CAP_PQ2_DM"))-1);
   if(key.equals("t04b")&&score(p,"CAP_PQ2_DG")>0)return "t04b_"+List.of("a","b","c").get(Math.min(3,score(p,"CAP_PQ2_DG"))-1);
   if(key.equals("f05")&&score(p,"CAP_PQ2_STATUS")>0)return "f05_short";
-  if(key.equals("f06")&&score(p,"CAP_PQ2_DD")>0)return score(p,"CAP_LEOVIC_GIFT")>0?"f07":score(p,"CAP_PQ2_DD")==4?"f_report":score(p,"CAP_PQ2_DD")==3?"f06c":score(p,"CAP_PQ2_DD")==2?"f06b":"f06a";
+  if(key.equals("f_report"))return "f07";
+  if(key.equals("post_gift"))return "post_menu";
+  if(key.equals("f06")&&score(p,"CAP_PQ2_DD")>0)return "f07";
   return key;
  }
  static void show(View v,String key){if(!same(v))return;if(key.startsWith("event:")){event2(v,key.substring(6));return;}
   key=resolvedKey(v,key);Pq02Data.Node n=Pq02Data.get(key);int s=stage(v.player);if(!Pq02Rules.validNode(key,s)||!condition(v,n.condition))return;
   pause(v);v.node=n;v.baseToken=0;v.queuedChoice=0;score2(v.player,"CAP_PQ2_NODE",n.id);v.ui=true;
   Object focus=focus(v,n);if(focus==null){v.ui=false;return;}
+  // Entrée volontaire dans la scène F06/F07, jamais sur un tick ou un chargement.
+  // F07 couvre les anciennes sauvegardes déjà passées par un refus/report.
+  if(s==90&&(key.startsWith("f06")||key.startsWith("f07")))giftAtScene(v);
   v.pendingFocus=focus;v.pendingNode=key;v.frameAt=clock+1;
+ }
+ static void giftAtScene(View v){Object p=v.player;if(score(p,"CAP_LEOVIC_GIFT")>0)return;
+  if(stage(p)!=90||score(p,"CAP_PQ2_REG")!=1)throw new IllegalStateException("Don PQ02 : inscription non validée ; aucune récompense rejouée");
+  if(!CoreQuestMarkers.functionPresent(p,"capitale:pq02/gift_once_self"))throw new IllegalStateException("Fonction de versement PQ02 absente");
+  score2(p,"CAP_QDIALOG_OWNER",97);score2(p,"CAP_QDIALOG_KEEP",1);score2(p,"CAP_PQ2_OFFER",1);
+  run(p,"function capitale:pq02/gift_once_self");
+  if(score(p,"CAP_LEOVIC_GIFT")!=1)throw new IllegalStateException("Don PQ02 non validé ; la quête reste en cours");
  }
  static Object focus(View v,Pq02Data.Node n){Actor leo=v.actors.get("leovic");if(leo==null)leo=spawn(v,"leovic",startPosition(v));
   if(n.key.startsWith("m")||n.key.startsWith("t07")){Actor magistrate=spawn(v,"magistrat",null);faceEntity(leo.entity,pos(magistrate.entity,v.world));faceEntity(magistrate.entity,pos(leo.entity,v.world));
@@ -232,8 +244,8 @@ public final class Pq02Runtime implements ModInitializer {
    case "register"->{run(p,"function capitale:pq02/register_once_self");show(v,"m06_registered");}
    case "elevator"->{closeUi(v);run(p,"function hc_quetes:migration/write/pq02/v50");score2(p,"CAP_QUETEACTIVE",4);v.waypoint=14;score2(p,"CAP_PQ2_WP",14);score2(p,"CAP_PQ2_NODE",Pq02Data.get("t_menu").id);resume(v);}
    case "practical_menu"->show(v,stage(p)>=100?"post_menu":"f_questions");
-   case "gift"->{run(p,"function capitale:pq02/gift_once_self");if(score(p,"CAP_LEOVIC_GIFT")==1)show(v,"f07");}
-   case "late_gift"->{run(p,"function capitale:pq02/gift_once_self");show(v,"post_menu");}
+   case "gift"->show(v,"f07"); // Ancien événement : passage par le versement de scène idempotent.
+   case "late_gift"->show(v,"post_menu"); // Ancienne reprise : aucune récupération après la quête.
    case "complete"->{run(p,"function capitale:pq02/complete_once_self");if(stage(p)>=100){closeUi(v);dispose(v.account);}}
    default->throw new IllegalArgumentException(name);
   }

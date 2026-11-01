@@ -3,6 +3,7 @@ execute unless score @s hcq_pq02 matches 90 run return 0
 execute unless score @s CAP_QDIALOG_OWNER matches 97 run return 0
 execute unless score @s CAP_PQ2_REG matches 1 run return 0
 execute unless score @s CAP_PQ2_DD matches 1..4 run return 0
+execute unless score @s CAP_LEOVIC_GIFT matches 1 run return 0
 execute if score @s CAP_PQ2_REW matches 1.. run return 0
 execute store result score @s hcm_pq2_check run indivispq02 rewards_ready
 execute unless score @s hcm_pq2_check matches 1 run return 0

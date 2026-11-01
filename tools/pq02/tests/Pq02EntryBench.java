@@ -10,6 +10,7 @@ import static net.hautecapitale.quetes.sequence.Pq02WorldBench.*;
 /** Entre par le gestionnaire de commandes EasyNPC et les fonctions Minecraft imbriquées. */
 final class Pq02EntryBench {
  static void click(Object player,Object npc){
+  if(Pq02FullSystemBench.ACTIVE){Pq02FullSystemBench.interact(player,npc);return;}
   stat(DM,"ouvrir",player,npc,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));
   command(player,npc);
  }

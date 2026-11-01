@@ -1,38 +1,26 @@
-# Indivis — PQ02 R1 HF7 : installation et recette
+# Indivis — PQ02 R1 HF8 : installation
 
-Version ciblée : Minecraft/Fabric **1.21.11**, Java **21**. Base : core **HF9_QMARK2** et journal datapack **HF4_QMARK2** fournis pour cette demande. Le mod de quêtes **HF12 est remplacé par sa version intégrant PQ02**, sans compagnon séparé.
+Cible : Minecraft/Fabric **1.21.11**, Java **21**. HF8 reprend les corrections de dialogue, d’escorte et de sauvegarde de HF7 et applique la décision du 1er novembre : **50 Martins versés pendant F06, quelle que soit la réponse**, sans retour pour récupérer la bourse.
 
-## Fichiers à installer
+## Mise à jour depuis HF7 ou une version PQ02 précédente
 
-Décompresser **l’archive de livraison** `Indivis_PQ02_R1_HF7_Installation_Integree.zip`. Elle contient les deux datapacks et le mod de quêtes fusionné. Ne pas déposer cette archive de livraison elle-même dans `datapacks`.
+**Aucune commande, liaison, pose de PNJ ou remise à zéro à refaire.** Installer les trois fichiers suivants, après arrêt du serveur et sauvegarde cohérente du monde, des profils Nexus et des configurations.
 
-| Destination | Fichier fourni | Action |
+| Destination | Fichier | Rôle de la mise à jour |
 | --- | --- | --- |
-| Serveur : `<monde>/datapacks/` | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF1.zip` | Remplacer le core précédent, y compris s’il était décompressé. Garder une seule copie de ce core. |
-| Serveur : `<monde>/datapacks/` | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1.zip` | Remplacer le datapack de journal HF4_QMARK2 fourni. |
-| Serveur : `mods/` | `haute-capitale-quetes-HF12-PQ02-R1-HF7-1.21.11.jar` | Remplacer l’ancien JAR de quêtes et retirer le compagnon `indivis-pq02` s’il a été installé. |
-| **Chaque client** : `mods/` | **Le même** `haute-capitale-quetes-HF12-PQ02-R1-HF7-1.21.11.jar` | Remplacer l’ancien JAR de quêtes et retirer `indivis-pq02`, comme sur le serveur. |
+| Serveur et chaque client : `mods/` | `haute-capitale-quetes-HF12-PQ02-R1-HF8-1.21.11.jar` | Remplace le précédent mod de quêtes intégré ; versement et dialogues F06 corrigés. |
+| Serveur : `<monde>/datapacks/` | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8.zip` | Remplace le core HF1 : versement limité à la scène et achèvement conditionné au don reçu. |
+| Serveur : `<monde>/datapacks/` | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8.zip` | Remplace `hc_quetes` R1 : description de la récompense actualisée dans le journal. |
 
-Les deux ZIP internes sont directement utilisables comme datapacks : leur `pack.mcmeta` est à la racine. Ne pas conserver en parallèle leur ancienne version ni un dossier issu de l’ancienne extraction.
+Décompresser `PQ02_HF8.zip` ou l’archive complète de livraison. Les deux ZIP de datapack contenus dedans ont `pack.mcmeta` à leur racine et peuvent être installés directement. Remplacer aussi toute ancienne copie décompressée du même pack. Le dossier `mods/` du correctif contient **un seul mod de quêtes**, identifiant `haute_capitale_quetes`, à copier sur serveur et clients.
 
-Conserver **sans les remplacer** : NexusCharacters PRE35-SI1-OPT3 installé, Dialogue b10, EasyNPC 7.16.0, le module RPG et les dépendances déjà fonctionnelles. Nexus NPC PREVIEW1 n’est pas modifié. La monnaie reste `capitale_currency:martin_dor`. Les fonctions CapSkills et les tirages du Port existants restent requis pour leurs récompenses. Les JAR de ces autres modules ne sont pas redistribués dans cette livraison.
+Conserver les autres mods déjà installés : NexusCharacters OPT3, Dialogue b10, EasyNPC et ConfigUI 7.16, RPG, monnaie et compétences. Retirer l’ancien compagnon `indivis-pq02` s’il subsiste. Les dépendances ne sont pas redistribuées. La monnaie livrée reste `capitale_currency:martin_dor` ; aucune substitution de test ne figure dans la livraison.
 
-## Si la première livraison PQ02 R1 est déjà installée
+Redémarrer complètement le serveur et les clients. Un simple `/reload` ne met pas à jour les classes et mixins. Reprendre le clic normal sur Léovic, avec le personnage concerné.
 
-Remplacer le **core R1 par le core R1 HF1 côté serveur**, puis le JAR de quêtes par le **seul** JAR fusionné HF7 sur le serveur et chaque client. Le datapack **`hc_quetes` R1 est inchangé** : le conserver s’il est déjà installé. Retirer `indivis-pq02` s’il est encore présent. Les PNJ, les liaisons et la progression enregistrée sont conservés ; aucune réinitialisation ni réinstallation des personnages n’est nécessaire. Redémarrer complètement.
+## Première préparation seulement
 
-Le JAR garde l’identifiant `haute_capitale_quetes`, les mêmes configurations et données. Fabric refuse explicitement sa coexistence avec l’ancien compagnon `indivis_pq02` pour éviter deux moteurs PQ02 simultanés.
-
-## Si le core HF1 est déjà préparé et que HF1, HF2, HF3, HF4, HF5 ou HF6 est installé
-
-Le correctif **HF7 remplace uniquement le JAR de quêtes sur serveur et clients**, puis exige un redémarrage complet. Le core HF1 et `hc_quetes` R1 sont identiques ; conserver les deux. Les liaisons, les 18 repères et la progression n’ont pas à être réinitialisés. Reprendre ensuite le clic normal sur Léovic. Le détail de la correction et les limites de test sont dans `CORRECTIF_PQ02_HF7.md`.
-
-## Ordre d’installation
-
-1. Arrêter le serveur. Conserver ensemble une sauvegarde du monde, des données des personnages Nexus, des configurations et des anciens fichiers remplacés. Une sauvegarde des seuls datapacks ne permet pas de revenir en arrière sur les personnages qui auront joué.
-2. Installer les deux datapacks et remplacer le mod de quêtes côté serveur **et clients**, et retirer le compagnon PQ02.
-3. Redémarrer complètement le serveur et les clients. Les mixins du mod de quêtes fusionné exigent un redémarrage ; un simple `/reload` ne les installe pas.
-4. Préparer les liaisons ci-dessous avec un administrateur. Utiliser les PNJ et les marqueurs **déjà présents**, sans réinstaller PQ01 ou la séquence I.
+Les commandes ci-dessous restent celles de HF1/HF7. Si elles ont déjà été faites correctement, passer directement au jeu.
 
 ## Préparation des PNJ existants
 
@@ -112,38 +100,42 @@ Pour libérer **uniquement sa propre** scène après une intervention d’admini
 
 La progression conservée permet une reprise ; cette commande n’est pas un outil de remise à zéro de personnage. Ne pas utiliser les anciennes fonctions d’achèvement ou de don pour sauter le scénario : elles ouvrent désormais le dialogue approprié.
 
-## Migration conservatrice
+## Don, réponses et sauvegardes
 
-| Personnage existant | Comportement |
+À l’entrée dans F06, après l’inscription et l’escorte jusqu’à l’ascenseur, le personnage reçoit **50 Martins une seule fois**, avant de choisir sa réponse. Aucun sous-menu d’acceptation et aucun cadeau au retour.
+
+| Réponse F06 | Réputation Garde du Port | Impression de Léovic | Argent |
+| --- | --- | --- | --- |
+| Curiosité | 0 | 0 | 50 Martins conservés |
+| Embarras | 0 | 0 | 50 Martins conservés |
+| Reconnaissance marquée | +1 | +1 | 50 Martins conservés |
+| « Je ne demandais pas votre charité. » | −1 | −1 | 50 Martins conservés |
+
+Les autres gains conditionnels sont conservés : A01-A et T04b-A donnent +1 de réputation et d’impression ; M04-A donne +1 d’impression seulement. Le +5 automatique reste supprimé. La fin conserve les 165 XP, les compétences et les tirages du Port existants ; un tirage peut donner séparément des pièces, distinctes des 50 Martins personnels.
+
+| Situation à la mise à jour | Reprise |
 | --- | --- |
-| N’a pas commencé PQ02 | Parcours complet et quatre décisions nouvelles. |
-| A déjà accepté l’escorte | Étape canonique conservée, décisions passées inconnues verrouillées sans bonus inventé ; reprise en pause sur le trajet existant. La première reprise d’un ancien dossier ne dispose pas d’une position personnelle antérieure et se repère sur les marqueurs proches. |
-| Est déjà inscrit | Rang et inscription conservés ; aucun nouvel effet d’inscription. |
-| A terminé PQ02 | Aucun retrait rétroactif du +5 ancien, aucune seconde récompense de fin. Impression initiale neutre puisque les choix historiques sont inconnus. |
-| A déjà reçu le don | `CAP_LEOVIC_GIFT` conservé ; aucun autre don personnel de 50 MDI. |
-| A terminé sans recevoir le don | Possibilité de demander le don au retour, une seule fois, sans modifier réputation ni impression. |
+| Nouvelle quête ou trajet en cours | Même parcours A–P, mêmes points, mêmes dialogues hors du don. |
+| F06/F07 en cours, argent non reçu | Versement unique à la reprise de cette scène, sans rejouer la décision déjà mémorisée. |
+| Ancien point F06-REPORTER | Redirection vers F07, versement unique si nécessaire. |
+| Argent déjà reçu | Aucun second versement, même si les pièces ont été dépensées. |
+| Quête déjà terminée avant HF8 | Réputation et récompenses historiques conservées ; pas de rattrapage automatique à la connexion. L’ancien menu de récupération est supprimé. |
 
-Les nouveaux scores `CAP_PQ2_*` et l’ancien `CAP_LEOVIC_GIFT` sont pris en charge par la politique réelle PRE35 de Nexus. Le trigger, les jetons et les sessions restent transitoires. Les positions de scène sont indexées par UUID de personnage, avec contrôle du propriétaire. Le test automatisé des changements de personnages utilise une sélection et une restauration synthétiques ; la sélection graphique Nexus doit encore être essayée sur le serveur cible.
+Les 111 identifiants de nœud sont conservés. Deux anciens identifiants deviennent des alias de reprise, sans nouveau dialogue. Les sauvegardes Nexus restent par personnage ; aucun effacement de progression n’est nécessaire.
 
-## Recette sur une copie du serveur
+## Recette sur la carte du serveur
 
-1. Un personnage ayant terminé PQ01 : poser les questions d’accueil dans plusieurs ordres ; fermer et rouvrir ; accepter l’escorte.
-2. Poser des questions pendant la marche et attendre une minute dans un sous-menu : guide immobile, texte conservé, reprise au même point.
-3. Traverser le trajet réel : marches, dalles, portes éventuelles, arrivée au poste ouvert du magistrat ; Léovic reste présent dans tout l’entretien. Vérifier les cadrages L/M/3 sur un vrai client.
-4. Inscrire un personnage étranger : Visiteur minimum. Refaire le test avec un rang supérieur à 10 : aucune rétrogradation. Puis suivre les quelques pas M–P.
-5. Vérifier gratitude, curiosité, refus poli et mépris sur des personnages de test distincts. Achever, revenir au Léovic permanent et accepter un don différé : **50 MDI une fois**, aucun nouvel effet de réputation. Les tirages aléatoires existants peuvent ajouter séparément des pièces ; ils ne constituent pas un second don de 50.
-6. Deux joueurs en même temps, puis un troisième observateur : chacun voit sa scène, ses caméras et ses choix. Déconnecter un joueur en marche ; l’autre continue normalement. Tester deux personnages Nexus d’un même compte, puis revenir au premier.
-7. Hugues : son accroche et ses cinq questions restent là ; le choix 6 a disparu ; le congé conserve son numéro 7. Ne pas réécrire ou réinstaller les autres scènes PQ01.
-8. MQ03 : Althéon ouvre les retrouvailles à 10, le journal de bord à 20 et la consultation à 30 ; le retour aux Archives passe à 40, puis 50 auprès des Sentinelles ; l’Archivaire clôt à 100 et ouvre MQ04 à 10. Vérifier avec un second personnage n’étant pas à cette étape. Les critères MQ01 restent prologue terminé, Résident minimum et `CAP_POINTS_TOTAL >= 5`.
+Le rapport distingue les bancs exécutés de cette recette graphique qui reste à faire :
+
+1. Départ de Léovic, pause dans les questions et reprise au même point ; marche sur les obstacles réels jusqu’à M puis P.
+2. Entretien à trois, cadrages et maintien du guide pendant les questions ; inscription Visiteur sans abaisser un rang supérieur.
+3. F06 : constater les 50 Martins avant réponse ; essayer les quatre réponses sur des personnages distincts, fermer/rouvrir puis recharger. Chaque personnage garde 50 Martins personnels, avec le seul effet social de sa réponse.
+4. Terminer au même endroit, sans revenir au poste pour être payé. Vérifier l’offre d’Aurèle puis les retrouvailles facultatives sans option de bourse.
+5. Deux joueurs et un observateur : acteurs et choix privés ; changements de personnage Nexus A–B–A. Vérifier le rendu et les FPS avec le modpack réel.
+6. PQ01 : Gautier conserve son rythme, Hugues garde ses cinq questions et son congé ; seul son ancien choix 6 reste retiré. MQ03 : Althéon à 10/20/30, retour aux Archives à 40/50, clôture par l’Archivaire puis MQ04.
 
 ## Retour arrière
 
-Arrêter le serveur, retirer le JAR fusionné des mods serveur et clients, remettre le JAR de quêtes et les **deux** datapacks de la sauvegarde et restaurer la sauvegarde cohérente du monde et des personnages. Le guide historique et les nouvelles données de personnage font partie de cet état ; ne pas restaurer seulement les ZIP après des essais avec des personnages réels. Refaire un démarrage complet.
+Arrêter le serveur, remettre ensemble les anciens JAR/datapacks et la sauvegarde cohérente du monde et des personnages. Remettre aussi le JAR client correspondant, puis redémarrer complètement.
 
-## Données encore nécessaires à une validation de la carte
-
-La livraison conserve les repères existants. Pour certifier le trajet et les cadrages **sur la carte Indivis**, il faut encore une copie de monde exploitable ou les exports EasyNPC et des marqueurs A–P, ainsi que les configurations réelles de caméra/voix. Les fichiers de monnaie, CapSkills et du module RPG n’étant pas inclus dans le banc complet de dépendances, leurs implémentations tierces n’ont pas été rejouées dans ce banc. Aucun de ces manques n’a été remplacé dans les fichiers livrés par une monnaie ou une récompense fictive.
-
-## HF7 — mise à jour sans commandes
-
-Le correctif du 31 octobre remplace seulement le JAR de quêtes sur le serveur et tous les clients, puis nécessite un redémarrage complet. Les deux datapacks restent ceux de HF1/R1. Les commandes de préparation, les liaisons et les points déjà placés restent valables. Lire `CORRECTIF_PQ02_HF7.md` pour les actions de départ/reprise visibles et la conservation des départs déjà acceptés, tout en gardant la correction des sauvegardes Nexus. Le rythme de Gautier est conservé à l’identique de HF3.
+La carte Indivis et un vrai client graphique ne sont pas chargés dans les bancs livrés. Les tests emploient de vrais Minecraft/Fabric, EasyNPC, Dialogue et fonctions core ; les connexions, la sélection Nexus et les intégrations économiques externes ont les substitutions explicites détaillées dans le rapport.

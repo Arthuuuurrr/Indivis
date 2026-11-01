@@ -2706,7 +2706,7 @@
         "source_line": 501
       },
       {
-        "text": "C'est généreux, mais je préférerais ne pas accepter.",
+        "text": "C’est généreux, mais je ne sais pas quoi dire.",
         "target": "f06b",
         "effect": "gift:2",
         "condition": "",
@@ -2720,7 +2720,7 @@
         "source_line": 503
       },
       {
-        "text": "Je n'avais pas demandé votre charité.",
+        "text": "Je ne demandais pas votre charité.",
         "target": "f06d",
         "effect": "gift:4",
         "condition": "",
@@ -2736,23 +2736,8 @@
     ],
     "camera": "leovic",
     "condition": "",
-    "next": "",
-    "choices": [
-      {
-        "text": "Dans ce cas, j'accepte. Merci.",
-        "target": "event:gift",
-        "effect": "",
-        "condition": "",
-        "source_line": 508
-      },
-      {
-        "text": "Je préfère garder mes distances avec cette proposition.",
-        "target": "f_report",
-        "effect": "",
-        "condition": "",
-        "source_line": 508
-      }
-    ]
+    "next": "f07",
+    "choices": []
   },
   {
     "editorial_id": "P02-F06B",
@@ -2762,23 +2747,8 @@
     ],
     "camera": "leovic",
     "condition": "",
-    "next": "",
-    "choices": [
-      {
-        "text": "Finalement, je vais accepter.",
-        "target": "event:gift",
-        "effect": "",
-        "condition": "",
-        "source_line": 512
-      },
-      {
-        "text": "Je préfère vraiment refuser.",
-        "target": "f_report",
-        "effect": "",
-        "condition": "",
-        "source_line": 512
-      }
-    ]
+    "next": "f07",
+    "choices": []
   },
   {
     "editorial_id": "P02-F06C",
@@ -2788,7 +2758,7 @@
     ],
     "camera": "leovic",
     "condition": "",
-    "next": "event:gift",
+    "next": "f07",
     "choices": []
   },
   {
@@ -2800,18 +2770,16 @@
     ],
     "camera": "leovic",
     "condition": "",
-    "next": "f_report",
+    "next": "f07",
     "choices": []
   },
   {
-    "editorial_id": "P02-F-REPORT",
+    "editorial_id": "COMPAT-F06-REPORTER",
     "runtime": "f_report",
-    "source_lines": [
-      522
-    ],
+    "source_lines": [],
     "camera": "leovic",
     "condition": "",
-    "next": "f07",
+    "next": "",
     "choices": []
   },
   {
@@ -2911,13 +2879,6 @@
         "effect": "",
         "condition": "",
         "source_line": 468
-      },
-      {
-        "text": "À propos des pièces que vous m'aviez proposées...",
-        "target": "post_gift",
-        "effect": "",
-        "condition": "gift_pending",
-        "source_line": 567
       }
     ]
   },
@@ -2951,13 +2912,6 @@
         "effect": "",
         "condition": "",
         "source_line": 468
-      },
-      {
-        "text": "À propos des pièces que vous m'aviez proposées...",
-        "target": "post_gift",
-        "effect": "",
-        "condition": "gift_pending",
-        "source_line": 567
       }
     ]
   },
@@ -2991,13 +2945,6 @@
         "effect": "",
         "condition": "",
         "source_line": 468
-      },
-      {
-        "text": "À propos des pièces que vous m'aviez proposées...",
-        "target": "post_gift",
-        "effect": "",
-        "condition": "gift_pending",
-        "source_line": 567
       }
     ]
   },
@@ -3031,13 +2978,6 @@
         "effect": "",
         "condition": "",
         "source_line": 468
-      },
-      {
-        "text": "À propos des pièces que vous m'aviez proposées...",
-        "target": "post_gift",
-        "effect": "",
-        "condition": "gift_pending",
-        "source_line": 567
       }
     ]
   },
@@ -3069,40 +3009,16 @@
         "effect": "",
         "condition": "",
         "source_line": 468
-      },
-      {
-        "text": "À propos des pièces que vous m'aviez proposées...",
-        "target": "post_gift",
-        "effect": "",
-        "condition": "gift_pending",
-        "source_line": 567
       }
     ]
   },
   {
-    "editorial_id": "P02-POST-DON",
+    "editorial_id": "COMPAT-POST-DON",
     "runtime": "post_gift",
-    "source_lines": [
-      569
-    ],
+    "source_lines": [],
     "camera": "leovic",
-    "condition": "gift_pending",
+    "condition": "",
     "next": "",
-    "choices": [
-      {
-        "text": "Oui, j'accepte. Merci.",
-        "target": "event:late_gift",
-        "effect": "",
-        "condition": "",
-        "source_line": 573
-      },
-      {
-        "text": "Pas encore. Une autre fois, peut-être.",
-        "target": "post_menu",
-        "effect": "",
-        "condition": "",
-        "source_line": 574
-      }
-    ]
+    "choices": []
   }
 ]

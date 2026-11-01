@@ -41,8 +41,8 @@ def main():
  meta['depends'].update({'minecraft':'1.21.11','fabricloader':'>=0.19.5','fabric-api':'>=0.141.6','easy_npc':'7.16.0'})
  assert 'haute_capitale_quetes' not in meta['depends']
  meta.setdefault('breaks',{})['indivis_pq02']='*'
- meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF7'
- meta['description']+=' PQ02-R1-HF7 intégré : Le registre du Port, escortes privées, dialogues et récompenses par personnage ; préparation adaptée aux repères existants ; ouverture de dialogue hors du contexte des fonctions imbriquées ; confirmation de disponibilité et protection de la capture privée contre les remises à zéro d’écran sans fin volontaire et reprise de Géraud pendant le retour de Gautier ; sauvegarde périodique Nexus sans interruption de la scène PQ02 ; actions de transition explicites et reprise d’escorte après fermeture.'
+ meta['version']='0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF8'
+ meta['description']+=' PQ02-R1-HF8 intégré : Le registre du Port, escortes privées, dialogues et récompenses par personnage ; préparation adaptée aux repères existants ; ouverture de dialogue hors du contexte des fonctions imbriquées ; confirmation de disponibilité et protection de la capture privée contre les remises à zéro d’écran sans fin volontaire et reprise de Géraud pendant le retour de Gautier ; sauvegarde périodique Nexus sans interruption de la scène PQ02 ; actions de transition explicites et reprise d’escorte après fermeture ; versement systématique des 50 Martins pendant F06, sans récupération au retour.'
  result['fabric.mod.json']=(json.dumps(meta,ensure_ascii=False,indent=2)+'\n').encode()
  build.write(OUTPUT,result)
  actual=read(OUTPUT)
@@ -57,7 +57,7 @@ def main():
    cls=entry if isinstance(entry,str) else entry['value'];assert cls.replace('.','/')+'.class' in actual
  for mixin in meta['mixins']:
   name=mixin if isinstance(mixin,str) else mixin['config'];assert name in actual
- report={'status':'ASSEMBLED_AND_BYTE_VERIFIED_NATIVE_PENDING','file':OUTPUT.name,'sha256':sha(OUTPUT),'bytes':OUTPUT.stat().st_size,'id':meta['id'],'version':meta['version'],'source_hf12_sha256':SHA_BASE,'source_pq02_sha256':expected,'original_entries_preserved':len(preserved),'original_classes_preserved':sum(n.endswith('.class') for n in preserved),'pq02_entries_identical':len(pq)-1,'added':sorted(added),'changed_original':['fabric.mod.json',*patched_pq01],'pq01_patch_sources':['src_pq01/Pq01Bridge.java'],'pq01_scope':'Gautier speed 1.0 to 1.25; Geraud resumes while Gautier returns to post' ,'entrypoints':meta['entrypoints'],'mixins':meta['mixins'],'depends':meta['depends'],'breaks':meta['breaks'],'datapacks_unchanged':{k:sha(H/'output'/build.FILES[k]) for k in ['core','quests']}}
+ report={'status':'ASSEMBLED_AND_BYTE_VERIFIED_NATIVE_PENDING','file':OUTPUT.name,'sha256':sha(OUTPUT),'bytes':OUTPUT.stat().st_size,'id':meta['id'],'version':meta['version'],'source_hf12_sha256':SHA_BASE,'source_pq02_sha256':expected,'original_entries_preserved':len(preserved),'original_classes_preserved':sum(n.endswith('.class') for n in preserved),'pq02_entries_identical':len(pq)-1,'added':sorted(added),'changed_original':['fabric.mod.json',*patched_pq01],'pq01_patch_sources':['src_pq01/Pq01Bridge.java'],'pq01_scope':'Gautier speed 1.0 to 1.25; Geraud resumes while Gautier returns to post' ,'entrypoints':meta['entrypoints'],'mixins':meta['mixins'],'depends':meta['depends'],'breaks':meta['breaks'],'datapacks_sha256':{k:sha(H/'output'/build.FILES[k]) for k in ['core','quests']}}
  (H/'reports/merge.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
  print(json.dumps(report,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()

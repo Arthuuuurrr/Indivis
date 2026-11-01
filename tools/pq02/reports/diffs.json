@@ -131,7 +131,7 @@
       "data/capitale/function/pq02/admin/preparer_guide_historique.mcfunction": "Compatibilité : ancien nom conservé vers la préparation automatique du parcours",
       "data/capitale/function/pq02/admin/preparer_parcours.mcfunction": "Administration ciblée de PQ02",
       "data/capitale/function/pq02/complete_once_self.mcfunction": "Achèvement explicite et unique ; compétences/XP/bonus conservés ; +5 supprimé",
-      "data/capitale/function/pq02/gift_once_self.mcfunction": "Don personnel unique, ancien bonus de port conservé, aucun effet de réputation",
+      "data/capitale/function/pq02/gift_once_self.mcfunction": "Don systématique pendant F06, unique par personnage, ancien bonus de port conservé, aucun effet de réputation",
       "data/capitale/function/pq02/liaison/leovic.mcfunction": "Association d’un PNJ existant, sans modification d’apparence ou d’action",
       "data/capitale/function/pq02/liaison/magistrat.mcfunction": "Association d’un PNJ existant, sans modification d’apparence ou d’action",
       "data/capitale/function/pq02/liaison/sentinelle.mcfunction": "Association d’un PNJ existant, sans modification d’apparence ou d’action",

@@ -1,119 +1,117 @@
-# PQ02 — Matrice de couverture du script v1.0
+# PQ02 HF8 — couverture narrative
 
-111 nœuds ; 225 citations exactes du script ; 4 libellés de retour ajoutés sans réplique PNJ inventée. Tous les nœuds ont été capturés par b10 et tous leurs choix/suites ont été dispatchés dans le banc natif. Ce contrôle de capture ne constitue pas un rendu graphique.
+111 identifiants conservés, dont 109 actifs et deux alias de sauvegarde ; 216 citations extraites du script de travail v1.1 ; 280 transitions explicites. Le contrôle de capture ne constitue pas un rendu graphique.
 
-| Nœud | Référence | Locuteur | Lignes du script | Caméra/focale | Condition |
-| --- | --- | --- | --- | --- | --- |
-| a01 | P02-A01 | Léovic | 54 | leovic | phase courante |
-| a02a | P02-A02A | Léovic | 62,72,74,76 | leovic | phase courante |
-| a02b | P02-A02B | Léovic | 64,72,74,76 | leovic | phase courante |
-| a02c | P02-A02C | Léovic | 66,72,74,76 | leovic | phase courante |
-| a_menu | P02-A-MENU | Léovic | menu/reprise | leovic | phase courante |
-| a04 | P02-A04 | Léovic | 86 | leovic | phase courante |
-| a04a | P02-A04A | Léovic | 94 | leovic | phase courante |
-| a04b | P02-A04B | Léovic | 96 | leovic | phase courante |
-| a05 | P02-A05 | Léovic | 98 | leovic | phase courante |
-| a05b | P02-A05B | Léovic | 102 | leovic | phase courante |
-| a06 | P02-A06 | Léovic | 104 | leovic | phase courante |
-| a06b | P02-A06B | Léovic | 108 | leovic | phase courante |
-| a07 | P02-A07 | Léovic | 110 | leovic | phase courante |
-| a08 | P02-A08 | Léovic | 114 | leovic | phase courante |
-| a08a | P02-A08A | Léovic | 121 | leovic | phase courante |
-| a09 | P02-A09 | Léovic | 123 | leovic | phase courante |
-| t_menu | P02-T-MENU | Léovic | menu/reprise | leovic | phase courante |
-| t01 | P02-T01 | Léovic | 133 | leovic | phase courante |
-| t02 | P02-T02 | Léovic | 150 | leovic | phase courante |
-| t02a | P02-T02A | Léovic | 159 | leovic | phase courante |
-| t02a_stay | P02-T02A-STAY | Léovic | 163 | leovic | phase courante |
-| t02a_leave | P02-T02A-LEAVE | Léovic | 165 | leovic | phase courante |
-| t02b | P02-T02B | Léovic | 169 | leovic | phase courante |
-| t03 | P02-T03 | Léovic | 173 | leovic | phase courante |
-| t03a | P02-T03A | Léovic | 182 | leovic | phase courante |
-| t03b | P02-T03B | Léovic | 184 | leovic | phase courante |
-| t04 | P02-T04 | Léovic | 188 | leovic | phase courante |
-| t04a | P02-T04A | Léovic | 198 | leovic | phase courante |
-| t04a_reputation | P02-T04A-REPUTATION | Léovic | 202 | leovic | phase courante |
-| t04a_cooperation | P02-T04A-COOPERATION | Léovic | 204 | leovic | phase courante |
-| t04b | P02-T04B | Léovic | 208 | leovic | phase courante |
-| t04b_a | P02-T04B-A | Léovic | 216 | leovic | phase courante |
-| t04b_b | P02-T04B-B | Léovic | 218 | leovic | phase courante |
-| t04b_c | P02-T04B-C | Léovic | 220 | leovic | phase courante |
-| t04c | P02-T04C | Léovic | 224 | leovic | phase courante |
-| t04c_field | P02-T04C-FIELD | Léovic | 228 | leovic | phase courante |
-| t04c_mission | P02-T04C-MISSION | Léovic | 230 | leovic | phase courante |
-| t04d | P02-T04D | Léovic | 234 | leovic | phase courante |
-| t_sentinel_observed | P02-T05-OBSERVATION | Léovic | 240 | leovic | phase courante |
-| t05 | P02-T05 | Léovic | 244 | leovic | sentinel |
-| t05a | P02-T05A | Léovic | 253 | leovic | sentinel |
-| t05b | P02-T05B | Léovic | 255 | leovic | sentinel |
-| t05c | P02-T05C | Léovic | 257 | leovic | sentinel |
-| t06 | P02-T06 | Léovic | 261 | leovic | anecdote |
-| t06a | P02-T06A | Léovic | 269,275 | leovic | anecdote |
-| t06b | P02-T06B | Léovic | 271,275 | leovic | anecdote |
-| t06c | P02-T06C | Léovic | 273,275 | leovic | anecdote |
-| t_resume | P02-T-RESUME | Léovic | 281 | leovic | phase courante |
-| t07 | P02-T07 | Léovic | 289,291 | leovic | phase courante |
-| t07a | P02-T07A | Léovic | 299,303 | leovic | phase courante |
-| t07b | P02-T07B | Léovic | 301,303 | leovic | phase courante |
-| t07c | P02-T07C | Léovic | 303 | leovic | phase courante |
-| m01a | P02-M01A | Magistrat | 315 | three | phase courante |
-| m01b | P02-M01B | Léovic | 317 | three | phase courante |
-| m01c | P02-M01C | Magistrat | 319,321 | three | phase courante |
-| m01d | P02-M01D | Léovic | 323 | three | phase courante |
-| m02 | P02-M02 | Magistrat | 325,329 | magistrat | phase courante |
-| m02a | P02-M02A | Magistrat | 337,347 | magistrat | phase courante |
-| m02b | P02-M02B | Magistrat | 339,347 | magistrat | phase courante |
-| m02c | P02-M02C | Magistrat | 341,347 | magistrat | phase courante |
-| m03a | P02-M03A | Magistrat | 355,361 | magistrat | phase courante |
-| m03b | P02-M03B | Magistrat | 357,361 | magistrat | phase courante |
-| m04a | P02-M04A | Magistrat | 369 | magistrat | phase courante |
-| m04a_leovic | P02-M04A-LEOVIC | Léovic | 369 | leovic | phase courante |
-| m04b | P02-M04B | Magistrat | 371,379 | magistrat | phase courante |
-| m04c | P02-M04C | Magistrat | 373 | magistrat | phase courante |
-| m04c_leovic | P02-M04C-LEOVIC | Léovic | 373 | leovic | phase courante |
-| m_menu | P02-M-MENU | Magistrat | 379 | magistrat | phase courante |
-| m_questions | P02-M-QUESTIONS | Magistrat | menu/reprise | magistrat | phase courante |
-| m05a | P02-M05A | Magistrat | 389 | magistrat | phase courante |
-| m05a_unknown | P02-M05A-UNKNOWN | Magistrat | 393 | magistrat | phase courante |
-| m05b | P02-M05B | Magistrat | 395 | magistrat | phase courante |
-| m05b_resident | P02-M05B-RESIDENT | Magistrat | 399 | magistrat | phase courante |
-| m05c | P02-M05C | Magistrat | 401 | three | phase courante |
-| m05c_leovic | P02-M05C-LEOVIC | Léovic | 403 | three | phase courante |
-| m05c_magistrat | P02-M05C-MAGISTRAT | Magistrat | 405 | three | phase courante |
-| m05d | P02-M05D | Magistrat | 407 | magistrat | phase courante |
-| m06 | P02-M06 | Magistrat | 411 | magistrat | phase courante |
-| m06_registered | P02-M06-REGISTERED | Magistrat | 417 | magistrat | phase courante |
-| m06a | P02-M06A | Magistrat | 425 | magistrat | phase courante |
-| m06b | P02-M06B | Magistrat | 427 | magistrat | phase courante |
-| m06c | P02-M06C | Magistrat | 429 | magistrat | phase courante |
-| m07 | P02-M07 | Léovic | 435 | leovic | phase courante |
-| m07a | P02-M07A | Léovic | 443,449 | leovic | phase courante |
-| m07b | P02-M07B | Léovic | 445,449 | leovic | phase courante |
-| m07c | P02-M07C | Léovic | 447,449 | leovic | phase courante |
-| f_menu | P02-F-MENU | Léovic | 461 | leovic | phase courante |
-| f_questions | P02-F-QUESTIONS | Léovic | menu/reprise | leovic | phase courante |
-| f02 | P02-F02 | Léovic | 471 | leovic | phase courante |
-| f03 | P02-F03 | Léovic | 473 | leovic | phase courante |
-| f03_prefer | P02-F03-PREFER | Léovic | 477 | leovic | phase courante |
-| f04 | P02-F04 | Léovic | 479 | leovic | phase courante |
-| f04_return | P02-F04-RETURN | Léovic | 483 | leovic | phase courante |
-| f05 | P02-F05 | Léovic | 485 | leovic | phase courante |
-| f05_short | P02-F05-SHORT | Léovic | 487 | leovic | phase courante |
-| f06 | P02-F06 | Léovic | 491,495,497 | leovic | phase courante |
-| f06a | P02-F06A | Léovic | 506 | leovic | phase courante |
-| f06b | P02-F06B | Léovic | 510 | leovic | phase courante |
-| f06c | P02-F06C | Léovic | 514 | leovic | phase courante |
-| f06d | P02-F06D | Léovic | 516,518 | leovic | phase courante |
-| f_report | P02-F-REPORT | Léovic | 522 | leovic | phase courante |
-| f07 | P02-F07 | Léovic | 528,530 | leovic | phase courante |
-| f07a | P02-F07A | Léovic | 538 | leovic | phase courante |
-| f07b | P02-F07B | Léovic | 540 | leovic | phase courante |
-| f07c | P02-F07C | Léovic | 542 | leovic | phase courante |
-| post_very_friendly | P02-POST-ACCUEIL | Léovic | 556 | leovic | phase courante |
-| post_friendly | P02-POST-ACCUEIL | Léovic | 557 | leovic | phase courante |
-| post_neutral | P02-POST-ACCUEIL | Léovic | 558 | leovic | phase courante |
-| post_unfriendly | P02-POST-ACCUEIL | Léovic | 559 | leovic | phase courante |
-| post_menu | P02-POST-MENU | Léovic | menu/reprise | leovic | phase courante |
-| post_gift | P02-POST-DON | Léovic | 569 | leovic | gift_pending |
-
-Les citations non consommées listées dans `unused_quotes.json` correspondent aux titres, libellés de rubrique et indications système, ou à des répétitions éditoriales d’un libellé déjà utilisé. Aucune réplique PNJ du scénario n’est omise. Les embranchements et effets détaillés sont dans `coverage.json` et `narrative_graph.json`.
+| Nœud | ID | Lignes du script v1.1 | Locuteur | Suite/compatibilité |
+| --- | --- | --- | --- | --- |
+| a01 | 1 | 54 | leovic | choix |
+| a02a | 2 | 62, 72, 74, 76 | leovic | choix |
+| a02b | 3 | 64, 72, 74, 76 | leovic | choix |
+| a02c | 4 | 66, 72, 74, 76 | leovic | choix |
+| a_menu | 5 | menu/alias | leovic | choix |
+| a04 | 6 | 86 | leovic | choix |
+| a04a | 7 | 94 | leovic | choix |
+| a04b | 8 | 96 | leovic | choix |
+| a05 | 9 | 98 | leovic | choix |
+| a05b | 10 | 102 | leovic | choix |
+| a06 | 11 | 104 | leovic | choix |
+| a06b | 12 | 108 | leovic | choix |
+| a07 | 13 | 110 | leovic | choix |
+| a08 | 14 | 114 | leovic | choix |
+| a08a | 15 | 121 | leovic | event:rest |
+| a09 | 16 | 123 | leovic | event:start_walk |
+| t_menu | 17 | menu/alias | leovic | choix |
+| t01 | 18 | 133 | leovic | choix |
+| t02 | 19 | 150 | leovic | choix |
+| t02a | 20 | 159 | leovic | choix |
+| t02a_stay | 21 | 163 | leovic | choix |
+| t02a_leave | 22 | 165 | leovic | choix |
+| t02b | 23 | 169 | leovic | choix |
+| t03 | 24 | 173 | leovic | choix |
+| t03a | 25 | 182 | leovic | choix |
+| t03b | 26 | 184 | leovic | choix |
+| t04 | 27 | 188 | leovic | choix |
+| t04a | 28 | 198 | leovic | choix |
+| t04a_reputation | 29 | 202 | leovic | choix |
+| t04a_cooperation | 30 | 204 | leovic | choix |
+| t04b | 31 | 208 | leovic | choix |
+| t04b_a | 32 | 216 | leovic | choix |
+| t04b_b | 33 | 218 | leovic | choix |
+| t04b_c | 34 | 220 | leovic | choix |
+| t04c | 35 | 224 | leovic | choix |
+| t04c_field | 36 | 228 | leovic | choix |
+| t04c_mission | 37 | 230 | leovic | choix |
+| t04d | 38 | 234 | leovic | choix |
+| t_sentinel_observed | 39 | 240 | leovic | choix |
+| t05 | 40 | 244 | leovic | choix |
+| t05a | 41 | 253 | leovic | choix |
+| t05b | 42 | 255 | leovic | choix |
+| t05c | 43 | 257 | leovic | choix |
+| t06 | 44 | 261 | leovic | choix |
+| t06a | 45 | 269, 275 | leovic | choix |
+| t06b | 46 | 271, 275 | leovic | choix |
+| t06c | 47 | 273, 275 | leovic | choix |
+| t_resume | 48 | 281 | leovic | event:resume_walk |
+| t07 | 49 | 289, 291 | leovic | choix |
+| t07a | 50 | 299, 303 | leovic | m01a |
+| t07b | 51 | 301, 303 | leovic | m01a |
+| t07c | 52 | 303 | leovic | m01a |
+| m01a | 53 | 315 | magistrat | m01b |
+| m01b | 54 | 317 | leovic | m01c |
+| m01c | 55 | 319, 321 | magistrat | m01d |
+| m01d | 56 | 323 | leovic | m02 |
+| m02 | 57 | 325, 329 | magistrat | choix |
+| m02a | 58 | 337, 347 | magistrat | choix |
+| m02b | 59 | 339, 347 | magistrat | choix |
+| m02c | 60 | 341, 347 | magistrat | choix |
+| m03a | 61 | 355, 361 | magistrat | choix |
+| m03b | 62 | 357, 361 | magistrat | choix |
+| m04a | 63 | 369 | magistrat | m04a_leovic |
+| m04a_leovic | 64 | 369 | leovic | m_menu |
+| m04b | 65 | 371, 379 | magistrat | choix |
+| m04c | 66 | 373 | magistrat | m04c_leovic |
+| m04c_leovic | 67 | 373 | leovic | m_menu |
+| m_menu | 68 | 379 | magistrat | choix |
+| m_questions | 69 | menu/alias | magistrat | choix |
+| m05a | 70 | 389 | magistrat | choix |
+| m05a_unknown | 71 | 393 | magistrat | choix |
+| m05b | 72 | 395 | magistrat | choix |
+| m05b_resident | 73 | 399 | magistrat | choix |
+| m05c | 74 | 401 | magistrat | m05c_leovic |
+| m05c_leovic | 75 | 403 | leovic | m05c_magistrat |
+| m05c_magistrat | 76 | 405 | magistrat | choix |
+| m05d | 77 | 407 | magistrat | choix |
+| m06 | 78 | 411 | magistrat | event:register |
+| m06_registered | 79 | 417 | magistrat | choix |
+| m06a | 80 | 425 | magistrat | m07 |
+| m06b | 81 | 427 | magistrat | m07 |
+| m06c | 82 | 429 | magistrat | m07 |
+| m07 | 83 | 435 | leovic | choix |
+| m07a | 84 | 443, 449 | leovic | event:elevator |
+| m07b | 85 | 445, 449 | leovic | event:elevator |
+| m07c | 86 | 447, 449 | leovic | event:elevator |
+| f_menu | 87 | 461 | leovic | choix |
+| f_questions | 88 | menu/alias | leovic | choix |
+| f02 | 89 | 471 | leovic | choix |
+| f03 | 90 | 473 | leovic | choix |
+| f03_prefer | 91 | 477 | leovic | event:practical_menu |
+| f04 | 92 | 479 | leovic | choix |
+| f04_return | 93 | 483 | leovic | event:practical_menu |
+| f05 | 94 | 485 | leovic | event:practical_menu |
+| f05_short | 95 | 487 | leovic | event:practical_menu |
+| f06 | 96 | 491, 495, 497 | leovic | choix |
+| f06a | 97 | 506 | leovic | f07 |
+| f06b | 98 | 510 | leovic | f07 |
+| f06c | 99 | 514 | leovic | f07 |
+| f06d | 100 | 516, 518 | leovic | f07 |
+| f_report | 101 | menu/alias | leovic | alias → f07 |
+| f07 | 102 | 528, 530 | leovic | choix |
+| f07a | 103 | 538 | leovic | event:complete |
+| f07b | 104 | 540 | leovic | event:complete |
+| f07c | 105 | 542 | leovic | event:complete |
+| post_very_friendly | 106 | 556 | leovic | choix |
+| post_friendly | 107 | 557 | leovic | choix |
+| post_neutral | 108 | 558 | leovic | choix |
+| post_unfriendly | 109 | 559 | leovic | choix |
+| post_menu | 110 | menu/alias | leovic | choix |
+| post_gift | 111 | menu/alias | leovic | alias → post_menu |

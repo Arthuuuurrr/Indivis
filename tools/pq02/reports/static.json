@@ -1,10 +1,13 @@
 {
   "status": "PASS",
-  "checks": 261,
+  "checks": 269,
   "evidence": [
+    "HF8: no core entry added, removed or changed outside three approved entries relative to installed HF1",
+    "HF8: only gift guard, completion guard and metadata differ from HF1",
     "HF1: all other R1 core entries byte-identical (aggregate original hashes)",
     "HF1: four new admin functions and only two changed existing entries",
-    "HF1: hc_quetes archive byte-identical to R1",
+    "HF8: journal only PQ02 reward description and metadata changed",
+    "HF8: journal objectives, conditions, ranges and all other rewards byte-semantically preserved",
     "HF1: gameplay source preserved src/Pq02Rules.java",
     "HF1: gameplay source preserved src/Pq02Motion.java",
     "HF1: gameplay source preserved src/Pq02Pacing.java",
@@ -261,12 +264,17 @@
     "all persistent score names <=16",
     "journal ID and stages preserved",
     "objective IDs preserved",
-    "all narrative nodes reachable from phase entrances",
+    "HF8: only two explicit legacy aliases, stable IDs retained",
+    "HF8: obsolete branches have no text, choices or reward event",
+    "all active narrative nodes reachable from phase entrances",
+    "HF8: all 111 persisted narrative IDs unchanged",
+    "HF8: every non-donation narrative node and branch unchanged",
+    "HF8: four initial responses, no return-for-gift option",
     "real Java21 pure tests and actual Nexus policy pass"
   ],
   "nodes": 111,
-  "edges": 291,
-  "quotes": 225,
+  "edges": 281,
+  "quotes": 216,
   "additional_navigation_labels": [
     "Parlez-moi encore de votre expérience.",
     "Revenons au Port.",
@@ -305,10 +313,6 @@
     {
       "line": 415,
       "quote": " Retourner voir Léovic / passage vers l'ascenseur "
-    },
-    {
-      "line": 520,
-      "quote": " cadeau au retour "
     },
     {
       "line": 635,

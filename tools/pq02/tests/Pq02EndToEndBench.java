@@ -15,7 +15,7 @@ final class Pq02EndToEndBench {
  static void initial(Object p){seed(p,30);for(String key:List.of("CAP_PQ2_NODE","CAP_PQ2_WP","CAP_PQ2_DA","CAP_PQ2_DG","CAP_PQ2_DM","CAP_PQ2_DD","CAP_PQ2_IMPR","CAP_PQ2_REG","CAP_PQ2_REW","CAP_PQ2_SENT","CAP_PQ2_ANECD","CAP_PQ2_PORT","CAP_PQ2_STATUS","CAP_LEOVIC_GIFT","CAP_PQ2_OFFER","REP_GARDEPORT","fixture_bonus","fixture_skills","CAPSK_REWARD_REGPORT","CAP_QUETEACTIVE"))score2(p,key,0);}
  static void start()throws Exception{
   initial(a);initial(b);seed(observer,100);run(a,"function capitale:pq02/load");Pq02SetupBench.run();
-  Pq02HandoffBench.installLookCallbacks();
+  if(!Pq02FullSystemBench.ACTIVE)Pq02HandoffBench.installLookCallbacks();
   call(call(srv,"method_3760"),"method_14582",make("net.minecraft.class_11560",call(a,"method_7334")));
   score2(b,"CAP_RANGSOCIAL",30);score2(a,"CAP_RANGSOCIAL",0);
   Pq02EntryBench.click(a,leo);production();settle(a);record(a);
@@ -35,8 +35,10 @@ final class Pq02EndToEndBench {
  static void choose(Object p,int pick){Pq02WorldBench.pick(p,pick);record(p);}
  static void forward(Object p){choose(p,14);}
  static void interact(Object p,String role){View v=v(p);Object actor=v!=null&&v.actors.containsKey(role)?v.actors.get(role).entity:role.equals("leovic")?leo:mag;
-  stat(DM,"ouvrir",p,actor,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));
-  if(tags(actor).contains(TAG))call(call(actor,"getEasyNPCActionEventData"),"handleActionEvent",en("de.markusbordihn.easynpc.data.action.ActionEventType","ON_INTERACTION"),p);else Pq02EntryBench.command(p,actor);
+  if(Pq02FullSystemBench.ACTIVE)Pq02FullSystemBench.interact(p,actor);else {
+   stat(DM,"ouvrir",p,actor,en("net.hautecapitale.dialogue.session.DialogueMode","CAPTURE"));
+   if(tags(actor).contains(TAG))call(call(actor,"getEasyNPCActionEventData"),"handleActionEvent",en("de.markusbordihn.easynpc.data.action.ActionEventType","ON_INTERACTION"),p);else Pq02EntryBench.command(p,actor);
+  }
   production();settle(p);check(v(p)!=null&&v(p).ui,"real NPC action reopens "+role);record(p);
  }
  static void interrupt(Object p){View v=v(p);String key=v.node.key;int phase=stage(p),wp=v.waypoint,rep=score(p,"REP_GARDEPORT"),impression=score(p,"CAP_PQ2_IMPR"),gift=score(p,"CAP_LEOVIC_GIFT");
@@ -93,18 +95,17 @@ final class Pq02EndToEndBench {
  static void finalConversation(Object p,boolean positive)throws Exception{
   settle(p);record(p);check(v(p).node.key.equals("f_menu"),"physical arrival at P opens the final conversation");
   if(positive){for(String key:List.of("f02","f03","f03_prefer","f04","f04_return","f05_short")){go(p,key);interrupt(p);if(v(p).node.next.equals("event:practical_menu"))forward(p);}}
-  go(p,"f06");choose(p,positive?3:4);if(positive)interrupt(p);forward(p);
-  if(!positive)forward(p); // contempt -> f_report -> f07
+  go(p,"f06");check(score(p,"CAP_LEOVIC_GIFT")==1&&score(p,"CAP_PQ2_DD")==0,"automatic gift precedes response without any acceptance choice");choose(p,positive?3:4);if(positive)interrupt(p);forward(p);
   check(v(p).node.key.equals("f07"),"gift branch reaches separation questions");
   choose(p,positive?2:3);if(positive)interrupt(p);forward(p);
   check(stage(p)==100&&v(p)==null&&current(p)==null&&score(p,"CAP_PQ2_REW")==1,"completion closes camera, retires actors and advances the quest");
   check(score(p,"REP_GARDEPORT")== (positive?3:-1)&&score(p,"CAP_PQ2_IMPR")== (positive?4:-1),"full chronological reputation and global impression match choices");
-  check(score(p,"CAP_LEOVIC_GIFT")== (positive?1:0)&&score(p,"fixture_skills")==1,"immediate gift/refusal and original skill reward remain distinct");
+  check(score(p,"CAP_LEOVIC_GIFT")==1&&score(p,"fixture_skills")==1,"both positive and dry responses retain automatic money and original skill reward");
  }
  static void returnConversation(Object p,boolean positive){call(p,"method_5814",0.5d,64d,2.5d);interact(p,"leovic");check(v(p).node.key.equals(positive?"post_very_friendly":"post_unfriendly"),"permanent post greeting uses total impression");
   go(p,"f03");choose(p,1);forward(p);check(v(p).node.key.equals("post_menu"),"post-quest practical reply returns to the post-quest menu");
-  if(!positive){go(p,"post_gift");choose(p,2);go(p,"post_gift");choose(p,1);check(v(p).node.key.equals("post_menu")&&score(p,"CAP_LEOVIC_GIFT")==1,"multiple late refusals then acceptance give the pending gift");}
-  run(p,"execute store result score @s fixture_money run clear @s minecraft:gold_nugget 0");check(score(p,"fixture_money")==50,"entire playthrough and late return give exactly 50 currency substitute items");
+  check(v(p).choices.stream().noneMatch(c->c.target.equals("post_gift")),"optional return offers practical questions without gift retrieval");
+  run(p,"execute store result score @s fixture_money run clear @s minecraft:gold_nugget 0");check(score(p,"fixture_money")==50,"entire playthrough gives exactly 50 currency substitute items; optional return pays nothing");
   run(p,"function capitale:pq02/gift_once_self");run(p,"function capitale:pq02/complete_once_self");run(p,"execute store result score @s fixture_money run clear @s minecraft:gold_nugget 0");
   check(score(p,"fixture_money")==50&&score(p,"fixture_skills")==1&&score(p,"REP_GARDEPORT")== (positive?3:-1),"replayed terminal functions cannot duplicate rewards or change reputation");suspend(p);
  }
@@ -140,7 +141,7 @@ final class Pq02EndToEndBench {
    check(walkedA.size()>=16&&walkedB.size()>=16,"both physical routes passed their existing intermediate waypoints");
    evidence.add("Chronological visited pages="+visited);evidence.add("Native close/reopen pages="+interrupted);evidence.add("A waypoints="+walkedA+" B waypoints="+walkedB);
    // Existing targeted regressions complement the chronological paths, without rewriting those quests.
-   followingQuest();HuguesBench.runAll(a);Mq03Bench.runAll(a,observer);done=true;
+   followingQuest();HuguesBench.runAll(a);Mq03Bench.runAll(a,observer);Pq02AutomaticGiftBench.runAll(a);done=true;
   }
   return done;
  }

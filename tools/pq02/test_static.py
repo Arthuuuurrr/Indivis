@@ -10,11 +10,22 @@ old={k:build.read(p) for k,p in build.BASE.items()};new={k:build.read(build.OUT/
 diffs=json.loads((H/'reports/diffs.json').read_text())
 baseline=json.loads((H/'hf1_baseline.json').read_text())
 added={'data/capitale/function/pq02/admin/'+s+'.mcfunction' for s in baseline['added_admin_functions']}
-preserved={n:b for n,b in new['core'].items() if n not in added and n not in baseline['changed_r1_entries']}
+hf8=json.loads((H/'hf8_baseline.json').read_text())
+hf8_changed=set(hf8['core']['approved_changes'])
+def aggregate_sha(files,exclude):return build.sha(''.join(n+' '+build.sha(b)+'\n' for n,b in sorted(files.items()) if n not in exclude).encode())
+ok(len(new['core'])==hf8['core']['total'] and aggregate_sha(new['core'],hf8_changed)==hf8['core']['preserved_aggregate_sha256'],'HF8: no core entry added, removed or changed outside three approved entries relative to installed HF1')
+ok(all(build.sha(new['core'][n])!=digest for n,digest in hf8['core']['approved_changes'].items()),'HF8: only gift guard, completion guard and metadata differ from HF1')
+hf1=new['core'].copy()
+for n,t in hf8['core']['original_changed_entries'].items():
+ hf1[n]=t.encode();assert build.sha(hf1[n])==hf8['core']['approved_changes'][n]
+preserved={n:b for n,b in hf1.items() if n not in added and n not in baseline['changed_r1_entries']}
 aggregate=''.join(n+' '+build.sha(b)+'\n' for n,b in sorted(preserved.items())).encode()
 ok(len(preserved)==baseline['core_preserved_count'] and build.sha(aggregate)==baseline['core_preserved_manifest_sha256'],'HF1: all other R1 core entries byte-identical (aggregate original hashes)')
 ok(all(n in new['core'] for n in added) and all(build.sha(new['core'][n])!=digest for n,digest in baseline['changed_r1_entries'].items()),'HF1: four new admin functions and only two changed existing entries')
-ok(build.sha((build.OUT/build.FILES['quests']).read_bytes())==baseline['quests_sha256'],'HF1: hc_quetes archive byte-identical to R1')
+qdef='data/hc_quetes/hcq_quests/pq_02_registre_port.json'
+ok(len(new['quests'])==hf8['quests']['total'] and aggregate_sha(new['quests'],set(hf8['quests']['approved_changes']))==hf8['quests']['preserved_aggregate_sha256'],'HF8: journal only PQ02 reward description and metadata changed')
+before=hf8['quests']['pq02_definition'];after=json.loads(new['quests'][qdef]);before['rewards'][-1]=after['rewards'][-1]
+ok(before==after,'HF8: journal objectives, conditions, ranges and all other rewards byte-semantically preserved')
 for name,digest in baseline['preserved_sources'].items():
  if name!='src/Pq02Client.java':ok(build.sha((H/name).read_bytes())==digest,'HF1: gameplay source preserved '+name)
 for k in old:ok(not diffs[k]['removed'],k+': no existing file deleted')
@@ -54,7 +65,15 @@ while True:
  more={b for a,b in edges if a in visited and not b.startswith('event:')}-visited
  if not more:break
  visited|=more
-ok(set(model.N)<=visited,'all narrative nodes reachable from phase entrances')
+aliases={k:n['legacy_alias'] for k,n in model.N.items() if 'legacy_alias' in n}
+ok(aliases=={'f_report':'f07','post_gift':'post_menu'},'HF8: only two explicit legacy aliases, stable IDs retained')
+ok(all(not model.N[k]['lines'] and not model.N[k]['choices'] and not model.N[k]['next'] and target in visited for k,target in aliases.items()),'HF8: obsolete branches have no text, choices or reward event')
+ok(set(model.N)-set(aliases)<=visited,'all active narrative nodes reachable from phase entrances')
+ok(hf8['graph']['ids']=={k:n['id'] for k,n in model.N.items()},'HF8: all 111 persisted narrative IDs unchanged')
+changed_nodes=set(hf8['graph']['approved_changes'])
+canonical=json.dumps({k:n for k,n in model.N.items() if k not in changed_nodes},ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+ok(build.sha(canonical)==hf8['graph']['preserved_nodes_sha256'],'HF8: every non-donation narrative node and branch unchanged')
+ok(len(model.N['f06']['choices'])==4 and all(c['target']!='post_gift' for n in model.N.values() for c in n['choices']),'HF8: four initial responses, no return-for-gift option')
 # Each used quote is read directly from authoritative text; explicit audit of unused spoken lines.
 quotes=[(i+1,j,t) for i,l in enumerate(model.LINES) for j,t in enumerate(re.findall('«([^»]+)»',l))]
 unused=[{'line':i,'quote':t} for i,j,t in quotes if (i,j) not in model.USED]
