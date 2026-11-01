@@ -1,0 +1,166 @@
+{
+  "inputs": {
+    "ours": {
+      "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8.zip",
+      "sha256": "393ac02d857774f4de7483ce4d179f2e67a13f1ec1ae9cab4830608568b891a6"
+    },
+    "clement": {
+      "filename": "hc_quetes-0.1.0.b22.zip",
+      "sha256": "07d0c6e3b711fa9ccf1808e568ce72cc4cb0b577132013f40513aa6b066df6a3"
+    },
+    "common": {
+      "filename": "hc_quetes-0.1.0.b21.zip",
+      "sha256": "4e14c6584a175c864bccf3dbf36569c601cab013078dbc9ce0335f47a8a17360"
+    }
+  },
+  "raw_clement_changes": [
+    "data/hc_quetes/function/aurele/interact.mcfunction",
+    "data/hc_quetes/function/aurele/q12/recaisse.mcfunction",
+    "data/hc_quetes/function/aurele/q12/recaisse_paye.mcfunction",
+    "data/hc_quetes/function/aurele/q8/kill_vasca.mcfunction",
+    "data/hc_quetes/function/aurele/q8/rend_insigne.mcfunction",
+    "data/hc_quetes/function/carrec/aurele/refus.mcfunction",
+    "data/hc_quetes/function/carrec/choix.mcfunction",
+    "data/hc_quetes/function/hector/q5/prend_insigne.mcfunction",
+    "data/hc_quetes/function/hector/q5/retour.mcfunction",
+    "data/hc_quetes/function/lib/balayage.mcfunction",
+    "data/hc_quetes/function/pnj/aveline/interact.mcfunction",
+    "data/hc_quetes/function/tick.mcfunction",
+    "data/hc_quetes/hcq_quests/mc_carrec.json",
+    "pack.mcmeta"
+  ],
+  "decisions": [
+    {
+      "path": "data/hc_quetes/function/aurele/interact.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/aurele/q12/recaisse.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/aurele/q12/recaisse_paye.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/aurele/q8/kill_vasca.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/aurele/q8/rend_insigne.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/carrec/aurele/refus.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/carrec/choix.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/hector/q5/prend_insigne.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/hector/q5/retour.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/lib/balayage.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/pnj/aveline/interact.mcfunction",
+      "method": "clement_only"
+    },
+    {
+      "path": "data/hc_quetes/function/tick.mcfunction",
+      "method": "three_way_lines"
+    },
+    {
+      "path": "data/hc_quetes/hcq_quests/cq_vc_ep_02_ruines_carrec.json",
+      "method": "clement_only"
+    },
+    {
+      "path": "pack.mcmeta",
+      "method": "combined_metadata"
+    },
+    {
+      "path": "data/hc_quetes/function/migration/load.mcfunction",
+      "method": "v2_refusal_flag_lifecycle"
+    },
+    {
+      "path": "data/hc_quetes/function/migration/ensure/arc_n.mcfunction",
+      "method": "v2_refusal_flag_lifecycle"
+    },
+    {
+      "path": "data/hc_quetes/function/migration/write/arc_n/v0.mcfunction",
+      "method": "v2_refusal_flag_lifecycle"
+    },
+    {
+      "path": "data/hc_quetes/function/migration/write/arc_n/v1.mcfunction",
+      "method": "v2_refusal_flag_lifecycle"
+    },
+    {
+      "path": "data/hc_quetes/function/marqueurs/aurele.mcfunction",
+      "method": "suppress_only_declined_offer_marker"
+    }
+  ],
+  "new_predicates": [
+    "data/hc_quetes/predicate/migration/state/arc_n/neg1_to_0.json",
+    "data/hc_quetes/predicate/migration/state/arc_a/6_to_.json",
+    "data/hc_quetes/predicate/migration/state/arc_p/70_to_.json",
+    "data/hc_quetes/predicate/migration/state/arc_n/70_to_.json",
+    "data/hc_quetes/predicate/migration/state/arc_c/70_to_.json"
+  ],
+  "conflicts": [],
+  "mapping": {
+    "states": 47,
+    "auxiliary": 153,
+    "items": 64
+  },
+  "normalized_changed": [
+    "data/hc_quetes/function/aurele/interact.mcfunction",
+    "data/hc_quetes/function/aurele/q12/recaisse.mcfunction",
+    "data/hc_quetes/function/aurele/q12/recaisse_paye.mcfunction",
+    "data/hc_quetes/function/aurele/q8/kill_vasca.mcfunction",
+    "data/hc_quetes/function/aurele/q8/rend_insigne.mcfunction",
+    "data/hc_quetes/function/carrec/aurele/refus.mcfunction",
+    "data/hc_quetes/function/carrec/choix.mcfunction",
+    "data/hc_quetes/function/hector/q5/prend_insigne.mcfunction",
+    "data/hc_quetes/function/hector/q5/retour.mcfunction",
+    "data/hc_quetes/function/lib/balayage.mcfunction",
+    "data/hc_quetes/function/pnj/aveline/interact.mcfunction",
+    "data/hc_quetes/function/tick.mcfunction",
+    "data/hc_quetes/hcq_quests/cq_vc_ep_02_ruines_carrec.json",
+    "pack.mcmeta"
+  ],
+  "changed_from_ours": [
+    "data/hc_quetes/function/aurele/interact.mcfunction",
+    "data/hc_quetes/function/aurele/q12/recaisse.mcfunction",
+    "data/hc_quetes/function/aurele/q12/recaisse_paye.mcfunction",
+    "data/hc_quetes/function/aurele/q8/kill_vasca.mcfunction",
+    "data/hc_quetes/function/aurele/q8/rend_insigne.mcfunction",
+    "data/hc_quetes/function/carrec/aurele/refus.mcfunction",
+    "data/hc_quetes/function/carrec/choix.mcfunction",
+    "data/hc_quetes/function/hector/q5/prend_insigne.mcfunction",
+    "data/hc_quetes/function/hector/q5/retour.mcfunction",
+    "data/hc_quetes/function/lib/balayage.mcfunction",
+    "data/hc_quetes/function/marqueurs/aurele.mcfunction",
+    "data/hc_quetes/function/migration/ensure/arc_n.mcfunction",
+    "data/hc_quetes/function/migration/load.mcfunction",
+    "data/hc_quetes/function/migration/write/arc_n/v0.mcfunction",
+    "data/hc_quetes/function/migration/write/arc_n/v1.mcfunction",
+    "data/hc_quetes/function/pnj/aveline/interact.mcfunction",
+    "data/hc_quetes/function/tick.mcfunction",
+    "data/hc_quetes/hcq_quests/cq_vc_ep_02_ruines_carrec.json",
+    "data/hc_quetes/predicate/migration/state/arc_a/6_to_.json",
+    "data/hc_quetes/predicate/migration/state/arc_c/70_to_.json",
+    "data/hc_quetes/predicate/migration/state/arc_n/70_to_.json",
+    "data/hc_quetes/predicate/migration/state/arc_n/neg1_to_0.json",
+    "data/hc_quetes/predicate/migration/state/arc_p/70_to_.json",
+    "pack.mcmeta"
+  ],
+  "removed_from_ours": []
+}

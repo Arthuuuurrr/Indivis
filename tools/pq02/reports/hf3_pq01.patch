@@ -1,0 +1,29 @@
+--- HF12/Pq01Bridge.java
++++ HF3/Pq01Bridge.java
+@@ -459,12 +459,11 @@
+     Actor a=v.actors.get("gautier");Pq01Motion.Point target=returning?(a==null?null:configuredPoint(p,"gautier_poste",point(child(binding(p,"gautier_large"),"post")))):v.approach;
+     if(!alive(a)||target==null){diagnostic(p,"Trajet non configuré/acteur absent ; repli de l'interruption.");run(p,"function capitale:pq01/node/"+next);return 1;}
+     if(returning&&v.camera==a.entity){Actor geraud=v.actors.get("geraud");if(alive(geraud)){v.cameraRole="geraud";openCamera(v,geraud.entity);}}
+-    v.waitingNode=Pq01Ids.id(expected);run(p,"scoreboard players set @s hcm_pq1_wait 1");
+-    travel(v,a,target,()->{
+-      if(returning)face(v.actors.get("geraud"),pos(p,v.world));
+-      else {face(a,pos(v.actors.get("geraud").entity,v.world));face(v.actors.get("geraud"),pos(a.entity,v.world));}
+-      advance(v,next);
+-    },reason->{diagnostic(p,"Retour Gautier arrêté sur place : "+reason);advance(v,next);});
++    // Le retour au poste accompagne la reprise de Géraud, sans page d'attente.
++    // La marche reste privée et conserve les contrôles d'arrêt et de contexte.
++    travel(v,a,target,()->{face(v.actors.get("geraud"),pos(p,v.world));},
++      reason->diagnostic(p,"Retour Gautier arrêté sur place : "+reason));
++    run(p,"function capitale:pq01/node/"+next);
+     return 1;
+   }
+   static int startApproach(Object p){
+@@ -488,7 +487,7 @@
+       public boolean navigating(){Object nav=call(a.entity,"getGroundPathNavigation");return nav!=null&&!Boolean.TRUE.equals(call(nav,"method_6357"));}
+       public boolean navigate(Pq01Motion.Point t){try{
+         Object nav=call(a.entity,"getGroundPathNavigation");if(nav==null)return false;
+-        double speed=a.role.equals("gautier")?1.0d:0.65d;
++        double speed=a.role.equals("gautier")?1.25d:0.65d;
+         // Le service court de Perrin vise le bloc exact : le défaut natif accepte
+         // un bloc voisin et peut donc finir sans quitter son point de départ.
+         if(a.role.equals("perrin")){

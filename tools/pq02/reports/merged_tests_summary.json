@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "revision": "PQ02 R1 HF7",
+  "journal": "haute-capitale-quetes-HF12-PQ02-R1-HF7-1.21.11.jar",
+  "sha256": "31add513a5cc3763d137156149f17abc70a73b017f94f6498b8132cdd02b067d",
+  "preserved_hf12_classes": 182,
+  "preserved_hf12_resources": 220,
+  "pq02_entries_identical_to_build_component": 34,
+  "native_checks": 2425,
+  "admin_native_checks": 37,
+  "function_entry_native_checks": 15,
+  "focus_readiness_native_checks": 12,
+  "real_client_protocol_checks": 566,
+  "client_protocol_nodes": 111,
+  "gautier_native_checks": 15,
+  "gautier_hf3_byte_identical": true,
+  "hf6_departure_close_failure_reproduced": true,
+  "native_handoff_checks": 305,
+  "profile_checkpoint_native_checks": 398,
+  "nexus_mixin_applied_to_original_opt3_class": true,
+  "server_close_origin_reproduced": true,
+  "full_main_startup_checks": 9,
+  "duplicate_guard_checks": 1,
+  "mod_ids": [
+    "haute_capitale_quetes"
+  ],
+  "datapacks_changed_since_hf1": false,
+  "limitations": [
+    "Navigation uses a flat fixture route and synthetic connections/character selection; the real user map and its obstacles are not loaded",
+    "Real Minecraft server, EasyNPC actions/navigation and b10 sessions/capture; native close packets are invoked through their actual server handler",
+    "Client graphics/world/entities and outbound network remain doubled; actual Fabric events and b10 state are exercised separately",
+    "Nexus regression uses its real profile writer/policy/DTO; its account/network startup is disabled in the original-class mixin smoke test",
+    "Currency/CapSkills/random port rewards keep documented fixture substitutions; these are not shipped",
+    "No rendered client, user-map camera framing, FPS or actual voice playback tested",
+    "Full startup test transforms original Nexus OPT3 class, disables its account/network entrypoints, uses metadata-only Puffish/RPG, no players"
+  ]
+}

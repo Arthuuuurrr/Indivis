@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-31",
+  "logs": {
+    "latest(20261031-113029).log": "2203130219756a78cec6a39b7748ea265a83a0720f7d41a1839ab5794b88bbf2",
+    "latest - 2026-10-31T123104.486.log": "d3b630ddade62f01d36d0b44ccbb1a59fa3472bd487fc42d598a215ff882c1e4"
+  },
+  "confirmed_revision": "HF5 on client and server",
+  "client_page_nodes": [
+    "a01",
+    "a01"
+  ],
+  "server_close_times": [
+    "11:29:55",
+    "11:30:00"
+  ],
+  "server_close_reason": "ECRAN_FERME",
+  "clock_difference": "client one hour ahead of server",
+  "identified_path": "NexusCharacters 100-tick callback -> ProfileStateBridge.save -> capitale:profiles/before_save_self -> indivispq02 suspend -> Pq02Runtime.closeUi/dispose",
+  "nexus_original_file": "NexusCharacters-Indivis-1.21.11-PRE35-SI1-OPT3.jar",
+  "nexus_original_sha256": "de06ecab0f5cf7ccee29043bff2ccb5fd2b7425c173da145c1f27559b49def7b",
+  "periodic_direct_save_callsites": [
+    "151: invokestatic  #873                // Method net/tompsen/nexuscharacters/ProfileStateBridge.save:(Lnet/minecraft/class_3222;Lnet/tompsen/nexuscharacters/CharacterDto;)V"
+  ],
+  "cadence_ticks": 100,
+  "previous_tests_omitted_nexus_periodic_writer": true,
+  "proof": "HF5 exact binary + original OPT3 profile writer + actual core hook + OP synthetic player reproduces native b10 ECRAN_FERME; HF6 retains the scene on this path"
+}

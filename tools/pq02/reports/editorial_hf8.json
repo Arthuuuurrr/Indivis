@@ -1,0 +1,173 @@
+{
+  "source_sha256": "da3fc5e8dd487fc0ab7f8244a6bc40eb8bf2f69af581ce331a248171374b6790",
+  "output_sha256": "56d49593cef5bf9432cf0a40cb040bdaba81c443faa69049bf335021612a2272",
+  "authority": "Précision explicite utilisateur : versement systématique, réponse sèche −1, sans récupération au retour.",
+  "line_count": 691,
+  "changes": [
+    {
+      "line": 4,
+      "before": "**Version éditoriale : 1.0 — 26 octobre 2026**  ",
+      "after": "**Version de travail : 1.1 — 1er novembre 2026 ; v1.0 fournie + décision utilisateur sur le versement systématique.**"
+    },
+    {
+      "line": 5,
+      "before": "**Statut :** scénario et règles de jeu consolidés pour préparation du prompt Work ; **non intégrés au core**, ni testés en jeu. Les répliques restent ajustables à la marge après essai de mise en scène.  ",
+      "after": "**Statut :** adaptation éditoriale limitée au don et à ses réponses ; les essais de banc ne constituent pas un essai graphique sur la carte du serveur."
+    },
+    {
+      "line": 13,
+      "before": "## Journal des décisions v1.0 (à appliquer par Work au core ACTUEL)",
+      "after": "## Journal des décisions v1.1 (la décision utilisateur du 01/11/2026 prévaut sur le don v1.0)"
+    },
+    {
+      "line": 18,
+      "before": "4. **Argent** : 50 MDI donnés de sa poche par Léovic. Refus poli autorisé, sans malus, et acceptation ultérieure au poste près des tentes, sans nouveau point de réputation.",
+      "after": "4. **Argent** : 50 Martins d’Or donnés personnellement par Léovic, systématiquement pendant F06 et une seule fois par personnage. Aucun refus, report ou retour pour récupérer la bourse. La réplique sèche D conserve son −1 ; C conserve son +1."
+    },
+    {
+      "line": 31,
+      "before": "**Réputation et dons :** l'**ancien bonus automatique de +5** en réputation Garde du Port est **supprimé**, et n'est pas reporté ailleurs. Seuls trois choix positifs peuvent accorder **+1** chacun (maximum **+3**), et une réponse explicitement méprisante au don entraîne **−1** (minimum **−1** dans PQ02). Une réplique simplement neutre, prudente ou un refus poli vaut **0**. Léovic propose personnellement **50 Martins d'Or** ; le don est facultatif, refusible sans sanction et récupérable plus tard à son poste s'il n'a pas encore été accepté. Le don n'est pas une allocation officielle.",
+      "after": "**Réputation et dons :** l’ancien bonus automatique de +5 est supprimé. A01-A, T04b-A et F06-C donnent chacun +1 (maximum +3) ; F06-D donne −1 (minimum −1). Les réponses neutres, prudentes ou embarrassées valent 0. Léovic verse personnellement 50 Martins d’Or pendant F06, avant la réponse, une seule fois par personnage. Ce don n’est pas une allocation officielle et aucune récupération au retour n’est requise."
+    },
+    {
+      "line": 493,
+      "before": "**[Mise en scène]** Il présente une petite bourse ; pas de cinématique longue, et pas d'animation imposée si aucun geste cohérent n'existe.",
+      "after": "**[Mise en scène / versement]** Il présente puis remet une petite bourse. Les 50 Martins sont versés à l’entrée dans F06, avant le choix A/B/C/D, une seule fois par personnage Nexus. Pas de cinématique longue ni de geste imposé sans animation cohérente."
+    },
+    {
+      "line": 502,
+      "before": "- **B — Refus poli / embarras :** « C'est généreux, mais je préférerais ne pas accepter. » → **F06b** ; réputation **0**, impression **0**.",
+      "after": "- **B — Embarras :** « C’est généreux, mais je ne sais pas quoi dire. » → **F06b** ; réputation **0**, impression **0**. **[Adaptation v1.1]**"
+    },
+    {
+      "line": 504,
+      "before": "- **D — Mépris explicite :** « Je n'avais pas demandé votre charité. » → **F06d** ; **Garde du Port −1, impression Léovic −1**.",
+      "after": "- **D — Réponse sèche :** « Je ne demandais pas votre charité. » → **F06d** ; **Garde du Port −1, impression Léovic −1** ; les 50 Martins restent acquis. **[Formulation utilisateur]**"
+    },
+    {
+      "line": 508,
+      "before": "**Joueur :** « Dans ce cas, j'accepte. Merci. » → **F06-ACCEPTER** ; « Je préfère garder mes distances avec cette proposition. » → **F06-REPORTER**.",
+      "after": "**[Enchaînement v1.1]** Après F06a, passer à **F07**, sans choix supplémentaire d’acceptation ou de report."
+    },
+    {
+      "line": 510,
+      "before": "**F06b — Léovic :** « Je comprends. Je n'insisterai pas. Sachez seulement que je vous les propose de bon cœur. »",
+      "after": "**F06b — Léovic :** « Vous n’avez pas à me dire quoi que ce soit. C’est un coup de main, de bon cœur. » **[Adaptation v1.1]**"
+    },
+    {
+      "line": 512,
+      "before": "**Joueur :** « Finalement, je vais accepter. » → **F06-ACCEPTER** ; « Je préfère vraiment refuser. » → **F06-REPORTER**.",
+      "after": "**[Enchaînement v1.1]** Après F06b, passer à **F07**, sans choix supplémentaire d’acceptation ou de refus."
+    },
+    {
+      "line": 514,
+      "before": "**F06c — Léovic :** « Ce n'est pas grand-chose. Faites-en bon usage. » → **F06-ACCEPTER**.",
+      "after": "**F06c — Léovic :** « Ce n'est pas grand-chose. Faites-en bon usage. » → **F07**."
+    },
+    {
+      "line": 518,
+      "before": "**Léovic**, plus réservé : « Enfin, vous êtes libre d'en penser ce que vous voulez. » → **F06-REPORTER**. Le joueur n'est jamais forcé d'accepter une aide qu'il vient de mépriser. Son attitude est mémorisée pour le **bilan global**, sans transformer Léovic en adversaire.",
+      "after": "**Léovic**, plus réservé : « Enfin, vous êtes libre d'en penser ce que vous voulez. » → **F07**. Les 50 Martins déjà versés restent acquis ; son attitude est mémorisée dans le bilan global, sans transformer Léovic en adversaire."
+    },
+    {
+      "line": 520,
+      "before": "**F06-ACCEPTER — [Système]** Donner **une seule fois** les 50 MDI selon le mécanisme monétaire réellement utilisé par le core ; verrouiller `CAP_LEOVIC_GIFT` pour le **personnage Nexus actif**. Ne pas appeler l'ancienne fonction « cadeau au retour » en plus. Le gain de réputation dépend **uniquement du choix C initial**, non de l'acte d'accepter l'argent : aucune récompense supplémentaire à l'ouverture d'un sous-menu ou à la validation de l'inventaire.",
+      "after": "**F06 — [Système]** Donner systématiquement les 50 Martins à l’entrée dans la scène, selon le mécanisme monétaire du core ; verrouiller `CAP_LEOVIC_GIFT` pour le personnage Nexus actif. Ne jamais appeler un cadeau au retour. Le versement ne modifie aucune réputation : C donne +1/+1 et D −1/−1 uniquement lors du choix initial."
+    },
+    {
+      "line": 522,
+      "before": "**F06-REPORTER — Léovic :** « Comme vous voudrez. Mais si vous changez d'avis, vous savez où me trouver, près des tentes de la garde. » **[Système]** Ne rien donner, marquer **offre reportée**, poursuivre normalement PQ02. Le refus est sans pénalité **sauf la réplique D, qui a déjà produit −1 pour le mépris exprimé**. Une acceptation ultérieure restera possible auprès du Léovic permanent, une seule fois par personnage.",
+      "after": "**[Compatibilité F06-REPORTER]** Cette ancienne branche est retirée du dialogue. Une sauvegarde en cours qui y était arrêtée reprend à F07, avec versement unique si nécessaire et sans rejouer sa décision."
+    },
+    {
+      "line": 524,
+      "before": "**[Système — verrouillage]** La prise de position **A/B/C/D** n'est jamais rejouée comme décision récompensée. Revenir plus tard chercher la bourse n'ajoute, ne retire ni ne restitue de réputation ; cela n'efface pas magiquement l'impression laissée au terme de la première rencontre. L'impression pourra néanmoins évoluer au cours d'interactions futures explicitement écrites.",
+      "after": "**[Système — verrouillage]** La prise de position A/B/C/D et ses effets ne sont jamais rejoués. Fermer, reprendre ou recharger F06/F07 ne verse pas une seconde bourse. Une quête déjà terminée avant cette version ne reçoit pas de rattrapage automatique à la connexion ; son historique de réputation et de récompenses est conservé."
+    },
+    {
+      "line": 550,
+      "before": "**Déclencheur :** le joueur revient le voir à son poste habituel, près des tentes. Léovic peut le saluer selon **l'impression générale**, répondre à quelques questions pratiques, et proposer de nouveau la bourse de **50 MDI** seulement si le premier don est encore en attente.",
+      "after": "**Déclencheur :** le joueur peut revenir au poste habituel près des tentes pour une salutation fondée sur l’impression générale et des questions pratiques. Ce retour est facultatif et ne conditionne aucune récompense de PQ02 ; il ne propose aucune bourse."
+    },
+    {
+      "line": 563,
+      "before": "### P02-POST-DON — Offre reportée, interaction après la quête",
+      "after": "### P02-POST-DON — Ancienne offre reportée supprimée (compatibilité uniquement)"
+    },
+    {
+      "line": 565,
+      "before": "**Condition :** PQ02 terminée, offre déjà présentée, `CAP_LEOVIC_GIFT` non attribué au personnage. Cette option est absente une fois le don reçu.",
+      "after": "**[Décision utilisateur v1.1]** Aucun menu de récupération n’est présenté après PQ02. Les anciennes sauvegardes pointant vers POST-DON sont redirigées vers le menu pratique."
+    },
+    {
+      "line": 567,
+      "before": "**Joueur :** « À propos des pièces que vous m'aviez proposées... »",
+      "after": "**[Menu]** Les questions pratiques demeurent ; aucune option de don n’est ajoutée."
+    },
+    {
+      "line": 569,
+      "before": "**Léovic :** « Vous avez changé d'avis ? L'offre tient toujours, si cela peut vous aider. »",
+      "after": "**[Compatibilité]** L’ancien identifiant POST-DON reste réservé pour les sauvegardes, sans réplique ni versement."
+    },
+    {
+      "line": 571,
+      "before": "**Joueur :**",
+      "after": "**[Aucune réponse d’acceptation ou de report après la quête.]**"
+    },
+    {
+      "line": 573,
+      "before": "- « Oui, j'accepte. Merci. » → verser **50 MDI une seule fois**, enregistrer `CAP_LEOVIC_GIFT` ; **réputation 0, impression 0** pour cette reprise.",
+      "after": "- Aucun versement tardif : les 50 Martins ont été reçus pendant F06."
+    },
+    {
+      "line": 574,
+      "before": "- « Pas encore. Une autre fois, peut-être. » → aucun versement, offre maintenue ; aucune modification de réputation ni d'impression.",
+      "after": "- Aucun recalcul tardif de réputation ou d’impression."
+    },
+    {
+      "line": 576,
+      "before": "Un report peut être répété sans refaire **F06** ni **F07**, ni rouvrir les récompenses ou les étapes de PQ02. La scène de don **ne doit pas être utilisée pour effacer artificiellement** une première impression négative.",
+      "after": "Les retrouvailles ne rouvrent ni F06/F07 ni les récompenses. La mémoire globale de Léovic reste déterminée par les quatre décisions initiales."
+    },
+    {
+      "line": 595,
+      "before": "Les autres réponses, ainsi que le refus poli ou l'acceptation ultérieure des 50 MDI, n'apportent **aucun point**. Le choix C et le choix D de F06 s'excluent mutuellement : il est impossible de recevoir à la fois leur bonus et leur malus.",
+      "after": "Les autres réponses, dont l’embarras B, n’apportent aucun point. C et D s’excluent mutuellement. Le versement des 50 Martins est systématique et ne constitue pas une décision récompensée."
+    },
+    {
+      "line": 603,
+      "before": "- **Bourse personnelle** : `CAP_LEOVIC_GIFT` marque le don **déjà versé** ; `CAP_PQ02_DON_OFFERT` (nom de travail) distingue l'offre reportée. Le joueur peut revenir plus tard, mais ne peut jamais recevoir deux fois les 50 MDI.",
+      "after": "- **Bourse personnelle** : `CAP_LEOVIC_GIFT` marque le don déjà versé pendant F06. L’ancien état d’offre reste compatible en sauvegarde mais n’ouvre aucun menu tardif ; les 50 Martins ne sont jamais versés deux fois."
+    },
+    {
+      "line": 648,
+      "before": "- Sauvegarder par personnage les **quatre décisions** pertinentes pour l’impression générale (A01, T04b, M04, F06), les sujets facultatifs découverts, le point de passage, l’étape de l’entretien, l’état de l’offre des 50 MDI et la fin de PQ02.",
+      "after": "- Sauvegarder par personnage les quatre décisions (A01, T04b, M04, F06), les sujets découverts, le point de passage, l’étape de l’entretien, le versement unique des 50 Martins et la fin de PQ02."
+    },
+    {
+      "line": 650,
+      "before": "- L’ancien bonus de fin **+5** doit être **retiré à sa source** dans le core le plus récent, et ne jamais être compensé ailleurs. Le don de **50 MDI** est distinct et n’est versé que si le joueur l’accepte, éventuellement plus tard.",
+      "after": "- L’ancien bonus +5 est retiré à sa source et jamais compensé ailleurs. Les 50 Martins sont versés systématiquement pendant F06, avant la réponse, indépendamment des effets de C ou D."
+    },
+    {
+      "line": 666,
+      "before": "- [ ] Le don de 50 MDI est personnel ; son **refus poli** peut être reporté sans malus ; une réaction méprisante coûte **−1**.",
+      "after": "- [ ] Les 50 Martins sont versés systématiquement pendant F06 ; l’embarras est neutre et la réponse sèche D coûte −1 sans annuler le don."
+    },
+    {
+      "line": 677,
+      "before": "- [ ] Les 50 MDI ne peuvent être versés deux fois, notamment après reconnexion ou report ; une acceptation tardive ne redonne aucune réputation.",
+      "after": "- [ ] Les 50 Martins ne sont jamais versés deux fois, y compris après fermeture, reconnexion ou reprise d’une ancienne sauvegarde en cours ; aucun menu de récupération au retour."
+    },
+    {
+      "line": 685,
+      "before": "3. **Don : décidé.** Le refus est un report sans sanction si poli. La proposition demeure disponible auprès du Léovic permanent, et son acceptation tardive ne donne ni réputation ni nouvel ajustement d’impression.",
+      "after": "3. **Don : décision utilisateur du 01/11/2026.** Versement systématique pendant la scène, réponses A/B neutres, C +1/+1, D −1/−1 ; aucun refus/report ni retour pour obtenir l’argent."
+    },
+    {
+      "line": 691,
+      "before": "**Fin — PQ02 v1.0, consolidation éditoriale prête pour la rédaction du prompt Work ; non intégrée.**",
+      "after": "**Fin — PQ02 v1.1 : source v1.0 conservée, adaptation limitée au versement systématique demandé le 01/11/2026.**"
+    }
+  ]
+}

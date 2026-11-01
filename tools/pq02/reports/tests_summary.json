@@ -1,0 +1,22 @@
+{
+  "status": "PASS_SCOPED_TESTS",
+  "static": 246,
+  "java_rules": 145,
+  "native": 1609,
+  "native_function_parse_failures": [],
+  "native_mod_sha256": "fa185eb6258749886b9e6776a8cef0df778f8709325804b215e5881675289474",
+  "native_connections": "synthetic",
+  "graphical": "not run",
+  "user_map": "not supplied",
+  "test_evidence": [
+    "static.json",
+    "rules.txt",
+    "native.txt",
+    "native_server.log",
+    "native_fixture.json",
+    "coverage.json",
+    "unused_quotes.json",
+    "diffs.json",
+    "datapacks.patch"
+  ]
+}

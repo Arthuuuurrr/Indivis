@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "revision": "PQ02-R1-HF9",
+  "jar": {
+    "status": "BUILT_NATIVE_PENDING",
+    "file": "haute-capitale-quetes-HF12-PQ02-R1-HF9-1.21.11.jar",
+    "sha256": "bce5ff70728f9e72617db734ecf83f1043fe343687a3806c3c3cd8841bdcae11",
+    "bytes": 578213,
+    "hf8_sha256": "92dbafab347b1fd775de6476d36e75b6bae2ebefbcc574bfaac141fc63c79180",
+    "changed": [
+      "fabric.mod.json",
+      "indivis_pq02_graph.json",
+      "net/hautecapitale/quetes/sequence/Pq02Motion$Port.class",
+      "net/hautecapitale/quetes/sequence/Pq02Motion.class",
+      "net/hautecapitale/quetes/sequence/Pq02Runtime$1.class",
+      "net/hautecapitale/quetes/sequence/Pq02Runtime$Near.class",
+      "net/hautecapitale/quetes/sequence/Pq02Runtime$View.class",
+      "net/hautecapitale/quetes/sequence/Pq02Runtime.class"
+    ],
+    "added": [
+      "net/hautecapitale/quetes/sequence/Pq02Cameras.class"
+    ],
+    "preserved_count": 249,
+    "datapacks_unchanged": {
+      "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8.zip": "6ff671f7b71ff696980b1fdfa4302481dec30cac7db8eca6e0fb2c9bcd4a9aa6",
+      "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1.zip": "d9a0fb0d0aecd0eb4f9bc64f9cb7bae932ddaaa7f67273b042512c22ff9e67aa"
+    },
+    "source_sha256": {
+      "src/Pq02Motion.java": "f8ab73ca6ad518c79e3d584339698ad8cfb886c1d51ab57a4d604a1a53420c6a",
+      "src/Pq02Cameras.java": "efeea41f2622506698ffdc5046b42282f62d13ae3a6e86930098c7bed79d08ae",
+      "src/Pq02Runtime.java": "22316de73ab4831ca4d68aa52810302d8f63f0ae57a7ef8b7c5d29b9cf92dae9",
+      "model.py": "ec453069945508389f371d2576cf968a087e47ebe22c2d6cfa601773609a8fcd"
+    }
+  },
+  "static_checks": 394,
+  "java_rules": "PASS 145 checks; 108 decision combinations, actual Nexus PRE35 persistence policy, frames and pause controller.",
+  "server_assertions": 1710,
+  "hf9_specific_assertions": 88,
+  "c1_specific_assertions": 105,
+  "client_protocol_assertions": 566,
+  "loaded_quest_definitions": 70,
+  "quest_definition_errors": 0,
+  "function_parse_errors": 0,
+  "runtime_pq02_errors": 0,
+  "core_tick_and_frame_interleavings": "Full integration core ticks=839, narrative interleavings=251",
+  "graphical_client": false,
+  "user_map": false,
+  "fps_mspt_benchmark": false,
+  "voice_playback_tested": false,
+  "tests_substitutions": [
+    "synthetic network connections, acknowledgements and Nexus selection",
+    "actual OPT3 profile writer/loader; synthetic players permitted to execute supplied profile hooks",
+    "currency replaced by gold nuggets inside fixture only",
+    "CapSkills and random bonus replaced by counters",
+    "mmospawn and identity commands stubbed",
+    "seven unchanged external equipment rewards not exercised"
+  ],
+  "unrelated_fixture_log_errors": [
+    "[22:02:51] [Yggdrasil Key Fetcher/ERROR]: Failed to request yggdrasil public key"
+  ],
+  "evidence": {
+    "hf9_build.json": "b1789ec9cb19d3a134a37266e6ca0cec058c709c7d697f48cc7d42fb308ba2ff",
+    "hf9_static.json": "90121618920d40e3356a9dc75159d4a396ef9c2205e6d5030042ad56be8d1e19",
+    "hf9_rules.txt": "55bcd81834f3668c7342b397365d22e99a521a08e912a32e50593915fd4a71fa",
+    "hf9_native.txt": "0f4ea6a04f90ff526aae4592f0125daa469c4b3c50e87a6d71021510a59a8c1e",
+    "hf9_native_fixture.json": "44d63688b27fa20fc46d53653b05e2bc46b81f1901c9336f7e908105eac53b45",
+    "protocol_hf9.txt": "d08247e73021aff7765e340b025bf4820e5d39415ba6576d298a520d67e0fb93",
+    "protocol_hf9_fixture.json": "faaefdf24513628e41d45b7761295b00f4b50e9ae6fdcc4123d5f06f235342da",
+    "hf9.patch": "e0fb0178391eedb64546a67e723a81fd38387006549d2e06b5e8f224965f70da"
+  }
+}

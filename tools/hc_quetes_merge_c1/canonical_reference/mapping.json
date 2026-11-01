@@ -1,0 +1,4031 @@
+{
+  "models": {
+    "QUEST_PROFONDEURS": {
+      "rows": [
+        {
+          "old_id": "core_au_seuil_des_profondeurs",
+          "new_id": "pq_04_seuil_profondeurs",
+          "short_code": "pq04",
+          "new_scoreboard": "hcq_pq04",
+          "old_type": "MAIN",
+          "new_type": "MAIN",
+          "zone_code": "",
+          "arc_id": "arc_hc_prologue",
+          "title": "Au seuil des Profondeurs",
+          "old_state": "QUEST_PROFONDEURS",
+          "old_completed_state": "QUEST_PROFONDEURS",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "core_sous_le_regard_du_coeur",
+          "new_prerequisites": "pq_03_sous_le_regard_du_coeur",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_au_seuil_des_profondeurs.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/pq_04_seuil_profondeurs.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        10,
+        20,
+        30,
+        35,
+        40,
+        50,
+        60,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_pq04": 0
+        },
+        "1": {
+          "hcq_pq04": 10
+        },
+        "10": {
+          "hcq_pq04": 20
+        },
+        "20": {
+          "hcq_pq04": 30
+        },
+        "30": {
+          "hcq_pq04": 40
+        },
+        "35": {
+          "hcq_pq04": 50
+        },
+        "40": {
+          "hcq_pq04": 60
+        },
+        "50": {
+          "hcq_pq04": 70
+        },
+        "60": {
+          "hcq_pq04": 90
+        },
+        "100": {
+          "hcq_pq04": 100
+        }
+      },
+      "key": "pq04"
+    },
+    "QUEST_CITOYENNETE": {
+      "rows": [
+        {
+          "old_id": "core_citoyennete",
+          "new_id": "sq_hc_ci_01_citoyennete",
+          "short_code": "sqhcci01",
+          "new_scoreboard": "hcq_sqhcci01",
+          "old_type": "MAIN",
+          "new_type": "SIDE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_ci",
+          "title": "Obtenir la citoyenneté de la Capitale",
+          "old_state": "QUEST_CITOYENNETE",
+          "old_completed_state": "QUEST_CITOYENNETE",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "core_une_adresse_dans_les_profondeurs",
+          "new_prerequisites": "pq_05_residence_profondeurs",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_citoyennete.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_hc_ci_01_citoyennete.json",
+          "migration_notes": "reclassification de categorie du journal | citoyennete facultative, jamais prerequis de MQ01"
+        }
+      ],
+      "domain": [
+        0,
+        20,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqhcci01": 0
+        },
+        "20": {
+          "hcq_sqhcci01": 10
+        },
+        "100": {
+          "hcq_sqhcci01": 100
+        }
+      },
+      "key": "sqhcci01"
+    },
+    "QUEST_DAILY_BANQUE": {
+      "rows": [
+        {
+          "old_id": "core_daily_banque",
+          "new_id": "dq_hc_01_banque",
+          "short_code": "dqhc01",
+          "new_scoreboard": "hcq_dqhc01",
+          "old_type": "REPEATABLE",
+          "new_type": "REPEATABLE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_dq",
+          "title": "La Banque",
+          "old_state": "QUEST_DAILY_BANQUE",
+          "old_completed_state": "CAP_CD_BANQUE",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_daily_banque.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/dq_hc_01_banque.json",
+          "migration_notes": "fin sur scoreboard distinct/cooldown : ne pas changer le cycle sans audit"
+        }
+      ],
+      "domain": [
+        0,
+        10
+      ],
+      "vectors": {
+        "0": {
+          "hcq_dqhc01": 0
+        },
+        "10": {
+          "hcq_dqhc01": 10
+        }
+      },
+      "key": "dqhc01"
+    },
+    "QUEST_DAILY_BEER_GC": {
+      "rows": [
+        {
+          "old_id": "core_daily_biere_veteran",
+          "new_id": "dq_hc_02_biere_releve",
+          "short_code": "dqhc02",
+          "new_scoreboard": "hcq_dqhc02",
+          "old_type": "REPEATABLE",
+          "new_type": "REPEATABLE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_dq",
+          "title": "Une bière pour la relève",
+          "old_state": "QUEST_DAILY_BEER_GC",
+          "old_completed_state": "QUEST_DAILY_BEER_GC",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_daily_biere_veteran.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/dq_hc_02_biere_releve.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        10,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_dqhc02": 0
+        },
+        "10": {
+          "hcq_dqhc02": 10
+        },
+        "100": {
+          "hcq_dqhc02": 100
+        }
+      },
+      "key": "dqhc02"
+    },
+    "QUEST_DAILY_REGISTRE_PORT": {
+      "rows": [
+        {
+          "old_id": "core_daily_registre_port",
+          "new_id": "dq_hc_03_registre_port",
+          "short_code": "dqhc03",
+          "new_scoreboard": "hcq_dqhc03",
+          "old_type": "REPEATABLE",
+          "new_type": "REPEATABLE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_dq",
+          "title": "Le registre mal classé",
+          "old_state": "QUEST_DAILY_REGISTRE_PORT",
+          "old_completed_state": "CAP_CD_REGISTRE_PORT",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_daily_registre_port.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/dq_hc_03_registre_port.json",
+          "migration_notes": "fin sur scoreboard distinct/cooldown : ne pas changer le cycle sans audit"
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2
+      ],
+      "vectors": {
+        "0": {
+          "hcq_dqhc03": 0
+        },
+        "1": {
+          "hcq_dqhc03": 10
+        },
+        "2": {
+          "hcq_dqhc03": 90
+        }
+      },
+      "key": "dqhc03"
+    },
+    "QUEST_DAILY_RESSORT_CLOCHER": {
+      "rows": [
+        {
+          "old_id": "core_daily_ressort_clocher",
+          "new_id": "dq_hc_04_ressort_clocher",
+          "short_code": "dqhc04",
+          "new_scoreboard": "hcq_dqhc04",
+          "old_type": "REPEATABLE",
+          "new_type": "REPEATABLE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_dq",
+          "title": "Le ressort du clocher",
+          "old_state": "QUEST_DAILY_RESSORT_CLOCHER",
+          "old_completed_state": "CAP_CD_RESSORT_CLOCHER",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_daily_ressort_clocher.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/dq_hc_04_ressort_clocher.json",
+          "migration_notes": "fin sur scoreboard distinct/cooldown : ne pas changer le cycle sans audit"
+        }
+      ],
+      "domain": [
+        0,
+        20,
+        30
+      ],
+      "vectors": {
+        "0": {
+          "hcq_dqhc04": 0
+        },
+        "20": {
+          "hcq_dqhc04": 10
+        },
+        "30": {
+          "hcq_dqhc04": 90
+        }
+      },
+      "key": "dqhc04"
+    },
+    "QUEST_DAILY_TEMOIGNAGES_QUAIS": {
+      "rows": [
+        {
+          "old_id": "core_daily_temoignages_quais",
+          "new_id": "dq_hc_05_temoignages_quais",
+          "short_code": "dqhc05",
+          "new_scoreboard": "hcq_dqhc05",
+          "old_type": "REPEATABLE",
+          "new_type": "REPEATABLE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_dq",
+          "title": "Trois témoignages sur les quais",
+          "old_state": "QUEST_DAILY_TEMOIGNAGES_QUAIS",
+          "old_completed_state": "CAP_CD_TEMOIGNAGES_QUAIS",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_daily_temoignages_quais.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/dq_hc_05_temoignages_quais.json",
+          "migration_notes": "fin sur scoreboard distinct/cooldown : ne pas changer le cycle sans audit"
+        }
+      ],
+      "domain": [
+        0,
+        20
+      ],
+      "vectors": {
+        "0": {
+          "hcq_dqhc05": 0
+        },
+        "20": {
+          "hcq_dqhc05": 10
+        }
+      },
+      "key": "dqhc05"
+    },
+    "QUEST_DIVERS_ACTE_DETTE": {
+      "rows": [
+        {
+          "old_id": "core_divers_acte_dette",
+          "new_id": "sq_hc_so_01_acte_dette",
+          "short_code": "sqhcso01",
+          "new_scoreboard": "hcq_sqhcso01",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_so",
+          "title": "L’Acte de dette falsifié",
+          "old_state": "QUEST_DIVERS_ACTE_DETTE",
+          "old_completed_state": "QUEST_DIVERS_ACTE_DETTE",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_divers_acte_dette.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_hc_so_01_acte_dette.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        20,
+        30,
+        40,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqhcso01": 0
+        },
+        "1": {
+          "hcq_sqhcso01": 10
+        },
+        "2": {
+          "hcq_sqhcso01": 20
+        },
+        "20": {
+          "hcq_sqhcso01": 30
+        },
+        "30": {
+          "hcq_sqhcso01": 40
+        },
+        "40": {
+          "hcq_sqhcso01": 90
+        },
+        "100": {
+          "hcq_sqhcso01": 100
+        }
+      },
+      "key": "sqhcso01"
+    },
+    "QUEST_DIVERS_LIBRAIRE_NOBLE": {
+      "rows": [
+        {
+          "old_id": "core_divers_exemplaire_noble",
+          "new_id": "sq_hc_so_02_exemplaire_noble",
+          "short_code": "sqhcso02",
+          "new_scoreboard": "hcq_sqhcso02",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_so",
+          "title": "Un exemplaire à remettre",
+          "old_state": "QUEST_DIVERS_LIBRAIRE_NOBLE",
+          "old_completed_state": "QUEST_DIVERS_LIBRAIRE_NOBLE",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_divers_exemplaire_noble.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_hc_so_02_exemplaire_noble.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        20,
+        30,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqhcso02": 0
+        },
+        "20": {
+          "hcq_sqhcso02": 10
+        },
+        "30": {
+          "hcq_sqhcso02": 90
+        },
+        "100": {
+          "hcq_sqhcso02": 100
+        }
+      },
+      "key": "sqhcso02"
+    },
+    "QUEST_DIVERS_LAMPE": {
+      "rows": [
+        {
+          "old_id": "core_divers_lampe_manquante",
+          "new_id": "rq_hc_01_lanternes_globe",
+          "short_code": "rqhc01",
+          "new_scoreboard": "hcq_rqhc01",
+          "old_type": "REPEATABLE",
+          "new_type": "REPEATABLE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_rq",
+          "title": "Les Lanternes du Globe",
+          "old_state": "QUEST_DIVERS_LAMPE",
+          "old_completed_state": "CAP_CD_GLOBE",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_divers_lampe_manquante.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/rq_hc_01_lanternes_globe.json",
+          "migration_notes": "fin sur scoreboard distinct/cooldown : ne pas changer le cycle sans audit | frequence exacte a verifier; nommer dq si reellement quotidienne"
+        }
+      ],
+      "domain": [
+        0,
+        10,
+        20
+      ],
+      "vectors": {
+        "0": {
+          "hcq_rqhc01": 0
+        },
+        "10": {
+          "hcq_rqhc01": 10
+        },
+        "20": {
+          "hcq_rqhc01": 90
+        }
+      },
+      "key": "rqhc01"
+    },
+    "QUEST_DIVERS_RELAIS_COEUR": {
+      "rows": [
+        {
+          "old_id": "core_divers_relais_coeur",
+          "new_id": "rq_hc_02_relais_coeur",
+          "short_code": "rqhc02",
+          "new_scoreboard": "hcq_rqhc02",
+          "old_type": "REPEATABLE",
+          "new_type": "REPEATABLE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_rq",
+          "title": "Les Relais du Cœur",
+          "old_state": "QUEST_DIVERS_RELAIS_COEUR",
+          "old_completed_state": "CAP_CD_RELAIS_COEUR",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_divers_relais_coeur.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/rq_hc_02_relais_coeur.json",
+          "migration_notes": "fin sur scoreboard distinct/cooldown : ne pas changer le cycle sans audit | frequence exacte a verifier; nommer dq si reellement quotidienne"
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        20,
+        50
+      ],
+      "vectors": {
+        "0": {
+          "hcq_rqhc02": 0
+        },
+        "1": {
+          "hcq_rqhc02": 10
+        },
+        "20": {
+          "hcq_rqhc02": 20
+        },
+        "50": {
+          "hcq_rqhc02": 90
+        }
+      },
+      "key": "rqhc02"
+    },
+    "QUEST_GARDEPORT": {
+      "rows": [
+        {
+          "old_id": "core_registre_port",
+          "new_id": "pq_02_registre_port",
+          "short_code": "pq02",
+          "new_scoreboard": "hcq_pq02",
+          "old_type": "MAIN",
+          "new_type": "MAIN",
+          "zone_code": "",
+          "arc_id": "arc_hc_prologue",
+          "title": "Le registre du Port",
+          "old_state": "QUEST_GARDEPORT",
+          "old_completed_state": "QUEST_GARDEPORT",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "core_sous_pavillon_couronne",
+          "new_prerequisites": "pq_01_sous_pavillon_couronne",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_registre_port.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/pq_02_registre_port.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_pq02": 0
+        },
+        "1": {
+          "hcq_pq02": 10
+        },
+        "2": {
+          "hcq_pq02": 20
+        },
+        "10": {
+          "hcq_pq02": 30
+        },
+        "20": {
+          "hcq_pq02": 40
+        },
+        "30": {
+          "hcq_pq02": 50
+        },
+        "40": {
+          "hcq_pq02": 60
+        },
+        "50": {
+          "hcq_pq02": 70
+        },
+        "60": {
+          "hcq_pq02": 90
+        },
+        "100": {
+          "hcq_pq02": 100
+        }
+      },
+      "key": "pq02"
+    },
+    "QUEST_ALDREN_ORCS": {
+      "rows": [
+        {
+          "old_id": "core_side_aldren_menace_orcs",
+          "new_id": "sq_hc_so_03_menace_orcs",
+          "short_code": "sqhcso03",
+          "new_scoreboard": "hcq_sqhcso03",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_so",
+          "title": "La menace des Orcs",
+          "old_state": "QUEST_ALDREN_ORCS",
+          "old_completed_state": "QUEST_ALDREN_ORCS",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_side_aldren_menace_orcs.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_hc_so_03_menace_orcs.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        10,
+        20,
+        30
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqhcso03": 0
+        },
+        "10": {
+          "hcq_sqhcso03": 10
+        },
+        "20": {
+          "hcq_sqhcso03": 90
+        },
+        "30": {
+          "hcq_sqhcso03": 100
+        }
+      },
+      "key": "sqhcso03"
+    },
+    "QUEST_SIDE_BA_Q01": {
+      "rows": [
+        {
+          "old_id": "core_side_ba_q01_quartier_oublies",
+          "new_id": "sq_ba_ob_01_quartier_oublies",
+          "short_code": "sqbaob01",
+          "new_scoreboard": "hcq_sqbaob01",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "ba",
+          "arc_id": "arc_ba_ob",
+          "title": "Le Quartier des Oubliés",
+          "old_state": "QUEST_SIDE_BA_Q01",
+          "old_completed_state": "QUEST_SIDE_BA_Q01",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_side_ba_q01_quartier_oublies.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_ba_ob_01_quartier_oublies.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        20,
+        30,
+        101,
+        102
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqbaob01": 0,
+          "hcf_sqbaob01_end": 0
+        },
+        "20": {
+          "hcq_sqbaob01": 10,
+          "hcf_sqbaob01_end": 0
+        },
+        "30": {
+          "hcq_sqbaob01": 90,
+          "hcf_sqbaob01_end": 0
+        },
+        "101": {
+          "hcq_sqbaob01": 100,
+          "hcf_sqbaob01_end": 1
+        },
+        "102": {
+          "hcq_sqbaob01": 100,
+          "hcf_sqbaob01_end": 2
+        }
+      },
+      "key": "sqbaob01"
+    },
+    "QUEST_SIDE_BA_Q02": {
+      "rows": [
+        {
+          "old_id": "core_side_ba_q02_marteau_elias",
+          "new_id": "sq_ba_ob_02_marteau_elias",
+          "short_code": "sqbaob02",
+          "new_scoreboard": "hcq_sqbaob02",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "ba",
+          "arc_id": "arc_ba_ob",
+          "title": "Le Marteau d’Elias",
+          "old_state": "QUEST_SIDE_BA_Q02",
+          "old_completed_state": "QUEST_SIDE_BA_Q02",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_side_ba_q02_marteau_elias.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_ba_ob_02_marteau_elias.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        20,
+        30,
+        40,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqbaob02": 0
+        },
+        "20": {
+          "hcq_sqbaob02": 10
+        },
+        "30": {
+          "hcq_sqbaob02": 20
+        },
+        "40": {
+          "hcq_sqbaob02": 90
+        },
+        "100": {
+          "hcq_sqbaob02": 100
+        }
+      },
+      "key": "sqbaob02"
+    },
+    "QUEST_SIDE_BA_Q03": {
+      "rows": [
+        {
+          "old_id": "core_side_ba_q03_marche_mille_voix",
+          "new_id": "sq_ba_ob_03_marche_mille_voix",
+          "short_code": "sqbaob03",
+          "new_scoreboard": "hcq_sqbaob03",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "ba",
+          "arc_id": "arc_ba_ob",
+          "title": "Le Marché des Mille Voix",
+          "old_state": "QUEST_SIDE_BA_Q03",
+          "old_completed_state": "QUEST_SIDE_BA_Q03",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_side_ba_q03_marche_mille_voix.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_ba_ob_03_marche_mille_voix.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        20,
+        30,
+        40,
+        50,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqbaob03": 0
+        },
+        "20": {
+          "hcq_sqbaob03": 10
+        },
+        "30": {
+          "hcq_sqbaob03": 20
+        },
+        "40": {
+          "hcq_sqbaob03": 30
+        },
+        "50": {
+          "hcq_sqbaob03": 90
+        },
+        "100": {
+          "hcq_sqbaob03": 100
+        }
+      },
+      "key": "sqbaob03"
+    },
+    "QUEST_SIDE_BA_Q04": {
+      "rows": [
+        {
+          "old_id": "core_side_ba_q04_patrouille",
+          "new_id": "sq_ba_ob_04_patrouille",
+          "short_code": "sqbaob04",
+          "new_scoreboard": "hcq_sqbaob04",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "ba",
+          "arc_id": "arc_ba_ob",
+          "title": "La Patrouille",
+          "old_state": "QUEST_SIDE_BA_Q04",
+          "old_completed_state": "QUEST_SIDE_BA_Q04",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_side_ba_q04_patrouille.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_ba_ob_04_patrouille.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        20,
+        30,
+        40,
+        50,
+        101,
+        102,
+        103
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqbaob04": 0,
+          "hcf_sqbaob04_end": 0
+        },
+        "20": {
+          "hcq_sqbaob04": 10,
+          "hcf_sqbaob04_end": 0
+        },
+        "30": {
+          "hcq_sqbaob04": 20,
+          "hcf_sqbaob04_end": 0
+        },
+        "40": {
+          "hcq_sqbaob04": 30,
+          "hcf_sqbaob04_end": 0
+        },
+        "50": {
+          "hcq_sqbaob04": 90,
+          "hcf_sqbaob04_end": 0
+        },
+        "101": {
+          "hcq_sqbaob04": 100,
+          "hcf_sqbaob04_end": 1
+        },
+        "102": {
+          "hcq_sqbaob04": 100,
+          "hcf_sqbaob04_end": 2
+        },
+        "103": {
+          "hcq_sqbaob04": 100,
+          "hcf_sqbaob04_end": 3
+        }
+      },
+      "key": "sqbaob04"
+    },
+    "QUEST_GARDECOEUR": {
+      "rows": [
+        {
+          "old_id": "core_sous_le_regard_du_coeur",
+          "new_id": "pq_03_sous_le_regard_du_coeur",
+          "short_code": "pq03",
+          "new_scoreboard": "hcq_pq03",
+          "old_type": "MAIN",
+          "new_type": "MAIN",
+          "zone_code": "",
+          "arc_id": "arc_hc_prologue",
+          "title": "Sous le regard du Cœur",
+          "old_state": "QUEST_GARDECOEUR",
+          "old_completed_state": "QUEST_GARDECOEUR",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "core_registre_port",
+          "new_prerequisites": "pq_02_registre_port",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_sous_le_regard_du_coeur.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/pq_03_sous_le_regard_du_coeur.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        10,
+        20,
+        25,
+        30,
+        40,
+        50,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_pq03": 0
+        },
+        "1": {
+          "hcq_pq03": 10
+        },
+        "10": {
+          "hcq_pq03": 20
+        },
+        "20": {
+          "hcq_pq03": 30
+        },
+        "25": {
+          "hcq_pq03": 40
+        },
+        "30": {
+          "hcq_pq03": 50
+        },
+        "40": {
+          "hcq_pq03": 60
+        },
+        "50": {
+          "hcq_pq03": 90
+        },
+        "100": {
+          "hcq_pq03": 100
+        }
+      },
+      "key": "pq03"
+    },
+    "QUEST_SPAWN": {
+      "rows": [
+        {
+          "old_id": "core_sous_pavillon_couronne",
+          "new_id": "pq_01_sous_pavillon_couronne",
+          "short_code": "pq01",
+          "new_scoreboard": "hcq_pq01",
+          "old_type": "MAIN",
+          "new_type": "MAIN",
+          "zone_code": "",
+          "arc_id": "arc_hc_prologue",
+          "title": "Sous pavillon de la Couronne",
+          "old_state": "QUEST_SPAWN",
+          "old_completed_state": "QUEST_SPAWN",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_sous_pavillon_couronne.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/pq_01_sous_pavillon_couronne.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        10,
+        20,
+        40,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_pq01": 0
+        },
+        "10": {
+          "hcq_pq01": 10
+        },
+        "20": {
+          "hcq_pq01": 20
+        },
+        "40": {
+          "hcq_pq01": 90
+        },
+        "100": {
+          "hcq_pq01": 100
+        }
+      },
+      "key": "pq01"
+    },
+    "QUEST_RESIDENCE_PROF": {
+      "rows": [
+        {
+          "old_id": "core_une_adresse_dans_les_profondeurs",
+          "new_id": "pq_05_residence_profondeurs",
+          "short_code": "pq05",
+          "new_scoreboard": "hcq_pq05",
+          "old_type": "MAIN",
+          "new_type": "MAIN",
+          "zone_code": "",
+          "arc_id": "arc_hc_prologue",
+          "title": "Une adresse dans les Profondeurs",
+          "old_state": "QUEST_RESIDENCE_PROF",
+          "old_completed_state": "QUEST_RESIDENCE_PROF",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "core_au_seuil_des_profondeurs",
+          "new_prerequisites": "pq_04_seuil_profondeurs",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_une_adresse_dans_les_profondeurs.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/pq_05_residence_profondeurs.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        10,
+        20,
+        30,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_pq05": 0
+        },
+        "1": {
+          "hcq_pq05": 10
+        },
+        "10": {
+          "hcq_pq05": 20
+        },
+        "20": {
+          "hcq_pq05": 30
+        },
+        "30": {
+          "hcq_pq05": 90
+        },
+        "100": {
+          "hcq_pq05": 100
+        }
+      },
+      "key": "pq05"
+    },
+    "QUEST_VN_ASCENSION": {
+      "rows": [
+        {
+          "old_id": "core_vn_ascension",
+          "new_id": "sq_hc_vn_03_ascension",
+          "short_code": "sqhcvn03",
+          "new_scoreboard": "hcq_sqhcvn03",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_vn",
+          "title": "L’Ascension",
+          "old_state": "QUEST_VN_ASCENSION",
+          "old_completed_state": "QUEST_VN_ASCENSION",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "core_vn_ombres_des_docks",
+          "new_prerequisites": "sq_hc_vn_02_ombres_docks",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_vn_ascension.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_hc_vn_03_ascension.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        20,
+        30,
+        40,
+        50,
+        60,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqhcvn03": 0
+        },
+        "20": {
+          "hcq_sqhcvn03": 10
+        },
+        "30": {
+          "hcq_sqhcvn03": 20
+        },
+        "40": {
+          "hcq_sqhcvn03": 30
+        },
+        "50": {
+          "hcq_sqhcvn03": 40
+        },
+        "60": {
+          "hcq_sqhcvn03": 90
+        },
+        "100": {
+          "hcq_sqhcvn03": 100
+        }
+      },
+      "key": "sqhcvn03"
+    },
+    "QUEST_VN_CAPITAINE": {
+      "rows": [
+        {
+          "old_id": "core_vn_capitaine_sans_navire",
+          "new_id": "sq_hc_vn_01_capitaine_sans_navire",
+          "short_code": "sqhcvn01",
+          "new_scoreboard": "hcq_sqhcvn01",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_vn",
+          "title": "Un capitaine sans navire",
+          "old_state": "QUEST_VN_CAPITAINE",
+          "old_completed_state": "QUEST_VN_CAPITAINE",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "core_une_adresse_dans_les_profondeurs",
+          "new_prerequisites": "pq_05_residence_profondeurs",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_vn_capitaine_sans_navire.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_hc_vn_01_capitaine_sans_navire.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        20,
+        30,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqhcvn01": 0
+        },
+        "1": {
+          "hcq_sqhcvn01": 10
+        },
+        "2": {
+          "hcq_sqhcvn01": 20
+        },
+        "20": {
+          "hcq_sqhcvn01": 30
+        },
+        "30": {
+          "hcq_sqhcvn01": 90
+        },
+        "100": {
+          "hcq_sqhcvn01": 100
+        }
+      },
+      "key": "sqhcvn01"
+    },
+    "QUEST_VN_NAVIRE": {
+      "rows": [
+        {
+          "old_id": "core_vn_le_vent_noir",
+          "new_id": "sq_hc_vn_04_vent_noir",
+          "short_code": "sqhcvn04",
+          "new_scoreboard": "hcq_sqhcvn04",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_vn",
+          "title": "Le Vent Noir",
+          "old_state": "QUEST_VN_NAVIRE",
+          "old_completed_state": "QUEST_VN_NAVIRE",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "core_vn_ascension",
+          "new_prerequisites": "sq_hc_vn_03_ascension",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_vn_le_vent_noir.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_hc_vn_04_vent_noir.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        20,
+        30,
+        40,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqhcvn04": 0
+        },
+        "20": {
+          "hcq_sqhcvn04": 10
+        },
+        "30": {
+          "hcq_sqhcvn04": 20
+        },
+        "40": {
+          "hcq_sqhcvn04": 90
+        },
+        "100": {
+          "hcq_sqhcvn04": 100
+        }
+      },
+      "key": "sqhcvn04"
+    },
+    "QUEST_VN_DOCKS": {
+      "rows": [
+        {
+          "old_id": "core_vn_ombres_des_docks",
+          "new_id": "sq_hc_vn_02_ombres_docks",
+          "short_code": "sqhcvn02",
+          "new_scoreboard": "hcq_sqhcvn02",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "hc",
+          "arc_id": "arc_hc_vn",
+          "title": "Les Ombres des Docks",
+          "old_state": "QUEST_VN_DOCKS",
+          "old_completed_state": "QUEST_VN_DOCKS",
+          "shared_old_state": "NO",
+          "legacy_owner": "capitale",
+          "new_owner": "capitale",
+          "old_prerequisites": "core_vn_capitaine_sans_navire",
+          "new_prerequisites": "sq_hc_vn_01_capitaine_sans_navire",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/core_vn_ombres_des_docks.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_hc_vn_02_ombres_docks.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        20,
+        30,
+        40,
+        50,
+        100
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqhcvn02": 0
+        },
+        "20": {
+          "hcq_sqhcvn02": 10
+        },
+        "30": {
+          "hcq_sqhcvn02": 20
+        },
+        "40": {
+          "hcq_sqhcvn02": 30
+        },
+        "50": {
+          "hcq_sqhcvn02": 90
+        },
+        "100": {
+          "hcq_sqhcvn02": 100
+        }
+      },
+      "key": "sqhcvn02"
+    },
+    "hcq_j01": {
+      "rows": [
+        {
+          "old_id": "hcj_j01_griffes",
+          "new_id": "sq_lp_jo_01_griffes",
+          "short_code": "sqlpjo01",
+          "new_scoreboard": "hcq_sqlpjo01",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "Les griffes sur la route",
+          "old_state": "hcq_j01",
+          "old_completed_state": "hcq_j01",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j01_griffes.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_01_griffes.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        5,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo01": 0,
+          "hcf_sqlpjo01_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo01": 10,
+          "hcf_sqlpjo01_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo01": 20,
+          "hcf_sqlpjo01_end": 0
+        },
+        "5": {
+          "hcq_sqlpjo01": 90,
+          "hcf_sqlpjo01_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo01": 100,
+          "hcf_sqlpjo01_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo01": 100,
+          "hcf_sqlpjo01_end": 2
+        }
+      },
+      "key": "sqlpjo01"
+    },
+    "hcq_j02": {
+      "rows": [
+        {
+          "old_id": "hcj_j02_soigne",
+          "new_id": "sq_lp_jo_02_soigne",
+          "short_code": "sqlpjo02",
+          "new_scoreboard": "hcq_sqlpjo02",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "Ce qui soigne, ce qui se vend",
+          "old_state": "hcq_j02",
+          "old_completed_state": "hcq_j02",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j02_soigne.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_02_soigne.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        5,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo02": 0,
+          "hcf_sqlpjo02_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo02": 10,
+          "hcf_sqlpjo02_end": 0
+        },
+        "5": {
+          "hcq_sqlpjo02": 90,
+          "hcf_sqlpjo02_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo02": 100,
+          "hcf_sqlpjo02_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo02": 100,
+          "hcf_sqlpjo02_end": 2
+        }
+      },
+      "key": "sqlpjo02"
+    },
+    "hcq_j03": {
+      "rows": [
+        {
+          "old_id": "hcj_j03_sacs",
+          "new_id": "sq_lp_jo_03_sacs",
+          "short_code": "sqlpjo03",
+          "new_scoreboard": "hcq_sqlpjo03",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "Les sacs qui ont appris à marcher",
+          "old_state": "hcq_j03",
+          "old_completed_state": "hcq_j03",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "hcj_j01_griffes",
+          "new_prerequisites": "sq_lp_jo_01_griffes",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j03_sacs.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_03_sacs.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo03": 0,
+          "hcf_sqlpjo03_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo03": 10,
+          "hcf_sqlpjo03_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo03": 20,
+          "hcf_sqlpjo03_end": 0
+        },
+        "3": {
+          "hcq_sqlpjo03": 90,
+          "hcf_sqlpjo03_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo03": 100,
+          "hcf_sqlpjo03_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo03": 100,
+          "hcf_sqlpjo03_end": 2
+        }
+      },
+      "key": "sqlpjo03"
+    },
+    "hcq_j04": {
+      "rows": [
+        {
+          "old_id": "hcj_j04_marque",
+          "new_id": "sq_lp_jo_04_marque",
+          "short_code": "sqlpjo04",
+          "new_scoreboard": "hcq_sqlpjo04",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "La marque du maître",
+          "old_state": "hcq_j04",
+          "old_completed_state": "hcq_j04",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "hcj_j03_sacs",
+          "new_prerequisites": "sq_lp_jo_03_sacs",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j04_marque.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_04_marque.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo04": 0,
+          "hcf_sqlpjo04_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo04": 10,
+          "hcf_sqlpjo04_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo04": 100,
+          "hcf_sqlpjo04_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo04": 100,
+          "hcf_sqlpjo04_end": 2
+        }
+      },
+      "key": "sqlpjo04"
+    },
+    "hcq_j05": {
+      "rows": [
+        {
+          "old_id": "hcj_j05_meute",
+          "new_id": "sq_lp_jo_05_meute",
+          "short_code": "sqlpjo05",
+          "new_scoreboard": "hcq_sqlpjo05",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "La meute au mauvais endroit",
+          "old_state": "hcq_j05",
+          "old_completed_state": "hcq_j05",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "hcj_j01_griffes",
+          "new_prerequisites": "sq_lp_jo_01_griffes",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j05_meute.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_05_meute.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        20,
+        21,
+        40,
+        41,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo05": 0,
+          "hcf_sqlpjo05_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo05": 10,
+          "hcf_sqlpjo05_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo05": 20,
+          "hcf_sqlpjo05_end": 0
+        },
+        "20": {
+          "hcq_sqlpjo05": 30,
+          "hcf_sqlpjo05_end": 0
+        },
+        "21": {
+          "hcq_sqlpjo05": 40,
+          "hcf_sqlpjo05_end": 0
+        },
+        "40": {
+          "hcq_sqlpjo05": 50,
+          "hcf_sqlpjo05_end": 0
+        },
+        "41": {
+          "hcq_sqlpjo05": 90,
+          "hcf_sqlpjo05_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo05": 100,
+          "hcf_sqlpjo05_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo05": 100,
+          "hcf_sqlpjo05_end": 2
+        }
+      },
+      "key": "sqlpjo05"
+    },
+    "hcq_j06": {
+      "rows": [
+        {
+          "old_id": "hcj_j06_noms",
+          "new_id": "sq_lp_jo_06_noms",
+          "short_code": "sqlpjo06",
+          "new_scoreboard": "hcq_sqlpjo06",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "Les noms sous la mousse",
+          "old_state": "hcq_j06",
+          "old_completed_state": "hcq_j06",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j06_noms.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_06_noms.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo06": 0,
+          "hcf_sqlpjo06_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo06": 10,
+          "hcf_sqlpjo06_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo06": 90,
+          "hcf_sqlpjo06_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo06": 100,
+          "hcf_sqlpjo06_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo06": 100,
+          "hcf_sqlpjo06_end": 2
+        }
+      },
+      "key": "sqlpjo06"
+    },
+    "hcq_j07": {
+      "rows": [
+        {
+          "old_id": "hcj_j07_eau",
+          "new_id": "sq_lp_jo_07_eau",
+          "short_code": "sqlpjo07",
+          "new_scoreboard": "hcq_sqlpjo07",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "L'eau qui descend",
+          "old_state": "hcq_j07",
+          "old_completed_state": "hcq_j07",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "hcj_j02_soigne;hcj_j03_sacs",
+          "new_prerequisites": "sq_lp_jo_02_soigne;sq_lp_jo_03_sacs",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j07_eau.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_07_eau.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        5,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo07": 0,
+          "hcf_sqlpjo07_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo07": 10,
+          "hcf_sqlpjo07_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo07": 20,
+          "hcf_sqlpjo07_end": 0
+        },
+        "5": {
+          "hcq_sqlpjo07": 90,
+          "hcf_sqlpjo07_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo07": 100,
+          "hcf_sqlpjo07_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo07": 100,
+          "hcf_sqlpjo07_end": 2
+        }
+      },
+      "key": "sqlpjo07"
+    },
+    "hcq_j08": {
+      "rows": [
+        {
+          "old_id": "hcj_j08_retour",
+          "new_id": "sq_lp_jo_08_retour",
+          "short_code": "sqlpjo08",
+          "new_scoreboard": "hcq_sqlpjo08",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "Celui qui n'est pas revenu",
+          "old_state": "hcq_j08",
+          "old_completed_state": "hcq_j08",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "hcj_j03_sacs;hcj_j06_noms",
+          "new_prerequisites": "sq_lp_jo_03_sacs;sq_lp_jo_06_noms",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j08_retour.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_08_retour.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo08": 0,
+          "hcf_sqlpjo08_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo08": 10,
+          "hcf_sqlpjo08_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo08": 20,
+          "hcf_sqlpjo08_end": 0
+        },
+        "3": {
+          "hcq_sqlpjo08": 30,
+          "hcf_sqlpjo08_end": 0
+        },
+        "4": {
+          "hcq_sqlpjo08": 40,
+          "hcf_sqlpjo08_end": 0
+        },
+        "5": {
+          "hcq_sqlpjo08": 50,
+          "hcf_sqlpjo08_end": 0
+        },
+        "6": {
+          "hcq_sqlpjo08": 90,
+          "hcf_sqlpjo08_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo08": 100,
+          "hcf_sqlpjo08_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo08": 100,
+          "hcf_sqlpjo08_end": 2
+        }
+      },
+      "key": "sqlpjo08"
+    },
+    "hcq_j09": {
+      "rows": [
+        {
+          "old_id": "hcj_j09_comptes",
+          "new_id": "sq_lp_jo_09_comptes",
+          "short_code": "sqlpjo09",
+          "new_scoreboard": "hcq_sqlpjo09",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "Les comptes ne mordent pas",
+          "old_state": "hcq_j09",
+          "old_completed_state": "hcq_j09",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "hcj_j04_marque;hcj_j07_eau;hcj_j08_retour",
+          "new_prerequisites": "sq_lp_jo_04_marque;sq_lp_jo_07_eau;sq_lp_jo_08_retour",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j09_comptes.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_09_comptes.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo09": 0,
+          "hcf_sqlpjo09_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo09": 10,
+          "hcf_sqlpjo09_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo09": 90,
+          "hcf_sqlpjo09_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo09": 100,
+          "hcf_sqlpjo09_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo09": 100,
+          "hcf_sqlpjo09_end": 2
+        }
+      },
+      "key": "sqlpjo09"
+    },
+    "hcq_j10": {
+      "rows": [
+        {
+          "old_id": "hcj_j10_passage",
+          "new_id": "sq_lp_jo_10_passage",
+          "short_code": "sqlpjo10",
+          "new_scoreboard": "hcq_sqlpjo10",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "Tenir le passage",
+          "old_state": "hcq_j10",
+          "old_completed_state": "hcq_j10",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "hcj_j05_meute;hcj_j09_comptes",
+          "new_prerequisites": "sq_lp_jo_05_meute;sq_lp_jo_09_comptes",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j10_passage.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_10_passage.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        20,
+        21,
+        40,
+        50,
+        51,
+        70,
+        71
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo10": 0,
+          "hcf_sqlpjo10_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo10": 10,
+          "hcf_sqlpjo10_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo10": 20,
+          "hcf_sqlpjo10_end": 0
+        },
+        "3": {
+          "hcq_sqlpjo10": 30,
+          "hcf_sqlpjo10_end": 0
+        },
+        "4": {
+          "hcq_sqlpjo10": 40,
+          "hcf_sqlpjo10_end": 0
+        },
+        "20": {
+          "hcq_sqlpjo10": 50,
+          "hcf_sqlpjo10_end": 0
+        },
+        "21": {
+          "hcq_sqlpjo10": 60,
+          "hcf_sqlpjo10_end": 0
+        },
+        "40": {
+          "hcq_sqlpjo10": 90,
+          "hcf_sqlpjo10_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo10": 100,
+          "hcf_sqlpjo10_end": 1
+        },
+        "51": {
+          "hcq_sqlpjo10": 100,
+          "hcf_sqlpjo10_end": 2
+        },
+        "70": {
+          "hcq_sqlpjo10": 100,
+          "hcf_sqlpjo10_end": 3
+        },
+        "71": {
+          "hcq_sqlpjo10": 100,
+          "hcf_sqlpjo10_end": 4
+        }
+      },
+      "key": "sqlpjo10"
+    },
+    "hcq_j11": {
+      "rows": [
+        {
+          "old_id": "hcj_j11_vitrail",
+          "new_id": "sq_lp_jo_11_vitrail",
+          "short_code": "sqlpjo11",
+          "new_scoreboard": "hcq_sqlpjo11",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "Le regard dans le vitrail",
+          "old_state": "hcq_j11",
+          "old_completed_state": "hcq_j11",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "hcj_j06_noms",
+          "new_prerequisites": "sq_lp_jo_06_noms",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j11_vitrail.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_11_vitrail.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo11": 0,
+          "hcf_sqlpjo11_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo11": 10,
+          "hcf_sqlpjo11_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo11": 90,
+          "hcf_sqlpjo11_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo11": 100,
+          "hcf_sqlpjo11_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo11": 100,
+          "hcf_sqlpjo11_end": 2
+        }
+      },
+      "key": "sqlpjo11"
+    },
+    "hcq_j12": {
+      "rows": [
+        {
+          "old_id": "hcj_j12_cloche",
+          "new_id": "sq_lp_jo_12_cloche",
+          "short_code": "sqlpjo12",
+          "new_scoreboard": "hcq_sqlpjo12",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "Une cloche pour les vivants",
+          "old_state": "hcq_j12",
+          "old_completed_state": "hcq_j12",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "hcj_j06_noms",
+          "new_prerequisites": "sq_lp_jo_06_noms",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j12_cloche.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_12_cloche.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo12": 0,
+          "hcf_sqlpjo12_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo12": 10,
+          "hcf_sqlpjo12_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo12": 90,
+          "hcf_sqlpjo12_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo12": 100,
+          "hcf_sqlpjo12_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo12": 100,
+          "hcf_sqlpjo12_end": 2
+        }
+      },
+      "key": "sqlpjo12"
+    },
+    "hcq_j13": {
+      "rows": [
+        {
+          "old_id": "hcj_j13_gardien",
+          "new_id": "sq_lp_jo_13_gardien",
+          "short_code": "sqlpjo13",
+          "new_scoreboard": "hcq_sqlpjo13",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "lp",
+          "arc_id": "arc_lp_jo",
+          "title": "Celui qui gardait sans nom",
+          "old_state": "hcq_j13",
+          "old_completed_state": "hcq_j13",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "hcj_j06_noms;hcj_j11_vitrail;hcj_j12_cloche",
+          "new_prerequisites": "sq_lp_jo_06_noms;sq_lp_jo_11_vitrail;sq_lp_jo_12_cloche",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/hcj_j13_gardien.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_lp_jo_13_gardien.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        50,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqlpjo13": 0,
+          "hcf_sqlpjo13_end": 0
+        },
+        "1": {
+          "hcq_sqlpjo13": 10,
+          "hcf_sqlpjo13_end": 0
+        },
+        "2": {
+          "hcq_sqlpjo13": 90,
+          "hcf_sqlpjo13_end": 0
+        },
+        "50": {
+          "hcq_sqlpjo13": 100,
+          "hcf_sqlpjo13_end": 1
+        },
+        "70": {
+          "hcq_sqlpjo13": 100,
+          "hcf_sqlpjo13_end": 2
+        }
+      },
+      "key": "sqlpjo13"
+    },
+    "hcq_m": {
+      "rows": [
+        {
+          "old_id": "mc_aveline",
+          "new_id": "sq_vc_ra_02_mere_aveline",
+          "short_code": "sqvcra02",
+          "new_scoreboard": "hcq_sqvcra02",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_ra",
+          "title": "La Mère Aveline",
+          "old_state": "hcq_m",
+          "old_completed_state": "hcq_m",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_rayee",
+          "new_prerequisites": "cq_vc_ra_01_rayee",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_aveline.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_ra_02_mere_aveline.json",
+          "migration_notes": "etat partage hcq_m avec 2 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_rayee",
+          "new_id": "cq_vc_ra_01_rayee",
+          "short_code": "cqvcra01",
+          "new_scoreboard": "hcq_cqvcra01",
+          "old_type": "COMBAT",
+          "new_type": "COMBAT",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_ra",
+          "title": "La Rayée",
+          "old_state": "hcq_m",
+          "old_completed_state": "hcq_m",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "mc_aveline",
+          "new_next": "sq_vc_ra_02_mere_aveline",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_rayee.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/cq_vc_ra_01_rayee.json",
+          "migration_notes": "etat partage hcq_m avec 2 quetes : decoupage logique requis"
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqvcra02": 0,
+          "hcq_cqvcra01": 0
+        },
+        "1": {
+          "hcq_sqvcra02": 0,
+          "hcq_cqvcra01": 10
+        },
+        "2": {
+          "hcq_sqvcra02": 0,
+          "hcq_cqvcra01": 20
+        },
+        "3": {
+          "hcq_sqvcra02": 0,
+          "hcq_cqvcra01": 90
+        },
+        "4": {
+          "hcq_sqvcra02": 0,
+          "hcq_cqvcra01": 100
+        },
+        "5": {
+          "hcq_sqvcra02": 10,
+          "hcq_cqvcra01": 100
+        },
+        "6": {
+          "hcq_sqvcra02": 20,
+          "hcq_cqvcra01": 100
+        },
+        "7": {
+          "hcq_sqvcra02": 90,
+          "hcq_cqvcra01": 100
+        },
+        "8": {
+          "hcq_sqvcra02": 100,
+          "hcq_cqvcra01": 100
+        }
+      },
+      "key": "arc_m"
+    },
+    "hcq_c": {
+      "rows": [
+        {
+          "old_id": "mc_bannieres",
+          "new_id": "sq_vc_bn_01_bannieres_cyan",
+          "short_code": "sqvcbn01",
+          "new_scoreboard": "hcq_sqvcbn01",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_bn",
+          "title": "Les bannières cyan",
+          "old_state": "hcq_c",
+          "old_completed_state": "hcq_c",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_steles;mc_sanctuaire",
+          "new_prerequisites": "sq_vc_cr_04_steles_aube;sq_vc_cr_05_sanctuaire_aube",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_bannieres.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_bn_01_bannieres_cyan.json",
+          "migration_notes": "etat partage hcq_c avec 4 quetes : decoupage logique requis | branches a exclusivite potentielle : valider en conditions reelles"
+        },
+        {
+          "old_id": "mc_bannieres_a",
+          "new_id": "sq_vc_bn_02_role",
+          "short_code": "sqvcbn02",
+          "new_scoreboard": "hcq_sqvcbn02",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_bn",
+          "title": "Les bannières cyan — Le rôle",
+          "old_state": "hcq_c",
+          "old_completed_state": "hcq_c",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_bannieres",
+          "new_prerequisites": "sq_vc_bn_01_bannieres_cyan",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_bannieres_a.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_bn_02_role.json",
+          "migration_notes": "etat partage hcq_c avec 4 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_bannieres_b",
+          "new_id": "sq_vc_bn_03_silence",
+          "short_code": "sqvcbn03",
+          "new_scoreboard": "hcq_sqvcbn03",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_bn",
+          "title": "Les bannières cyan — Le silence",
+          "old_state": "hcq_c",
+          "old_completed_state": "hcq_c",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_bannieres",
+          "new_prerequisites": "sq_vc_bn_01_bannieres_cyan",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_bannieres_b.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_bn_03_silence.json",
+          "migration_notes": "etat partage hcq_c avec 4 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_bannieres_c",
+          "new_id": "sq_vc_bn_04_rature",
+          "short_code": "sqvcbn04",
+          "new_scoreboard": "hcq_sqvcbn04",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_bn",
+          "title": "Les bannières cyan — La rature",
+          "old_state": "hcq_c",
+          "old_completed_state": "hcq_c",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_bannieres",
+          "new_prerequisites": "sq_vc_bn_01_bannieres_cyan",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_bannieres_c.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_bn_04_rature.json",
+          "migration_notes": "etat partage hcq_c avec 4 quetes : decoupage logique requis"
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        20,
+        21,
+        22,
+        30,
+        40,
+        41,
+        42,
+        43,
+        50,
+        60,
+        61,
+        62,
+        63,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqvcbn01": 0,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "1": {
+          "hcq_sqvcbn01": 10,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "2": {
+          "hcq_sqvcbn01": 20,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "3": {
+          "hcq_sqvcbn01": 30,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "4": {
+          "hcq_sqvcbn01": 40,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "5": {
+          "hcq_sqvcbn01": 90,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "20": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 10,
+          "hcq_sqvcbn04": 0
+        },
+        "21": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 20,
+          "hcq_sqvcbn04": 0
+        },
+        "22": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 90,
+          "hcq_sqvcbn04": 0
+        },
+        "30": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 100,
+          "hcq_sqvcbn04": 0
+        },
+        "40": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 10,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "41": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 20,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "42": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 30,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "43": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 90,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "50": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 100,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 0
+        },
+        "60": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 10
+        },
+        "61": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 20
+        },
+        "62": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 30
+        },
+        "63": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 90
+        },
+        "70": {
+          "hcq_sqvcbn01": 100,
+          "hcq_sqvcbn02": 0,
+          "hcq_sqvcbn03": 0,
+          "hcq_sqvcbn04": 100
+        }
+      },
+      "key": "arc_c"
+    },
+    "hcq_n": {
+      "rows": [
+        {
+          "old_id": "mc_bete_blanche",
+          "new_id": "cq_vc_bb_01_bete_blanche",
+          "short_code": "cqvcbb01",
+          "new_scoreboard": "hcq_cqvcbb01",
+          "old_type": "COMBAT",
+          "new_type": "COMBAT",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_bb",
+          "title": "La Bête blanche du Couperet",
+          "old_state": "hcq_n",
+          "old_completed_state": "hcq_n",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_route",
+          "new_prerequisites": "sq_vc_ep_03_route_rouverte",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_bete_blanche.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/cq_vc_bb_01_bete_blanche.json",
+          "migration_notes": "etat partage hcq_n avec 4 quetes : decoupage logique requis | branches a exclusivite potentielle : valider en conditions reelles"
+        },
+        {
+          "old_id": "mc_bete_blanche_a",
+          "new_id": "cq_vc_bb_02_camp_vide",
+          "short_code": "cqvcbb02",
+          "new_scoreboard": "hcq_cqvcbb02",
+          "old_type": "COMBAT",
+          "new_type": "COMBAT",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_bb",
+          "title": "Le camp se vide",
+          "old_state": "hcq_n",
+          "old_completed_state": "hcq_n",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_bete_blanche",
+          "new_prerequisites": "cq_vc_bb_01_bete_blanche",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_bete_blanche_a.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/cq_vc_bb_02_camp_vide.json",
+          "migration_notes": "etat partage hcq_n avec 4 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_bete_blanche_b",
+          "new_id": "cq_vc_bb_03_part_equipage",
+          "short_code": "cqvcbb03",
+          "new_scoreboard": "hcq_cqvcbb03",
+          "old_type": "COMBAT",
+          "new_type": "COMBAT",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_bb",
+          "title": "La part d'équipage",
+          "old_state": "hcq_n",
+          "old_completed_state": "hcq_n",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_bete_blanche",
+          "new_prerequisites": "cq_vc_bb_01_bete_blanche",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_bete_blanche_b.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/cq_vc_bb_03_part_equipage.json",
+          "migration_notes": "etat partage hcq_n avec 4 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_bete_blanche_c",
+          "new_id": "cq_vc_bb_04_prise_guerre",
+          "short_code": "cqvcbb04",
+          "new_scoreboard": "hcq_cqvcbb04",
+          "old_type": "COMBAT",
+          "new_type": "COMBAT",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_bb",
+          "title": "Prise de guerre",
+          "old_state": "hcq_n",
+          "old_completed_state": "hcq_n",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_bete_blanche",
+          "new_prerequisites": "cq_vc_bb_01_bete_blanche",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_bete_blanche_c.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/cq_vc_bb_04_prise_guerre.json",
+          "migration_notes": "etat partage hcq_n avec 4 quetes : decoupage logique requis"
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        20,
+        21,
+        22,
+        23,
+        30,
+        40,
+        41,
+        42,
+        50,
+        60,
+        61,
+        62,
+        63,
+        64,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_cqvcbb01": 0,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "1": {
+          "hcq_cqvcbb01": 10,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "2": {
+          "hcq_cqvcbb01": 20,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "3": {
+          "hcq_cqvcbb01": 30,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "4": {
+          "hcq_cqvcbb01": 40,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "5": {
+          "hcq_cqvcbb01": 50,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "6": {
+          "hcq_cqvcbb01": 60,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "7": {
+          "hcq_cqvcbb01": 70,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "8": {
+          "hcq_cqvcbb01": 90,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "20": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 10,
+          "hcq_cqvcbb04": 0
+        },
+        "21": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 20,
+          "hcq_cqvcbb04": 0
+        },
+        "22": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 30,
+          "hcq_cqvcbb04": 0
+        },
+        "23": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 90,
+          "hcq_cqvcbb04": 0
+        },
+        "30": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 100,
+          "hcq_cqvcbb04": 0
+        },
+        "40": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 10,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "41": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 20,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "42": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 90,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "50": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 100,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 0
+        },
+        "60": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 10
+        },
+        "61": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 20
+        },
+        "62": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 30
+        },
+        "63": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 40
+        },
+        "64": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 90
+        },
+        "70": {
+          "hcq_cqvcbb01": 100,
+          "hcq_cqvcbb02": 0,
+          "hcq_cqvcbb03": 0,
+          "hcq_cqvcbb04": 100
+        }
+      },
+      "key": "arc_n"
+    },
+    "hcq_t": {
+      "rows": [
+        {
+          "old_id": "mc_canot",
+          "new_id": "sq_vc_so_01_canot_segre",
+          "short_code": "sqvcso01",
+          "new_scoreboard": "hcq_sqvcso01",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_so",
+          "title": "Le canot de la Sègre",
+          "old_state": "hcq_t",
+          "old_completed_state": "hcq_t",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_canot.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_so_01_canot_segre.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqvcso01": 0
+        },
+        "1": {
+          "hcq_sqvcso01": 10
+        },
+        "2": {
+          "hcq_sqvcso01": 90
+        },
+        "3": {
+          "hcq_sqvcso01": 100
+        }
+      },
+      "key": "sqvcso01"
+    },
+    "hcq_a": {
+      "rows": [
+        {
+          "old_id": "mc_carrec",
+          "new_id": "cq_vc_ep_02_ruines_carrec",
+          "short_code": "cqvcep02",
+          "new_scoreboard": "hcq_cqvcep02",
+          "old_type": "COMBAT",
+          "new_type": "COMBAT",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_ep",
+          "title": "Les ruines de Carrec",
+          "old_state": "hcq_a",
+          "old_completed_state": "hcq_a",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_marguerite",
+          "new_prerequisites": "sq_vc_ep_01_marguerite",
+          "old_next": "mc_route",
+          "new_next": "sq_vc_ep_03_route_rouverte",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_carrec.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/cq_vc_ep_02_ruines_carrec.json",
+          "migration_notes": "etat partage hcq_a avec 3 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_marguerite",
+          "new_id": "sq_vc_ep_01_marguerite",
+          "short_code": "sqvcep01",
+          "new_scoreboard": "hcq_sqvcep01",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_ep",
+          "title": "La Marguerite",
+          "old_state": "hcq_a",
+          "old_completed_state": "hcq_a",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "mc_carrec",
+          "new_next": "cq_vc_ep_02_ruines_carrec",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_marguerite.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_ep_01_marguerite.json",
+          "migration_notes": "etat partage hcq_a avec 3 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_route",
+          "new_id": "sq_vc_ep_03_route_rouverte",
+          "short_code": "sqvcep03",
+          "new_scoreboard": "hcq_sqvcep03",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_ep",
+          "title": "La route rouverte",
+          "old_state": "hcq_a",
+          "old_completed_state": "hcq_a",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_carrec;mc_sanctuaire",
+          "new_prerequisites": "cq_vc_ep_02_ruines_carrec;sq_vc_cr_05_sanctuaire_aube",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_route.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_ep_03_route_rouverte.json",
+          "migration_notes": "etat partage hcq_a avec 3 quetes : decoupage logique requis"
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "vectors": {
+        "0": {
+          "hcq_cqvcep02": 0,
+          "hcq_sqvcep01": 0,
+          "hcq_sqvcep03": 0
+        },
+        "1": {
+          "hcq_cqvcep02": 0,
+          "hcq_sqvcep01": 10,
+          "hcq_sqvcep03": 0
+        },
+        "2": {
+          "hcq_cqvcep02": 0,
+          "hcq_sqvcep01": 20,
+          "hcq_sqvcep03": 0
+        },
+        "3": {
+          "hcq_cqvcep02": 0,
+          "hcq_sqvcep01": 90,
+          "hcq_sqvcep03": 0
+        },
+        "4": {
+          "hcq_cqvcep02": 0,
+          "hcq_sqvcep01": 100,
+          "hcq_sqvcep03": 0
+        },
+        "5": {
+          "hcq_cqvcep02": 10,
+          "hcq_sqvcep01": 100,
+          "hcq_sqvcep03": 0
+        },
+        "6": {
+          "hcq_cqvcep02": 90,
+          "hcq_sqvcep01": 100,
+          "hcq_sqvcep03": 0
+        },
+        "7": {
+          "hcq_cqvcep02": 100,
+          "hcq_sqvcep01": 100,
+          "hcq_sqvcep03": 0
+        },
+        "8": {
+          "hcq_cqvcep02": 100,
+          "hcq_sqvcep01": 100,
+          "hcq_sqvcep03": 10
+        },
+        "9": {
+          "hcq_cqvcep02": 100,
+          "hcq_sqvcep01": 100,
+          "hcq_sqvcep03": 90
+        },
+        "10": {
+          "hcq_cqvcep02": 100,
+          "hcq_sqvcep01": 100,
+          "hcq_sqvcep03": 100
+        }
+      },
+      "key": "arc_a"
+    },
+    "hcq_r": {
+      "rows": [
+        {
+          "old_id": "mc_chambre_six",
+          "new_id": "sq_vc_so_02_chambre_six",
+          "short_code": "sqvcso02",
+          "new_scoreboard": "hcq_sqvcso02",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_so",
+          "title": "La chambre six",
+          "old_state": "hcq_r",
+          "old_completed_state": "hcq_r",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_chambre_six.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_so_02_chambre_six.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqvcso02": 0
+        },
+        "1": {
+          "hcq_sqvcso02": 10
+        },
+        "2": {
+          "hcq_sqvcso02": 20
+        },
+        "3": {
+          "hcq_sqvcso02": 30
+        },
+        "4": {
+          "hcq_sqvcso02": 90
+        },
+        "5": {
+          "hcq_sqvcso02": 100
+        }
+      },
+      "key": "sqvcso02"
+    },
+    "hcq_h": {
+      "rows": [
+        {
+          "old_id": "mc_fosses",
+          "new_id": "sq_vc_cr_03_fosses",
+          "short_code": "sqvccr03",
+          "new_scoreboard": "hcq_sqvccr03",
+          "old_type": "MAIN",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_cr",
+          "title": "Les Fosses",
+          "old_state": "hcq_h",
+          "old_completed_state": "hcq_h",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_tour_muette",
+          "new_prerequisites": "sq_vc_cr_02_tour_muette",
+          "old_next": "mc_sanctuaire",
+          "new_next": "sq_vc_cr_05_sanctuaire_aube",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_fosses.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_cr_03_fosses.json",
+          "migration_notes": "etat partage hcq_h avec 4 quetes : decoupage logique requis | reclassification de categorie du journal"
+        },
+        {
+          "old_id": "mc_peage",
+          "new_id": "sq_vc_cr_01_peage_sauniers",
+          "short_code": "sqvccr01",
+          "new_scoreboard": "hcq_sqvccr01",
+          "old_type": "MAIN",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_cr",
+          "title": "Le péage des Sauniers",
+          "old_state": "hcq_h",
+          "old_completed_state": "hcq_h",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "mc_tour_muette",
+          "new_next": "sq_vc_cr_02_tour_muette",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_peage.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_cr_01_peage_sauniers.json",
+          "migration_notes": "etat partage hcq_h avec 4 quetes : decoupage logique requis | reclassification de categorie du journal"
+        },
+        {
+          "old_id": "mc_sanctuaire",
+          "new_id": "sq_vc_cr_05_sanctuaire_aube",
+          "short_code": "sqvccr05",
+          "new_scoreboard": "hcq_sqvccr05",
+          "old_type": "MAIN",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_cr",
+          "title": "Le Sanctuaire de l'Aube",
+          "old_state": "hcq_h",
+          "old_completed_state": "hcq_h",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_fosses;mc_carrec;mc_steles",
+          "new_prerequisites": "sq_vc_cr_03_fosses;cq_vc_ep_02_ruines_carrec;sq_vc_cr_04_steles_aube",
+          "old_next": "mc_route",
+          "new_next": "sq_vc_ep_03_route_rouverte",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_sanctuaire.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_cr_05_sanctuaire_aube.json",
+          "migration_notes": "etat partage hcq_h avec 4 quetes : decoupage logique requis | reclassification de categorie du journal"
+        },
+        {
+          "old_id": "mc_tour_muette",
+          "new_id": "sq_vc_cr_02_tour_muette",
+          "short_code": "sqvccr02",
+          "new_scoreboard": "hcq_sqvccr02",
+          "old_type": "MAIN",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_cr",
+          "title": "La tour muette",
+          "old_state": "hcq_h",
+          "old_completed_state": "hcq_h",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_peage",
+          "new_prerequisites": "sq_vc_cr_01_peage_sauniers",
+          "old_next": "mc_fosses",
+          "new_next": "sq_vc_cr_03_fosses",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_tour_muette.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_cr_02_tour_muette.json",
+          "migration_notes": "etat partage hcq_h avec 4 quetes : decoupage logique requis | reclassification de categorie du journal"
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqvccr03": 0,
+          "hcq_sqvccr01": 0,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 0
+        },
+        "1": {
+          "hcq_sqvccr03": 0,
+          "hcq_sqvccr01": 10,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 0
+        },
+        "2": {
+          "hcq_sqvccr03": 0,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 0
+        },
+        "3": {
+          "hcq_sqvccr03": 0,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 10
+        },
+        "4": {
+          "hcq_sqvccr03": 0,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 20
+        },
+        "5": {
+          "hcq_sqvccr03": 0,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 30
+        },
+        "6": {
+          "hcq_sqvccr03": 0,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 90
+        },
+        "7": {
+          "hcq_sqvccr03": 0,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 100
+        },
+        "8": {
+          "hcq_sqvccr03": 10,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 100
+        },
+        "9": {
+          "hcq_sqvccr03": 90,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 100
+        },
+        "10": {
+          "hcq_sqvccr03": 100,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 0,
+          "hcq_sqvccr02": 100
+        },
+        "11": {
+          "hcq_sqvccr03": 100,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 10,
+          "hcq_sqvccr02": 100
+        },
+        "12": {
+          "hcq_sqvccr03": 100,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 20,
+          "hcq_sqvccr02": 100
+        },
+        "13": {
+          "hcq_sqvccr03": 100,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 30,
+          "hcq_sqvccr02": 100
+        },
+        "14": {
+          "hcq_sqvccr03": 100,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 90,
+          "hcq_sqvccr02": 100
+        },
+        "15": {
+          "hcq_sqvccr03": 100,
+          "hcq_sqvccr01": 100,
+          "hcq_sqvccr05": 100,
+          "hcq_sqvccr02": 100
+        }
+      },
+      "key": "arc_h"
+    },
+    "hcq_p": {
+      "rows": [
+        {
+          "old_id": "mc_patrouille",
+          "new_id": "sq_vc_pa_01_patrouille_arche",
+          "short_code": "sqvcpa01",
+          "new_scoreboard": "hcq_sqvcpa01",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_pa",
+          "title": "La patrouille de l'Arche",
+          "old_state": "hcq_p",
+          "old_completed_state": "hcq_p",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_sanctuaire",
+          "new_prerequisites": "sq_vc_cr_05_sanctuaire_aube",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_patrouille.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_pa_01_patrouille_arche.json",
+          "migration_notes": "etat partage hcq_p avec 4 quetes : decoupage logique requis | branches a exclusivite potentielle : valider en conditions reelles"
+        },
+        {
+          "old_id": "mc_patrouille_couvrir",
+          "new_id": "sq_vc_pa_02_perchoir",
+          "short_code": "sqvcpa02",
+          "new_scoreboard": "hcq_sqvcpa02",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_pa",
+          "title": "La patrouille de l'Arche — la version du Perchoir",
+          "old_state": "hcq_p",
+          "old_completed_state": "hcq_p",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_patrouille",
+          "new_prerequisites": "sq_vc_pa_01_patrouille_arche",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_patrouille_couvrir.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_pa_02_perchoir.json",
+          "migration_notes": "etat partage hcq_p avec 4 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_patrouille_soldats",
+          "new_id": "sq_vc_pa_04_entre_soldats",
+          "short_code": "sqvcpa04",
+          "new_scoreboard": "hcq_sqvcpa04",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_pa",
+          "title": "La patrouille de l'Arche — entre soldats",
+          "old_state": "hcq_p",
+          "old_completed_state": "hcq_p",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_patrouille",
+          "new_prerequisites": "sq_vc_pa_01_patrouille_arche",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_patrouille_soldats.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_pa_04_entre_soldats.json",
+          "migration_notes": "etat partage hcq_p avec 4 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_patrouille_verite",
+          "new_id": "sq_vc_pa_03_verite",
+          "short_code": "sqvcpa03",
+          "new_scoreboard": "hcq_sqvcpa03",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_pa",
+          "title": "La patrouille de l'Arche — la vérité",
+          "old_state": "hcq_p",
+          "old_completed_state": "hcq_p",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_patrouille",
+          "new_prerequisites": "sq_vc_pa_01_patrouille_arche",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_patrouille_verite.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_pa_03_verite.json",
+          "migration_notes": "etat partage hcq_p avec 4 quetes : decoupage logique requis"
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        20,
+        21,
+        22,
+        30,
+        40,
+        41,
+        42,
+        50,
+        60,
+        61,
+        70
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqvcpa01": 0,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "1": {
+          "hcq_sqvcpa01": 10,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "2": {
+          "hcq_sqvcpa01": 20,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "3": {
+          "hcq_sqvcpa01": 30,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "4": {
+          "hcq_sqvcpa01": 40,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "5": {
+          "hcq_sqvcpa01": 50,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "6": {
+          "hcq_sqvcpa01": 60,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "7": {
+          "hcq_sqvcpa01": 90,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "20": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 10,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "21": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 20,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "22": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 90,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "30": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 100,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 0
+        },
+        "40": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 10
+        },
+        "41": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 20
+        },
+        "42": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 90
+        },
+        "50": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 0,
+          "hcq_sqvcpa03": 100
+        },
+        "60": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 10,
+          "hcq_sqvcpa03": 0
+        },
+        "61": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 90,
+          "hcq_sqvcpa03": 0
+        },
+        "70": {
+          "hcq_sqvcpa01": 100,
+          "hcq_sqvcpa02": 0,
+          "hcq_sqvcpa04": 100,
+          "hcq_sqvcpa03": 0
+        }
+      },
+      "key": "arc_p"
+    },
+    "hcq_k": {
+      "rows": [
+        {
+          "old_id": "mc_steles",
+          "new_id": "sq_vc_cr_04_steles_aube",
+          "short_code": "sqvccr04",
+          "new_scoreboard": "hcq_sqvccr04",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_cr",
+          "title": "Les stèles de l'Aube",
+          "old_state": "hcq_k",
+          "old_completed_state": "hcq_k",
+          "shared_old_state": "NO",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_fosses",
+          "new_prerequisites": "sq_vc_cr_03_fosses",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P1",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_steles.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_cr_04_steles_aube.json",
+          "migration_notes": ""
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "vectors": {
+        "0": {
+          "hcq_sqvccr04": 0
+        },
+        "1": {
+          "hcq_sqvccr04": 10
+        },
+        "2": {
+          "hcq_sqvccr04": 90
+        },
+        "3": {
+          "hcq_sqvccr04": 100
+        }
+      },
+      "key": "sqvccr04"
+    },
+    "hcq_v": {
+      "rows": [
+        {
+          "old_id": "mc_vc_humilite",
+          "new_id": "cq_vc_hr_02_humilite",
+          "short_code": "cqvchr02",
+          "new_scoreboard": "hcq_cqvchr02",
+          "old_type": "COMBAT",
+          "new_type": "COMBAT",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_hr",
+          "title": "Une leçon d'humilité",
+          "old_state": "hcq_v",
+          "old_completed_state": "hcq_v",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_vc_mots",
+          "new_prerequisites": "sq_vc_hr_01_mots_anciens",
+          "old_next": "mc_vc_quais",
+          "new_next": "sq_vc_hr_03_quais",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_vc_humilite.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/cq_vc_hr_02_humilite.json",
+          "migration_notes": "etat partage hcq_v avec 5 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_vc_mots",
+          "new_id": "sq_vc_hr_01_mots_anciens",
+          "short_code": "sqvchr01",
+          "new_scoreboard": "hcq_sqvchr01",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_hr",
+          "title": "Les mots des anciens",
+          "old_state": "hcq_v",
+          "old_completed_state": "hcq_v",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "",
+          "new_prerequisites": "",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_vc_mots.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_hr_01_mots_anciens.json",
+          "migration_notes": "etat partage hcq_v avec 5 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_vc_quais",
+          "new_id": "sq_vc_hr_03_quais",
+          "short_code": "sqvchr03",
+          "new_scoreboard": "hcq_sqvchr03",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_hr",
+          "title": "Ce que disent les quais",
+          "old_state": "hcq_v",
+          "old_completed_state": "hcq_v",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_vc_humilite",
+          "new_prerequisites": "cq_vc_hr_02_humilite",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_vc_quais.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_hr_03_quais.json",
+          "migration_notes": "etat partage hcq_v avec 5 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_vc_registres",
+          "new_id": "sq_vc_hr_04_salle_registres",
+          "short_code": "sqvchr04",
+          "new_scoreboard": "hcq_sqvchr04",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_hr",
+          "title": "La Salle des Registres",
+          "old_state": "hcq_v",
+          "old_completed_state": "hcq_v",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_vc_mots",
+          "new_prerequisites": "sq_vc_hr_01_mots_anciens",
+          "old_next": "mc_vc_stele",
+          "new_next": "sq_vc_hr_05_stele_role",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_vc_registres.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_hr_04_salle_registres.json",
+          "migration_notes": "etat partage hcq_v avec 5 quetes : decoupage logique requis"
+        },
+        {
+          "old_id": "mc_vc_stele",
+          "new_id": "sq_vc_hr_05_stele_role",
+          "short_code": "sqvchr05",
+          "new_scoreboard": "hcq_sqvchr05",
+          "old_type": "SIDE",
+          "new_type": "SIDE",
+          "zone_code": "vc",
+          "arc_id": "arc_vc_hr",
+          "title": "La stèle et le rôle",
+          "old_state": "hcq_v",
+          "old_completed_state": "hcq_v",
+          "shared_old_state": "YES",
+          "legacy_owner": "hc_quetes",
+          "new_owner": "hc_quetes",
+          "old_prerequisites": "mc_vc_registres",
+          "new_prerequisites": "sq_vc_hr_04_salle_registres",
+          "old_next": "",
+          "new_next": "",
+          "migration_priority": "P0",
+          "old_json_path": "data/hc_quetes/hcq_quests/mc_vc_stele.json",
+          "new_json_path": "data/hc_quetes/hcq_quests/sq_vc_hr_05_stele_role.json",
+          "migration_notes": "etat partage hcq_v avec 5 quetes : decoupage logique requis"
+        }
+      ],
+      "domain": [
+        0,
+        1,
+        2,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        30,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        50
+      ],
+      "vectors": {
+        "0": {
+          "hcq_cqvchr02": 0,
+          "hcq_sqvchr01": 0,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "1": {
+          "hcq_cqvchr02": 0,
+          "hcq_sqvchr01": 10,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "2": {
+          "hcq_cqvchr02": 0,
+          "hcq_sqvchr01": 90,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "20": {
+          "hcq_cqvchr02": 10,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "21": {
+          "hcq_cqvchr02": 20,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "22": {
+          "hcq_cqvchr02": 30,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "23": {
+          "hcq_cqvchr02": 40,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "24": {
+          "hcq_cqvchr02": 90,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "25": {
+          "hcq_cqvchr02": 100,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 10,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "26": {
+          "hcq_cqvchr02": 100,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 20,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "27": {
+          "hcq_cqvchr02": 100,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 90,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "30": {
+          "hcq_cqvchr02": 100,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 100,
+          "hcq_sqvchr04": 0,
+          "hcq_sqvchr05": 0
+        },
+        "40": {
+          "hcq_cqvchr02": 0,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 10,
+          "hcq_sqvchr05": 0
+        },
+        "41": {
+          "hcq_cqvchr02": 0,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 20,
+          "hcq_sqvchr05": 0
+        },
+        "42": {
+          "hcq_cqvchr02": 0,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 90,
+          "hcq_sqvchr05": 0
+        },
+        "43": {
+          "hcq_cqvchr02": 0,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 100,
+          "hcq_sqvchr05": 10
+        },
+        "44": {
+          "hcq_cqvchr02": 0,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 100,
+          "hcq_sqvchr05": 20
+        },
+        "45": {
+          "hcq_cqvchr02": 0,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 100,
+          "hcq_sqvchr05": 90
+        },
+        "50": {
+          "hcq_cqvchr02": 0,
+          "hcq_sqvchr01": 100,
+          "hcq_sqvchr03": 0,
+          "hcq_sqvchr04": 100,
+          "hcq_sqvchr05": 100
+        }
+      },
+      "key": "arc_v"
+    }
+  },
+  "auxiliary_mapping": {
+    "hcq_tick": "hcm_tick",
+    "hcq_v_lut": "hcm_lectern",
+    "hcq_ch_lore": "hch_sqvchr01",
+    "hcq_ch_patrouille": "hch_sqvcpa01",
+    "hcq_ch_carrec": "hch_cqvcbb01",
+    "hcq_ch_bannieres": "hch_sqvcbn01",
+    "hcq_a_cage": "hcq_cqvcep02_o1",
+    "hcq_a_ep": "hcq_sqvcep01_o1",
+    "hcq_a_f": "hcq_sqvcep01_o2",
+    "hcq_c_couche": "hcq_sqvcbn01_o1",
+    "hcq_c_garde": "hcq_sqvcbn01_o2",
+    "hcq_c_hector": "hcq_sqvcbn01_o3",
+    "hcq_c_morvan": "hcq_sqvccr04_o1",
+    "hcq_c_nuit": "hcq_sqvcbn01_o4",
+    "hcq_ch_j01": "hch_sqlpjo01",
+    "hcq_ch_j02": "hch_sqlpjo02",
+    "hcq_ch_j03": "hch_sqlpjo03",
+    "hcq_ch_j04": "hch_sqlpjo04",
+    "hcq_ch_j05": "hch_sqlpjo05",
+    "hcq_ch_j06": "hch_sqlpjo06",
+    "hcq_ch_j07": "hch_sqlpjo07",
+    "hcq_ch_j08": "hch_sqlpjo08",
+    "hcq_ch_j09": "hch_sqlpjo09",
+    "hcq_ch_j10": "hch_sqlpjo10",
+    "hcq_ch_j10b": "hch_sqlpjo10_b",
+    "hcq_ch_j11": "hch_sqlpjo11",
+    "hcq_ch_j12": "hch_sqlpjo12",
+    "hcq_ch_j13": "hch_sqlpjo13",
+    "hcq_h_ans": "hcq_sqvccr01_o1",
+    "hcq_h_brehal": "hcq_sqvccr03_o1",
+    "hcq_h_corvin": "hcq_sqvccr02_o1",
+    "hcq_h_f": "hcq_sqvccr03_o2",
+    "hcq_h_idole": "hcq_sqvccr05_o1",
+    "hcq_h_lauzac": "hcq_sqvccr05_o2",
+    "hcq_h_nans": "hcq_sqvccr01_o2",
+    "hcq_h_pis": "hcq_sqvccr02_o2",
+    "hcq_h_sac": "hcq_sqvccr01_o3",
+    "hcq_h_san": "hcq_sqvccr05_o3",
+    "hcq_h_veil": "hcq_sqvccr03_o3",
+    "hcq_j01_caisse": "hcq_sqlpjo01_o1",
+    "hcq_j01_h": "hcq_sqlpjo01_o2",
+    "hcq_j01_rec": "hcq_sqlpjo01_o3",
+    "hcq_j02_f": "hcq_sqlpjo02_o1",
+    "hcq_j02_f1": "hcq_sqlpjo02_o2",
+    "hcq_j02_f2": "hcq_sqlpjo02_o3",
+    "hcq_j02_f3": "hcq_sqlpjo02_o4",
+    "hcq_j02_f4": "hcq_sqlpjo02_o5",
+    "hcq_j02_f5": "hcq_sqlpjo02_o6",
+    "hcq_j02_g": "hcq_sqlpjo02_o7",
+    "hcq_j02_rec": "hcq_sqlpjo02_o8",
+    "hcq_j03_bord": "hcq_sqlpjo03_o1",
+    "hcq_j03_kill": "hcq_sqlpjo03_o2",
+    "hcq_j03_s1": "hcq_sqlpjo03_o3",
+    "hcq_j03_s2": "hcq_sqlpjo03_o4",
+    "hcq_j03_s3": "hcq_sqlpjo03_o5",
+    "hcq_j03_s4": "hcq_sqlpjo03_o6",
+    "hcq_j03_s5": "hcq_sqlpjo03_o7",
+    "hcq_j03_sac": "hcq_sqlpjo03_o8",
+    "hcq_j04_fer": "hcq_sqlpjo04_o1",
+    "hcq_j04_poin": "hcq_sqlpjo04_o2",
+    "hcq_j04_r1": "hcq_sqlpjo04_o3",
+    "hcq_j04_r2": "hcq_sqlpjo04_o4",
+    "hcq_j04_r3": "hcq_sqlpjo04_o5",
+    "hcq_j05_b1": "hcq_sqlpjo05_o1",
+    "hcq_j05_b2": "hcq_sqlpjo05_o2",
+    "hcq_j05_b3": "hcq_sqlpjo05_o3",
+    "hcq_j05_bal": "hcq_sqlpjo05_o4",
+    "hcq_j05_d1": "hcq_sqlpjo05_o5",
+    "hcq_j05_d2": "hcq_sqlpjo05_o6",
+    "hcq_j05_d3": "hcq_sqlpjo05_o7",
+    "hcq_j05_dep": "hcq_sqlpjo05_o8",
+    "hcq_j05_kill": "hcq_sqlpjo05_o9",
+    "hcq_j05_men": "hcq_sqlpjo05_o10",
+    "hcq_j06_kill": "hcq_sqlpjo06_o1",
+    "hcq_j06_page": "hcq_sqlpjo06_o2",
+    "hcq_j06_pl": "hcq_sqlpjo06_o3",
+    "hcq_j06_rec": "hcq_sqlpjo06_o4",
+    "hcq_j07_f1": "hcq_sqlpjo07_o1",
+    "hcq_j07_f2": "hcq_sqlpjo07_o2",
+    "hcq_j07_f3": "hcq_sqlpjo07_o3",
+    "hcq_j07_ft": "hcq_sqlpjo07_o4",
+    "hcq_j07_kill": "hcq_sqlpjo07_o5",
+    "hcq_j07_p1": "hcq_sqlpjo07_o6",
+    "hcq_j07_p2": "hcq_sqlpjo07_o7",
+    "hcq_j07_p3": "hcq_sqlpjo07_o8",
+    "hcq_j07_pr": "hcq_sqlpjo07_o9",
+    "hcq_j07_q": "hcq_sqlpjo07_o10",
+    "hcq_j08_eloi": "hcq_sqlpjo08_o1",
+    "hcq_j08_kill": "hcq_sqlpjo08_o2",
+    "hcq_j08_lan": "hcq_sqlpjo08_o3",
+    "hcq_j08_msg": "hcq_sqlpjo08_o4",
+    "hcq_j08_pat": "hcq_sqlpjo08_o5",
+    "hcq_j08_t1": "hcq_sqlpjo08_o6",
+    "hcq_j08_t2": "hcq_sqlpjo08_o7",
+    "hcq_j08_t3": "hcq_sqlpjo08_o8",
+    "hcq_j08_tr": "hcq_sqlpjo08_o9",
+    "hcq_j09_cel": "hcq_sqlpjo09_o1",
+    "hcq_j09_eloi": "hcq_sqlpjo09_o2",
+    "hcq_j09_odr": "hcq_sqlpjo09_o3",
+    "hcq_j10_kill": "hcq_sqlpjo10_o1",
+    "hcq_j10_marel": "hcq_sqlpjo10_o2",
+    "hcq_j10_reg": "hcq_sqlpjo10_o3",
+    "hcq_j10_t": "hcq_sqlpjo10_o4",
+    "hcq_j10_vague": "hcq_sqlpjo10_o5",
+    "hcq_j11_fr": "hcq_sqlpjo11_o1",
+    "hcq_j11_kill": "hcq_sqlpjo11_o2",
+    "hcq_j11_pr": "hcq_sqlpjo11_o3",
+    "hcq_j12_bat": "hcq_sqlpjo12_o1",
+    "hcq_j12_fer": "hcq_sqlpjo12_o2",
+    "hcq_j12_kill": "hcq_sqlpjo12_o3",
+    "hcq_j13_gar": "hcq_sqlpjo13_o1",
+    "hcq_j13_pl": "hcq_sqlpjo13_o2",
+    "hcq_j13_tr": "hcq_sqlpjo13_o3",
+    "hcq_k_ronces": "hcq_sqvccr04_o2",
+    "hcq_k_s1": "hcq_sqvccr04_o3",
+    "hcq_k_s2": "hcq_sqvccr04_o4",
+    "hcq_k_scu": "hcq_sqvccr04_o5",
+    "hcq_m_cab": "hcq_sqvcra02_o1",
+    "hcq_m_etape": "hcq_sqvcra02_o2",
+    "hcq_m_ind": "hcq_cqvcra01_o1",
+    "hcq_m_rayee": "hcq_cqvcra01_o2",
+    "hcq_n_carn": "hcq_cqvcbb01_o1",
+    "hcq_n_cc": "hcq_cqvcbb01_o2",
+    "hcq_n_mal": "hcq_cqvcbb01_o3",
+    "hcq_p_g": "hcq_sqvcpa01_o1",
+    "hcq_p_hector": "hcq_sqvcpa01_o2",
+    "hcq_p_kerh": "hcq_sqvcpa01_o3",
+    "hcq_p_m": "hcq_sqvcpa01_o4",
+    "hcq_p_malf": "hcq_sqvcpa01_o5",
+    "hcq_p_portier": "hcq_sqvcpa01_o6",
+    "hcq_r_tour": "hcq_sqvcso02_o1",
+    "hcq_t_gue": "hcq_sqvcso01_o1",
+    "hcq_v_bete": "hcq_cqvchr02_o1",
+    "hcq_v_ch": "hcq_sqvchr01_o1",
+    "hcq_v_isa": "hca_vc_x1",
+    "hcq_v_ker": "hcq_sqvccr04_o6",
+    "hcq_v_n1": "hcq_cqvchr02_o2",
+    "hcq_v_n2": "hcq_cqvchr02_o3",
+    "hcq_v_n3": "hcq_cqvchr02_o4",
+    "hcq_v_nids": "hcq_cqvchr02_o5",
+    "hcq_v_rec": "hcq_sqvchr01_o2",
+    "CAP_CD_BANQUE": "hcd_dqhc01",
+    "CAP_CD_BANQUE_END": "hcd_dqhc01_end",
+    "CAP_CD_REGISTRE_PORT": "hcd_dqhc03",
+    "CAP_CD_REGISTRE_PORT_END": "hcd_dqhc03_end",
+    "CAP_CD_RESSORT_CLOCHER": "hcd_dqhc04",
+    "CAP_CD_RESSORT_CLOCHER_END": "hcd_dqhc04_end",
+    "CAP_CD_TEMOIGNAGES_QUAIS": "hcd_dqhc05",
+    "CAP_CD_TEMOIGNAGES_QUAIS_END": "hcd_dqhc05_end",
+    "CAP_CD_GLOBE": "hcd_rqhc01",
+    "CAP_CD_GLOBE_END": "hcd_rqhc01_end",
+    "CAP_CD_RELAIS_COEUR": "hcd_rqhc02",
+    "CAP_CD_RELAIS_COEUR_END": "hcd_rqhc02_end"
+  },
+  "quest_item_mapping": {
+    "j01_harnais": "sqlpjo01_harnais",
+    "j01_marque": "sqlpjo01_marque",
+    "j02_feuilles": "sqlpjo02_feuilles",
+    "j02_glandes": "sqlpjo02_glandes",
+    "j03_bordereau": "arc_common_j03_bordereau",
+    "j03_sacs": "arc_common_j03_sacs",
+    "j04_ferrures": "arc_common_j04_ferrures",
+    "j04_poincon": "arc_common_j04_poincon",
+    "j05_etiquette": "arc_common_j05_etiquette",
+    "j06_page": "sqlpjo06_page",
+    "j07_contenants": "arc_common_j07_contenants",
+    "j07_eau": "arc_common_j07_eau",
+    "j08_lanternes": "arc_common_j08_lanternes",
+    "j08_message": "arc_common_j08_message",
+    "j10_registre": "arc_common_j10_registre",
+    "j11_residus": "sqlpjo11_residus",
+    "j12_battant": "arc_common_j12_battant",
+    "j12_ferrures": "arc_common_j12_ferrures",
+    "j13_plaque": "arc_common_j13_plaque",
+    "q10_fragment": "sqvccr04_fragment",
+    "q11_idole": "arc_common_q11_idole",
+    "q11_sceau": "arc_common_q11_sceau",
+    "q12_caisse": "sqvcep03_caisse",
+    "q14_cle": "sqvchr04_cle",
+    "q14_registre": "cqvchr02_registre",
+    "q16_aveu": "arc_common_q16_aveu",
+    "q16_feux": "arc_common_q16_feux",
+    "q16_lanterne": "arc_common_q16_lanterne",
+    "q16_pierres": "sqvcpa01_pierres",
+    "q16_plaque_g": "sqvcpa01_plaque_g",
+    "q16_plaque_m": "sqvcpa01_plaque_m",
+    "q16_rapport": "arc_common_q16_rapport",
+    "q17_cloche": "cqvcbb01_cloche",
+    "q17_coffre": "cqvcbb01_coffre",
+    "q17_cote": "cqvcbb01_cote",
+    "q17_ordre_delmas": "arc_common_q17_ordre_delmas",
+    "q17_part": "arc_common_q17_part",
+    "q17_role": "cqvcbb01_role",
+    "q18_ballot": "arc_common_q18_ballot",
+    "q18_feuillet": "sqvcbn01_feuillet",
+    "q18_lettre": "arc_common_q18_lettre",
+    "q18_mandat": "arc_common_q18_mandat",
+    "q18_radiation": "arc_common_q18_radiation",
+    "q18_registre": "sqvcbn01_registre",
+    "q18_temoignage": "arc_common_q18_temoignage",
+    "q1_sacoche": "sqvccr01_sacoche",
+    "q1_sceau": "sqvccr01_sceau",
+    "q2_carnet": "sqvcso02_carnet",
+    "q3_collier": "cqvcra01_collier",
+    "q3_griffe": "cqvcra01_griffe",
+    "q4_caisse": "sqvcso01_caisse",
+    "q4_registre": "sqvcso01_registre",
+    "q5_insigne": "sqvccr02_insigne",
+    "q6_cle_cabine": "sqvcep01_cle_cabine",
+    "q6_manifeste": "sqvcep01_manifeste",
+    "q7_talisman": "sqvcra02_talisman",
+    "q8_boussole": "cqvcep02_boussole",
+    "q8_cle_bronze": "cqvcep02_cle_bronze",
+    "q8_cle_cages": "cqvcep02_cle_cages",
+    "q8_insigne": "arc_common_q8_insigne",
+    "q9_carnet": "sqvccr03_carnet",
+    "q9_pierre": "sqvccr03_pierre",
+    "q9_plaque": "sqvccr03_plaque",
+    "souvenir": "arc_common_souvenir"
+  }
+}

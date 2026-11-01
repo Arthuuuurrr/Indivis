@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "jar_sha256": "bce5ff70728f9e72617db734ecf83f1043fe343687a3806c3c3cd8841bdcae11",
+  "files": {
+    "output/haute-capitale-quetes-HF12-PQ02-R1-HF9-1.21.11.jar": {
+      "bytes": 578213,
+      "sha256": "bce5ff70728f9e72617db734ecf83f1043fe343687a3806c3c3cd8841bdcae11"
+    },
+    "delivery_hf9/PQ02_HF9.zip": {
+      "bytes": 604980,
+      "sha256": "638bb914ee53125b1be2742dd91cf4a6dd88351e2442a3732bfe71401d77d961"
+    },
+    "delivery_hf9/Indivis_PQ02_R1_HF9_Installation_Integree.zip": {
+      "bytes": 4090659,
+      "sha256": "dc101aa87596bed077553203b8ecc9da10dafc494d50abe189dddc9e3444befd"
+    },
+    "delivery_hf9/RAPPORT_PQ02_HF9.md": {
+      "bytes": 10064,
+      "sha256": "dd2a890f1a2031e29691fa240b5b579d5a59decd720fc09e58bbae92d572fac2"
+    }
+  }
+}

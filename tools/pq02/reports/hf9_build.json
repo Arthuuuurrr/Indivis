@@ -1,0 +1,31 @@
+{
+  "status": "BUILT_NATIVE_PENDING",
+  "file": "haute-capitale-quetes-HF12-PQ02-R1-HF9-1.21.11.jar",
+  "sha256": "bce5ff70728f9e72617db734ecf83f1043fe343687a3806c3c3cd8841bdcae11",
+  "bytes": 578213,
+  "hf8_sha256": "92dbafab347b1fd775de6476d36e75b6bae2ebefbcc574bfaac141fc63c79180",
+  "changed": [
+    "fabric.mod.json",
+    "indivis_pq02_graph.json",
+    "net/hautecapitale/quetes/sequence/Pq02Motion$Port.class",
+    "net/hautecapitale/quetes/sequence/Pq02Motion.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$1.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$Near.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$View.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime.class"
+  ],
+  "added": [
+    "net/hautecapitale/quetes/sequence/Pq02Cameras.class"
+  ],
+  "preserved_count": 249,
+  "datapacks_unchanged": {
+    "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8.zip": "6ff671f7b71ff696980b1fdfa4302481dec30cac7db8eca6e0fb2c9bcd4a9aa6",
+    "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1.zip": "d9a0fb0d0aecd0eb4f9bc64f9cb7bae932ddaaa7f67273b042512c22ff9e67aa"
+  },
+  "source_sha256": {
+    "src/Pq02Motion.java": "f8ab73ca6ad518c79e3d584339698ad8cfb886c1d51ab57a4d604a1a53420c6a",
+    "src/Pq02Cameras.java": "efeea41f2622506698ffdc5046b42282f62d13ae3a6e86930098c7bed79d08ae",
+    "src/Pq02Runtime.java": "22316de73ab4831ca4d68aa52810302d8f63f0ae57a7ef8b7c5d29b9cf92dae9",
+    "model.py": "ec453069945508389f371d2576cf968a087e47ebe22c2d6cfa601773609a8fcd"
+  }
+}

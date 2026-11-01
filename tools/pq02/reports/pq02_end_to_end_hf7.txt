@@ -1,0 +1,1226 @@
+PASS 1220 native checks
+setup HF1: fixture is outside former local marker lookup
+setup HF1: preparation succeeds far from loaded A and at a different altitude
+setup HF1: legacy guide parks on existing A, never on administrator position
+setup HF1: legacy motion states removed
+setup HF1: existing markers remain in place
+setup HF1: public Leovic position unchanged by setup
+setup HF1: armor stand carrying A tag is ignored as a route marker
+setup HF1: unrelated setup data retained
+setup HF1: loaded coordinates copied exactly to cache
+setup HF1: point diagnostics expose roles, coordinates and loaded status
+setup HF1: operator requirement enforced for prepare_route
+setup HF1: operator requirement enforced for prepare_legacy
+setup HF1: operator requirement enforced for points
+setup HF1: operator requirement enforced for status
+setup HF1: preparation adapts to changed existing marker coordinates
+setup HF1: cached point remains usable when its marker is not loaded/recognized
+setup HF1: diagnostic distinguishes remembered from loaded points
+setup HF1: missing required point refuses completion and leaves guide untouched
+setup HF1: missing point never gets invented fallback coordinates
+setup HF1: cache from another dimension is rejected
+setup HF1: restored marker repairs preparation without changing progression
+setup HF1: duplicate marker refuses both guide move and cache mutation
+setup HF1: duplicate legacy guide is not chosen arbitrarily
+setup HF1: optional H approach markers do not prevent preparation
+setup HF1: cached but unloaded A defers legacy parking without teleport to unloaded marker
+setup HF1: active scene prevents legacy guide relocation
+setup HF1: old direct command remains compatible
+setup HF1: datapack function exists: preparer_parcours
+setup HF1: datapack function exists: preparer_guide_historique
+setup HF1: datapack function exists: diagnostic
+setup HF1: datapack function exists: diagnostic_points
+setup HF1: datapack function exists: afficher_points
+setup HF1: datapack function exists: masquer_points
+setup HF1: old function forwards through actual function dispatcher
+setup HF1: visualization uses existing historical waypoint function
+setup HF1: hiding visualization preserves all real route markers
+setup HF1: admin commands do not start quest, alter reputation, give money or change character state
+native DialogueManager opens camera for a01
+client readiness acknowledged for a01
+PQ02 chronological: current native session and selectable frame at a01
+native trigger accepted a02a #1
+native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
+PQ02 chronological: current native session and selectable frame at a02a
+native trigger accepted a04 #1
+native DialogueManager opens camera for a04
+client readiness acknowledged for a04
+PQ02 chronological: current native session and selectable frame at a04
+PQ02 chronological: offered choices naturally reach a04
+PQ02 chronological: real periodic Nexus save retains frame at a04
+PQ02 chronological: Escape preserves state and awards at a04
+native DialogueManager opens camera for a04
+client readiness acknowledged for a04
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at a04
+PQ02 chronological: reopening resumes exact narrative page a04
+PQ02 chronological: reopening preserves waypoint at a04
+native trigger accepted a04a #1
+native DialogueManager opens camera for a04a
+client readiness acknowledged for a04a
+PQ02 chronological: current native session and selectable frame at a04a
+PQ02 chronological: offered choices naturally reach a04a
+PQ02 chronological: real periodic Nexus save retains frame at a04a
+PQ02 chronological: Escape preserves state and awards at a04a
+native DialogueManager opens camera for a04a
+client readiness acknowledged for a04a
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at a04a
+PQ02 chronological: reopening resumes exact narrative page a04a
+PQ02 chronological: reopening preserves waypoint at a04a
+native trigger accepted a04 #1
+native DialogueManager opens camera for a04
+client readiness acknowledged for a04
+PQ02 chronological: current native session and selectable frame at a04
+native trigger accepted a04b #2
+native DialogueManager opens camera for a04b
+client readiness acknowledged for a04b
+PQ02 chronological: current native session and selectable frame at a04b
+PQ02 chronological: offered choices naturally reach a04b
+PQ02 chronological: real periodic Nexus save retains frame at a04b
+PQ02 chronological: Escape preserves state and awards at a04b
+native DialogueManager opens camera for a04b
+client readiness acknowledged for a04b
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at a04b
+PQ02 chronological: reopening resumes exact narrative page a04b
+PQ02 chronological: reopening preserves waypoint at a04b
+native trigger accepted a_menu #2
+native DialogueManager opens camera for a_menu
+client readiness acknowledged for a_menu
+PQ02 chronological: current native session and selectable frame at a_menu
+native trigger accepted a05 #2
+native DialogueManager opens camera for a05
+client readiness acknowledged for a05
+PQ02 chronological: current native session and selectable frame at a05
+PQ02 chronological: offered choices naturally reach a05
+PQ02 chronological: real periodic Nexus save retains frame at a05
+PQ02 chronological: Escape preserves state and awards at a05
+native DialogueManager opens camera for a05
+client readiness acknowledged for a05
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at a05
+PQ02 chronological: reopening resumes exact narrative page a05
+PQ02 chronological: reopening preserves waypoint at a05
+native trigger accepted a05b #1
+native DialogueManager opens camera for a05b
+client readiness acknowledged for a05b
+PQ02 chronological: current native session and selectable frame at a05b
+PQ02 chronological: offered choices naturally reach a05b
+PQ02 chronological: real periodic Nexus save retains frame at a05b
+PQ02 chronological: Escape preserves state and awards at a05b
+native DialogueManager opens camera for a05b
+client readiness acknowledged for a05b
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at a05b
+PQ02 chronological: reopening resumes exact narrative page a05b
+PQ02 chronological: reopening preserves waypoint at a05b
+native trigger accepted a06 #3
+native DialogueManager opens camera for a06
+client readiness acknowledged for a06
+PQ02 chronological: current native session and selectable frame at a06
+PQ02 chronological: offered choices naturally reach a06
+PQ02 chronological: real periodic Nexus save retains frame at a06
+PQ02 chronological: Escape preserves state and awards at a06
+native DialogueManager opens camera for a06
+client readiness acknowledged for a06
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at a06
+PQ02 chronological: reopening resumes exact narrative page a06
+PQ02 chronological: reopening preserves waypoint at a06
+native trigger accepted a06b #1
+native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
+PQ02 chronological: current native session and selectable frame at a06b
+PQ02 chronological: offered choices naturally reach a06b
+PQ02 chronological: real periodic Nexus save retains frame at a06b
+PQ02 chronological: Escape preserves state and awards at a06b
+native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at a06b
+PQ02 chronological: reopening resumes exact narrative page a06b
+PQ02 chronological: reopening preserves waypoint at a06b
+native trigger accepted a07 #4
+native DialogueManager opens camera for a07
+client readiness acknowledged for a07
+PQ02 chronological: current native session and selectable frame at a07
+PQ02 chronological: offered choices naturally reach a07
+PQ02 chronological: real periodic Nexus save retains frame at a07
+PQ02 chronological: Escape preserves state and awards at a07
+native DialogueManager opens camera for a07
+client readiness acknowledged for a07
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at a07
+PQ02 chronological: reopening resumes exact narrative page a07
+PQ02 chronological: reopening preserves waypoint at a07
+native trigger accepted a08 #5
+native DialogueManager opens camera for a08
+client readiness acknowledged for a08
+PQ02 chronological: current native session and selectable frame at a08
+PQ02 chronological: offered choices naturally reach a08
+native trigger accepted a08a #2
+native DialogueManager opens camera for a08a
+client readiness acknowledged for a08a
+PQ02 chronological: current native session and selectable frame at a08a
+native trigger accepted a08a #14
+PQ02 chronological: rest disposes its scene without losing arrival decision
+native DialogueManager opens camera for a08
+client readiness acknowledged for a08
+PQ02 chronological: return after rest offers departure again
+native trigger accepted a09 #1
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+PQ02 chronological: current native session and selectable frame at a09
+PQ02 chronological: real periodic Nexus save retains frame at a09
+PQ02 chronological: accepted departure starts through native client close
+native DialogueManager opens camera for a01
+client readiness acknowledged for a01
+native trigger accepted a02c #3
+native DialogueManager opens camera for a02c
+client readiness acknowledged for a02c
+PQ02 chronological: current native session and selectable frame at a02c
+native trigger accepted a08 #5
+native DialogueManager opens camera for a08
+client readiness acknowledged for a08
+PQ02 chronological: current native session and selectable frame at a08
+PQ02 chronological: offered choices naturally reach a08
+native trigger accepted a09 #1
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+PQ02 chronological: current native session and selectable frame at a09
+native trigger accepted a09 #14
+PQ02 chronological: second player starts independently
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t_menu
+PQ02 chronological: walking interaction opens optional topics
+PQ02 chronological: conditional topics match real sentinel discovery and hide the unknown anecdote
+native trigger accepted t02 #1
+native DialogueManager opens camera for t02
+client readiness acknowledged for t02
+PQ02 chronological: current native session and selectable frame at t02
+native trigger accepted t02a #1
+native DialogueManager opens camera for t02a
+client readiness acknowledged for t02a
+PQ02 chronological: current native session and selectable frame at t02a
+PQ02 chronological: offered choices naturally reach t02a
+PQ02 chronological: anecdote unlocked through its real dialogue
+PQ02 chronological: real visible sentinel observation unlocks its topic
+native DialogueManager opens camera for t02a
+client readiness acknowledged for t02a
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t02a
+native trigger accepted t02a_stay #1
+native DialogueManager opens camera for t02a_stay
+client readiness acknowledged for t02a_stay
+PQ02 chronological: current native session and selectable frame at t02a_stay
+PQ02 chronological: offered choices naturally reach t02a_stay
+PQ02 chronological: real periodic Nexus save retains frame at t02a_stay
+PQ02 chronological: Escape preserves state and awards at t02a_stay
+native DialogueManager opens camera for t02a_stay
+client readiness acknowledged for t02a_stay
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t02a_stay
+PQ02 chronological: reopening resumes exact narrative page t02a_stay
+PQ02 chronological: reopening preserves waypoint at t02a_stay
+PQ02 chronological: reopening keeps current private guide at t02a_stay
+native trigger accepted t02 #1
+native DialogueManager opens camera for t02
+client readiness acknowledged for t02
+PQ02 chronological: current native session and selectable frame at t02
+native trigger accepted t02a #1
+native DialogueManager opens camera for t02a
+client readiness acknowledged for t02a
+PQ02 chronological: current native session and selectable frame at t02a
+native trigger accepted t02a_leave #2
+native DialogueManager opens camera for t02a_leave
+client readiness acknowledged for t02a_leave
+PQ02 chronological: current native session and selectable frame at t02a_leave
+PQ02 chronological: offered choices naturally reach t02a_leave
+PQ02 chronological: real periodic Nexus save retains frame at t02a_leave
+PQ02 chronological: Escape preserves state and awards at t02a_leave
+native DialogueManager opens camera for t02a_leave
+client readiness acknowledged for t02a_leave
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t02a_leave
+PQ02 chronological: reopening resumes exact narrative page t02a_leave
+PQ02 chronological: reopening preserves waypoint at t02a_leave
+PQ02 chronological: reopening keeps current private guide at t02a_leave
+native trigger accepted t02 #1
+native DialogueManager opens camera for t02
+client readiness acknowledged for t02
+PQ02 chronological: current native session and selectable frame at t02
+native trigger accepted t02b #2
+native DialogueManager opens camera for t02b
+client readiness acknowledged for t02b
+PQ02 chronological: current native session and selectable frame at t02b
+PQ02 chronological: offered choices naturally reach t02b
+PQ02 chronological: real periodic Nexus save retains frame at t02b
+PQ02 chronological: Escape preserves state and awards at t02b
+native DialogueManager opens camera for t02b
+client readiness acknowledged for t02b
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t02b
+PQ02 chronological: reopening resumes exact narrative page t02b
+PQ02 chronological: reopening preserves waypoint at t02b
+PQ02 chronological: reopening keeps current private guide at t02b
+native trigger accepted t02 #1
+native DialogueManager opens camera for t02
+client readiness acknowledged for t02
+PQ02 chronological: current native session and selectable frame at t02
+native trigger accepted t03 #3
+native DialogueManager opens camera for t03
+client readiness acknowledged for t03
+PQ02 chronological: current native session and selectable frame at t03
+PQ02 chronological: offered choices naturally reach t03
+PQ02 chronological: real periodic Nexus save retains frame at t03
+PQ02 chronological: Escape preserves state and awards at t03
+native DialogueManager opens camera for t03
+client readiness acknowledged for t03
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t03
+PQ02 chronological: reopening resumes exact narrative page t03
+PQ02 chronological: reopening preserves waypoint at t03
+PQ02 chronological: reopening keeps current private guide at t03
+native trigger accepted t03a #1
+native DialogueManager opens camera for t03a
+client readiness acknowledged for t03a
+PQ02 chronological: current native session and selectable frame at t03a
+PQ02 chronological: offered choices naturally reach t03a
+PQ02 chronological: real periodic Nexus save retains frame at t03a
+PQ02 chronological: Escape preserves state and awards at t03a
+native DialogueManager opens camera for t03a
+client readiness acknowledged for t03a
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t03a
+PQ02 chronological: reopening resumes exact narrative page t03a
+PQ02 chronological: reopening preserves waypoint at t03a
+PQ02 chronological: reopening keeps current private guide at t03a
+native trigger accepted t03 #1
+native DialogueManager opens camera for t03
+client readiness acknowledged for t03
+PQ02 chronological: current native session and selectable frame at t03
+native trigger accepted t03b #2
+native DialogueManager opens camera for t03b
+client readiness acknowledged for t03b
+PQ02 chronological: current native session and selectable frame at t03b
+PQ02 chronological: offered choices naturally reach t03b
+PQ02 chronological: real periodic Nexus save retains frame at t03b
+PQ02 chronological: Escape preserves state and awards at t03b
+native DialogueManager opens camera for t03b
+client readiness acknowledged for t03b
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t03b
+PQ02 chronological: reopening resumes exact narrative page t03b
+PQ02 chronological: reopening preserves waypoint at t03b
+PQ02 chronological: reopening keeps current private guide at t03b
+native trigger accepted t_menu #2
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+PQ02 chronological: current native session and selectable frame at t_menu
+native trigger accepted t04 #3
+native DialogueManager opens camera for t04
+client readiness acknowledged for t04
+PQ02 chronological: current native session and selectable frame at t04
+PQ02 chronological: offered choices naturally reach t04
+PQ02 chronological: real periodic Nexus save retains frame at t04
+PQ02 chronological: Escape preserves state and awards at t04
+native DialogueManager opens camera for t04
+client readiness acknowledged for t04
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t04
+PQ02 chronological: reopening resumes exact narrative page t04
+PQ02 chronological: reopening preserves waypoint at t04
+PQ02 chronological: reopening keeps current private guide at t04
+native trigger accepted t04a #1
+native DialogueManager opens camera for t04a
+client readiness acknowledged for t04a
+PQ02 chronological: current native session and selectable frame at t04a
+PQ02 chronological: offered choices naturally reach t04a
+PQ02 chronological: real periodic Nexus save retains frame at t04a
+PQ02 chronological: Escape preserves state and awards at t04a
+native DialogueManager opens camera for t04a
+client readiness acknowledged for t04a
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t04a
+PQ02 chronological: reopening resumes exact narrative page t04a
+PQ02 chronological: reopening preserves waypoint at t04a
+PQ02 chronological: reopening keeps current private guide at t04a
+native trigger accepted t04a_reputation #1
+native DialogueManager opens camera for t04a_reputation
+client readiness acknowledged for t04a_reputation
+PQ02 chronological: current native session and selectable frame at t04a_reputation
+PQ02 chronological: offered choices naturally reach t04a_reputation
+PQ02 chronological: real periodic Nexus save retains frame at t04a_reputation
+PQ02 chronological: Escape preserves state and awards at t04a_reputation
+native DialogueManager opens camera for t04a_reputation
+client readiness acknowledged for t04a_reputation
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t04a_reputation
+PQ02 chronological: reopening resumes exact narrative page t04a_reputation
+PQ02 chronological: reopening preserves waypoint at t04a_reputation
+PQ02 chronological: reopening keeps current private guide at t04a_reputation
+native trigger accepted t04 #1
+native DialogueManager opens camera for t04
+client readiness acknowledged for t04
+PQ02 chronological: current native session and selectable frame at t04
+native trigger accepted t04a #1
+native DialogueManager opens camera for t04a
+client readiness acknowledged for t04a
+PQ02 chronological: current native session and selectable frame at t04a
+native trigger accepted t04a_cooperation #2
+native DialogueManager opens camera for t04a_cooperation
+client readiness acknowledged for t04a_cooperation
+PQ02 chronological: current native session and selectable frame at t04a_cooperation
+PQ02 chronological: offered choices naturally reach t04a_cooperation
+PQ02 chronological: real periodic Nexus save retains frame at t04a_cooperation
+PQ02 chronological: Escape preserves state and awards at t04a_cooperation
+native DialogueManager opens camera for t04a_cooperation
+client readiness acknowledged for t04a_cooperation
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t04a_cooperation
+PQ02 chronological: reopening resumes exact narrative page t04a_cooperation
+PQ02 chronological: reopening preserves waypoint at t04a_cooperation
+PQ02 chronological: reopening keeps current private guide at t04a_cooperation
+native trigger accepted t04 #1
+native DialogueManager opens camera for t04
+client readiness acknowledged for t04
+PQ02 chronological: current native session and selectable frame at t04
+native trigger accepted t04b #2
+native DialogueManager opens camera for t04b
+client readiness acknowledged for t04b
+PQ02 chronological: current native session and selectable frame at t04b
+PQ02 chronological: offered choices naturally reach t04b
+PQ02 chronological: real periodic Nexus save retains frame at t04b
+PQ02 chronological: Escape preserves state and awards at t04b
+native DialogueManager opens camera for t04b
+client readiness acknowledged for t04b
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t04b
+PQ02 chronological: reopening resumes exact narrative page t04b
+PQ02 chronological: reopening preserves waypoint at t04b
+PQ02 chronological: reopening keeps current private guide at t04b
+native trigger accepted t04b_a #1
+native DialogueManager opens camera for t04b_a
+client readiness acknowledged for t04b_a
+PQ02 chronological: current native session and selectable frame at t04b_a
+PQ02 chronological: offered choices naturally reach t04b_a
+PQ02 chronological: real periodic Nexus save retains frame at t04b_a
+PQ02 chronological: Escape preserves state and awards at t04b_a
+native DialogueManager opens camera for t04b_a
+client readiness acknowledged for t04b_a
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t04b_a
+PQ02 chronological: reopening resumes exact narrative page t04b_a
+PQ02 chronological: reopening preserves waypoint at t04b_a
+PQ02 chronological: reopening keeps current private guide at t04b_a
+native trigger accepted t04 #1
+native DialogueManager opens camera for t04
+client readiness acknowledged for t04
+PQ02 chronological: current native session and selectable frame at t04
+native trigger accepted t04c #3
+native DialogueManager opens camera for t04c
+client readiness acknowledged for t04c
+PQ02 chronological: current native session and selectable frame at t04c
+PQ02 chronological: offered choices naturally reach t04c
+PQ02 chronological: real periodic Nexus save retains frame at t04c
+PQ02 chronological: Escape preserves state and awards at t04c
+native DialogueManager opens camera for t04c
+client readiness acknowledged for t04c
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t04c
+PQ02 chronological: reopening resumes exact narrative page t04c
+PQ02 chronological: reopening preserves waypoint at t04c
+PQ02 chronological: reopening keeps current private guide at t04c
+native trigger accepted t04c_field #1
+native DialogueManager opens camera for t04c_field
+client readiness acknowledged for t04c_field
+PQ02 chronological: current native session and selectable frame at t04c_field
+PQ02 chronological: offered choices naturally reach t04c_field
+PQ02 chronological: real periodic Nexus save retains frame at t04c_field
+PQ02 chronological: Escape preserves state and awards at t04c_field
+native DialogueManager opens camera for t04c_field
+client readiness acknowledged for t04c_field
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t04c_field
+PQ02 chronological: reopening resumes exact narrative page t04c_field
+PQ02 chronological: reopening preserves waypoint at t04c_field
+PQ02 chronological: reopening keeps current private guide at t04c_field
+native trigger accepted t04 #1
+native DialogueManager opens camera for t04
+client readiness acknowledged for t04
+PQ02 chronological: current native session and selectable frame at t04
+native trigger accepted t04c #3
+native DialogueManager opens camera for t04c
+client readiness acknowledged for t04c
+PQ02 chronological: current native session and selectable frame at t04c
+native trigger accepted t04c_mission #2
+native DialogueManager opens camera for t04c_mission
+client readiness acknowledged for t04c_mission
+PQ02 chronological: current native session and selectable frame at t04c_mission
+PQ02 chronological: offered choices naturally reach t04c_mission
+PQ02 chronological: real periodic Nexus save retains frame at t04c_mission
+PQ02 chronological: Escape preserves state and awards at t04c_mission
+native DialogueManager opens camera for t04c_mission
+client readiness acknowledged for t04c_mission
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t04c_mission
+PQ02 chronological: reopening resumes exact narrative page t04c_mission
+PQ02 chronological: reopening preserves waypoint at t04c_mission
+PQ02 chronological: reopening keeps current private guide at t04c_mission
+native trigger accepted t04 #1
+native DialogueManager opens camera for t04
+client readiness acknowledged for t04
+PQ02 chronological: current native session and selectable frame at t04
+native trigger accepted t04d #4
+native DialogueManager opens camera for t04d
+client readiness acknowledged for t04d
+PQ02 chronological: current native session and selectable frame at t04d
+PQ02 chronological: offered choices naturally reach t04d
+PQ02 chronological: real periodic Nexus save retains frame at t04d
+PQ02 chronological: Escape preserves state and awards at t04d
+native DialogueManager opens camera for t04d
+client readiness acknowledged for t04d
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t04d
+PQ02 chronological: reopening resumes exact narrative page t04d
+PQ02 chronological: reopening preserves waypoint at t04d
+PQ02 chronological: reopening keeps current private guide at t04d
+native trigger accepted t_menu #2
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+PQ02 chronological: current native session and selectable frame at t_menu
+native trigger accepted t05 #4
+native DialogueManager opens camera for t05
+client readiness acknowledged for t05
+PQ02 chronological: current native session and selectable frame at t05
+PQ02 chronological: offered choices naturally reach t05
+PQ02 chronological: real periodic Nexus save retains frame at t05
+PQ02 chronological: Escape preserves state and awards at t05
+native DialogueManager opens camera for t05
+client readiness acknowledged for t05
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t05
+PQ02 chronological: reopening resumes exact narrative page t05
+PQ02 chronological: reopening preserves waypoint at t05
+PQ02 chronological: reopening keeps current private guide at t05
+native trigger accepted t05a #1
+native DialogueManager opens camera for t05a
+client readiness acknowledged for t05a
+PQ02 chronological: current native session and selectable frame at t05a
+PQ02 chronological: offered choices naturally reach t05a
+PQ02 chronological: real periodic Nexus save retains frame at t05a
+PQ02 chronological: Escape preserves state and awards at t05a
+native DialogueManager opens camera for t05a
+client readiness acknowledged for t05a
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t05a
+PQ02 chronological: reopening resumes exact narrative page t05a
+PQ02 chronological: reopening preserves waypoint at t05a
+PQ02 chronological: reopening keeps current private guide at t05a
+native trigger accepted t05 #1
+native DialogueManager opens camera for t05
+client readiness acknowledged for t05
+PQ02 chronological: current native session and selectable frame at t05
+native trigger accepted t05b #2
+native DialogueManager opens camera for t05b
+client readiness acknowledged for t05b
+PQ02 chronological: current native session and selectable frame at t05b
+PQ02 chronological: offered choices naturally reach t05b
+PQ02 chronological: real periodic Nexus save retains frame at t05b
+PQ02 chronological: Escape preserves state and awards at t05b
+native DialogueManager opens camera for t05b
+client readiness acknowledged for t05b
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t05b
+PQ02 chronological: reopening resumes exact narrative page t05b
+PQ02 chronological: reopening preserves waypoint at t05b
+PQ02 chronological: reopening keeps current private guide at t05b
+native trigger accepted t05 #1
+native DialogueManager opens camera for t05
+client readiness acknowledged for t05
+PQ02 chronological: current native session and selectable frame at t05
+native trigger accepted t05c #3
+native DialogueManager opens camera for t05c
+client readiness acknowledged for t05c
+PQ02 chronological: current native session and selectable frame at t05c
+PQ02 chronological: offered choices naturally reach t05c
+PQ02 chronological: real periodic Nexus save retains frame at t05c
+PQ02 chronological: Escape preserves state and awards at t05c
+native DialogueManager opens camera for t05c
+client readiness acknowledged for t05c
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t05c
+PQ02 chronological: reopening resumes exact narrative page t05c
+PQ02 chronological: reopening preserves waypoint at t05c
+PQ02 chronological: reopening keeps current private guide at t05c
+native trigger accepted t_menu #2
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+PQ02 chronological: current native session and selectable frame at t_menu
+native trigger accepted t06 #5
+native DialogueManager opens camera for t06
+client readiness acknowledged for t06
+PQ02 chronological: current native session and selectable frame at t06
+PQ02 chronological: offered choices naturally reach t06
+PQ02 chronological: real periodic Nexus save retains frame at t06
+PQ02 chronological: Escape preserves state and awards at t06
+native DialogueManager opens camera for t06
+client readiness acknowledged for t06
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t06
+PQ02 chronological: reopening resumes exact narrative page t06
+PQ02 chronological: reopening preserves waypoint at t06
+PQ02 chronological: reopening keeps current private guide at t06
+native trigger accepted t06a #1
+native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
+PQ02 chronological: current native session and selectable frame at t06a
+PQ02 chronological: offered choices naturally reach t06a
+PQ02 chronological: real periodic Nexus save retains frame at t06a
+PQ02 chronological: Escape preserves state and awards at t06a
+native DialogueManager opens camera for t06a
+client readiness acknowledged for t06a
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t06a
+PQ02 chronological: reopening resumes exact narrative page t06a
+PQ02 chronological: reopening preserves waypoint at t06a
+PQ02 chronological: reopening keeps current private guide at t06a
+native trigger accepted t04 #3
+native DialogueManager opens camera for t04
+client readiness acknowledged for t04
+PQ02 chronological: current native session and selectable frame at t04
+PQ02 chronological: offered choices naturally reach t04
+native trigger accepted t04b_a #2
+native DialogueManager opens camera for t04b_a
+client readiness acknowledged for t04b_a
+PQ02 chronological: current native session and selectable frame at t04b_a
+PQ02 chronological: revisiting guard decision uses remembered answer without repeat reward
+native trigger accepted t_menu #2
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+PQ02 chronological: current native session and selectable frame at t_menu
+native trigger accepted t_resume #6
+native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
+PQ02 chronological: current native session and selectable frame at t_resume
+PQ02 chronological: offered choices naturally reach t_resume
+native trigger accepted t_resume #14
+PQ02 chronological: explicit return resumes current leg
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t_menu
+PQ02 chronological: periodic b10 verification retains t07
+PQ02 chronological: long optional menu stays stationary through actual server and native DialogueManager ticks
+PQ02 chronological: real final Nexus save retires the paused scene
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at t_menu
+PQ02 chronological: real Nexus disk reload restores paused page, precise position and waypoint
+PQ02 chronological: long pause resumes its original waypoint
+PQ02 chronological: periodic b10 verification retains t07
+PQ02 chronological: periodic b10 verification retains t07
+PQ02 chronological: periodic b10 verification retains t07
+PQ02 chronological: periodic b10 verification retains t07
+PQ02 chronological: periodic b10 verification retains t07
+PQ02 chronological: periodic b10 verification retains t07
+PQ02 chronological: periodic b10 verification retains t07
+PQ02 chronological: periodic b10 verification retains t07
+PQ02 chronological: periodic b10 verification retains t07
+PQ02 chronological: periodic b10 verification retains t07
+native DialogueManager opens camera for t07
+client readiness acknowledged for t07
+PQ02 chronological: current native session and selectable frame at t07
+PQ02 chronological: physical arrival at M opens its real pre-interview
+native trigger accepted t07a #1
+native DialogueManager opens camera for t07a
+client readiness acknowledged for t07a
+PQ02 chronological: current native session and selectable frame at t07a
+native trigger accepted m01a #14
+native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
+PQ02 chronological: current native session and selectable frame at m01a
+PQ02 chronological: three-party camera uses both existing private characters
+PQ02 chronological: real periodic Nexus save retains frame at m01a
+PQ02 chronological: Escape preserves state and awards at m01a
+native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m01a
+PQ02 chronological: reopening resumes exact narrative page m01a
+PQ02 chronological: reopening preserves waypoint at m01a
+PQ02 chronological: reopening keeps current private guide at m01a
+native trigger accepted m01b #14
+native DialogueManager opens camera for m01b
+client readiness acknowledged for m01b
+PQ02 chronological: current native session and selectable frame at m01b
+native trigger accepted m01c #14
+native DialogueManager opens camera for m01c
+client readiness acknowledged for m01c
+PQ02 chronological: current native session and selectable frame at m01c
+native trigger accepted m01d #14
+native DialogueManager opens camera for m01d
+client readiness acknowledged for m01d
+PQ02 chronological: current native session and selectable frame at m01d
+native trigger accepted m02 #14
+native DialogueManager opens camera for m02
+client readiness acknowledged for m02
+PQ02 chronological: current native session and selectable frame at m02
+PQ02 chronological: magistrate opening naturally reaches identity choice
+native trigger accepted m02b #2
+native DialogueManager opens camera for m02b
+client readiness acknowledged for m02b
+PQ02 chronological: current native session and selectable frame at m02b
+PQ02 chronological: real periodic Nexus save retains frame at m02b
+PQ02 chronological: Escape preserves state and awards at m02b
+native DialogueManager opens camera for m02b
+client readiness acknowledged for m02b
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m02b
+PQ02 chronological: reopening resumes exact narrative page m02b
+PQ02 chronological: reopening preserves waypoint at m02b
+PQ02 chronological: reopening keeps current private guide at m02b
+native trigger accepted m03a #1
+native DialogueManager opens camera for m03a
+client readiness acknowledged for m03a
+PQ02 chronological: current native session and selectable frame at m03a
+native trigger accepted m04a #1
+native DialogueManager opens camera for m04a
+client readiness acknowledged for m04a
+PQ02 chronological: current native session and selectable frame at m04a
+native trigger accepted m04a_leovic #14
+native DialogueManager opens camera for m04a_leovic
+client readiness acknowledged for m04a_leovic
+PQ02 chronological: current native session and selectable frame at m04a_leovic
+PQ02 chronological: real periodic Nexus save retains frame at m04a_leovic
+PQ02 chronological: Escape preserves state and awards at m04a_leovic
+native DialogueManager opens camera for m04a_leovic
+client readiness acknowledged for m04a_leovic
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m04a_leovic
+PQ02 chronological: reopening resumes exact narrative page m04a_leovic
+PQ02 chronological: reopening preserves waypoint at m04a_leovic
+PQ02 chronological: reopening keeps current private guide at m04a_leovic
+native trigger accepted m_menu #14
+native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
+PQ02 chronological: current native session and selectable frame at m_menu
+native trigger accepted m05a #1
+native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
+PQ02 chronological: current native session and selectable frame at m05a
+PQ02 chronological: offered choices naturally reach m05a
+PQ02 chronological: real periodic Nexus save retains frame at m05a
+PQ02 chronological: Escape preserves state and awards at m05a
+native DialogueManager opens camera for m05a
+client readiness acknowledged for m05a
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m05a
+PQ02 chronological: reopening resumes exact narrative page m05a
+PQ02 chronological: reopening preserves waypoint at m05a
+PQ02 chronological: reopening keeps current private guide at m05a
+native trigger accepted m05a_unknown #1
+native DialogueManager opens camera for m05a_unknown
+client readiness acknowledged for m05a_unknown
+PQ02 chronological: current native session and selectable frame at m05a_unknown
+PQ02 chronological: offered choices naturally reach m05a_unknown
+PQ02 chronological: real periodic Nexus save retains frame at m05a_unknown
+PQ02 chronological: Escape preserves state and awards at m05a_unknown
+native DialogueManager opens camera for m05a_unknown
+client readiness acknowledged for m05a_unknown
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m05a_unknown
+PQ02 chronological: reopening resumes exact narrative page m05a_unknown
+PQ02 chronological: reopening preserves waypoint at m05a_unknown
+PQ02 chronological: reopening keeps current private guide at m05a_unknown
+native trigger accepted m05b #2
+native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
+PQ02 chronological: current native session and selectable frame at m05b
+PQ02 chronological: offered choices naturally reach m05b
+PQ02 chronological: real periodic Nexus save retains frame at m05b
+PQ02 chronological: Escape preserves state and awards at m05b
+native DialogueManager opens camera for m05b
+client readiness acknowledged for m05b
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m05b
+PQ02 chronological: reopening resumes exact narrative page m05b
+PQ02 chronological: reopening preserves waypoint at m05b
+PQ02 chronological: reopening keeps current private guide at m05b
+native trigger accepted m05b_resident #1
+native DialogueManager opens camera for m05b_resident
+client readiness acknowledged for m05b_resident
+PQ02 chronological: current native session and selectable frame at m05b_resident
+PQ02 chronological: offered choices naturally reach m05b_resident
+PQ02 chronological: real periodic Nexus save retains frame at m05b_resident
+PQ02 chronological: Escape preserves state and awards at m05b_resident
+native DialogueManager opens camera for m05b_resident
+client readiness acknowledged for m05b_resident
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m05b_resident
+PQ02 chronological: reopening resumes exact narrative page m05b_resident
+PQ02 chronological: reopening preserves waypoint at m05b_resident
+PQ02 chronological: reopening keeps current private guide at m05b_resident
+native trigger accepted m05c #3
+native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
+PQ02 chronological: current native session and selectable frame at m05c
+PQ02 chronological: offered choices naturally reach m05c
+PQ02 chronological: real periodic Nexus save retains frame at m05c
+PQ02 chronological: Escape preserves state and awards at m05c
+native DialogueManager opens camera for m05c
+client readiness acknowledged for m05c
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m05c
+PQ02 chronological: reopening resumes exact narrative page m05c
+PQ02 chronological: reopening preserves waypoint at m05c
+PQ02 chronological: reopening keeps current private guide at m05c
+native trigger accepted m05c_leovic #14
+native DialogueManager opens camera for m05c_leovic
+client readiness acknowledged for m05c_leovic
+PQ02 chronological: current native session and selectable frame at m05c_leovic
+PQ02 chronological: offered choices naturally reach m05c_leovic
+PQ02 chronological: real periodic Nexus save retains frame at m05c_leovic
+PQ02 chronological: Escape preserves state and awards at m05c_leovic
+native DialogueManager opens camera for m05c_leovic
+client readiness acknowledged for m05c_leovic
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m05c_leovic
+PQ02 chronological: reopening resumes exact narrative page m05c_leovic
+PQ02 chronological: reopening preserves waypoint at m05c_leovic
+PQ02 chronological: reopening keeps current private guide at m05c_leovic
+native trigger accepted m05c_magistrat #14
+native DialogueManager opens camera for m05c_magistrat
+client readiness acknowledged for m05c_magistrat
+PQ02 chronological: current native session and selectable frame at m05c_magistrat
+PQ02 chronological: offered choices naturally reach m05c_magistrat
+PQ02 chronological: real periodic Nexus save retains frame at m05c_magistrat
+PQ02 chronological: Escape preserves state and awards at m05c_magistrat
+native DialogueManager opens camera for m05c_magistrat
+client readiness acknowledged for m05c_magistrat
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m05c_magistrat
+PQ02 chronological: reopening resumes exact narrative page m05c_magistrat
+PQ02 chronological: reopening preserves waypoint at m05c_magistrat
+PQ02 chronological: reopening keeps current private guide at m05c_magistrat
+native trigger accepted m05d #4
+native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
+PQ02 chronological: current native session and selectable frame at m05d
+PQ02 chronological: offered choices naturally reach m05d
+PQ02 chronological: real periodic Nexus save retains frame at m05d
+PQ02 chronological: Escape preserves state and awards at m05d
+native DialogueManager opens camera for m05d
+client readiness acknowledged for m05d
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m05d
+PQ02 chronological: reopening resumes exact narrative page m05d
+PQ02 chronological: reopening preserves waypoint at m05d
+PQ02 chronological: reopening keeps current private guide at m05d
+native trigger accepted m06 #5
+native DialogueManager opens camera for m06
+client readiness acknowledged for m06
+PQ02 chronological: current native session and selectable frame at m06
+PQ02 chronological: offered choices naturally reach m06
+PQ02 chronological: real periodic Nexus save retains frame at m06
+PQ02 chronological: Escape preserves state and awards at m06
+native DialogueManager opens camera for m06
+client readiness acknowledged for m06
+PQ02 chronological: real NPC action reopens magistrat
+PQ02 chronological: current native session and selectable frame at m06
+PQ02 chronological: reopening resumes exact narrative page m06
+PQ02 chronological: reopening preserves waypoint at m06
+PQ02 chronological: reopening keeps current private guide at m06
+native trigger accepted m06_registered #14
+native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
+PQ02 chronological: current native session and selectable frame at m06_registered
+PQ02 chronological: registration happens once and preserves a higher social rank
+PQ02 chronological: real periodic Nexus save retains frame at m06_registered
+PQ02 chronological: Escape preserves state and awards at m06_registered
+native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at m06_registered
+PQ02 chronological: reopening resumes exact narrative page m06_registered
+PQ02 chronological: reopening preserves waypoint at m06_registered
+PQ02 chronological: reopening keeps current private guide at m06_registered
+native trigger accepted m06a #1
+native DialogueManager opens camera for m06a
+client readiness acknowledged for m06a
+PQ02 chronological: current native session and selectable frame at m06a
+native trigger accepted m07 #14
+native DialogueManager opens camera for m07
+client readiness acknowledged for m07
+PQ02 chronological: current native session and selectable frame at m07
+native trigger accepted m07a #1
+native DialogueManager opens camera for m07a
+client readiness acknowledged for m07a
+PQ02 chronological: current native session and selectable frame at m07a
+native trigger accepted m07a #14
+PQ02 chronological: post-registration dialogue starts the actual short M-P escort
+PQ02 chronological: current native session and selectable frame at t07
+PQ02 chronological: physical arrival at M opens its real pre-interview
+native trigger accepted t07b #2
+native DialogueManager opens camera for t07b
+client readiness acknowledged for t07b
+PQ02 chronological: current native session and selectable frame at t07b
+native trigger accepted m01a #14
+native DialogueManager opens camera for m01a
+client readiness acknowledged for m01a
+PQ02 chronological: current native session and selectable frame at m01a
+PQ02 chronological: three-party camera uses both existing private characters
+native trigger accepted m01b #14
+native DialogueManager opens camera for m01b
+client readiness acknowledged for m01b
+PQ02 chronological: current native session and selectable frame at m01b
+native trigger accepted m01c #14
+native DialogueManager opens camera for m01c
+client readiness acknowledged for m01c
+PQ02 chronological: current native session and selectable frame at m01c
+native trigger accepted m01d #14
+native DialogueManager opens camera for m01d
+client readiness acknowledged for m01d
+PQ02 chronological: current native session and selectable frame at m01d
+native trigger accepted m02 #14
+native DialogueManager opens camera for m02
+client readiness acknowledged for m02
+PQ02 chronological: current native session and selectable frame at m02
+PQ02 chronological: magistrate opening naturally reaches identity choice
+native trigger accepted m02c #3
+native DialogueManager opens camera for m02c
+client readiness acknowledged for m02c
+PQ02 chronological: current native session and selectable frame at m02c
+native trigger accepted m03b #3
+native DialogueManager opens camera for m03b
+client readiness acknowledged for m03b
+PQ02 chronological: current native session and selectable frame at m03b
+native trigger accepted m04c #3
+native DialogueManager opens camera for m04c
+client readiness acknowledged for m04c
+PQ02 chronological: current native session and selectable frame at m04c
+native trigger accepted m04c_leovic #14
+native DialogueManager opens camera for m04c_leovic
+client readiness acknowledged for m04c_leovic
+PQ02 chronological: current native session and selectable frame at m04c_leovic
+native trigger accepted m_menu #14
+native DialogueManager opens camera for m_menu
+client readiness acknowledged for m_menu
+PQ02 chronological: current native session and selectable frame at m_menu
+native trigger accepted m06 #5
+native DialogueManager opens camera for m06
+client readiness acknowledged for m06
+PQ02 chronological: current native session and selectable frame at m06
+PQ02 chronological: offered choices naturally reach m06
+native trigger accepted m06_registered #14
+native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
+PQ02 chronological: current native session and selectable frame at m06_registered
+PQ02 chronological: registration happens once and preserves a higher social rank
+native trigger accepted m06c #3
+native DialogueManager opens camera for m06c
+client readiness acknowledged for m06c
+PQ02 chronological: current native session and selectable frame at m06c
+native trigger accepted m07 #14
+native DialogueManager opens camera for m07
+client readiness acknowledged for m07
+PQ02 chronological: current native session and selectable frame at m07
+native trigger accepted m07c #3
+native DialogueManager opens camera for m07c
+client readiness acknowledged for m07c
+PQ02 chronological: current native session and selectable frame at m07c
+native trigger accepted m07c #14
+PQ02 chronological: post-registration dialogue starts the actual short M-P escort
+native DialogueManager opens camera for f_menu
+client readiness acknowledged for f_menu
+PQ02 chronological: current native session and selectable frame at f_menu
+PQ02 chronological: physical arrival at P opens the final conversation
+native trigger accepted f02 #1
+native DialogueManager opens camera for f02
+client readiness acknowledged for f02
+PQ02 chronological: current native session and selectable frame at f02
+PQ02 chronological: offered choices naturally reach f02
+PQ02 chronological: real periodic Nexus save retains frame at f02
+PQ02 chronological: Escape preserves state and awards at f02
+native DialogueManager opens camera for f02
+client readiness acknowledged for f02
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at f02
+PQ02 chronological: reopening resumes exact narrative page f02
+PQ02 chronological: reopening preserves waypoint at f02
+PQ02 chronological: reopening keeps current private guide at f02
+native trigger accepted f03 #2
+native DialogueManager opens camera for f03
+client readiness acknowledged for f03
+PQ02 chronological: current native session and selectable frame at f03
+PQ02 chronological: offered choices naturally reach f03
+PQ02 chronological: real periodic Nexus save retains frame at f03
+PQ02 chronological: Escape preserves state and awards at f03
+native DialogueManager opens camera for f03
+client readiness acknowledged for f03
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at f03
+PQ02 chronological: reopening resumes exact narrative page f03
+PQ02 chronological: reopening preserves waypoint at f03
+PQ02 chronological: reopening keeps current private guide at f03
+native trigger accepted f03_prefer #1
+native DialogueManager opens camera for f03_prefer
+client readiness acknowledged for f03_prefer
+PQ02 chronological: current native session and selectable frame at f03_prefer
+PQ02 chronological: offered choices naturally reach f03_prefer
+PQ02 chronological: real periodic Nexus save retains frame at f03_prefer
+PQ02 chronological: Escape preserves state and awards at f03_prefer
+native DialogueManager opens camera for f03_prefer
+client readiness acknowledged for f03_prefer
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at f03_prefer
+PQ02 chronological: reopening resumes exact narrative page f03_prefer
+PQ02 chronological: reopening preserves waypoint at f03_prefer
+PQ02 chronological: reopening keeps current private guide at f03_prefer
+native trigger accepted f_questions #14
+native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
+PQ02 chronological: current native session and selectable frame at f_questions
+native trigger accepted f04 #3
+native DialogueManager opens camera for f04
+client readiness acknowledged for f04
+PQ02 chronological: current native session and selectable frame at f04
+PQ02 chronological: offered choices naturally reach f04
+PQ02 chronological: real periodic Nexus save retains frame at f04
+PQ02 chronological: Escape preserves state and awards at f04
+native DialogueManager opens camera for f04
+client readiness acknowledged for f04
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at f04
+PQ02 chronological: reopening resumes exact narrative page f04
+PQ02 chronological: reopening preserves waypoint at f04
+PQ02 chronological: reopening keeps current private guide at f04
+native trigger accepted f04_return #1
+native DialogueManager opens camera for f04_return
+client readiness acknowledged for f04_return
+PQ02 chronological: current native session and selectable frame at f04_return
+PQ02 chronological: offered choices naturally reach f04_return
+PQ02 chronological: real periodic Nexus save retains frame at f04_return
+PQ02 chronological: Escape preserves state and awards at f04_return
+native DialogueManager opens camera for f04_return
+client readiness acknowledged for f04_return
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at f04_return
+PQ02 chronological: reopening resumes exact narrative page f04_return
+PQ02 chronological: reopening preserves waypoint at f04_return
+PQ02 chronological: reopening keeps current private guide at f04_return
+native trigger accepted f_questions #14
+native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
+PQ02 chronological: current native session and selectable frame at f_questions
+native trigger accepted f05_short #4
+native DialogueManager opens camera for f05_short
+client readiness acknowledged for f05_short
+PQ02 chronological: current native session and selectable frame at f05_short
+PQ02 chronological: offered choices naturally reach f05_short
+PQ02 chronological: real periodic Nexus save retains frame at f05_short
+PQ02 chronological: Escape preserves state and awards at f05_short
+native DialogueManager opens camera for f05_short
+client readiness acknowledged for f05_short
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at f05_short
+PQ02 chronological: reopening resumes exact narrative page f05_short
+PQ02 chronological: reopening preserves waypoint at f05_short
+PQ02 chronological: reopening keeps current private guide at f05_short
+native trigger accepted f_questions #14
+native DialogueManager opens camera for f_questions
+client readiness acknowledged for f_questions
+PQ02 chronological: current native session and selectable frame at f_questions
+native trigger accepted f06 #5
+native DialogueManager opens camera for f06
+client readiness acknowledged for f06
+PQ02 chronological: current native session and selectable frame at f06
+PQ02 chronological: offered choices naturally reach f06
+native trigger accepted f06c #3
+native DialogueManager opens camera for f06c
+client readiness acknowledged for f06c
+PQ02 chronological: current native session and selectable frame at f06c
+PQ02 chronological: real periodic Nexus save retains frame at f06c
+PQ02 chronological: Escape preserves state and awards at f06c
+native DialogueManager opens camera for f06c
+client readiness acknowledged for f06c
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at f06c
+PQ02 chronological: reopening resumes exact narrative page f06c
+PQ02 chronological: reopening preserves waypoint at f06c
+PQ02 chronological: reopening keeps current private guide at f06c
+native trigger accepted f07 #14
+native DialogueManager opens camera for f07
+client readiness acknowledged for f07
+PQ02 chronological: current native session and selectable frame at f07
+PQ02 chronological: gift branch reaches separation questions
+native trigger accepted f07b #2
+native DialogueManager opens camera for f07b
+client readiness acknowledged for f07b
+PQ02 chronological: current native session and selectable frame at f07b
+PQ02 chronological: real periodic Nexus save retains frame at f07b
+PQ02 chronological: Escape preserves state and awards at f07b
+native DialogueManager opens camera for f07b
+client readiness acknowledged for f07b
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at f07b
+PQ02 chronological: reopening resumes exact narrative page f07b
+PQ02 chronological: reopening preserves waypoint at f07b
+PQ02 chronological: reopening keeps current private guide at f07b
+native trigger accepted f07b #14
+PQ02 chronological: completion closes camera, retires actors and advances the quest
+PQ02 chronological: full chronological reputation and global impression match choices
+PQ02 chronological: immediate gift/refusal and original skill reward remain distinct
+PQ02 chronological: current native session and selectable frame at f_menu
+PQ02 chronological: physical arrival at P opens the final conversation
+native trigger accepted f06 #5
+native DialogueManager opens camera for f06
+client readiness acknowledged for f06
+PQ02 chronological: current native session and selectable frame at f06
+PQ02 chronological: offered choices naturally reach f06
+native trigger accepted f06d #4
+native DialogueManager opens camera for f06d
+client readiness acknowledged for f06d
+PQ02 chronological: current native session and selectable frame at f06d
+native trigger accepted f_report #14
+native DialogueManager opens camera for f_report
+client readiness acknowledged for f_report
+PQ02 chronological: current native session and selectable frame at f_report
+native trigger accepted f07 #14
+native DialogueManager opens camera for f07
+client readiness acknowledged for f07
+PQ02 chronological: current native session and selectable frame at f07
+PQ02 chronological: gift branch reaches separation questions
+native trigger accepted f07c #3
+native DialogueManager opens camera for f07c
+client readiness acknowledged for f07c
+PQ02 chronological: current native session and selectable frame at f07c
+native trigger accepted f07c #14
+PQ02 chronological: completion closes camera, retires actors and advances the quest
+PQ02 chronological: full chronological reputation and global impression match choices
+PQ02 chronological: immediate gift/refusal and original skill reward remain distinct
+native DialogueManager opens camera for post_very_friendly
+client readiness acknowledged for post_very_friendly
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at post_very_friendly
+PQ02 chronological: permanent post greeting uses total impression
+native trigger accepted f03 #1
+native DialogueManager opens camera for f03
+client readiness acknowledged for f03
+PQ02 chronological: current native session and selectable frame at f03
+PQ02 chronological: offered choices naturally reach f03
+native trigger accepted f03_prefer #1
+native DialogueManager opens camera for f03_prefer
+client readiness acknowledged for f03_prefer
+PQ02 chronological: current native session and selectable frame at f03_prefer
+native trigger accepted post_menu #14
+native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
+PQ02 chronological: current native session and selectable frame at post_menu
+PQ02 chronological: post-quest practical reply returns to the post-quest menu
+PQ02 chronological: entire playthrough and late return give exactly 50 currency substitute items
+PQ02 chronological: replayed terminal functions cannot duplicate rewards or change reputation
+native DialogueManager opens camera for post_unfriendly
+client readiness acknowledged for post_unfriendly
+PQ02 chronological: real NPC action reopens leovic
+PQ02 chronological: current native session and selectable frame at post_unfriendly
+PQ02 chronological: permanent post greeting uses total impression
+native trigger accepted f03 #1
+native DialogueManager opens camera for f03
+client readiness acknowledged for f03
+PQ02 chronological: current native session and selectable frame at f03
+PQ02 chronological: offered choices naturally reach f03
+native trigger accepted f03_prefer #1
+native DialogueManager opens camera for f03_prefer
+client readiness acknowledged for f03_prefer
+PQ02 chronological: current native session and selectable frame at f03_prefer
+native trigger accepted post_menu #14
+native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
+PQ02 chronological: current native session and selectable frame at post_menu
+PQ02 chronological: post-quest practical reply returns to the post-quest menu
+native trigger accepted post_gift #4
+native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
+PQ02 chronological: current native session and selectable frame at post_gift
+PQ02 chronological: offered choices naturally reach post_gift
+native trigger accepted post_menu #2
+native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
+PQ02 chronological: current native session and selectable frame at post_menu
+native trigger accepted post_gift #4
+native DialogueManager opens camera for post_gift
+client readiness acknowledged for post_gift
+PQ02 chronological: current native session and selectable frame at post_gift
+PQ02 chronological: offered choices naturally reach post_gift
+native trigger accepted post_menu #1
+native DialogueManager opens camera for post_menu
+client readiness acknowledged for post_menu
+PQ02 chronological: current native session and selectable frame at post_menu
+PQ02 chronological: multiple late refusals then acceptance give the pending gift
+PQ02 chronological: entire playthrough and late return give exactly 50 currency substitute items
+PQ02 chronological: replayed terminal functions cannot duplicate rewards or change reputation
+PQ02 chronological: actual Nexus loading of a second character clears first-character quest, memory and gift
+PQ02 chronological: actual Nexus A-B-A disk restore retains hcq_pq02
+PQ02 chronological: actual Nexus A-B-A disk restore retains CAP_PQ2_DA
+PQ02 chronological: actual Nexus A-B-A disk restore retains CAP_PQ2_DG
+PQ02 chronological: actual Nexus A-B-A disk restore retains CAP_PQ2_DM
+PQ02 chronological: actual Nexus A-B-A disk restore retains CAP_PQ2_DD
+PQ02 chronological: actual Nexus A-B-A disk restore retains CAP_PQ2_IMPR
+PQ02 chronological: actual Nexus A-B-A disk restore retains CAP_LEOVIC_GIFT
+PQ02 chronological: actual Nexus A-B-A disk restore retains CAP_PQ2_OFFER
+PQ02 chronological: actual Nexus A-B-A disk restore retains CAP_PQ2_REW
+PQ02 chronological: actual Nexus A-B-A disk restore retains REP_GARDEPORT
+PQ02 chronological: two complete escorts remain private and never move public Leovic
+PQ02 chronological: no orphan scene or queued transition remains
+PQ02 chronological: complete chronological routes cause no PQ02 runtime exceptions
+PQ02 chronological: both physical routes passed their existing intermediate waypoints
+Chronological visited pages=[a01, a02a, a04, a04a, a04b, a_menu, a05, a05b, a06, a06b, a07, a08, a08a, a09, a02c, t_menu, t02, t02a, t02a_stay, t02a_leave, t02b, t03, t03a, t03b, t04, t04a, t04a_reputation, t04a_cooperation, t04b, t04b_a, t04c, t04c_field, t04c_mission, t04d, t05, t05a, t05b, t05c, t06, t06a, t_resume, t07, t07a, m01a, m01b, m01c, m01d, m02, m02b, m03a, m04a, m04a_leovic, m_menu, m05a, m05a_unknown, m05b, m05b_resident, m05c, m05c_leovic, m05c_magistrat, m05d, m06, m06_registered, m06a, m07, m07a, t07b, m02c, m03b, m04c, m04c_leovic, m06c, m07c, f_menu, f02, f03, f03_prefer, f_questions, f04, f04_return, f05_short, f06, f06c, f07, f07b, f06d, f_report, f07c, post_very_friendly, post_menu, post_unfriendly, post_gift]
+Native close/reopen pages=[a04, a04a, a04b, a05, a05b, a06, a06b, a07, a09, t02a_stay, t02a_leave, t02b, t03, t03a, t03b, t04, t04a, t04a_reputation, t04a_cooperation, t04b, t04b_a, t04c, t04c_field, t04c_mission, t04d, t05, t05a, t05b, t05c, t06, t06a, m01a, m02b, m04a_leovic, m05a, m05a_unknown, m05b, m05b_resident, m05c, m05c_leovic, m05c_magistrat, m05d, m06, m06_registered, f02, f03, f03_prefer, f04, f04_return, f05_short, f06c, f07b]
+A waypoints=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] B waypoints=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+PQ02 chronological: real PQ02 completion leaves no active quest, guide or dialogue lock for its successor
+PQ02 chronological: completed private scene no longer overrides journal waypoints
+PQ02 chronological: Aurele quest marker is eligible after actual completion and disk restoration
+PQ02 chronological: original Aurele router naturally opens PQ03 offer after PQ02
+PQ02 chronological: entering PQ03 does not reopen PQ02, replay a reward or recreate its escort
+Hugues native menu hugues_menu: 5 questions, farewell and close; no option6
+Hugues residual choice6 neutral in hugues_menu
+Hugues native menu hugues_36: 5 questions, farewell and close; no option6
+Hugues residual choice6 neutral in hugues_36
+Hugues native menu hugues_38: 5 questions, farewell and close; no option6
+Hugues residual choice6 neutral in hugues_38
+Hugues native menu hugues_40: 5 questions, farewell and close; no option6
+Hugues residual choice6 neutral in hugues_40
+Hugues native menu hugues_42: 5 questions, farewell and close; no option6
+Hugues residual choice6 neutral in hugues_42
+Hugues native menu hugues_44: 5 questions, farewell and close; no option6
+Hugues residual choice6 neutral in hugues_44
+MQ03: quay captain gives reunion dialogue after prologue and PQ02
+MQ03: generic captain retains same MQ03 priority
+MQ03: reunion opens logbook
+MQ03: logbook opens consultation
+MQ03: consultation directs return to Archives
+MQ03: Archives sentinel recognizes return stage
+MQ03: temporary Archives access granted by existing chain; stages=50/1/3
+MQ03: Archivaire final dialogue remains reachable
+MQ03: MQ03 closes and MQ04 opens
+MQ03: final choice cannot apply again outside stage
+MQ03: another character cannot enter captain MQ03 before its stage
+Frame counts={class_3222['PQ02_A'/36, l='ServerLevel[world]', x=8.50, y=64.00, z=9.50]=159, class_3222['PQ02_Observer'/38, l='ServerLevel[world]', x=0.50, y=64.00, z=8.50]=0, class_3222['PQ02_B'/37, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=35}
+Native Fabric 1.21.11 / EasyNPC 7.16, HF12 classes preserved except the two authorized Gautier timing classes; production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

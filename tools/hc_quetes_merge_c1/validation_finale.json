@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "revision": "HC_QUETES_FUSION_C1",
+  "date": "2026-11-01",
+  "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1.zip",
+  "sha256": "d9a0fb0d0aecd0eb4f9bc64f9cb7bae932ddaaa7f67273b042512c22ff9e67aa",
+  "bytes": 1523046,
+  "inputs": {
+    "ours": "393ac02d857774f4de7483ce4d179f2e67a13f1ec1ae9cab4830608568b891a6",
+    "clement": "07d0c6e3b711fa9ccf1808e568ce72cc4cb0b577132013f40513aa6b066df6a3",
+    "common": "4e14c6584a175c864bccf3dbf36569c601cab013078dbc9ce0335f47a8a17360"
+  },
+  "files": 3330,
+  "changed_existing": [
+    "data/hc_quetes/function/aurele/interact.mcfunction",
+    "data/hc_quetes/function/aurele/q12/recaisse.mcfunction",
+    "data/hc_quetes/function/aurele/q8/kill_vasca.mcfunction",
+    "data/hc_quetes/function/carrec/aurele/refus.mcfunction",
+    "data/hc_quetes/function/carrec/choix.mcfunction",
+    "data/hc_quetes/function/hector/q5/prend_insigne.mcfunction",
+    "data/hc_quetes/function/hector/q5/retour.mcfunction",
+    "data/hc_quetes/function/lib/balayage.mcfunction",
+    "data/hc_quetes/function/marqueurs/aurele.mcfunction",
+    "data/hc_quetes/function/migration/ensure/arc_n.mcfunction",
+    "data/hc_quetes/function/migration/load.mcfunction",
+    "data/hc_quetes/function/migration/write/arc_n/v0.mcfunction",
+    "data/hc_quetes/function/migration/write/arc_n/v1.mcfunction",
+    "data/hc_quetes/function/pnj/aveline/interact.mcfunction",
+    "data/hc_quetes/function/tick.mcfunction",
+    "data/hc_quetes/hcq_quests/cq_vc_ep_02_ruines_carrec.json",
+    "pack.mcmeta"
+  ],
+  "added": [
+    "data/hc_quetes/function/aurele/q12/recaisse_paye.mcfunction",
+    "data/hc_quetes/function/aurele/q8/rend_insigne.mcfunction",
+    "data/hc_quetes/predicate/migration/state/arc_a/6_to_.json",
+    "data/hc_quetes/predicate/migration/state/arc_c/70_to_.json",
+    "data/hc_quetes/predicate/migration/state/arc_n/70_to_.json",
+    "data/hc_quetes/predicate/migration/state/arc_n/neg1_to_0.json",
+    "data/hc_quetes/predicate/migration/state/arc_p/70_to_.json"
+  ],
+  "removed": [],
+  "unchanged": 3306,
+  "tests": {
+    "static": 117,
+    "native_total": 1580,
+    "native_c1": 105,
+    "quest_definitions_loaded": 70,
+    "quest_decode_errors": 0,
+    "function_load_errors": 0
+  },
+  "journal_hf8_unchanged_sha256": "92dbafab347b1fd775de6476d36e75b6bae2ebefbcc574bfaac141fc63c79180",
+  "core_unchanged_sha256": "6ff671f7b71ff696980b1fdfa4302481dec30cac7db8eca6e0fb2c9bcd4a9aa6",
+  "no_user_commands_or_npc_rebinding_required": true,
+  "limits": [
+    "Serveur Fabric/Minecraft 1.21.11, véritables fonctions, entités EasyNPC, dialogues et moteur de journal ; pas de client graphique ni de carte Indivis chargée.",
+    "Connexions, sélection de personnage Nexus et disponibilité de caméra synthétiques. Écriture/chargement des profils OPT3 réels, dont le nouveau drapeau de refus et son isolation entre personnages.",
+    "Monnaie remplacée par des pépites d’or dans le banc ; CapSkills et bonus aléatoires comptés par fixtures. mmospawn est un service simulé et sept récompenses d’équipement inchangées de mods tiers sont des placeholders non exercés.",
+    "Aucun substitut de banc dans le datapack livré. Pas de mesure de FPS/MSPT, de rendu des livres, d’écoute des voix ni de prélèvement natif dans un mod de sac à dos."
+  ]
+}

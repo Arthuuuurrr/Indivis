@@ -1,0 +1,3 @@
+PASS REPRODUCED_HF1_FUNCTION_ENTRY_FAILURE
+Native function entry: capitale:quest/le_registre_du_port/leovic/interact_self -> indivispq02 leovic -> nested summon -> Copie EasyNPC non créée : leovic
+Native Fabric 1.21.11, EasyNPC 7.16.0; synthetic connections/Nexus. No client rendered.

@@ -1,0 +1,108 @@
+{
+  "status": "PASS_HF8_NATIVE_FULL_SYSTEM_PROTOCOL_STARTUP_AND_PRESERVATION",
+  "file": "haute-capitale-quetes-HF12-PQ02-R1-HF8-1.21.11.jar",
+  "sha256": "92dbafab347b1fd775de6476d36e75b6bae2ebefbcc574bfaac141fc63c79180",
+  "bytes": 575268,
+  "id": "haute_capitale_quetes",
+  "version": "0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12.PQ02.R1.HF8",
+  "source_hf12_sha256": "c888eec4fa5dad35127dd5a5e4e6c49ec0f870063d429877f4b2a48a09f5bb60",
+  "source_pq02_sha256": "14cdd35ee29a4e92518bfc9c938c936df8d4ec42d7370526c955a69d6717cf8f",
+  "original_entries_preserved": 220,
+  "original_classes_preserved": 182,
+  "pq02_entries_identical": 34,
+  "added": [
+    "indivis_pq02.mixins.json",
+    "indivis_pq02_graph.json",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02DialogueCloseMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02EntityMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02NexusCheckpointMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02ScreenLifecycleMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02VisibilityMixin.class",
+    "net/hautecapitale/quetes/pq02/mixin/Pq02WaypointMixin.class",
+    "net/hautecapitale/quetes/sequence/Pq02Client.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Choice.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Graph.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data$Node.class",
+    "net/hautecapitale/quetes/sequence/Pq02Data.class",
+    "net/hautecapitale/quetes/sequence/Pq02Entries$Pending.class",
+    "net/hautecapitale/quetes/sequence/Pq02Entries.class",
+    "net/hautecapitale/quetes/sequence/Pq02Focus$Request.class",
+    "net/hautecapitale/quetes/sequence/Pq02Focus.class",
+    "net/hautecapitale/quetes/sequence/Pq02FocusClient.class",
+    "net/hautecapitale/quetes/sequence/Pq02Motion$Port.class",
+    "net/hautecapitale/quetes/sequence/Pq02Motion.class",
+    "net/hautecapitale/quetes/sequence/Pq02Pacing$Frame.class",
+    "net/hautecapitale/quetes/sequence/Pq02Pacing.class",
+    "net/hautecapitale/quetes/sequence/Pq02ProfileCheckpoint$Scope.class",
+    "net/hautecapitale/quetes/sequence/Pq02ProfileCheckpoint.class",
+    "net/hautecapitale/quetes/sequence/Pq02Rules$Delta.class",
+    "net/hautecapitale/quetes/sequence/Pq02Rules.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$1.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$Actor.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$Near.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime$View.class",
+    "net/hautecapitale/quetes/sequence/Pq02Runtime.class",
+    "net/hautecapitale/quetes/sequence/Pq02Setup$Scan.class",
+    "net/hautecapitale/quetes/sequence/Pq02Setup.class",
+    "net/hautecapitale/quetes/sequence/Pq02Transitions.class"
+  ],
+  "changed_original": [
+    "fabric.mod.json",
+    "net/hautecapitale/quetes/sequence/Pq01Bridge.class",
+    "net/hautecapitale/quetes/sequence/Pq01Bridge$1.class"
+  ],
+  "pq01_patch_sources": [
+    "src_pq01/Pq01Bridge.java"
+  ],
+  "pq01_scope": "Gautier speed 1.0 to 1.25; Geraud resumes while Gautier returns to post",
+  "entrypoints": {
+    "main": [
+      "net.hautecapitale.quetes.HauteCapitaleQuetes",
+      "net.hautecapitale.quetes.sequence.Pq01Initializer",
+      "net.hautecapitale.quetes.sequence.Pq02Runtime"
+    ],
+    "client": [
+      "net.hautecapitale.quetes.client.HauteCapitaleQuetesClient",
+      "net.hautecapitale.quetes.sequence.Pq01Client",
+      "net.hautecapitale.quetes.sequence.Pq02Client"
+    ]
+  },
+  "mixins": [
+    "haute_capitale_quetes.mixins.json",
+    {
+      "config": "haute_capitale_quetes.client.mixins.json",
+      "environment": "client"
+    },
+    "indivis_pq01.mixins.json",
+    "indivis_pq02.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "1.21.11",
+    "java": ">=21",
+    "fabric-api": ">=0.141.6",
+    "nexuscharacters": ">=1.0.0-beta.34",
+    "puffish_skills": "0.17.3",
+    "easy_npc": "7.16.0",
+    "haute_capitale_dialogue": ">=0.1.0"
+  },
+  "breaks": {
+    "indivis_pq02": "*"
+  },
+  "datapacks_sha256": {
+    "core": "6ff671f7b71ff696980b1fdfa4302481dec30cac7db8eca6e0fb2c9bcd4a9aa6",
+    "quests": "393ac02d857774f4de7483ce4d179f2e67a13f1ec1ae9cab4830608568b891a6"
+  },
+  "tests": {
+    "pq02_full_system_hf8": 1475,
+    "merged_native_hf8": 2854,
+    "hf8_profile_checkpoint_native": 398,
+    "hf8_handoff_native": 301,
+    "client_protocol": 566,
+    "static": 269,
+    "java_rules": 145,
+    "prologue_static": 388,
+    "startup": 9,
+    "duplicate_companion_guard": 1
+  }
+}

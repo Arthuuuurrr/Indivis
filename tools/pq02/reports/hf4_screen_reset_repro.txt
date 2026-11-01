@@ -1,0 +1,10 @@
+PASS 7 native checks
+screen HF5: la session privée est confirmée avant le retrait simulé
+screen HF5: première réplique et réponse déjà présentes dans b10
+screen HF5: HF4 laisse retirer une capture déjà confirmée et remplie
+screen HF5: HF4 reproduit ECRAN_FERME après le retrait de l’écran rempli
+screen HF5: la session privée est confirmée avant le retrait simulé
+screen HF5: première réplique et réponse déjà présentes dans b10
+screen HF5: HF4 manque aussi un menu étranger ouvert et fermé entre deux ticks
+Frame counts={class_3222['PQ02_A'/32, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=0, class_3222['PQ02_B'/33, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=0, class_3222['PQ02_Observer'/34, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=0}
+Native Fabric 1.21.11 / EasyNPC 7.16, HF12 classes preserved except the two authorized Gautier timing classes; production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

@@ -1,0 +1,1162 @@
+PASS 1159 native checks
+prologue audit: 94 blocs et 317 choix directs préparés depuis les packs livrés
+prologue audit: bloc natif a1 choix=0
+prologue audit: session b10 présente a1
+prologue audit: bloc natif a1 choix=1
+prologue audit: session b10 présente a1
+prologue audit: choix natif a1 #1 → a2
+prologue audit: bloc natif a2 choix=0
+prologue audit: session b10 présente a2
+prologue audit: bloc natif a3 choix=0
+prologue audit: session b10 présente a3
+prologue audit: bloc natif a3 choix=1
+prologue audit: session b10 présente a3
+prologue audit: choix natif a3 #1 → a4
+prologue audit: bloc natif a4 choix=0
+prologue audit: session b10 présente a4
+prologue audit: bloc natif a4 choix=1
+prologue audit: session b10 présente a4
+prologue audit: choix natif a4 #1 → a6
+prologue audit: bloc natif a5 choix=0
+prologue audit: session b10 présente a5
+prologue audit: bloc natif a5 choix=1
+prologue audit: session b10 présente a5
+prologue audit: choix natif a5 #1 → a6
+prologue audit: bloc natif a6 choix=0
+prologue audit: session b10 présente a6
+prologue audit: bloc natif a7 choix=0
+prologue audit: session b10 présente a7
+prologue audit: bloc natif a7 choix=1
+prologue audit: session b10 présente a7
+prologue audit: choix natif a7 #1 → a8
+prologue audit: bloc natif a8 choix=0
+prologue audit: session b10 présente a8
+prologue audit: bloc natif a8 choix=1
+prologue audit: session b10 présente a8
+prologue audit: choix natif a8 #1 → ga_12
+prologue audit: bloc natif a8 choix=2
+prologue audit: session b10 présente a8
+prologue audit: choix natif a8 #2 → ga_14
+prologue audit: bloc natif a8 choix=3
+prologue audit: session b10 présente a8
+prologue audit: choix natif a8 #3 → ga_16
+prologue audit: bloc natif a8 choix=4
+prologue audit: session b10 présente a8
+prologue audit: choix natif a8 #4 → ga_18
+prologue audit: bloc natif a8 choix=5
+prologue audit: session b10 présente a8
+prologue audit: choix natif a8 #5 → ga_20
+prologue audit: bloc natif anselme_49 choix=0
+prologue audit: session b10 présente anselme_49
+prologue audit: bloc natif anselme_49 choix=1
+prologue audit: session b10 présente anselme_49
+prologue audit: choix natif anselme_49 #1 → anselme_49
+prologue audit: bloc natif anselme_49 choix=2
+prologue audit: session b10 présente anselme_49
+prologue audit: choix natif anselme_49 #2 → anselme_51
+prologue audit: bloc natif anselme_49 choix=3
+prologue audit: session b10 présente anselme_49
+prologue audit: choix natif anselme_49 #3 → anselme_53
+prologue audit: bloc natif anselme_49 choix=4
+prologue audit: session b10 présente anselme_49
+prologue audit: choix natif anselme_49 #4 → anselme_55
+prologue audit: bloc natif anselme_49 choix=5
+prologue audit: session b10 présente anselme_49
+prologue audit: choix natif anselme_49 #5 → anselme_57
+prologue audit: bloc natif anselme_49 choix=6
+prologue audit: session b10 présente anselme_49
+prologue audit: choix natif anselme_49 #6 → anselme_59
+prologue audit: bloc natif anselme_51 choix=0
+prologue audit: session b10 présente anselme_51
+prologue audit: bloc natif anselme_51 choix=1
+prologue audit: session b10 présente anselme_51
+prologue audit: choix natif anselme_51 #1 → anselme_49
+prologue audit: bloc natif anselme_51 choix=2
+prologue audit: session b10 présente anselme_51
+prologue audit: choix natif anselme_51 #2 → anselme_51
+prologue audit: bloc natif anselme_51 choix=3
+prologue audit: session b10 présente anselme_51
+prologue audit: choix natif anselme_51 #3 → anselme_53
+prologue audit: bloc natif anselme_51 choix=4
+prologue audit: session b10 présente anselme_51
+prologue audit: choix natif anselme_51 #4 → anselme_55
+prologue audit: bloc natif anselme_51 choix=5
+prologue audit: session b10 présente anselme_51
+prologue audit: choix natif anselme_51 #5 → anselme_57
+prologue audit: bloc natif anselme_51 choix=6
+prologue audit: session b10 présente anselme_51
+prologue audit: choix natif anselme_51 #6 → anselme_59
+prologue audit: bloc natif anselme_53 choix=0
+prologue audit: session b10 présente anselme_53
+prologue audit: bloc natif anselme_53 choix=1
+prologue audit: session b10 présente anselme_53
+prologue audit: choix natif anselme_53 #1 → anselme_49
+prologue audit: bloc natif anselme_53 choix=2
+prologue audit: session b10 présente anselme_53
+prologue audit: choix natif anselme_53 #2 → anselme_51
+prologue audit: bloc natif anselme_53 choix=3
+prologue audit: session b10 présente anselme_53
+prologue audit: choix natif anselme_53 #3 → anselme_53
+prologue audit: bloc natif anselme_53 choix=4
+prologue audit: session b10 présente anselme_53
+prologue audit: choix natif anselme_53 #4 → anselme_55
+prologue audit: bloc natif anselme_53 choix=5
+prologue audit: session b10 présente anselme_53
+prologue audit: choix natif anselme_53 #5 → anselme_57
+prologue audit: bloc natif anselme_53 choix=6
+prologue audit: session b10 présente anselme_53
+prologue audit: choix natif anselme_53 #6 → anselme_59
+prologue audit: bloc natif anselme_55 choix=0
+prologue audit: session b10 présente anselme_55
+prologue audit: bloc natif anselme_55 choix=1
+prologue audit: session b10 présente anselme_55
+prologue audit: choix natif anselme_55 #1 → anselme_49
+prologue audit: bloc natif anselme_55 choix=2
+prologue audit: session b10 présente anselme_55
+prologue audit: choix natif anselme_55 #2 → anselme_51
+prologue audit: bloc natif anselme_55 choix=3
+prologue audit: session b10 présente anselme_55
+prologue audit: choix natif anselme_55 #3 → anselme_53
+prologue audit: bloc natif anselme_55 choix=4
+prologue audit: session b10 présente anselme_55
+prologue audit: choix natif anselme_55 #4 → anselme_55
+prologue audit: bloc natif anselme_55 choix=5
+prologue audit: session b10 présente anselme_55
+prologue audit: choix natif anselme_55 #5 → anselme_57
+prologue audit: bloc natif anselme_55 choix=6
+prologue audit: session b10 présente anselme_55
+prologue audit: choix natif anselme_55 #6 → anselme_59
+prologue audit: bloc natif anselme_57 choix=0
+prologue audit: session b10 présente anselme_57
+prologue audit: bloc natif anselme_57 choix=1
+prologue audit: session b10 présente anselme_57
+prologue audit: choix natif anselme_57 #1 → anselme_49
+prologue audit: bloc natif anselme_57 choix=2
+prologue audit: session b10 présente anselme_57
+prologue audit: choix natif anselme_57 #2 → anselme_51
+prologue audit: bloc natif anselme_57 choix=3
+prologue audit: session b10 présente anselme_57
+prologue audit: choix natif anselme_57 #3 → anselme_53
+prologue audit: bloc natif anselme_57 choix=4
+prologue audit: session b10 présente anselme_57
+prologue audit: choix natif anselme_57 #4 → anselme_55
+prologue audit: bloc natif anselme_57 choix=5
+prologue audit: session b10 présente anselme_57
+prologue audit: choix natif anselme_57 #5 → anselme_57
+prologue audit: bloc natif anselme_57 choix=6
+prologue audit: session b10 présente anselme_57
+prologue audit: choix natif anselme_57 #6 → anselme_59
+prologue audit: bloc natif anselme_59 choix=0
+prologue audit: session b10 présente anselme_59
+prologue audit: bloc natif anselme_menu choix=0
+prologue audit: session b10 présente anselme_menu
+prologue audit: bloc natif anselme_menu choix=1
+prologue audit: session b10 présente anselme_menu
+prologue audit: choix natif anselme_menu #1 → anselme_49
+prologue audit: bloc natif anselme_menu choix=2
+prologue audit: session b10 présente anselme_menu
+prologue audit: choix natif anselme_menu #2 → anselme_51
+prologue audit: bloc natif anselme_menu choix=3
+prologue audit: session b10 présente anselme_menu
+prologue audit: choix natif anselme_menu #3 → anselme_53
+prologue audit: bloc natif anselme_menu choix=4
+prologue audit: session b10 présente anselme_menu
+prologue audit: choix natif anselme_menu #4 → anselme_55
+prologue audit: bloc natif anselme_menu choix=5
+prologue audit: session b10 présente anselme_menu
+prologue audit: choix natif anselme_menu #5 → anselme_57
+prologue audit: bloc natif anselme_menu choix=6
+prologue audit: session b10 présente anselme_menu
+prologue audit: choix natif anselme_menu #6 → anselme_59
+prologue audit: bloc natif b0 choix=0
+prologue audit: session b10 présente b0
+prologue audit: bloc natif b0 choix=1
+prologue audit: session b10 présente b0
+prologue audit: choix natif b0 #1 → b1
+prologue audit: bloc natif b1 choix=0
+prologue audit: session b10 présente b1
+prologue audit: bloc natif b1 choix=1
+prologue audit: session b10 présente b1
+prologue audit: choix natif b1 #1 → b2
+prologue audit: bloc natif b2 choix=0
+prologue audit: session b10 présente b2
+prologue audit: bloc natif b2 choix=1
+prologue audit: session b10 présente b2
+prologue audit: choix natif b2 #1 → b3
+prologue audit: bloc natif b3 choix=0
+prologue audit: session b10 présente b3
+prologue audit: bloc natif b3 choix=1
+prologue audit: session b10 présente b3
+prologue audit: choix natif b3 #1 → b4
+prologue audit: bloc natif b4 choix=0
+prologue audit: session b10 présente b4
+prologue audit: bloc natif b4 choix=1
+prologue audit: session b10 présente b4
+prologue audit: choix natif b4 #1 → b5
+prologue audit: bloc natif b5 choix=0
+prologue audit: session b10 présente b5
+prologue audit: bloc natif b5 choix=1
+prologue audit: session b10 présente b5
+prologue audit: choix natif b5 #1 → b6
+prologue audit: bloc natif b6 choix=0
+prologue audit: session b10 présente b6
+prologue audit: bloc natif b6 choix=1
+prologue audit: session b10 présente b6
+prologue audit: choix natif b6 #1 → b7
+prologue audit: bloc natif b7 choix=0
+prologue audit: session b10 présente b7
+prologue audit: bloc natif b7 choix=1
+prologue audit: session b10 présente b7
+prologue audit: choix natif b7 #1 → hugues_36
+prologue audit: bloc natif b7 choix=2
+prologue audit: session b10 présente b7
+prologue audit: choix natif b7 #2 → hugues_38
+prologue audit: bloc natif b7 choix=3
+prologue audit: session b10 présente b7
+prologue audit: choix natif b7 #3 → hugues_40
+prologue audit: bloc natif b7 choix=4
+prologue audit: session b10 présente b7
+prologue audit: choix natif b7 #4 → hugues_42
+prologue audit: bloc natif b7 choix=5
+prologue audit: session b10 présente b7
+prologue audit: choix natif b7 #5 → hugues_44
+prologue audit: bloc natif b7 choix=7
+prologue audit: session b10 présente b7
+prologue audit: choix natif b7 #7 → hugues_46
+prologue audit: bloc natif c1 choix=0
+prologue audit: session b10 présente c1
+prologue audit: bloc natif c1 choix=1
+prologue audit: session b10 présente c1
+prologue audit: choix natif c1 #1 → c3
+prologue audit: bloc natif c2 choix=0
+prologue audit: session b10 présente c2
+prologue audit: bloc natif c2 choix=1
+prologue audit: session b10 présente c2
+prologue audit: choix natif c2 #1 → c3
+prologue audit: bloc natif c3 choix=0
+prologue audit: session b10 présente c3
+prologue audit: bloc natif c3 choix=1
+prologue audit: session b10 présente c3
+prologue audit: choix natif c3 #1 → c5
+prologue audit: bloc natif c4 choix=0
+prologue audit: session b10 présente c4
+prologue audit: bloc natif c4 choix=1
+prologue audit: session b10 présente c4
+prologue audit: choix natif c4 #1 → c5
+prologue audit: bloc natif c5 choix=0
+prologue audit: session b10 présente c5
+prologue audit: bloc natif c5 choix=1
+prologue audit: session b10 présente c5
+prologue audit: choix natif c5 #1 → ca1
+prologue audit: bloc natif c5 choix=2
+prologue audit: session b10 présente c5
+prologue audit: choix natif c5 #2 → cb1
+prologue audit: bloc natif c5 choix=3
+prologue audit: session b10 présente c5
+prologue audit: choix natif c5 #3 → cc1
+prologue audit: bloc natif c5 choix=4
+prologue audit: session b10 présente c5
+prologue audit: choix natif c5 #4 → cd1
+prologue audit: bloc natif c5 choix=5
+prologue audit: session b10 présente c5
+prologue audit: choix natif c5 #5 → ce1
+prologue audit: bloc natif c5 choix=6
+prologue audit: session b10 présente c5
+prologue audit: choix natif c5 #6 → cx1
+prologue audit: bloc natif c6 choix=0
+prologue audit: session b10 présente c6
+prologue audit: bloc natif c6 choix=1
+prologue audit: session b10 présente c6
+prologue audit: choix natif c6 #1 → ca1
+prologue audit: bloc natif c6 choix=2
+prologue audit: session b10 présente c6
+prologue audit: choix natif c6 #2 → cb1
+prologue audit: bloc natif c6 choix=3
+prologue audit: session b10 présente c6
+prologue audit: choix natif c6 #3 → cc1
+prologue audit: bloc natif c6 choix=4
+prologue audit: session b10 présente c6
+prologue audit: choix natif c6 #4 → cd1
+prologue audit: bloc natif c6 choix=5
+prologue audit: session b10 présente c6
+prologue audit: choix natif c6 #5 → ce1
+prologue audit: bloc natif c6 choix=6
+prologue audit: session b10 présente c6
+prologue audit: choix natif c6 #6 → cx1
+prologue audit: bloc natif c_menu choix=0
+prologue audit: session b10 présente c_menu
+prologue audit: bloc natif c_menu choix=1
+prologue audit: session b10 présente c_menu
+prologue audit: choix natif c_menu #1 → ca1
+prologue audit: bloc natif c_menu choix=2
+prologue audit: session b10 présente c_menu
+prologue audit: choix natif c_menu #2 → cb1
+prologue audit: bloc natif c_menu choix=3
+prologue audit: session b10 présente c_menu
+prologue audit: choix natif c_menu #3 → cc1
+prologue audit: bloc natif c_menu choix=4
+prologue audit: session b10 présente c_menu
+prologue audit: choix natif c_menu #4 → cd1
+prologue audit: bloc natif c_menu choix=5
+prologue audit: session b10 présente c_menu
+prologue audit: choix natif c_menu #5 → ce1
+prologue audit: bloc natif c_menu choix=6
+prologue audit: session b10 présente c_menu
+prologue audit: choix natif c_menu #6 → cx1
+prologue audit: bloc natif ca1 choix=0
+prologue audit: session b10 présente ca1
+prologue audit: bloc natif ca1 choix=1
+prologue audit: session b10 présente ca1
+prologue audit: choix natif ca1 #1 → ca2
+prologue audit: bloc natif ca1 choix=2
+prologue audit: session b10 présente ca1
+prologue audit: choix natif ca1 #2 → c_menu
+prologue audit: bloc natif ca2 choix=0
+prologue audit: session b10 présente ca2
+prologue audit: bloc natif ca2 choix=1
+prologue audit: session b10 présente ca2
+prologue audit: choix natif ca2 #1 → ca3
+prologue audit: bloc natif ca2 choix=2
+prologue audit: session b10 présente ca2
+prologue audit: choix natif ca2 #2 → c_menu
+prologue audit: bloc natif ca3 choix=0
+prologue audit: session b10 présente ca3
+prologue audit: bloc natif ca3 choix=1
+prologue audit: session b10 présente ca3
+prologue audit: choix natif ca3 #1 → ca1
+prologue audit: bloc natif ca3 choix=2
+prologue audit: session b10 présente ca3
+prologue audit: choix natif ca3 #2 → cb1
+prologue audit: bloc natif ca3 choix=3
+prologue audit: session b10 présente ca3
+prologue audit: choix natif ca3 #3 → cc1
+prologue audit: bloc natif ca3 choix=4
+prologue audit: session b10 présente ca3
+prologue audit: choix natif ca3 #4 → cd1
+prologue audit: bloc natif ca3 choix=5
+prologue audit: session b10 présente ca3
+prologue audit: choix natif ca3 #5 → ce1
+prologue audit: bloc natif ca3 choix=6
+prologue audit: session b10 présente ca3
+prologue audit: choix natif ca3 #6 → cx1
+prologue audit: bloc natif cb1 choix=0
+prologue audit: session b10 présente cb1
+prologue audit: bloc natif cb1 choix=1
+prologue audit: session b10 présente cb1
+prologue audit: choix natif cb1 #1 → cb2
+prologue audit: bloc natif cb1 choix=2
+prologue audit: session b10 présente cb1
+prologue audit: choix natif cb1 #2 → c_menu
+prologue audit: bloc natif cb2 choix=0
+prologue audit: session b10 présente cb2
+prologue audit: bloc natif cb2 choix=1
+prologue audit: session b10 présente cb2
+prologue audit: choix natif cb2 #1 → cb3
+prologue audit: bloc natif cb2 choix=2
+prologue audit: session b10 présente cb2
+prologue audit: choix natif cb2 #2 → c_menu
+prologue audit: bloc natif cb3 choix=0
+prologue audit: session b10 présente cb3
+prologue audit: bloc natif cb3 choix=1
+prologue audit: session b10 présente cb3
+prologue audit: choix natif cb3 #1 → ca1
+prologue audit: bloc natif cb3 choix=2
+prologue audit: session b10 présente cb3
+prologue audit: choix natif cb3 #2 → cb1
+prologue audit: bloc natif cb3 choix=3
+prologue audit: session b10 présente cb3
+prologue audit: choix natif cb3 #3 → cc1
+prologue audit: bloc natif cb3 choix=4
+prologue audit: session b10 présente cb3
+prologue audit: choix natif cb3 #4 → cd1
+prologue audit: bloc natif cb3 choix=5
+prologue audit: session b10 présente cb3
+prologue audit: choix natif cb3 #5 → ce1
+prologue audit: bloc natif cb3 choix=6
+prologue audit: session b10 présente cb3
+prologue audit: choix natif cb3 #6 → cx1
+prologue audit: bloc natif cc1 choix=0
+prologue audit: session b10 présente cc1
+prologue audit: bloc natif cc1 choix=1
+prologue audit: session b10 présente cc1
+prologue audit: choix natif cc1 #1 → cc2
+prologue audit: bloc natif cc1 choix=2
+prologue audit: session b10 présente cc1
+prologue audit: choix natif cc1 #2 → c_menu
+prologue audit: bloc natif cc2 choix=0
+prologue audit: session b10 présente cc2
+prologue audit: bloc natif cc2 choix=1
+prologue audit: session b10 présente cc2
+prologue audit: choix natif cc2 #1 → ca1
+prologue audit: bloc natif cc2 choix=2
+prologue audit: session b10 présente cc2
+prologue audit: choix natif cc2 #2 → cb1
+prologue audit: bloc natif cc2 choix=3
+prologue audit: session b10 présente cc2
+prologue audit: choix natif cc2 #3 → cc1
+prologue audit: bloc natif cc2 choix=4
+prologue audit: session b10 présente cc2
+prologue audit: choix natif cc2 #4 → cd1
+prologue audit: bloc natif cc2 choix=5
+prologue audit: session b10 présente cc2
+prologue audit: choix natif cc2 #5 → ce1
+prologue audit: bloc natif cc2 choix=6
+prologue audit: session b10 présente cc2
+prologue audit: choix natif cc2 #6 → cx1
+prologue audit: bloc natif cd1 choix=0
+prologue audit: session b10 présente cd1
+prologue audit: bloc natif cd1 choix=1
+prologue audit: session b10 présente cd1
+prologue audit: choix natif cd1 #1 → cd3
+prologue audit: bloc natif cd1 choix=2
+prologue audit: session b10 présente cd1
+prologue audit: choix natif cd1 #2 → cd4
+prologue audit: bloc natif cd1 choix=3
+prologue audit: session b10 présente cd1
+prologue audit: choix natif cd1 #3 → c_menu
+prologue audit: bloc natif cd2 choix=0
+prologue audit: session b10 présente cd2
+prologue audit: bloc natif cd2 choix=1
+prologue audit: session b10 présente cd2
+prologue audit: choix natif cd2 #1 → cd3
+prologue audit: bloc natif cd2 choix=2
+prologue audit: session b10 présente cd2
+prologue audit: choix natif cd2 #2 → cd4
+prologue audit: bloc natif cd2 choix=3
+prologue audit: session b10 présente cd2
+prologue audit: choix natif cd2 #3 → c_menu
+prologue audit: bloc natif cd3 choix=0
+prologue audit: session b10 présente cd3
+prologue audit: bloc natif cd3 choix=1
+prologue audit: session b10 présente cd3
+prologue audit: choix natif cd3 #1 → cd4
+prologue audit: bloc natif cd3 choix=2
+prologue audit: session b10 présente cd3
+prologue audit: choix natif cd3 #2 → c_menu
+prologue audit: bloc natif cd4 choix=0
+prologue audit: session b10 présente cd4
+prologue audit: bloc natif cd4 choix=1
+prologue audit: session b10 présente cd4
+prologue audit: choix natif cd4 #1 → ca1
+prologue audit: bloc natif cd4 choix=2
+prologue audit: session b10 présente cd4
+prologue audit: choix natif cd4 #2 → cb1
+prologue audit: bloc natif cd4 choix=3
+prologue audit: session b10 présente cd4
+prologue audit: choix natif cd4 #3 → cc1
+prologue audit: bloc natif cd4 choix=4
+prologue audit: session b10 présente cd4
+prologue audit: choix natif cd4 #4 → cd1
+prologue audit: bloc natif cd4 choix=5
+prologue audit: session b10 présente cd4
+prologue audit: choix natif cd4 #5 → ce1
+prologue audit: bloc natif cd4 choix=6
+prologue audit: session b10 présente cd4
+prologue audit: choix natif cd4 #6 → cx1
+prologue audit: bloc natif ce1 choix=0
+prologue audit: session b10 présente ce1
+prologue audit: bloc natif ce1 choix=1
+prologue audit: session b10 présente ce1
+prologue audit: choix natif ce1 #1 → ce3
+prologue audit: bloc natif ce1 choix=2
+prologue audit: session b10 présente ce1
+prologue audit: choix natif ce1 #2 → c_menu
+prologue audit: bloc natif ce2 choix=0
+prologue audit: session b10 présente ce2
+prologue audit: bloc natif ce2 choix=1
+prologue audit: session b10 présente ce2
+prologue audit: choix natif ce2 #1 → ce3
+prologue audit: bloc natif ce2 choix=2
+prologue audit: session b10 présente ce2
+prologue audit: choix natif ce2 #2 → c_menu
+prologue audit: bloc natif ce3 choix=0
+prologue audit: session b10 présente ce3
+prologue audit: bloc natif ce3 choix=1
+prologue audit: session b10 présente ce3
+prologue audit: choix natif ce3 #1 → ca1
+prologue audit: bloc natif ce3 choix=2
+prologue audit: session b10 présente ce3
+prologue audit: choix natif ce3 #2 → cb1
+prologue audit: bloc natif ce3 choix=3
+prologue audit: session b10 présente ce3
+prologue audit: choix natif ce3 #3 → cc1
+prologue audit: bloc natif ce3 choix=4
+prologue audit: session b10 présente ce3
+prologue audit: choix natif ce3 #4 → cd1
+prologue audit: bloc natif ce3 choix=5
+prologue audit: session b10 présente ce3
+prologue audit: choix natif ce3 #5 → ce1
+prologue audit: bloc natif ce3 choix=6
+prologue audit: session b10 présente ce3
+prologue audit: choix natif ce3 #6 → cx1
+prologue audit: bloc natif cx1 choix=0
+prologue audit: session b10 présente cx1
+prologue audit: bloc natif cx2 choix=0
+prologue audit: session b10 présente cx2
+prologue audit: bloc natif cx3 choix=0
+prologue audit: session b10 présente cx3
+prologue audit: bloc natif cx4 choix=0
+prologue audit: session b10 présente cx4
+prologue audit: bloc natif e1 choix=0
+prologue audit: session b10 présente e1
+prologue audit: bloc natif e1 choix=1
+prologue audit: session b10 présente e1
+prologue audit: choix natif e1 #1 → e_127
+prologue audit: bloc natif e1 choix=2
+prologue audit: session b10 présente e1
+prologue audit: choix natif e1 #2 → e_129
+prologue audit: bloc natif e1 choix=3
+prologue audit: session b10 présente e1
+prologue audit: choix natif e1 #3 → e_131
+prologue audit: bloc natif e1 choix=4
+prologue audit: session b10 présente e1
+prologue audit: choix natif e1 #4 → e_133
+prologue audit: bloc natif e1 choix=5
+prologue audit: session b10 présente e1
+prologue audit: choix natif e1 #5 → e_135
+prologue audit: bloc natif e1 choix=6
+prologue audit: session b10 présente e1
+prologue audit: choix natif e1 #6 → ex1
+prologue audit: bloc natif e2 choix=0
+prologue audit: session b10 présente e2
+prologue audit: bloc natif e2 choix=1
+prologue audit: session b10 présente e2
+prologue audit: choix natif e2 #1 → e_127
+prologue audit: bloc natif e2 choix=2
+prologue audit: session b10 présente e2
+prologue audit: choix natif e2 #2 → e_129
+prologue audit: bloc natif e2 choix=3
+prologue audit: session b10 présente e2
+prologue audit: choix natif e2 #3 → e_131
+prologue audit: bloc natif e2 choix=4
+prologue audit: session b10 présente e2
+prologue audit: choix natif e2 #4 → e_133
+prologue audit: bloc natif e2 choix=5
+prologue audit: session b10 présente e2
+prologue audit: choix natif e2 #5 → e_135
+prologue audit: bloc natif e2 choix=6
+prologue audit: session b10 présente e2
+prologue audit: choix natif e2 #6 → ex1
+prologue audit: bloc natif e_127 choix=0
+prologue audit: session b10 présente e_127
+prologue audit: bloc natif e_127 choix=1
+prologue audit: session b10 présente e_127
+prologue audit: choix natif e_127 #1 → e_127
+prologue audit: bloc natif e_127 choix=2
+prologue audit: session b10 présente e_127
+prologue audit: choix natif e_127 #2 → e_129
+prologue audit: bloc natif e_127 choix=3
+prologue audit: session b10 présente e_127
+prologue audit: choix natif e_127 #3 → e_131
+prologue audit: bloc natif e_127 choix=4
+prologue audit: session b10 présente e_127
+prologue audit: choix natif e_127 #4 → e_133
+prologue audit: bloc natif e_127 choix=5
+prologue audit: session b10 présente e_127
+prologue audit: choix natif e_127 #5 → e_135
+prologue audit: bloc natif e_127 choix=6
+prologue audit: session b10 présente e_127
+prologue audit: choix natif e_127 #6 → ex1
+prologue audit: bloc natif e_129 choix=0
+prologue audit: session b10 présente e_129
+prologue audit: bloc natif e_129 choix=1
+prologue audit: session b10 présente e_129
+prologue audit: choix natif e_129 #1 → e_127
+prologue audit: bloc natif e_129 choix=2
+prologue audit: session b10 présente e_129
+prologue audit: choix natif e_129 #2 → e_129
+prologue audit: bloc natif e_129 choix=3
+prologue audit: session b10 présente e_129
+prologue audit: choix natif e_129 #3 → e_131
+prologue audit: bloc natif e_129 choix=4
+prologue audit: session b10 présente e_129
+prologue audit: choix natif e_129 #4 → e_133
+prologue audit: bloc natif e_129 choix=5
+prologue audit: session b10 présente e_129
+prologue audit: choix natif e_129 #5 → e_135
+prologue audit: bloc natif e_129 choix=6
+prologue audit: session b10 présente e_129
+prologue audit: choix natif e_129 #6 → ex1
+prologue audit: bloc natif e_131 choix=0
+prologue audit: session b10 présente e_131
+prologue audit: bloc natif e_131 choix=1
+prologue audit: session b10 présente e_131
+prologue audit: choix natif e_131 #1 → e_127
+prologue audit: bloc natif e_131 choix=2
+prologue audit: session b10 présente e_131
+prologue audit: choix natif e_131 #2 → e_129
+prologue audit: bloc natif e_131 choix=3
+prologue audit: session b10 présente e_131
+prologue audit: choix natif e_131 #3 → e_131
+prologue audit: bloc natif e_131 choix=4
+prologue audit: session b10 présente e_131
+prologue audit: choix natif e_131 #4 → e_133
+prologue audit: bloc natif e_131 choix=5
+prologue audit: session b10 présente e_131
+prologue audit: choix natif e_131 #5 → e_135
+prologue audit: bloc natif e_131 choix=6
+prologue audit: session b10 présente e_131
+prologue audit: choix natif e_131 #6 → ex1
+prologue audit: bloc natif e_133 choix=0
+prologue audit: session b10 présente e_133
+prologue audit: bloc natif e_133 choix=1
+prologue audit: session b10 présente e_133
+prologue audit: choix natif e_133 #1 → e_127
+prologue audit: bloc natif e_133 choix=2
+prologue audit: session b10 présente e_133
+prologue audit: choix natif e_133 #2 → e_129
+prologue audit: bloc natif e_133 choix=3
+prologue audit: session b10 présente e_133
+prologue audit: choix natif e_133 #3 → e_131
+prologue audit: bloc natif e_133 choix=4
+prologue audit: session b10 présente e_133
+prologue audit: choix natif e_133 #4 → e_133
+prologue audit: bloc natif e_133 choix=5
+prologue audit: session b10 présente e_133
+prologue audit: choix natif e_133 #5 → e_135
+prologue audit: bloc natif e_133 choix=6
+prologue audit: session b10 présente e_133
+prologue audit: choix natif e_133 #6 → ex1
+prologue audit: bloc natif e_135 choix=0
+prologue audit: session b10 présente e_135
+prologue audit: bloc natif e_135 choix=1
+prologue audit: session b10 présente e_135
+prologue audit: choix natif e_135 #1 → e_127
+prologue audit: bloc natif e_135 choix=2
+prologue audit: session b10 présente e_135
+prologue audit: choix natif e_135 #2 → e_129
+prologue audit: bloc natif e_135 choix=3
+prologue audit: session b10 présente e_135
+prologue audit: choix natif e_135 #3 → e_131
+prologue audit: bloc natif e_135 choix=4
+prologue audit: session b10 présente e_135
+prologue audit: choix natif e_135 #4 → e_133
+prologue audit: bloc natif e_135 choix=5
+prologue audit: session b10 présente e_135
+prologue audit: choix natif e_135 #5 → e_135
+prologue audit: bloc natif e_135 choix=6
+prologue audit: session b10 présente e_135
+prologue audit: choix natif e_135 #6 → ex1
+prologue audit: bloc natif e_menu choix=0
+prologue audit: session b10 présente e_menu
+prologue audit: bloc natif e_menu choix=1
+prologue audit: session b10 présente e_menu
+prologue audit: choix natif e_menu #1 → e_127
+prologue audit: bloc natif e_menu choix=2
+prologue audit: session b10 présente e_menu
+prologue audit: choix natif e_menu #2 → e_129
+prologue audit: bloc natif e_menu choix=3
+prologue audit: session b10 présente e_menu
+prologue audit: choix natif e_menu #3 → e_131
+prologue audit: bloc natif e_menu choix=4
+prologue audit: session b10 présente e_menu
+prologue audit: choix natif e_menu #4 → e_133
+prologue audit: bloc natif e_menu choix=5
+prologue audit: session b10 présente e_menu
+prologue audit: choix natif e_menu #5 → e_135
+prologue audit: bloc natif e_menu choix=6
+prologue audit: session b10 présente e_menu
+prologue audit: choix natif e_menu #6 → ex1
+prologue audit: bloc natif ex1 choix=0
+prologue audit: session b10 présente ex1
+prologue audit: bloc natif ex1 choix=1
+prologue audit: session b10 présente ex1
+prologue audit: choix natif ex1 #1 → ex4
+prologue audit: bloc natif ex2 choix=0
+prologue audit: session b10 présente ex2
+prologue audit: bloc natif ex2 choix=1
+prologue audit: session b10 présente ex2
+prologue audit: choix natif ex2 #1 → ex4
+prologue audit: bloc natif ex3 choix=0
+prologue audit: session b10 présente ex3
+prologue audit: bloc natif ex3 choix=1
+prologue audit: session b10 présente ex3
+prologue audit: choix natif ex3 #1 → ex4
+prologue audit: bloc natif ex4 choix=0
+prologue audit: session b10 présente ex4
+prologue audit: bloc natif f_altheon choix=0
+prologue audit: session b10 présente f_altheon
+prologue audit: bloc natif f_anselme choix=0
+prologue audit: session b10 présente f_anselme
+prologue audit: bloc natif f_gautier choix=0
+prologue audit: session b10 présente f_gautier
+prologue audit: bloc natif f_geraud choix=0
+prologue audit: session b10 présente f_geraud
+prologue audit: bloc natif f_hugues choix=0
+prologue audit: session b10 présente f_hugues
+prologue audit: bloc natif f_perrin choix=0
+prologue audit: session b10 présente f_perrin
+prologue audit: bloc natif ga_12 choix=0
+prologue audit: session b10 présente ga_12
+prologue audit: bloc natif ga_12 choix=1
+prologue audit: session b10 présente ga_12
+prologue audit: choix natif ga_12 #1 → ga_12
+prologue audit: bloc natif ga_12 choix=2
+prologue audit: session b10 présente ga_12
+prologue audit: choix natif ga_12 #2 → ga_14
+prologue audit: bloc natif ga_12 choix=3
+prologue audit: session b10 présente ga_12
+prologue audit: choix natif ga_12 #3 → ga_16
+prologue audit: bloc natif ga_12 choix=4
+prologue audit: session b10 présente ga_12
+prologue audit: choix natif ga_12 #4 → ga_18
+prologue audit: bloc natif ga_12 choix=5
+prologue audit: session b10 présente ga_12
+prologue audit: choix natif ga_12 #5 → ga_20
+prologue audit: bloc natif ga_14 choix=0
+prologue audit: session b10 présente ga_14
+prologue audit: bloc natif ga_14 choix=1
+prologue audit: session b10 présente ga_14
+prologue audit: choix natif ga_14 #1 → ga_12
+prologue audit: bloc natif ga_14 choix=2
+prologue audit: session b10 présente ga_14
+prologue audit: choix natif ga_14 #2 → ga_14
+prologue audit: bloc natif ga_14 choix=3
+prologue audit: session b10 présente ga_14
+prologue audit: choix natif ga_14 #3 → ga_16
+prologue audit: bloc natif ga_14 choix=4
+prologue audit: session b10 présente ga_14
+prologue audit: choix natif ga_14 #4 → ga_18
+prologue audit: bloc natif ga_14 choix=5
+prologue audit: session b10 présente ga_14
+prologue audit: choix natif ga_14 #5 → ga_20
+prologue audit: bloc natif ga_16 choix=0
+prologue audit: session b10 présente ga_16
+prologue audit: bloc natif ga_16 choix=1
+prologue audit: session b10 présente ga_16
+prologue audit: choix natif ga_16 #1 → ga_12
+prologue audit: bloc natif ga_16 choix=2
+prologue audit: session b10 présente ga_16
+prologue audit: choix natif ga_16 #2 → ga_14
+prologue audit: bloc natif ga_16 choix=3
+prologue audit: session b10 présente ga_16
+prologue audit: choix natif ga_16 #3 → ga_16
+prologue audit: bloc natif ga_16 choix=4
+prologue audit: session b10 présente ga_16
+prologue audit: choix natif ga_16 #4 → ga_18
+prologue audit: bloc natif ga_16 choix=5
+prologue audit: session b10 présente ga_16
+prologue audit: choix natif ga_16 #5 → ga_20
+prologue audit: bloc natif ga_18 choix=0
+prologue audit: session b10 présente ga_18
+prologue audit: bloc natif ga_18 choix=1
+prologue audit: session b10 présente ga_18
+prologue audit: choix natif ga_18 #1 → ga_12
+prologue audit: bloc natif ga_18 choix=2
+prologue audit: session b10 présente ga_18
+prologue audit: choix natif ga_18 #2 → ga_14
+prologue audit: bloc natif ga_18 choix=3
+prologue audit: session b10 présente ga_18
+prologue audit: choix natif ga_18 #3 → ga_16
+prologue audit: bloc natif ga_18 choix=4
+prologue audit: session b10 présente ga_18
+prologue audit: choix natif ga_18 #4 → ga_18
+prologue audit: bloc natif ga_18 choix=5
+prologue audit: session b10 présente ga_18
+prologue audit: choix natif ga_18 #5 → ga_20
+prologue audit: bloc natif ga_20 choix=0
+prologue audit: session b10 présente ga_20
+prologue audit: bloc natif ga_menu choix=0
+prologue audit: session b10 présente ga_menu
+prologue audit: bloc natif ga_menu choix=1
+prologue audit: session b10 présente ga_menu
+prologue audit: choix natif ga_menu #1 → ga_12
+prologue audit: bloc natif ga_menu choix=2
+prologue audit: session b10 présente ga_menu
+prologue audit: choix natif ga_menu #2 → ga_14
+prologue audit: bloc natif ga_menu choix=3
+prologue audit: session b10 présente ga_menu
+prologue audit: choix natif ga_menu #3 → ga_16
+prologue audit: bloc natif ga_menu choix=4
+prologue audit: session b10 présente ga_menu
+prologue audit: choix natif ga_menu #4 → ga_18
+prologue audit: bloc natif ga_menu choix=5
+prologue audit: session b10 présente ga_menu
+prologue audit: choix natif ga_menu #5 → ga_20
+prologue audit: bloc natif gautier_23 choix=0
+prologue audit: session b10 présente gautier_23
+prologue audit: bloc natif gautier_23 choix=1
+prologue audit: session b10 présente gautier_23
+prologue audit: choix natif gautier_23 #1 → gautier_23
+prologue audit: bloc natif gautier_23 choix=2
+prologue audit: session b10 présente gautier_23
+prologue audit: choix natif gautier_23 #2 → gautier_25
+prologue audit: bloc natif gautier_23 choix=3
+prologue audit: session b10 présente gautier_23
+prologue audit: choix natif gautier_23 #3 → gautier_27
+prologue audit: bloc natif gautier_23 choix=4
+prologue audit: session b10 présente gautier_23
+prologue audit: choix natif gautier_23 #4 → gautier_29
+prologue audit: bloc natif gautier_23 choix=5
+prologue audit: session b10 présente gautier_23
+prologue audit: choix natif gautier_23 #5 → gautier_31
+prologue audit: bloc natif gautier_23 choix=6
+prologue audit: session b10 présente gautier_23
+prologue audit: choix natif gautier_23 #6 → gautier_33
+prologue audit: bloc natif gautier_25 choix=0
+prologue audit: session b10 présente gautier_25
+prologue audit: bloc natif gautier_25 choix=1
+prologue audit: session b10 présente gautier_25
+prologue audit: choix natif gautier_25 #1 → gautier_23
+prologue audit: bloc natif gautier_25 choix=2
+prologue audit: session b10 présente gautier_25
+prologue audit: choix natif gautier_25 #2 → gautier_25
+prologue audit: bloc natif gautier_25 choix=3
+prologue audit: session b10 présente gautier_25
+prologue audit: choix natif gautier_25 #3 → gautier_27
+prologue audit: bloc natif gautier_25 choix=4
+prologue audit: session b10 présente gautier_25
+prologue audit: choix natif gautier_25 #4 → gautier_29
+prologue audit: bloc natif gautier_25 choix=5
+prologue audit: session b10 présente gautier_25
+prologue audit: choix natif gautier_25 #5 → gautier_31
+prologue audit: bloc natif gautier_25 choix=6
+prologue audit: session b10 présente gautier_25
+prologue audit: choix natif gautier_25 #6 → gautier_33
+prologue audit: bloc natif gautier_27 choix=0
+prologue audit: session b10 présente gautier_27
+prologue audit: bloc natif gautier_27 choix=1
+prologue audit: session b10 présente gautier_27
+prologue audit: choix natif gautier_27 #1 → gautier_23
+prologue audit: bloc natif gautier_27 choix=2
+prologue audit: session b10 présente gautier_27
+prologue audit: choix natif gautier_27 #2 → gautier_25
+prologue audit: bloc natif gautier_27 choix=3
+prologue audit: session b10 présente gautier_27
+prologue audit: choix natif gautier_27 #3 → gautier_27
+prologue audit: bloc natif gautier_27 choix=4
+prologue audit: session b10 présente gautier_27
+prologue audit: choix natif gautier_27 #4 → gautier_29
+prologue audit: bloc natif gautier_27 choix=5
+prologue audit: session b10 présente gautier_27
+prologue audit: choix natif gautier_27 #5 → gautier_31
+prologue audit: bloc natif gautier_27 choix=6
+prologue audit: session b10 présente gautier_27
+prologue audit: choix natif gautier_27 #6 → gautier_33
+prologue audit: bloc natif gautier_29 choix=0
+prologue audit: session b10 présente gautier_29
+prologue audit: bloc natif gautier_29 choix=1
+prologue audit: session b10 présente gautier_29
+prologue audit: choix natif gautier_29 #1 → gautier_23
+prologue audit: bloc natif gautier_29 choix=2
+prologue audit: session b10 présente gautier_29
+prologue audit: choix natif gautier_29 #2 → gautier_25
+prologue audit: bloc natif gautier_29 choix=3
+prologue audit: session b10 présente gautier_29
+prologue audit: choix natif gautier_29 #3 → gautier_27
+prologue audit: bloc natif gautier_29 choix=4
+prologue audit: session b10 présente gautier_29
+prologue audit: choix natif gautier_29 #4 → gautier_29
+prologue audit: bloc natif gautier_29 choix=5
+prologue audit: session b10 présente gautier_29
+prologue audit: choix natif gautier_29 #5 → gautier_31
+prologue audit: bloc natif gautier_29 choix=6
+prologue audit: session b10 présente gautier_29
+prologue audit: choix natif gautier_29 #6 → gautier_33
+prologue audit: bloc natif gautier_31 choix=0
+prologue audit: session b10 présente gautier_31
+prologue audit: bloc natif gautier_31 choix=1
+prologue audit: session b10 présente gautier_31
+prologue audit: choix natif gautier_31 #1 → gautier_23
+prologue audit: bloc natif gautier_31 choix=2
+prologue audit: session b10 présente gautier_31
+prologue audit: choix natif gautier_31 #2 → gautier_25
+prologue audit: bloc natif gautier_31 choix=3
+prologue audit: session b10 présente gautier_31
+prologue audit: choix natif gautier_31 #3 → gautier_27
+prologue audit: bloc natif gautier_31 choix=4
+prologue audit: session b10 présente gautier_31
+prologue audit: choix natif gautier_31 #4 → gautier_29
+prologue audit: bloc natif gautier_31 choix=5
+prologue audit: session b10 présente gautier_31
+prologue audit: choix natif gautier_31 #5 → gautier_31
+prologue audit: bloc natif gautier_31 choix=6
+prologue audit: session b10 présente gautier_31
+prologue audit: choix natif gautier_31 #6 → gautier_33
+prologue audit: bloc natif gautier_33 choix=0
+prologue audit: session b10 présente gautier_33
+prologue audit: bloc natif gautier_menu choix=0
+prologue audit: session b10 présente gautier_menu
+prologue audit: bloc natif gautier_menu choix=1
+prologue audit: session b10 présente gautier_menu
+prologue audit: choix natif gautier_menu #1 → gautier_23
+prologue audit: bloc natif gautier_menu choix=2
+prologue audit: session b10 présente gautier_menu
+prologue audit: choix natif gautier_menu #2 → gautier_25
+prologue audit: bloc natif gautier_menu choix=3
+prologue audit: session b10 présente gautier_menu
+prologue audit: choix natif gautier_menu #3 → gautier_27
+prologue audit: bloc natif gautier_menu choix=4
+prologue audit: session b10 présente gautier_menu
+prologue audit: choix natif gautier_menu #4 → gautier_29
+prologue audit: bloc natif gautier_menu choix=5
+prologue audit: session b10 présente gautier_menu
+prologue audit: choix natif gautier_menu #5 → gautier_31
+prologue audit: bloc natif gautier_menu choix=6
+prologue audit: session b10 présente gautier_menu
+prologue audit: choix natif gautier_menu #6 → gautier_33
+prologue audit: bloc natif hugues_36 choix=0
+prologue audit: session b10 présente hugues_36
+prologue audit: bloc natif hugues_36 choix=1
+prologue audit: session b10 présente hugues_36
+prologue audit: choix natif hugues_36 #1 → hugues_36
+prologue audit: bloc natif hugues_36 choix=2
+prologue audit: session b10 présente hugues_36
+prologue audit: choix natif hugues_36 #2 → hugues_38
+prologue audit: bloc natif hugues_36 choix=3
+prologue audit: session b10 présente hugues_36
+prologue audit: choix natif hugues_36 #3 → hugues_40
+prologue audit: bloc natif hugues_36 choix=4
+prologue audit: session b10 présente hugues_36
+prologue audit: choix natif hugues_36 #4 → hugues_42
+prologue audit: bloc natif hugues_36 choix=5
+prologue audit: session b10 présente hugues_36
+prologue audit: choix natif hugues_36 #5 → hugues_44
+prologue audit: bloc natif hugues_36 choix=7
+prologue audit: session b10 présente hugues_36
+prologue audit: choix natif hugues_36 #7 → hugues_46
+prologue audit: bloc natif hugues_38 choix=0
+prologue audit: session b10 présente hugues_38
+prologue audit: bloc natif hugues_38 choix=1
+prologue audit: session b10 présente hugues_38
+prologue audit: choix natif hugues_38 #1 → hugues_36
+prologue audit: bloc natif hugues_38 choix=2
+prologue audit: session b10 présente hugues_38
+prologue audit: choix natif hugues_38 #2 → hugues_38
+prologue audit: bloc natif hugues_38 choix=3
+prologue audit: session b10 présente hugues_38
+prologue audit: choix natif hugues_38 #3 → hugues_40
+prologue audit: bloc natif hugues_38 choix=4
+prologue audit: session b10 présente hugues_38
+prologue audit: choix natif hugues_38 #4 → hugues_42
+prologue audit: bloc natif hugues_38 choix=5
+prologue audit: session b10 présente hugues_38
+prologue audit: choix natif hugues_38 #5 → hugues_44
+prologue audit: bloc natif hugues_38 choix=7
+prologue audit: session b10 présente hugues_38
+prologue audit: choix natif hugues_38 #7 → hugues_46
+prologue audit: bloc natif hugues_40 choix=0
+prologue audit: session b10 présente hugues_40
+prologue audit: bloc natif hugues_40 choix=1
+prologue audit: session b10 présente hugues_40
+prologue audit: choix natif hugues_40 #1 → hugues_36
+prologue audit: bloc natif hugues_40 choix=2
+prologue audit: session b10 présente hugues_40
+prologue audit: choix natif hugues_40 #2 → hugues_38
+prologue audit: bloc natif hugues_40 choix=3
+prologue audit: session b10 présente hugues_40
+prologue audit: choix natif hugues_40 #3 → hugues_40
+prologue audit: bloc natif hugues_40 choix=4
+prologue audit: session b10 présente hugues_40
+prologue audit: choix natif hugues_40 #4 → hugues_42
+prologue audit: bloc natif hugues_40 choix=5
+prologue audit: session b10 présente hugues_40
+prologue audit: choix natif hugues_40 #5 → hugues_44
+prologue audit: bloc natif hugues_40 choix=7
+prologue audit: session b10 présente hugues_40
+prologue audit: choix natif hugues_40 #7 → hugues_46
+prologue audit: bloc natif hugues_42 choix=0
+prologue audit: session b10 présente hugues_42
+prologue audit: bloc natif hugues_42 choix=1
+prologue audit: session b10 présente hugues_42
+prologue audit: choix natif hugues_42 #1 → hugues_36
+prologue audit: bloc natif hugues_42 choix=2
+prologue audit: session b10 présente hugues_42
+prologue audit: choix natif hugues_42 #2 → hugues_38
+prologue audit: bloc natif hugues_42 choix=3
+prologue audit: session b10 présente hugues_42
+prologue audit: choix natif hugues_42 #3 → hugues_40
+prologue audit: bloc natif hugues_42 choix=4
+prologue audit: session b10 présente hugues_42
+prologue audit: choix natif hugues_42 #4 → hugues_42
+prologue audit: bloc natif hugues_42 choix=5
+prologue audit: session b10 présente hugues_42
+prologue audit: choix natif hugues_42 #5 → hugues_44
+prologue audit: bloc natif hugues_42 choix=7
+prologue audit: session b10 présente hugues_42
+prologue audit: choix natif hugues_42 #7 → hugues_46
+prologue audit: bloc natif hugues_44 choix=0
+prologue audit: session b10 présente hugues_44
+prologue audit: bloc natif hugues_44 choix=1
+prologue audit: session b10 présente hugues_44
+prologue audit: choix natif hugues_44 #1 → hugues_36
+prologue audit: bloc natif hugues_44 choix=2
+prologue audit: session b10 présente hugues_44
+prologue audit: choix natif hugues_44 #2 → hugues_38
+prologue audit: bloc natif hugues_44 choix=3
+prologue audit: session b10 présente hugues_44
+prologue audit: choix natif hugues_44 #3 → hugues_40
+prologue audit: bloc natif hugues_44 choix=4
+prologue audit: session b10 présente hugues_44
+prologue audit: choix natif hugues_44 #4 → hugues_42
+prologue audit: bloc natif hugues_44 choix=5
+prologue audit: session b10 présente hugues_44
+prologue audit: choix natif hugues_44 #5 → hugues_44
+prologue audit: bloc natif hugues_44 choix=7
+prologue audit: session b10 présente hugues_44
+prologue audit: choix natif hugues_44 #7 → hugues_46
+prologue audit: bloc natif hugues_46 choix=0
+prologue audit: session b10 présente hugues_46
+prologue audit: bloc natif hugues_menu choix=0
+prologue audit: session b10 présente hugues_menu
+prologue audit: bloc natif hugues_menu choix=1
+prologue audit: session b10 présente hugues_menu
+prologue audit: choix natif hugues_menu #1 → hugues_36
+prologue audit: bloc natif hugues_menu choix=2
+prologue audit: session b10 présente hugues_menu
+prologue audit: choix natif hugues_menu #2 → hugues_38
+prologue audit: bloc natif hugues_menu choix=3
+prologue audit: session b10 présente hugues_menu
+prologue audit: choix natif hugues_menu #3 → hugues_40
+prologue audit: bloc natif hugues_menu choix=4
+prologue audit: session b10 présente hugues_menu
+prologue audit: choix natif hugues_menu #4 → hugues_42
+prologue audit: bloc natif hugues_menu choix=5
+prologue audit: session b10 présente hugues_menu
+prologue audit: choix natif hugues_menu #5 → hugues_44
+prologue audit: bloc natif hugues_menu choix=7
+prologue audit: session b10 présente hugues_menu
+prologue audit: choix natif hugues_menu #7 → hugues_46
+prologue audit: bloc natif perrin_62 choix=0
+prologue audit: session b10 présente perrin_62
+prologue audit: bloc natif perrin_62 choix=1
+prologue audit: session b10 présente perrin_62
+prologue audit: choix natif perrin_62 #1 → perrin_62
+prologue audit: bloc natif perrin_62 choix=2
+prologue audit: session b10 présente perrin_62
+prologue audit: choix natif perrin_62 #2 → perrin_64
+prologue audit: bloc natif perrin_62 choix=3
+prologue audit: session b10 présente perrin_62
+prologue audit: choix natif perrin_62 #3 → perrin_66
+prologue audit: bloc natif perrin_62 choix=4
+prologue audit: session b10 présente perrin_62
+prologue audit: choix natif perrin_62 #4 → perrin_68
+prologue audit: bloc natif perrin_62 choix=5
+prologue audit: session b10 présente perrin_62
+prologue audit: choix natif perrin_62 #5 → perrin_70
+prologue audit: bloc natif perrin_62 choix=6
+prologue audit: session b10 présente perrin_62
+prologue audit: choix natif perrin_62 #6 → perrin_72
+prologue audit: bloc natif perrin_64 choix=0
+prologue audit: session b10 présente perrin_64
+prologue audit: bloc natif perrin_64 choix=1
+prologue audit: session b10 présente perrin_64
+prologue audit: choix natif perrin_64 #1 → perrin_62
+prologue audit: bloc natif perrin_64 choix=2
+prologue audit: session b10 présente perrin_64
+prologue audit: choix natif perrin_64 #2 → perrin_64
+prologue audit: bloc natif perrin_64 choix=3
+prologue audit: session b10 présente perrin_64
+prologue audit: choix natif perrin_64 #3 → perrin_66
+prologue audit: bloc natif perrin_64 choix=4
+prologue audit: session b10 présente perrin_64
+prologue audit: choix natif perrin_64 #4 → perrin_68
+prologue audit: bloc natif perrin_64 choix=5
+prologue audit: session b10 présente perrin_64
+prologue audit: choix natif perrin_64 #5 → perrin_70
+prologue audit: bloc natif perrin_64 choix=6
+prologue audit: session b10 présente perrin_64
+prologue audit: choix natif perrin_64 #6 → perrin_72
+prologue audit: bloc natif perrin_66 choix=0
+prologue audit: session b10 présente perrin_66
+prologue audit: bloc natif perrin_66 choix=1
+prologue audit: session b10 présente perrin_66
+prologue audit: choix natif perrin_66 #1 → perrin_62
+prologue audit: bloc natif perrin_66 choix=2
+prologue audit: session b10 présente perrin_66
+prologue audit: choix natif perrin_66 #2 → perrin_64
+prologue audit: bloc natif perrin_66 choix=3
+prologue audit: session b10 présente perrin_66
+prologue audit: choix natif perrin_66 #3 → perrin_66
+prologue audit: bloc natif perrin_66 choix=4
+prologue audit: session b10 présente perrin_66
+prologue audit: choix natif perrin_66 #4 → perrin_68
+prologue audit: bloc natif perrin_66 choix=5
+prologue audit: session b10 présente perrin_66
+prologue audit: choix natif perrin_66 #5 → perrin_70
+prologue audit: bloc natif perrin_66 choix=6
+prologue audit: session b10 présente perrin_66
+prologue audit: choix natif perrin_66 #6 → perrin_72
+prologue audit: bloc natif perrin_68 choix=0
+prologue audit: session b10 présente perrin_68
+prologue audit: bloc natif perrin_68 choix=1
+prologue audit: session b10 présente perrin_68
+prologue audit: choix natif perrin_68 #1 → perrin_62
+prologue audit: bloc natif perrin_68 choix=2
+prologue audit: session b10 présente perrin_68
+prologue audit: choix natif perrin_68 #2 → perrin_64
+prologue audit: bloc natif perrin_68 choix=3
+prologue audit: session b10 présente perrin_68
+prologue audit: choix natif perrin_68 #3 → perrin_66
+prologue audit: bloc natif perrin_68 choix=4
+prologue audit: session b10 présente perrin_68
+prologue audit: choix natif perrin_68 #4 → perrin_68
+prologue audit: bloc natif perrin_68 choix=5
+prologue audit: session b10 présente perrin_68
+prologue audit: choix natif perrin_68 #5 → perrin_70
+prologue audit: bloc natif perrin_68 choix=6
+prologue audit: session b10 présente perrin_68
+prologue audit: choix natif perrin_68 #6 → perrin_72
+prologue audit: bloc natif perrin_70 choix=0
+prologue audit: session b10 présente perrin_70
+prologue audit: bloc natif perrin_70 choix=1
+prologue audit: session b10 présente perrin_70
+prologue audit: choix natif perrin_70 #1 → perrin_62
+prologue audit: bloc natif perrin_70 choix=2
+prologue audit: session b10 présente perrin_70
+prologue audit: choix natif perrin_70 #2 → perrin_64
+prologue audit: bloc natif perrin_70 choix=3
+prologue audit: session b10 présente perrin_70
+prologue audit: choix natif perrin_70 #3 → perrin_66
+prologue audit: bloc natif perrin_70 choix=4
+prologue audit: session b10 présente perrin_70
+prologue audit: choix natif perrin_70 #4 → perrin_68
+prologue audit: bloc natif perrin_70 choix=5
+prologue audit: session b10 présente perrin_70
+prologue audit: choix natif perrin_70 #5 → perrin_70
+prologue audit: bloc natif perrin_70 choix=6
+prologue audit: session b10 présente perrin_70
+prologue audit: choix natif perrin_70 #6 → perrin_72
+prologue audit: bloc natif perrin_72 choix=0
+prologue audit: session b10 présente perrin_72
+prologue audit: bloc natif perrin_menu choix=0
+prologue audit: session b10 présente perrin_menu
+prologue audit: bloc natif perrin_menu choix=1
+prologue audit: session b10 présente perrin_menu
+prologue audit: choix natif perrin_menu #1 → perrin_62
+prologue audit: bloc natif perrin_menu choix=2
+prologue audit: session b10 présente perrin_menu
+prologue audit: choix natif perrin_menu #2 → perrin_64
+prologue audit: bloc natif perrin_menu choix=3
+prologue audit: session b10 présente perrin_menu
+prologue audit: choix natif perrin_menu #3 → perrin_66
+prologue audit: bloc natif perrin_menu choix=4
+prologue audit: session b10 présente perrin_menu
+prologue audit: choix natif perrin_menu #4 → perrin_68
+prologue audit: bloc natif perrin_menu choix=5
+prologue audit: session b10 présente perrin_menu
+prologue audit: choix natif perrin_menu #5 → perrin_70
+prologue audit: bloc natif perrin_menu choix=6
+prologue audit: session b10 présente perrin_menu
+prologue audit: choix natif perrin_menu #6 → perrin_72
+prologue audit: jeton périmé sans progression
+prologue audit: Géraud ne déclenche pas sans déplacement après le délai de spawn
+prologue audit: Géraud interpelle après déplacement et approche à trois blocs
+prologue audit: deux joueurs ont deux Perrin distincts
+prologue audit: Perrin marche réellement de A à B puis revient à A
+prologue audit: Perrin marche aussi pour le second joueur
+prologue audit: Perrin personnel invisible à l’autre joueur
+prologue audit: vitesse nulle du Perrin public conservée
+prologue audit: Perrin public reste au poste
+prologue audit: nettoyage d’une ambiance conserve l’acteur de l’autre joueur
+prologue audit: fin PQ01 ouvre PQ02 disponible (état canonique 30) : 100/30
+prologue audit: récompense historique Couronne +2 conservée
+prologue audit: rejeu de fin PQ01 ne double pas la réputation
+prologue audit: marqueur Aurèle disponible après PQ02
+prologue audit: marqueur Roch disponible après PQ03
+prologue audit: marqueur résidence disponible après PQ04
+prologue audit: résidence déjà inscrite ne propose pas une nouvelle inscription
+prologue audit: normalisation reconnaît les cinq quêtes terminées
+prologue audit: personnage Nexus inchangé après audit
+Frame counts={class_3222['PQ02_A'/27, l='ServerLevel[world]', x=33.50, y=64.00, z=18.50]=0, class_3222['PQ02_B'/28, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=0, class_3222['PQ02_Observer'/29, l='ServerLevel[world]', x=33.50, y=64.00, z=18.50]=0}
+Native Fabric 1.21.11 / EasyNPC 7.16, HF12 classes preserved except the two authorized Gautier timing classes; production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

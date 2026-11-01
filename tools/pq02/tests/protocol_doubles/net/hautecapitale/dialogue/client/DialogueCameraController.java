@@ -1,0 +1,1 @@
+package net.hautecapitale.dialogue.client;public final class DialogueCameraController implements net.hautecapitale.rpg.client.camera.CameraFocus.Provider {public DialogueCameraController(int id,net.hautecapitale.dialogue.session.CameraProfile profile){}}

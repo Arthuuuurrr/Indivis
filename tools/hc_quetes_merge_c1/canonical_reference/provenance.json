@@ -1,0 +1,14 @@
+{
+  "source_archive": "Indivis_Sequence_I_SI1b_2026-10-20.zip",
+  "original_migrator_sha256": "c6684934f1935dc0b6b70f4358f77fd90f60f92dc0f03e3610284a13f097a8d6",
+  "path_only_adaptation": "ROOT and NORM resolve local canonical_reference/registries; migration logic unchanged",
+  "copied_tables": [
+    "MATRICE_MIGRATION_66_QUETES.csv",
+    "ETATS_HISTORIQUES_66_ET_PARTAGES.csv"
+  ],
+  "mapping_fields": [
+    "models",
+    "auxiliary_mapping",
+    "quest_item_mapping"
+  ]
+}
