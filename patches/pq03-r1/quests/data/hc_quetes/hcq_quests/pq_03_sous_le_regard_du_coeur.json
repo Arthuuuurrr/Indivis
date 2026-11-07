@@ -1,0 +1,106 @@
+{
+  "id": "pq_03_sous_le_regard_du_coeur",
+  "title": "Sous le regard du Cœur",
+  "type": "MAIN",
+  "giver": "Aurèle Veyrane",
+  "zone": "Le Cœur",
+  "description": "Aurèle Veyrane, de la Garde du Cœur, vous propose les commerces du Cercle marchand ou un trajet direct jusqu’à l’ascenseur des Profondeurs. Les commerces sont facultatifs ; Aurèle rejoint son poste pendant votre visite.",
+  "can_abandon": false,
+  "prerequisites": [
+    "pq_02_registre_port"
+  ],
+  "rewards": [
+    {
+      "text": "Réputation de la Garde du Cœur : de −1 à +2 selon vos décisions"
+    },
+    {
+      "text": "175 points d’expérience"
+    },
+    {
+      "text": "Un bonus de compétences"
+    },
+    {
+      "text": "Une prime du Cœur (tirage aléatoire)"
+    }
+  ],
+  "source": {
+    "kind": "SCOREBOARD",
+    "active": {
+      "objective": "hcq_pq03",
+      "min": 30,
+      "max": 90
+    },
+    "turn_in": {
+      "objective": "hcq_pq03",
+      "min": 90,
+      "max": 90
+    },
+    "completed": {
+      "objective": "hcq_pq03",
+      "min": 100,
+      "max": 100
+    }
+  },
+  "objectives": [
+    {
+      "id": "suivre_cercle",
+      "type": "CUSTOM",
+      "text": "Découvrir le Cercle marchand avec Aurèle (facultatif), ou choisir le trajet direct",
+      "done": {
+        "objective": "hcq_pq03",
+        "min": 40,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "tag:hcm_pq3_aurele",
+        "label": "Aurèle Veyrane"
+      }
+    },
+    {
+      "id": "retrouver_ascenseur",
+      "type": "TALK_TO_NPC",
+      "text": "Convenir du départ vers les Profondeurs ; après les commerces, retrouver Aurèle au premier ascenseur",
+      "done": {
+        "objective": "hcq_pq03",
+        "min": 60,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "tag:hcm_pq3_aurele",
+        "label": "Aurèle Veyrane"
+      }
+    },
+    {
+      "id": "suivre_profondeurs",
+      "type": "CUSTOM",
+      "text": "Suivre Aurèle jusqu’à l’ascenseur des Profondeurs",
+      "done": {
+        "objective": "hcq_pq03",
+        "min": 90,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "tag:hcm_pq3_aurele",
+        "label": "Aurèle Veyrane"
+      }
+    },
+    {
+      "id": "reparler_aurele",
+      "type": "RETURN_TO_NPC",
+      "text": "Terminer la conversation avec Aurèle devant l’ascenseur des Profondeurs",
+      "done": {
+        "objective": "hcq_pq03",
+        "min": 100,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "tag:hcm_pq3_aurele",
+        "label": "Aurèle Veyrane"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1186 @@
+[
+  {
+    "archive": "core",
+    "path": "data/capitale/function/core/load.mcfunction",
+    "operation": "modified",
+    "before_sha256": "e826f9e36a2a960c1f8b1e2864f2c5d300d4f99dc4027dcf462359c482bc23fd",
+    "after_sha256": "58be5026562f36941020f89bcf57b97bbf63afd1a8a9be19a8655414cc4cee3d",
+    "reason": "Déclaration PQ03"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/core/tick.mcfunction",
+    "operation": "modified",
+    "before_sha256": "57c20ee31181b9d9d5150f64d237274e4fc400e9bcfa35fff2a9240fd1b1dfe1",
+    "after_sha256": "0a99ce4a5e082a89fe359fdb48133546f5bae27d7baf4917a0ba06fa3c598d8b",
+    "reason": "Retrait des deux appels du guide mondial Aurèle ; tous les autres appels conservés"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/npc/aurele/interact_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "6c908e2d85a2293fca92bd05e8edf445eee51a9a0e2165ff88a1b74f51fbb7bc",
+    "after_sha256": "68a228ab3778cb229890abc50b60efe45a53275c351e042a0a77057d81192635",
+    "reason": "Contexte exact de chaque joueur ; proximité bornée à trois blocs"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/npc/aurele/near_distance_npc.mcfunction",
+    "operation": "modified",
+    "before_sha256": "1bcf0dd0fa1dfee70c0f909d4102d08f4215f147e20f0b9ed8e1fccf47ccaff3",
+    "after_sha256": "6400775b03fda8ae4cfeaf6b9df64069e1796e7402a0b921faa02fbf1cfab87e",
+    "reason": "Contexte exact de chaque joueur ; proximité bornée à trois blocs"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/npc/aurele/near_distance_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "e1293c5672b637eed47566386ce221510a2ae31dd536f605aea86cc017dc08ef",
+    "after_sha256": "e1c5b838f9efafc84fc3621928c292fa44dd1e76aabac1c7731680ade77f9a23",
+    "reason": "Contexte exact de chaque joueur ; proximité bornée à trois blocs"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/npc/aurele/near_npc.mcfunction",
+    "operation": "modified",
+    "before_sha256": "24064463685883b92f5f5d94e1b6a75a2fa47fffc56fac899559ea04ad7279fc",
+    "after_sha256": "6400775b03fda8ae4cfeaf6b9df64069e1796e7402a0b921faa02fbf1cfab87e",
+    "reason": "Contexte exact de chaque joueur ; proximité bornée à trois blocs"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/npc/aurele/near_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "12447a24fd5d032511d7ac6aa78f8fb80b9dbc9e8349e5d6413d9812af9bb7f4",
+    "after_sha256": "6400775b03fda8ae4cfeaf6b9df64069e1796e7402a0b921faa02fbf1cfab87e",
+    "reason": "Contexte exact de chaque joueur ; proximité bornée à trois blocs"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/profiles/after_load_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "2c6b1df1ef8615d5311833f6aaf940b525c06a45f310c636866c41ca86d586eb",
+    "after_sha256": "6d19e0b0396a0bed1155588ccfed58e6e20fb3e01a1d5dd41f3745bbbbc636ed",
+    "reason": "Scène privée suspendue/restaurée pour le seul personnage, checkpoint périodique préservé"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/profiles/before_save_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "f9b956f22eb79ce63c991926afb3864745abd8482b33a6cbe8945aaa8521e2b7",
+    "after_sha256": "ebc40bd64342675fbfd340a097d229f0aa3cc1f8e47b59b6698841194f8d923a",
+    "reason": "Scène privée suspendue/restaurée pour le seul personnage, checkpoint périodique préservé"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/guidage/lost/second_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "24b052d307be35bde00f96186c693e725c82577695036b38a92b05df134d856b",
+    "after_sha256": "8c34e47f64ee24517c4928992f38d601e55cc73355e61a5ea0f9d8a62d66b06e",
+    "reason": "Surveillance Aurèle par personnage ; aucun nearest ni réinitialisation après éloignement"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/guidage/reset/aurele_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "28a2623a95c0cb5c9978d30a1762801b5da92faef46e869752f0987690d8e39d",
+    "after_sha256": "3501693dc6913d40cf08d5b3c32173c03615e980b2bdd68671eb39e7f338c079",
+    "reason": "Suspension privée sans téléportation ni retour forcé à un ancien état"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/accept_body_154_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "95d327cd4145115af2ab8ba2fbb7b7adb16ff8f1efc152eabbdb6c6ff4ff49f7",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/accept_commit_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "545b20b8fefef7e4ae2a4f667eeccbd5db37fce2d3ab78720e84e3f617bc4321",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/accept_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "ea9dff835209eee38661b08f445082a468471f2dc2deb9f1d265c7a63402f099",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/arrive_commerces_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "2c8679b47e6b2f477ae1de918b53cc8080c278259bcec07a5b3ae497ad175f76",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/arrive_profondeurs_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "b41ccec73a427f33d2f9623abe85d7cb436895ecc5323536395889fc220b08a9",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/complete_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "a1774b51db469d16452c7992730384031efdcff1c06c874d1205dfd885d7bff2",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/continue_visit_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "b0a1b013f0e8d125f4e5d966131e2e778e98b4336414de3a3fe0aa398d3e6f7a",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/decline_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "5eb1a7aab13eba59cc3916e5c238f1019f317f71cd4c02534ab382cab39e5404",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/explain_coeur_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "9918785da64339ed6084f528cd141cae538206d32f4dec6d472738fa350e2dea",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/interact_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "a6c8771ae1b3d1d22f0e8b6286f1517e0f86f3752b24f4aeb54721cb39df024b",
+    "after_sha256": "ada562cd0ecf439da38a845d5098ef64d4eee630a9324556e8a423c0b5452e15",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/lead_to_profondeurs_commit_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "1a733df29ee142e7d9aefa40a5ee1769790132b5e293010d04357e9e7b51780e",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/lead_to_profondeurs_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "566bfed57a216cea50fa8fb80b7e90332c6461441824ab4dd9dc78cabe05736b",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/near_intro_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "945eb979030dabe2311d675a27979f378f3398c254cf699f5a6298a46caf7028",
+    "after_sha256": "410674e70a2de89ca6c63a0c7eed817d9bb4f1adcb3d2d19cbdfe2d7ebd34a51",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/near_offer_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "2a843da926e9b832c9ce8aaf05b46d94b1bdcfb955978bbf4d4865f09b72624f",
+    "after_sha256": "410674e70a2de89ca6c63a0c7eed817d9bb4f1adcb3d2d19cbdfe2d7ebd34a51",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/offer_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "3cd1df01fdf1932d6ac05155e7a3ca130eb692c3ed159c4f5a7575b46edae2a1",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/open_choices_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "d6f4de1797eb89c219f8c9a50a6dfb03f0b28c6760e4006483091258a78e4846",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/open_commerce_choices_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "41bdbbb0711450b02daa3af0556be127dfb85f04bd4a90be78bd3e72753a61e1",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/postquest_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "7f51360fc2698e47ce24ce13a4cadd35528eb3a25b9e340a99844658a4c01314",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/reoffer_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "2fb6b1fcd62c065c898a5926e0fbbe1111d7e4637423dfb265b5016a26343df2",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/return_to_a_complete_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "aa26073b146a08dfcccacf5326b96f9e163a53d023c6b4e2f0ed4c4a9d61e160",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/show_choices_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "e11a838fc9025045c6774279a25bf1c688d33ba38d666bf70e4b2c20f224fa82",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/aurele/show_commerce_choices_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "471daab2e7659f8a32d8d5aba72bab8ff7fa0057952e6788035c26cbb376a8c5",
+    "after_sha256": "50452cf9a9c576411c0d443148975359710afdbadfadf1975c2ada38e8ae8825",
+    "reason": "Entrée historique conservée ; scène privée du personnage actif"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/failsafe_to_a.mcfunction",
+    "operation": "modified",
+    "before_sha256": "c2f6c885fe6f9a0505393db6728b9f71c92f78b242d88bc8f100a6328dfa1177",
+    "after_sha256": "96f75c0a027b50269485ad826f6ca38bdb378e415e85a6598aae3d23a26b0fa0",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/failsafe_to_a_admin_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "4f9dd2dad2d0f1b1dd83787733dfce4dbb280d645d9372a37b19cd86f0a6d5b8",
+    "after_sha256": "96f75c0a027b50269485ad826f6ca38bdb378e415e85a6598aae3d23a26b0fa0",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/move_tick.mcfunction",
+    "operation": "modified",
+    "before_sha256": "6b4c7cdfe6f0fb8af541831f8225105b8e9acc7a0ec9f6660125216675f82fa2",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_0.mcfunction",
+    "operation": "modified",
+    "before_sha256": "c42361c2c9fd209092a9741268fee81b65d7666ab4193c723f6ee27baa80b925",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_1.mcfunction",
+    "operation": "modified",
+    "before_sha256": "b079323e20a0f72c216b89f41cd0fc131526eb28e0a0a11bf0d4c3d3dbc48fa2",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_10.mcfunction",
+    "operation": "modified",
+    "before_sha256": "5cf0f7dbe2994716164225c5c3c894b2c387bf400fdfd3fbb2f29e06a0a774d0",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_11.mcfunction",
+    "operation": "modified",
+    "before_sha256": "0f1efe94a0317d7e86bb7a2472056504e574de0e39e46047fbfdf27fbaebf0f8",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_12.mcfunction",
+    "operation": "modified",
+    "before_sha256": "435251cd1e5ed1092b1bf934413c9ae35a049bbe556bfbc1b61cefb83c875a5b",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_13.mcfunction",
+    "operation": "modified",
+    "before_sha256": "0ff4b0e505818e37ef02185fc95d981c875d7c223cc7c22cb2574c86d399c28c",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_14.mcfunction",
+    "operation": "modified",
+    "before_sha256": "281144b516edd0c6e62a9fbd50c2dd6e8b8dc0bb608b8a3e17c78833a2759b2f",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_15.mcfunction",
+    "operation": "modified",
+    "before_sha256": "f444f427d9e861c7fae02bf1ab4363cfbe361603dddacad8c3bad5f0719c3e01",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_16.mcfunction",
+    "operation": "modified",
+    "before_sha256": "77dccd5afbaad98fa8692b9eb3193b3c70a1d492b9addd93e740a7e6c543ff21",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_17.mcfunction",
+    "operation": "modified",
+    "before_sha256": "5631776873e030bd4a641c7f9d37af501f16e87335e740dc0527951eeb880278",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_18.mcfunction",
+    "operation": "modified",
+    "before_sha256": "2e4a446117565e1c806b0d31d483e125aa7184d19482621b7d654e155529f537",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_19.mcfunction",
+    "operation": "modified",
+    "before_sha256": "9dd0b1332f3f74c2c07ab03d6c9c9c7b5a9afc1a821f9df826b6963e56cfcde0",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_2.mcfunction",
+    "operation": "modified",
+    "before_sha256": "3d39fd5ce9b1109950d3c4c5809ac51055eea54556750f780511466d13a90fa3",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_20.mcfunction",
+    "operation": "modified",
+    "before_sha256": "ad9072e8389e471dc250ceaa621e3d8b3ceb0e655fd2c5208ef8edb8ed1f1348",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_21.mcfunction",
+    "operation": "modified",
+    "before_sha256": "0276dddf624e32b5afc0617b4d8032c10a06ed39a651d99e9c578bc1b4bb1fe5",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_3.mcfunction",
+    "operation": "modified",
+    "before_sha256": "f992ecbe6518f0575ae2d9555d3c0105628d4a7d81e83a5dc7ef127b2f87a355",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_4.mcfunction",
+    "operation": "modified",
+    "before_sha256": "ea10e4ac4432fdd880b2cfdcac37ac3b876e1967bba43b4be8865adc17e32fef",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_5.mcfunction",
+    "operation": "modified",
+    "before_sha256": "ad8e7d3e9f37fc6d9a90016c4363acf8065c9a5d358ac40deac2c8651f7d7e7f",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_6.mcfunction",
+    "operation": "modified",
+    "before_sha256": "b51b7c1c5bccb1aec348d009e0cb32afecf61d32aa2f6402947d0d85349b5cbe",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_7.mcfunction",
+    "operation": "modified",
+    "before_sha256": "26c1c4ee6926c8aa7bd0c360932d368eeaa392fa5111502b2a10a1f167acb6c9",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_8.mcfunction",
+    "operation": "modified",
+    "before_sha256": "56301341c5cb71b2d1257edd6b268ddac8210249ba77af285c0572111ca39b02",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/next_9.mcfunction",
+    "operation": "modified",
+    "before_sha256": "edcddb5241a37d48e58dfaf5e3a7326300b658ee72a816c9d46f0d5feb1ae44f",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_0.mcfunction",
+    "operation": "modified",
+    "before_sha256": "028b444f688737c851631f17a2e657a792c146b9a60ee2fe279c025840776ec6",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_1.mcfunction",
+    "operation": "modified",
+    "before_sha256": "f6abc5e4089c55e40004f2c2e9807331f07ec34626b8a81be30804a1a7db100e",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_10.mcfunction",
+    "operation": "modified",
+    "before_sha256": "37fe752cad4cbb4e51a1f98c6641ee05cc6f76e068c07d66e6177103795a5bff",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_11.mcfunction",
+    "operation": "modified",
+    "before_sha256": "bfa9c3f2dee535951c062d72e3390777b90ad0eaf7becf1d021be89192b29334",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_12.mcfunction",
+    "operation": "modified",
+    "before_sha256": "eaa059f2d31332f8bd553474799aab9d8daf057e0beafa7cab9eb456a7d6aa2c",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_13.mcfunction",
+    "operation": "modified",
+    "before_sha256": "aa1bd773c30afd6a25fc59d6cbd25dd734a6f83c977e29ce82b6cb3724acc17d",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_14.mcfunction",
+    "operation": "modified",
+    "before_sha256": "e857b1c06c1c1c783ee31b108d0854f8a402a93d4393a6dfc2e76b9197b7d0b3",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_15.mcfunction",
+    "operation": "modified",
+    "before_sha256": "7bb8330403adc6c1e3b113b22c33dfd11ed6f62c06947f268fd7e9c40ab8f62a",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_16.mcfunction",
+    "operation": "modified",
+    "before_sha256": "0e470630783ffc03c71116715c32816ff19903cf9d35af1be24acd3b6a526575",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_17.mcfunction",
+    "operation": "modified",
+    "before_sha256": "08ee09d73aa5590d6ec4787b9ce78fada1b30c690b51e4ccc39be1ca1a2fe8f7",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_18.mcfunction",
+    "operation": "modified",
+    "before_sha256": "8556322e6adeec59fa5a9fb01e6e54804b7b94932f39f4a64ddbfc939162c2a4",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_19.mcfunction",
+    "operation": "modified",
+    "before_sha256": "8b2fb7c0185884fa6105ede926985374d98b75a122ebd2454f45ed419c89b667",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_2.mcfunction",
+    "operation": "modified",
+    "before_sha256": "9edca9c4155742e5551e252bb0d8c047fa6f91ef4a43d34da960d2c0dab9d886",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_20.mcfunction",
+    "operation": "modified",
+    "before_sha256": "1883d7b551db25238c34e680829d4df9baeb98e8cd2b92536679d6d170d64fc0",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_21.mcfunction",
+    "operation": "modified",
+    "before_sha256": "05daa9508e75780f277b1b7477cd385de7f29b588ef214ed47bf93b3304d5aa2",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_3.mcfunction",
+    "operation": "modified",
+    "before_sha256": "28ef470ad837d9a4ec3473fc5a6109cec9faf52690a38744f650e3a0b9fbb47d",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_4.mcfunction",
+    "operation": "modified",
+    "before_sha256": "94d94c989be60b62303ffa40818f3bcee7fe84b573cc0ac13360aab096b7afb8",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_5.mcfunction",
+    "operation": "modified",
+    "before_sha256": "8a8c4861dd4cd8e94bc509020c6ba225c2a5ef3d818de5ec14c86d7a2d91a834",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_6.mcfunction",
+    "operation": "modified",
+    "before_sha256": "9d354773e2e15a7e2fbcccf56e3f289fc5a34c9b21597fbc9a559cf8c051fcdd",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_7.mcfunction",
+    "operation": "modified",
+    "before_sha256": "59f9af4ddea690418bfca59da3e8f12d11ded27cff4b925135e2dbad4d93da24",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_8.mcfunction",
+    "operation": "modified",
+    "before_sha256": "ec52a53af2a49bbabfab93ba078fc23ae1efca8bf0b9670afd360aa73afc3731",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_9.mcfunction",
+    "operation": "modified",
+    "before_sha256": "2b042005631513065f48462f067f4cb9b956dbaa6fc99306af128744753800b1",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/return_start.mcfunction",
+    "operation": "modified",
+    "before_sha256": "a1bdd7f394d9edadf835d7ee1287f1b2dac5b1b7d467e2f1a304c0eeb7fbf9c2",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/setup/kill_guide.mcfunction",
+    "operation": "modified",
+    "before_sha256": "ce512fa07796ea16c62f4946b10d43929c541bf7dfb3f935339f7f9e5a75228b",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/setup/summon_guide_here.mcfunction",
+    "operation": "modified",
+    "before_sha256": "8ecad3112812737216a1705a8d7671f8c17c771fd7cae2fbf6645d2a1e4c6a61",
+    "after_sha256": "412a187a108f0a2c79ba4c7fd66531605af8839f45fb21120793c5f94cf16769",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/setup/tag_nearest_npc.mcfunction",
+    "operation": "modified",
+    "before_sha256": "43ba172e448bd1a085b95d96e9a80c5b6ac15918edd8d4ba50f4ecfba2f024fe",
+    "after_sha256": "d3307e75271a5e447de07440cb384f70f9061f9cd88d8a2395daffb2c6155dfa",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/setup/uuid_guide.mcfunction",
+    "operation": "modified",
+    "before_sha256": "3a246be107d6426c780b63ec3c439ab06c2268489d9b3f04eb2adccf3aff1e80",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/start_to_commerces_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "b7525ce963f95ed57f41072fb175edd1795526d69115c24d742d4d4e5806184f",
+    "after_sha256": "f9cbcc42e7a4d47ea5d58300d556723465eb7ae8c319be29e7046575720c937d",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/start_to_profondeurs_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "4091b85991b92c9c5c995d7f614b23d72de557a72db79d290b3c479cdb240e25",
+    "after_sha256": "f9cbcc42e7a4d47ea5d58300d556723465eb7ae8c319be29e7046575720c937d",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/stop_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "1493be38d59c0f5d4e052e1f12b818b033acfb00445f64e2d468361b6a66a91b",
+    "after_sha256": "e61bca7a01ef1a23eb1cdf58d4a762e1a13e53ba33d4e13c0e005edd2ce5cd28",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/tick.mcfunction",
+    "operation": "modified",
+    "before_sha256": "1e1f31531913f9a2174e048734e6720bd9550339df476f11112755ecbe14d9bb",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/wait_if_far_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "a102275524494ebe53b61d010d5f52b02eb7c52c97da656a4afb5e89313b273e",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/escort/wait_message_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "3399d41f932dc07e5b280ba8df2e14c907db82a5dfba54ac7ba9a254b5c539eb",
+    "after_sha256": "b9a29eaaadd92ac339b15d20ed7f44231824eae3559cf0d3fcb5c3cc6bf4431b",
+    "reason": "Remplacement du guide mondial par le pathfinding privé ; aucun sélecteur de propriétaire nearest"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/sequence/aurele_commerce_return_to_ascenseur_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "bacff2778a37e4a547f5132e85a7aab0ad4b19cbc0774660d00ceb48ff86f54e",
+    "after_sha256": "eae4767c8242ad4e48dbe3ca97b3e2f3cafa274a0fac01200aca2be191c60cbe",
+    "reason": "Ancien minuteur neutralisé ; progression par le dialogue privé explicite"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/sequence/aurele_completion_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "cf6bc878613974cb3e28b4a06fa374615c6ebda192aa8e747b77caa4cbd6967c",
+    "after_sha256": "eae4767c8242ad4e48dbe3ca97b3e2f3cafa274a0fac01200aca2be191c60cbe",
+    "reason": "Ancien minuteur neutralisé ; progression par le dialogue privé explicite"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/sequence/aurele_explain_coeur_l2_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "86c7d91c7d8d1237fbd764bcfa0a35b9463f85d92b52b56173ce31f1b5b961a2",
+    "after_sha256": "eae4767c8242ad4e48dbe3ca97b3e2f3cafa274a0fac01200aca2be191c60cbe",
+    "reason": "Ancien minuteur neutralisé ; progression par le dialogue privé explicite"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/sequence/aurele_near_intro_l2_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "1de1bd8ccf75ecae0cf95ca1669b959217c3353539e448d3ba9541587c71dd3f",
+    "after_sha256": "eae4767c8242ad4e48dbe3ca97b3e2f3cafa274a0fac01200aca2be191c60cbe",
+    "reason": "Ancien minuteur neutralisé ; progression par le dialogue privé explicite"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/sequence/aurele_near_intro_l3_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "16212043104176c9912f061202e4d19aeaf012cab9c60e4be557898221436d83",
+    "after_sha256": "eae4767c8242ad4e48dbe3ca97b3e2f3cafa274a0fac01200aca2be191c60cbe",
+    "reason": "Ancien minuteur neutralisé ; progression par le dialogue privé explicite"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/sequence/aurele_offer_l2_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "38c59ae58f1f8a5e5952520156cadfec3527fc0583245085435bb6173a919061",
+    "after_sha256": "eae4767c8242ad4e48dbe3ca97b3e2f3cafa274a0fac01200aca2be191c60cbe",
+    "reason": "Ancien minuteur neutralisé ; progression par le dialogue privé explicite"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/sequence/aurele_reafficher_choix_intro_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "aba4c64c6b900a81283fd930af15d77f6a69f313cdfc80f5aca7260fc98a36f3",
+    "after_sha256": "eae4767c8242ad4e48dbe3ca97b3e2f3cafa274a0fac01200aca2be191c60cbe",
+    "reason": "Ancien minuteur neutralisé ; progression par le dialogue privé explicite"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/quest/sous_le_regard_du_coeur/sequence/aurele_return_after_completion_self.mcfunction",
+    "operation": "modified",
+    "before_sha256": "e33c6305d089d5413681b593366fec9572a01e59b7f55a8ee9d6d863a2226133",
+    "after_sha256": "eae4767c8242ad4e48dbe3ca97b3e2f3cafa274a0fac01200aca2be191c60cbe",
+    "reason": "Ancien minuteur neutralisé ; progression par le dialogue privé explicite"
+  },
+  {
+    "archive": "core",
+    "path": "pack.mcmeta",
+    "operation": "modified",
+    "before_sha256": "584ceafc17eceb64ffe98e1975ae70114047cc53d6a99e5ee8b104f84247b545",
+    "after_sha256": "055c3212225c7a7603eab3abe9560632443073e81adbd6a4dcb699d7edc301ad",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/admin/afficher_points.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "e680b6f0e4f73044cb7f18ac9adc36736e1e95c64ca1c5320609b5c4da7b8751",
+    "reason": "Visualisation existante ; vrais repères conservés"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/admin/confirmer_grondement.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "3005fb67c090402cac908ad43bb0b7537fee4dd625950db6c66fb6c27cecd881",
+    "reason": "Administration ponctuelle sans progression ni récompense"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/admin/desactiver_grondement.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "489792d4f87bfded47e95d49980bbc85394d7dad1df4d2e12a2209acea5562fc",
+    "reason": "Administration ponctuelle sans progression ni récompense"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/admin/diagnostic.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "cc669e588c9fdf6cf25e9c3491bdb8209fb6991bdfa891f151bcfc217813dcd0",
+    "reason": "Administration ponctuelle sans progression ni récompense"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/admin/diagnostic_points.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "d7fc8c2c4dbadf75734f555be50db578c57cd81febb35caebc6976240adbf9f8",
+    "reason": "Administration ponctuelle sans progression ni récompense"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/admin/masquer_points.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "f68b10df05c06a2960e9e0bc72ea7279050dfad77f0fa29b89a0221add7051a1",
+    "reason": "Visualisation existante ; vrais repères conservés"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/admin/nettoyer_scenes.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "a6b34ad9d9c0c7af99bb73f506c0f8e005e02415ced2998468e680937b97d8d1",
+    "reason": "Administration ponctuelle sans progression ni récompense"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/admin/preparer_parcours.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "d465b5ece0d30e92f89c1f8e6ae988c2c58bcd0bfe245df4382aea5fd6b39d80",
+    "reason": "Administration ponctuelle sans progression ni récompense"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/complete_once_self.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "b1d7eafe763206033436e3aa8cef1525b37ed13606110a9f51aa0f9d255681ae",
+    "reason": "Clôture effective C06 ; décisions mémorisées, −1 à +2 ; autres récompenses conservées"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/liaison/aurele.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "8a2613760974f2c1de8dba0995f32b82887b3f5d27d5d8246e954cd144325671",
+    "reason": "Administration ponctuelle sans progression ni récompense"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/load.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "c8eeecd4e67e8d74db6c60d597992e3404ea7c4c05d2ac0ff09ad646f6fe9e25",
+    "reason": "Scores CAP_ persistants par Nexus ; aucune réinitialisation de joueur"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/open_self.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "40b902481aea6a196230fa7e2c193147026e24ba487342839c8cfff69b5b79e9",
+    "reason": "PQ02 doit être terminée ; aucune progression anticipée"
+  },
+  {
+    "archive": "quests",
+    "path": "data/hc_quetes/hcq_quests/pq_03_sous_le_regard_du_coeur.json",
+    "operation": "modified",
+    "before_sha256": "e788a3efa4a74dd5b59559aa6691f75c9e7b642846baedf86938fac8bd6bfc93",
+    "after_sha256": "0cba861262296090917a0f1e5d681351bc28123762b11ab8bbf41dde1ff14cc3",
+    "reason": "Deux routes explicites ; récompense exacte ; cible privée ; ID/états/objectifs conservés"
+  },
+  {
+    "archive": "quests",
+    "path": "pack.mcmeta",
+    "operation": "modified",
+    "before_sha256": "081b82a825515991a62609fe2f786a4c6c36f73a46872934ade2e208f97f464e",
+    "after_sha256": "c37f5c840fc001403b3e7690c0d6f89bb09c0ecbd04acee7675b2cef5f5c9caa",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "fabric.mod.json",
+    "operation": "modified",
+    "before_sha256": "bfb2447bb05b1f55f523164bd2e346cb986bcd0461a67ce6564b94428f9f1c76",
+    "after_sha256": "e764ea33a6d9285be7f175a4eb1f75bc3e40cc9e6ad29ae7ad98fc7ec76db749",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "indivis_pq02_graph.json",
+    "operation": "modified",
+    "before_sha256": "5079cef95b794fa4e498b393eec1d06027e891f327dc2b865c6a2d50d09ca922",
+    "after_sha256": "20f7c145b09a854512ebb0c974ac44e8b0d568f3f4abc80b37cda28b41e633fd",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq02ProfileCheckpoint.class",
+    "operation": "modified",
+    "before_sha256": "a6507217091bc13236c114383e504a2523c13cdbe186a74b567db0b0305bd060",
+    "after_sha256": "9618a88ea28bdd09dca54284c328d83b5b49acc9d704159a3cb16f6520499ec2",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "indivis_pq03.mixins.json",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "249b5a15415902f46291136984f86f8045815351f9a8d0f1e8120879efca0a13",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "indivis_pq03_graph.json",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "0ad5d864322c60a4d97ecaf3d68694ff1e4b18e2e2bcdebe6760245fb1147bd6",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/pq03/mixin/Pq03DialogueCloseMixin.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "918b4c880635fa8fccd36c1e9129f54e9fb79811d01bad18f3921f39366326af",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/pq03/mixin/Pq03EntityMixin.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "51c2de1519cec8419b1c6259f8c0bd980511f6709c5294507e937250f13a46b5",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/pq03/mixin/Pq03NexusSaveMixin.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "13f52b3459c734177dec93b17634158e46186b5b26f9b44a992bc93cce5f5c38",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/pq03/mixin/Pq03ScreenLifecycleMixin.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "59b5fd14db40c032261e569ff81ce0b402b5fb39a0dea75e6e50c24bc9f331de",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/pq03/mixin/Pq03VisibilityMixin.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "5009d77c961dcd8619015a86ef0c4bae7ca911c8e3334bce1d8698cf2929f72c",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/pq03/mixin/Pq03WaypointMixin.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "2a6a5ffb952023260c2be414c13270284691caccbc83445cfc9bc70380101cc9",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Client.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "ab4160c8174201e2046a9ab386ad6ecee4dd000a375f5aa1380456732493e01a",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Data$Choice.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "318129c09cb449fe133e194ad7dfb86774c9a4d92a82d89ebe15b716a3c3f00f",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Data$Graph.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "db7a8061e54df0fe9e659d8f81c1c184abad38002092acd9aeb23bd3e48fcac3",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Data$Node.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "37b39662045f0b51deb684b03a948990e9b7f22e5ddf19d63034a4b0ffac5c24",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Data.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "7926bb86dfa1ba1bb333e9fa6a086bf46b72c370c473b7a5278c88ed59690e17",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Entries$Pending.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "3d8b241502e93ac5ef8e820ea050a2d3ec24b5bc2fbb78bda7a050493a76064e",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Entries.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "7d719df68fdc7af056c9eba7888138dd7ac2e6bd5d1be5ed54a2e2316f8e2485",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Focus$Request.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "9aa48ee4fd4f2e7c7c0b94c998469df3081cf2aa216e9ff342c1d2dccc0efe6c",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Focus.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "2c7e5b738dc51dcb87a0d47c3a3fbf2523c31cae2845cff1b96e2f70fc71f179",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03FocusClient.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "79817faeb1b192db13700a63f8f20b3b12f25e77c32eff2dccacecaa8678907f",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Pacing$Frame.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "590bbf06014db1d6c8b03499e00b1b8cba37296d6e5af9262e9a62a7e6ff0540",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Pacing.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "d70cf8890b0a98842e13a76b0134a87aca902e657f2021652bbc08beecffc7ad",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03ProfileCheckpoint$Scope.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "5c4ac84abaad78f8308f94d975870e39b9f63bdaecdf4be63cb163adc5a1f491",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03ProfileCheckpoint.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "efc551a721a960de90a08b81f123069a75d0494583b5b37fd77ed6ebe020b74e",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Rules.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "3c14528a0538cadcc24a71e0e5637d68addf86bad0d16c9a74020c81e0ecef72",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Runtime$1.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "30ce188294c6bf6ddc1767e83078f50bd96933951a14dd6b36c67dd63f97784a",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Runtime$Actor.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "1c44d2caf273185763703386d567d1f56a6f70bec3993f97f35b7194e6c5ac28",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Runtime$Near.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "9c35f4f36356a721a42acd1b9ba8e73d79329c7d216acc63c1746e9a17e8adc6",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Runtime$View.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "b8f0a50a473055bdc87b602a3280f0b3fbf2de860ac4d7dc91859f787d3fa192",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Runtime.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "733e9462440e75f52655c044573f590f1545af98ac4abf7da76d471a771887e2",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Setup$Scan.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "0646cbc2f0169a61218705b38e98df6f2f419ac48a8478be1d08cd996dfe792a",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Setup.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "3ffc1ba820286bf2b7fcb1e442581d6ed495e8b7537a3a028228fb8d92d7070e",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq03Transitions.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "02ada9ebaacf63c97ce2ae65d5d3757ccff7097776773184cd4c3b207ac4123a",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  }
+]

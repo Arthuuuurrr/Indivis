@@ -1,0 +1,2 @@
+PASS 9 actual restart assertions
+Production JAR unchanged; synthetic non-OP account and real Nexus profile reloaded in a second Fabric process.
