@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "name": "haute-capitale-quetes-HF12-PQ02-R1-HF8-1.21.11.jar",
+      "bytes": 575268,
+      "sha256": "92dbafab347b1fd775de6476d36e75b6bae2ebefbcc574bfaac141fc63c79180"
+    },
+    {
+      "name": "PQ02_HF8.zip",
+      "bytes": 3665597,
+      "sha256": "8c0e0f0e68ebf2d76606ab5252c57d9129c8792e15613484638addb5ded795b5"
+    },
+    {
+      "name": "Indivis_PQ02_R1_HF8_Installation_Integree.zip",
+      "bytes": 4205872,
+      "sha256": "467dca7bb51180aa26d377f1c8ea035c2ffe89185dc0097b7a7a3febe7ff6b81"
+    },
+    {
+      "name": "Indivis_PQ02_R1_HF8_Sources_Integrees.zip",
+      "bytes": 590512,
+      "sha256": "86cc571af35b14a758a267e4fcd6830be0c11ea88f8db991f63b33b3186d094d"
+    }
+  ]
+}

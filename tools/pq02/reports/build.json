@@ -1,0 +1,48 @@
+{
+  "status": "BUILT_NOT_YET_VALIDATED",
+  "files": {
+    "core": {
+      "path": "/workspace/scratch/451d7145576f/work/pq02/output/capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8.zip",
+      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8.zip",
+      "bytes": 5129280,
+      "sha256": "6ff671f7b71ff696980b1fdfa4302481dec30cac7db8eca6e0fb2c9bcd4a9aa6"
+    },
+    "quests": {
+      "path": "/workspace/scratch/451d7145576f/work/pq02/output/hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8.zip",
+      "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8.zip",
+      "bytes": 1516154,
+      "sha256": "393ac02d857774f4de7483ce4d179f2e67a13f1ec1ae9cab4830608568b891a6"
+    },
+    "mod": {
+      "path": "/workspace/scratch/451d7145576f/work/pq02/output/indivis-pq02-1.0.8+1.21.11.jar",
+      "filename": "indivis-pq02-1.0.8+1.21.11.jar",
+      "bytes": 82720,
+      "sha256": "14cdd35ee29a4e92518bfc9c938c936df8d4ec42d7370526c955a69d6717cf8f"
+    }
+  },
+  "inputs": {
+    "core": "8aff8d9c45d275b9d281f5b915baad5e88e7a6c2147bc9806b4fff3cc7a7a8c4",
+    "quests": "72aa0cf454853f65e2cad769ba200e524c711c75260fe6a1d54c148c90788ba7"
+  },
+  "java": "openjdk version \"21.0.13\" 2026-10-20 LTS\nOpenJDK Runtime Environment Zulu21.54+107-CA (build 21.0.13+9-LTS)\nOpenJDK 64-Bit Server VM Zulu21.54+107-CA (build 21.0.13+9-LTS, mixed mode, sharing)",
+  "compiled_sources": [
+    "src/Pq02Client.java",
+    "src/Pq02Data.java",
+    "src/Pq02Entries.java",
+    "src/Pq02Focus.java",
+    "src/Pq02FocusClient.java",
+    "src/Pq02Motion.java",
+    "src/Pq02Pacing.java",
+    "src/Pq02ProfileCheckpoint.java",
+    "src/Pq02Rules.java",
+    "src/Pq02Runtime.java",
+    "src/Pq02Setup.java",
+    "src/Pq02Transitions.java",
+    "src/mixin/Pq02DialogueCloseMixin.java",
+    "src/mixin/Pq02EntityMixin.java",
+    "src/mixin/Pq02NexusCheckpointMixin.java",
+    "src/mixin/Pq02ScreenLifecycleMixin.java",
+    "src/mixin/Pq02VisibilityMixin.java",
+    "src/mixin/Pq02WaypointMixin.java"
+  ]
+}

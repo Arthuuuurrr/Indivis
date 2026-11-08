@@ -1,0 +1,110 @@
+{
+  "id": "cq_vc_ep_02_ruines_carrec",
+  "title": "Les ruines de Carrec",
+  "type": "COMBAT",
+  "giver": "Aurèle Bonnaire",
+  "zone": "Ruines de Carrec",
+  "description": "Les ruines de Carrec, à l'est, au bout de la piste brûlée. Le nom est sur le registre de la tour, et sur celui d'un contrebandier. Orrin Vasca campe là avec ce qu'il a pris sur trois navires — et avec Colin Bonnaire, en cage.\nAurèle ne demande pas de vider un camp : il l'a dit une fois et il le redit. Il demande son frère. Et la boussole de cuivre gravée d'une marguerite, celle de leur père : un homme comme Vasca la porte sur lui, pas dans un coffre.\nPar la piste on arrive devant la palissade ; par la mer, derrière, au quai, près des cages. Le geôlier a la clé, et il ne la lâche pas.",
+  "can_abandon": true,
+  "prerequisites": [
+    "sq_vc_ep_01_marguerite"
+  ],
+  "next_quest": "sq_vc_ep_03_route_rouverte",
+  "rewards": [
+    {
+      "text": "90 Martins d'or"
+    },
+    {
+      "text": "500 points d'expérience"
+    },
+    {
+      "text": "Réputation +10"
+    },
+    {
+      "text": "Sabre d'Orrin Vasca"
+    }
+  ],
+  "source": {
+    "kind": "SCOREBOARD",
+    "active": {
+      "objective": "hcq_cqvcep02",
+      "min": 10,
+      "max": 90
+    },
+    "completed": {
+      "objective": "hcq_cqvcep02",
+      "min": 100,
+      "max": 100
+    },
+    "abandon_commands": [
+      "function hc_quetes:migration/write/arc_a/v4",
+      "scoreboard players set @s hcq_cqvcep02_o1 0",
+      "clear @s *[custom_data~{hc_quete:\"cqvcep02_cle_cages\"}]",
+      "clear @s *[custom_data~{hc_quete:\"cqvcep02_boussole\"}]",
+      "clear @s *[custom_data~{hc_quete:\"arc_common_q8_insigne\"}]",
+      "clear @s *[custom_data~{hc_quete:\"cqvcep02_cle_bronze\"}]"
+    ]
+  },
+  "objectives": [
+    {
+      "id": "cle",
+      "type": "CUSTOM",
+      "text": "Prendre la clé des cages sur le geôlier, devant les cages, près du quai",
+      "done": {
+        "objective": "hcq_cqvcep02_o1",
+        "min": 1
+      },
+      "done_item": "cqvcep02_cle_cages",
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "spawn:carrec_camp.geolier",
+        "label": "Le geôlier, devant les cages"
+      }
+    },
+    {
+      "id": "cages",
+      "type": "INTERACT",
+      "text": "Ouvrir les cages avec la clé et libérer Colin",
+      "done": {
+        "objective": "hcq_cqvcep02_o1",
+        "min": 1
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "spawn:carrec_camp.geolier",
+        "label": "Les cages de Colin"
+      }
+    },
+    {
+      "id": "vasca",
+      "type": "BOSS_KILL",
+      "target": "spawn:carrec_fresques.vasca",
+      "text": "Abattre Orrin Vasca, sous ses fresques, et reprendre la boussole de cuivre",
+      "done": {
+        "objective": "hcq_cqvcep02",
+        "min": 90,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "spawn:carrec_fresques.vasca",
+        "label": "Orrin Vasca"
+      }
+    },
+    {
+      "id": "retour",
+      "type": "RETURN_TO_NPC",
+      "target": "pnj:aurele",
+      "text": "Rapporter la boussole à Aurèle — il la reconnaîtra avant de la toucher",
+      "done": {
+        "objective": "hcq_cqvcep02",
+        "min": 100,
+        "max": 100
+      },
+      "waypoint": {
+        "mode": "EXACT",
+        "target": "pnj:aurele"
+      }
+    }
+  ]
+}

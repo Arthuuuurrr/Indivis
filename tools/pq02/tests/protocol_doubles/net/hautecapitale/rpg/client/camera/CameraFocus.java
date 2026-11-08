@@ -1,0 +1,1 @@
+package net.hautecapitale.rpg.client.camera; public final class CameraFocus {public interface Provider {} public static void request(Provider p,int ms){} public static void release(int ms){} public static void clear(){}}

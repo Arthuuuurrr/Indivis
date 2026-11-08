@@ -1,0 +1,1248 @@
+[14:49:21] [main/INFO]: Capture des dialogues de chat prête.
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=1, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #1 Aurèle (etat=ENTERING_DIALOGUE, session=1, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=2, acteur=51bbe61a-35ff-377d-83b9-b8c10208cd2a
+PROTOCOL CHECK early probe retained without premature acknowledgement
+[14:49:21] [main/INFO]: [etat] onServeurFerme #1 REMPLACEE (etat=DIALOGUE_ACTIVE, session=1, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=1, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=1, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=1, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=1, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=2, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #2 Aurèle (etat=ENTERING_DIALOGUE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK missing client actor delays acknowledgement
+PROTOCOL CHECK pending capture survives expired timer before actor loading
+PROTOCOL CHECK screen and actor must remain stable
+[PQ03 focus] prêt : session=2, acteur=51bbe61a-35ff-377d-83b9-b8c10208cd2a
+PROTOCOL CHECK ready command identifies the expected native session and actor
+[14:49:21] [main/INFO]: [etat] onServeurFerme #1 REMPLACEE (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 page] reçue : session=2, nœud=a01, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Halte. Vous venez du Port, n'est-ce pas ? Ici, vous êtes dans les passages du Cœur. Vous pouvez emprunter les voies ouvertes au public, mais les accès de service restent réservés au personnel autorisé. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK complete first page enters native capture through real Fabric events
+PROTOCOL CHECK first page survives native screen monitoring
+PROTOCOL CHECK duplicate probe does not replay readiness or dialogue
+PROTOCOL CHECK real message event receives immediate positive reputation metadata
+PROTOCOL CHECK reputation notice is separate from NPC text and choices
+PROTOCOL CHECK dedicated overlay emits positive reputation text with green color
+PROTOCOL CHECK same overlay emits negative Port reputation with red color
+PROTOCOL CHECK expired reputation overlay clears without modifying dialogue
+[14:49:21] [main/INFO]: [etat] onServeurFerme #2 REMPLACEE (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=2, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=3, acteur=2bb7d261-4109-3a53-930f-370c8e369db3
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=2, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=3, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #3 Aurèle (etat=ENTERING_DIALOGUE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a01 waits for client actor
+[PQ03 focus] prêt : session=3, acteur=2bb7d261-4109-3a53-930f-370c8e369db3
+PROTOCOL CHECK node a01 acknowledges correct focus
+[PQ03 page] reçue : session=3, nœud=a01, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Halte. Vous venez du Port, n'est-ce pas ? Ici, vous êtes dans les passages du Cœur. Vous pouvez emprunter les voies ouvertes au public, mais les accès de service restent réservés au personnel autorisé. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a01 receives entire text block
+PROTOCOL CHECK node a01 receives choices and its explicit action or close
+PROTOCOL CHECK node a01 retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #3 REMPLACEE (etat=DIALOGUE_ACTIVE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=3, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=3, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=4, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #4 Aurèle (etat=ENTERING_DIALOGUE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=4, acteur=cfb66f00-8328-3a58-88ff-abc40e346ca4
+PROTOCOL CHECK node a_questions waits for client actor
+[PQ03 focus] prêt : session=4, acteur=cfb66f00-8328-3a58-88ff-abc40e346ca4
+PROTOCOL CHECK node a_questions acknowledges correct focus
+[PQ03 page] reçue : session=4, nœud=a_questions, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Parlons encore du Port. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a_questions receives entire text block
+PROTOCOL CHECK node a_questions receives choices and its explicit action or close
+PROTOCOL CHECK node a_questions retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #4 REMPLACEE (etat=DIALOGUE_ACTIVE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=4, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=5, acteur=314514b8-1f4e-33a8-abd1-6df775647cc5
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=4, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=5, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #5 Aurèle (etat=ENTERING_DIALOGUE, session=5, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a_watch waits for client actor
+[PQ03 focus] prêt : session=5, acteur=314514b8-1f4e-33a8-abd1-6df775647cc5
+PROTOCOL CHECK node a_watch acknowledges correct focus
+[PQ03 page] reçue : session=5, nœud=a_watch, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=5, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Parce que ces installations ne sont pas ordinaires. Certains accès desservent des équipements dont vous ne connaissez pas les risques. Les Ingénieurs s'en occupent ; la Garde veille à ce qu'on ne s'y aventure pas sans autorisation. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=5, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=5, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=5, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=5, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a_watch receives entire text block
+PROTOCOL CHECK node a_watch receives choices and its explicit action or close
+PROTOCOL CHECK node a_watch retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #5 REMPLACEE (etat=DIALOGUE_ACTIVE, session=5, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=5, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=5, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=5, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=5, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=6, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #6 Aurèle (etat=ENTERING_DIALOGUE, session=6, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=6, acteur=3ab81642-9f00-321c-a586-690f392d3f35
+PROTOCOL CHECK node a_service waits for client actor
+[PQ03 focus] prêt : session=6, acteur=3ab81642-9f00-321c-a586-690f392d3f35
+PROTOCOL CHECK node a_service acknowledges correct focus
+[PQ03 page] reçue : session=6, nœud=a_service, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=6, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Des installations et des accès de service, pour l'essentiel. Je ne suis pas Ingénieur, et je préfère ne pas prétendre maîtriser ce qui ne relève pas de mes fonctions. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=6, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=6, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=6, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=6, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a_service receives entire text block
+PROTOCOL CHECK node a_service receives choices and its explicit action or close
+PROTOCOL CHECK node a_service retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #6 REMPLACEE (etat=DIALOGUE_ACTIVE, session=6, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=6, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=6, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=6, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=7, acteur=c811b433-ef19-3684-9ad5-999a8222a57a
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=6, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=7, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #7 Aurèle (etat=ENTERING_DIALOGUE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a_routes waits for client actor
+[PQ03 focus] prêt : session=7, acteur=c811b433-ef19-3684-9ad5-999a8222a57a
+PROTOCOL CHECK node a_routes acknowledges correct focus
+[PQ03 page] reçue : session=7, nœud=a_routes, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Vous avez deux possibilités. Si vous souhaitez découvrir les commerces de la capitale, je peux vous accompagner jusqu'au Cercle marchand. Sinon, nous pouvons rejoindre directement l'ascenseur des Profondeurs. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a_routes receives entire text block
+PROTOCOL CHECK node a_routes receives choices and its explicit action or close
+PROTOCOL CHECK node a_routes retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #7 REMPLACEE (etat=DIALOGUE_ACTIVE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=7, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=7, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=8, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #8 Aurèle (etat=ENTERING_DIALOGUE, session=8, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=8, acteur=fcfa0e2c-4865-367e-a789-c8e4ede64b6e
+PROTOCOL CHECK node a_market waits for client actor
+[PQ03 focus] prêt : session=8, acteur=fcfa0e2c-4865-367e-a789-c8e4ede64b6e
+PROTOCOL CHECK node a_market acknowledges correct focus
+[PQ03 page] reçue : session=8, nœud=a_market, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=8, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Très bien. Suivez-moi, je vais vous montrer le chemin. Vous pourrez prendre votre temps une fois sur place. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=8, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=8, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a_market receives entire text block
+PROTOCOL CHECK node a_market receives choices and its explicit action or close
+PROTOCOL CHECK node a_market retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #8 REMPLACEE (etat=DIALOGUE_ACTIVE, session=8, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=8, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=8, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=8, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=9, acteur=8fddde22-7dd3-3052-888d-81402bf96e9b
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=8, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=9, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #9 Aurèle (etat=ENTERING_DIALOGUE, session=9, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a_depth waits for client actor
+[PQ03 focus] prêt : session=9, acteur=8fddde22-7dd3-3052-888d-81402bf96e9b
+PROTOCOL CHECK node a_depth acknowledges correct focus
+[PQ03 page] reçue : session=9, nœud=a_depth, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=9, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Comme vous voudrez. Les Profondeurs sont accessibles par un autre passage. Suivez-moi. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=9, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=9, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node a_depth receives entire text block
+PROTOCOL CHECK node a_depth receives choices and its explicit action or close
+PROTOCOL CHECK node a_depth retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #9 REMPLACEE (etat=DIALOGUE_ACTIVE, session=9, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=9, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=9, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=9, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=9, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=10, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #10 Aurèle (etat=ENTERING_DIALOGUE, session=10, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=10, acteur=b3daac0a-e76c-32ab-a0e8-32f0914f77f4
+PROTOCOL CHECK node b_walk waits for client actor
+[PQ03 focus] prêt : session=10, acteur=b3daac0a-e76c-32ab-a0e8-32f0914f77f4
+PROTOCOL CHECK node b_walk acknowledges correct focus
+[PQ03 page] reçue : session=10, nœud=b_walk, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=10, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Nous allons emprunter l'un des passages principaux. Ils desservent plusieurs secteurs de la capitale ; vous aurez probablement l'occasion de les reprendre. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=10, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Le plus difficile, au début, c'est de reconnaître les accès qui ne mènent pas aux espaces publics. »  → 2/0 (etat=DIALOGUE_ACTIVE, session=10, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 2/1 (etat=DIALOGUE_ACTIVE, session=10, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_walk receives entire text block
+PROTOCOL CHECK node b_walk receives choices and its explicit action or close
+PROTOCOL CHECK node b_walk retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #10 REMPLACEE (etat=DIALOGUE_ACTIVE, session=10, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=10, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=10, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=10, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=11, acteur=357d9568-9eb2-37d4-a58f-8ad8234ad025
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=10, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=11, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #11 Aurèle (etat=ENTERING_DIALOGUE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node t_menu waits for client actor
+[PQ03 focus] prêt : session=11, acteur=357d9568-9eb2-37d4-a58f-8ad8234ad025
+PROTOCOL CHECK node t_menu acknowledges correct focus
+[PQ03 page] reçue : session=11, nœud=t_menu, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Parlons encore du Port. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/7 (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node t_menu receives entire text block
+PROTOCOL CHECK node t_menu receives choices and its explicit action or close
+PROTOCOL CHECK node t_menu retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #11 REMPLACEE (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=11, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=11, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=12, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #12 Aurèle (etat=ENTERING_DIALOGUE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=12, acteur=d50f04f6-a98c-36f7-9026-8254f35c9f60
+PROTOCOL CHECK node b_rumble waits for client actor
+[PQ03 focus] prêt : session=12, acteur=d50f04f6-a98c-36f7-9026-8254f35c9f60
+PROTOCOL CHECK node b_rumble acknowledges correct focus
+[PQ03 page] reçue : session=12, nœud=b_rumble, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Vous entendez ce grondement ? On finit presque par ne plus y prêter attention, à force de travailler ici. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Il y a pourtant quelque chose d'assez impressionnant à se dire que tout cela était déjà là bien avant nous. »  → 2/0 (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 2/1 (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 2/2 (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 2/3 (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 2/4 (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 2/5 (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 2/6 (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rumble receives entire text block
+PROTOCOL CHECK node b_rumble receives choices and its explicit action or close
+PROTOCOL CHECK node b_rumble retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #12 REMPLACEE (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=12, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=13, acteur=ba088d77-9773-3c68-946d-240b7c6425ee
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=12, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=13, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #13 Aurèle (etat=ENTERING_DIALOGUE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rumble_origin waits for client actor
+[PQ03 focus] prêt : session=13, acteur=ba088d77-9773-3c68-946d-240b7c6425ee
+PROTOCOL CHECK node b_rumble_origin acknowledges correct focus
+[PQ03 page] reçue : session=13, nœud=b_rumble_origin, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Du fonctionnement des installations, pour l'essentiel. Je saurais difficilement vous en dire davantage. Ce sont les Ingénieurs qui en connaissent les détails. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rumble_origin receives entire text block
+PROTOCOL CHECK node b_rumble_origin receives choices and its explicit action or close
+PROTOCOL CHECK node b_rumble_origin retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #13 REMPLACEE (etat=DIALOGUE_ACTIVE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=13, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=13, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=14, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #14 Aurèle (etat=ENTERING_DIALOGUE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=14, acteur=081aa6ad-fb08-32e7-b30a-12676a3a8d4f
+PROTOCOL CHECK node b_rumble_worry waits for client actor
+[PQ03 focus] prêt : session=14, acteur=081aa6ad-fb08-32e7-b30a-12676a3a8d4f
+PROTOCOL CHECK node b_rumble_worry acknowledges correct focus
+[PQ03 page] reçue : session=14, nœud=b_rumble_worry, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Pas particulièrement. Mais je ne confonds pas l'habitude avec l'absence de danger. C'est aussi pour cela que nous surveillons les accès. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rumble_worry receives entire text block
+PROTOCOL CHECK node b_rumble_worry receives choices and its explicit action or close
+PROTOCOL CHECK node b_rumble_worry retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #14 REMPLACEE (etat=DIALOGUE_ACTIVE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=14, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=15, acteur=d30d399f-a766-3048-9570-d6cdca82f0ec
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=14, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=15, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #15 Aurèle (etat=ENTERING_DIALOGUE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rumble_learn waits for client actor
+[PQ03 focus] prêt : session=15, acteur=d30d399f-a766-3048-9570-d6cdca82f0ec
+PROTOCOL CHECK node b_rumble_learn acknowledges correct focus
+[PQ03 page] reçue : session=15, nœud=b_rumble_learn, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Si, naturellement. Seulement, la curiosité ne donne pas toutes les compétences. Je préfère encore poser une question à un Ingénieur plutôt que prétendre connaître son métier. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rumble_learn receives entire text block
+PROTOCOL CHECK node b_rumble_learn receives choices and its explicit action or close
+PROTOCOL CHECK node b_rumble_learn retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #15 REMPLACEE (etat=DIALOGUE_ACTIVE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=15, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=15, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=16, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #16 Aurèle (etat=ENTERING_DIALOGUE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=16, acteur=c4b6ba5c-5296-3ff1-a253-afee6fe6f261
+PROTOCOL CHECK node b_job waits for client actor
+[PQ03 focus] prêt : session=16, acteur=c4b6ba5c-5296-3ff1-a253-afee6fe6f261
+PROTOCOL CHECK node b_job acknowledges correct focus
+[PQ03 page] reçue : session=16, nœud=b_job, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Pas exclusivement. Les affectations varient selon les besoins, mais je connais assez bien ce secteur. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_job receives entire text block
+PROTOCOL CHECK node b_job receives choices and its explicit action or close
+PROTOCOL CHECK node b_job retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #16 REMPLACEE (etat=DIALOGUE_ACTIVE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=16, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=17, acteur=3ded599b-1e79-3c55-8543-15b6e429450d
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=16, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=17, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #17 Aurèle (etat=ENTERING_DIALOGUE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_job_monotony waits for client actor
+[PQ03 focus] prêt : session=17, acteur=3ded599b-1e79-3c55-8543-15b6e429450d
+PROTOCOL CHECK node b_job_monotony acknowledges correct focus
+[PQ03 page] reçue : session=17, nœud=b_job_monotony, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Certaines journées, oui. Mais une journée tranquille est rarement une mauvaise nouvelle pour quelqu'un chargé de la sécurité. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_job_monotony receives entire text block
+PROTOCOL CHECK node b_job_monotony receives choices and its explicit action or close
+PROTOCOL CHECK node b_job_monotony retains speaker
+[14:49:21] [main/INFO]: [etat] onServeurFerme #17 REMPLACEE (etat=DIALOGUE_ACTIVE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=17, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=17, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=18, mode=CAPTURE, ecran=aucun)
+[14:49:21] [main/INFO]: [etat] ouvrir #18 Aurèle (etat=ENTERING_DIALOGUE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=18, acteur=39690bca-0733-312a-b007-d12e248b8688
+PROTOCOL CHECK node b_job_people waits for client actor
+[PQ03 focus] prêt : session=18, acteur=39690bca-0733-312a-b007-d12e248b8688
+PROTOCOL CHECK node b_job_people acknowledges correct focus
+[PQ03 page] reçue : session=18, nœud=b_job_people, locuteur=aurele
+[14:49:21] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : réplique « : Suffisamment pour apprendre à reconnaître ceux qui cherchent leur chemin et ceux qui cherchent à passer là où ils n'ont rien à faire. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:21] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_job_people receives entire text block
+PROTOCOL CHECK node b_job_people receives choices and its explicit action or close
+PROTOCOL CHECK node b_job_people retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #18 REMPLACEE (etat=DIALOGUE_ACTIVE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=18, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=19, acteur=3c0ea479-684f-38bb-9563-6656e4daa936
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=18, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=19, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #19 Aurèle (etat=ENTERING_DIALOGUE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_job_like waits for client actor
+[PQ03 focus] prêt : session=19, acteur=3c0ea479-684f-38bb-9563-6656e4daa936
+PROTOCOL CHECK node b_job_like acknowledges correct focus
+[PQ03 page] reçue : session=19, nœud=b_job_like, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Oui. Pas chaque minute, évidemment. Mais je préfère un travail dont je comprends l'utilité, même lorsqu'il consiste à répéter les mêmes consignes. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_job_like receives entire text block
+PROTOCOL CHECK node b_job_like receives choices and its explicit action or close
+PROTOCOL CHECK node b_job_like retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #19 REMPLACEE (etat=DIALOGUE_ACTIVE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=19, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=19, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=20, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #20 Aurèle (etat=ENTERING_DIALOGUE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=20, acteur=354e75c1-971d-394d-9495-26380d42c7ac
+PROTOCOL CHECK node b_rules waits for client actor
+[PQ03 focus] prêt : session=20, acteur=354e75c1-971d-394d-9495-26380d42c7ac
+PROTOCOL CHECK node b_rules acknowledges correct focus
+[PQ03 page] reçue : session=20, nœud=b_rules, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Autant que les circonstances le permettent. Un règlement existe pour une raison, mais encore faut-il comprendre laquelle. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/7 (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rules receives entire text block
+PROTOCOL CHECK node b_rules receives choices and its explicit action or close
+PROTOCOL CHECK node b_rules retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #20 REMPLACEE (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=20, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=21, acteur=3bdb720a-3edd-3299-a613-639caa9d3ecb
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=20, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=21, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #21 Aurèle (etat=ENTERING_DIALOGUE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rules_flex waits for client actor
+[PQ03 focus] prêt : session=21, acteur=3bdb720a-3edd-3299-a613-639caa9d3ecb
+PROTOCOL CHECK node b_rules_flex acknowledges correct focus
+[PQ03 page] reçue : session=21, nœud=b_rules_flex, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Bien sûr. Il y a une différence entre quelqu'un qui s'est trompé de passage et quelqu'un qui insiste pour franchir une porte gardée. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/7 (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rules_flex receives entire text block
+PROTOCOL CHECK node b_rules_flex receives choices and its explicit action or close
+PROTOCOL CHECK node b_rules_flex retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #21 REMPLACEE (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=21, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=21, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=22, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #22 Aurèle (etat=ENTERING_DIALOGUE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=22, acteur=569782db-30e1-36b1-845b-a506cf902e4c
+PROTOCOL CHECK node b_rules_discipline waits for client actor
+[PQ03 focus] prêt : session=22, acteur=569782db-30e1-36b1-845b-a506cf902e4c
+PROTOCOL CHECK node b_rules_discipline acknowledges correct focus
+[PQ03 page] reçue : session=22, nœud=b_rules_discipline, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Elle l'est. Mais la discipline ne dispense pas de réfléchir. Un soldat incapable de discernement peut devenir aussi embarrassant qu'un soldat incapable d'obéir. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/7 (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rules_discipline receives entire text block
+PROTOCOL CHECK node b_rules_discipline receives choices and its explicit action or close
+PROTOCOL CHECK node b_rules_discipline retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #22 REMPLACEE (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=22, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=23, acteur=9d8c6ce5-2626-3dec-8c9e-070b4b9d2e00
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=22, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=23, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #23 Aurèle (etat=ENTERING_DIALOGUE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rules_freedom waits for client actor
+[PQ03 focus] prêt : session=23, acteur=9d8c6ce5-2626-3dec-8c9e-070b4b9d2e00
+PROTOCOL CHECK node b_rules_freedom acknowledges correct focus
+[PQ03 page] reçue : session=23, nœud=b_rules_freedom, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Je peux le comprendre. Mais tant que vous empruntez les voies publiques, vous n'avez pas à me demander la permission à chaque intersection. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/7 (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_rules_freedom receives entire text block
+PROTOCOL CHECK node b_rules_freedom receives choices and its explicit action or close
+PROTOCOL CHECK node b_rules_freedom retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #23 REMPLACEE (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=23, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=23, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=24, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #24 Aurèle (etat=ENTERING_DIALOGUE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=24, acteur=51c23240-0299-3324-9190-0e000eee2d7c
+PROTOCOL CHECK node b_position waits for client actor
+[PQ03 focus] prêt : session=24, acteur=51c23240-0299-3324-9190-0e000eee2d7c
+PROTOCOL CHECK node b_position acknowledges correct focus
+[PQ03 page] reçue : session=24, nœud=b_position, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Autant que les circonstances le permettent. Un règlement existe pour une raison, mais encore faut-il comprendre laquelle. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_position receives entire text block
+PROTOCOL CHECK node b_position receives choices and its explicit action or close
+PROTOCOL CHECK node b_position retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #24 REMPLACEE (etat=DIALOGUE_ACTIVE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=24, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=25, acteur=5a272b6e-a09a-3438-9a46-76722466d31e
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=24, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=25, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #25 Aurèle (etat=ENTERING_DIALOGUE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_circulation waits for client actor
+[PQ03 focus] prêt : session=25, acteur=5a272b6e-a09a-3438-9a46-76722466d31e
+PROTOCOL CHECK node b_circulation acknowledges correct focus
+[PQ03 page] reçue : session=25, nœud=b_circulation, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : La plupart des gens traversent ces passages sans avoir à se préoccuper de la surveillance. C'est plutôt bon signe, à vrai dire. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Lorsque notre présence devient le principal sujet de conversation, c'est généralement que quelque chose ne va pas. »  → 2/0 (etat=DIALOGUE_ACTIVE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/1 (etat=DIALOGUE_ACTIVE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/2 (etat=DIALOGUE_ACTIVE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/3 (etat=DIALOGUE_ACTIVE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/4 (etat=DIALOGUE_ACTIVE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/5 (etat=DIALOGUE_ACTIVE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_circulation receives entire text block
+PROTOCOL CHECK node b_circulation receives choices and its explicit action or close
+PROTOCOL CHECK node b_circulation retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #25 REMPLACEE (etat=DIALOGUE_ACTIVE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=25, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=25, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=26, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #26 Aurèle (etat=ENTERING_DIALOGUE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=26, acteur=133fef8c-2633-36f9-93e6-a04793bc73a5
+PROTOCOL CHECK node b_discreet waits for client actor
+[PQ03 focus] prêt : session=26, acteur=133fef8c-2633-36f9-93e6-a04793bc73a5
+PROTOCOL CHECK node b_discreet acknowledges correct focus
+[PQ03 page] reçue : session=26, nœud=b_discreet, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Dans l'exercice de mes fonctions ? Souvent, oui. Je ne suis pas ici pour que les passants s'arrêtent admirer mon uniforme. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_discreet receives entire text block
+PROTOCOL CHECK node b_discreet receives choices and its explicit action or close
+PROTOCOL CHECK node b_discreet retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #26 REMPLACEE (etat=DIALOGUE_ACTIVE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=26, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=27, acteur=9591ad65-d6c0-36be-94d4-ae66d3c9d305
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=26, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=27, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #27 Aurèle (etat=ENTERING_DIALOGUE, session=27, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_uniform waits for client actor
+[PQ03 focus] prêt : session=27, acteur=9591ad65-d6c0-36be-94d4-ae66d3c9d305
+PROTOCOL CHECK node b_uniform acknowledges correct focus
+[PQ03 page] reçue : session=27, nœud=b_uniform, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=27, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : C'est vrai. Disons que l'équipement doit se remarquer davantage que celui qui le porte. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=27, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=27, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=27, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=27, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_uniform receives entire text block
+PROTOCOL CHECK node b_uniform receives choices and its explicit action or close
+PROTOCOL CHECK node b_uniform retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #27 REMPLACEE (etat=DIALOGUE_ACTIVE, session=27, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=27, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=27, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=27, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=27, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=28, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #28 Aurèle (etat=ENTERING_DIALOGUE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=28, acteur=8de69b72-ffe9-35b6-9bd0-b59eba70a815
+PROTOCOL CHECK node b_market waits for client actor
+[PQ03 focus] prêt : session=28, acteur=8de69b72-ffe9-35b6-9bd0-b59eba70a815
+PROTOCOL CHECK node b_market acknowledges correct focus
+[PQ03 page] reçue : session=28, nœud=b_market, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Nous y voilà. Le Cercle marchand. Vous y trouverez de quoi vous équiper, vous approvisionner et probablement dépenser quelques Martins de plus que prévu. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Je dois retourner à mon poste. Prenez le temps que vous souhaitez pour découvrir les lieux. Lorsque vous serez prêt à descendre vers les Profondeurs, retrouvez-moi près de l'ascenseur par lequel vous êtes arrivé. Je vous accompagnerai jusqu'au prochain. »  → 2/0 (etat=DIALOGUE_ACTIVE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/1 (etat=DIALOGUE_ACTIVE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/2 (etat=DIALOGUE_ACTIVE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/3 (etat=DIALOGUE_ACTIVE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/4 (etat=DIALOGUE_ACTIVE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/5 (etat=DIALOGUE_ACTIVE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_market receives entire text block
+PROTOCOL CHECK node b_market receives choices and its explicit action or close
+PROTOCOL CHECK node b_market retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #28 REMPLACEE (etat=DIALOGUE_ACTIVE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=28, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=29, acteur=d3950a6b-37d7-3326-ad77-838a3ba9ac14
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=28, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=29, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #29 Aurèle (etat=ENTERING_DIALOGUE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_market_know waits for client actor
+[PQ03 focus] prêt : session=29, acteur=d3950a6b-37d7-3326-ad77-838a3ba9ac14
+PROTOCOL CHECK node b_market_know acknowledges correct focus
+[PQ03 page] reçue : session=29, nœud=b_market_know, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Suffisamment pour savoir qu'il est plus facile d'y entrer avec une bourse pleine que d'en ressortir avec la même somme. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_market_know receives entire text block
+PROTOCOL CHECK node b_market_know receives choices and its explicit action or close
+PROTOCOL CHECK node b_market_know retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #29 REMPLACEE (etat=DIALOGUE_ACTIVE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=29, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=29, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=30, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #30 Aurèle (etat=ENTERING_DIALOGUE, session=30, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=30, acteur=8d1cf112-166f-3000-8663-f35e42e502a9
+PROTOCOL CHECK node b_market_thanks waits for client actor
+[PQ03 focus] prêt : session=30, acteur=8d1cf112-166f-3000-8663-f35e42e502a9
+PROTOCOL CHECK node b_market_thanks acknowledges correct focus
+[PQ03 page] reçue : session=30, nœud=b_market_thanks, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=30, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Je vous en prie. Profitez de votre visite. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=30, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=30, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_market_thanks receives entire text block
+PROTOCOL CHECK node b_market_thanks receives choices and its explicit action or close
+PROTOCOL CHECK node b_market_thanks retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #30 REMPLACEE (etat=DIALOGUE_ACTIVE, session=30, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=30, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=30, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=30, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=31, acteur=3a6ae02b-4f72-32ef-a564-ba5a4ed35cad
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=30, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=31, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #31 Aurèle (etat=ENTERING_DIALOGUE, session=31, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_market_already waits for client actor
+[PQ03 focus] prêt : session=31, acteur=3a6ae02b-4f72-32ef-a564-ba5a4ed35cad
+PROTOCOL CHECK node b_market_already acknowledges correct focus
+[PQ03 page] reçue : session=31, nœud=b_market_already, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=31, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Mon service ne s'arrête pas parce que nous sommes arrivés. Mais je serai disponible à votre retour. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=31, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=31, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_market_already receives entire text block
+PROTOCOL CHECK node b_market_already receives choices and its explicit action or close
+PROTOCOL CHECK node b_market_already retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #31 REMPLACEE (etat=DIALOGUE_ACTIVE, session=31, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=31, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=31, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=31, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=31, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=32, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #32 Aurèle (etat=ENTERING_DIALOGUE, session=32, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=32, acteur=e23f9166-d4d9-387c-9626-844010830a8a
+PROTOCOL CHECK node b_market_bye waits for client actor
+[PQ03 focus] prêt : session=32, acteur=e23f9166-d4d9-387c-9626-844010830a8a
+PROTOCOL CHECK node b_market_bye acknowledges correct focus
+[PQ03 page] reçue : session=32, nœud=b_market_bye, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=32, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : À tout à l'heure. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=32, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=32, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_market_bye receives entire text block
+PROTOCOL CHECK node b_market_bye receives choices and its explicit action or close
+PROTOCOL CHECK node b_market_bye retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #32 REMPLACEE (etat=DIALOGUE_ACTIVE, session=32, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=32, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=32, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=32, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=33, acteur=f9472ea4-1287-3445-a047-b53ed7f36b22
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=32, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=33, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #33 Aurèle (etat=ENTERING_DIALOGUE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_reunion waits for client actor
+[PQ03 focus] prêt : session=33, acteur=f9472ea4-1287-3445-a047-b53ed7f36b22
+PROTOCOL CHECK node b_reunion acknowledges correct focus
+[PQ03 page] reçue : session=33, nœud=b_reunion, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Vous revoilà. Avez-vous trouvé ce que vous cherchiez ? »  → 1/0 (etat=DIALOGUE_ACTIVE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_reunion receives entire text block
+PROTOCOL CHECK node b_reunion receives choices and its explicit action or close
+PROTOCOL CHECK node b_reunion retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #33 REMPLACEE (etat=DIALOGUE_ACTIVE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=33, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=33, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=34, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #34 Aurèle (etat=ENTERING_DIALOGUE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=34, acteur=c52de14f-2d5d-37a7-88cd-fe9f08844f0e
+PROTOCOL CHECK node b_reunion_yes waits for client actor
+[PQ03 focus] prêt : session=34, acteur=c52de14f-2d5d-37a7-88cd-fe9f08844f0e
+PROTOCOL CHECK node b_reunion_yes acknowledges correct focus
+[PQ03 page] reçue : session=34, nœud=b_reunion_yes, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Tant mieux. Vous connaissez déjà un peu mieux les lieux. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Souhaitez-vous poursuivre vers les Profondeurs ? »  → 2/0 (etat=DIALOGUE_ACTIVE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/1 (etat=DIALOGUE_ACTIVE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/2 (etat=DIALOGUE_ACTIVE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/3 (etat=DIALOGUE_ACTIVE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/4 (etat=DIALOGUE_ACTIVE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_reunion_yes receives entire text block
+PROTOCOL CHECK node b_reunion_yes receives choices and its explicit action or close
+PROTOCOL CHECK node b_reunion_yes retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #34 REMPLACEE (etat=DIALOGUE_ACTIVE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=34, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=35, acteur=673b9370-437d-37a7-a638-927410af0292
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=34, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=35, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #35 Aurèle (etat=ENTERING_DIALOGUE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_reunion_look waits for client actor
+[PQ03 focus] prêt : session=35, acteur=673b9370-437d-37a7-a638-927410af0292
+PROTOCOL CHECK node b_reunion_look acknowledges correct focus
+[PQ03 page] reçue : session=35, nœud=b_reunion_look, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Ce n'est déjà pas inutile. On ne découvre pas une capitale entière en une promenade. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Souhaitez-vous poursuivre vers les Profondeurs ? »  → 2/0 (etat=DIALOGUE_ACTIVE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/1 (etat=DIALOGUE_ACTIVE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/2 (etat=DIALOGUE_ACTIVE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/3 (etat=DIALOGUE_ACTIVE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/4 (etat=DIALOGUE_ACTIVE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_reunion_look receives entire text block
+PROTOCOL CHECK node b_reunion_look receives choices and its explicit action or close
+PROTOCOL CHECK node b_reunion_look retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #35 REMPLACEE (etat=DIALOGUE_ACTIVE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=35, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=35, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=36, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #36 Aurèle (etat=ENTERING_DIALOGUE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=36, acteur=87b0bff4-7c15-3bdb-bcd0-c30091bbedda
+PROTOCOL CHECK node b_reunion_no waits for client actor
+[PQ03 focus] prêt : session=36, acteur=87b0bff4-7c15-3bdb-bcd0-c30091bbedda
+PROTOCOL CHECK node b_reunion_no acknowledges correct focus
+[PQ03 page] reçue : session=36, nœud=b_reunion_no, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Tous les quartiers ne plaisent pas à tout le monde. Vous aurez d'autres occasions de vous faire une opinion. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Souhaitez-vous poursuivre vers les Profondeurs ? »  → 2/0 (etat=DIALOGUE_ACTIVE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/1 (etat=DIALOGUE_ACTIVE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/2 (etat=DIALOGUE_ACTIVE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/3 (etat=DIALOGUE_ACTIVE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/4 (etat=DIALOGUE_ACTIVE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_reunion_no receives entire text block
+PROTOCOL CHECK node b_reunion_no receives choices and its explicit action or close
+PROTOCOL CHECK node b_reunion_no retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #36 REMPLACEE (etat=DIALOGUE_ACTIVE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=36, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=37, acteur=f8af4504-62fe-31ef-91ac-bbf541d2ee5f
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=36, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=37, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #37 Aurèle (etat=ENTERING_DIALOGUE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_reunion_routes waits for client actor
+[PQ03 focus] prêt : session=37, acteur=f8af4504-62fe-31ef-91ac-bbf541d2ee5f
+PROTOCOL CHECK node b_reunion_routes acknowledges correct focus
+[PQ03 page] reçue : session=37, nœud=b_reunion_routes, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Souhaitez-vous poursuivre vers les Profondeurs ? »  → 1/0 (etat=DIALOGUE_ACTIVE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node b_reunion_routes receives entire text block
+PROTOCOL CHECK node b_reunion_routes receives choices and its explicit action or close
+PROTOCOL CHECK node b_reunion_routes retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #37 REMPLACEE (etat=DIALOGUE_ACTIVE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=37, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=37, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=38, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #38 Aurèle (etat=ENTERING_DIALOGUE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=38, acteur=d919f42b-43c5-3ec3-8aea-a07f0b0c5f28
+PROTOCOL CHECK node c_district waits for client actor
+[PQ03 focus] prêt : session=38, acteur=d919f42b-43c5-3ec3-8aea-a07f0b0c5f28
+PROTOCOL CHECK node c_district acknowledges correct focus
+[PQ03 page] reçue : session=38, nœud=c_district, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Vous remarquerez vite que les quartiers de la capitale n'ont pas tous le même visage. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Les Profondeurs sont assez différentes du Port et des secteurs qui entourent le Cœur. Cela ne signifie pas qu'elles soient moins importantes pour la cité. »  → 2/0 (etat=DIALOGUE_ACTIVE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/1 (etat=DIALOGUE_ACTIVE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/2 (etat=DIALOGUE_ACTIVE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/3 (etat=DIALOGUE_ACTIVE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/4 (etat=DIALOGUE_ACTIVE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/5 (etat=DIALOGUE_ACTIVE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_district receives entire text block
+PROTOCOL CHECK node c_district receives choices and its explicit action or close
+PROTOCOL CHECK node c_district retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #38 REMPLACEE (etat=DIALOGUE_ACTIVE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=38, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=39, acteur=3c8529ff-8426-31c0-9f13-c9eb8cf35f65
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=38, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=39, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #39 Aurèle (etat=ENTERING_DIALOGUE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_different waits for client actor
+[PQ03 focus] prêt : session=39, acteur=3c8529ff-8426-31c0-9f13-c9eb8cf35f65
+PROTOCOL CHECK node c_different acknowledges correct focus
+[PQ03 page] reçue : session=39, nœud=c_different, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Le cadre de vie, les métiers, les moyens dont disposent les habitants... Vous le constaterez par vous-même. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_different receives entire text block
+PROTOCOL CHECK node c_different receives choices and its explicit action or close
+PROTOCOL CHECK node c_different retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #39 REMPLACEE (etat=DIALOGUE_ACTIVE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=39, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=39, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=40, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #40 Aurèle (etat=ENTERING_DIALOGUE, session=40, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=40, acteur=31cb9761-dd18-3c2a-9c48-b974bd39c4cc
+PROTOCOL CHECK node c_judge waits for client actor
+[PQ03 focus] prêt : session=40, acteur=31cb9761-dd18-3c2a-9c48-b974bd39c4cc
+PROTOCOL CHECK node c_judge acknowledges correct focus
+[PQ03 page] reçue : session=40, nœud=c_judge, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=40, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Parce que je ne vois pas l'intérêt de juger tout un quartier à partir de quelques histoires. Il y a des gens qui y travaillent, qui y vivent et qui n'ont pas demandé qu'on les réduise à leur adresse. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=40, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=40, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=40, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=40, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_judge receives entire text block
+PROTOCOL CHECK node c_judge receives choices and its explicit action or close
+PROTOCOL CHECK node c_judge retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #40 REMPLACEE (etat=DIALOGUE_ACTIVE, session=40, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=40, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=40, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=40, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=41, acteur=dfa49cac-fea4-3437-b065-3655911f4491
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=40, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=41, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #41 Aurèle (etat=ENTERING_DIALOGUE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_approach waits for client actor
+[PQ03 focus] prêt : session=41, acteur=dfa49cac-fea4-3437-b065-3655911f4491
+PROTOCOL CHECK node c_approach acknowledges correct focus
+[PQ03 page] reçue : session=41, nœud=c_approach, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Nous approchons de l'ascenseur. Vous pourrez rejoindre les Profondeurs à partir de là. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Un conseil : prenez le temps de vous repérer avant de vous aventurer trop loin. C'est valable dans n'importe quel quartier que l'on découvre pour la première fois. »  → 2/0 (etat=DIALOGUE_ACTIVE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/1 (etat=DIALOGUE_ACTIVE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/2 (etat=DIALOGUE_ACTIVE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/3 (etat=DIALOGUE_ACTIVE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 2/4 (etat=DIALOGUE_ACTIVE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_approach receives entire text block
+PROTOCOL CHECK node c_approach receives choices and its explicit action or close
+PROTOCOL CHECK node c_approach retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #41 REMPLACEE (etat=DIALOGUE_ACTIVE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=41, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=41, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=42, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #42 Aurèle (etat=ENTERING_DIALOGUE, session=42, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=42, acteur=df3fda0e-8584-30d2-85ba-76546f290436
+PROTOCOL CHECK node c_trouble waits for client actor
+[PQ03 focus] prêt : session=42, acteur=df3fda0e-8584-30d2-85ba-76546f290436
+PROTOCOL CHECK node c_trouble acknowledges correct focus
+[PQ03 page] reçue : session=42, nœud=c_trouble, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=42, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Pas nécessairement. Mais vous venez tout juste d'arriver dans la capitale. Cela suffit à justifier un peu de prudence, vous ne croyez pas ? »  → 1/0 (etat=DIALOGUE_ACTIVE, session=42, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=42, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=42, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=42, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_trouble receives entire text block
+PROTOCOL CHECK node c_trouble receives choices and its explicit action or close
+PROTOCOL CHECK node c_trouble retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #42 REMPLACEE (etat=DIALOGUE_ACTIVE, session=42, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=42, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=42, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=42, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=43, acteur=5b39f17c-80da-3ba1-9902-1e2f7c77c79c
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=42, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=43, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #43 Aurèle (etat=ENTERING_DIALOGUE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c03 waits for client actor
+[PQ03 focus] prêt : session=43, acteur=5b39f17c-80da-3ba1-9902-1e2f7c77c79c
+PROTOCOL CHECK node c03 acknowledges correct focus
+[PQ03 page] reçue : session=43, nœud=c03, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Nous y voilà. Cet ascenseur dessert les Profondeurs. Je vais devoir vous laisser poursuivre seul à partir d'ici. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Vous allez découvrir un autre visage de la capitale. Les habitudes et les conditions de vie y sont différentes, mais je préfère vous laisser vous faire votre propre opinion. »  → 2/0 (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Les logements y sont généralement plus abordables que dans les quartiers supérieurs. Cela pourrait vous être utile, compte tenu de votre situation. »  → 3/0 (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Pour le reste, je vous conseille de prendre vos renseignements auprès des habitants. Ils connaissent leurs rues et leurs habitudes mieux que moi. »  → 4/0 (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 4/1 (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 4/2 (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 4/3 (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 4/4 (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 4/5 (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 4/6 (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c03 receives entire text block
+PROTOCOL CHECK node c03 receives choices and its explicit action or close
+PROTOCOL CHECK node c03 retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #43 REMPLACEE (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=43, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=43, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=44, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #44 Aurèle (etat=ENTERING_DIALOGUE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=44, acteur=34d7a554-a511-3c0b-8c95-698cdc619693
+PROTOCOL CHECK node c_questions waits for client actor
+[PQ03 focus] prêt : session=44, acteur=34d7a554-a511-3c0b-8c95-698cdc619693
+PROTOCOL CHECK node c_questions acknowledges correct focus
+[PQ03 page] reçue : session=44, nœud=c_questions, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Parlons encore du Port. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_questions receives entire text block
+PROTOCOL CHECK node c_questions receives choices and its explicit action or close
+PROTOCOL CHECK node c_questions retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #44 REMPLACEE (etat=DIALOGUE_ACTIVE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=44, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=45, acteur=8ad8f67d-9b45-3fbf-afd7-734a43b87141
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=44, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=45, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #45 Aurèle (etat=ENTERING_DIALOGUE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_alone waits for client actor
+[PQ03 focus] prêt : session=45, acteur=8ad8f67d-9b45-3fbf-afd7-734a43b87141
+PROTOCOL CHECK node c_alone acknowledges correct focus
+[PQ03 page] reçue : session=45, nœud=c_alone, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Non. Mon service me retient au Cœur. Et je ne serais pas nécessairement le meilleur guide là-dessous. Mieux vaut demander son chemin à quelqu'un qui connaît vraiment les lieux. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_alone receives entire text block
+PROTOCOL CHECK node c_alone receives choices and its explicit action or close
+PROTOCOL CHECK node c_alone retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #45 REMPLACEE (etat=DIALOGUE_ACTIVE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=45, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=45, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=46, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #46 Aurèle (etat=ENTERING_DIALOGUE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=46, acteur=ecfb82f8-9e42-347a-8298-17eee29560e8
+PROTOCOL CHECK node c_danger waits for client actor
+[PQ03 focus] prêt : session=46, acteur=ecfb82f8-9e42-347a-8298-17eee29560e8
+PROTOCOL CHECK node c_danger acknowledges correct focus
+[PQ03 page] reçue : session=46, nœud=c_danger, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Il faut rester prudent, comme partout dans une ville qu'on connaît mal. Je ne vais pas vous présenter tout un quartier comme une menace. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_danger receives entire text block
+PROTOCOL CHECK node c_danger receives choices and its explicit action or close
+PROTOCOL CHECK node c_danger retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #46 REMPLACEE (etat=DIALOGUE_ACTIVE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=46, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=47, acteur=4c1b1355-e8d2-3fdd-bbc2-06818b334732
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=46, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=47, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #47 Aurèle (etat=ENTERING_DIALOGUE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_home waits for client actor
+[PQ03 focus] prêt : session=47, acteur=4c1b1355-e8d2-3fdd-bbc2-06818b334732
+PROTOCOL CHECK node c_home acknowledges correct focus
+[PQ03 page] reçue : session=47, nœud=c_home, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Demandez aux habitants ou aux personnes qui s'occupent des locations sur place. Je préfère ne pas vous orienter au hasard. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_home receives entire text block
+PROTOCOL CHECK node c_home receives choices and its explicit action or close
+PROTOCOL CHECK node c_home retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #47 REMPLACEE (etat=DIALOGUE_ACTIVE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=47, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=47, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=48, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #48 Aurèle (etat=ENTERING_DIALOGUE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=48, acteur=ea406967-3a04-3241-8ef0-88914e7ab65a
+PROTOCOL CHECK node c_back waits for client actor
+[PQ03 focus] prêt : session=48, acteur=ea406967-3a04-3241-8ef0-88914e7ab65a
+PROTOCOL CHECK node c_back acknowledges correct focus
+[PQ03 page] reçue : session=48, nœud=c_back, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Bien sûr, par les passages ouverts au public. Les zones de service restent réglementées, comme je vous l'ai expliqué. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/6 (etat=DIALOGUE_ACTIVE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_back receives entire text block
+PROTOCOL CHECK node c_back receives choices and its explicit action or close
+PROTOCOL CHECK node c_back retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #48 REMPLACEE (etat=DIALOGUE_ACTIVE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=48, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=49, acteur=b5952887-ce58-3407-ba6e-12891688d6f8
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=48, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=49, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #49 Aurèle (etat=ENTERING_DIALOGUE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_position waits for client actor
+[PQ03 focus] prêt : session=49, acteur=b5952887-ce58-3407-ba6e-12891688d6f8
+PROTOCOL CHECK node c_position acknowledges correct focus
+[PQ03 page] reçue : session=49, nœud=c_position, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : J'espère que cette traversée vous aura au moins permis de mieux vous repérer. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/5 (etat=DIALOGUE_ACTIVE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_position receives entire text block
+PROTOCOL CHECK node c_position receives choices and its explicit action or close
+PROTOCOL CHECK node c_position retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #49 REMPLACEE (etat=DIALOGUE_ACTIVE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=49, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=49, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=50, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #50 Aurèle (etat=ENTERING_DIALOGUE, session=50, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=50, acteur=f83d9ffc-f7c3-35b7-bd6e-411593ef9891
+PROTOCOL CHECK node c_thanks waits for client actor
+[PQ03 focus] prêt : session=50, acteur=f83d9ffc-f7c3-35b7-bd6e-411593ef9891
+PROTOCOL CHECK node c_thanks acknowledges correct focus
+[PQ03 page] reçue : session=50, nœud=c_thanks, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=50, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Je vous en prie. Vous avez eu raison de demander plutôt que de vous aventurer au hasard. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=50, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=50, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_thanks receives entire text block
+PROTOCOL CHECK node c_thanks receives choices and its explicit action or close
+PROTOCOL CHECK node c_thanks retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #50 REMPLACEE (etat=DIALOGUE_ACTIVE, session=50, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=50, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=50, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=50, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=51, acteur=2aef95a9-213c-3a83-a801-95722cbedf4c
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=50, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=51, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #51 Aurèle (etat=ENTERING_DIALOGUE, session=51, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_neutral waits for client actor
+[PQ03 focus] prêt : session=51, acteur=2aef95a9-213c-3a83-a801-95722cbedf4c
+PROTOCOL CHECK node c_neutral acknowledges correct focus
+[PQ03 page] reçue : session=51, nœud=c_neutral, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=51, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Tant mieux. C'était le but. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=51, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=51, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_neutral receives entire text block
+PROTOCOL CHECK node c_neutral receives choices and its explicit action or close
+PROTOCOL CHECK node c_neutral retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #51 REMPLACEE (etat=DIALOGUE_ACTIVE, session=51, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=51, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=51, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=51, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=51, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=52, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #52 Aurèle (etat=ENTERING_DIALOGUE, session=52, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=52, acteur=563020fa-3a1e-34bf-ae11-4404749e8486
+PROTOCOL CHECK node c_critical waits for client actor
+[PQ03 focus] prêt : session=52, acteur=563020fa-3a1e-34bf-ae11-4404749e8486
+PROTOCOL CHECK node c_critical acknowledges correct focus
+[PQ03 page] reçue : session=52, nœud=c_critical, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=52, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Je peux le comprendre. Mais elles existent pour protéger les personnes autant que les installations. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=52, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=52, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_critical receives entire text block
+PROTOCOL CHECK node c_critical receives choices and its explicit action or close
+PROTOCOL CHECK node c_critical retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #52 REMPLACEE (etat=DIALOGUE_ACTIVE, session=52, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=52, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=52, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=52, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=53, acteur=42d877e8-b72f-3a44-91f8-1680386c3236
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=52, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=53, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #53 Aurèle (etat=ENTERING_DIALOGUE, session=53, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_contempt waits for client actor
+[PQ03 focus] prêt : session=53, acteur=42d877e8-b72f-3a44-91f8-1680386c3236
+PROTOCOL CHECK node c_contempt acknowledges correct focus
+[PQ03 page] reçue : session=53, nœud=c_contempt, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=53, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Je vous ai accompagné pour vous éviter des difficultés, pas pour vous en créer. Vous êtes libre de penser ce que vous voulez de nos consignes. Cela ne dispense personne de les respecter. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=53, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=53, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_contempt receives entire text block
+PROTOCOL CHECK node c_contempt receives choices and its explicit action or close
+PROTOCOL CHECK node c_contempt retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #53 REMPLACEE (etat=DIALOGUE_ACTIVE, session=53, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=53, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=53, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=53, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=53, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=54, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #54 Aurèle (etat=ENTERING_DIALOGUE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=54, acteur=5ad1bb6a-a13a-3c07-b7d9-de035a9a8cfd
+PROTOCOL CHECK node c_conclusion waits for client actor
+[PQ03 focus] prêt : session=54, acteur=5ad1bb6a-a13a-3c07-b7d9-de035a9a8cfd
+PROTOCOL CHECK node c_conclusion acknowledges correct focus
+[PQ03 page] reçue : session=54, nœud=c_conclusion, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Quoi qu'il en soit, je vous souhaite une bonne continuation. Prenez le temps de découvrir la ville avant de décider ce que vous en pensez. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/3 (etat=DIALOGUE_ACTIVE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/4 (etat=DIALOGUE_ACTIVE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_conclusion receives entire text block
+PROTOCOL CHECK node c_conclusion receives choices and its explicit action or close
+PROTOCOL CHECK node c_conclusion retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #54 REMPLACEE (etat=DIALOGUE_ACTIVE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=54, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=55, acteur=28a2aaa6-7adc-3231-a0ae-42ee2700593d
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=54, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=55, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #55 Aurèle (etat=ENTERING_DIALOGUE, session=55, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_bye waits for client actor
+[PQ03 focus] prêt : session=55, acteur=28a2aaa6-7adc-3231-a0ae-42ee2700593d
+PROTOCOL CHECK node c_bye acknowledges correct focus
+[PQ03 page] reçue : session=55, nœud=c_bye, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=55, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Au revoir. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=55, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=55, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_bye receives entire text block
+PROTOCOL CHECK node c_bye receives choices and its explicit action or close
+PROTOCOL CHECK node c_bye retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #55 REMPLACEE (etat=DIALOGUE_ACTIVE, session=55, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=55, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=55, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=55, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=55, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=56, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #56 Aurèle (etat=ENTERING_DIALOGUE, session=56, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=56, acteur=d08f3d3e-df6f-3d26-8cad-3355ec933be0
+PROTOCOL CHECK node c_recall waits for client actor
+[PQ03 focus] prêt : session=56, acteur=d08f3d3e-df6f-3d26-8cad-3355ec933be0
+PROTOCOL CHECK node c_recall acknowledges correct focus
+[PQ03 page] reçue : session=56, nœud=c_recall, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=56, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Un instant. J'aimerais encore vous dire un mot avant de vous laisser poursuivre. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=56, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=56, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node c_recall receives entire text block
+PROTOCOL CHECK node c_recall receives choices and its explicit action or close
+PROTOCOL CHECK node c_recall retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #56 REMPLACEE (etat=DIALOGUE_ACTIVE, session=56, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=56, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=56, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=56, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=57, acteur=a1d3410a-2d9a-3e09-8aff-32a0407382fa
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=56, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=57, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #57 Aurèle (etat=ENTERING_DIALOGUE, session=57, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node post waits for client actor
+[PQ03 focus] prêt : session=57, acteur=a1d3410a-2d9a-3e09-8aff-32a0407382fa
+PROTOCOL CHECK node post acknowledges correct focus
+[PQ03 page] reçue : session=57, nœud=post, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=57, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Les voies du Cœur vous sont désormais plus familières. N'oubliez pas que seules les voies de passage sont ouvertes au public. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=57, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=57, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=57, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node post receives entire text block
+PROTOCOL CHECK node post receives choices and its explicit action or close
+PROTOCOL CHECK node post retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #57 REMPLACEE (etat=DIALOGUE_ACTIVE, session=57, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=57, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=57, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=57, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=57, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=58, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #58 Aurèle (etat=ENTERING_DIALOGUE, session=58, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=58, acteur=0533737a-23ca-348a-a2a7-41d51666ed42
+PROTOCOL CHECK node post_neutral waits for client actor
+[PQ03 focus] prêt : session=58, acteur=0533737a-23ca-348a-a2a7-41d51666ed42
+PROTOCOL CHECK node post_neutral acknowledges correct focus
+[PQ03 page] reçue : session=58, nœud=post_neutral, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=58, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Vous avez vu ce que la Couronne laisse voir des voies du Cœur. Marchez sans empressement, et vous éviterez bien des questions. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=58, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=58, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=58, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node post_neutral receives entire text block
+PROTOCOL CHECK node post_neutral receives choices and its explicit action or close
+PROTOCOL CHECK node post_neutral retains speaker
+[14:49:22] [main/INFO]: [etat] onServeurFerme #58 REMPLACEE (etat=DIALOGUE_ACTIVE, session=58, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison REMPLACEE (etat=DIALOGUE_ACTIVE, session=58, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=58, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=58, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[PQ03 focus] demande reçue : session=59, acteur=0fd60cd0-9126-39af-b6a0-105f03697ace
+[14:49:22] [main/INFO]: [etat] sortirLocalement 0 ms, raison REMPLACEE (etat=EXITING_DIALOGUE, session=58, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranOuvert CaptureDialogueScreen (etat=ENTERING_DIALOGUE, session=59, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] ouvrir #59 Aurèle (etat=ENTERING_DIALOGUE, session=59, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node post_unfriendly waits for client actor
+[PQ03 focus] prêt : session=59, acteur=0fd60cd0-9126-39af-b6a0-105f03697ace
+PROTOCOL CHECK node post_unfriendly acknowledges correct focus
+[PQ03 page] reçue : session=59, nœud=post_unfriendly, locuteur=aurele
+[14:49:22] [main/INFO]: [etat] choix envoyé (etat=DIALOGUE_ACTIVE, session=59, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : réplique « : Les installations derrière les barrières ne sont pas faites pour les visiteurs. Un détour peut vous mettre en danger et mobiliser inutilement la garde. »  → 1/0 (etat=DIALOGUE_ACTIVE, session=59, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/1 (etat=DIALOGUE_ACTIVE, session=59, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] capture : 1 choix → 1/2 (etat=DIALOGUE_ACTIVE, session=59, mode=CAPTURE, ecran=CaptureDialogueScreen)
+PROTOCOL CHECK node post_unfriendly receives entire text block
+PROTOCOL CHECK node post_unfriendly receives choices and its explicit action or close
+PROTOCOL CHECK node post_unfriendly retains speaker
+PROTOCOL CHECK all PQ03 nodes pass native session and actual Fabric message pipeline
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=DIALOGUE_ACTIVE, session=59, mode=CAPTURE, ecran=CaptureDialogueScreen)
+[14:49:22] [main/INFO]: [etat] sortirLocalement 350 ms, raison ESC (etat=DIALOGUE_ACTIVE, session=59, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] demanderFin ESC (etat=EXITING_DIALOGUE, session=59, mode=CAPTURE, ecran=aucun)
+[14:49:22] [main/INFO]: [etat] onEcranFerme CaptureDialogueScreen (etat=EXITING_DIALOGUE, session=59, mode=CAPTURE, ecran=aucun)
+[PQ03 focus] fin/changement de session : attendue=59, courante=-1, raison=ESC
+PROTOCOL CHECK Escape does not reopen or acknowledge closed session
+PROTOCOL CHECK closing conversation clears transient reputation information before another character
+PROTOCOL CHECK disconnect cleanup releases pending state
+PASS 302 real client protocol checks; native b10 state and actual Fabric events, graphical client/world/screen and C2S recorder doubled

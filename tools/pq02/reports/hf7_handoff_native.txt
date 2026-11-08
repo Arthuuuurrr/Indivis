@@ -1,0 +1,308 @@
+PASS 305 native checks
+setup HF1: fixture is outside former local marker lookup
+setup HF1: preparation succeeds far from loaded A and at a different altitude
+setup HF1: legacy guide parks on existing A, never on administrator position
+setup HF1: legacy motion states removed
+setup HF1: existing markers remain in place
+setup HF1: public Leovic position unchanged by setup
+setup HF1: armor stand carrying A tag is ignored as a route marker
+setup HF1: unrelated setup data retained
+setup HF1: loaded coordinates copied exactly to cache
+setup HF1: point diagnostics expose roles, coordinates and loaded status
+setup HF1: operator requirement enforced for prepare_route
+setup HF1: operator requirement enforced for prepare_legacy
+setup HF1: operator requirement enforced for points
+setup HF1: operator requirement enforced for status
+setup HF1: preparation adapts to changed existing marker coordinates
+setup HF1: cached point remains usable when its marker is not loaded/recognized
+setup HF1: diagnostic distinguishes remembered from loaded points
+setup HF1: missing required point refuses completion and leaves guide untouched
+setup HF1: missing point never gets invented fallback coordinates
+setup HF1: cache from another dimension is rejected
+setup HF1: restored marker repairs preparation without changing progression
+setup HF1: duplicate marker refuses both guide move and cache mutation
+setup HF1: duplicate legacy guide is not chosen arbitrarily
+setup HF1: optional H approach markers do not prevent preparation
+setup HF1: cached but unloaded A defers legacy parking without teleport to unloaded marker
+setup HF1: active scene prevents legacy guide relocation
+setup HF1: old direct command remains compatible
+setup HF1: datapack function exists: preparer_parcours
+setup HF1: datapack function exists: preparer_guide_historique
+setup HF1: datapack function exists: diagnostic
+setup HF1: datapack function exists: diagnostic_points
+setup HF1: datapack function exists: afficher_points
+setup HF1: datapack function exists: masquer_points
+setup HF1: old function forwards through actual function dispatcher
+setup HF1: visualization uses existing historical waypoint function
+setup HF1: hiding visualization preserves all real route markers
+setup HF1: admin commands do not start quest, alter reputation, give money or change character state
+native DialogueManager opens camera for a01
+client readiness acknowledged for a01
+native trigger accepted a02a #1
+native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
+handoff HF7: actual log choice #1 reaches a02a
+native trigger accepted a07 #4
+native DialogueManager opens camera for a07
+client readiness acknowledged for a07
+handoff HF7: actual log choice #4 reaches a07
+native trigger accepted a06 #3
+native DialogueManager opens camera for a06
+client readiness acknowledged for a06
+handoff HF7: actual log choice #3 reaches a06
+native trigger accepted a06b #1
+native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
+handoff HF7: actual log choice #1 reaches a06b
+native trigger accepted a08 #5
+native DialogueManager opens camera for a08
+client readiness acknowledged for a08
+handoff HF7: actual log choice #5 reaches a08
+native trigger accepted a09 #1
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: actual log choice #1 reaches a09
+native trigger accepted a09 #15
+handoff HF7: closing accepted a09 starts the actual escort and retains its actor
+handoff HF7: departure adds no reputation or gift
+native DialogueManager opens camera for a08a
+client readiness acknowledged for a08a
+handoff HF7: visible green action replaces misleading close at a08a
+handoff HF7: visible action executes the real transition at a08a
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: visible green action replaces misleading close at a09
+handoff HF7: visible action executes the real transition at a09
+native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
+handoff HF7: visible green action replaces misleading close at t_resume
+handoff HF7: visible action executes the real transition at t_resume
+native DialogueManager opens camera for m06
+client readiness acknowledged for m06
+handoff HF7: visible green action replaces misleading close at m06
+handoff HF7: visible action executes the real transition at m06
+native DialogueManager opens camera for m07a
+client readiness acknowledged for m07a
+handoff HF7: visible green action replaces misleading close at m07a
+handoff HF7: visible action executes the real transition at m07a
+native DialogueManager opens camera for m07b
+client readiness acknowledged for m07b
+handoff HF7: visible green action replaces misleading close at m07b
+handoff HF7: visible action executes the real transition at m07b
+native DialogueManager opens camera for m07c
+client readiness acknowledged for m07c
+handoff HF7: visible green action replaces misleading close at m07c
+handoff HF7: visible action executes the real transition at m07c
+native DialogueManager opens camera for f03_prefer
+client readiness acknowledged for f03_prefer
+handoff HF7: visible green action replaces misleading close at f03_prefer
+handoff HF7: visible action executes the real transition at f03_prefer
+native DialogueManager opens camera for f04_return
+client readiness acknowledged for f04_return
+handoff HF7: visible green action replaces misleading close at f04_return
+handoff HF7: visible action executes the real transition at f04_return
+native DialogueManager opens camera for f05
+client readiness acknowledged for f05
+handoff HF7: visible green action replaces misleading close at f05
+handoff HF7: visible action executes the real transition at f05
+native DialogueManager opens camera for f05_short
+client readiness acknowledged for f05_short
+handoff HF7: visible green action replaces misleading close at f05_short
+handoff HF7: visible action executes the real transition at f05_short
+native DialogueManager opens camera for f06c
+client readiness acknowledged for f06c
+handoff HF7: visible green action replaces misleading close at f06c
+handoff HF7: visible action executes the real transition at f06c
+native DialogueManager opens camera for f07a
+client readiness acknowledged for f07a
+handoff HF7: visible green action replaces misleading close at f07a
+handoff HF7: visible action executes the real transition at f07a
+native DialogueManager opens camera for f07b
+client readiness acknowledged for f07b
+handoff HF7: visible green action replaces misleading close at f07b
+handoff HF7: visible action executes the real transition at f07b
+native DialogueManager opens camera for f07c
+client readiness acknowledged for f07c
+handoff HF7: visible green action replaces misleading close at f07c
+handoff HF7: visible action executes the real transition at f07c
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: a09 handles native ESC with correct phase and actor
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: a09 handles native ADIEU with correct phase and actor
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: a09 handles native ECRAN_FERME with correct phase and actor
+native DialogueManager opens camera for a08a
+client readiness acknowledged for a08a
+handoff HF7: a08a handles native ESC with correct phase and actor
+native DialogueManager opens camera for a08a
+client readiness acknowledged for a08a
+handoff HF7: a08a handles native ADIEU with correct phase and actor
+native DialogueManager opens camera for a08a
+client readiness acknowledged for a08a
+handoff HF7: a08a handles native ECRAN_FERME with correct phase and actor
+native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
+handoff HF7: t_resume handles native ESC with correct phase and actor
+native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
+handoff HF7: t_resume handles native ADIEU with correct phase and actor
+native DialogueManager opens camera for t_resume
+client readiness acknowledged for t_resume
+handoff HF7: t_resume handles native ECRAN_FERME with correct phase and actor
+native DialogueManager opens camera for m07a
+client readiness acknowledged for m07a
+handoff HF7: m07a handles native ESC with correct phase and actor
+native DialogueManager opens camera for m07a
+client readiness acknowledged for m07a
+handoff HF7: m07a handles native ADIEU with correct phase and actor
+native DialogueManager opens camera for m07a
+client readiness acknowledged for m07a
+handoff HF7: m07a handles native ECRAN_FERME with correct phase and actor
+native DialogueManager opens camera for m07b
+client readiness acknowledged for m07b
+handoff HF7: m07b handles native ESC with correct phase and actor
+native DialogueManager opens camera for m07b
+client readiness acknowledged for m07b
+handoff HF7: m07b handles native ADIEU with correct phase and actor
+native DialogueManager opens camera for m07b
+client readiness acknowledged for m07b
+handoff HF7: m07b handles native ECRAN_FERME with correct phase and actor
+native DialogueManager opens camera for m07c
+client readiness acknowledged for m07c
+handoff HF7: m07c handles native ESC with correct phase and actor
+native DialogueManager opens camera for m07c
+client readiness acknowledged for m07c
+handoff HF7: m07c handles native ADIEU with correct phase and actor
+native DialogueManager opens camera for m07c
+client readiness acknowledged for m07c
+handoff HF7: m07c handles native ECRAN_FERME with correct phase and actor
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: native MORT never starts an accepted departure silently
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: native DECONNEXION never starts an accepted departure silently
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: native DIMENSION never starts an accepted departure silently
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: native TELEPORTATION never starts an accepted departure silently
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: native REMPLACEE never starts an accepted departure silently
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: native INACTIVITE never starts an accepted departure silently
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: native PNJ_DISPARU never starts an accepted departure silently
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: native DISTANCE never starts an accepted departure silently
+native DialogueManager opens camera for m06
+client readiness acknowledged for m06
+handoff HF7: Escape at m06 does not implicitly grant money, registration or completion
+native DialogueManager opens camera for f06c
+client readiness acknowledged for f06c
+handoff HF7: Escape at f06c does not implicitly grant money, registration or completion
+native DialogueManager opens camera for f07a
+client readiness acknowledged for f07a
+handoff HF7: Escape at f07a does not implicitly grant money, registration or completion
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: explicit profile suspension still cancels departure
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+native trigger accepted t_menu #15
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+handoff HF7: real EasyNPC private interaction pauses and opens the optional menu
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+handoff HF7: real private interaction also accepts b10 capture already opened for the owned actor
+native DialogueManager opens camera for a01
+client readiness acknowledged for a01
+native trigger accepted a02a #1
+native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
+handoff HF7: actual log choice #1 reaches a02a
+native trigger accepted a07 #4
+native DialogueManager opens camera for a07
+client readiness acknowledged for a07
+handoff HF7: actual log choice #4 reaches a07
+native trigger accepted a06 #3
+native DialogueManager opens camera for a06
+client readiness acknowledged for a06
+handoff HF7: actual log choice #3 reaches a06
+native trigger accepted a06b #1
+native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
+handoff HF7: actual log choice #1 reaches a06b
+native trigger accepted a08 #5
+native DialogueManager opens camera for a08
+client readiness acknowledged for a08
+handoff HF7: actual log choice #5 reaches a08
+native trigger accepted a09 #1
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: actual log choice #1 reaches a09
+native trigger accepted a09 #15
+native DialogueManager opens camera for a01
+client readiness acknowledged for a01
+native trigger accepted a02a #1
+native DialogueManager opens camera for a02a
+client readiness acknowledged for a02a
+handoff HF7: actual log choice #1 reaches a02a
+native trigger accepted a07 #4
+native DialogueManager opens camera for a07
+client readiness acknowledged for a07
+handoff HF7: actual log choice #4 reaches a07
+native trigger accepted a06 #3
+native DialogueManager opens camera for a06
+client readiness acknowledged for a06
+handoff HF7: actual log choice #3 reaches a06
+native trigger accepted a06b #1
+native DialogueManager opens camera for a06b
+client readiness acknowledged for a06b
+handoff HF7: actual log choice #1 reaches a06b
+native trigger accepted a08 #5
+native DialogueManager opens camera for a08
+client readiness acknowledged for a08
+handoff HF7: actual log choice #5 reaches a08
+native trigger accepted a09 #1
+native DialogueManager opens camera for a09
+client readiness acknowledged for a09
+handoff HF7: actual log choice #1 reaches a09
+native trigger accepted a09 #15
+handoff HF7: two accepted escorts use distinct actors
+handoff HF7: actual actor has walked beyond the first two waypoints without teleport
+native DialogueManager opens camera for t_menu
+client readiness acknowledged for t_menu
+handoff HF7: optional menu keeps actor and route paused
+handoff HF7: Escape resumes the paused waypoint without restarting route
+native DialogueManager opens camera for t07
+client readiness acknowledged for t07
+handoff HF7: same private actor reaches magistrate M after optional pause
+native DialogueManager opens camera for m06
+client readiness acknowledged for m06
+node rendered m06
+native trigger accepted m06_registered #14
+native DialogueManager opens camera for m06_registered
+client readiness acknowledged for m06_registered
+native DialogueManager opens camera for m07c
+client readiness acknowledged for m07c
+node rendered m07c
+handoff HF7: closing post-registration reply starts the short M-P escort
+native DialogueManager opens camera for f_menu
+client readiness acknowledged for f_menu
+handoff HF7: same actor reaches elevator P and opens final dialogue
+handoff HF7: neither escort leaked another player's private actor
+handoff HF7: public Leovic remained at the original post
+handoff HF7: actual native b10 EasyNPC look-at open and close callbacks exercised through navigation
+handoff HF7: no handover or navigation runtime exception
+Frame counts={class_3222['PQ02_Observer'/40, l='ServerLevel[world]', x=0.50, y=64.00, z=2.50]=0, class_3222['PQ02_B'/39, l='ServerLevel[world]', x=18.35, y=64.00, z=2.50]=8, class_3222['PQ02_A'/38, l='ServerLevel[world]', x=22.29, y=64.00, z=5.18]=68}
+Native Fabric 1.21.11 / EasyNPC 7.16, HF12 classes preserved except the two authorized Gautier timing classes; production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

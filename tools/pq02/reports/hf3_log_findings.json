@@ -1,0 +1,32 @@
+{
+  "client_log": {
+    "filename": "latest(20261029-145503).log",
+    "sha256": "154739f339bc4129f1cd8351a1e6e9bf63bea371bce26d4562b505ee896d116b",
+    "quest_mod": "PQ02 R1 HF2",
+    "dialogue": "b10",
+    "pq02_choice_command_seen": false
+  },
+  "server_log": {
+    "filename": "latest - 2026-10-29T155521.169.log",
+    "sha256": "50cebab53b0245697e8b3cea63cc4e7cadfddfb4287b0705341e48807599c179",
+    "observed_sessions": [
+      {
+        "opened": "14:52:36",
+        "closed": "14:52:39",
+        "reason": "ECRAN_FERME"
+      },
+      {
+        "opened": "14:52:42",
+        "closed": "14:52:44",
+        "reason": "ECRAN_FERME"
+      },
+      {
+        "opened": "14:52:47",
+        "closed": "14:52:49",
+        "reason": "ECRAN_FERME"
+      }
+    ]
+  },
+  "conclusion": "The private actor/session now opens. An ECRAN_FERME termination follows, with no PQ02 choice command in the attached logs.",
+  "limit": "The logs do not identify which exact client operation removed the GUI. The regression fixture deliberately removes the screen to exercise the native b10 monitor and the HF3 recovery guard."
+}

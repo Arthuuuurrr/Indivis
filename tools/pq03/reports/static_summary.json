@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "checks": 15200,
+  "byte_preservation": {
+    "core": 11240,
+    "quests": 3328,
+    "mod": 254
+  },
+  "files": {
+    "core": {
+      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8_PQ03_R1_HF1.zip",
+      "sha256": "6eebea614c9d2b39a02d18a7d3e3200e7b440be41a73acac0024405a2d5c2ffc",
+      "bytes": 5116970
+    },
+    "quests": {
+      "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1_PQ03_R1.zip",
+      "sha256": "0e86afeb322ca1027ca7181e66dc35c3b85231caf1dd950569bd2942248f5276",
+      "bytes": 1523021
+    },
+    "mod": {
+      "filename": "haute-capitale-quetes-HF12-PQ02-HF9-PQ03-R1-HF1-1.21.11.jar",
+      "sha256": "39bca2336fe7c41bec87248215ee715719bf0933768213df534e36fc1b279537",
+      "bytes": 656917
+    }
+  },
+  "rules": "PASS 98 assertions; 16 decision combinations, exact routes, actual Nexus OPT3 policy, pacing and stage gates.",
+  "static_only": true,
+  "full_evidence": "La preuve complète static.json est incluse dans le paquet HF1 ; son empreinte figure dans validation.json."
+}

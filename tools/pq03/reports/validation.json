@@ -1,0 +1,157 @@
+{
+  "status": "PASS",
+  "date": "2026-11-08",
+  "release": "PQ03-R1-HF1",
+  "components": {
+    "core": {
+      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8_PQ03_R1_HF1.zip",
+      "sha256": "6eebea614c9d2b39a02d18a7d3e3200e7b440be41a73acac0024405a2d5c2ffc",
+      "bytes": 5116970
+    },
+    "quests": {
+      "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1_PQ03_R1.zip",
+      "sha256": "0e86afeb322ca1027ca7181e66dc35c3b85231caf1dd950569bd2942248f5276",
+      "bytes": 1523021
+    },
+    "mod": {
+      "filename": "haute-capitale-quetes-HF12-PQ02-HF9-PQ03-R1-HF1-1.21.11.jar",
+      "sha256": "39bca2336fe7c41bec87248215ee715719bf0933768213df534e36fc1b279537",
+      "bytes": 656917
+    }
+  },
+  "native_assertions": 2113,
+  "restart_assertions": 9,
+  "rules_assertions": 98,
+  "protocol_assertions": [
+    302,
+    566
+  ],
+  "static_checks": 15200,
+  "journal_cards_loaded": 70,
+  "journal_errors": 0,
+  "fixture_functions": 7849,
+  "changes_from_r1": {
+    "core": {
+      "changed": [
+        "data/capitale/function/pq03/complete_once_self.mcfunction",
+        "data/capitale/function/pq03/load.mcfunction"
+      ],
+      "added": [
+        "data/capitale/function/pq03/reputation/instant_ready_self.mcfunction"
+      ],
+      "removed": [],
+      "preserved": 11350
+    },
+    "quests": {
+      "changed": [],
+      "added": [],
+      "removed": [],
+      "preserved": 3330
+    },
+    "mod": {
+      "changed": [
+        "fabric.mod.json",
+        "indivis_pq03_graph.json",
+        "net/hautecapitale/quetes/sequence/Pq02Runtime.class",
+        "net/hautecapitale/quetes/sequence/Pq03Client.class",
+        "net/hautecapitale/quetes/sequence/Pq03Rules.class",
+        "net/hautecapitale/quetes/sequence/Pq03Runtime$1.class",
+        "net/hautecapitale/quetes/sequence/Pq03Runtime$Near.class",
+        "net/hautecapitale/quetes/sequence/Pq03Runtime.class"
+      ],
+      "added": [
+        "net/hautecapitale/quetes/sequence/QuestReputationNotice$Notice.class",
+        "net/hautecapitale/quetes/sequence/QuestReputationNotice.class",
+        "net/hautecapitale/quetes/sequence/QuestReputationNoticeClient.class"
+      ],
+      "removed": [],
+      "preserved": 281
+    }
+  },
+  "source_sha256": {
+    "src/Pq02ProfileCheckpoint.java": "2286f80dde042bb4f2e9c4969b38f4ed00a91fd8ae01dbb4c0918489788f31d3",
+    "src/Pq02Runtime.java": "fc8954ea1898ea5ff3a9e1eceda9a34e08593900f1adfd4cdbe4f2120f49db2d",
+    "src/Pq03Client.java": "395dbded9dcae96e7d0b9d33fc57c41cd0eb5d176f8fda0baf56ac0691f80e3c",
+    "src/Pq03Data.java": "8814ff96b89a0e5055274ed0977dc001eb6e4f5af2eee6bbeb05e52ebab2cf12",
+    "src/Pq03Entries.java": "71a3784baa7f947f0c0b89bec55f502da5a195eaedb6613d030c99b77fe2db87",
+    "src/Pq03Focus.java": "a313bc5e5261e31f8ee09bd159c958337ff265d37951b02ec2216bb3c0442baa",
+    "src/Pq03FocusClient.java": "7ed6cbb73d7049d701ea8a323acb5d04e75a1bc4050581b66904ad383c5658f1",
+    "src/Pq03Pacing.java": "412e15cc58df12018bcc1575adf03b93024bda7aa29a6bbe0801cd842815f83a",
+    "src/Pq03ProfileCheckpoint.java": "ccb44eb08fc7c99962b2140068a0ef03b9b0c7a7c9f3b0abbd5b3075fe057c57",
+    "src/Pq03Rules.java": "90d50fb878c5549cadc0b8d19d8230dd2bf8fd9b95bc4f38683deee269d68d9d",
+    "src/Pq03Runtime.java": "3780040fd6fb8cfb3c3710559042a75ccc27be79704c2fc162a16516d3b69eef",
+    "src/Pq03Setup.java": "7d234417a8d17e59b804d260b1dac3fa301738f3114bc4948cdc6c1cf85995ce",
+    "src/Pq03Transitions.java": "06ef7b70d5dbec56175102ee96a3751f3cd3c8bbc3b2bf77c6e23909c19a5d53",
+    "src/QuestReputationNotice.java": "593993323344e5402dca7ae0db188533285f77abec7a118f0dbc4245a226eb6d",
+    "src/QuestReputationNoticeClient.java": "ad02c1f4d84ac55ab05a2808fd1e142ffce45348ea7c470def74ebb496d3180d",
+    "src/mixin/Pq03DialogueCloseMixin.java": "c9495cef0e4e8186159ed9290edcffbf36f72e9bf91cf102b4ea8324a290a48b",
+    "src/mixin/Pq03EntityMixin.java": "1a3a946ca672a5548b277352f215fc4813385ff03fcf7bff136c69b43c289b64",
+    "src/mixin/Pq03NexusSaveMixin.java": "772d9785cd5a6c2c9e4cceb95a89b4176e2f40790cc7e29c34f9136bd07450bb",
+    "src/mixin/Pq03ScreenLifecycleMixin.java": "9f2db8f3a6da756fe50bc5aabdb3f673f312313f38548b8ad06fc886d5482904",
+    "src/mixin/Pq03VisibilityMixin.java": "86137a2b418b2fb9ab1996d961563f67e836f250015548a9e3f2850210e8541c",
+    "src/mixin/Pq03WaypointMixin.java": "af2c4ad5f3e8193bf10116b2ed9dfec318727f38580ba8bce55db78b45568fd0",
+    "model.py": "75c903ecbbef1a3d364fbfa054270b1333cba84f290bf4cb15ca0fc4b073d491"
+  },
+  "native_test_sources": {
+    "RulesBench.java": "d91edc4c977c20737a2a480fb0c0d3e11e47ba9ab169beca93ab68bdb7a1ff17",
+    "MergeBoot.java": "61e04eb08cdef7c4e82e556ea0c0fe20fe4b96a08bf8421769785c09c740b3dc",
+    "SkillsAPI.java": "da627e467e70d16880d1e2f31baf4d788830717be11b4fb7f42a1bb57d6614ce",
+    "Pq03RulesBench.java": "61ae5c1bc8b4f7165118379c3b06e883b64b4ee67ff8598fd7e0df8d7111d36f",
+    "Pq02ScreenBench.java": "7048692791b98f78db619cc05559cc3d7b73c9b97ce5ec9e9eb4370dd7771454",
+    "NexusCharacters.java": "be1caca20b58e53326efb222b0d9ee8f7e37cf72fa2c945368068ff44a620831",
+    "Pq02ScreenGuardBench.java": "4b7cb9500aa5f86f208814fc37c6bfb7fa32d2d10a74e8c22a7643e9a37db93f",
+    "Mq03Bench.java": "331eafe83a3a9145f1a29bd5c00223c4567da66b3eb8b40fd15569b57133e00a",
+    "Pq02ProtocolBench.java": "7ae7615dff1dca473531efcf43994985c90cffadfe491fa69c6dc2c7730fe2cc",
+    "Pq02ProfileCheckpointBench.java": "ea77b2bd01a1c1f29a5ef2f243980a16696d995a69f5646bb9188f9eecb9d3de",
+    "Pq02ScreenNetwork.java": "8ae4b7cd04c5f1936edfb8940be9c7466e0ae5bc170ee3cafbff8caadd5a5751",
+    "Pq01GautierBench.java": "344fdc50f13a6d1c1e407125128b6e35d2e8a590906f1c8341499c05e0077877",
+    "Pq03RestartBench.java": "4cd4c99aac8946127680a4092f9293451742d206930bcfb73516e57f2e5552da",
+    "Pq02EndToEndBench.java": "38e55837594ae1d585331624492123df2919543c0b13a362feba67ee3ae7cf90",
+    "Pq02AutomaticGiftBench.java": "8a89f6baf782bb26ca277cf821ea2bf31e6adff7ec9bfef2dd52dfc25b2bd754",
+    "MakeSink.java": "3e343aedc5ec7c144e6fc6809ba22509dfcefffed1e8ee0f4a095eea9e121505",
+    "HuguesBench.java": "6187f6ec605e4a3717b246fe754cb55001ce5fd28cdbb1e675c5712107bc3982",
+    "Pq03CoexistenceBench.java": "f96f8b0b36cabc72e1256693f91cf5fd3b52f94d919453270ef67a3ad2d93105",
+    "Pq03ProtocolBench.java": "7b2dcbb15cbc4262d707072d39be1402e5804f21be81a7ea4838a15e45b168a1",
+    "Pq01AuditBench.java": "655b449f9ed483aaf486e449926df12c7ff58cd8442b4f65e85844dbbf2607cd",
+    "HcQuetesMergeBench.java": "af13132f3dcd2892f59b39bda1597d3528e1bc193095e36dce581cfaa5b3c5b0",
+    "Pq02EntryBench.java": "8f6e34359008753fa4550a9d18050886dc119078745f3f2745d10adec24e2edd",
+    "Pq02HandoffBench.java": "49519bc464d0c6affec71e41649cc901b0ff3b5070a5fdeec2da50b3c0605ddf",
+    "Pq02PacingBench.java": "761018cc7ea544b739e089500a67c8db938385e6b059547938afaae09400c9fc",
+    "Pq02SetupBench.java": "5f17b9b6c77387827f7f3b6119ed55f5dc910e50d78c2792b7302ea2c56423c4",
+    "Pq02CaptureBench.java": "6229cec46819f30302b81e582dd389ba7027149d80fa59ec6e6aeda978be248e",
+    "Pq02FullSystemBench.java": "910aa7895e45fe1ab5a8e0f4d009e70eb4a39aabccb86abddaf52b81ce00d50a",
+    "Pq03WorldBench.java": "08d5f6d012d5b0de6dc97eb2ec480b50a6f5ea83cf03f95f98e9a64c917dca88",
+    "Pq01ProtocolAudit.java": "29ef589c6f57c7683de7f25acd3881bc09aea1797f5364f8ea2cbf222828b548",
+    "Pq02FocusBench.java": "e0aafeb16e5607f9398ec72f751cbd0ee2d41da35229f7e144506b6d578af56a",
+    "Pq02WorldBench.java": "f034c61bdfa1d0215ee67743725935098dfa6dfa44bca98467494319292d986c",
+    "protocol_doubles/net/minecraft/class_746.java": "1a0dda49ded0c4cc8adb4b73bc3d83641be1bb6c66905703f95d6dd1c357b4ea",
+    "protocol_doubles/net/minecraft/class_310.java": "78de40b82b701d7bcfac04c7413eb033de29a2afb9616a2ff7b5456fcd5fa14f",
+    "protocol_doubles/net/minecraft/class_634.java": "e44aee669d1be5f48d368b0724b1039a802586fde3c6ae268a52f76ef7bf5cc2",
+    "protocol_doubles/net/minecraft/class_638.java": "d2ba772bf836164199e9ad73970038ce9a0dc18e322fc92b32b440937e30f962",
+    "protocol_doubles/net/hautecapitale/dialogue/client/DialogueCameraController.java": "fea849cef7cf1f14c25f4ed793e4034d206323b91a5a920b2ff4879c00d12878",
+    "protocol_doubles/net/hautecapitale/rpg/client/camera/CameraFocus.java": "54300d7b9ce562fbdad69b68f73750f032cb11380aa33e5201367eac03e59fff",
+    "protocol_doubles/net/hautecapitale/rpg/client/camera/CameraOverrideManager.java": "b59eb4a0d7744aab69347035f1b3aa9df17ed97252802cd6764ba58b9d8cf9cc"
+  },
+  "evidence_sha256": {
+    "build.json": "e78b7835628f3061a50265a05382858dca7c78842ad3cb2ab1382ab1dbf8211c",
+    "static.json": "b277b0c8d60811ddf99f57d909bc822f512ea422ed2a7bb3152362cb653b1d91",
+    "rules.txt": "b1cfe7e9cf2e74e220f213c7ebe08d7018840765aab955ade4c3a1736b242613",
+    "native.txt": "9ef3846a9ffd5db0bda5e7ce755c71864cff543c24d9d219a574ea491bd22740",
+    "native_fixture.json": "46fea3b7d1a84777c5c9b7059ac1fca626e6f31c67539bc6f63431bb950b2e26",
+    "native_server.log": "d1568f5b4e3ea59b36f9f7530e4d256bf3ba0b5344aa71901b67ce4588b437a4",
+    "restart.txt": "8d797f7413c84d0f8be480c152a2481621283c941e716996cec5ec7464b9f979",
+    "restart_server.log": "8b8e4eee482868a1392fb2871d2fe263d682044d15b661933d3774b6afc2a45d",
+    "protocol_pq03.txt": "9c06247dc494ff600c3c55b8dbee4cab2a6f93e595274cd286a19552e8caeedc",
+    "protocol_pq03_fixture.json": "e421a07980795eb796bbbc69e08bc33d4c2e481395ee9ddac6370876b555576b",
+    "protocol_pq02_with_pq03.txt": "5a0e0aa56ca36266f527649f10a9c6d25414af5341948b492ba9064c1a42a31a",
+    "protocol_pq02_with_pq03_fixture.json": "e2636089b9cd2cd3e89617b80e94bcf589c7269e47481ab15952b568036efba3",
+    "hf1_diff_r1.json": "255f31c811e8dc326b0b6e328a2af79f02ba1494bf0f1da0a9f06233dfc69e80"
+  },
+  "limitations": [
+    "Monde et connexions synthétiques, pas de rendu graphique réel.",
+    "Vrais événements Fabric, état b10, acteurs EasyNPC et profils Nexus OPT3.",
+    "Dessin du bandeau vérifié par ses appels, sans capture de la carte Indivis.",
+    "Sélection Nexus, monnaie, CapSkills et primes adaptés dans les fixtures seulement.",
+    "Aucune mesure FPS/TPS/MSPT ou test audio."
+  ]
+}

@@ -1,0 +1,5704 @@
+[
+  {
+    "key": "a1",
+    "id": 1,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:a1:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Ah ! Vous voilà enfin sur vos jambes. Doucement, tout de même. Vous nous avez fait une sacrée frayeur."
+    ],
+    "choices": [
+      {
+        "text": "[Où suis-je ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "a2"
+      }
+    ]
+  },
+  {
+    "key": "a2",
+    "id": 2,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:a2:geraud:1000000001:0:0",
+    "lines": [
+      "[Géraud Rivet] À bord d'un dirigeable de la Couronne. On vous a récupéré sur un rocher, inconscient. Quant à savoir comment vous avez atterri là... ça, c'est une autre histoire."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "a3",
+    "id": 3,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:a3:gautier:1000000001:0:0",
+    "lines": [
+      "[Gautier] Quartier-maître ! Le capitaine a demandé que notre passager lui soit présenté avant l'arrivée. Nous devrions peut-être..."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "a4"
+      }
+    ]
+  },
+  {
+    "key": "a4",
+    "id": 4,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:a4:geraud:1000000001:0:0",
+    "lines": [
+      "[Géraud Rivet] Matelot !",
+      "[Géraud Rivet] Je connais les ordres du capitaine. Retournez à votre poste et laissez-moi faire mon travail."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "a6"
+      }
+    ]
+  },
+  {
+    "key": "a5",
+    "id": 5,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:a5:geraud:1000000001:0:0",
+    "lines": [
+      "[Géraud Rivet] Je connais les ordres du capitaine. Retournez à votre poste et laissez-moi faire mon travail."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "a6"
+      }
+    ]
+  },
+  {
+    "key": "a6",
+    "id": 6,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:a6:gautier:1000000001:0:0",
+    "lines": [
+      "[Gautier] Bien, quartier-maître !"
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "a7",
+    "id": 7,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:a7:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Enfin... pour une fois qu'il prend une initiative, il aurait pu choisir un meilleur moment."
+    ],
+    "choices": [
+      {
+        "text": "[Le capitaine veut me voir ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "a8"
+      }
+    ]
+  },
+  {
+    "key": "a8",
+    "id": 8,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:a8:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] En effet. Mais vous venez à peine de vous réveiller. Prenez une minute pour retrouver vos esprits, puis allez le rejoindre. Sa cabine est à l'arrière, sous le poste du timonier.",
+      "[Géraud Rivet] Vous avez besoin d'autre chose ? Faites vite, j'ai encore du travail avant notre arrivée."
+    ],
+    "choices": [
+      {
+        "text": "[Vous étiez là quand on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quel est votre rôle sur ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez le capitaine depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Le matelot avait pourtant raison, non ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Je vais rejoindre le capitaine.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ga_12"
+      },
+      {
+        "pick": 2,
+        "target": "ga_14"
+      },
+      {
+        "pick": 3,
+        "target": "ga_16"
+      },
+      {
+        "pick": 4,
+        "target": "ga_18"
+      },
+      {
+        "pick": 5,
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "key": "anselme_49",
+    "id": 30,
+    "role": "anselme",
+    "frame": "indivis:pq01:v1:anselme_49:anselme:0:0:0",
+    "lines": [
+      "[Anselme] Difficile ? Tout dépend de ce que vous appelez piloter. Maintenir un cap par temps clair, n'importe quel apprenti convenablement formé peut y parvenir. Mais lorsque les vents changent et que le bâtiment commence à dériver... Ah ! Là, vous voyez ce que vaut réellement un timonier."
+    ],
+    "choices": [
+      {
+        "text": "[C'est difficile de piloter un dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous semblez aimer votre métier.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous avez aperçu l'endroit où l'on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment fonctionne ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Votre appareil semble compliqué.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais vous laisser piloter.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "anselme_49"
+      },
+      {
+        "pick": 2,
+        "target": "anselme_51"
+      },
+      {
+        "pick": 3,
+        "target": "anselme_53"
+      },
+      {
+        "pick": 4,
+        "target": "anselme_55"
+      },
+      {
+        "pick": 5,
+        "target": "anselme_57"
+      },
+      {
+        "pick": 6,
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "key": "anselme_51",
+    "id": 31,
+    "role": "anselme",
+    "frame": "indivis:pq01:v1:anselme_51:anselme:0:0:0",
+    "lines": [
+      "[Anselme] Aimer ? C'est bien peu dire. Il n'y a rien de comparable à la sensation d'un bâtiment qui répond exactement à vos commandes. Enfin... lorsque la mécanique ne décide pas de vous contrarier."
+    ],
+    "choices": [
+      {
+        "text": "[C'est difficile de piloter un dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous semblez aimer votre métier.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous avez aperçu l'endroit où l'on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment fonctionne ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Votre appareil semble compliqué.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais vous laisser piloter.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "anselme_49"
+      },
+      {
+        "pick": 2,
+        "target": "anselme_51"
+      },
+      {
+        "pick": 3,
+        "target": "anselme_53"
+      },
+      {
+        "pick": 4,
+        "target": "anselme_55"
+      },
+      {
+        "pick": 5,
+        "target": "anselme_57"
+      },
+      {
+        "pick": 6,
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "key": "anselme_53",
+    "id": 32,
+    "role": "anselme",
+    "frame": "indivis:pq01:v1:anselme_53:anselme:0:0:0",
+    "lines": [
+      "[Anselme] Pas assez pour vous en donner une position exacte. Nous avons quitté notre trajectoire habituelle pour procéder au sauvetage, mais j'avais autre chose à surveiller que le paysage. Le capitaine pourra vous en dire davantage."
+    ],
+    "choices": [
+      {
+        "text": "[C'est difficile de piloter un dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous semblez aimer votre métier.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous avez aperçu l'endroit où l'on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment fonctionne ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Votre appareil semble compliqué.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais vous laisser piloter.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "anselme_49"
+      },
+      {
+        "pick": 2,
+        "target": "anselme_51"
+      },
+      {
+        "pick": 3,
+        "target": "anselme_53"
+      },
+      {
+        "pick": 4,
+        "target": "anselme_55"
+      },
+      {
+        "pick": 5,
+        "target": "anselme_57"
+      },
+      {
+        "pick": 6,
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "key": "anselme_55",
+    "id": 33,
+    "role": "anselme",
+    "frame": "indivis:pq01:v1:anselme_55:anselme:0:0:0",
+    "lines": [
+      "[Anselme] Vous voulez une explication courte ou une explication exacte ? Parce que ce n'est pas tout à fait la même chose. Pour simplifier : il faut contrôler la sustentation, la propulsion et la direction. Et aucun de ces trois éléments n'a la politesse de rester parfaitement stable."
+    ],
+    "choices": [
+      {
+        "text": "[C'est difficile de piloter un dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous semblez aimer votre métier.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous avez aperçu l'endroit où l'on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment fonctionne ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Votre appareil semble compliqué.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais vous laisser piloter.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "anselme_49"
+      },
+      {
+        "pick": 2,
+        "target": "anselme_51"
+      },
+      {
+        "pick": 3,
+        "target": "anselme_53"
+      },
+      {
+        "pick": 4,
+        "target": "anselme_55"
+      },
+      {
+        "pick": 5,
+        "target": "anselme_57"
+      },
+      {
+        "pick": 6,
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "key": "anselme_57",
+    "id": 34,
+    "role": "anselme",
+    "frame": "indivis:pq01:v1:anselme_57:anselme:0:0:0",
+    "lines": [
+      "[Anselme] Notre bâtiment, si vous permettez. Et il est complexe, oui, ce qui n'est pas exactement la même chose. Enfin, je suppose que vous ne pouviez pas le savoir."
+    ],
+    "choices": [
+      {
+        "text": "[C'est difficile de piloter un dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous semblez aimer votre métier.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous avez aperçu l'endroit où l'on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment fonctionne ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Votre appareil semble compliqué.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais vous laisser piloter.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "anselme_49"
+      },
+      {
+        "pick": 2,
+        "target": "anselme_51"
+      },
+      {
+        "pick": 3,
+        "target": "anselme_53"
+      },
+      {
+        "pick": 4,
+        "target": "anselme_55"
+      },
+      {
+        "pick": 5,
+        "target": "anselme_57"
+      },
+      {
+        "pick": 6,
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "key": "anselme_59",
+    "id": 35,
+    "role": "anselme",
+    "frame": "indivis:pq01:v1:anselme_59:anselme:1000000001:0:0",
+    "lines": [
+      "[Anselme] Sage décision. Nous approchons et je préfère avoir les yeux sur mes instruments. Bonne visite à bord."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "anselme_menu",
+    "id": 29,
+    "role": "anselme",
+    "frame": "indivis:pq01:v1:anselme_menu:anselme:0:0:0",
+    "lines": [
+      "[Anselme] Un instant... Un instant... Voilà. Excusez-moi. Vous vouliez quelque chose ?"
+    ],
+    "choices": [
+      {
+        "text": "[C'est difficile de piloter un dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous semblez aimer votre métier.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous avez aperçu l'endroit où l'on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment fonctionne ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Votre appareil semble compliqué.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais vous laisser piloter.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "anselme_49"
+      },
+      {
+        "pick": 2,
+        "target": "anselme_51"
+      },
+      {
+        "pick": 3,
+        "target": "anselme_53"
+      },
+      {
+        "pick": 4,
+        "target": "anselme_55"
+      },
+      {
+        "pick": 5,
+        "target": "anselme_57"
+      },
+      {
+        "pick": 6,
+        "target": "anselme_59"
+      }
+    ]
+  },
+  {
+    "key": "b0",
+    "id": 43,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:b0:gautier:1000000001:0:0",
+    "lines": [
+      "[Gautier] Vous avez terminé le contrôle du matériel ?"
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "b1"
+      }
+    ]
+  },
+  {
+    "key": "b1",
+    "id": 44,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:b1:hugues:1000000001:0:0",
+    "lines": [
+      "[Hugues] Oui."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "b2"
+      }
+    ]
+  },
+  {
+    "key": "b2",
+    "id": 45,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:b2:gautier:1000000001:0:0",
+    "lines": [
+      "[Gautier] Et vous avez signé le registre ?"
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "b3"
+      }
+    ]
+  },
+  {
+    "key": "b3",
+    "id": 46,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:b3:hugues:1000000001:0:0",
+    "lines": [
+      "[Hugues] Pas encore."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "b4"
+      }
+    ]
+  },
+  {
+    "key": "b4",
+    "id": 47,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:b4:gautier:1000000001:0:0",
+    "lines": [
+      "[Gautier] Alors le contrôle n'est pas terminé."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "b5"
+      }
+    ]
+  },
+  {
+    "key": "b5",
+    "id": 48,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:b5:hugues:1000000001:0:0",
+    "lines": [
+      "[Hugues] Vous savez, un jour, vous découvrirez qu'une caisse ne disparaît pas simplement parce qu'on a oublié de signer un papier."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "b6"
+      }
+    ]
+  },
+  {
+    "key": "b6",
+    "id": 49,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:b6:gautier:1000000001:0:0",
+    "lines": [
+      "[Gautier] Ce n'est pas une raison pour négliger les procédures."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "b7"
+      }
+    ]
+  },
+  {
+    "key": "b7",
+    "id": 50,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:b7:hugues:0:0:0",
+    "lines": [
+      "[Hugues] Et voilà. Je savais que j'aurais dû me contenter de vous dire bonjour.",
+      "[Hugues] Trois fois qu'on me fait recompter les mêmes caisses... Ah, pardon. Vous cherchiez quelque chose ?"
+    ],
+    "choices": [
+      {
+        "text": "[Qu'est-ce que vous transportiez ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Pourquoi avoir livré des canons à Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous n'aimez pas votre travail ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous connaissiez déjà Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Vous étiez là lorsqu'on m'a secouru ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Écouter leur échange sur les procédures.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Je vous laisse à vos caisses.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000007"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "hugues_36"
+      },
+      {
+        "pick": 2,
+        "target": "hugues_38"
+      },
+      {
+        "pick": 3,
+        "target": "hugues_40"
+      },
+      {
+        "pick": 4,
+        "target": "hugues_42"
+      },
+      {
+        "pick": 5,
+        "target": "hugues_44"
+      },
+      {
+        "pick": 7,
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "key": "c1",
+    "id": 52,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:c1:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Entrez, je vous prie. Vous êtes donc notre rescapé. Je suis Althéon Brumeforge, capitaine de ce bâtiment.",
+      "[Althéon Brumeforge] Je suis heureux de vous voir remis. Lorsque nous vous avons trouvé, votre état était préoccupant."
+    ],
+    "choices": [
+      {
+        "text": "[Vous savez ce qui m'est arrivé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "c3"
+      }
+    ]
+  },
+  {
+    "key": "c2",
+    "id": 53,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:c2:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Je suis heureux de vous voir remis. Lorsque nous vous avons trouvé, votre état était préoccupant."
+    ],
+    "choices": [
+      {
+        "text": "[Vous savez ce qui m'est arrivé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "c3"
+      }
+    ]
+  },
+  {
+    "key": "c3",
+    "id": 54,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:c3:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] C'est précisément ce que j'espérais vous demander.",
+      "[Althéon Brumeforge] Vous souvenez-vous de ce qui vous a conduit là-bas ?"
+    ],
+    "choices": [
+      {
+        "text": "[Non. Je ne me souviens de rien avant votre sauvetage.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "c5"
+      }
+    ]
+  },
+  {
+    "key": "c4",
+    "id": 55,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:c4:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Vous souvenez-vous de ce qui vous a conduit là-bas ?"
+    ],
+    "choices": [
+      {
+        "text": "[Non. Je ne me souviens de rien avant votre sauvetage.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "c5"
+      }
+    ]
+  },
+  {
+    "key": "c5",
+    "id": 56,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:c5:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Je vois...",
+      "[Althéon Brumeforge] Dans ce cas, je crains de ne pouvoir vous donner toutes les réponses que vous espérez. Mais je peux au moins vous expliquer ce que nous savons."
+    ],
+    "choices": [
+      {
+        "text": "[Où m'avez-vous trouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quelle était votre mission ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Qu'est-ce qu'Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Que devrais-je savoir de la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Pensez-vous que je puisse retrouver la mémoire ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Merci, capitaine. J'en sais assez pour le moment. (Terminer l’entretien et lancer l’amarrage.)]",
+        "color": "green",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ca1"
+      },
+      {
+        "pick": 2,
+        "target": "cb1"
+      },
+      {
+        "pick": 3,
+        "target": "cc1"
+      },
+      {
+        "pick": 4,
+        "target": "cd1"
+      },
+      {
+        "pick": 5,
+        "target": "ce1"
+      },
+      {
+        "pick": 6,
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "key": "c6",
+    "id": 57,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:c6:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Dans ce cas, je crains de ne pouvoir vous donner toutes les réponses que vous espérez. Mais je peux au moins vous expliquer ce que nous savons."
+    ],
+    "choices": [
+      {
+        "text": "[Où m'avez-vous trouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quelle était votre mission ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Qu'est-ce qu'Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Que devrais-je savoir de la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Pensez-vous que je puisse retrouver la mémoire ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Merci, capitaine. J'en sais assez pour le moment. (Terminer l’entretien et lancer l’amarrage.)]",
+        "color": "green",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ca1"
+      },
+      {
+        "pick": 2,
+        "target": "cb1"
+      },
+      {
+        "pick": 3,
+        "target": "cc1"
+      },
+      {
+        "pick": 4,
+        "target": "cd1"
+      },
+      {
+        "pick": 5,
+        "target": "ce1"
+      },
+      {
+        "pick": 6,
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "key": "c_menu",
+    "id": 58,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:c_menu:altheon:0:0:0",
+    "lines": [],
+    "choices": [
+      {
+        "text": "[Où m'avez-vous trouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quelle était votre mission ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Qu'est-ce qu'Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Que devrais-je savoir de la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Pensez-vous que je puisse retrouver la mémoire ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Merci, capitaine. J'en sais assez pour le moment. (Terminer l’entretien et lancer l’amarrage.)]",
+        "color": "green",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ca1"
+      },
+      {
+        "pick": 2,
+        "target": "cb1"
+      },
+      {
+        "pick": 3,
+        "target": "cc1"
+      },
+      {
+        "pick": 4,
+        "target": "cd1"
+      },
+      {
+        "pick": 5,
+        "target": "ce1"
+      },
+      {
+        "pick": 6,
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "key": "ca1",
+    "id": 59,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:ca1:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Notre vigie vous a aperçu sur un relief rocheux, exposé aux vents, à l'écart de notre trajectoire. Vous étiez seul et ne sembliez pas en état de nous appeler à l'aide."
+    ],
+    "choices": [
+      {
+        "text": "[Vous avez pu déterminer de quel endroit il s'agissait ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Revenir aux questions.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ca2"
+      },
+      {
+        "pick": 2,
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "key": "ca2",
+    "id": 60,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:ca2:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Pas avec certitude. Nous avons interrompu notre route pour vous porter secours, sans entreprendre de reconnaissance des environs."
+    ],
+    "choices": [
+      {
+        "text": "[Pourquoi ne pas avoir examiné les lieux ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Revenir aux questions.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ca3"
+      },
+      {
+        "pick": 2,
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "key": "ca3",
+    "id": 61,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:ca3:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Vous étiez inconscient. Ma priorité était de vous mettre en sécurité, pas de satisfaire ma curiosité."
+    ],
+    "choices": [
+      {
+        "text": "[Où m'avez-vous trouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quelle était votre mission ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Qu'est-ce qu'Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Que devrais-je savoir de la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Pensez-vous que je puisse retrouver la mémoire ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Merci, capitaine. J'en sais assez pour le moment. (Terminer l’entretien et lancer l’amarrage.)]",
+        "color": "green",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ca1"
+      },
+      {
+        "pick": 2,
+        "target": "cb1"
+      },
+      {
+        "pick": 3,
+        "target": "cc1"
+      },
+      {
+        "pick": 4,
+        "target": "cd1"
+      },
+      {
+        "pick": 5,
+        "target": "ce1"
+      },
+      {
+        "pick": 6,
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "key": "cb1",
+    "id": 62,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cb1:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Nous avions pour ordre de livrer plusieurs pièces d'artillerie à Avaleiv. La cargaison remise à ses destinataires, nous avons repris la route de la Haute Capitale. C'est au retour que nous vous avons découvert."
+    ],
+    "choices": [
+      {
+        "text": "[Pourquoi l'Empire livre-t-il des canons à Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Revenir aux questions.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "cb2"
+      },
+      {
+        "pick": 2,
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "key": "cb2",
+    "id": 63,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cb2:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Les relations entre États ne se limitent pas au commerce des étoffes et des denrées. Certaines livraisons relèvent d'accords dont je ne négocie pas les termes. Mon devoir était d'assurer le transport."
+    ],
+    "choices": [
+      {
+        "text": "[Vous ne connaissez pas les raisons de cette livraison ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Revenir aux questions.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "cb3"
+      },
+      {
+        "pick": 2,
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "key": "cb3",
+    "id": 64,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cb3:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] J'en connais la destination et le caractère officiel. Pour le reste, je préfère ne pas vous présenter des suppositions comme des certitudes."
+    ],
+    "choices": [
+      {
+        "text": "[Où m'avez-vous trouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quelle était votre mission ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Qu'est-ce qu'Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Que devrais-je savoir de la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Pensez-vous que je puisse retrouver la mémoire ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Merci, capitaine. J'en sais assez pour le moment. (Terminer l’entretien et lancer l’amarrage.)]",
+        "color": "green",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ca1"
+      },
+      {
+        "pick": 2,
+        "target": "cb1"
+      },
+      {
+        "pick": 3,
+        "target": "cc1"
+      },
+      {
+        "pick": 4,
+        "target": "cd1"
+      },
+      {
+        "pick": 5,
+        "target": "ce1"
+      },
+      {
+        "pick": 6,
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "key": "cc1",
+    "id": 65,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cc1:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Une principauté elfique indépendante. Elle entretient des relations commerciales avec l'Empire, mais ne relève pas de l'autorité de la Couronne."
+    ],
+    "choices": [
+      {
+        "text": "[Vous y allez souvent ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Revenir aux questions.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "cc2"
+      },
+      {
+        "pick": 2,
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "key": "cc2",
+    "id": 66,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cc2:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Suffisamment pour connaître certaines routes et les usages des ports que nous fréquentons. Mais je n'aurais pas la prétention de connaître la principauté dans son ensemble."
+    ],
+    "choices": [
+      {
+        "text": "[Où m'avez-vous trouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quelle était votre mission ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Qu'est-ce qu'Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Que devrais-je savoir de la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Pensez-vous que je puisse retrouver la mémoire ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Merci, capitaine. J'en sais assez pour le moment. (Terminer l’entretien et lancer l’amarrage.)]",
+        "color": "green",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ca1"
+      },
+      {
+        "pick": 2,
+        "target": "cb1"
+      },
+      {
+        "pick": 3,
+        "target": "cc1"
+      },
+      {
+        "pick": 4,
+        "target": "cd1"
+      },
+      {
+        "pick": 5,
+        "target": "ce1"
+      },
+      {
+        "pick": 6,
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "key": "cd1",
+    "id": 67,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cd1:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] C'est le centre de l'Empire et le siège de la Couronne. Vous y trouverez de quoi vous loger, travailler et, je l'espère, obtenir de l'aide pour vos recherches.",
+      "[Althéon Brumeforge] Mais vous devrez d'abord faire enregistrer votre arrivée. C'est une formalité à laquelle les autorités accordent beaucoup d'importance."
+    ],
+    "choices": [
+      {
+        "text": "[Et si je ne connais pas mon passé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[La Capitale est-elle accueillante envers les étrangers ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Revenir aux questions.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "cd3"
+      },
+      {
+        "pick": 2,
+        "target": "cd4"
+      },
+      {
+        "pick": 3,
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "key": "cd2",
+    "id": 68,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cd2:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Mais vous devrez d'abord faire enregistrer votre arrivée. C'est une formalité à laquelle les autorités accordent beaucoup d'importance."
+    ],
+    "choices": [
+      {
+        "text": "[Et si je ne connais pas mon passé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[La Capitale est-elle accueillante envers les étrangers ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Revenir aux questions.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "cd3"
+      },
+      {
+        "pick": 2,
+        "target": "cd4"
+      },
+      {
+        "pick": 3,
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "key": "cd3",
+    "id": 69,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cd3:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Dites-le. Vous avez été recueilli par un bâtiment impérial, et notre rapport en attestera. Je ne vois aucune raison de vous demander d'inventer ce que vous ignorez."
+    ],
+    "choices": [
+      {
+        "text": "[La Capitale est-elle accueillante envers les étrangers ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Revenir aux questions.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "cd4"
+      },
+      {
+        "pick": 2,
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "key": "cd4",
+    "id": 70,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cd4:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] C'est une ville où se croisent de nombreux peuples. Vous y rencontrerez des gens de toutes dispositions. Je ne vous promettrai pas qu'ils seront tous aimables, mais vous n'avez pas à vous présenter comme un intrus pour autant."
+    ],
+    "choices": [
+      {
+        "text": "[Où m'avez-vous trouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quelle était votre mission ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Qu'est-ce qu'Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Que devrais-je savoir de la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Pensez-vous que je puisse retrouver la mémoire ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Merci, capitaine. J'en sais assez pour le moment. (Terminer l’entretien et lancer l’amarrage.)]",
+        "color": "green",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ca1"
+      },
+      {
+        "pick": 2,
+        "target": "cb1"
+      },
+      {
+        "pick": 3,
+        "target": "cc1"
+      },
+      {
+        "pick": 4,
+        "target": "cd1"
+      },
+      {
+        "pick": 5,
+        "target": "ce1"
+      },
+      {
+        "pick": 6,
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "key": "ce1",
+    "id": 71,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:ce1:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Je ne suis pas médecin, et je me garderais bien de vous en faire la promesse.",
+      "[Althéon Brumeforge] Mais ne concluez pas trop vite que votre passé est définitivement perdu. Vous avez peut-être laissé des traces quelque part, même si vous ne vous en souvenez pas."
+    ],
+    "choices": [
+      {
+        "text": "[Vous croyez vraiment que je pourrai découvrir quelque chose ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Revenir aux questions.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ce3"
+      },
+      {
+        "pick": 2,
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "key": "ce2",
+    "id": 72,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:ce2:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Mais ne concluez pas trop vite que votre passé est définitivement perdu. Vous avez peut-être laissé des traces quelque part, même si vous ne vous en souvenez pas."
+    ],
+    "choices": [
+      {
+        "text": "[Vous croyez vraiment que je pourrai découvrir quelque chose ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Revenir aux questions.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ce3"
+      },
+      {
+        "pick": 2,
+        "target": "c_menu"
+      }
+    ]
+  },
+  {
+    "key": "ce3",
+    "id": 73,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:ce3:altheon:0:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Je crois surtout qu'il serait prématuré de renoncer."
+    ],
+    "choices": [
+      {
+        "text": "[Où m'avez-vous trouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quelle était votre mission ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Qu'est-ce qu'Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Que devrais-je savoir de la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Pensez-vous que je puisse retrouver la mémoire ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Merci, capitaine. J'en sais assez pour le moment. (Terminer l’entretien et lancer l’amarrage.)]",
+        "color": "green",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ca1"
+      },
+      {
+        "pick": 2,
+        "target": "cb1"
+      },
+      {
+        "pick": 3,
+        "target": "cc1"
+      },
+      {
+        "pick": 4,
+        "target": "cd1"
+      },
+      {
+        "pick": 5,
+        "target": "ce1"
+      },
+      {
+        "pick": 6,
+        "target": "cx1"
+      }
+    ]
+  },
+  {
+    "key": "cx1",
+    "id": 74,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cx1:altheon:1000000001:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Très bien. Nous approchons des quais. Vous pouvez rester ici pendant la manœuvre ; Géraud vous retrouvera une fois l'amarrage terminé.",
+      "[Althéon Brumeforge] Et une dernière chose...",
+      "[Althéon Brumeforge] Ne vous reprochez pas de ne pas avoir de réponses aujourd'hui. Nous ignorons encore bien des choses sur les circonstances de votre découverte.",
+      "[Althéon Brumeforge] Pour l'instant, tâchez simplement de reprendre pied. Nous verrons ensuite ce que l'avenir vous réserve."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "cx2",
+    "id": 75,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cx2:altheon:1000000001:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Et une dernière chose...",
+      "[Althéon Brumeforge] Ne vous reprochez pas de ne pas avoir de réponses aujourd'hui. Nous ignorons encore bien des choses sur les circonstances de votre découverte.",
+      "[Althéon Brumeforge] Pour l'instant, tâchez simplement de reprendre pied. Nous verrons ensuite ce que l'avenir vous réserve."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "cx3",
+    "id": 76,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cx3:altheon:1000000001:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Ne vous reprochez pas de ne pas avoir de réponses aujourd'hui. Nous ignorons encore bien des choses sur les circonstances de votre découverte.",
+      "[Althéon Brumeforge] Pour l'instant, tâchez simplement de reprendre pied. Nous verrons ensuite ce que l'avenir vous réserve."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "cx4",
+    "id": 77,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:cx4:altheon:1000000001:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Pour l'instant, tâchez simplement de reprendre pied. Nous verrons ensuite ce que l'avenir vous réserve."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "e1",
+    "id": 78,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:e1:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Ah, vous voilà ! Bienvenue dans la Haute Capitale. Enfin... sur ses quais, pour commencer.",
+      "[Géraud Rivet] Vous pouvez descendre. Mais avant de vous laisser partir, il y a deux ou trois choses que vous feriez bien de savoir."
+    ],
+    "choices": [
+      {
+        "text": "[Que dois-je faire maintenant ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Je risque d'avoir des ennuis avec les gardes ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Je peux circuler librement dans la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous allez repartir bientôt ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Merci de m'avoir aidé.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais y aller.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "e_127"
+      },
+      {
+        "pick": 2,
+        "target": "e_129"
+      },
+      {
+        "pick": 3,
+        "target": "e_131"
+      },
+      {
+        "pick": 4,
+        "target": "e_133"
+      },
+      {
+        "pick": 5,
+        "target": "e_135"
+      },
+      {
+        "pick": 6,
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "key": "e2",
+    "id": 79,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:e2:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Vous pouvez descendre. Mais avant de vous laisser partir, il y a deux ou trois choses que vous feriez bien de savoir."
+    ],
+    "choices": [
+      {
+        "text": "[Que dois-je faire maintenant ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Je risque d'avoir des ennuis avec les gardes ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Je peux circuler librement dans la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous allez repartir bientôt ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Merci de m'avoir aidé.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais y aller.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "e_127"
+      },
+      {
+        "pick": 2,
+        "target": "e_129"
+      },
+      {
+        "pick": 3,
+        "target": "e_131"
+      },
+      {
+        "pick": 4,
+        "target": "e_133"
+      },
+      {
+        "pick": 5,
+        "target": "e_135"
+      },
+      {
+        "pick": 6,
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "key": "e_127",
+    "id": 81,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:e_127:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Commencez par vous faire enregistrer. Cherchez Léovic sur les quais, il saura vous indiquer la marche à suivre. Après ça, vous pourrez vous occuper de trouver un toit et de découvrir la ville."
+    ],
+    "choices": [
+      {
+        "text": "[Que dois-je faire maintenant ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Je risque d'avoir des ennuis avec les gardes ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Je peux circuler librement dans la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous allez repartir bientôt ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Merci de m'avoir aidé.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais y aller.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "e_127"
+      },
+      {
+        "pick": 2,
+        "target": "e_129"
+      },
+      {
+        "pick": 3,
+        "target": "e_131"
+      },
+      {
+        "pick": 4,
+        "target": "e_133"
+      },
+      {
+        "pick": 5,
+        "target": "e_135"
+      },
+      {
+        "pick": 6,
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "key": "e_129",
+    "id": 82,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:e_129:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Tant que vous ne leur donnez pas de raison d'en chercher, ça devrait aller. Ils pourront vous demander d'où vous venez. Dites que vous avez été recueilli par le capitaine Brumeforge."
+    ],
+    "choices": [
+      {
+        "text": "[Que dois-je faire maintenant ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Je risque d'avoir des ennuis avec les gardes ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Je peux circuler librement dans la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous allez repartir bientôt ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Merci de m'avoir aidé.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais y aller.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "e_127"
+      },
+      {
+        "pick": 2,
+        "target": "e_129"
+      },
+      {
+        "pick": 3,
+        "target": "e_131"
+      },
+      {
+        "pick": 4,
+        "target": "e_133"
+      },
+      {
+        "pick": 5,
+        "target": "e_135"
+      },
+      {
+        "pick": 6,
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "key": "e_131",
+    "id": 83,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:e_131:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Dans les quartiers ouverts au public, oui. Pour le reste, il y a des contrôles. Et croyez-moi, certains gardes prennent leur travail aussi à cœur que notre jeune matelot."
+    ],
+    "choices": [
+      {
+        "text": "[Que dois-je faire maintenant ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Je risque d'avoir des ennuis avec les gardes ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Je peux circuler librement dans la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous allez repartir bientôt ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Merci de m'avoir aidé.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais y aller.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "e_127"
+      },
+      {
+        "pick": 2,
+        "target": "e_129"
+      },
+      {
+        "pick": 3,
+        "target": "e_131"
+      },
+      {
+        "pick": 4,
+        "target": "e_133"
+      },
+      {
+        "pick": 5,
+        "target": "e_135"
+      },
+      {
+        "pick": 6,
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "key": "e_133",
+    "id": 84,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:e_133:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Pas immédiatement. Il faut vérifier le bâtiment, régler les formalités de retour et préparer les prochaines affectations. On ne termine pas un voyage simplement parce qu'on a posé les amarres."
+    ],
+    "choices": [
+      {
+        "text": "[Que dois-je faire maintenant ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Je risque d'avoir des ennuis avec les gardes ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Je peux circuler librement dans la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous allez repartir bientôt ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Merci de m'avoir aidé.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais y aller.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "e_127"
+      },
+      {
+        "pick": 2,
+        "target": "e_129"
+      },
+      {
+        "pick": 3,
+        "target": "e_131"
+      },
+      {
+        "pick": 4,
+        "target": "e_133"
+      },
+      {
+        "pick": 5,
+        "target": "e_135"
+      },
+      {
+        "pick": 6,
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "key": "e_135",
+    "id": 85,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:e_135:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Bah, on n'allait tout de même pas vous laisser sur votre rocher. Et maintenant que vous tenez debout, tâchez de le rester."
+    ],
+    "choices": [
+      {
+        "text": "[Que dois-je faire maintenant ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Je risque d'avoir des ennuis avec les gardes ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Je peux circuler librement dans la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous allez repartir bientôt ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Merci de m'avoir aidé.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais y aller.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "e_127"
+      },
+      {
+        "pick": 2,
+        "target": "e_129"
+      },
+      {
+        "pick": 3,
+        "target": "e_131"
+      },
+      {
+        "pick": 4,
+        "target": "e_133"
+      },
+      {
+        "pick": 5,
+        "target": "e_135"
+      },
+      {
+        "pick": 6,
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "key": "e_menu",
+    "id": 80,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:e_menu:geraud:0:0:0",
+    "lines": [],
+    "choices": [
+      {
+        "text": "[Que dois-je faire maintenant ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Je risque d'avoir des ennuis avec les gardes ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Je peux circuler librement dans la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous allez repartir bientôt ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Merci de m'avoir aidé.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vais y aller.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "e_127"
+      },
+      {
+        "pick": 2,
+        "target": "e_129"
+      },
+      {
+        "pick": 3,
+        "target": "e_131"
+      },
+      {
+        "pick": 4,
+        "target": "e_133"
+      },
+      {
+        "pick": 5,
+        "target": "e_135"
+      },
+      {
+        "pick": 6,
+        "target": "ex1"
+      }
+    ]
+  },
+  {
+    "key": "ex1",
+    "id": 86,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:ex1:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Bon. Je crois que je vous ai dit l'essentiel.",
+      "[Géraud Rivet] Allez trouver Léovic, et ne vous laissez pas impressionner par toute cette agitation. On finit par s'y habituer.",
+      "[Géraud Rivet] Prenez soin de vous, surtout. J'aimerais autant que la prochaine fois qu'on se croise, vous soyez en meilleure forme que lors de notre première rencontre."
+    ],
+    "choices": [
+      {
+        "text": "[Je ferai de mon mieux.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ex4"
+      }
+    ]
+  },
+  {
+    "key": "ex2",
+    "id": 87,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:ex2:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Allez trouver Léovic, et ne vous laissez pas impressionner par toute cette agitation. On finit par s'y habituer.",
+      "[Géraud Rivet] Prenez soin de vous, surtout. J'aimerais autant que la prochaine fois qu'on se croise, vous soyez en meilleure forme que lors de notre première rencontre."
+    ],
+    "choices": [
+      {
+        "text": "[Je ferai de mon mieux.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ex4"
+      }
+    ]
+  },
+  {
+    "key": "ex3",
+    "id": 88,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:ex3:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Prenez soin de vous, surtout. J'aimerais autant que la prochaine fois qu'on se croise, vous soyez en meilleure forme que lors de notre première rencontre."
+    ],
+    "choices": [
+      {
+        "text": "[Je ferai de mon mieux.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ex4"
+      }
+    ]
+  },
+  {
+    "key": "ex4",
+    "id": 89,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:ex4:geraud:1000000001:0:0",
+    "lines": [
+      "[Géraud Rivet] Voilà qui me suffit. Allez, filez. J'ai un équipage à remettre au travail, moi."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "f_altheon",
+    "id": 90,
+    "role": "altheon",
+    "frame": "indivis:pq01:v1:f_altheon:altheon:1000000001:0:0",
+    "lines": [
+      "[Althéon Brumeforge] Vous avez pu parler à Géraud ? Bien. J'espère que vous trouverez vos repères dans la Capitale. Quant à moi, j'ai encore quelques rapports à terminer."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "f_anselme",
+    "id": 93,
+    "role": "anselme",
+    "frame": "indivis:pq01:v1:f_anselme:anselme:1000000001:0:0",
+    "lines": [
+      "[Anselme] Un amarrage parfaitement convenable, malgré ce vent de travers. J'aurais préféré une approche un peu plus... Enfin, vous n'avez pas à vous soucier de ces détails. Bonne continuation."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "f_gautier",
+    "id": 91,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:f_gautier:gautier:1000000001:0:0",
+    "lines": [
+      "[Gautier] La passerelle est en place et les opérations de débarquement sont autorisées. Vous pouvez rejoindre les quais. Bonne continuation !"
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "f_geraud",
+    "id": 95,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:f_geraud:geraud:1000000001:0:0",
+    "lines": [
+      "[Géraud Rivet] La passerelle reste libre. Le Port est devant vous ; bonne route à terre."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "f_hugues",
+    "id": 92,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:f_hugues:hugues:1000000001:0:0",
+    "lines": [
+      "[Hugues] À peine rentrés et voilà déjà les inventaires qui recommencent. Ah, vous partez ? Profitez-en. Vous, au moins, personne ne vous réclamera un relevé des soutes."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "f_perrin",
+    "id": 94,
+    "role": "perrin",
+    "frame": "indivis:pq01:v1:f_perrin:perrin:1000000001:0:0",
+    "lines": [
+      "[Perrin] Alors, prêt à découvrir la Capitale ? Ne passez pas toute votre première journée dans les bureaux, tout de même. Il y a bien des choses à voir ici !"
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "ga_12",
+    "id": 10,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:ga_12:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Oui. Pas tous les jours qu'on interrompt un retour de mission pour récupérer quelqu'un sur un rocher. Vous ne répondiez à rien. On vous a installé à bord et on a fait ce qu'on pouvait."
+    ],
+    "choices": [
+      {
+        "text": "[Vous étiez là quand on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quel est votre rôle sur ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez le capitaine depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Le matelot avait pourtant raison, non ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Je vais rejoindre le capitaine.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ga_12"
+      },
+      {
+        "pick": 2,
+        "target": "ga_14"
+      },
+      {
+        "pick": 3,
+        "target": "ga_16"
+      },
+      {
+        "pick": 4,
+        "target": "ga_18"
+      },
+      {
+        "pick": 5,
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "key": "ga_14",
+    "id": 11,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:ga_14:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Quartier-maître. Je m'assure que le matériel soit à sa place, que les hommes fassent leur travail et que le capitaine n'ait pas à régler chaque petit problème lui-même. Croyez-moi, ça en fait déjà suffisamment."
+    ],
+    "choices": [
+      {
+        "text": "[Vous étiez là quand on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quel est votre rôle sur ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez le capitaine depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Le matelot avait pourtant raison, non ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Je vais rejoindre le capitaine.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ga_12"
+      },
+      {
+        "pick": 2,
+        "target": "ga_14"
+      },
+      {
+        "pick": 3,
+        "target": "ga_16"
+      },
+      {
+        "pick": 4,
+        "target": "ga_18"
+      },
+      {
+        "pick": 5,
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "key": "ga_16",
+    "id": 12,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:ga_16:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Assez pour savoir quand il vaut mieux le laisser travailler. C'est un bon officier. Exigeant, oui, mais il n'envoie pas ses hommes faire ce qu'il refuserait lui-même."
+    ],
+    "choices": [
+      {
+        "text": "[Vous étiez là quand on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quel est votre rôle sur ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez le capitaine depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Le matelot avait pourtant raison, non ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Je vais rejoindre le capitaine.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ga_12"
+      },
+      {
+        "pick": 2,
+        "target": "ga_14"
+      },
+      {
+        "pick": 3,
+        "target": "ga_16"
+      },
+      {
+        "pick": 4,
+        "target": "ga_18"
+      },
+      {
+        "pick": 5,
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "key": "ga_18",
+    "id": 13,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:ga_18:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Sur les ordres ? Oui. Sur le moment de venir me les rappeler ? Beaucoup moins. Il apprendra."
+    ],
+    "choices": [
+      {
+        "text": "[Vous étiez là quand on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quel est votre rôle sur ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez le capitaine depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Le matelot avait pourtant raison, non ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Je vais rejoindre le capitaine.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ga_12"
+      },
+      {
+        "pick": 2,
+        "target": "ga_14"
+      },
+      {
+        "pick": 3,
+        "target": "ga_16"
+      },
+      {
+        "pick": 4,
+        "target": "ga_18"
+      },
+      {
+        "pick": 5,
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "key": "ga_20",
+    "id": 14,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:ga_20:geraud:1000000001:0:0",
+    "lines": [
+      "[Géraud Rivet] Bonne idée. Et ne vous sentez pas obligé de vous mettre au garde-à-vous : vous êtes notre passager, pas une nouvelle recrue."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "ga_menu",
+    "id": 9,
+    "role": "geraud",
+    "frame": "indivis:pq01:v1:ga_menu:geraud:0:0:0",
+    "lines": [
+      "[Géraud Rivet] Vous avez besoin d'autre chose ? Faites vite, j'ai encore du travail avant notre arrivée."
+    ],
+    "choices": [
+      {
+        "text": "[Vous étiez là quand on m'a retrouvé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Quel est votre rôle sur ce dirigeable ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez le capitaine depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Le matelot avait pourtant raison, non ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Je vais rejoindre le capitaine.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "ga_12"
+      },
+      {
+        "pick": 2,
+        "target": "ga_14"
+      },
+      {
+        "pick": 3,
+        "target": "ga_16"
+      },
+      {
+        "pick": 4,
+        "target": "ga_18"
+      },
+      {
+        "pick": 5,
+        "target": "ga_20"
+      }
+    ]
+  },
+  {
+    "key": "gautier_23",
+    "id": 16,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:gautier_23:gautier:0:0:0",
+    "lines": [
+      "[Gautier] Furieux ? Non, je ne crois pas. Enfin... il a connu de meilleurs moments pour me voir. Je pensais simplement respecter les consignes."
+    ],
+    "choices": [
+      {
+        "text": "[Géraud avait l'air furieux.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous avez peur de lui ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous travaillez sur ce dirigeable depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous tenez beaucoup à votre carrière.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Où puis-je trouver le capitaine ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse reprendre votre service.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "gautier_23"
+      },
+      {
+        "pick": 2,
+        "target": "gautier_25"
+      },
+      {
+        "pick": 3,
+        "target": "gautier_27"
+      },
+      {
+        "pick": 4,
+        "target": "gautier_29"
+      },
+      {
+        "pick": 5,
+        "target": "gautier_31"
+      },
+      {
+        "pick": 6,
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "key": "gautier_25",
+    "id": 17,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:gautier_25:gautier:0:0:0",
+    "lines": [
+      "[Gautier] Peur ? Certainement pas ! C'est un excellent quartier-maître. Mais je préférerais éviter qu'il ait à me reprendre une deuxième fois aujourd'hui."
+    ],
+    "choices": [
+      {
+        "text": "[Géraud avait l'air furieux.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous avez peur de lui ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous travaillez sur ce dirigeable depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous tenez beaucoup à votre carrière.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Où puis-je trouver le capitaine ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse reprendre votre service.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "gautier_23"
+      },
+      {
+        "pick": 2,
+        "target": "gautier_25"
+      },
+      {
+        "pick": 3,
+        "target": "gautier_27"
+      },
+      {
+        "pick": 4,
+        "target": "gautier_29"
+      },
+      {
+        "pick": 5,
+        "target": "gautier_31"
+      },
+      {
+        "pick": 6,
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "key": "gautier_27",
+    "id": 18,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:gautier_27:gautier:0:0:0",
+    "lines": [
+      "[Gautier] Suffisamment pour connaître mon service. J'espère d'ailleurs obtenir davantage de responsabilités. J'ai déjà pris certaines dispositions pour... Enfin, cela ne vous intéresse probablement pas."
+    ],
+    "choices": [
+      {
+        "text": "[Géraud avait l'air furieux.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous avez peur de lui ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous travaillez sur ce dirigeable depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous tenez beaucoup à votre carrière.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Où puis-je trouver le capitaine ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse reprendre votre service.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "gautier_23"
+      },
+      {
+        "pick": 2,
+        "target": "gautier_25"
+      },
+      {
+        "pick": 3,
+        "target": "gautier_27"
+      },
+      {
+        "pick": 4,
+        "target": "gautier_29"
+      },
+      {
+        "pick": 5,
+        "target": "gautier_31"
+      },
+      {
+        "pick": 6,
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "key": "gautier_29",
+    "id": 19,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:gautier_29:gautier:0:0:0",
+    "lines": [
+      "[Gautier] Évidemment. On n'obtient pas un avancement en attendant que les choses arrivent toutes seules. Encore faut-il se faire remarquer pour les bonnes raisons."
+    ],
+    "choices": [
+      {
+        "text": "[Géraud avait l'air furieux.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous avez peur de lui ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous travaillez sur ce dirigeable depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous tenez beaucoup à votre carrière.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Où puis-je trouver le capitaine ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse reprendre votre service.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "gautier_23"
+      },
+      {
+        "pick": 2,
+        "target": "gautier_25"
+      },
+      {
+        "pick": 3,
+        "target": "gautier_27"
+      },
+      {
+        "pick": 4,
+        "target": "gautier_29"
+      },
+      {
+        "pick": 5,
+        "target": "gautier_31"
+      },
+      {
+        "pick": 6,
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "key": "gautier_31",
+    "id": 20,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:gautier_31:gautier:0:0:0",
+    "lines": [
+      "[Gautier] À l'arrière, sous le poste du timonier. Présentez-vous directement à sa cabine. Vous ne pouvez pas vous tromper."
+    ],
+    "choices": [
+      {
+        "text": "[Géraud avait l'air furieux.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous avez peur de lui ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous travaillez sur ce dirigeable depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous tenez beaucoup à votre carrière.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Où puis-je trouver le capitaine ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse reprendre votre service.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "gautier_23"
+      },
+      {
+        "pick": 2,
+        "target": "gautier_25"
+      },
+      {
+        "pick": 3,
+        "target": "gautier_27"
+      },
+      {
+        "pick": 4,
+        "target": "gautier_29"
+      },
+      {
+        "pick": 5,
+        "target": "gautier_31"
+      },
+      {
+        "pick": 6,
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "key": "gautier_33",
+    "id": 21,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:gautier_33:gautier:1000000001:0:0",
+    "lines": [
+      "[Gautier] Merci. Et... j'espère que vous vous remettrez rapidement."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "gautier_menu",
+    "id": 15,
+    "role": "gautier",
+    "frame": "indivis:pq01:v1:gautier_menu:gautier:0:0:0",
+    "lines": [
+      "[Gautier] Ah, vous voilà. Je crains de ne pas avoir choisi le meilleur moment pour intervenir tout à l'heure."
+    ],
+    "choices": [
+      {
+        "text": "[Géraud avait l'air furieux.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous avez peur de lui ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous travaillez sur ce dirigeable depuis longtemps ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous tenez beaucoup à votre carrière.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Où puis-je trouver le capitaine ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse reprendre votre service.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "gautier_23"
+      },
+      {
+        "pick": 2,
+        "target": "gautier_25"
+      },
+      {
+        "pick": 3,
+        "target": "gautier_27"
+      },
+      {
+        "pick": 4,
+        "target": "gautier_29"
+      },
+      {
+        "pick": 5,
+        "target": "gautier_31"
+      },
+      {
+        "pick": 6,
+        "target": "gautier_33"
+      }
+    ]
+  },
+  {
+    "key": "hugues_36",
+    "id": 23,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:hugues_36:hugues:0:0:0",
+    "lines": [
+      "[Hugues] Des canons. Enfin, nous les avons livrés à Avaleiv. C'est déjà ça de moins à surveiller. Vous auriez vu le temps qu'il nous a fallu pour les faire décharger..."
+    ],
+    "choices": [
+      {
+        "text": "[Qu'est-ce que vous transportiez ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Pourquoi avoir livré des canons à Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous n'aimez pas votre travail ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous connaissiez déjà Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Vous étiez là lorsqu'on m'a secouru ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse à vos caisses.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000007"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "hugues_36"
+      },
+      {
+        "pick": 2,
+        "target": "hugues_38"
+      },
+      {
+        "pick": 3,
+        "target": "hugues_40"
+      },
+      {
+        "pick": 4,
+        "target": "hugues_42"
+      },
+      {
+        "pick": 5,
+        "target": "hugues_44"
+      },
+      {
+        "pick": 7,
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "key": "hugues_38",
+    "id": 24,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:hugues_38:hugues:0:0:0",
+    "lines": [
+      "[Hugues] Parce qu'on nous en a donné l'ordre. Quant à savoir ce qui s'est négocié là-bas, il faudrait demander à ceux qui signent les papiers. Moi, je m'occupe de ce qu'ils nous font transporter."
+    ],
+    "choices": [
+      {
+        "text": "[Qu'est-ce que vous transportiez ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Pourquoi avoir livré des canons à Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous n'aimez pas votre travail ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous connaissiez déjà Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Vous étiez là lorsqu'on m'a secouru ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse à vos caisses.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000007"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "hugues_36"
+      },
+      {
+        "pick": 2,
+        "target": "hugues_38"
+      },
+      {
+        "pick": 3,
+        "target": "hugues_40"
+      },
+      {
+        "pick": 4,
+        "target": "hugues_42"
+      },
+      {
+        "pick": 5,
+        "target": "hugues_44"
+      },
+      {
+        "pick": 7,
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "key": "hugues_40",
+    "id": 25,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:hugues_40:hugues:0:0:0",
+    "lines": [
+      "[Hugues] Si je le détestais vraiment, je ne serais plus là. Et puis, il y a pire comme équipage. Ne répétez pas ça à Géraud, il finirait par se croire indispensable."
+    ],
+    "choices": [
+      {
+        "text": "[Qu'est-ce que vous transportiez ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Pourquoi avoir livré des canons à Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous n'aimez pas votre travail ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous connaissiez déjà Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Vous étiez là lorsqu'on m'a secouru ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse à vos caisses.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000007"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "hugues_36"
+      },
+      {
+        "pick": 2,
+        "target": "hugues_38"
+      },
+      {
+        "pick": 3,
+        "target": "hugues_40"
+      },
+      {
+        "pick": 4,
+        "target": "hugues_42"
+      },
+      {
+        "pick": 5,
+        "target": "hugues_44"
+      },
+      {
+        "pick": 7,
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "key": "hugues_42",
+    "id": 26,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:hugues_42:hugues:0:0:0",
+    "lines": [
+      "[Hugues] J'y ai accosté plus d'une fois. C'est un beau pays, du peu que j'en ai vu. Mais entre les cargaisons et les ordres de départ, on ne nous laisse pas vraiment le temps de jouer les touristes."
+    ],
+    "choices": [
+      {
+        "text": "[Qu'est-ce que vous transportiez ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Pourquoi avoir livré des canons à Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous n'aimez pas votre travail ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous connaissiez déjà Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Vous étiez là lorsqu'on m'a secouru ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse à vos caisses.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000007"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "hugues_36"
+      },
+      {
+        "pick": 2,
+        "target": "hugues_38"
+      },
+      {
+        "pick": 3,
+        "target": "hugues_40"
+      },
+      {
+        "pick": 4,
+        "target": "hugues_42"
+      },
+      {
+        "pick": 5,
+        "target": "hugues_44"
+      },
+      {
+        "pick": 7,
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "key": "hugues_44",
+    "id": 27,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:hugues_44:hugues:0:0:0",
+    "lines": [
+      "[Hugues] Oui. J'ai vu qu'on vous remontait à bord. Vous ne donniez pas franchement l'impression d'avoir passé une bonne journée. Enfin, regardez-vous : vous tenez debout et vous posez des questions. C'est encourageant."
+    ],
+    "choices": [
+      {
+        "text": "[Qu'est-ce que vous transportiez ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Pourquoi avoir livré des canons à Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous n'aimez pas votre travail ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous connaissiez déjà Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Vous étiez là lorsqu'on m'a secouru ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse à vos caisses.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000007"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "hugues_36"
+      },
+      {
+        "pick": 2,
+        "target": "hugues_38"
+      },
+      {
+        "pick": 3,
+        "target": "hugues_40"
+      },
+      {
+        "pick": 4,
+        "target": "hugues_42"
+      },
+      {
+        "pick": 5,
+        "target": "hugues_44"
+      },
+      {
+        "pick": 7,
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "key": "hugues_46",
+    "id": 28,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:hugues_46:hugues:1000000001:0:0",
+    "lines": [
+      "[Hugues] Ah, ne m'en parlez plus, de ces fichues caisses ! Bonne continuation."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "hugues_menu",
+    "id": 22,
+    "role": "hugues",
+    "frame": "indivis:pq01:v1:hugues_menu:hugues:0:0:0",
+    "lines": [
+      "[Hugues] Trois fois qu'on me fait recompter les mêmes caisses... Ah, pardon. Vous cherchiez quelque chose ?"
+    ],
+    "choices": [
+      {
+        "text": "[Qu'est-ce que vous transportiez ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Pourquoi avoir livré des canons à Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous n'aimez pas votre travail ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Vous connaissiez déjà Avaleiv ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[Vous étiez là lorsqu'on m'a secouru ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je vous laisse à vos caisses.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000007"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "hugues_36"
+      },
+      {
+        "pick": 2,
+        "target": "hugues_38"
+      },
+      {
+        "pick": 3,
+        "target": "hugues_40"
+      },
+      {
+        "pick": 4,
+        "target": "hugues_42"
+      },
+      {
+        "pick": 5,
+        "target": "hugues_44"
+      },
+      {
+        "pick": 7,
+        "target": "hugues_46"
+      }
+    ]
+  },
+  {
+    "key": "perrin_62",
+    "id": 37,
+    "role": "perrin",
+    "frame": "indivis:pq01:v1:perrin_62:perrin:0:0:0",
+    "lines": [
+      "[Perrin] Oh, pas constamment ! Mais avouez que ce n'est pas tous les jours qu'on recueille quelqu'un dans de pareilles circonstances. Certains se demandaient même si vous alliez vous réveiller avant notre arrivée."
+    ],
+    "choices": [
+      {
+        "text": "[Vous parlez souvent de moi ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous savez ce qui m'est arrivé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez bien la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment sont les habitants de la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[On m'a parlé d'un enregistrement à mon arrivée.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je préfère continuer ma visite.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "perrin_62"
+      },
+      {
+        "pick": 2,
+        "target": "perrin_64"
+      },
+      {
+        "pick": 3,
+        "target": "perrin_66"
+      },
+      {
+        "pick": 4,
+        "target": "perrin_68"
+      },
+      {
+        "pick": 5,
+        "target": "perrin_70"
+      },
+      {
+        "pick": 6,
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "key": "perrin_64",
+    "id": 38,
+    "role": "perrin",
+    "frame": "indivis:pq01:v1:perrin_64:perrin:0:0:0",
+    "lines": [
+      "[Perrin] J'aimerais bien ! J'aurais une sacrée histoire à raconter. Mais non, malheureusement. À part ce qu'on vous a probablement déjà dit, je n'en sais pas plus."
+    ],
+    "choices": [
+      {
+        "text": "[Vous parlez souvent de moi ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous savez ce qui m'est arrivé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez bien la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment sont les habitants de la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[On m'a parlé d'un enregistrement à mon arrivée.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je préfère continuer ma visite.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "perrin_62"
+      },
+      {
+        "pick": 2,
+        "target": "perrin_64"
+      },
+      {
+        "pick": 3,
+        "target": "perrin_66"
+      },
+      {
+        "pick": 4,
+        "target": "perrin_68"
+      },
+      {
+        "pick": 5,
+        "target": "perrin_70"
+      },
+      {
+        "pick": 6,
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "key": "perrin_66",
+    "id": 39,
+    "role": "perrin",
+    "frame": "indivis:pq01:v1:perrin_66:perrin:0:0:0",
+    "lines": [
+      "[Perrin] Plutôt, oui ! Les quais, surtout. Si vous aimez les endroits tranquilles, ce n'est peut-être pas le meilleur quartier pour commencer. Mais pour rencontrer du monde, vous serez servi."
+    ],
+    "choices": [
+      {
+        "text": "[Vous parlez souvent de moi ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous savez ce qui m'est arrivé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez bien la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment sont les habitants de la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[On m'a parlé d'un enregistrement à mon arrivée.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je préfère continuer ma visite.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "perrin_62"
+      },
+      {
+        "pick": 2,
+        "target": "perrin_64"
+      },
+      {
+        "pick": 3,
+        "target": "perrin_66"
+      },
+      {
+        "pick": 4,
+        "target": "perrin_68"
+      },
+      {
+        "pick": 5,
+        "target": "perrin_70"
+      },
+      {
+        "pick": 6,
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "key": "perrin_68",
+    "id": 40,
+    "role": "perrin",
+    "frame": "indivis:pq01:v1:perrin_68:perrin:0:0:0",
+    "lines": [
+      "[Perrin] Il y a de tout. Des marchands qui vous vendraient leur propre chapeau, des soldats qui prennent leur uniforme très au sérieux et des gens parfaitement charmants. Vous finirez bien par vous y faire quelques connaissances."
+    ],
+    "choices": [
+      {
+        "text": "[Vous parlez souvent de moi ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous savez ce qui m'est arrivé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez bien la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment sont les habitants de la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[On m'a parlé d'un enregistrement à mon arrivée.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je préfère continuer ma visite.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "perrin_62"
+      },
+      {
+        "pick": 2,
+        "target": "perrin_64"
+      },
+      {
+        "pick": 3,
+        "target": "perrin_66"
+      },
+      {
+        "pick": 4,
+        "target": "perrin_68"
+      },
+      {
+        "pick": 5,
+        "target": "perrin_70"
+      },
+      {
+        "pick": 6,
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "key": "perrin_70",
+    "id": 41,
+    "role": "perrin",
+    "frame": "indivis:pq01:v1:perrin_70:perrin:0:0:0",
+    "lines": [
+      "[Perrin] Ah oui, les registres ! On n'y échappe pas facilement. Mais ne vous inquiétez pas, on vous expliquera comment procéder. Ce serait tout de même malheureux de vous perdre dans les bureaux après vous avoir retrouvé en pleine nature."
+    ],
+    "choices": [
+      {
+        "text": "[Vous parlez souvent de moi ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous savez ce qui m'est arrivé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez bien la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment sont les habitants de la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[On m'a parlé d'un enregistrement à mon arrivée.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je préfère continuer ma visite.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "perrin_62"
+      },
+      {
+        "pick": 2,
+        "target": "perrin_64"
+      },
+      {
+        "pick": 3,
+        "target": "perrin_66"
+      },
+      {
+        "pick": 4,
+        "target": "perrin_68"
+      },
+      {
+        "pick": 5,
+        "target": "perrin_70"
+      },
+      {
+        "pick": 6,
+        "target": "perrin_72"
+      }
+    ]
+  },
+  {
+    "key": "perrin_72",
+    "id": 42,
+    "role": "perrin",
+    "frame": "indivis:pq01:v1:perrin_72:perrin:1000000001:0:0",
+    "lines": [
+      "[Perrin] Faites donc ! Et bonne chance avec le capitaine. Il a l'air sévère au premier abord, mais c'est un brave homme. Enfin, ne lui répétez pas que je l'ai dit comme ça."
+    ],
+    "choices": [
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": []
+  },
+  {
+    "key": "perrin_menu",
+    "id": 36,
+    "role": "perrin",
+    "frame": "indivis:pq01:v1:perrin_menu:perrin:0:0:0",
+    "lines": [
+      "[Perrin] Ah, c'est donc vous, notre fameux rescapé ! Excusez-moi, mais depuis votre arrivée, vous avez suscité quelques conversations à bord. Comment vous sentez-vous ?"
+    ],
+    "choices": [
+      {
+        "text": "[Vous parlez souvent de moi ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000001"
+        }
+      },
+      {
+        "text": "[Vous savez ce qui m'est arrivé ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000002"
+        }
+      },
+      {
+        "text": "[Vous connaissez bien la Haute Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000003"
+        }
+      },
+      {
+        "text": "[Comment sont les habitants de la Capitale ?]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000004"
+        }
+      },
+      {
+        "text": "[On m'a parlé d'un enregistrement à mon arrivée.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000005"
+        }
+      },
+      {
+        "text": "[Je préfère continuer ma visite.]",
+        "color": "yellow",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000006"
+        }
+      },
+      {
+        "text": "[Fermer la conversation]",
+        "color": "gray",
+        "click_event": {
+          "action": "run_command",
+          "command": "/trigger QuestChoix set 1000000015"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "pick": 1,
+        "target": "perrin_62"
+      },
+      {
+        "pick": 2,
+        "target": "perrin_64"
+      },
+      {
+        "pick": 3,
+        "target": "perrin_66"
+      },
+      {
+        "pick": 4,
+        "target": "perrin_68"
+      },
+      {
+        "pick": 5,
+        "target": "perrin_70"
+      },
+      {
+        "pick": 6,
+        "target": "perrin_72"
+      }
+    ]
+  }
+]

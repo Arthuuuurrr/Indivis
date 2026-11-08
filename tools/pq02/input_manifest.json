@@ -1,0 +1,231 @@
+{
+  "Indivis-Nexus-NPC-0.1.0-PREVIEW1-1.21.11(1).jar": {
+    "bytes": 37236,
+    "sha256": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+    "entries": 34,
+    "root_metadata": [
+      "fabric.mod.json"
+    ],
+    "fabric.mod.json": {
+      "schemaVersion": 1,
+      "id": "indivis_nexus_npc",
+      "version": "0.1.0-PREVIEW1",
+      "name": "Indivis Nexus NPC",
+      "environment": "*",
+      "entrypoints": {
+        "main": [
+          "fr.indivis.nexusnpc.NexusNpc"
+        ],
+        "client": [
+          "fr.indivis.nexusnpc.client.NexusNpcClient"
+        ]
+      },
+      "mixins": [
+        {
+          "config": "indivis-nexus-npc.mixins.json",
+          "environment": "client"
+        }
+      ],
+      "depends": {
+        "minecraft": "~1.21.11",
+        "java": ">=21",
+        "fabricloader": ">=0.19.5",
+        "fabric-api": ">=0.141.6",
+        "nexuscharacters": "1.0.0-beta.35+indivis.1.21.11.SI1",
+        "easy_npc": "7.16.0"
+      }
+    }
+  },
+  "Indivis_Work_PQ02_v12(1).zip": {
+    "bytes": 287397,
+    "sha256": "bb95da2843fa843ba2a37a4468b03b69b69403e1f9f338c7fdac194327ec3e00",
+    "entries": 10,
+    "root_metadata": []
+  },
+  "NexusCharacters-Indivis-1.21.11-PRE35-SI1-OPT1(1).jar": {
+    "bytes": 28206483,
+    "sha256": "bdb1525d5e4448cb8127e38bdcdce063d629b7039a856bf9ea74be5ea06dea11",
+    "entries": 5246,
+    "root_metadata": [
+      "fabric.mod.json"
+    ],
+    "fabric.mod.json": {
+      "schemaVersion": 1,
+      "id": "nexuscharacters",
+      "version": "1.0.0-beta.35+indivis.1.21.11.SI1.OPT1",
+      "name": "Nexus Characters",
+      "description": "Indivis PRE33: exact full-model surface reuse and cached optional field lookup. QUESTSYNC1: per-character Clement quest scores and post-restore journal refresh; PRE33 client rendering unchanged. SYNC2: targeted Legendary Shrines attachment reset before character NBT restore and silent post-restore bind sync; QUESTSYNC1 retained. PRE34: racial midpoint build defaults, white name defaults, obfuscated choice removed, stubble blended onto skin. Includes SYNC2. SI1 : états v2, isolation des scènes et raccordement de la Séquence I. | PRE35 SI1: exact surface clipping and per-pass query reuse. | OPT1: exact indexed surface preparation.",
+      "authors": [
+        "t0mpseN"
+      ],
+      "contact": {
+        "homepage": "https://ko-fi.com/pedrotompsen",
+        "sources": "https://github.com/t0mpseN/NexusCharacters"
+      },
+      "license": "MIT",
+      "icon": "assets/nexuscharacters/icon.png",
+      "environment": "*",
+      "entrypoints": {
+        "main": [
+          "net.tompsen.nexuscharacters.NexusCharacters",
+          "net.tompsen.nexuscharacters.CharacterCosmeticServer",
+          "net.tompsen.nexuscharacters.CharacterAppearanceServer",
+          "net.tompsen.nexuscharacters.CharacterAppearanceResyncServer"
+        ],
+        "client": [
+          "net.tompsen.nexuscharacters.NexusCharactersClient",
+          "net.tompsen.nexuscharacters.CharacterCosmeticsClient",
+          "net.tompsen.nexuscharacters.CharacterAppearanceClient"
+        ],
+        "fabric-datagen": []
+      },
+      "mixins": [
+        "nexuscharacters.mixins.json",
+        {
+          "config": "nexuscharacters.client.mixins.json",
+          "environment": "client"
+        }
+      ],
+      "depends": {
+        "fabricloader": ">=0.19.5",
+        "minecraft": "~1.21.11",
+        "java": ">=21",
+        "fabric-api": ">=0.141.6"
+      }
+    }
+  },
+  "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2(1).zip": {
+    "bytes": 5128752,
+    "sha256": "8aff8d9c45d275b9d281f5b915baad5e88e7a6c2147bc9806b4fff3cc7a7a8c4",
+    "entries": 11324,
+    "root_metadata": [
+      "pack.mcmeta"
+    ],
+    "pack.mcmeta": {
+      "pack": {
+        "description": "Indivis — Core 1.5.7 — norme v2 + Séquence I — candidat SI1 — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — HF5 : proximité et reprise Géraud — HF6 : questions et enchaînements — HF7 : approche de Gautier et capture des dialogues — HF9 : blocs de lecture et file de doublage — QMARK2 : ! personnels des donneurs du core",
+        "min_format": [
+          94,
+          1
+        ],
+        "max_format": [
+          94,
+          1
+        ]
+      }
+    }
+  },
+  "haute-capitale-dialogue-0.1.0+1.21.11.b10-DATAPACK-COMMAND-HOTFIX(1).jar": {
+    "bytes": 200473,
+    "sha256": "a2c21f24889f96880c472d168ea55cf65e84ff154ee1bbcc22dbeaa9df1d4057",
+    "entries": 101,
+    "root_metadata": [
+      "fabric.mod.json"
+    ],
+    "fabric.mod.json": {
+      "schemaVersion": 1,
+      "id": "haute_capitale_dialogue",
+      "version": "0.1.0+1.21.11.b10",
+      "name": "Haute Capitale — Dialogue",
+      "description": "Dialogues immersifs pour le serveur Haute Capitale : caméra qui cadre le personnage, texte et réponses en bas de l'écran, au-dessus d'Easy NPC qui reste le cœur des PNJ.",
+      "authors": [
+        "Haute Capitale"
+      ],
+      "environment": "*",
+      "entrypoints": {
+        "main": [
+          "net.hautecapitale.dialogue.HauteCapitaleDialogue",
+          "net.hautecapitale.dialogue.patch.B9ServerPatch"
+        ],
+        "client": [
+          "net.hautecapitale.dialogue.client.HauteCapitaleDialogueClient",
+          "net.hautecapitale.dialogue.patch.B9ClientPatch"
+        ]
+      },
+      "depends": {
+        "fabricloader": ">=0.19.0",
+        "minecraft": "~1.21.11",
+        "java": ">=21",
+        "fabric-api": "*",
+        "haute_capitale_rpg": ">=0.3.0"
+      },
+      "suggests": {
+        "easy_npc": ">=7.8.0"
+      },
+      "mixins": [
+        "haute_capitale_dialogue.b9.mixins.json"
+      ]
+    }
+  },
+  "haute-capitale-quetes-0.1.0+1.21.11.b7-SEQUENCE-I-SI1b-PQ01-R3-HF12(1).jar": {
+    "bytes": 492804,
+    "sha256": "c888eec4fa5dad35127dd5a5e4e6c49ec0f870063d429877f4b2a48a09f5bb60",
+    "entries": 223,
+    "root_metadata": [
+      "fabric.mod.json"
+    ],
+    "fabric.mod.json": {
+      "schemaVersion": 1,
+      "id": "haute_capitale_quetes",
+      "version": "0.1.0+1.21.11.b7.SEQUENCE-I.SI1b.PQ01.R3.HF12",
+      "name": "Haute Capitale — Journal de quêtes",
+      "description": "Journal de quêtes MMO : fiches de quêtes en JSON, progression par joueur côté serveur, écran de journal (Maj+J), suivi d'objectif avec waypoint sur la carte (Xaero), tracker HUD et notifications. Lit aussi les quêtes du datapack hc_quetes sans les modifier. SI1 : états v2, isolation des scènes et raccordement de la Séquence I. PQ01-R3-HF12 : compatibilité des liaisons au quai et repères personnels QMARK2.",
+      "authors": [
+        "Haute Capitale"
+      ],
+      "license": "ARR",
+      "environment": "*",
+      "entrypoints": {
+        "main": [
+          "net.hautecapitale.quetes.HauteCapitaleQuetes",
+          "net.hautecapitale.quetes.sequence.Pq01Initializer"
+        ],
+        "client": [
+          "net.hautecapitale.quetes.client.HauteCapitaleQuetesClient",
+          "net.hautecapitale.quetes.sequence.Pq01Client"
+        ]
+      },
+      "mixins": [
+        "haute_capitale_quetes.mixins.json",
+        {
+          "config": "haute_capitale_quetes.client.mixins.json",
+          "environment": "client"
+        },
+        "indivis_pq01.mixins.json"
+      ],
+      "depends": {
+        "fabricloader": ">=0.19.0",
+        "minecraft": "~1.21.11",
+        "java": ">=21",
+        "fabric-api": "*",
+        "nexuscharacters": ">=1.0.0-beta.34",
+        "puffish_skills": "0.17.3",
+        "easy_npc": ">=7.16.0",
+        "haute_capitale_dialogue": ">=0.1.0"
+      },
+      "suggests": {
+        "easy_npc": ">=7.8.0",
+        "haute_capitale_spawns": "*",
+        "haute_capitale_party": "*",
+        "xaerominimap": "*",
+        "xaeroworldmap": "*"
+      }
+    }
+  },
+  "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2(1).zip": {
+    "bytes": 1516108,
+    "sha256": "72aa0cf454853f65e2cad769ba200e524c711c75260fe6a1d54c148c90788ba7",
+    "entries": 3323,
+    "root_metadata": [
+      "pack.mcmeta"
+    ],
+    "pack.mcmeta": {
+      "pack": {
+        "pack_format": 94,
+        "min_format": 94,
+        "max_format": 94,
+        "description": "Indivis — Quêtes b22 — norme v2 + Séquence I — candidat SI1b — reconnaissance et liaison des gardes existants — PQ01-R3 : dialogues, scènes individuelles mobiles et relecture — HF4 : dialogues et scènes PQ01 — QMARK2 : ! personnels des donneurs du core"
+      }
+    }
+  }
+}
