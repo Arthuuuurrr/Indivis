@@ -6,8 +6,8 @@ H=Path(__file__).resolve().parent;ROOT=H.parents[1];OUT=H/'output';OUT.mkdir(exi
 RT=H.parent/'pq02/runtime_hf9'
 BASE={'core':ROOT/'upload/capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8(2).zip','quests':ROOT/'upload/hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1 (1).zip','mod':H/'baseline_mod/haute-capitale-quetes-HF12-PQ02-R1-HF9-1.21.11.jar'}
 EXPECTED={'core':'6ff671f7b71ff696980b1fdfa4302481dec30cac7db8eca6e0fb2c9bcd4a9aa6','quests':'d9a0fb0d0aecd0eb4f9bc64f9cb7bae932ddaaa7f67273b042512c22ff9e67aa','mod':'bce5ff70728f9e72617db734ecf83f1043fe343687a3806c3c3cd8841bdcae11'}
-FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8_PQ03_R1.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1_PQ03_R1.zip','mod':'haute-capitale-quetes-HF12-PQ02-HF9-PQ03-R1-1.21.11.jar'}
-SCORES=['CAP_PQ3_VER','CAP_PQ3_NODE','CAP_PQ3_DA','CAP_PQ3_DB','CAP_PQ3_IMPR','CAP_PQ3_WP','CAP_PQ3_PAUSE','CAP_PQ3_REW','CAP_PQ3_END','CAP_PQ3_RECALL','CAP_PQ3_RUMBLE','CAP_PQ3_BRANCH']
+FILES={'core':'capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8_PQ03_R1_HF1.zip','quests':'hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1_PQ03_R1.zip','mod':'haute-capitale-quetes-HF12-PQ02-HF9-PQ03-R1-HF1-1.21.11.jar'}
+SCORES=['CAP_PQ3_VER','CAP_PQ3_NODE','CAP_PQ3_DA','CAP_PQ3_DB','CAP_PQ3_RA','CAP_PQ3_RB','CAP_PQ3_IMPR','CAP_PQ3_WP','CAP_PQ3_PAUSE','CAP_PQ3_REW','CAP_PQ3_END','CAP_PQ3_RECALL','CAP_PQ3_RUMBLE','CAP_PQ3_BRANCH']
 def sha(b):return hashlib.sha256(b).hexdigest()
 def read(path):
  with zipfile.ZipFile(path) as z:
@@ -53,14 +53,9 @@ execute unless score @s CAP_PQ3_DB matches 1..4 run return 0
 execute if score @s CAP_PQ3_REW matches 1.. run return 0
 execute store result score @s hcm_pq3_check run indivispq03 rewards_ready
 execute unless score @s hcm_pq3_check matches 1 run return 0
+execute store result score @s hcm_pq3_check run indivispq03 reputation_ready
+execute unless score @s hcm_pq3_check matches 1 run return 0
 scoreboard players set @s CAP_PQ3_REW 1
-scoreboard players set @s CAP_PQ3_IMPR 0
-execute if score @s CAP_PQ3_DA matches 1 run scoreboard players add @s CAP_PQ3_IMPR 1
-execute if score @s CAP_PQ3_DB matches 1 run scoreboard players add @s CAP_PQ3_IMPR 1
-execute if score @s CAP_PQ3_DB matches 4 run scoreboard players remove @s CAP_PQ3_IMPR 1
-scoreboard players add @s REP_GARDECOEUR 0
-scoreboard players operation @s REP_GARDECOEUR += @s CAP_PQ3_IMPR
-function capitale:bounds/reputation_all_self
 function capitale:rewards/daily_bonus/roll/tech_self
 function capitale:reward/skills/core/sous_regard_coeur_self
 function hc_quetes:migration/write/pq03/v100
@@ -73,7 +68,8 @@ title @s times 10 70 20
 title @s title {"text":"Quête terminée","color":"gold","bold":true}
 title @s subtitle {"text":"Sous le regard du Cœur","color":"white"}
 function capitale:dialogue/sound/gain_quete_self
-return 1''','Clôture effective C06 ; décisions mémorisées, −1 à +2 ; autres récompenses conservées')
+return 1''','Clôture effective C06 ; réputation déjà appliquée aux choix ; autres récompenses conservées')
+ put('pq03/reputation/instant_ready_self','return 1','Contrat HF1 : gains immédiats, sans versement de réputation à la conclusion')
  for name,command in [('liaison/aurele','bind_aurele'),('admin/preparer_parcours','prepare_route'),('admin/diagnostic','status'),('admin/diagnostic_points','points'),('admin/nettoyer_scenes','clear_scenes'),('admin/confirmer_grondement','rumble_on'),('admin/desactiver_grondement','rumble_off')]:put('pq03/'+name,'indivispq03 '+command,'Administration ponctuelle sans progression ni récompense')
  for name,target in [('afficher_points','show_waypoints'),('masquer_points','clear_waypoints')]:put('pq03/admin/'+name,'function capitale:quest/sous_le_regard_du_coeur/escort/debug/'+target,'Visualisation existante ; vrais repères conservés')
  n='data/capitale/function/core/load.mcfunction';core[n]+=b'\n# PQ03-R1\nfunction capitale:pq03/load\n';reasons[n]='Déclaration PQ03'
@@ -101,7 +97,7 @@ return 1''','Clôture effective C06 ; décisions mémorisées, −1 à +2 ; autr
    if choice['text']=='Que vais-je trouver là-haut ?':choice['text']='Que vais-je trouver au Cœur ?';changed2+=1
  assert changed2>0;graph2['editorial_pq03_followup']='7 novembre 2026 : question du joueur vers le Cœur, ascenseur descendant. Aucun identifiant ou branche modifié.';mod['indivis_pq02_graph.json']=(json.dumps(graph2,ensure_ascii=False,indent=2)+'\n').encode()
  config={'required':True,'minVersion':'0.8','package':'net.hautecapitale.quetes.pq03.mixin','compatibilityLevel':'JAVA_21','mixins':['Pq03VisibilityMixin','Pq03WaypointMixin','Pq03DialogueCloseMixin','Pq03EntityMixin','Pq03NexusSaveMixin'],'client':['Pq03ScreenLifecycleMixin'],'injectors':{'defaultRequire':1}};mod['indivis_pq03.mixins.json']=(json.dumps(config,indent=2)+'\n').encode()
- m=json.loads(mod['fabric.mod.json']);m['version']+='.PQ03.R1';m['description']+=' PQ03-R1 intégré : deux itinéraires, retour privé aux commerces, réputation conditionnelle et clôture explicite.';m['entrypoints']['main'].append('net.hautecapitale.quetes.sequence.Pq03Runtime');m['entrypoints']['client'].append('net.hautecapitale.quetes.sequence.Pq03Client');m['mixins'].append('indivis_pq03.mixins.json');mod['fabric.mod.json']=(json.dumps(m,ensure_ascii=False,indent=2)+'\n').encode()
+ m=json.loads(mod['fabric.mod.json']);m['version']+='.PQ03.R1.HF1';m['description']+=' PQ03-R1 intégré : deux itinéraires privés, réputation immédiate et notification séparée des répliques.';m['entrypoints']['main'].append('net.hautecapitale.quetes.sequence.Pq03Runtime');m['entrypoints']['client'].append('net.hautecapitale.quetes.sequence.Pq03Client');m['mixins'].append('indivis_pq03.mixins.json');mod['fabric.mod.json']=(json.dumps(m,ensure_ascii=False,indent=2)+'\n').encode()
  diffs={}
  for kind,pack in packs.items():
   assert set(old[kind])<=set(pack)

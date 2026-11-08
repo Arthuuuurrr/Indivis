@@ -11,6 +11,15 @@ import net.hautecapitale.dialogue.session.*;
 /** Actual Fabric events and native b10 state; graphical surfaces and C2S recorder doubled. */
 public final class Pq03ProtocolBench {
  static int checks,session=1,actor=10,token=100001;
+ public static final class Draw {public final List<String> text=new ArrayList<>();public int color,rectangles;public void method_25294(int x1,int y1,int x2,int y2,int color){rectangles++;}public void method_51433(Object font,String value,int x,int y,int color,boolean shadow){text.add(value);this.color=color;}}
+ static void feedback(){
+  int lines=DialogueClientState.repliquesCapturees().size(),choices=DialogueClientState.choixCaptures().size();
+  var n=new QuestReputationNotice.Notice("coeur",1,12);control(QuestReputationNotice.encode(n));check(n.equals(QuestReputationNoticeClient.notice),"real message event receives immediate positive reputation metadata");
+  check(DialogueClientState.repliquesCapturees().size()==lines&&DialogueClientState.choixCaptures().size()==choices,"reputation notice is separate from NPC text and choices");Draw draw=new Draw();QuestReputationNoticeClient.draw(class_310.method_1551().field_1755,draw);check(draw.text.equals(List.of("Garde du Cœur : +1 en réputation"))&&draw.color==0xFF80E59A&&draw.rectangles==1,"dedicated overlay emits positive reputation text with green color");
+  n=new QuestReputationNotice.Notice("port",-1,-7);control(QuestReputationNotice.encode(n));draw=new Draw();QuestReputationNoticeClient.draw(class_310.method_1551().field_1755,draw);check(draw.text.equals(List.of("Garde du Port : -1 en réputation"))&&draw.color==0xFFFF8585,"same overlay emits negative Port reputation with red color");
+  QuestReputationNoticeClient.until=0;QuestReputationNoticeClient.tick();check(QuestReputationNoticeClient.notice==null,"expired reputation overlay clears without modifying dialogue");
+ }
+
  static void invoke(String name,Class<?> parameter,Object value)throws Exception{Method m=DialogueClientState.class.getDeclaredMethod(name,parameter);m.setAccessible(true);try{m.invoke(null,value);}catch(InvocationTargetException e){throw new RuntimeException(e.getCause());}}
  static void check(boolean value,String message){if(!value)throw new AssertionError(message+"; session="+DialogueClientState.sessionId()+", active="+DialogueClientState.captureActive()+", screen="+class_310.method_1551().field_1755+", lines="+DialogueClientState.repliquesCapturees().size()+", choices="+DialogueClientState.choixCaptures().size());checks++;System.out.println("PROTOCOL CHECK "+message);}
  static UUID uuid(int entity){return UUID.nameUUIDFromBytes(("actor"+entity).getBytes());}
@@ -47,7 +56,7 @@ public final class Pq03ProtocolBench {
   load(actor);tick();check(class_634.SENT.size()==acks,"screen and actor must remain stable");tick();
   check(class_634.SENT.size()==acks+1&&class_634.SENT.get(acks).equals("indivispq03 ready "+token),"ready command identifies the expected native session and actor");
   close(oldSession);page(Pq03Data.get("a01"));tick();check(DialogueClientState.repliquesCapturees().size()==1&&DialogueClientState.choixCaptures().size()==4,"complete first page enters native capture through real Fabric events");
-  for(int i=0;i<30;i++)tick();check(DialogueClientState.captureActive(),"first page survives native screen monitoring");probe();tick();check(class_634.SENT.size()==acks+1,"duplicate probe does not replay readiness or dialogue");
+  for(int i=0;i<30;i++)tick();check(DialogueClientState.captureActive(),"first page survives native screen monitoring");probe();tick();check(class_634.SENT.size()==acks+1,"duplicate probe does not replay readiness or dialogue");feedback();
   int nodes=0;
   for(Pq03Data.Node node:Pq03Data.NODES.values()){
    close(session);session++;actor++;token++;acks=class_634.SENT.size();if(nodes%2==0)probe();open(session,actor);if(nodes%2!=0)probe();
@@ -58,8 +67,8 @@ public final class Pq03ProtocolBench {
    check(DialogueClientState.pnjNom().equals(node.speaker.equals("magistrat")?"Magistrat":"Aurèle"),"node "+node.key+" retains speaker");nodes++;
   }
   check(nodes==Pq03Data.NODES.size(),"all PQ03 nodes pass native session and actual Fabric message pipeline");
-  int count=class_634.SENT.size();((net.hautecapitale.dialogue.client.capture.CaptureDialogueScreen)class_310.method_1551().field_1755).method_25419();for(int i=0;i<3;i++)tick();check(class_310.method_1551().field_1755==null&&class_634.SENT.size()==count,"Escape does not reopen or acknowledge closed session");
-  Pq03FocusClient.clear();check(Pq03FocusClient.pending==null,"disconnect cleanup releases pending state");
+  control(QuestReputationNotice.encode(new QuestReputationNotice.Notice("coeur",1,2)));int count=class_634.SENT.size();((net.hautecapitale.dialogue.client.capture.CaptureDialogueScreen)class_310.method_1551().field_1755).method_25419();for(int i=0;i<3;i++)tick();check(class_310.method_1551().field_1755==null&&class_634.SENT.size()==count,"Escape does not reopen or acknowledge closed session");
+  QuestReputationNoticeClient.tick();check(QuestReputationNoticeClient.notice==null,"closing conversation clears transient reputation information before another character");Pq03FocusClient.clear();check(Pq03FocusClient.pending==null,"disconnect cleanup releases pending state");
   System.out.println("PASS "+checks+" real client protocol checks; native b10 state and actual Fabric events, graphical client/world/screen and C2S recorder doubled");
  }
 }

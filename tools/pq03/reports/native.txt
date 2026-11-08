@@ -1,4 +1,4 @@
-PASS 2086 native checks
+PASS 2113 native checks
 full system: actual QuestEngine initialized and running
 full system: original Dialogue classes available
 full system: real complete core tick and transitive functions loaded
@@ -50,6 +50,7 @@ full system: original use-entity listeners allow NPC interaction
 native DialogueManager opens camera for a01
 client readiness acknowledged for a01
 PQ02 chronological: current native session and selectable frame at a01
+PQ03: private notification contains actual immediate bounded reputation
 native trigger accepted a02a #1
 native DialogueManager opens camera for a02a
 client readiness acknowledged for a02a
@@ -442,6 +443,7 @@ PQ02 chronological: current native session and selectable frame at t04b
 PQ02 chronological: reopening resumes exact narrative page t04b
 PQ02 chronological: reopening preserves waypoint at t04b
 PQ02 chronological: reopening keeps current private guide at t04b
+PQ03: private notification contains actual immediate bounded reputation
 native trigger accepted t04b_a #1
 native DialogueManager opens camera for t04b_a
 client readiness acknowledged for t04b_a
@@ -1239,6 +1241,7 @@ client readiness acknowledged for f06
 PQ02 chronological: current native session and selectable frame at f06
 PQ02 chronological: offered choices naturally reach f06
 PQ02 chronological: automatic gift precedes response without any acceptance choice
+PQ03: private notification contains actual immediate bounded reputation
 native trigger accepted f06c #3
 native DialogueManager opens camera for f06c
 client readiness acknowledged for f06c
@@ -1284,6 +1287,7 @@ client readiness acknowledged for f06
 PQ02 chronological: current native session and selectable frame at f06
 PQ02 chronological: offered choices naturally reach f06
 PQ02 chronological: automatic gift precedes response without any acceptance choice
+PQ03: private notification contains actual immediate bounded reputation
 native trigger accepted f06d #4
 native DialogueManager opens camera for f06d
 client readiness acknowledged for f06d
@@ -1453,6 +1457,7 @@ HF8 systematic gift: payment itself has no reputation or impression effect
 native DialogueManager opens camera for f06
 client readiness acknowledged for f06
 HF8 systematic gift: Escape before choice resumes same actor and never pays twice
+PQ03: private notification contains actual immediate bounded reputation
 native trigger accepted f06c #3
 native DialogueManager opens camera for f06c
 client readiness acknowledged for f06c
@@ -1478,6 +1483,7 @@ HF8 systematic gift: payment itself has no reputation or impression effect
 native DialogueManager opens camera for f06
 client readiness acknowledged for f06
 HF8 systematic gift: Escape before choice resumes same actor and never pays twice
+PQ03: private notification contains actual immediate bounded reputation
 native trigger accepted f06d #4
 native DialogueManager opens camera for f06d
 client readiness acknowledged for f06d
@@ -1715,6 +1721,13 @@ PQ03: duplicate real marker refuses setup without selecting an arbitrary locatio
 PQ03: visual armor stands do not create duplicate path markers
 PQ03: 22 existing waypoints cached without inventing positions
 PQ03: setup and audio confirmation grant no progression or reputation
+PQ03: private notification contains actual immediate bounded reputation
+PQ03: active R1 character receives its previously deferred decision once at HF1 migration
+PQ03: repeated schema checks cannot repay a migrated decision
+PQ03: completed R1 character keeps its paid reputation and receives no retroactive award
+PQ03: neutral choices are remembered without reputation or a fictitious +0 notice
+PQ03: faction ceiling keeps private impression but never displays a fictitious +1
+PQ03: PQ02 choices already changed faction immediately and now send positive and negative private notices
 native DialogueManager opens camera for post_neutral
 client readiness acknowledged for post_neutral
 PQ03: PQ03 entry cannot queue over an existing Leovic conversation
@@ -1832,10 +1845,12 @@ PQ03: native b10 camera opens b_market_thanks
 PQ03: matching session and actor acknowledged b_market_thanks
 PQ03: real public/private EasyNPC interaction opens owned conversation
 PQ03: disk reload resumes exact spoken page at 30
+PQ03: real Nexus reload preserves immediate effects without a second payment or toast at 30
 PQ03: market goodbye starts physical I-A return and leaves player free
 PQ03: actual periodic Nexus save retains private actor, page and movement at 40
 PQ03: actual final Nexus save retires only its private view at 40
 PQ03: disk reload restores phase, exact point and position at 40
+PQ03: real Nexus reload preserves immediate effects without a second payment or toast at 40
 full system: original use-entity listeners allow NPC interaction
 PQ03: native b10 camera opens t_menu
 PQ03: matching session and actor acknowledged t_menu
@@ -1888,10 +1903,11 @@ PQ03: matching session and actor acknowledged b_rules
 PQ03: native choice accepted b_position #4
 PQ03: native b10 camera opens b_position
 PQ03: matching session and actor acknowledged b_position
+PQ03: private notification contains actual immediate bounded reputation
 PQ03: native choice accepted t_menu #1
 PQ03: native b10 camera opens t_menu
 PQ03: matching session and actor acknowledged t_menu
-PQ03: discipline decision is stored once, award deferred until final closure
+PQ03: discipline immediately grants one reputation and one impression before final closure
 PQ03: native choice accepted b_rules #2
 PQ03: native b10 camera opens b_rules
 PQ03: matching session and actor acknowledged b_rules
@@ -1905,11 +1921,13 @@ PQ03: native b10 camera opens b_rules
 PQ03: matching session and actor acknowledged b_rules
 PQ03: real public/private EasyNPC interaction opens owned conversation
 PQ03: disk reload resumes exact spoken page at 60
+PQ03: real Nexus reload preserves immediate effects without a second payment or toast at 60
 PQ03: A arrival is physical before waiting state
 PQ03: shopping return physically traversed I-H-G-F-E-D-C-B-A
 PQ03: actual periodic Nexus save retains private actor, page and movement at 50
 PQ03: actual final Nexus save retires only its private view at 50
 PQ03: disk reload restores phase, exact point and position at 50
+PQ03: real Nexus reload preserves immediate effects without a second payment or toast at 50
 full system: original use-entity listeners allow NPC interaction
 PQ03: native b10 camera opens b_reunion
 PQ03: matching session and actor acknowledged b_reunion
@@ -1968,6 +1986,7 @@ PQ03: V arrival is physical before final state
 PQ03: actual periodic Nexus save retains private actor, page and movement at 90
 PQ03: actual final Nexus save retires only its private view at 90
 PQ03: disk reload restores phase, exact point and position at 90
+PQ03: real Nexus reload preserves immediate effects without a second payment or toast at 90
 full system: original use-entity listeners allow NPC interaction
 PQ03: native b10 camera opens c03
 PQ03: matching session and actor acknowledged c03
@@ -1993,9 +2012,11 @@ PQ03: real public/private EasyNPC interaction opens owned conversation
 PQ03: native choice accepted c_position #5
 PQ03: native b10 camera opens c_position
 PQ03: matching session and actor acknowledged c_position
+PQ03: private notification contains actual immediate bounded reputation
 PQ03: native choice accepted c_contempt #4
 PQ03: native b10 camera opens c_contempt
 PQ03: matching session and actor acknowledged c_contempt
+PQ03: C05 applies the positive or negative result immediately while the quest remains unfinished
 PQ03: closing C05 response does not finish before C06
 full system: original use-entity listeners allow NPC interaction
 PQ03: native b10 camera opens c_contempt
@@ -2011,6 +2032,7 @@ PQ03: matching session and actor acknowledged c_bye
 PQ03: displaying goodbye alone grants no completion
 PQ03: native close queues completion only after b10 session removal
 PQ03: actual close completes once with +2 or -1 faction and personal impression
+PQ03: closing the goodbye awards other rewards but never reputation or another notification
 PQ03: terminal replay cannot duplicate reputation, original skills or random bonus
 PQ03: completion releases quest and escort locks
 PQ03: original PQ04 marker becomes eligible after actual completion only
@@ -2027,6 +2049,7 @@ PQ03: V is a mandatory actual stop before final interaction
 PQ03: actual periodic Nexus save retains private actor, page and movement at 90
 PQ03: actual final Nexus save retires only its private view at 90
 PQ03: disk reload restores phase, exact point and position at 90
+PQ03: real Nexus reload preserves immediate effects without a second payment or toast at 90
 PQ03: private reminder occurs once without forcing a camera or PQ04
 full system: original use-entity listeners allow NPC interaction
 PQ03: native b10 camera opens c03
@@ -2053,9 +2076,11 @@ PQ03: real public/private EasyNPC interaction opens owned conversation
 PQ03: native choice accepted c_position #5
 PQ03: native b10 camera opens c_position
 PQ03: matching session and actor acknowledged c_position
+PQ03: private notification contains actual immediate bounded reputation
 PQ03: native choice accepted c_thanks #1
 PQ03: native b10 camera opens c_thanks
 PQ03: matching session and actor acknowledged c_thanks
+PQ03: C05 applies the positive or negative result immediately while the quest remains unfinished
 PQ03: closing C05 response does not finish before C06
 full system: original use-entity listeners allow NPC interaction
 PQ03: native b10 camera opens c_thanks
@@ -2071,6 +2096,7 @@ PQ03: matching session and actor acknowledged c_bye
 PQ03: displaying goodbye alone grants no completion
 PQ03: native close queues completion only after b10 session removal
 PQ03: actual close completes once with +2 or -1 faction and personal impression
+PQ03: closing the goodbye awards other rewards but never reputation or another notification
 PQ03: terminal replay cannot duplicate reputation, original skills or random bonus
 PQ03: completion releases quest and escort locks
 PQ03: original PQ04 marker becomes eligible after actual completion only
@@ -2080,9 +2106,10 @@ PQ03: both depth routes physically visited A-J-K-L-M-N-O-P-Q-R-S-T-U-V
 PQ03: actual Nexus disk saves/reloads exercised all five active route phases
 PQ03: public Aurèle never moved and no private entity spawn leaked
 PQ03: no PQ03 runtime exception during both full routes
-PQ03 contexts=[5ead7a12-e02e-41b5-8e3d-f62f6a4654c7:c_district, 5ead7a12-e02e-41b5-8e3d-f62f6a4654c7:b_rumble, 9fc93fbd-6c1c-408d-8dce-f288d1043952:c_district, 5ead7a12-e02e-41b5-8e3d-f62f6a4654c7:c_approach, 9fc93fbd-6c1c-408d-8dce-f288d1043952:c_approach, 5ead7a12-e02e-41b5-8e3d-f62f6a4654c7:b_circulation]
+PQ03 contexts=[f8693365-9603-489b-8031-9c80aefe556c:c_approach, f8693365-9603-489b-8031-9c80aefe556c:c_district, 22c9f1d5-72f6-46cb-b7df-280fb6abb66b:b_rumble, 22c9f1d5-72f6-46cb-b7df-280fb6abb66b:c_district, 22c9f1d5-72f6-46cb-b7df-280fb6abb66b:c_approach, 22c9f1d5-72f6-46cb-b7df-280fb6abb66b:b_circulation]
 PQ03 direct=[0, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21] market=[0, 1, 2, 3, 4, 5, 6, 7, 8] return=[8, 7, 6, 5, 4, 3, 2, 1, 0]
 PQ03: completed guide departs physically instead of teleporting
+PQ03: private notification contains actual immediate bounded reputation
 PQ03: native b10 camera opens b_rules
 PQ03: matching session and actor acknowledged b_rules
 PQ03: restart fixture starts with a real paused b10 conversation at N
@@ -2091,5 +2118,5 @@ full system: core tick ran during escort, long pause and every rendered narrativ
 full system: public and private NPCs used actual Fabric listeners and EasyNPC interact
 full system: original QuestEngine still active at completion
 Full integration core ticks=1296, narrative interleavings=335
-Frame counts={class_3222['PQ02_Observer'/25, l='ServerLevel[world]', x=2.00, y=64.00, z=22.50]=0, class_3222['PQ02_B'/24, l='ServerLevel[world]', x=2.00, y=64.00, z=37.60]=34, class_3222['PQ02_A'/23, l='ServerLevel[world]', x=2.00, y=64.00, z=37.65]=220}
-Native Fabric 1.21.11 / EasyNPC 7.16, HF12 classes preserved except the two authorized Gautier timing classes; production PQ02 JAR+mixins. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.
+Frame counts={class_3222['PQ02_A'/23, l='ServerLevel[world]', x=2.00, y=64.00, z=37.65]=220, class_3222['PQ02_Observer'/25, l='ServerLevel[world]', x=2.00, y=64.00, z=22.50]=0, class_3222['PQ02_B'/24, l='ServerLevel[world]', x=2.00, y=64.00, z=37.60]=34}
+Native Fabric 1.21.11 / EasyNPC 7.16, PQ03-R1 production JAR+mixins; PQ01 and PQ02 regression suites. Connections/chunk receipt and Nexus selection synthetic; currency replaced by gold nuggets, external CapSkills and bonus pools counted by fixtures. No rendered camera, real client, FPS or user map tested.

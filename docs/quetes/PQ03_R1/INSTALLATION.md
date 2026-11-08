@@ -1,14 +1,20 @@
-# PQ03 R1 — Installation
+# PQ03 R1 HF1 — Installation
 
-Version du 7 novembre 2026, pour Minecraft **1.21.11 Fabric**, sur la base core HF8 + journal **Fusion C1** + mod de quêtes **PQ02 HF9** fournie. Il s’agit d’une livraison à installer et à recetter sur la carte Indivis ; aucun déploiement sur le serveur n’a été effectué.
+Version du 8 novembre 2026, pour Minecraft **1.21.11 Fabric**, sur la base core HF8 + journal **Fusion C1** + mod de quêtes **PQ02 HF9** fournie. Il s’agit d’une livraison à installer et à recetter sur la carte Indivis ; aucun déploiement sur le serveur n’a été effectué.
+
+## Mise à jour depuis PQ03 R1
+
+Remplacer seulement le core par HF1 et le JAR de quêtes sur serveur **et clients**, puis redémarrer complètement. Le journal R1 reste strictement identique. **Aucune préparation, liaison, commande de placement ou remise à zéro n’est à refaire.** Les choix de réputation passent en application immédiate ; la migration des décisions déjà mémorisées est automatique.
+
+Les étapes de préparation plus bas concernent une **première installation**, si elles n’ont jamais été faites. Le détail des gains immédiats et de leur notification se trouve dans `RAPPORT_PQ03_R1_HF1.md`.
 
 ## Fichiers à remplacer
 
 | Emplacement | Fichier de cette livraison |
 |---|---|
-| Serveur : dossier `mods/` | `haute-capitale-quetes-HF12-PQ02-HF9-PQ03-R1-1.21.11.jar` |
+| Serveur : dossier `mods/` | `haute-capitale-quetes-HF12-PQ02-HF9-PQ03-R1-HF1-1.21.11.jar` |
 | Chaque client : dossier `mods/` | Le même JAR de quêtes |
-| Serveur : dossier `datapacks/` du monde actif | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8_PQ03_R1.zip` |
+| Serveur : dossier `datapacks/` du monde actif | `capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8_PQ03_R1_HF1.zip` |
 | Serveur : même dossier `datapacks/` | `hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1_PQ03_R1.zip` |
 
 Un seul exemplaire du mod `haute_capitale_quetes`, un seul core et un seul `hc_quetes` doivent rester actifs. Le nouveau JAR regroupe les fonctionnalités antérieures et PQ03. Les deux JAR serveur/client du paquet complet sont identiques.
@@ -78,4 +84,4 @@ Le guide historique invisible est stationné sur A par la préparation uniquemen
 
 Arrêter le serveur et les clients. Restaurer ensemble les trois composants antérieurs **et la sauvegarde du monde et des profils prise avant migration**, puis redémarrer. Revenir seulement au vieux pilote d’escorte après avoir joué R1 n’est pas une migration descendante garantie : les anciennes fonctions ne comprennent pas les positions et pages privées ajoutées par R1.
 
-Voir `COMMANDES_PQ03.md`, `RAPPORT_PQ03_R1.md` et `SHA256SUMS.txt` pour les commandes exactes, le périmètre des changements et les limites des tests.
+Voir `COMMANDES_PQ03.md`, `RAPPORT_PQ03_R1_HF1.md` et `SHA256SUMS.txt` pour les commandes exactes, le périmètre des changements et les limites des tests.

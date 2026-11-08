@@ -1,0 +1,38 @@
+{
+  "core": {
+    "changed": [
+      "data/capitale/function/pq03/complete_once_self.mcfunction",
+      "data/capitale/function/pq03/load.mcfunction"
+    ],
+    "added": [
+      "data/capitale/function/pq03/reputation/instant_ready_self.mcfunction"
+    ],
+    "removed": [],
+    "preserved": 11350
+  },
+  "quests": {
+    "changed": [],
+    "added": [],
+    "removed": [],
+    "preserved": 3330
+  },
+  "mod": {
+    "changed": [
+      "fabric.mod.json",
+      "indivis_pq03_graph.json",
+      "net/hautecapitale/quetes/sequence/Pq02Runtime.class",
+      "net/hautecapitale/quetes/sequence/Pq03Client.class",
+      "net/hautecapitale/quetes/sequence/Pq03Rules.class",
+      "net/hautecapitale/quetes/sequence/Pq03Runtime$1.class",
+      "net/hautecapitale/quetes/sequence/Pq03Runtime$Near.class",
+      "net/hautecapitale/quetes/sequence/Pq03Runtime.class"
+    ],
+    "added": [
+      "net/hautecapitale/quetes/sequence/QuestReputationNotice$Notice.class",
+      "net/hautecapitale/quetes/sequence/QuestReputationNotice.class",
+      "net/hautecapitale/quetes/sequence/QuestReputationNoticeClient.class"
+    ],
+    "removed": [],
+    "preserved": 281
+  }
+}

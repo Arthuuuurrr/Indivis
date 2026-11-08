@@ -7,7 +7,7 @@ public final class Pq03RulesBench {
  public static void main(String[] args){
   int min=100,max=-100,count=0;
   for(int a=0;a<=3;a++)for(int b=1;b<=4;b++){
-   int r=Pq03Rules.result(a,b);min=Math.min(min,r);max=Math.max(max,r);count++;
+   int r=Pq03Rules.result(a,b);ok((a==0?0:Pq03Rules.decisionDelta(false,a))+Pq03Rules.decisionDelta(true,b)==r,"somme des effets immédiats identique au barème total");min=Math.min(min,r);max=Math.max(max,r);count++;
    ok(r>=-1&&r<=2,"barème borné pour chaque combinaison");
    ok(Pq03Rules.greeting(r).equals(r>0?"post":r<0?"post_unfriendly":"post_neutral"),"souvenir cohérent avec l'impression");
   }
@@ -20,6 +20,8 @@ public final class Pq03RulesBench {
   var reversed=new ArrayList<>(Pq03Rules.route(60));Collections.reverse(reversed);ok(Pq03Rules.retreat().equals(reversed),"départ final V-J-A");
   for(String score:Pq03Rules.SCORES)ok(score.length()<=16&&net.tompsen.nexuscharacters.HCProfilePolicyV0621.shouldPersist(score),"Nexus OPT3 conserve "+score);
   for(String score:List.of("hcm_pq3_ui","Pq03Choix","hcm_pq3_check","CAP_QDIALOG_OWNER"))ok(!net.tompsen.nexuscharacters.HCProfilePolicyV0621.shouldPersist(score),"Nexus exclut le jeton temporaire "+score);
+  for(var notice:List.of(new QuestReputationNotice.Notice("coeur",1,12),new QuestReputationNotice.Notice("port",-1,-7))){ok(QuestReputationNotice.parse(QuestReputationNotice.encode(notice)).equals(notice),"codec de notification positif/négatif et total exact");}
+  for(String text:List.of("indivis:reputation:v1:coeur:0:10","indivis:reputation:v1:inconnu:1:1","indivis:reputation:v1:port:999:1","indivis:reputation:v1:port:1:texte"))ok(QuestReputationNotice.parse(text)==null,"notification invalide ignorée");
   var frame=Pq03Pacing.parse("indivis:pq03:v1:c03:aurele:1000000014:0:80");ok(frame!=null,"trame valide");
   ok(!Pq03Pacing.ready(frame,100,2,true,false,true,false),"attente de la voix");
   ok(!Pq03Pacing.ready(frame,100,2,true,true,false,false),"attente du texte");

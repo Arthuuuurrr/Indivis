@@ -1,4 +1,6 @@
-# PQ03 R1 — Rapport de livraison
+# PQ03 R1 — Rapport historique de la livraison du 7 novembre
+
+**Le versement de réputation décrit ci-dessous est remplacé depuis HF1 (8 novembre) par une application immédiate aux choix. Voir `RAPPORT_PQ03_R1_HF1.md`.**
 
 **7 novembre 2026 — Minecraft Fabric 1.21.11.** PQ03 « Sous le regard du Cœur » est intégrée aux composants fournis, avec ses deux parcours et ses 57 blocs de dialogue. Les contrôles détaillés ci-dessous ont été exécutés sur les trois fichiers dont les empreintes figurent à la fin. La recette graphique et les mesures sur la vraie carte restent à faire.
 

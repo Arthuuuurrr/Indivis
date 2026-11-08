@@ -1,5 +1,5 @@
-# PQ03 R1 — Patch texte pour revue
+# PQ03 R1 HF1 — Patch texte pour revue
 
-Ce dossier contient seulement les fichiers modifiés ou ajoutés aux deux archives installées. Ce ne sont pas deux datapacks complets autonomes. Les archives complètes à installer sont identifiées dans `docs/quetes/PQ03_R1/INSTALLATION.md` et par les SHA-256. Le JAR est construit par `tools/pq03/build.py` sur la base HF9 exacte ; aucun mod tiers binaire n’est ajouté au dépôt.
+Ce dossier contient les fichiers modifiés ou ajoutés aux archives de départ HF8/Fusion C1 ; il ne constitue pas un datapack autonome. L’intégration initiale R1 et le correctif HF1 sont cumulés ici. Les archives complètes et leurs empreintes sont documentées dans `docs/quetes/PQ03_R1/`.
 
-`core/` s’applique au core de SHA-256 6ff671f7b71ff696980b1fdfa4302481dec30cac7db8eca6e0fb2c9bcd4a9aa6 ; `quests/` au journal Fusion C1 de SHA-256 d9a0fb0d0aecd0eb4f9bc64f9cb7bae932ddaaa7f67273b042512c22ff9e67aa. Aucun fichier supprimé.
+HF1 ne change face à R1 que deux fonctions core et ajoute une fonction de contrat pour la réputation immédiate. Le journal Fusion C1 R1 reste intégralement inchangé. Le JAR fusionné est construit sur la base HF9 ; il ajoute le retour visuel sans modifier les répliques. Voir `RAPPORT_PQ03_R1_HF1.md` et `tools/pq03/reports/hf1_diff_r1.json`.

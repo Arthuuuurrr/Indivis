@@ -1,8 +1,8 @@
-# PQ03 R1 — Changements exhaustifs
+# PQ03 R1 HF1 — Changements exhaustifs
 
-Les chemins sont relatifs à la racine de l’archive indiquée. Les empreintes exactes avant/après se trouvent dans `files_changed.json`. Aucun fichier supprimé.
+Comparaison avec les archives initiales HF8/Fusion C1 et le JAR HF9. `hf1_diff_r1.json` isole les différences face à la livraison R1 du 7 novembre. Aucun fichier supprimé.
 
-| Archive | Fichier | Changement | Motif |
+| Archive | Chemin | Opération | Motif |
 |---|---|---|---|
 | core | `data/capitale/function/core/load.mcfunction` | modified | Déclaration PQ03 |
 | core | `data/capitale/function/core/tick.mcfunction` | modified | Retrait des deux appels du guide mondial Aurèle ; tous les autres appels conservés |
@@ -112,15 +112,17 @@ Les chemins sont relatifs à la racine de l’archive indiquée. Les empreintes 
 | core | `data/capitale/function/pq03/admin/masquer_points.mcfunction` | added | Visualisation existante ; vrais repères conservés |
 | core | `data/capitale/function/pq03/admin/nettoyer_scenes.mcfunction` | added | Administration ponctuelle sans progression ni récompense |
 | core | `data/capitale/function/pq03/admin/preparer_parcours.mcfunction` | added | Administration ponctuelle sans progression ni récompense |
-| core | `data/capitale/function/pq03/complete_once_self.mcfunction` | added | Clôture effective C06 ; décisions mémorisées, −1 à +2 ; autres récompenses conservées |
+| core | `data/capitale/function/pq03/complete_once_self.mcfunction` | added | Clôture effective C06 ; réputation déjà appliquée aux choix ; autres récompenses conservées |
 | core | `data/capitale/function/pq03/liaison/aurele.mcfunction` | added | Administration ponctuelle sans progression ni récompense |
 | core | `data/capitale/function/pq03/load.mcfunction` | added | Scores CAP_ persistants par Nexus ; aucune réinitialisation de joueur |
 | core | `data/capitale/function/pq03/open_self.mcfunction` | added | PQ02 doit être terminée ; aucune progression anticipée |
+| core | `data/capitale/function/pq03/reputation/instant_ready_self.mcfunction` | added | Contrat HF1 : gains immédiats, sans versement de réputation à la conclusion |
 | quests | `data/hc_quetes/hcq_quests/pq_03_sous_le_regard_du_coeur.json` | modified | Deux routes explicites ; récompense exacte ; cible privée ; ID/états/objectifs conservés |
 | quests | `pack.mcmeta` | modified | Métadonnées de version ou extension PQ03 du JAR |
 | mod | `fabric.mod.json` | modified | Métadonnées de version ou extension PQ03 du JAR |
 | mod | `indivis_pq02_graph.json` | modified | Métadonnées de version ou extension PQ03 du JAR |
 | mod | `net/hautecapitale/quetes/sequence/Pq02ProfileCheckpoint.class` | modified | Métadonnées de version ou extension PQ03 du JAR |
+| mod | `net/hautecapitale/quetes/sequence/Pq02Runtime.class` | modified | Métadonnées de version ou extension PQ03 du JAR |
 | mod | `indivis_pq03.mixins.json` | added | Métadonnées de version ou extension PQ03 du JAR |
 | mod | `indivis_pq03_graph.json` | added | Métadonnées de version ou extension PQ03 du JAR |
 | mod | `net/hautecapitale/quetes/pq03/mixin/Pq03DialogueCloseMixin.class` | added | Métadonnées de version ou extension PQ03 du JAR |
@@ -152,3 +154,6 @@ Les chemins sont relatifs à la racine de l’archive indiquée. Les empreintes 
 | mod | `net/hautecapitale/quetes/sequence/Pq03Setup$Scan.class` | added | Métadonnées de version ou extension PQ03 du JAR |
 | mod | `net/hautecapitale/quetes/sequence/Pq03Setup.class` | added | Métadonnées de version ou extension PQ03 du JAR |
 | mod | `net/hautecapitale/quetes/sequence/Pq03Transitions.class` | added | Métadonnées de version ou extension PQ03 du JAR |
+| mod | `net/hautecapitale/quetes/sequence/QuestReputationNotice$Notice.class` | added | Métadonnées de version ou extension PQ03 du JAR |
+| mod | `net/hautecapitale/quetes/sequence/QuestReputationNotice.class` | added | Métadonnées de version ou extension PQ03 du JAR |
+| mod | `net/hautecapitale/quetes/sequence/QuestReputationNoticeClient.class` | added | Métadonnées de version ou extension PQ03 du JAR |

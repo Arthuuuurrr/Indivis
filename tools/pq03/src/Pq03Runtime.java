@@ -47,7 +47,7 @@ public final class Pq03Runtime implements ModInitializer {
  static Object current(Object p){return ((Optional<?>)stat(DM,"session",p)).orElse(null);}
  static void register(Object dispatcher){
   Object root=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal","indivispq03");
-  for(String action:List.of("aurele","near","dispatch","pause","suspend","restore","rewards_ready","guide_valid","status","points","bind_aurele","prepare_route","clear_scenes","rumble_on","rumble_off")){
+  for(String action:List.of("aurele","near","dispatch","pause","suspend","restore","rewards_ready","reputation_ready","guide_valid","status","points","bind_aurele","prepare_route","clear_scenes","rumble_on","rumble_off")){
    Object node=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal",action);
    if(Set.of("status","points","bind_aurele","prepare_route","clear_scenes","rumble_on","rumble_off").contains(action))call(node,"requires",stat("net.minecraft.class_2170","method_71774",en("net.minecraft.class_2170","field_31839")));
    Class<?> c=type("com.mojang.brigadier.Command");Object cmd=Proxy.newProxyInstance(c.getClassLoader(),new Class<?>[]{c},(p,m,a)->{if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);try{return execute2(call(call(a[0],"getSource"),"method_9207"),action);}catch(Throwable t){report2(t);return 0;}});call(node,"executes",cmd);call(root,"then",node);
@@ -60,7 +60,8 @@ public final class Pq03Runtime implements ModInitializer {
   if(action.equals("suspend")){suspend(p);return 1;}
   if(action.equals("pause")){View v=VIEWS.get(uuid(p));if(v!=null&&same(v))pause(v);else if(ready(p)&&Pq03Rules.walking(stage(p)))score2(p,"CAP_PQ3_PAUSE",1);return 1;}
   if(action.equals("restore")){dispose(uuid(p));return 1;}
-  if(action.equals("rewards_ready"))return CoreQuestMarkers.functionPresent(p,"capskills:reward/core/sous_regard_coeur_self")?1:0;
+  if(action.equals("rewards_ready"))return CoreQuestMarkers.functionPresent(p,"capskills:reward/core/sous_regard_coeur_self")&&CoreQuestMarkers.functionPresent(p,"capitale:pq03/reputation/instant_ready_self")?1:0;
+  if(action.equals("reputation_ready"))return score(p,"CAP_PQ3_VER")>=2&&score(p,"CAP_PQ3_RB")==1&&(score(p,"CAP_PQ3_DA")==0||score(p,"CAP_PQ3_RA")==1)?1:0;
   if(action.equals("guide_valid"))return ready(p)&&Set.of(30,60).contains(stage(p))&&score(p,"CAP_PQ3_VER")>0?1:0;
   if(action.equals("clear_scenes")){suspend(p);dispose(uuid(p));flush();return 1;}
   if(action.equals("prepare_route"))return Pq03Setup.prepare(p);
@@ -74,11 +75,27 @@ public final class Pq03Runtime implements ModInitializer {
  static void near(Object p){if(!ready(p)||!Pq03Rules.introduction(stage(p))||current(p)!=null)return;Near n=NEAR.get(uuid(p));if(n==null||!n.character.equals(character(p))){NEAR.put(uuid(p),new Near(character(p),pos(p,world(p)),clock+60));return;}if(clock<n.at||n.origin.distance2(pos(p,world(p)))<0.5625)return;Object src=source(p,"aurele");if(src!=null&&pos(src,world(p)).distance2(pos(p,world(p)))<=9)open(p,"aurele");}
  static void ensure(Object p){
   for(String name:Pq03Rules.SCORES)run(p,"scoreboard players add @s "+name+" 0");
-  if(score(p,"CAP_PQ3_VER")!=0)return;int phase=stage(p);score2(p,"CAP_PQ3_VER",1);score2(p,"CAP_PQ3_PAUSE",1);
+  if(score(p,"CAP_PQ3_VER")>=2)return;
+  if(score(p,"CAP_PQ3_VER")==1){migrateReputation(p);return;}
+  int phase=stage(p);score2(p,"CAP_PQ3_VER",1);score2(p,"CAP_PQ3_PAUSE",1);
   if(phase>=100){score2(p,"CAP_PQ3_REW",1);score2(p,"CAP_PQ3_DA",2);score2(p,"CAP_PQ3_DB",2);}
   else if(phase==30||phase==60){score2(p,"CAP_PQ3_WP",nearestRouteIndex(p));score2(p,"CAP_PQ3_BRANCH",phase==30?1:2);}
   else if(phase==40)score2(p,"CAP_PQ3_WP",8);else if(phase==50)score2(p,"CAP_PQ3_WP",0);else if(phase==90)score2(p,"CAP_PQ3_WP",21);
   if(score(p,"CAP_QSEQ")>=701&&score(p,"CAP_QSEQ")<=749){score2(p,"CAP_QSEQ",0);score2(p,"CAP_QSEQ_TIMER",0);}
+  migrateReputation(p);
+ }
+ static void migrateReputation(Object p){
+  if(stage(p)>=100||score(p,"CAP_PQ3_REW")>0){score2(p,"CAP_PQ3_RA",1);score2(p,"CAP_PQ3_RB",1);}
+  else{applyDecision(p,false);applyDecision(p,true);}
+  score2(p,"CAP_PQ3_VER",2);
+ }
+ static void applyDecision(Object p,boolean separation){
+  String decision=separation?"CAP_PQ3_DB":"CAP_PQ3_DA",paid=separation?"CAP_PQ3_RB":"CAP_PQ3_RA";
+  int value=score(p,decision);if(value<1||value>(separation?4:3)||score(p,paid)>0)return;
+  int delta=Pq03Rules.decisionDelta(separation,value);score2(p,paid,1);
+  if(delta==0)return;int before=score(p,"REP_GARDECOEUR");
+  addSigned(p,"REP_GARDECOEUR",delta);run(p,"function capitale:bounds/reputation_all_self");addSigned(p,"CAP_PQ3_IMPR",delta);
+  QuestReputationNotice.changed(p,"coeur",before,score(p,"REP_GARDECOEUR"));
  }
  static int nearestRouteIndex(Object p){int best=0;double distance=16*16;for(int i:Pq03Rules.route(stage(p))){Point at=routePoint(p,ROUTE.get(i));if(at!=null){double d=at.distance2(pos(p,world(p)));if(d<distance){distance=d;best=i;}}}return best;}
  static Object marker(Object p,String name){return unique(p,"marker","wp_aurele_coeur_"+name,256,false);}
@@ -202,7 +219,7 @@ public final class Pq03Runtime implements ModInitializer {
  }
  static void retryFrame(View v){if(v.ui&&v.session==current(v.player)&&v.pendingNode==null&&v.baseToken==0)render(v);}
  static void addSigned(Object p,String objective,int delta){if(delta!=0)run(p,"scoreboard players "+(delta<0?"remove":"add")+" @s "+objective+" "+Math.abs(delta));}
- static boolean effect(View v,String effect){if(effect==null||effect.isEmpty())return true;String[] parts=effect.split(":");String score=parts[0].equals("discipline")?"CAP_PQ3_DA":parts[0].equals("separation")?"CAP_PQ3_DB":"";if(score.isEmpty()||score(v.player,score)!=0)return false;int value=Integer.parseInt(parts[1]);if(value<1||value>(score.endsWith("DB")?4:3))return false;score2(v.player,score,value);return true;}
+ static boolean effect(View v,String effect){if(effect==null||effect.isEmpty())return true;if(stage(v.player)>=100)return false;String[] parts=effect.split(":");String score=parts[0].equals("discipline")?"CAP_PQ3_DA":parts[0].equals("separation")?"CAP_PQ3_DB":"";if(score.isEmpty()||score(v.player,score)!=0)return false;int value=Integer.parseInt(parts[1]);if(value<1||value>(score.endsWith("DB")?4:3))return false;score2(v.player,score,value);applyDecision(v.player,score.endsWith("DB"));return true;}
  static void event2(View v,String name){Object p=v.player;if(!same(v))return;int phase=stage(p);
   switch(name){
    case "market"->{if(!Pq03Rules.introduction(phase))return;validateRoute(p,30);closeUi(v);run(p,"function hc_quetes:migration/write/pq03/v20");score2(p,"CAP_PQ3_BRANCH",1);begin(v,0);remark(v,"b_walk");}

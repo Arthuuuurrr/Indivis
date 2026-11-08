@@ -1,10 +1,10 @@
 {
-  "PQ03_R1.zip": {
-    "sha256": "c2d630cd9ad31b30b34351c8d20c68d53b3a0d1b938df053a839a8ca832dc7c9",
-    "bytes": 3720625
+  "PQ03_R1_HF1.zip": {
+    "sha256": "0cfd85581378dc928cdab663f07db5a4eefab53a451a51eff6d93d226217b033",
+    "bytes": 2828227
   },
-  "Indivis_PQ03_R1_Installation_Complete.zip": {
-    "sha256": "85063302316e898c478c926586f163598d992bbce78c40a4d294213494750c08",
-    "bytes": 4335602
+  "Indivis_PQ03_R1_HF1_Installation_Complete.zip": {
+    "sha256": "063c4893c55ed523dc0424336956c76b762346aac7cccdacc13437196747a8f7",
+    "bytes": 4351849
   }
 }

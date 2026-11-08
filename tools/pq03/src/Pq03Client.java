@@ -25,7 +25,7 @@ public final class Pq03Client implements ClientModInitializer {
       if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);
       try{return message(a[0],Boolean.TRUE.equals(a[1]));}catch(RuntimeException e){report(e);return true;}
     });call(event,"register",phase,listener);
-    event("net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents$Disconnect","DISCONNECT",a->{Pq03FocusClient.clear();frame=null;advanceRequested=false;return null;});
+    event("net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents$Disconnect","DISCONNECT",a->{Pq03FocusClient.clear();QuestReputationNoticeClient.clear();frame=null;advanceRequested=false;return null;});
     event("net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents$StartTick","START_CLIENT_TICK",a->{Pq03FocusClient.keepAlive();return null;});
     event("net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents$EndTick","END_CLIENT_TICK",a->{tickClient(a[0]);return null;});
     event("net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterInit","AFTER_INIT",a->{installInput(a[1]);return null;});
@@ -54,7 +54,7 @@ public final class Pq03Client implements ClientModInitializer {
     listen(stat("net.fabricmc.fabric.api.client.screen.v1.ScreenEvents","remove",screen),"net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$Remove",a->{Pq03FocusClient.removed(a[0]);return null;});
     listen(stat("net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents","allowKeyPress",screen),"net.fabricmc.fabric.api.client.screen.v1.ScreenKeyboardEvents$AllowKeyPress",a->!key(a[0],a[1]));
     listen(stat("net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents","allowMouseClick",screen),"net.fabricmc.fabric.api.client.screen.v1.ScreenMouseEvents$AllowMouseClick",a->!mouse(a[0],a[1]));
-    listen(stat("net.fabricmc.fabric.api.client.screen.v1.ScreenEvents","afterRender",screen),"net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterRender",a->{hint(a[0],a[1]);return null;});
+    listen(stat("net.fabricmc.fabric.api.client.screen.v1.ScreenEvents","afterRender",screen),"net.fabricmc.fabric.api.client.screen.v1.ScreenEvents$AfterRender",a->{hint(a[0],a[1]);QuestReputationNoticeClient.draw(a[0],a[1]);return null;});
   }
   static Object field(Object owner,String name){
     try{
@@ -68,6 +68,7 @@ public final class Pq03Client implements ClientModInitializer {
   static boolean message(Object text,boolean overlay){
     if(overlay)return true;
     String insertion=(String)call(call(text,"method_10866"),"method_10955");
+    if(QuestReputationNoticeClient.receive(insertion))return false;
     if(insertion!=null&&insertion.startsWith(Pq03Focus.PREFIX)){Pq03FocusClient.receive(insertion);return false;}
     if(insertion==null||!insertion.startsWith("indivis:pq03:v1:"))return true;
     Pq03Pacing.Frame parsed=Pq03Pacing.parse(insertion);
@@ -80,6 +81,7 @@ public final class Pq03Client implements ClientModInitializer {
     return false; // trame vide, jamais un texte de PNJ ni une ligne de chat.
   }
   static void tickClient(Object client){
+    QuestReputationNoticeClient.tick();
     Pq03FocusClient.tick(client);
     if(frame==null)return;
     if(!currentFrame()){frame=null;advanceRequested=false;return;}

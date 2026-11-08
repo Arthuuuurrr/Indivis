@@ -1,4 +1,4 @@
-# PQ03 R1 — Commandes et repères
+# PQ03 R1 HF1 — Commandes et repères
 
 Les fonctions s’exécutent **en jeu avec un compte administrateur** dans la dimension du parcours. Depuis la console, cibler explicitement le compte : `execute as Pseudo at @s run function capitale:pq03/admin/diagnostic`. Remplacer `Pseudo` par le nom exact. Les commandes administratives ne font pas progresser la quête et ne donnent pas de récompenses.
 

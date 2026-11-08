@@ -2,9 +2,9 @@
   "status": "COMPILED",
   "files": {
     "core": {
-      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8_PQ03_R1.zip",
-      "sha256": "0874c5f2feda559b36ce8e365ffa3ff1be5dc1b762463a6b6e4c1bad6a45f9b0",
-      "bytes": 5116724
+      "filename": "capitale_core_1.5.7_V2_SEQUENCE_I_SI1_PQ01_R3_HF9_QMARK2_PQ02_R1_HF8_PQ03_R1_HF1.zip",
+      "sha256": "6eebea614c9d2b39a02d18a7d3e3200e7b440be41a73acac0024405a2d5c2ffc",
+      "bytes": 5116970
     },
     "quests": {
       "filename": "hc_quetes_b22_V2_SEQUENCE_I_SI1b_PQ01_R3_HF4_QMARK2_PQ02_R1_HF8_FUSION_C1_PQ03_R1.zip",
@@ -12,9 +12,9 @@
       "bytes": 1523021
     },
     "mod": {
-      "filename": "haute-capitale-quetes-HF12-PQ02-HF9-PQ03-R1-1.21.11.jar",
-      "sha256": "2f5ca46dd6e8dee46ead0a03b0db40065c8c68744d85c40d60403d809e0c520c",
-      "bytes": 652188
+      "filename": "haute-capitale-quetes-HF12-PQ02-HF9-PQ03-R1-HF1-1.21.11.jar",
+      "sha256": "39bca2336fe7c41bec87248215ee715719bf0933768213df534e36fc1b279537",
+      "bytes": 656917
     }
   },
   "inputs": {
@@ -138,7 +138,8 @@
         "data/capitale/function/pq03/complete_once_self.mcfunction",
         "data/capitale/function/pq03/liaison/aurele.mcfunction",
         "data/capitale/function/pq03/load.mcfunction",
-        "data/capitale/function/pq03/open_self.mcfunction"
+        "data/capitale/function/pq03/open_self.mcfunction",
+        "data/capitale/function/pq03/reputation/instant_ready_self.mcfunction"
       ],
       "removed": [],
       "preserved": 11240
@@ -156,7 +157,8 @@
       "changed": [
         "fabric.mod.json",
         "indivis_pq02_graph.json",
-        "net/hautecapitale/quetes/sequence/Pq02ProfileCheckpoint.class"
+        "net/hautecapitale/quetes/sequence/Pq02ProfileCheckpoint.class",
+        "net/hautecapitale/quetes/sequence/Pq02Runtime.class"
       ],
       "added": [
         "indivis_pq03.mixins.json",
@@ -189,10 +191,13 @@
         "net/hautecapitale/quetes/sequence/Pq03Runtime.class",
         "net/hautecapitale/quetes/sequence/Pq03Setup$Scan.class",
         "net/hautecapitale/quetes/sequence/Pq03Setup.class",
-        "net/hautecapitale/quetes/sequence/Pq03Transitions.class"
+        "net/hautecapitale/quetes/sequence/Pq03Transitions.class",
+        "net/hautecapitale/quetes/sequence/QuestReputationNotice$Notice.class",
+        "net/hautecapitale/quetes/sequence/QuestReputationNotice.class",
+        "net/hautecapitale/quetes/sequence/QuestReputationNoticeClient.class"
       ],
       "removed": [],
-      "preserved": 255
+      "preserved": 254
     }
   },
   "reasons": {
@@ -291,7 +296,8 @@
     "data/capitale/function/npc/aurele/near_self.mcfunction": "Contexte exact de chaque joueur ; proximité bornée à trois blocs",
     "data/capitale/function/pq03/open_self.mcfunction": "PQ02 doit être terminée ; aucune progression anticipée",
     "data/capitale/function/pq03/load.mcfunction": "Scores CAP_ persistants par Nexus ; aucune réinitialisation de joueur",
-    "data/capitale/function/pq03/complete_once_self.mcfunction": "Clôture effective C06 ; décisions mémorisées, −1 à +2 ; autres récompenses conservées",
+    "data/capitale/function/pq03/complete_once_self.mcfunction": "Clôture effective C06 ; réputation déjà appliquée aux choix ; autres récompenses conservées",
+    "data/capitale/function/pq03/reputation/instant_ready_self.mcfunction": "Contrat HF1 : gains immédiats, sans versement de réputation à la conclusion",
     "data/capitale/function/pq03/liaison/aurele.mcfunction": "Administration ponctuelle sans progression ni récompense",
     "data/capitale/function/pq03/admin/preparer_parcours.mcfunction": "Administration ponctuelle sans progression ni récompense",
     "data/capitale/function/pq03/admin/diagnostic.mcfunction": "Administration ponctuelle sans progression ni récompense",
@@ -313,23 +319,26 @@
   "graph_nodes": 57,
   "source_sha256": {
     "src/Pq02ProfileCheckpoint.java": "2286f80dde042bb4f2e9c4969b38f4ed00a91fd8ae01dbb4c0918489788f31d3",
-    "src/Pq03Client.java": "1b4be42fd28a2bd0e4f3cb07178480b8fb267c12dc219c0d3db95b1da3e2d575",
+    "src/Pq02Runtime.java": "fc8954ea1898ea5ff3a9e1eceda9a34e08593900f1adfd4cdbe4f2120f49db2d",
+    "src/Pq03Client.java": "395dbded9dcae96e7d0b9d33fc57c41cd0eb5d176f8fda0baf56ac0691f80e3c",
     "src/Pq03Data.java": "8814ff96b89a0e5055274ed0977dc001eb6e4f5af2eee6bbeb05e52ebab2cf12",
     "src/Pq03Entries.java": "71a3784baa7f947f0c0b89bec55f502da5a195eaedb6613d030c99b77fe2db87",
     "src/Pq03Focus.java": "a313bc5e5261e31f8ee09bd159c958337ff265d37951b02ec2216bb3c0442baa",
     "src/Pq03FocusClient.java": "7ed6cbb73d7049d701ea8a323acb5d04e75a1bc4050581b66904ad383c5658f1",
     "src/Pq03Pacing.java": "412e15cc58df12018bcc1575adf03b93024bda7aa29a6bbe0801cd842815f83a",
     "src/Pq03ProfileCheckpoint.java": "ccb44eb08fc7c99962b2140068a0ef03b9b0c7a7c9f3b0abbd5b3075fe057c57",
-    "src/Pq03Rules.java": "737f68cd7a1d98df1137ad1cb773c4c4cca3b8abd3bd191563a2a7200ef7968a",
-    "src/Pq03Runtime.java": "c9bf51e896f6d9e631e84af9e6d7cdb9c45b325bb23e2c3ae7aab73a9aaecbcc",
+    "src/Pq03Rules.java": "90d50fb878c5549cadc0b8d19d8230dd2bf8fd9b95bc4f38683deee269d68d9d",
+    "src/Pq03Runtime.java": "3780040fd6fb8cfb3c3710559042a75ccc27be79704c2fc162a16516d3b69eef",
     "src/Pq03Setup.java": "7d234417a8d17e59b804d260b1dac3fa301738f3114bc4948cdc6c1cf85995ce",
     "src/Pq03Transitions.java": "06ef7b70d5dbec56175102ee96a3751f3cd3c8bbc3b2bf77c6e23909c19a5d53",
+    "src/QuestReputationNotice.java": "593993323344e5402dca7ae0db188533285f77abec7a118f0dbc4245a226eb6d",
+    "src/QuestReputationNoticeClient.java": "ad02c1f4d84ac55ab05a2808fd1e142ffce45348ea7c470def74ebb496d3180d",
     "src/mixin/Pq03DialogueCloseMixin.java": "c9495cef0e4e8186159ed9290edcffbf36f72e9bf91cf102b4ea8324a290a48b",
     "src/mixin/Pq03EntityMixin.java": "1a3a946ca672a5548b277352f215fc4813385ff03fcf7bff136c69b43c289b64",
     "src/mixin/Pq03NexusSaveMixin.java": "772d9785cd5a6c2c9e4cceb95a89b4176e2f40790cc7e29c34f9136bd07450bb",
     "src/mixin/Pq03ScreenLifecycleMixin.java": "9f2db8f3a6da756fe50bc5aabdb3f673f312313f38548b8ad06fc886d5482904",
     "src/mixin/Pq03VisibilityMixin.java": "86137a2b418b2fb9ab1996d961563f67e836f250015548a9e3f2850210e8541c",
     "src/mixin/Pq03WaypointMixin.java": "af2c4ad5f3e8193bf10116b2ed9dfec318727f38580ba8bce55db78b45568fd0",
-    "model.py": "62929af4550265eb7f9041376a7fef13b8c13e5103eef8382069d88a9bfb1788"
+    "model.py": "75c903ecbbef1a3d364fbfa054270b1333cba84f290bf4cb15ca0fc4b073d491"
   }
 }

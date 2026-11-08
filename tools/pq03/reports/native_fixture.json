@@ -1,5 +1,5 @@
 {
-  "functions": 7848,
+  "functions": 7849,
   "scores": [
     "ACCESS_ARCHIVES",
     "ACCESS_BANQUE",
@@ -127,10 +127,8 @@
     "CAP_PQ2_OFFER",
     "CAP_PQ2_REG",
     "CAP_PQ2_REW",
-    "CAP_PQ3_DA",
     "CAP_PQ3_DB",
     "CAP_PQ3_END",
-    "CAP_PQ3_IMPR",
     "CAP_PQ3_REW",
     "CAP_PREFIXMODE",
     "CAP_PROFILE_ACTIVE",
@@ -639,5 +637,5 @@
   ],
   "fixture_only_security": "function root allowed for native EasyNPC command executor tests; no production security files included",
   "integrated": true,
-  "mod_production_sha256": "2f5ca46dd6e8dee46ead0a03b0db40065c8c68744d85c40d60403d809e0c520c"
+  "mod_production_sha256": "39bca2336fe7c41bec87248215ee715719bf0933768213df534e36fc1b279537"
 }

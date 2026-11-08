@@ -1,6 +1,8 @@
-# Indivis — PQ03 R1
+# Indivis — PQ03 R1 HF1
 
 Implémentation du dossier `PQ03_finalisation_Work_2026-11-07.md`, sur les trois composants installés identifiés dans `reports/build.json`. Les sources finales sont dans `src/`. Le générateur historique `seed_runtime.py` a servi à amorcer le module ; il ne doit pas être réexécuté sur ces sources finales.
+
+HF1 applique les effets de réputation au choix avec un bandeau privé et une migration des décisions R1 en attente. Voir `docs/quetes/PQ03_R1/RAPPORT_PQ03_R1_HF1.md` dans le dépôt. Les parcours et les dialogues de R1 restent identiques.
 
 ## Contenu
 
@@ -32,3 +34,7 @@ Exécuter les scripts depuis la racine du workspace/dépôt avec Python 3 et Jav
 Les tests natifs créent un monde de fixture neuf, puis redémarrent ce même monde dans un second processus. Ils ne lisent pas le monde utilisateur. Les deux modes du protocole partagent leurs classes temporaires : les lancer l’un après l’autre. Le serveur de fixture utilise le port 25579.
 
 Le code n’est pas une reconstruction complète des autres mods. Le JAR antérieur est copié puis enrichi afin de préserver ses 255 entrées inchangées. Le manifeste détaille les trois entrées existantes modifiées. Les validations natives nécessitent ces dépendances locales ; `verify.py` ne remplace pas leur exécution.
+
+## Entrées supplémentaires pour vérifier HF1
+
+Conserver les trois sorties **R1 antérieures à HF1** sous `pq03_fix_20261108/baseline_r1/output/`, à côté de `pq03/`. `verify.py` et `finalize_hf1.py` utilisent cette copie pour mesurer la portée exacte du correctif. Fournir Nexus OPT3 sous `pq03_fix_20261108/downloads/` pour le contrôle de sa politique réelle. Ces fichiers ne font pas partie des éléments à installer sur le serveur. Les sorties R1 sont identifiées par les empreintes du rapport historique ; ne pas substituer les sorties HF1 à cette copie.

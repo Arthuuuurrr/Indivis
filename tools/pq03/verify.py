@@ -36,11 +36,11 @@ for a,b in zip(before['objectives'],after['objectives']):
  ok({k:v for k,v in a.items() if k not in {'text','waypoint'}}=={k:v for k,v in b.items() if k not in {'text','waypoint'}},'état et identifiant de l’objectif '+a['id'])
 ok(len(before['objectives'])==len(after['objectives']),'aucun objectif ajouté ou supprimé')
 ok(before['rewards'][1:]==after['rewards'][1:],'175 XP, compétences et prime aléatoire conservés dans le journal')
-mod_allowed={'fabric.mod.json','indivis_pq02_graph.json','net/hautecapitale/quetes/sequence/Pq02ProfileCheckpoint.class'}
+mod_allowed={'fabric.mod.json','indivis_pq02_graph.json','net/hautecapitale/quetes/sequence/Pq02ProfileCheckpoint.class','net/hautecapitale/quetes/sequence/Pq02Runtime.class'}
 for n in old['mod']:
  if n not in mod_allowed:ok(old['mod'][n]==new['mod'][n],'JAR existant conservé : '+n)
-ok(set(manifest['diffs']['mod']['changed'])==mod_allowed,'trois seules entrées héritées modifiées')
-ok(all('Pq03' in n or n.startswith('indivis_pq03') for n in manifest['diffs']['mod']['added']),'toutes les nouvelles entrées appartiennent à PQ03')
+ok(set(manifest['diffs']['mod']['changed'])==mod_allowed,'quatre seules entrées héritées modifiées')
+ok(all('Pq03' in n or 'QuestReputationNotice' in n or n.startswith('indivis_pq03') for n in manifest['diffs']['mod']['added']),'nouvelles entrées limitées à PQ03 et aux notifications de réputation')
 ok(not any(re.search(r'(?:Bench|fixture|journal_test|client_doubles)',n,re.I) for n in new['mod']),'aucun substitut ou test livré dans le JAR')
 g2=json.loads(new['mod']['indivis_pq02_graph.json']);g2old=json.loads(old['mod']['indivis_pq02_graph.json']);changes=0
 g2.pop('editorial_pq03_followup')
@@ -59,9 +59,9 @@ for n in g3['nodes']:
 ok(len(model.N['c03']['lines'])==4,'quatre répliques finales consécutives regroupées')
 ok(model.N['c_bye']['next']=='event:complete','conclusion finale attachée à la réplique d’au revoir')
 body=new['core']['data/capitale/function/pq03/complete_once_self.mcfunction'].decode()
-for required in ['hcq_pq03 matches 90','CAP_PQ3_END matches 1','CAP_PQ3_DB matches 1..4','CAP_PQ3_REW matches 1..','CAP_PQ3_IMPR','rewards/daily_bonus/roll/tech_self','reward/skills/core/sous_regard_coeur_self','migration/write/pq03/v100']:
+for required in ['hcq_pq03 matches 90','CAP_PQ3_END matches 1','CAP_PQ3_DB matches 1..4','CAP_PQ3_REW matches 1..','reputation_ready','rewards/daily_bonus/roll/tech_self','reward/skills/core/sous_regard_coeur_self','migration/write/pq03/v100']:
  ok(required in body,'fin protégée : '+required)
-ok('REP_GARDECOEUR 5' not in body and 'REP_GARDECOEUR += @s CAP_PQ3_IMPR' in body,'ancien +5 remplacé par le résultat mémorisé')
+ok('REP_GARDECOEUR' not in body and 'CAP_PQ3_IMPR' not in body,'aucun versement de réputation ni impression ajouté à la clôture')
 for n,b in new['core'].items():
  if n.startswith('data/capitale/function/quest/sous_le_regard_du_coeur/') and n.endswith('.mcfunction') and '/waypoints/' not in n and '/debug/' not in n:
   ok(b'@a[' not in b and b'b3330000' not in b and b'run tp ' not in b,'ancien pilote mondial neutralisé : '+n)
@@ -77,8 +77,18 @@ ok(meta['id']==meta0['id'] and meta['depends']==meta0['depends'],'même mod fusi
 ok(meta['entrypoints']['main'][:-1]==meta0['entrypoints']['main'] and meta['entrypoints']['client'][:-1]==meta0['entrypoints']['client'],'anciens points d’entrée préservés')
 ok(meta['mixins'][:-1]==meta0['mixins'],'anciens mixins préservés')
 for n,s in manifest['source_sha256'].items():ok(digest((H/n).read_bytes())==s,'source compilée inchangée : '+n)
+r1=H.parent/'pq03_fix_20261108/baseline_r1/output'
+for kind,name in build.FILES.items():
+ original=name.replace('_HF1.zip','.zip').replace('-HF1-1.21.11.jar','-1.21.11.jar');base=build.read(r1/original);updated=new[kind]
+ if kind=='quests':ok(base==updated,'journal Fusion C1 R1 intégralement inchangé par HF1')
+ if kind=='core':
+  differences={n for n in set(base)|set(updated) if base.get(n)!=updated.get(n)}
+  ok(differences=={'data/capitale/function/pq03/load.mcfunction','data/capitale/function/pq03/complete_once_self.mcfunction','data/capitale/function/pq03/reputation/instant_ready_self.mcfunction'},'HF1 core : trois seuls chemins changent face à R1')
+ if kind=='mod':ok(json.loads(base['indivis_pq03_graph.json'])['nodes']==json.loads(updated['indivis_pq03_graph.json'])['nodes'],'les 57 blocs narratifs PQ03 R1 restent identiques')
+base2=(H.parent/'pq02/src/Pq02Runtime.java').read_text();now2=(H/'src/Pq02Runtime.java').read_text().replace('int before=score(p,"REP_GARDEPORT");','').replace('QuestReputationNotice.changed(p,"port",before,score(p,"REP_GARDEPORT"));','')
+ok(base2==now2,'PQ02 : seule notification ajoutée à son effet déjà immédiat, aucun calcul ou autre comportement changé')
 java=next((build.RT/'jdk').glob('*/bin/java'));classes=H/'rules_classes';classes.mkdir(exist_ok=True)
-nexus=next((build.ROOT/'upload').glob('NexusCharacters-Indivis-1.21.11-PRE35-SI1-OPT3*.jar'))
+nexus=next((H.parent/'pq03_fix_20261108/downloads').glob('NexusCharacters-Indivis-1.21.11-PRE35-SI1-OPT3*.jar'))
 ok(digest(nexus.read_bytes())=='de06ecab0f5cf7ccee29043bff2ccb5fd2b7425c173da145c1f27559b49def7b','vraie politique Nexus OPT3 fournie')
 libs=[H/'output'/build.FILES['mod'],nexus,build.RT/'bootstrap/.fabric/remappedJars/minecraft-1.21.11-0.19.5/server-intermediary.jar',*sorted((build.RT/'libraries').glob('*.jar')),*sorted((build.RT/'minecraft_bundle/META-INF/libraries').rglob('*.jar'))];cp=os.pathsep.join(map(str,libs))
 subprocess.run([java.with_name('javac'),'--release','21','-proc:none','-cp',cp,'-d',classes,H/'tests/Pq03RulesBench.java'],check=True)

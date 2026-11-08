@@ -868,8 +868,8 @@
     "path": "data/capitale/function/pq03/complete_once_self.mcfunction",
     "operation": "added",
     "before_sha256": null,
-    "after_sha256": "b1d7eafe763206033436e3aa8cef1525b37ed13606110a9f51aa0f9d255681ae",
-    "reason": "Clôture effective C06 ; décisions mémorisées, −1 à +2 ; autres récompenses conservées"
+    "after_sha256": "cc131cfea94e3e45a44b51b17b7a46e93a8f9b3e0c7b63b3873166237aada1fa",
+    "reason": "Clôture effective C06 ; réputation déjà appliquée aux choix ; autres récompenses conservées"
   },
   {
     "archive": "core",
@@ -884,7 +884,7 @@
     "path": "data/capitale/function/pq03/load.mcfunction",
     "operation": "added",
     "before_sha256": null,
-    "after_sha256": "c8eeecd4e67e8d74db6c60d597992e3404ea7c4c05d2ac0ff09ad646f6fe9e25",
+    "after_sha256": "5c056eaac0753930b2404f694aaaade14fb511a4c2b2bc2513996910321ac2aa",
     "reason": "Scores CAP_ persistants par Nexus ; aucune réinitialisation de joueur"
   },
   {
@@ -894,6 +894,14 @@
     "before_sha256": null,
     "after_sha256": "40b902481aea6a196230fa7e2c193147026e24ba487342839c8cfff69b5b79e9",
     "reason": "PQ02 doit être terminée ; aucune progression anticipée"
+  },
+  {
+    "archive": "core",
+    "path": "data/capitale/function/pq03/reputation/instant_ready_self.mcfunction",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "88b062ec29c8ba9661a9ded1efbe4a4e895dcb7e228012acf5d4a8b963fe105c",
+    "reason": "Contrat HF1 : gains immédiats, sans versement de réputation à la conclusion"
   },
   {
     "archive": "quests",
@@ -916,7 +924,7 @@
     "path": "fabric.mod.json",
     "operation": "modified",
     "before_sha256": "bfb2447bb05b1f55f523164bd2e346cb986bcd0461a67ce6564b94428f9f1c76",
-    "after_sha256": "e764ea33a6d9285be7f175a4eb1f75bc3e40cc9e6ad29ae7ad98fc7ec76db749",
+    "after_sha256": "52d0ab0212babbd8e326a7d77e4ac2a64337fb3602b3fbe70a7b1dbbbc85a65d",
     "reason": "Métadonnées de version ou extension PQ03 du JAR"
   },
   {
@@ -937,6 +945,14 @@
   },
   {
     "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/Pq02Runtime.class",
+    "operation": "modified",
+    "before_sha256": "b1d51981b558279332c60c1af8e910b470968985115a305289e01e782e003ed2",
+    "after_sha256": "89b072d87f764467149a08c9f4a594bbd1cf88596150cb5acd518e3408bfd6c3",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
     "path": "indivis_pq03.mixins.json",
     "operation": "added",
     "before_sha256": null,
@@ -948,7 +964,7 @@
     "path": "indivis_pq03_graph.json",
     "operation": "added",
     "before_sha256": null,
-    "after_sha256": "0ad5d864322c60a4d97ecaf3d68694ff1e4b18e2e2bcdebe6760245fb1147bd6",
+    "after_sha256": "4a64e28c2a3e9c1a94ef63a99da8b13c8db82651d0a6678a9da74fb786ff3c9f",
     "reason": "Métadonnées de version ou extension PQ03 du JAR"
   },
   {
@@ -1004,7 +1020,7 @@
     "path": "net/hautecapitale/quetes/sequence/Pq03Client.class",
     "operation": "added",
     "before_sha256": null,
-    "after_sha256": "ab4160c8174201e2046a9ab386ad6ecee4dd000a375f5aa1380456732493e01a",
+    "after_sha256": "ab5694b321773dc74f25349a7197f8c5f0599d99018e4939dd2306f7bcce4618",
     "reason": "Métadonnées de version ou extension PQ03 du JAR"
   },
   {
@@ -1116,7 +1132,7 @@
     "path": "net/hautecapitale/quetes/sequence/Pq03Rules.class",
     "operation": "added",
     "before_sha256": null,
-    "after_sha256": "3c14528a0538cadcc24a71e0e5637d68addf86bad0d16c9a74020c81e0ecef72",
+    "after_sha256": "2fc4c3f0302b55bc157128bea2a01657657fee71174bcdede0ff1f3552fefb33",
     "reason": "Métadonnées de version ou extension PQ03 du JAR"
   },
   {
@@ -1124,7 +1140,7 @@
     "path": "net/hautecapitale/quetes/sequence/Pq03Runtime$1.class",
     "operation": "added",
     "before_sha256": null,
-    "after_sha256": "30ce188294c6bf6ddc1767e83078f50bd96933951a14dd6b36c67dd63f97784a",
+    "after_sha256": "11919dc6c972897d6a7dda09f88a0b28b706416b1e72996ab958fef2b40d2114",
     "reason": "Métadonnées de version ou extension PQ03 du JAR"
   },
   {
@@ -1140,7 +1156,7 @@
     "path": "net/hautecapitale/quetes/sequence/Pq03Runtime$Near.class",
     "operation": "added",
     "before_sha256": null,
-    "after_sha256": "9c35f4f36356a721a42acd1b9ba8e73d79329c7d216acc63c1746e9a17e8adc6",
+    "after_sha256": "4917364eab605289004f18884b4d3911504cfa708b50ac843b4e897dca59dbef",
     "reason": "Métadonnées de version ou extension PQ03 du JAR"
   },
   {
@@ -1156,7 +1172,7 @@
     "path": "net/hautecapitale/quetes/sequence/Pq03Runtime.class",
     "operation": "added",
     "before_sha256": null,
-    "after_sha256": "733e9462440e75f52655c044573f590f1545af98ac4abf7da76d471a771887e2",
+    "after_sha256": "e0131852cd0b030044bd28bef92cf548ade18928fcbdca3ec204d9600dad01d3",
     "reason": "Métadonnées de version ou extension PQ03 du JAR"
   },
   {
@@ -1181,6 +1197,30 @@
     "operation": "added",
     "before_sha256": null,
     "after_sha256": "02ada9ebaacf63c97ce2ae65d5d3757ccff7097776773184cd4c3b207ac4123a",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/QuestReputationNotice$Notice.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "db2e60f2e18c5071e8b6d8b6244484882ea847bc2c5b91ee81e6e02206825e5b",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/QuestReputationNotice.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "0a425132309044fbc608768086eecbdf12f2c617a7653775aeff8b91749a8c67",
+    "reason": "Métadonnées de version ou extension PQ03 du JAR"
+  },
+  {
+    "archive": "mod",
+    "path": "net/hautecapitale/quetes/sequence/QuestReputationNoticeClient.class",
+    "operation": "added",
+    "before_sha256": null,
+    "after_sha256": "f7646b08290c8b873af82203aa55a198df879816f2c5be2ee6e08cc801b3ecb1",
     "reason": "Métadonnées de version ou extension PQ03 du JAR"
   }
 ]

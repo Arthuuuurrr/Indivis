@@ -71,5 +71,5 @@ EVENTS={'market','depth','later','return','resume','questions','context','comple
 for n in N.values():
  assert len(n['choices'])<=13,n['key']
  for target in [c['target'] for c in n['choices']]+([n['next']] if n['next'] else []):assert target in N or target.startswith('event:') and target[6:] in EVENTS,target
-def export():return dict(schema=1,script_sha256=hashlib.sha256(SCRIPT.read_bytes()).hexdigest(),nodes=list(N.values()),events=sorted(EVENTS),source_quotes_used=sorted(USED),editorial_notes=['Les raccords C04 sont conservés selon le dossier fourni.','Les choix sont mémorisés une fois ; leur résultat est versé à la clôture C06.','B02 dépend de la confirmation admin du grondement audible à D.'])
+def export():return dict(schema=1,script_sha256=hashlib.sha256(SCRIPT.read_bytes()).hexdigest(),nodes=list(N.values()),events=sorted(EVENTS),source_quotes_used=sorted(USED),editorial_notes=['Les raccords C04 sont conservés selon le dossier fourni.','HF1 : les décisions de réputation et de souvenir sont appliquées une fois dès le choix ; la clôture C06 conserve les autres récompenses.','B02 dépend de la confirmation admin du grondement audible à D.'])
 if __name__=='__main__':print(json.dumps(export(),ensure_ascii=False,indent=2))

@@ -3,6 +3,8 @@ scoreboard objectives add CAP_PQ3_VER dummy
 scoreboard objectives add CAP_PQ3_NODE dummy
 scoreboard objectives add CAP_PQ3_DA dummy
 scoreboard objectives add CAP_PQ3_DB dummy
+scoreboard objectives add CAP_PQ3_RA dummy
+scoreboard objectives add CAP_PQ3_RB dummy
 scoreboard objectives add CAP_PQ3_IMPR dummy
 scoreboard objectives add CAP_PQ3_WP dummy
 scoreboard objectives add CAP_PQ3_PAUSE dummy
