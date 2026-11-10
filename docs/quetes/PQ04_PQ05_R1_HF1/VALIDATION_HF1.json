@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-10",
+  "status": "PASS",
+  "native_checks": 27,
+  "versions": {
+    "minecraft": "1.21.11",
+    "fabric_loader": "0.19.5",
+    "fabric_api": "0.141.6+1.21.11",
+    "easy_npc": "7.16.0",
+    "java": "21"
+  },
+  "tested_delivered_entries_identical": true,
+  "fixture_metadata_only_override": true,
+  "synthetic": [
+    "player connection",
+    "selected character",
+    "no open dialogue"
+  ],
+  "verified_scope": [
+    "true binding distance",
+    "stacked floors",
+    "nearby guards",
+    "role identity",
+    "duplicate names and exact UUID",
+    "real command dispatcher",
+    "real Fabric event phase ordering",
+    "private actors preserved",
+    "quest and character gate",
+    "original NPC actions unchanged"
+  ],
+  "not_tested": [
+    "Indivis map obstacles",
+    "complete escort replay",
+    "graphical dialogue rendering",
+    "real multiplayer clients",
+    "FPS"
+  ],
+  "jar_sha256": "56daa2aa7e28a22da48810e510b81edbb0db3b9a7b62af35f0f1dcafa2e76d84",
+  "datapacks": "R1 unchanged"
+}

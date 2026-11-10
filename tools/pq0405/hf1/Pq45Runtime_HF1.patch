@@ -1,0 +1,85 @@
+--- a/tools/pq0405/src/Pq45Runtime.java
++++ b/tools/pq0405/src/Pq45Runtime.java
+@@ -51,12 +51,17 @@
+   event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$ServerStopped","SERVER_STOPPED",a->{Pq45Entries.clear();VIEWS.clear();LIVE.clear();HIDDEN.clear();DIRTY.clear();ERRORS.clear();clock=0;teamReady=false;return null;});
+   event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents$Load","ENTITY_LOAD",a->{Object e=a[0];if(tags(e).contains(TAG)&&!LIVE.contains(uuid(e)))call(e,"method_31472");return null;});
+   event("net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents$EndDataPackReload","END_DATA_PACK_RELOAD",a->{for(View v:new ArrayList<>(VIEWS.values()))suspend(v.player);return null;});
+-  customActions();
++  registerPublicClicks();customActions();
+  }
+  static void register(Object dispatcher){Object root=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal","indivispq45");
+   for(String action:List.of("roch","colin","aubergiste","magistrat","dispatch","guide_valid","suspend","pause","restore","status","points","prepare_route","bind_roch","bind_colin","bind_aubergiste","bind_magistrat","test_roch","test_roch_h","test_colin","test_colin_d","test_colin_h","test_place","test_pq05")){
+    Object node=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal",action);if(!Set.of("roch","colin","aubergiste","magistrat","dispatch","guide_valid","pause").contains(action))call(node,"requires",stat("net.minecraft.class_2170","method_71774",en("net.minecraft.class_2170","field_31839")));
+-   Class<?> c=type("com.mojang.brigadier.Command");Object cmd=Proxy.newProxyInstance(c.getClassLoader(),new Class<?>[]{c},(p,m,a)->m.getDeclaringClass()==Object.class?objectMethod(p,m,a):execute2(call(call(a[0],"getSource"),"method_9207"),action));call(node,"executes",cmd);call(root,"then",node);
++   Class<?> c=type("com.mojang.brigadier.Command");Object cmd=Proxy.newProxyInstance(c.getClassLoader(),new Class<?>[]{c},(p,m,a)->m.getDeclaringClass()==Object.class?objectMethod(p,m,a):execute2(call(call(a[0],"getSource"),"method_9207"),action));call(node,"executes",cmd);
++   if(action.startsWith("bind_")){
++    Object id=stat("com.mojang.brigadier.builder.RequiredArgumentBuilder","argument","uuid",stat("com.mojang.brigadier.arguments.StringArgumentType","word"));
++    call(id,"executes",Proxy.newProxyInstance(c.getClassLoader(),new Class<?>[]{c},(p,m,a)->m.getDeclaringClass()==Object.class?objectMethod(p,m,a):execute2(call(call(a[0],"getSource"),"method_9207"),action+" "+stat("com.mojang.brigadier.arguments.StringArgumentType","getString",a[0],"uuid"))));call(node,"then",id);
++   }
++   call(root,"then",node);
+   }
+   Object ready=stat("com.mojang.brigadier.builder.LiteralArgumentBuilder","literal","ready"),token=stat("com.mojang.brigadier.builder.RequiredArgumentBuilder","argument","token",stat("com.mojang.brigadier.arguments.IntegerArgumentType","integer",1));Class<?> c=type("com.mojang.brigadier.Command");call(token,"executes",Proxy.newProxyInstance(c.getClassLoader(),new Class<?>[]{c},(p,m,a)->m.getDeclaringClass()==Object.class?objectMethod(p,m,a):acknowledgeFocus(call(call(a[0],"getSource"),"method_9207"),((Number)stat("com.mojang.brigadier.arguments.IntegerArgumentType","getInteger",a[0],"token")).intValue())));call(ready,"then",token);call(root,"then",ready);call(dispatcher,"register",root);
+  }
+@@ -64,16 +69,57 @@
+   if(action.equals("guide_valid"))return ready(p)&&Set.of(30,70).contains(score(p,"hcq_pq04"))?1:0;
+   if(action.equals("status")){say2(p,"PQ04="+score(p,"hcq_pq04")+", PQ05="+score(p,"hcq_pq05")+", personnage="+character(p)+", caisse="+score(p,"CAP_PROF_CAISSE")+", chambre="+score(p,"CAP_CHAMBRE_PROF")+", rang="+score(p,"CAP_RANGSOCIAL")+", Roch="+score(p,"CAP_P4_RWP")+", Colin="+score(p,"CAP_P4_CWP"));return 1;}
+   if(action.equals("prepare_route"))return Pq45Setup.prepare(p);if(action.equals("points")){Pq45Setup.describe(p);return 1;}
+-  if(action.startsWith("bind_")){bind(p,action.substring(5));return 1;}if(action.startsWith("test_"))return Pq45Setup.test(p,action);
++  if(action.startsWith("bind_")){String[] args=action.substring(5).split(" ",2);bind(p,args[0],args.length==2?UUID.fromString(args[1]):null);return 1;}if(action.startsWith("test_"))return Pq45Setup.test(p,action);
+   if(action.equals("suspend")||action.equals("restore")){suspend(p);return 1;}if(action.equals("pause")){View v=VIEWS.get(uuid(p));if(v!=null)pause(v);return 1;}
+   return Pq45Entries.submit(p,action);
+  }catch(Throwable failure){report2(failure);say2(p,failure.getMessage());return 0;}}
+- static Object source(Object p,String role){Object record=roleRecord(p,role);if(record!=null){if(!dimension(world(p)).equals(str(record,"dimension","")))return null;Object found=call(world(p),"method_66347",UUID.fromString(str(record,"uuid","")));if(found!=null)return found;}
+-  String tag=switch(role){case "roch"->"npc_roch_vallet";case "colin"->"npc_colin_ferand";default->"npc_"+role+"_profondeurs";};String path="quest/"+(guide(role)?"au_seuil_des_profondeurs":"une_adresse_dans_les_profondeurs")+"/"+role+"/";
+-  List<Object> found=local(p,pos(p,world(p)),128,e->type("de.markusbordihn.easynpc.entity.easynpc.EasyNPC").isInstance(e)&&!tags(e).contains(TAG)&&!tags(e).contains("hcm_private")&&(tags(e).contains(tag)||actionText(e).contains(path)));
++ static boolean publicNpc(Object e){return e!=null&&type("de.markusbordihn.easynpc.entity.easynpc.EasyNPC").isInstance(e)&&!tags(e).contains(TAG)&&!tags(e).contains("hcm_private");}
++ static String npcName(Object e){return String.valueOf(call(call(e,"method_5477"),"getString"));}
++ static String normalizedName(String text){return java.text.Normalizer.normalize(text,java.text.Normalizer.Form.NFD).replaceAll("(?i)[§&][0-9a-fk-orx]","").replaceAll("\\p{M}+","").strip().replaceAll("\\s+"," ").toLowerCase(Locale.ROOT);}
++ static boolean matchesRole(Object e,String role){
++  String tag=switch(role){case "roch"->"npc_roch_vallet";case "colin"->"npc_colin_ferand";default->"npc_"+role+"_profondeurs";};
++  Set<String> t=tags(e);if(t.contains(tag)||t.contains("hcq_pnj_"+role)||t.contains("cap_qgiver_"+role))return true;
++  String name=normalizedName(npcName(e));if(name.equals(normalizedName(NAMES.get(role)))||name.equals(role))return true;
++  String actions=actionText(e);String path="quest/"+(guide(role)?"au_seuil_des_profondeurs":"une_adresse_dans_les_profondeurs")+"/"+role+"/";
++  return actions.contains(path)||actions.contains("capitale:npc/"+role+"/")||role.equals("colin")&&actions.contains("capitale:npc/colin_ferand/");
++ }
++ static Object source(Object p,String role){Object record=roleRecord(p,role);if(record!=null){if(!dimension(world(p)).equals(str(record,"dimension","")))return null;Object found=call(world(p),"method_66347",UUID.fromString(str(record,"uuid","")));if(publicNpc(found))return found;}
++  List<Object> found=local(p,pos(p,world(p)),128,e->publicNpc(e)&&matchesRole(e,role));
+   if(found.size()>1)throw new IllegalStateException("Liaison ambiguë : "+role+". Aucun PNJ choisi au hasard.");if(found.isEmpty())return null;saveBinding(p,role,found.get(0));return found.get(0);
+  }
+- static void bind(Object p,String role){if(!VIEWS.isEmpty())throw new IllegalStateException("Terminer ou suspendre les scènes PQ04/PQ05 avant une liaison.");List<Object> found=local(p,pos(p,world(p)),4,e->type("de.markusbordihn.easynpc.entity.easynpc.EasyNPC").isInstance(e)&&!tags(e).contains(TAG)&&!tags(e).contains("hcm_private"));if(found.size()!=1)throw new IllegalStateException("Il faut un seul PNJ dans un rayon de quatre blocs.");saveBinding(p,role,found.get(0));say2(p,"Liaison enregistrée : "+NAMES.get(role)+". Apparence et actions publiques conservées.");}
++ static void bind(Object p,String role){bind(p,role,null);}
++ static void bind(Object p,String role,UUID explicit){
++  if(!NAMES.containsKey(role))throw new IllegalArgumentException("Rôle inconnu : "+role);
++  Point origin=pos(p,world(p));List<Object> nearby=local(p,origin,4,e->publicNpc(e)&&pos(e,world(p)).distance2(origin)<=16);
++  List<Object> found=explicit==null?nearby.stream().filter(e->matchesRole(e,role)).toList():nearby.stream().filter(e->uuid(e).equals(explicit)).toList();
++  if(explicit==null&&found.isEmpty())found=nearby;
++  if(found.size()!=1)throw new IllegalStateException(found.isEmpty()?"PNJ absent à moins de quatre blocs. Approcher le PNJ public et réessayer.":"Plusieurs PNJ possibles pour "+NAMES.get(role)+". Cibler son UUID : /indivispq45 bind_"+role+" <UUID>. PNJ proches : "+nearby.stream().map(e->npcName(e)+" ("+uuid(e)+")").toList());
++  Object npc=found.get(0);UUID id=uuid(npc);
++  for(View v:VIEWS.values()){Actor a=v.actors.get(role);if(a!=null&&!a.source.equals(id))throw new IllegalStateException("Suspendre les scènes de "+NAMES.get(role)+" avant de changer son PNJ source.");}
++  saveBinding(p,role,npc);say2(p,"Liaison enregistrée : "+NAMES.get(role)+" ("+id+"). Apparence et actions publiques conservées.");
++ }
++ static void registerPublicClicks(){
++  Class<?> contract=type("net.fabricmc.fabric.api.event.player.UseEntityCallback");Object event=en(contract.getName(),"EVENT"),phase=stat("net.minecraft.class_2960","method_60654","indivis:pq45_colin"),normal=en("net.fabricmc.fabric.api.event.Event","DEFAULT_PHASE");
++  call(event,"addPhaseOrdering",phase,normal);
++  Object listener=Proxy.newProxyInstance(contract.getClassLoader(),new Class<?>[]{contract},(p,m,a)->m.getDeclaringClass()==Object.class?objectMethod(p,m,a):publicClick(a[0],a[3],a[2]));
++  call(event,"register",phase,listener);
++ }
++ static Object publicClick(Object p,Object e,Object hand){
++  Object pass=en("net.minecraft.class_1269","field_5811");
++  try{
++   // Les copies privées gardent leur action propriétaire. Les autres quêtes et l'édition accroupie gardent leur interaction.
++   if(!type("net.minecraft.class_3222").isInstance(p)||hand!=en("net.minecraft.class_1268","field_5808")||Boolean.TRUE.equals(call(p,"method_5715"))||!publicNpc(e)||!ready(p)||score(p,"hcq_pq04")<50)return pass;
++   int active=score(p,"CAP_QUETEACTIVE");if(active!=0&&active!=5&&active!=6||pos(e,world(p)).distance2(pos(p,world(p)))>64)return pass;
++   Object record=roleRecord(p,"colin");
++   if(record!=null){if(!dimension(world(p)).equals(str(record,"dimension",""))||!uuid(e).toString().equals(str(record,"uuid","")))return pass;}
++   else if(!matchesRole(e,"colin"))return pass;
++   View v=VIEWS.get(uuid(p));Object other=current(p);if(other!=null&&(v==null||other!=v.session))return pass;
++   if(record==null)saveBinding(p,"colin",e);
++   // Préserver l'événement de conversation du journal habituellement émis dans la phase par défaut.
++   try{stat("net.hautecapitale.quetes.interaction.NpcUseGuard","noteTalk",p);((Optional<?>)stat("net.hautecapitale.quetes.engine.QuestEngine","optional")).ifPresent(engine->call(engine,"onInteract",p,e));}catch(Throwable failure){report2(failure);}
++   return Pq45Entries.submit(p,"colin")==1?en("net.minecraft.class_1269","field_21466"):pass;
++  }catch(Throwable failure){report2(failure);say2(p,"Interaction Colin interrompue : "+failure.getMessage());return pass;}
++ }
+  static Actor spawn(View v,String role,Point at){Actor old=v.actors.get(role);if(old!=null&&!Boolean.TRUE.equals(call(old.entity,"method_31481")))return old;Object src=source(v.player,role),record=roleRecord(v.player,role);if(record==null||src==null&&(!guide(role)||at==null))throw new IllegalStateException("PNJ source absent/non chargé : "+role+". Faire sa liaison près du PNJ existant.");
+   Object template=Pq01Nbt.copy(src==null?child(record,"template"):GuardNbt.entity(src));UUID original=src==null?UUID.fromString(str(record,"uuid","")):uuid(src);if(at==null)at=pos(src,v.world);if(!at.dimension().equals(dimension(v.world)))throw new IllegalStateException("Le PNJ appartient à une autre dimension.");
+   for(String field:List.of("UUID","UUIDMost","UUIDLeast","Pos","Motion","Rotation","Passengers","Leash","Brain","Tags","Home","ActionData","ObjectiveData","TradingData"))call(template,"method_10551",field);

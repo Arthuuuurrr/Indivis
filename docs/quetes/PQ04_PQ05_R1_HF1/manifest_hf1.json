@@ -1,0 +1,16 @@
+{
+  "base_mod_sha256": "f75eab9c6113d131480398109a2d17c31298ad7677d6ebe4dcca833d7ca53ccf",
+  "output_filename": "haute-capitale-quetes-PQ04-PQ05-R1-HF1-1.21.11.jar",
+  "output_sha256": "56daa2aa7e28a22da48810e510b81edbb0db3b9a7b62af35f0f1dcafa2e76d84",
+  "output_bytes": 735309,
+  "changed_entries": [
+    "fabric.mod.json",
+    "net/hautecapitale/quetes/sequence/Pq45Runtime$1.class",
+    "net/hautecapitale/quetes/sequence/Pq45Runtime.class"
+  ],
+  "added_entries": [],
+  "removed_entries": [],
+  "unchanged_entries": 319,
+  "datapacks": "R1 bytes unchanged",
+  "scope": "Selection and public-click routing; R1 dialogue graph, economy, checkpoints and motion preserved"
+}

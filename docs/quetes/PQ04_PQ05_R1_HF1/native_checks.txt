@@ -1,0 +1,28 @@
+PASS 27 native checks
+R1 search box reproduces the NPC on the upper floor
+binding excludes the upper floor and selects Colin
+binding preserves public interaction actions
+binding moves neither public NPC
+Colin identity wins over a nearby unrelated guard
+named Colin auto-binds without legacy commands or quest tags
+identity accepts colour, accents and extra spaces
+a Roch scene does not prevent binding Colin
+two named Colins fail with an explicit UUID remedy
+explicit UUID resolves two named Colins
+documented bind_colin UUID command executes through Minecraft's real dispatcher
+explicit binding cannot select a private actor
+actual Fabric click consumes Colin interaction and queues PQ04 instead of legacy dialog
+Fabric reports accepted interaction and never invokes earlier legacy default listener
+queued Colin entry retains the selected character
+first real click records the clicked source UUID
+unrelated guard keeps its original interaction
+unrelated NPC reaches the legacy listener with PASS
+offhand cannot queue a duplicate entry
+Colin cannot start before the elevator handoff
+another active quest retains control of the interaction
+private actor retains its owner-checked custom action
+sneaking retains NPC editor access
+an explicit different source is never overwritten by a matching name
+a click on another floor cannot open Colin remotely
+post-quest crate delivery still enters Colin's existing logic
+all routing checks preserve the original NPC actions
