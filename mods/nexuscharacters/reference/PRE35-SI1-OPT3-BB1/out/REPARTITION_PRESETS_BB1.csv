@@ -1,0 +1,92 @@
+categorie,modele,libelle,identifiant,hair_id,races,alias_none
+coiffures,coiffures/boucle.geo.json,Bouclés,bb_boucle,500,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/boucles_mi_longs.geo.json,Boucles mi-longues,bb_boucles_mi_longs,501,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/cheveux_longs.geo.json,Cheveux longs,bb_cheveux_longs,502,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/cheveux_ondules.geo.json,Cheveux ondulés,bb_cheveux_ondules,503,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/chignon.geo.json,Chignon,bb_chignon,504,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/chignon_guerrier.geo.json,Chignon guerrier,bb_chignon_guerrier,505,nordic;dwarf;wood_elf,False
+coiffures,coiffures/chignon_messy.geo.json,Chignon décoiffé,bb_chignon_messy,506,human;nordic;dwarf;wood_elf,False
+coiffures,coiffures/court_classique.geo.json,Courts classiques,bb_court_classique,507,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/court_degrade.geo.json,Courts dégradés,bb_court_degrade,508,human;nordic;dwarf,False
+coiffures,coiffures/court_ebouriffe.geo.json,Courts ébouriffés,bb_court_ebouriffe,509,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/court_stylise.geo.json,Courts stylisés,bb_court_stylise,510,human;nordic;dwarf,False
+coiffures,coiffures/crete_sauvage.geo.json,Crête sauvage,bb_crete_sauvage,511,human;nordic;dwarf;wood_elf,False
+coiffures,coiffures/degrade_rase.geo.json,Dégradé rasé,bb_degrade_rase,512,human;nordic;dwarf,False
+coiffures,coiffures/demi_attache.geo.json,Demi-attachés,bb_demi_attache,513,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/double_queue.geo.json,Deux queues,bb_double_queue,514,human;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/ebouriffe.geo.json,Ébouriffés,bb_ebouriffe,515,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/elfe_noble.geo.json,Noblesse haut-elfique,bb_elfe_noble,516,high_elf,False
+coiffures,coiffures/frange_longue.geo.json,Frange longue,bb_frange_longue,517,human;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/frange_longue_2.geo.json,Frange longue II,bb_frange_longue_2,518,human;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/long_degrade.geo.json,Longs dégradés,bb_long_degrade,519,human;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/long_lisse.geo.json,Longs lisses,bb_long_lisse,520,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/long_messy.geo.json,Longs décoiffés,bb_long_messy,521,human;nordic;dwarf;wood_elf,False
+coiffures,coiffures/longs_tresses.geo.json,Longs tressés,bb_longs_tresses,522,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/meches_rebelles.geo.json,Mèches rebelles,bb_meches_rebelles,523,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/ondule.geo.json,Ondulés,bb_ondule,524,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/ondules_romantiques.geo.json,Ondulations souples,bb_ondules_romantiques,525,human;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/queue_de_cheval.geo.json,Queue-de-cheval,bb_queue_de_cheval,526,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/queue_de_cheval_2.geo.json,Queue-de-cheval II,bb_queue_de_cheval_2,527,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/rase_motif.geo.json,Rasés à motif,bb_rase_motif,528,human;nordic;dwarf,False
+coiffures,coiffures/rase_undercut.geo.json,Undercut rasé,bb_rase_undercut,529,human;nordic;dwarf,False
+coiffures,coiffures/style_assassine.geo.json,Style d’éclaireuse,bb_style_assassine,530,human;wood_elf,False
+coiffures,coiffures/style_elfique.geo.json,Style elfique,bb_style_elfique,531,wood_elf;high_elf,False
+coiffures,coiffures/style_guerrier.geo.json,Style guerrier,bb_style_guerrier,532,human;nordic;dwarf;wood_elf,False
+coiffures,coiffures/style_mage.geo.json,Style de mage,bb_style_mage,533,human;high_elf,False
+coiffures,coiffures/style_noble.geo.json,Style noble,bb_style_noble,534,human;high_elf,False
+coiffures,coiffures/style_sauvage.geo.json,Style sauvage,bb_style_sauvage,535,human;nordic;dwarf;wood_elf,False
+coiffures,coiffures/tresse_laterale.geo.json,Tresse latérale,bb_tresse_laterale,536,human;nordic;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/tresses_elegantes.geo.json,Tresses élégantes,bb_tresses_elegantes,537,human;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/tresses_laterales.geo.json,Tresses latérales,bb_tresses_laterales,538,human;dwarf;wood_elf;high_elf,False
+coiffures,coiffures/tresses_viking.geo.json,Tresses nordiques,bb_tresses_viking,539,nordic;dwarf,False
+coiffures,coiffures/tresses_viking_2.geo.json,Tresses nordiques II,bb_tresses_viking_2,540,nordic;dwarf,False
+barbes,barbes/barbe_ancienne.geo.json,Barbe ancienne,bb_barbe_ancienne,0,nordic;dwarf,False
+barbes,barbes/barbe_blanche.geo.json,Barbe blanche,bb_barbe_blanche,0,human;nordic;dwarf,False
+barbes,barbes/barbe_carree.geo.json,Barbe carrée,bb_barbe_carree,0,human;nordic;dwarf,False
+barbes,barbes/barbe_courte.geo.json,Barbe courte,bb_barbe_courte,0,human;nordic;dwarf,False
+barbes,barbes/barbe_epaisse.geo.json,Barbe épaisse,bb_barbe_epaisse,0,human;nordic;dwarf,False
+barbes,barbes/barbe_forge.geo.json,Barbe de la forge,bb_barbe_forge,0,dwarf,False
+barbes,barbes/barbe_grisonnante.geo.json,Barbe grisonnante,bb_barbe_grisonnante,0,human;nordic;dwarf,False
+barbes,barbes/barbe_guerrier.geo.json,Barbe guerrière,bb_barbe_guerrier,0,nordic;dwarf,False
+barbes,barbes/barbe_longue.geo.json,Barbe longue,bb_barbe_longue,0,human;nordic;dwarf,False
+barbes,barbes/barbe_mineur.geo.json,Barbe de mineur,bb_barbe_mineur,0,dwarf,False
+barbes,barbes/barbe_montagne.geo.json,Barbe des montagnes,bb_barbe_montagne,0,nordic;dwarf,False
+barbes,barbes/barbe_pleine.geo.json,Barbe pleine,bb_barbe_pleine,0,human;nordic;dwarf,False
+barbes,barbes/barbe_royale.geo.json,Barbe royale,bb_barbe_royale,0,human;dwarf,False
+barbes,barbes/barbe_royale_naine.geo.json,Barbe royale naine,bb_barbe_royale_naine,0,dwarf,False
+barbes,barbes/barbe_runique.geo.json,Barbe runique,bb_barbe_runique,0,dwarf,False
+barbes,barbes/barbe_seigneur_profondeurs.geo.json,Seigneur des Profondeurs,bb_barbe_seigneur_profondeurs,0,dwarf,False
+barbes,barbes/barbe_sombre.geo.json,Barbe sombre,bb_barbe_sombre,0,human;nordic;dwarf,False
+barbes,barbes/barbe_totemique.geo.json,Barbe totémique,bb_barbe_totemique,0,nordic;dwarf,False
+barbes,barbes/barbe_tressee.geo.json,Barbe tressée,bb_barbe_tressee,0,nordic;dwarf,False
+barbes,barbes/barbe_tressee_clan.geo.json,Tresses de clan,bb_barbe_tressee_clan,0,dwarf,False
+barbes,barbes/barbe_viking.geo.json,Barbe nordique,bb_barbe_viking,0,nordic,False
+barbes,barbes/barbichette.geo.json,Barbichette,bb_barbichette,0,human;nordic;dwarf,False
+barbes,barbes/bouc_van_dyke.geo.json,Bouc Van Dyke,bb_bouc_van_dyke,0,human;nordic;dwarf,False
+barbes,barbes/moustache_barbichette.geo.json,Moustache et barbichette,bb_moustache_barbichette,0,human;nordic;dwarf,False
+barbes,barbes/moustache_classique.geo.json,Moustache classique,bb_moustache_classique,0,human;nordic;dwarf,False
+barbes,barbes/moustache_fine.geo.json,Moustache fine,bb_moustache_fine,0,human;nordic;dwarf,False
+barbes,barbes/moustache_imperiale.geo.json,Moustache impériale,bb_moustache_imperiale,0,human,False
+barbes,barbes/style_aventurier.geo.json,Style aventurier,bb_style_aventurier,0,human;nordic;dwarf,False
+barbes,barbes/style_noble.geo.json,Style noble,bb_style_noble,0,human;dwarf,False
+barbes,barbes/visage_rase.geo.json,Visage rasé,bb_visage_rase,0,human;nordic,True
+oreilles,oreilles/anneaux.geo.json,À anneaux,bb_anneaux,0,wood_elf;high_elf,False
+oreilles,oreilles/bijou_dore.geo.json,Bijou doré,bb_bijou_dore,0,high_elf,False
+oreilles,oreilles/classique.geo.json,Classiques,bb_classique,0,wood_elf;high_elf,False
+oreilles,oreilles/courbee.geo.json,Courbées,bb_courbee,0,wood_elf;high_elf,False
+oreilles,oreilles/cristalline.geo.json,Cristallines,bb_cristalline,0,high_elf,False
+oreilles,oreilles/draconique.geo.json,Draconiques,bb_draconique,0,high_elf,False
+oreilles,oreilles/elancee.geo.json,Élancées,bb_elancee,0,wood_elf;high_elf,False
+oreilles,oreilles/en_angle.geo.json,Anguleuses,bb_en_angle,0,wood_elf;high_elf,False
+oreilles,oreilles/fine.geo.json,Fines,bb_fine,0,wood_elf;high_elf,False
+oreilles,oreilles/large.geo.json,Larges,bb_large,0,wood_elf,False
+oreilles,oreilles/longue.geo.json,Longues,bb_longue,0,wood_elf;high_elf,False
+oreilles,oreilles/lunaire.geo.json,Lunaires,bb_lunaire,0,high_elf,False
+oreilles,oreilles/ornementee.geo.json,Ornementées,bb_ornementee,0,high_elf,False
+oreilles,oreilles/pennee.geo.json,Pennées,bb_pennee,0,wood_elf,False
+oreilles,oreilles/relevee.geo.json,Relevées,bb_relevee,0,wood_elf;high_elf,False
+oreilles,oreilles/repliee.geo.json,Repliées,bb_repliee,0,wood_elf,False
+oreilles,oreilles/runique.geo.json,Runiques,bb_runique,0,high_elf,False
+oreilles,oreilles/sauvage.geo.json,Sauvages,bb_sauvage,0,wood_elf,False
+oreilles,oreilles/sombre.geo.json,Sombres,bb_sombre,0,wood_elf,False
+oreilles,oreilles/sylvestre.geo.json,Sylvestres,bb_sylvestre,0,wood_elf,False
