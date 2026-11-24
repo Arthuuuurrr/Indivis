@@ -1,0 +1,11 @@
+{
+  "notes": "Palettes exactes des ornements présents dans les textures fournies. Aucun seuil RGB ne doit confondre barbe blonde et métal doré.",
+  "ornaments": {
+    "gold": [[184,140,41],[217,165,49],[255,200,76]],
+    "silver": [[97,99,103],[121,124,129],[143,146,152]],
+    "amethyst": [[117,53,176],[138,63,208],[171,91,245]],
+    "cyan": [[55,145,173],[69,181,216],[82,214,255]],
+    "green": [[53,93,29],[67,117,37],[79,138,44]],
+    "ivory": [[146,138,119],[183,173,149],[216,204,176]]
+  }
+}

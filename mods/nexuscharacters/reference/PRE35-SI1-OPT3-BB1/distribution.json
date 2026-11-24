@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "races": ["human", "nordic", "dwarf", "wood_elf", "high_elf"],
+  "hair_id_start": 500,
+  "coiffures": {
+    "common": ["boucle", "boucles_mi_longs", "cheveux_longs", "cheveux_ondules", "chignon", "court_classique", "court_ebouriffe", "demi_attache", "ebouriffe", "long_lisse", "longs_tresses", "meches_rebelles", "ondule", "queue_de_cheval", "queue_de_cheval_2", "tresse_laterale"],
+    "groups": [
+      {"races": ["human", "nordic", "dwarf"], "models": ["court_degrade", "court_stylise", "degrade_rase", "rase_motif", "rase_undercut"]},
+      {"races": ["nordic", "dwarf", "wood_elf"], "models": ["chignon_guerrier"]},
+      {"races": ["human", "nordic", "dwarf", "wood_elf"], "models": ["chignon_messy", "long_messy", "style_sauvage", "crete_sauvage", "style_guerrier"]},
+      {"races": ["human", "dwarf", "wood_elf", "high_elf"], "models": ["double_queue", "frange_longue", "frange_longue_2", "long_degrade", "ondules_romantiques", "tresses_laterales", "tresses_elegantes"]},
+      {"races": ["human", "wood_elf"], "models": ["style_assassine"]},
+      {"races": ["wood_elf", "high_elf"], "models": ["style_elfique"]},
+      {"races": ["high_elf"], "models": ["elfe_noble"]},
+      {"races": ["human", "high_elf"], "models": ["style_noble", "style_mage"]},
+      {"races": ["nordic", "dwarf"], "models": ["tresses_viking", "tresses_viking_2"]}
+    ]
+  },
+  "barbes": {
+    "common": ["barbe_blanche", "barbe_carree", "barbe_courte", "barbe_epaisse", "barbe_grisonnante", "barbe_longue", "barbe_pleine", "barbe_sombre", "barbichette", "bouc_van_dyke", "moustache_barbichette", "moustache_classique", "moustache_fine", "style_aventurier"],
+    "common_races": ["human", "nordic", "dwarf"],
+    "groups": [
+      {"races": ["nordic", "dwarf"], "models": ["barbe_ancienne", "barbe_guerrier", "barbe_montagne", "barbe_totemique", "barbe_tressee"]},
+      {"races": ["dwarf"], "models": ["barbe_forge", "barbe_mineur", "barbe_royale_naine", "barbe_runique", "barbe_seigneur_profondeurs", "barbe_tressee_clan"]},
+      {"races": ["human", "dwarf"], "models": ["barbe_royale", "style_noble"]},
+      {"races": ["nordic"], "models": ["barbe_viking"]},
+      {"races": ["human"], "models": ["moustache_imperiale"]},
+      {"races": ["human", "nordic"], "models": ["visage_rase"], "alias": "none"}
+    ]
+  },
+  "oreilles": {
+    "common": ["classique", "fine", "longue", "elancee", "relevee", "en_angle", "courbee"],
+    "common_races": ["wood_elf", "high_elf"],
+    "groups": [
+      {"races": ["high_elf"], "models": ["bijou_dore", "cristalline", "draconique", "lunaire", "ornementee", "runique"]},
+      {"races": ["wood_elf"], "models": ["large", "pennee", "repliee", "sauvage", "sombre", "sylvestre"]},
+      {"races": ["wood_elf", "high_elf"], "models": ["anneaux"]}
+    ]
+  },
+  "notes": [
+    "Les anciens choix restent disponibles ; ces listes ne filtrent que les nouveaux modèles.",
+    "Villageois reste non jouable, comme dans OPT3. Aucune race n’est ajoutée.",
+    "Les noms cristalline, draconique, lunaire et pennée désignent des variantes esthétiques, pas de nouvelles ascendances ou pouvoirs.",
+    "Les elfes conservent la règle imberbe déjà appliquée par Nexus.",
+    "Visage rasé correspond au choix Aucune existant ; il n’ajoute pas un doublon et ne supprime pas la barbe naine obligatoire."
+  ]
+}
