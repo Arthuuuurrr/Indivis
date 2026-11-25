@@ -72,7 +72,7 @@ production ou profil JVM brut ne fait partie des sources.
 Les scripts réutilisent les bancs antérieurs. `fixtures/` conserve les versions
 des points instrumentés ; les clients de QA ne sont jamais inclus dans le mod.
 Les 126 lignes de géométrie de première personne sont comparées en bits ;
-les 411 états mondiaux suivent le contrat topologie/UV/arrondis ci-dessus.
+les surfaces mondiales suivent le contrat topologie/UV/arrondis ci-dessus.
 
 Suivi : [PR #190](https://github.com/Arthuuuurrr/Indivis/pull/190), brouillon
 pour revue. Aucun déploiement ni fusion automatique. Rapport livré généré
