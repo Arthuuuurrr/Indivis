@@ -1,0 +1,1 @@
+BB_SERVER_LINKAGE_PASS checks=292 client_classes_prohibited=true

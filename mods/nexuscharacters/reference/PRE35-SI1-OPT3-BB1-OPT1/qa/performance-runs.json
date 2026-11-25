@@ -1,0 +1,11 @@
+{
+  "candidate_sha256": "5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3",
+  "labels": [
+    "opt1-final-reference-1",
+    "opt1-final-candidate-1",
+    "opt1-final-candidate-2",
+    "opt1-final-reference-2",
+    "opt1-final-reference-3",
+    "opt1-final-candidate-3"
+  ]
+}

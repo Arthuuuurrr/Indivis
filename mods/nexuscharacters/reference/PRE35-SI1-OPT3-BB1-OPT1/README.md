@@ -1,0 +1,62 @@
+# Nexus BB1.OPT1 — travail lié à l’issue #187
+
+Base binaire figée : Nexus BB1 Fabric 1.21.11, SHA-256
+`a5f0c4a211a64503e30ffb93a6499a9172b7c22183542b18fc2e1a4cd231b10f`.
+Prérequis source : PR #186, commit `4cb9fd89b8bf896b69567a40ad9f9a5845632e6f`.
+Ne pas reconstruire depuis la PRE17 encore sur main.
+
+## Changements
+
+- Écriture des surfaces locales directement dans le format natif : mêmes opérations
+  flottantes, normales, UV, winding et triangulation ; moins d’objets intermédiaires.
+- Découpe six plans avec buffers temporaires primitifs, sans matérialiser les
+  sommets intérieurs qui seront jetés.
+- Identités de géométrie canonique : comparaison complète des bits des positions,
+  UV, normales, rangs et boîtes. Une couleur seule ne duplique plus le travail local.
+  Aucune texture ni identité de personnage n’est échangée.
+- Cache local canonique par modèle (8 Mio) et cache des parties nettoyées
+  (16 Mio, 32 profils maximum, 4 variantes exactes par partie).
+- Invalidation sur changement des cubes, remplacement des formes et rechargement
+  des ressources ; pas de quantification de pose, de LOD ni d’animation figée.
+- Réutilisation des wrappers et listes de découpe temporaires, sans laisser leurs
+  buffers mutables dans les données utilisées plus tard par le rendu.
+- Les assets de la BB1 restent identiques octet pour octet.
+
+## Construction et contrôles
+
+`build.py` applique une transformation ASM contrôlée à cinq classes de la BB1,
+puis compile les helpers Java 21. Les méthodes de référence sont conservées.
+Les ressources de toutes les entrées `assets/` sont comparées au binaire de base.
+
+`kernel_test.py` compare 20 000 polygones et des cas limites : découpe et écriture
+comparées bit pour bit à la BB1, plus 16 000 nettoyages indexés, des géométries
+dégénérées et l’invalidation des identités de géométrie.
+
+`-Dnexus.opt1.verify=true` active les oracles supplémentaires dans le client réel.
+Cette instrumentation est réservée aux tests ; les performances sont mesurées
+sans ce drapeau et sans figer les poses.
+
+`build.py` produit par défaut la variante `production` : la mémoïsation globale
+des transformations est désactivée, son coût de gestion dépassant son bénéfice
+dans les essais de poses distinctes. `--variant full`, `no-clip`, `no-writer`,
+`no-memo`, `no-scratch` et `canonical-only` servent uniquement à l’ablation ;
+leurs JAR distincts ne sont pas les fichiers à installer.
+
+Le banc A/B est `perf_bb1_20261125/run.py` dans le dossier de travail parent.
+Le candidat doit être fourni explicitement avec `--jar` et `--expected-sha`.
+Chaque client utilise un monde neuf isolé ; aucune connexion au serveur réel.
+
+Ces scripts reprennent l’environnement de vérification déjà préparé ; ce n’est
+pas un projet Gradle autonome. Pour les rejouer, placer ce dossier sous le nom
+`opt_bb1_20261125`, à côté de `presets_import` (JAR BB1 et runtime de #186) et de
+`perf_bb1_20261125` (snapshot du banc sous `verification/perf` dans ce dépôt).
+Les tests de menus/PNJ et leurs dépendances sont ceux de #186, complétés par le
+snapshot `verification/NpcIntegrationTest.java`.
+
+État au 25 novembre 2026 : variante de production validée sur le binaire
+`5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3`.
+116 042 comparaisons de noyaux, 411 états géométriques identiques à BB1,
+catalogue 91 modèles / 182 captures, 552 états animés avec oracles,
+sauvegarde/rechargement de 15 PNJ, nouveaux PNG coiffure/barbe/tenue ID 930,
+puis six clients A/B indépendants (6 240 images mesurées). Les gains ne sont
+pas uniformes dans tous les petits groupes ; voir le rapport et les données.

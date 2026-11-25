@@ -1,0 +1,1 @@
+SURFACE_KERNEL_ORACLE_PASS checks=116042 random_polygons=20000 raw_float_bits=true geometry_key_invalidation=true
