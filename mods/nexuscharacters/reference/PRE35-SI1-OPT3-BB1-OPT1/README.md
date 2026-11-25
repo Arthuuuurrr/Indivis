@@ -46,4 +46,17 @@ Le banc A/B est `perf_bb1_20261125/run.py` dans le dossier de travail parent.
 Le candidat doit être fourni explicitement avec `--jar` et `--expected-sha`.
 Chaque client utilise un monde neuf isolé ; aucune connexion au serveur réel.
 
-État : implémentation en cours de validation, pas une promesse de performance.
+Ces scripts reprennent l’environnement de vérification déjà préparé ; ce n’est
+pas un projet Gradle autonome. Pour les rejouer, placer ce dossier sous le nom
+`opt_bb1_20261125`, à côté de `presets_import` (JAR BB1 et runtime de #186) et de
+`perf_bb1_20261125` (snapshot du banc sous `verification/perf` dans ce dépôt).
+Les tests de menus/PNJ et leurs dépendances sont ceux de #186, complétés par le
+snapshot `verification/NpcIntegrationTest.java`.
+
+État au 25 novembre 2026 : variante de production validée sur le binaire
+`5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3`.
+116 042 comparaisons de noyaux, 411 états géométriques identiques à BB1,
+catalogue 91 modèles / 182 captures, 552 états animés avec oracles,
+sauvegarde/rechargement de 15 PNJ, nouveaux PNG coiffure/barbe/tenue ID 930,
+puis six clients A/B indépendants (6 240 images mesurées). Les gains ne sont
+pas uniformes dans tous les petits groupes ; voir le rapport et les données.

@@ -1,0 +1,22 @@
+{
+  "jar_sha256": "5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3",
+  "reviewed": true,
+  "source": "Captures PNG du client Minecraft réel exécutant le JAR final, sans rendu de substitution",
+  "contact_sheets": [
+    "coiffures-1.png", "coiffures-2.png", "coiffures-3.png", "coiffures-4.png",
+    "barbes-1.png", "barbes-2.png", "barbes-3.png", "oreilles-1.png", "oreilles-2.png"
+  ],
+  "full_resolution": [
+    "evidence-opt1-final-menus/menu-08.png",
+    "evidence-opt1-final-assets/preset-20-back.png",
+    "evidence-opt1-final-npc/presets-face.png",
+    "evidence-opt1-final-npc/presets-dos.png",
+    "evidence-opt1-final-future/presets-face.png"
+  ],
+  "observations": [
+    "Volumes des coiffures longues, barbes ornées et oreilles conservés sur les planches face/dos",
+    "Personnages complets visibles dans les menus examinés et morphologies raciales distinctes en monde",
+    "Pas de régression visuelle nouvelle relevée sur ces captures ; géométrie native exacte contrôlée séparément sur 411 états"
+  ],
+  "limits": "Les captures fixes ne constituent pas un détecteur exhaustif de z-fighting temporel ; cette vérification complète, sans remplacer, les oracles de découpe pendant les animations."
+}

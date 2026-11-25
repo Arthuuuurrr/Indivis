@@ -5,6 +5,7 @@ R=Path(__file__).resolve().parent;P=R.parent/'presets_import';PERF=R.parent/'per
 B=json.loads((QA/'build.json').read_text());JAR=Path(B['jar']);SHA=B['sha256'];assert hashlib.sha256(JAR.read_bytes()).hexdigest()==SHA
 F=json.loads((QA/'functional.json').read_text());M=json.loads((QA/'performance-runs.json').read_text());assert F['jar_sha256']==M['candidate_sha256']==SHA
 REVIEW=json.loads((QA/'visual-review.json').read_text());assert REVIEW['jar_sha256']==SHA and REVIEW['reviewed']
+FUTURE=json.loads((QA/'future.json').read_text());assert FUTURE['nexus_sha256']==SHA and 'FUTURE_ASSETS hair=930 beard=930 outfit=930'in FUTURE['pass']
 assert B['variant']=='production' and B['disabled']=='memo'
 fields=['render_cpu_ns','render_wall_ns','interval_ns','allocated_bytes','native_ns','native_alloc_bytes','native_calls','cosmetic_calls','recomputes']
 def percentile(v,q):
@@ -70,7 +71,7 @@ lines=['# Nexus BB1.OPT1 — correctif et vérifications du 25 novembre 2026',''
 '- Une mémoïsation globale des transformations a été essayée puis désactivée : sa gestion coûtait trop sur les poses distinctes. Les essais exploratoires ne sont pas mélangés aux mesures finales.','',
 '## Mesures finales A/B','',
 'Six clients réels, exécutés successivement A1/B1/B2/A2/A3/B3 : trois BB1 d’origine, trois JAR finaux strictement identiques à celui livré. **'+str(len(rows))+' images mesurées** après échauffement. Mêmes classes de mesure et mêmes dépendances, vérifiées par SHA-256. Aucun client concurrent.','',
-'Animations tête/membres distinctes par entité et caméra en orbite ; 0/3/8/24 PNJ EasyNPC, 3/8 joueurs OtherClientPlayer. Chaque image vérifie que tous les sujets atteignent le rendu cosmétique. Les recomputations continuent : les animations ne sont pas figées.','',
+'Animations tête/membres distinctes par entité et caméra en orbite ; 0/3/8/24 PNJ EasyNPC, 3/8 joueurs OtherClientPlayer. Pour chaque image, le nombre d’appels de couche cosmétique doit être au moins égal au nombre de sujets prévu. Les recomputations continuent : les animations ne sont pas figées.','',
 'Deux familles de scènes, comparées chacune à rendu constant entre A et B : anciens assets, puis nouveaux modèles Blockbench chargés avec douze teintes. Cinq profils hérités : haut-elfe, elfe des bois, nordique, nain et naine ; ce ne sont pas cinq races distinctes.','',
 'Pour chaque scène : 36 images d’échauffement puis 96 mesurées ; pour 24 PNJ : 20 puis 40. Les chiffres ci-dessous sont les médianes des trois médianes ; le CSV conserve les P95 et les bornes entre exécutions.','',
 '**Temps CPU du thread de rendu, en millisecondes par image — pas des FPS prédits sur le PC du joueur.**','',
@@ -81,25 +82,30 @@ for kind,counts in [('npc',[3,8,24]),('player',[3,8])]:
    a=get('reference',variant,kind,n);b=get('candidate',variant,kind,n);x=value(a,'render_cpu_ns',1e6);y=value(b,'render_cpu_ns',1e6)
    lines.append(f'| {n} '+('PNJ'if kind=='npc'else'joueurs')+f' | {title} | {fr(x)} | {fr(y)} | {fr(gain(x,y))} % | {fr(value(a,"native_alloc_bytes",1048576))} → {fr(value(b,"native_alloc_bytes",1048576))} |')
 lines+=['','Une baisse négative signifie un ralentissement mesuré, pas un gain. Les scènes d’origine et de nouveaux modèles ne doivent pas être comparées entre elles pour attribuer un gain au correctif.','',
+'**Lecture des résultats : le gain CPU est surtout net pour les 24 PNJ aux recettes variées. Sur les petits groupes, les écarts restent faibles ou variables ; ce test ne démontre pas une amélioration CPU uniforme. La réduction des allocations de surfaces est en revanche constatée dans les deux familles de scènes.**','',
 'Aucun nouveau bake Blockbench ni aucune nouvelle texture recolorée pendant les plages mesurées après échauffement. Aucun des chronométrages n’utilise les oracles de vérification ni le contrôle diagnostique à poses figées.','',
 '## Vérifications du JAR final','',
 '- **116 042 comparaisons** : 20 000 polygones aléatoires, découpes six plans, transformations/écriture, 16 000 nettoyages indexés, cas dégénérés, seuils epsilon, signes de zéro, changements d’UV et de forme. Comparaisons exactes des bits flottants à la BB1.',
 '- **411 états de géométrie identiques à la BB1** : 320 états de corps classique/slim et perspectives + 91 états de poses/invalidation ; 55 états de bras en première personne ; 23 écrans et contrôles des sliders, rotation, couleurs et HUD.',
 '- Catalogue complet des **91 modèles**, 182 captures face/dos et 76 variantes de teintes dans le client réel ; inspection visuelle complémentaire des captures finales, sans rendu de substitution.',
 '- PNJ : cinq nouveaux profils raciaux, cinq anciens profils et cinq presets EasyNPC natifs, export éditeur, conservation des champs/UUID/tags et rechargement d’une sauvegarde isolée de 15 PNJ.',
-'- Oracles supplémentaires activés dans un client séparé sur les PNJ et huit joueurs animés ; modification de la configuration Skin Layers 1,05 → 1,15 → 1,05 et purge des caches.',
+'- Nouveaux assets : trois PNG d’essai supplémentaires (coiffure, barbe classique et tenue, ID 930), découverts automatiquement puis affichés sur un vrai PNJ EasyNPC. Le JAR livré n’a pas été modifié pour ce test.',
+'- Oracles supplémentaires activés dans un client séparé : **552 états PNJ/joueurs animés**, dont 14 585 042 comparaisons de découpe. Modification de la configuration Skin Layers 1,05 → 1,15 → 1,05 et purge des caches. Ces compteurs incluent les réexécutions de référence, pas autant de poses distinctes.',
 '- API commune : **292 vérifications avec classes client interdites**. Il s’agit d’un contrôle de liaison de l’API, pas du démarrage complet d’un serveur dédié.',
 '- Audit binaire : **273 classes inchangées**, 39 corps de méthodes préservés dans les classes ciblées ; aucune classe du banc de mesure ni de pose figée incluse dans le JAR. Les 5 191 entrées d’assets sont inchangées.','',
 '## Portée','',
 'Rendu OpenGL logiciel **llvmpipe**, Java 21, quatre processeurs déclarés à Java et quatre threads du moteur logiciel ; 800 × 450, distance de rendu 2, VSync désactivée, sans shaderpack. EntityCulling est exclu du banc pour ne pas masquer des sujets ; cette exclusion ne modifie pas le JAR livré.','',
 'Les gains ci-dessus portent sur la préparation/rendu des personnages dans ces scènes isolées. Ils ne couvrent pas le coût complet de Lion-Port, des sorts, des particules, des shaders ou du reste du modpack. Aucun FPS matériel n’est extrapolé. Les avertissements Mojang/Realms hors ligne et de persistance non configurée des mondes de test ne sont pas une validation du réseau de production.','',
 'Le ZIP contient le JAR installable, ce rapport, les CSV et les preuves synthétiques. Les profils bruts JVM et leurs variables d’environnement ne sont pas distribués.']
+lines+=['','Code, générateur et instantané du banc : [PR #188](https://github.com/Arthuuuurrr/Indivis/pull/188), laissée en brouillon pour revue ; aucun déploiement ni fusion automatique.']
 report=OUT/'Nexus-BB1-OPT1-Verification-2026-11-25.md';report.write_text('\n'.join(lines)+'\n')
 checksums=OUT/'SHA256SUMS-OPT1.txt';checksums.write_text(SHA+'  '+JAR.name+'\n')
 bundle=OUT/'Nexus-BB1-OPT1-1.21.11.zip'
 with zipfile.ZipFile(bundle,'w',zipfile.ZIP_DEFLATED)as z:
  for f in [JAR,report,checksums,OUT/'mesures-OPT1.json',OUT/'mesures-par-image-OPT1.csv',OUT/'synthese-OPT1.csv']:z.write(f,f.name)
- for n in ['kernel.txt','server-linkage.txt','bytecode-audit.txt','functional.json','performance-runs.json','visual-review.json']:z.write(QA/n,'verifications/'+n)
+ for n in ['kernel.txt','server-linkage.txt','bytecode-audit.txt','functional.json','performance-runs.json','visual-review.json','future.json']:z.write(QA/n,'verifications/'+n)
+ for f in sorted((QA/'review').glob('*.png')):z.write(f,'captures-reelles/planches/'+f.name)
+ for name in REVIEW['full_resolution']:z.write(P/'previous/npc/qa'/name,'captures-reelles/'+name.replace('/','-'))
  for rec in F['records']:
   evidence=Path(rec['game'])/'evidence';z.write(evidence/'pass.txt','verifications/'+rec['mode']+'-pass.txt')
 print('OPT1_PACKAGE_PASS',SHA,'frames='+str(len(rows)),str(bundle),flush=True)
