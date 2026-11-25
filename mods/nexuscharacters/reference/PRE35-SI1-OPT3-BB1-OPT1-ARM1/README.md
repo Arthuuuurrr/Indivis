@@ -3,7 +3,7 @@
 Issue #189. Base cumulative : BB1.OPT1 issue de #188, SHA-256
 `5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3`.
 
-## Architecture du prototype
+## Architecture
 
 - Géométrie locale immuable préparée par apparence/pièce puis réutilisée avec
   les transformations ordinaires du modèle (tête, corps, bras, jambes).
@@ -49,5 +49,31 @@ Le profil séparé de la BB1.OPT1 actuelle confirme que les découpes, transform
 et recherches spatiales restent les principaux postes CPU. Les proportions du
 profil de la BB1 antérieure ne sont pas réutilisées comme des mesures de l’OPT1.
 
-État : prototype en cours de vérification client et de comparaison A/B.
-Pas de JAR de production validé à ce stade, pas de déploiement automatique.
+## Reproduction et portée
+
+Cet instantané est un patch cumulatif du binaire OPT1 indiqué ci-dessus, et non
+un remplacement des anciennes sources PRE17 dans le projet Gradle. Il requiert
+le workspace de QA existant (`presets_import/runtime`, clients et dépendances
+Fabric 1.21.11, banc `perf_bb1_20261125`, liaison NPC). Aucun secret, monde de
+production ou profil JVM brut ne fait partie des sources.
+
+1. `python3 armor_cache_20261125/build.py` prépare un nouveau JAR. Ne pas relancer
+   cette commande pendant un client de mesure : le binaire est figé pour la QA.
+2. `python3 armor_cache_20261125/validate.py --resume` vérifie le noyau, l'audit
+   binaire, l'API commune puis cinq clients Minecraft réels. La reprise réutilise
+   uniquement les succès avec le même SHA-256.
+3. `python3 armor_cache_20261125/measure.py --resume` exécute six clients animés
+   A1/B1/B2/A2/A3/B3 successifs. Un résultat final ne doit pas être écrasé ;
+   utiliser de nouveaux labels pour un nouveau candidat.
+4. `review.py` prépare neuf planches ; `qa/visual-review.json` consigne leur
+   inspection réelle. `package.py` exige tous les contrôles du même binaire,
+   agrège les mesures et vérifie le JAR contenu dans le ZIP.
+
+Les scripts réutilisent les bancs antérieurs. `fixtures/` conserve les versions
+des points instrumentés ; les clients de QA ne sont jamais inclus dans le mod.
+Les 126 lignes de géométrie de première personne sont comparées en bits ;
+les 411 états mondiaux suivent le contrat topologie/UV/arrondis ci-dessus.
+
+Suivi : [PR #190](https://github.com/Arthuuuurrr/Indivis/pull/190), brouillon
+pour revue. Aucun déploiement ni fusion automatique. Rapport livré généré
+seulement après l'ensemble des contrôles et des mesures finales.
