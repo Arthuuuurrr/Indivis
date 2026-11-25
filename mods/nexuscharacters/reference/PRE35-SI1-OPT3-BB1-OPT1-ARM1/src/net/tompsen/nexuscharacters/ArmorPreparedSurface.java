@@ -127,37 +127,30 @@ public final class ArmorPreparedSurface {
             if(to-from>16){int axis=0;for(int a=1;a<3;a++)if(box[a+3]-box[a]>box[axis+3]-box[axis])axis=a;int mid=(from+to)>>>1;s.select(from,to-1,mid,axis);left=new Node(s,from,mid);right=new Node(s,mid,to);}else{left=right=null;}
         }
         void classify(Source s,Matrix4f pose,Work w,int part){
-            if(!near(box,0,pose,w.hulls,part))return;
+            if(!near(box,0,pose,w.volumes,part))return;
             if(left!=null){left.classify(s,pose,w,part);right.classify(s,pose,w,part);}
-            else for(int i=from;i<to;i++){int id=s.order[i];if(near(s.bounds,id*6,pose,w.hulls,part))w.dynamic[id]=true;}
+            else for(int i=from;i<to;i++){int id=s.order[i];if(near(s.bounds,id*6,pose,w.volumes,part))w.dynamic[id]=true;}
         }
     }
     /** World-space conservative broad phase. Testing inverse/local hulls here
      * would NOT preserve the original six-plane subtraction's subdivisions. */
-    private static boolean near(float[] b,int k,Matrix4f m,float[] hulls,int own){
+    private static boolean near(float[] b,int k,Matrix4f m,ArmorContactVolumes.Frame volumes,int own){
         double cx=((double)b[k]+b[k+3])*.5,cy=((double)b[k+1]+b[k+4])*.5,cz=((double)b[k+2]+b[k+5])*.5;
         double ex=((double)b[k+3]-b[k])*.5,ey=((double)b[k+4]-b[k+1])*.5,ez=((double)b[k+5]-b[k+2])*.5;
         double x=m.m00()*cx+m.m10()*cy+m.m20()*cz+m.m30(),y=m.m01()*cx+m.m11()*cy+m.m21()*cz+m.m31(),z=m.m02()*cx+m.m12()*cy+m.m22()*cz+m.m32();
         double dx=Math.abs(m.m00())*ex+Math.abs(m.m10())*ey+Math.abs(m.m20())*ez,dy=Math.abs(m.m01())*ex+Math.abs(m.m11())*ey+Math.abs(m.m21())*ez,dz=Math.abs(m.m02())*ex+Math.abs(m.m12())*ey+Math.abs(m.m22())*ez;
         double magnitude=Math.max(Math.abs(x)+dx,Math.max(Math.abs(y)+dy,Math.abs(z)+dz));double pad=1e-4+128d*Math.ulp((float)magnitude);
-        for(int p=0;p<6;p++){if(p==own)continue;int a=p*6;if(x+dx+pad<hulls[a]||x-dx-pad>hulls[a+3]||y+dy+pad<hulls[a+1]||y-dy-pad>hulls[a+4]||z+dz+pad<hulls[a+2]||z-dz-pad>hulls[a+5])continue;return true;}
-        return false;
+        return volumes.near(x-dx-pad,y-dy-pad,z-dz-pad,x+dx+pad,y+dy+pad,z+dz+pad,own);
     }
     private record Chunk(float[] data,int offset,int length){}
     private static final class Work {
-        PosedSurfaceSupport.Grid grid;
-        final float[] hulls=new float[36];
+        final ArmorContactVolumes.Frame volumes=new ArmorContactVolumes.Frame();
         boolean[] dynamic=new boolean[128];
         final ArrayList<Chunk> chunks=new ArrayList<>();
-        void hulls(PosedSurfaceSupport.Grid g){
-            if(grid==g)return;grid=g;for(int p=0;p<6;p++){Arrays.fill(hulls,p*6,p*6+3,Float.POSITIVE_INFINITY);Arrays.fill(hulls,p*6+3,p*6+6,Float.NEGATIVE_INFINITY);}
-            var boxes=g.opt3Boxes!=null?g.opt3Boxes:index(g).boxes;
-            for(var b:boxes){int p=b.part*6;for(int a=0;a<3;a++){hulls[p+a]=Math.min(hulls[p+a],b.worldLo[a]);hulls[p+a+3]=Math.max(hulls[p+a+3],b.worldHi[a]);}}
-        }
     }
     private static SpatialSurfaceCleaner.Index index(PosedSurfaceSupport.Grid grid){var i=grid.opt1Index;if(i==null)grid.opt1Index=i=new SpatialSurfaceCleaner.Index(grid);return i;}
     private static float[] prepare(Source s,Plan p,Matrix4f inverse,Work w){
-        int n=s.input.size();if(w.dynamic.length<n)w.dynamic=new boolean[n];System.arraycopy(s.tiny,0,w.dynamic,0,n);w.hulls(p.grid);
+        int n=s.input.size();if(w.dynamic.length<n)w.dynamic=new boolean[n];System.arraycopy(s.tiny,0,w.dynamic,0,n);w.volumes.prepare(p.grid);
         if(s.root!=null)s.root.classify(s,p.input.matrix,w,p.part);
         int contacts=0;for(int i=0;i<n;i++)if(w.dynamic[i])contacts++;contactPolygons+=contacts;rigidPolygons+=n-contacts;
         if(contacts==0){fullyRigidParts++;return s.data;}
@@ -188,5 +181,5 @@ public final class ArmorPreparedSurface {
             oracleFloats++;
         }
     }
-    public static synchronized void clear(){CACHE.clear();oldest=newest=null;bytes=0;WORK.remove();}
+    public static synchronized void clear(){CACHE.clear();oldest=newest=null;bytes=0;WORK.remove();ArmorContactVolumes.clear();}
 }

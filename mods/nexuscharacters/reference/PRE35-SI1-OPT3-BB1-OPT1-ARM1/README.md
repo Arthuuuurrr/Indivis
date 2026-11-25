@@ -13,10 +13,16 @@ Issue #189. Base cumulative : BB1.OPT1 issue de #188, SHA-256
   local ne préserverait pas les subdivisions de la découpe six plans existante.
 - Seuls les segments de faces potentiellement en contact sont transformés,
   découpés par l’algorithme OPT1 puis reconvertis en coordonnées locales.
+- Une seconde hiérarchie spatiale sur les volumes d’occlusion est construite
+  une fois par recette géométrique. Sa topologie est réutilisée et ses boîtes
+  mondiales sont actualisées avec les poses. Les feuilles testent les boîtes
+  d’origine : aucun volume fusionné ne remplace les volumes dans la découpe.
+  Cela évite de traiter comme contacts les vides d’une grande boîte globale.
 - Les segments statiques et dynamiques sont assemblés dans l’ordre initial :
   aucun changement d’UV, de winding, de matériau, de couleur ou de topologie attendu.
 - Buffers finaux immuables ; aucun buffer de travail mutable n’est exposé au
   rendu différé. Cache borné à 32 Mio estimés / 256 sources, purgé au reload.
+  Cache de topologies d’occlusion : 16 Mio estimés / 32 recettes maximum.
 - Invalidation d’apparence conservée via les sources natives existantes. Les
   recettes trop grandes ou transformations non prises en charge passent par
   l’algorithme OPT1 intégral ; aucun asset n’est désactivé.
@@ -34,8 +40,9 @@ au chemin OPT1 conservé : même nombre/ordre des quads et mêmes bits UV ; posi
 et normales contrôlées à `2e-6 + 8 ulp` par composante. Les segments de contact
 utilisent le calcul de référence sans approximation géométrique nouvelle.
 
-Test aléatoire : 3 000 cas de 32 polygones ; 6 137 comparaisons, y compris
-128 changements de pose avec le MÊME buffer rigide et sans nouveau bake.
+Test aléatoire : 3 000 cas de 32 polygones ; 6 266 comparaisons, y compris
+128 changements de pose avec le MÊME buffer rigide et sans nouveau bake,
+128 poses avec 144 volumes d’occlusion et l’invalidation d’une grille modifiée.
 Écart maximal observé sur ce test : position 2,98e-7, normale 2,15e-7.
 
 Le profil séparé de la BB1.OPT1 actuelle confirme que les découpes, transformations
