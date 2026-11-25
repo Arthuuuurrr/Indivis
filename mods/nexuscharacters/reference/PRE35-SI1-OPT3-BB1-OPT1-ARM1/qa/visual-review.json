@@ -1,0 +1,24 @@
+{
+  "jar_sha256": "06534c00ad12c3f7fdf3e3f16495c71976e74e5bf31df6b4178c12d441ca4f84",
+  "reviewed": true,
+  "contact_sheets": ["coiffures-1.png", "coiffures-2.png", "coiffures-3.png", "coiffures-4.png", "barbes-1.png", "barbes-2.png", "barbes-3.png", "oreilles-1.png", "oreilles-2.png"],
+  "full_resolution": [
+    "evidence-arm1-final-assets/preset-02-back.png",
+    "evidence-arm1-final-npc/presets-face.png",
+    "evidence-arm1-final-npc/presets-dos.png",
+    "evidence-arm1-final-menus/menu-01.png",
+    "evidence-arm1-final-menus/menu-22.png",
+    "evidence-arm1-final-future/presets-dos.png",
+    "evidence-arm1-final-menus/menu-00.png",
+    "evidence-arm1-final-menus/menu-08.png",
+    "evidence-arm1-final-future/presets-face.png",
+    "evidence-arm1-final-npc/races-action.png"
+  ],
+  "observations": [
+    "Les neuf planches couvrent les 91 modeles face/dos. Volumes, silhouettes et details des cheveux longs, barbes et oreilles visibles; aucun modele manquant ou degat evident attribuable au cache.",
+    "Vue du dos des cheveux longs examinee en pleine resolution; volumes et superposition a la tenue conserves sur cette capture.",
+    "PNJ classiques et slim examines face/dos, avec coiffures, barbes et equipements raciaux distincts.",
+    "Les captures de menu conservees montrent les champs de nom colores, la race, les sliders et la rotation de l'apercu.",
+    "Les captures fixes ne demontrent pas a elles seules l'absence de scintillement a toutes les poses. La verification animee de topologie/UV et de precision est le controle complementaire, sans promesse universelle sur le modpack de production."
+  ]
+}

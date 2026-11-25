@@ -1,0 +1,2304 @@
+{
+  "jar_sha256": "06534c00ad12c3f7fdf3e3f16495c71976e74e5bf31df6b4178c12d441ca4f84",
+  "runs": [
+    {
+      "label": "arm1-final-reference-1",
+      "version": "BB1",
+      "pilot": false,
+      "freeze": false,
+      "jfr": false,
+      "animated_only": true,
+      "jar_sha256": "5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3",
+      "game": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T233350-arm1-final-reference-1",
+      "evidence": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T233350-arm1-final-reference-1/evidence",
+      "start_utc": "2026-11-25T23:33:52.623848+00:00",
+      "end_utc": "2026-11-25T23:35:28.414120+00:00",
+      "pass": "PERF_PASS scenes=12 frames=1040 diagnostics=false\n",
+      "resolution": [
+        800,
+        450
+      ],
+      "java_processors": 4,
+      "software_renderer_threads": 4,
+      "entityculling": false,
+      "diagnostics": false,
+      "mods": {
+        "Indivis-Nexus-NPC.jar": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+        "NexusCharacters.jar": "5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3",
+        "cloth-config.jar": "8a40c84e5ecde525acfb6c4e13b8002dacfca3ef9534d7faf6e8049656f423c8",
+        "easy-npc-config.jar": "c65b5eff3f9ac46a3de3572d2b32f7f64b00731c6ad22e02a379b8634606b774",
+        "easy-npc-core.jar": "be3531fba0d3b0553e64ac8acae1906a882f41b32ac5e64386c3d6c4cbef6f8b",
+        "easy-npc.jar": "ae0b6aede8fd7457a6e47ed460c4fb2544b9bf4dcc8972cabb80e2a263c663ef",
+        "fabric-api.jar": "bdff7fd7e220085cfad2ff9b1f40dde6534ae0b96cf378f97a374bc54cb9ed0f",
+        "geckolib.jar": "9ce5452528a4934e561bc847bf655a05a1b2c6ba2f161963ba5cb884fe0a0c1a",
+        "hud.jar": "ad50aa33f2767be60ff517d7c7b965961c4392dae29a13c03b3ea5404ee6adab",
+        "immediatelyfast.jar": "eb5d23860c2c853d0afda9cbf686f442afda34a31d8d60b118a21597ccf38888",
+        "iris.jar": "58c55da18189c91a49f847d3cee451633a23b575fb69c0c5b65ddb274436cb19",
+        "owo.jar": "ded21de3e15288baad8a89f00476cf14427a1bbcdc4b184995dc78ff17e6ac40",
+        "pal.jar": "47b3e8b5e17d8501df92730e0a4e1dc9894b78333a1fdebc7341f1524ea283a4",
+        "perf-harness.jar": "c7d8c696e831b5cb453b7d85f1c72ef6894912af190729e09d94967c4e959314",
+        "puffish-skills.jar": "8917799ce0b8084648e2fb06513c60a2d01a2319c949b81e629ade322d82c004",
+        "skinlayers.jar": "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756",
+        "sodium.jar": "c08fae86b350aaa8a8f37e7347929df38f01cc2348cf31c322615564bdc53983"
+      },
+      "environment": {
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "vendor": "Mesa",
+        "gl_version": "4.5 (Core Profile) Mesa 25.0.7-2+deb13u1",
+        "java": "21.0.13.1+2-1-deb13u1-Debian",
+        "processors": 4,
+        "focused": 1
+      },
+      "family": "reference"
+    },
+    {
+      "label": "arm1-final-candidate-1",
+      "version": "BB1",
+      "pilot": false,
+      "freeze": false,
+      "jfr": false,
+      "animated_only": true,
+      "jar_sha256": "06534c00ad12c3f7fdf3e3f16495c71976e74e5bf31df6b4178c12d441ca4f84",
+      "game": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T233528-arm1-final-candidate-1",
+      "evidence": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T233528-arm1-final-candidate-1/evidence",
+      "start_utc": "2026-11-25T23:35:30.012686+00:00",
+      "end_utc": "2026-11-25T23:36:59.288618+00:00",
+      "pass": "PERF_PASS scenes=12 frames=1040 diagnostics=false\n",
+      "resolution": [
+        800,
+        450
+      ],
+      "java_processors": 4,
+      "software_renderer_threads": 4,
+      "entityculling": false,
+      "diagnostics": false,
+      "mods": {
+        "Indivis-Nexus-NPC.jar": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+        "NexusCharacters.jar": "06534c00ad12c3f7fdf3e3f16495c71976e74e5bf31df6b4178c12d441ca4f84",
+        "cloth-config.jar": "8a40c84e5ecde525acfb6c4e13b8002dacfca3ef9534d7faf6e8049656f423c8",
+        "easy-npc-config.jar": "c65b5eff3f9ac46a3de3572d2b32f7f64b00731c6ad22e02a379b8634606b774",
+        "easy-npc-core.jar": "be3531fba0d3b0553e64ac8acae1906a882f41b32ac5e64386c3d6c4cbef6f8b",
+        "easy-npc.jar": "ae0b6aede8fd7457a6e47ed460c4fb2544b9bf4dcc8972cabb80e2a263c663ef",
+        "fabric-api.jar": "bdff7fd7e220085cfad2ff9b1f40dde6534ae0b96cf378f97a374bc54cb9ed0f",
+        "geckolib.jar": "9ce5452528a4934e561bc847bf655a05a1b2c6ba2f161963ba5cb884fe0a0c1a",
+        "hud.jar": "ad50aa33f2767be60ff517d7c7b965961c4392dae29a13c03b3ea5404ee6adab",
+        "immediatelyfast.jar": "eb5d23860c2c853d0afda9cbf686f442afda34a31d8d60b118a21597ccf38888",
+        "iris.jar": "58c55da18189c91a49f847d3cee451633a23b575fb69c0c5b65ddb274436cb19",
+        "owo.jar": "ded21de3e15288baad8a89f00476cf14427a1bbcdc4b184995dc78ff17e6ac40",
+        "pal.jar": "47b3e8b5e17d8501df92730e0a4e1dc9894b78333a1fdebc7341f1524ea283a4",
+        "perf-harness.jar": "2b52c469838988755fe0114657ad2f770ba1bb391c96f17432383b5b8ecd71ac",
+        "puffish-skills.jar": "8917799ce0b8084648e2fb06513c60a2d01a2319c949b81e629ade322d82c004",
+        "skinlayers.jar": "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756",
+        "sodium.jar": "c08fae86b350aaa8a8f37e7347929df38f01cc2348cf31c322615564bdc53983"
+      },
+      "environment": {
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "vendor": "Mesa",
+        "gl_version": "4.5 (Core Profile) Mesa 25.0.7-2+deb13u1",
+        "java": "21.0.13.1+2-1-deb13u1-Debian",
+        "processors": 4,
+        "focused": 1
+      },
+      "family": "candidate"
+    },
+    {
+      "label": "arm1-final-candidate-2",
+      "version": "BB1",
+      "pilot": false,
+      "freeze": false,
+      "jfr": false,
+      "animated_only": true,
+      "jar_sha256": "06534c00ad12c3f7fdf3e3f16495c71976e74e5bf31df6b4178c12d441ca4f84",
+      "game": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T233659-arm1-final-candidate-2",
+      "evidence": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T233659-arm1-final-candidate-2/evidence",
+      "start_utc": "2026-11-25T23:37:00.993236+00:00",
+      "end_utc": "2026-11-25T23:38:31.747956+00:00",
+      "pass": "PERF_PASS scenes=12 frames=1040 diagnostics=false\n",
+      "resolution": [
+        800,
+        450
+      ],
+      "java_processors": 4,
+      "software_renderer_threads": 4,
+      "entityculling": false,
+      "diagnostics": false,
+      "mods": {
+        "Indivis-Nexus-NPC.jar": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+        "NexusCharacters.jar": "06534c00ad12c3f7fdf3e3f16495c71976e74e5bf31df6b4178c12d441ca4f84",
+        "cloth-config.jar": "8a40c84e5ecde525acfb6c4e13b8002dacfca3ef9534d7faf6e8049656f423c8",
+        "easy-npc-config.jar": "c65b5eff3f9ac46a3de3572d2b32f7f64b00731c6ad22e02a379b8634606b774",
+        "easy-npc-core.jar": "be3531fba0d3b0553e64ac8acae1906a882f41b32ac5e64386c3d6c4cbef6f8b",
+        "easy-npc.jar": "ae0b6aede8fd7457a6e47ed460c4fb2544b9bf4dcc8972cabb80e2a263c663ef",
+        "fabric-api.jar": "bdff7fd7e220085cfad2ff9b1f40dde6534ae0b96cf378f97a374bc54cb9ed0f",
+        "geckolib.jar": "9ce5452528a4934e561bc847bf655a05a1b2c6ba2f161963ba5cb884fe0a0c1a",
+        "hud.jar": "ad50aa33f2767be60ff517d7c7b965961c4392dae29a13c03b3ea5404ee6adab",
+        "immediatelyfast.jar": "eb5d23860c2c853d0afda9cbf686f442afda34a31d8d60b118a21597ccf38888",
+        "iris.jar": "58c55da18189c91a49f847d3cee451633a23b575fb69c0c5b65ddb274436cb19",
+        "owo.jar": "ded21de3e15288baad8a89f00476cf14427a1bbcdc4b184995dc78ff17e6ac40",
+        "pal.jar": "47b3e8b5e17d8501df92730e0a4e1dc9894b78333a1fdebc7341f1524ea283a4",
+        "perf-harness.jar": "aa9637d62dbeefa1d438eb6d519f0cfab6843b3a462deb7ebfb8a4847e8c32a9",
+        "puffish-skills.jar": "8917799ce0b8084648e2fb06513c60a2d01a2319c949b81e629ade322d82c004",
+        "skinlayers.jar": "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756",
+        "sodium.jar": "c08fae86b350aaa8a8f37e7347929df38f01cc2348cf31c322615564bdc53983"
+      },
+      "environment": {
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "vendor": "Mesa",
+        "gl_version": "4.5 (Core Profile) Mesa 25.0.7-2+deb13u1",
+        "java": "21.0.13.1+2-1-deb13u1-Debian",
+        "processors": 4,
+        "focused": 1
+      },
+      "family": "candidate"
+    },
+    {
+      "label": "arm1-final-reference-2",
+      "version": "BB1",
+      "pilot": false,
+      "freeze": false,
+      "jfr": false,
+      "animated_only": true,
+      "jar_sha256": "5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3",
+      "game": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T233831-arm1-final-reference-2",
+      "evidence": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T233831-arm1-final-reference-2/evidence",
+      "start_utc": "2026-11-25T23:38:33.440435+00:00",
+      "end_utc": "2026-11-25T23:40:07.962726+00:00",
+      "pass": "PERF_PASS scenes=12 frames=1040 diagnostics=false\n",
+      "resolution": [
+        800,
+        450
+      ],
+      "java_processors": 4,
+      "software_renderer_threads": 4,
+      "entityculling": false,
+      "diagnostics": false,
+      "mods": {
+        "Indivis-Nexus-NPC.jar": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+        "NexusCharacters.jar": "5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3",
+        "cloth-config.jar": "8a40c84e5ecde525acfb6c4e13b8002dacfca3ef9534d7faf6e8049656f423c8",
+        "easy-npc-config.jar": "c65b5eff3f9ac46a3de3572d2b32f7f64b00731c6ad22e02a379b8634606b774",
+        "easy-npc-core.jar": "be3531fba0d3b0553e64ac8acae1906a882f41b32ac5e64386c3d6c4cbef6f8b",
+        "easy-npc.jar": "ae0b6aede8fd7457a6e47ed460c4fb2544b9bf4dcc8972cabb80e2a263c663ef",
+        "fabric-api.jar": "bdff7fd7e220085cfad2ff9b1f40dde6534ae0b96cf378f97a374bc54cb9ed0f",
+        "geckolib.jar": "9ce5452528a4934e561bc847bf655a05a1b2c6ba2f161963ba5cb884fe0a0c1a",
+        "hud.jar": "ad50aa33f2767be60ff517d7c7b965961c4392dae29a13c03b3ea5404ee6adab",
+        "immediatelyfast.jar": "eb5d23860c2c853d0afda9cbf686f442afda34a31d8d60b118a21597ccf38888",
+        "iris.jar": "58c55da18189c91a49f847d3cee451633a23b575fb69c0c5b65ddb274436cb19",
+        "owo.jar": "ded21de3e15288baad8a89f00476cf14427a1bbcdc4b184995dc78ff17e6ac40",
+        "pal.jar": "47b3e8b5e17d8501df92730e0a4e1dc9894b78333a1fdebc7341f1524ea283a4",
+        "perf-harness.jar": "9a7a985f4ecb8ceb2c43be9cdc2cb70811dfa1ff6ed6b807b6c9a37935b2bed9",
+        "puffish-skills.jar": "8917799ce0b8084648e2fb06513c60a2d01a2319c949b81e629ade322d82c004",
+        "skinlayers.jar": "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756",
+        "sodium.jar": "c08fae86b350aaa8a8f37e7347929df38f01cc2348cf31c322615564bdc53983"
+      },
+      "environment": {
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "vendor": "Mesa",
+        "gl_version": "4.5 (Core Profile) Mesa 25.0.7-2+deb13u1",
+        "java": "21.0.13.1+2-1-deb13u1-Debian",
+        "processors": 4,
+        "focused": 1
+      },
+      "family": "reference"
+    },
+    {
+      "label": "arm1-final-reference-3",
+      "version": "BB1",
+      "pilot": false,
+      "freeze": false,
+      "jfr": false,
+      "animated_only": true,
+      "jar_sha256": "5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3",
+      "game": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T234008-arm1-final-reference-3",
+      "evidence": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T234008-arm1-final-reference-3/evidence",
+      "start_utc": "2026-11-25T23:40:09.466653+00:00",
+      "end_utc": "2026-11-25T23:41:44.029742+00:00",
+      "pass": "PERF_PASS scenes=12 frames=1040 diagnostics=false\n",
+      "resolution": [
+        800,
+        450
+      ],
+      "java_processors": 4,
+      "software_renderer_threads": 4,
+      "entityculling": false,
+      "diagnostics": false,
+      "mods": {
+        "Indivis-Nexus-NPC.jar": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+        "NexusCharacters.jar": "5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3",
+        "cloth-config.jar": "8a40c84e5ecde525acfb6c4e13b8002dacfca3ef9534d7faf6e8049656f423c8",
+        "easy-npc-config.jar": "c65b5eff3f9ac46a3de3572d2b32f7f64b00731c6ad22e02a379b8634606b774",
+        "easy-npc-core.jar": "be3531fba0d3b0553e64ac8acae1906a882f41b32ac5e64386c3d6c4cbef6f8b",
+        "easy-npc.jar": "ae0b6aede8fd7457a6e47ed460c4fb2544b9bf4dcc8972cabb80e2a263c663ef",
+        "fabric-api.jar": "bdff7fd7e220085cfad2ff9b1f40dde6534ae0b96cf378f97a374bc54cb9ed0f",
+        "geckolib.jar": "9ce5452528a4934e561bc847bf655a05a1b2c6ba2f161963ba5cb884fe0a0c1a",
+        "hud.jar": "ad50aa33f2767be60ff517d7c7b965961c4392dae29a13c03b3ea5404ee6adab",
+        "immediatelyfast.jar": "eb5d23860c2c853d0afda9cbf686f442afda34a31d8d60b118a21597ccf38888",
+        "iris.jar": "58c55da18189c91a49f847d3cee451633a23b575fb69c0c5b65ddb274436cb19",
+        "owo.jar": "ded21de3e15288baad8a89f00476cf14427a1bbcdc4b184995dc78ff17e6ac40",
+        "pal.jar": "47b3e8b5e17d8501df92730e0a4e1dc9894b78333a1fdebc7341f1524ea283a4",
+        "perf-harness.jar": "1aec8a52f96d0918964da734903766a928e6e6d06314f10b749d46fadd18b8ce",
+        "puffish-skills.jar": "8917799ce0b8084648e2fb06513c60a2d01a2319c949b81e629ade322d82c004",
+        "skinlayers.jar": "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756",
+        "sodium.jar": "c08fae86b350aaa8a8f37e7347929df38f01cc2348cf31c322615564bdc53983"
+      },
+      "environment": {
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "vendor": "Mesa",
+        "gl_version": "4.5 (Core Profile) Mesa 25.0.7-2+deb13u1",
+        "java": "21.0.13.1+2-1-deb13u1-Debian",
+        "processors": 4,
+        "focused": 1
+      },
+      "family": "reference"
+    },
+    {
+      "label": "arm1-final-candidate-3",
+      "version": "BB1",
+      "pilot": false,
+      "freeze": false,
+      "jfr": false,
+      "animated_only": true,
+      "jar_sha256": "06534c00ad12c3f7fdf3e3f16495c71976e74e5bf31df6b4178c12d441ca4f84",
+      "game": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T234144-arm1-final-candidate-3",
+      "evidence": "/workspace/scratch/22564d9fe6f6/perf_bb1_20261125/games/20261125T234144-arm1-final-candidate-3/evidence",
+      "start_utc": "2026-11-25T23:41:45.705110+00:00",
+      "end_utc": "2026-11-25T23:43:20.127479+00:00",
+      "pass": "PERF_PASS scenes=12 frames=1040 diagnostics=false\n",
+      "resolution": [
+        800,
+        450
+      ],
+      "java_processors": 4,
+      "software_renderer_threads": 4,
+      "entityculling": false,
+      "diagnostics": false,
+      "mods": {
+        "Indivis-Nexus-NPC.jar": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+        "NexusCharacters.jar": "06534c00ad12c3f7fdf3e3f16495c71976e74e5bf31df6b4178c12d441ca4f84",
+        "cloth-config.jar": "8a40c84e5ecde525acfb6c4e13b8002dacfca3ef9534d7faf6e8049656f423c8",
+        "easy-npc-config.jar": "c65b5eff3f9ac46a3de3572d2b32f7f64b00731c6ad22e02a379b8634606b774",
+        "easy-npc-core.jar": "be3531fba0d3b0553e64ac8acae1906a882f41b32ac5e64386c3d6c4cbef6f8b",
+        "easy-npc.jar": "ae0b6aede8fd7457a6e47ed460c4fb2544b9bf4dcc8972cabb80e2a263c663ef",
+        "fabric-api.jar": "bdff7fd7e220085cfad2ff9b1f40dde6534ae0b96cf378f97a374bc54cb9ed0f",
+        "geckolib.jar": "9ce5452528a4934e561bc847bf655a05a1b2c6ba2f161963ba5cb884fe0a0c1a",
+        "hud.jar": "ad50aa33f2767be60ff517d7c7b965961c4392dae29a13c03b3ea5404ee6adab",
+        "immediatelyfast.jar": "eb5d23860c2c853d0afda9cbf686f442afda34a31d8d60b118a21597ccf38888",
+        "iris.jar": "58c55da18189c91a49f847d3cee451633a23b575fb69c0c5b65ddb274436cb19",
+        "owo.jar": "ded21de3e15288baad8a89f00476cf14427a1bbcdc4b184995dc78ff17e6ac40",
+        "pal.jar": "47b3e8b5e17d8501df92730e0a4e1dc9894b78333a1fdebc7341f1524ea283a4",
+        "perf-harness.jar": "0ce09417b59fa3afb033015159e2aa97cf0f9263d1e76899e52ffefbe0df87e0",
+        "puffish-skills.jar": "8917799ce0b8084648e2fb06513c60a2d01a2319c949b81e629ade322d82c004",
+        "skinlayers.jar": "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756",
+        "sodium.jar": "c08fae86b350aaa8a8f37e7347929df38f01cc2348cf31c322615564bdc53983"
+      },
+      "environment": {
+        "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+        "vendor": "Mesa",
+        "gl_version": "4.5 (Core Profile) Mesa 25.0.7-2+deb13u1",
+        "java": "21.0.13.1+2-1-deb13u1-Debian",
+        "processors": 4,
+        "focused": 1
+      },
+      "family": "candidate"
+    }
+  ],
+  "aggregates": [
+    {
+      "family": "reference",
+      "variant": "legacy",
+      "kind": "npc",
+      "count": 0,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 2247665.5,
+        "min_run": 1867970.5,
+        "max_run": 2272702.0,
+        "p95": 3146376.5
+      },
+      "render_wall_ns": {
+        "median": 3524028.0,
+        "min_run": 3463914.0,
+        "max_run": 4055166.0,
+        "p95": 5235192.75
+      },
+      "interval_ns": {
+        "median": 6072188.5,
+        "min_run": 5830623.0,
+        "max_run": 6616581.0,
+        "p95": 8662703.25
+      },
+      "allocated_bytes": {
+        "median": 46296.0,
+        "min_run": 45204.0,
+        "max_run": 46544.0,
+        "p95": 49714.0
+      },
+      "native_ns": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "native_alloc_bytes": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "native_calls": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "cosmetic_calls": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "recomputes": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "legacy",
+      "kind": "npc",
+      "count": 3,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 23526323.0,
+        "min_run": 23246343.0,
+        "max_run": 23825063.5,
+        "p95": 28718507.5
+      },
+      "render_wall_ns": {
+        "median": 25488597.0,
+        "min_run": 23376353.0,
+        "max_run": 25549873.0,
+        "p95": 32077189.5
+      },
+      "interval_ns": {
+        "median": 28621827.5,
+        "min_run": 27805296.5,
+        "max_run": 28803055.0,
+        "p95": 35187942.0
+      },
+      "allocated_bytes": {
+        "median": 10405544.0,
+        "min_run": 10404368.0,
+        "max_run": 10405980.0,
+        "p95": 10971668.0
+      },
+      "native_ns": {
+        "median": 15333136.0,
+        "min_run": 15003883.5,
+        "max_run": 15772199.5,
+        "p95": 19388168.25
+      },
+      "native_alloc_bytes": {
+        "median": 10085444.0,
+        "min_run": 10085444.0,
+        "max_run": 10086056.0,
+        "p95": 10651082.0
+      },
+      "native_calls": {
+        "median": 6.0,
+        "min_run": 6.0,
+        "max_run": 6.0,
+        "p95": 6.0
+      },
+      "cosmetic_calls": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      },
+      "recomputes": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "legacy",
+      "kind": "npc",
+      "count": 8,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 56597192.0,
+        "min_run": 54713235.5,
+        "max_run": 57132346.5,
+        "p95": 71847620.25
+      },
+      "render_wall_ns": {
+        "median": 58771001.0,
+        "min_run": 56984176.0,
+        "max_run": 59674233.5,
+        "p95": 77915841.5
+      },
+      "interval_ns": {
+        "median": 64931892.5,
+        "min_run": 63293827.5,
+        "max_run": 65587379.5,
+        "p95": 86008789.0
+      },
+      "allocated_bytes": {
+        "median": 28023892.0,
+        "min_run": 28023884.0,
+        "max_run": 28032668.0,
+        "p95": 28645834.0
+      },
+      "native_ns": {
+        "median": 39348616.5,
+        "min_run": 38184590.5,
+        "max_run": 40865963.5,
+        "p95": 50531842.0
+      },
+      "native_alloc_bytes": {
+        "median": 27356872.0,
+        "min_run": 27356488.0,
+        "max_run": 27365288.0,
+        "p95": 27971756.0
+      },
+      "native_calls": {
+        "median": 16.0,
+        "min_run": 16.0,
+        "max_run": 16.0,
+        "p95": 16.0
+      },
+      "cosmetic_calls": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      },
+      "recomputes": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "legacy",
+      "kind": "npc",
+      "count": 24,
+      "repeats": 3,
+      "frames": 120,
+      "render_cpu_ns": {
+        "median": 152468676.5,
+        "min_run": 151073949.5,
+        "max_run": 157943953.0,
+        "p95": 177144751.1
+      },
+      "render_wall_ns": {
+        "median": 155515172.0,
+        "min_run": 155466640.0,
+        "max_run": 158566546.0,
+        "p95": 184981825.24999997
+      },
+      "interval_ns": {
+        "median": 163629558.5,
+        "min_run": 161793838.0,
+        "max_run": 167505413.5,
+        "p95": 203412861.9
+      },
+      "allocated_bytes": {
+        "median": 84720380.0,
+        "min_run": 84716644.0,
+        "max_run": 84746372.0,
+        "p95": 85407951.2
+      },
+      "native_ns": {
+        "median": 115961052.0,
+        "min_run": 111910449.5,
+        "max_run": 119794368.0,
+        "p95": 134630690.99999994
+      },
+      "native_alloc_bytes": {
+        "median": 82971872.0,
+        "min_run": 82967264.0,
+        "max_run": 82998128.0,
+        "p95": 83652878.4
+      },
+      "native_calls": {
+        "median": 48.0,
+        "min_run": 48.0,
+        "max_run": 48.0,
+        "p95": 48.0
+      },
+      "cosmetic_calls": {
+        "median": 24.0,
+        "min_run": 24.0,
+        "max_run": 24.0,
+        "p95": 24.0
+      },
+      "recomputes": {
+        "median": 24.0,
+        "min_run": 24.0,
+        "max_run": 24.0,
+        "p95": 24.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "legacy",
+      "kind": "player",
+      "count": 3,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 23021218.0,
+        "min_run": 22536478.0,
+        "max_run": 23656087.0,
+        "p95": 27358538.25
+      },
+      "render_wall_ns": {
+        "median": 25322615.5,
+        "min_run": 24847563.5,
+        "max_run": 25848281.0,
+        "p95": 31768050.0
+      },
+      "interval_ns": {
+        "median": 28193833.5,
+        "min_run": 27563019.5,
+        "max_run": 28980981.5,
+        "p95": 36861882.0
+      },
+      "allocated_bytes": {
+        "median": 10510708.0,
+        "min_run": 10509560.0,
+        "max_run": 10514588.0,
+        "p95": 11076758.0
+      },
+      "native_ns": {
+        "median": 14849831.0,
+        "min_run": 14142420.5,
+        "max_run": 15278789.0,
+        "p95": 17646800.0
+      },
+      "native_alloc_bytes": {
+        "median": 10128812.0,
+        "min_run": 10127692.0,
+        "max_run": 10131596.0,
+        "p95": 10688186.0
+      },
+      "native_calls": {
+        "median": 6.0,
+        "min_run": 6.0,
+        "max_run": 6.0,
+        "p95": 6.0
+      },
+      "cosmetic_calls": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      },
+      "recomputes": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "legacy",
+      "kind": "player",
+      "count": 8,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 52727379.0,
+        "min_run": 50979885.0,
+        "max_run": 53577670.0,
+        "p95": 64794507.0
+      },
+      "render_wall_ns": {
+        "median": 55986467.5,
+        "min_run": 54068817.0,
+        "max_run": 57004841.0,
+        "p95": 70779120.5
+      },
+      "interval_ns": {
+        "median": 59253267.5,
+        "min_run": 57454503.5,
+        "max_run": 61027787.5,
+        "p95": 75353083.0
+      },
+      "allocated_bytes": {
+        "median": 28372176.0,
+        "min_run": 28368964.0,
+        "max_run": 28379288.0,
+        "p95": 28983492.0
+      },
+      "native_ns": {
+        "median": 38479762.0,
+        "min_run": 36943901.0,
+        "max_run": 38675677.5,
+        "p95": 47464950.25
+      },
+      "native_alloc_bytes": {
+        "median": 27465952.0,
+        "min_run": 27463196.0,
+        "max_run": 27472048.0,
+        "p95": 28058818.0
+      },
+      "native_calls": {
+        "median": 16.0,
+        "min_run": 16.0,
+        "max_run": 16.0,
+        "p95": 16.0
+      },
+      "cosmetic_calls": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      },
+      "recomputes": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "authored",
+      "kind": "npc",
+      "count": 0,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 1403887.0,
+        "min_run": 1301619.5,
+        "max_run": 1516233.0,
+        "p95": 2105279.25
+      },
+      "render_wall_ns": {
+        "median": 2649894.5,
+        "min_run": 2645979.0,
+        "max_run": 2854552.0,
+        "p95": 3901648.75
+      },
+      "interval_ns": {
+        "median": 4639177.5,
+        "min_run": 4582378.0,
+        "max_run": 4982390.5,
+        "p95": 7003339.75
+      },
+      "allocated_bytes": {
+        "median": 44232.0,
+        "min_run": 43008.0,
+        "max_run": 44424.0,
+        "p95": 45968.0
+      },
+      "native_ns": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "native_alloc_bytes": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "native_calls": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "cosmetic_calls": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "recomputes": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "authored",
+      "kind": "npc",
+      "count": 3,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 17972064.0,
+        "min_run": 17646927.0,
+        "max_run": 19067076.0,
+        "p95": 22595144.5
+      },
+      "render_wall_ns": {
+        "median": 18102265.5,
+        "min_run": 18020836.0,
+        "max_run": 20679743.5,
+        "p95": 25170445.5
+      },
+      "interval_ns": {
+        "median": 21770462.0,
+        "min_run": 21613274.0,
+        "max_run": 24089760.5,
+        "p95": 32099736.5
+      },
+      "allocated_bytes": {
+        "median": 7879780.0,
+        "min_run": 7878468.0,
+        "max_run": 7882696.0,
+        "p95": 8525322.0
+      },
+      "native_ns": {
+        "median": 11741304.0,
+        "min_run": 11633694.5,
+        "max_run": 12439343.5,
+        "p95": 16632854.5
+      },
+      "native_alloc_bytes": {
+        "median": 7611840.0,
+        "min_run": 7611040.0,
+        "max_run": 7614112.0,
+        "p95": 8253870.0
+      },
+      "native_calls": {
+        "median": 6.0,
+        "min_run": 6.0,
+        "max_run": 6.0,
+        "p95": 6.0
+      },
+      "cosmetic_calls": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      },
+      "recomputes": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "authored",
+      "kind": "npc",
+      "count": 8,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 43134511.5,
+        "min_run": 42707378.0,
+        "max_run": 43412785.5,
+        "p95": 50732965.0
+      },
+      "render_wall_ns": {
+        "median": 45448826.5,
+        "min_run": 44476899.0,
+        "max_run": 47052135.0,
+        "p95": 59087957.0
+      },
+      "interval_ns": {
+        "median": 50718118.5,
+        "min_run": 50088443.0,
+        "max_run": 50755957.5,
+        "p95": 64013131.5
+      },
+      "allocated_bytes": {
+        "median": 21062676.0,
+        "min_run": 21061916.0,
+        "max_run": 21075644.0,
+        "p95": 21760532.0
+      },
+      "native_ns": {
+        "median": 29715210.0,
+        "min_run": 28767901.0,
+        "max_run": 30488752.5,
+        "p95": 37110931.25
+      },
+      "native_alloc_bytes": {
+        "median": 20472632.0,
+        "min_run": 20471096.0,
+        "max_run": 20479448.0,
+        "p95": 21163512.0
+      },
+      "native_calls": {
+        "median": 16.0,
+        "min_run": 16.0,
+        "max_run": 16.0,
+        "p95": 16.0
+      },
+      "cosmetic_calls": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      },
+      "recomputes": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "authored",
+      "kind": "npc",
+      "count": 24,
+      "repeats": 3,
+      "frames": 120,
+      "render_cpu_ns": {
+        "median": 115106006.0,
+        "min_run": 113747261.0,
+        "max_run": 124526401.0,
+        "p95": 149145182.1
+      },
+      "render_wall_ns": {
+        "median": 116070686.0,
+        "min_run": 114948790.0,
+        "max_run": 125436914.5,
+        "p95": 155609415.29999998
+      },
+      "interval_ns": {
+        "median": 122598374.0,
+        "min_run": 121352047.5,
+        "max_run": 132294016.5,
+        "p95": 161823859.14999998
+      },
+      "allocated_bytes": {
+        "median": 68682072.0,
+        "min_run": 68676288.0,
+        "max_run": 68711608.0,
+        "p95": 69401115.6
+      },
+      "native_ns": {
+        "median": 85219851.5,
+        "min_run": 85078308.0,
+        "max_run": 93683687.5,
+        "p95": 119265693.89999999
+      },
+      "native_alloc_bytes": {
+        "median": 67068924.0,
+        "min_run": 67064316.0,
+        "max_run": 67085436.0,
+        "p95": 67771302.4
+      },
+      "native_calls": {
+        "median": 48.0,
+        "min_run": 48.0,
+        "max_run": 48.0,
+        "p95": 48.0
+      },
+      "cosmetic_calls": {
+        "median": 24.0,
+        "min_run": 24.0,
+        "max_run": 24.0,
+        "p95": 24.0
+      },
+      "recomputes": {
+        "median": 24.0,
+        "min_run": 24.0,
+        "max_run": 24.0,
+        "p95": 24.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "authored",
+      "kind": "player",
+      "count": 3,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 17352851.0,
+        "min_run": 17315954.0,
+        "max_run": 19950861.0,
+        "p95": 21485933.5
+      },
+      "render_wall_ns": {
+        "median": 18920410.0,
+        "min_run": 18485534.5,
+        "max_run": 21419632.5,
+        "p95": 25691911.0
+      },
+      "interval_ns": {
+        "median": 33514168.0,
+        "min_run": 33381370.5,
+        "max_run": 33524870.0,
+        "p95": 35185961.5
+      },
+      "allocated_bytes": {
+        "median": 8036296.0,
+        "min_run": 8035984.0,
+        "max_run": 8039976.0,
+        "p95": 8628940.0
+      },
+      "native_ns": {
+        "median": 11235210.0,
+        "min_run": 10999039.0,
+        "max_run": 12645337.5,
+        "p95": 14002953.25
+      },
+      "native_alloc_bytes": {
+        "median": 7670132.0,
+        "min_run": 7669556.0,
+        "max_run": 7671604.0,
+        "p95": 8299732.0
+      },
+      "native_calls": {
+        "median": 6.0,
+        "min_run": 6.0,
+        "max_run": 6.0,
+        "p95": 6.0
+      },
+      "cosmetic_calls": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      },
+      "recomputes": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      }
+    },
+    {
+      "family": "reference",
+      "variant": "authored",
+      "kind": "player",
+      "count": 8,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 41613264.0,
+        "min_run": 41459805.5,
+        "max_run": 41627580.0,
+        "p95": 51049815.75
+      },
+      "render_wall_ns": {
+        "median": 42154912.5,
+        "min_run": 41474198.5,
+        "max_run": 42157516.0,
+        "p95": 55231810.75
+      },
+      "interval_ns": {
+        "median": 47430268.5,
+        "min_run": 47203556.0,
+        "max_run": 48605414.5,
+        "p95": 61567502.25
+      },
+      "allocated_bytes": {
+        "median": 23204764.0,
+        "min_run": 23203800.0,
+        "max_run": 23212336.0,
+        "p95": 23830138.0
+      },
+      "native_ns": {
+        "median": 29243254.5,
+        "min_run": 28989683.0,
+        "max_run": 29375244.0,
+        "p95": 37743706.0
+      },
+      "native_alloc_bytes": {
+        "median": 22404756.0,
+        "min_run": 22403220.0,
+        "max_run": 22408788.0,
+        "p95": 23054586.0
+      },
+      "native_calls": {
+        "median": 16.0,
+        "min_run": 16.0,
+        "max_run": 16.0,
+        "p95": 16.0
+      },
+      "cosmetic_calls": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      },
+      "recomputes": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "legacy",
+      "kind": "npc",
+      "count": 0,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 2127346.5,
+        "min_run": 2067763.0,
+        "max_run": 2282237.0,
+        "p95": 2974935.25
+      },
+      "render_wall_ns": {
+        "median": 3396489.5,
+        "min_run": 3340964.5,
+        "max_run": 3640166.5,
+        "p95": 4734983.0
+      },
+      "interval_ns": {
+        "median": 5685074.0,
+        "min_run": 5496529.5,
+        "max_run": 5752262.0,
+        "p95": 9197430.75
+      },
+      "allocated_bytes": {
+        "median": 46392.0,
+        "min_run": 46384.0,
+        "max_run": 46896.0,
+        "p95": 50158.0
+      },
+      "native_ns": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "native_alloc_bytes": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "native_calls": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "cosmetic_calls": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "recomputes": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "legacy",
+      "kind": "npc",
+      "count": 3,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 22033201.0,
+        "min_run": 21100047.0,
+        "max_run": 22420981.0,
+        "p95": 26561348.75
+      },
+      "render_wall_ns": {
+        "median": 23360749.0,
+        "min_run": 22836231.0,
+        "max_run": 24228806.0,
+        "p95": 28400903.75
+      },
+      "interval_ns": {
+        "median": 26954018.0,
+        "min_run": 26612764.5,
+        "max_run": 27251946.0,
+        "p95": 33056219.0
+      },
+      "allocated_bytes": {
+        "median": 9512648.0,
+        "min_run": 9512076.0,
+        "max_run": 9512652.0,
+        "p95": 10157722.0
+      },
+      "native_ns": {
+        "median": 13817841.0,
+        "min_run": 13462880.0,
+        "max_run": 14059140.5,
+        "p95": 16775781.0
+      },
+      "native_alloc_bytes": {
+        "median": 9192240.0,
+        "min_run": 9192240.0,
+        "max_run": 9192816.0,
+        "p95": 9837140.0
+      },
+      "native_calls": {
+        "median": 6.0,
+        "min_run": 6.0,
+        "max_run": 6.0,
+        "p95": 6.0
+      },
+      "cosmetic_calls": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      },
+      "recomputes": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "legacy",
+      "kind": "npc",
+      "count": 8,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 50224211.0,
+        "min_run": 49645245.0,
+        "max_run": 55665611.5,
+        "p95": 57756312.0
+      },
+      "render_wall_ns": {
+        "median": 51997416.5,
+        "min_run": 51171448.5,
+        "max_run": 58035774.0,
+        "p95": 64804150.5
+      },
+      "interval_ns": {
+        "median": 57384442.0,
+        "min_run": 56539776.5,
+        "max_run": 64829045.5,
+        "p95": 69416954.75
+      },
+      "allocated_bytes": {
+        "median": 25680836.0,
+        "min_run": 25680724.0,
+        "max_run": 25683068.0,
+        "p95": 26426222.0
+      },
+      "native_ns": {
+        "median": 36291826.0,
+        "min_run": 35600789.0,
+        "max_run": 39219991.0,
+        "p95": 44351269.25
+      },
+      "native_alloc_bytes": {
+        "median": 25013688.0,
+        "min_run": 25013656.0,
+        "max_run": 25015224.0,
+        "p95": 25753976.0
+      },
+      "native_calls": {
+        "median": 16.0,
+        "min_run": 16.0,
+        "max_run": 16.0,
+        "p95": 16.0
+      },
+      "cosmetic_calls": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      },
+      "recomputes": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "legacy",
+      "kind": "npc",
+      "count": 24,
+      "repeats": 3,
+      "frames": 120,
+      "render_cpu_ns": {
+        "median": 145770776.5,
+        "min_run": 143996080.0,
+        "max_run": 159706481.0,
+        "p95": 168041386.65
+      },
+      "render_wall_ns": {
+        "median": 148588425.0,
+        "min_run": 147202367.0,
+        "max_run": 162331124.0,
+        "p95": 177090095.29999998
+      },
+      "interval_ns": {
+        "median": 155825332.0,
+        "min_run": 154431268.0,
+        "max_run": 171449205.0,
+        "p95": 182935506.04999998
+      },
+      "allocated_bytes": {
+        "median": 77873936.0,
+        "min_run": 77872100.0,
+        "max_run": 77881600.0,
+        "p95": 78646774.8
+      },
+      "native_ns": {
+        "median": 110439699.0,
+        "min_run": 107454082.0,
+        "max_run": 119966854.0,
+        "p95": 124848430.1
+      },
+      "native_alloc_bytes": {
+        "median": 76131160.0,
+        "min_run": 76126888.0,
+        "max_run": 76134952.0,
+        "p95": 76894219.6
+      },
+      "native_calls": {
+        "median": 48.0,
+        "min_run": 48.0,
+        "max_run": 48.0,
+        "p95": 48.0
+      },
+      "cosmetic_calls": {
+        "median": 24.0,
+        "min_run": 24.0,
+        "max_run": 24.0,
+        "p95": 24.0
+      },
+      "recomputes": {
+        "median": 24.0,
+        "min_run": 24.0,
+        "max_run": 24.0,
+        "p95": 24.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "legacy",
+      "kind": "player",
+      "count": 3,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 21778206.0,
+        "min_run": 21674891.0,
+        "max_run": 22754567.5,
+        "p95": 26216955.25
+      },
+      "render_wall_ns": {
+        "median": 23721324.0,
+        "min_run": 21774571.5,
+        "max_run": 24875004.5,
+        "p95": 29995073.25
+      },
+      "interval_ns": {
+        "median": 26569009.5,
+        "min_run": 25896698.0,
+        "max_run": 27592390.5,
+        "p95": 34083519.5
+      },
+      "allocated_bytes": {
+        "median": 9581760.0,
+        "min_run": 9581180.0,
+        "max_run": 9583540.0,
+        "p95": 10211756.0
+      },
+      "native_ns": {
+        "median": 13982010.0,
+        "min_run": 13825610.5,
+        "max_run": 14534076.5,
+        "p95": 16115685.75
+      },
+      "native_alloc_bytes": {
+        "median": 9204876.0,
+        "min_run": 9204876.0,
+        "max_run": 9205996.0,
+        "p95": 9822568.0
+      },
+      "native_calls": {
+        "median": 6.0,
+        "min_run": 6.0,
+        "max_run": 6.0,
+        "p95": 6.0
+      },
+      "cosmetic_calls": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      },
+      "recomputes": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "legacy",
+      "kind": "player",
+      "count": 8,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 49485642.5,
+        "min_run": 48915044.5,
+        "max_run": 54146270.0,
+        "p95": 59427276.75
+      },
+      "render_wall_ns": {
+        "median": 52159492.5,
+        "min_run": 51186348.5,
+        "max_run": 54716043.5,
+        "p95": 63528335.5
+      },
+      "interval_ns": {
+        "median": 55713756.0,
+        "min_run": 55359734.0,
+        "max_run": 62109250.5,
+        "p95": 68115497.5
+      },
+      "allocated_bytes": {
+        "median": 25992000.0,
+        "min_run": 25990656.0,
+        "max_run": 25999372.0,
+        "p95": 26690932.0
+      },
+      "native_ns": {
+        "median": 35552258.0,
+        "min_run": 35444998.0,
+        "max_run": 38595642.0,
+        "p95": 42819280.75
+      },
+      "native_alloc_bytes": {
+        "median": 25094520.0,
+        "min_run": 25094520.0,
+        "max_run": 25096056.0,
+        "p95": 25767396.0
+      },
+      "native_calls": {
+        "median": 16.0,
+        "min_run": 16.0,
+        "max_run": 16.0,
+        "p95": 16.0
+      },
+      "cosmetic_calls": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      },
+      "recomputes": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "authored",
+      "kind": "npc",
+      "count": 0,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 1456269.5,
+        "min_run": 1440731.5,
+        "max_run": 1596032.0,
+        "p95": 1838535.25
+      },
+      "render_wall_ns": {
+        "median": 2825114.5,
+        "min_run": 2801173.5,
+        "max_run": 2965699.5,
+        "p95": 3388537.75
+      },
+      "interval_ns": {
+        "median": 4755210.5,
+        "min_run": 4743810.0,
+        "max_run": 5046970.0,
+        "p95": 6080679.75
+      },
+      "allocated_bytes": {
+        "median": 44680.0,
+        "min_run": 44232.0,
+        "max_run": 44832.0,
+        "p95": 46416.0
+      },
+      "native_ns": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "native_alloc_bytes": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "native_calls": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "cosmetic_calls": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      },
+      "recomputes": {
+        "median": 0.0,
+        "min_run": 0.0,
+        "max_run": 0.0,
+        "p95": 0.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "authored",
+      "kind": "npc",
+      "count": 3,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 17190521.0,
+        "min_run": 17081107.5,
+        "max_run": 17703110.0,
+        "p95": 20892885.25
+      },
+      "render_wall_ns": {
+        "median": 18544907.0,
+        "min_run": 17798605.5,
+        "max_run": 19137321.5,
+        "p95": 22765290.75
+      },
+      "interval_ns": {
+        "median": 21670623.5,
+        "min_run": 21317514.0,
+        "max_run": 22050621.5,
+        "p95": 26254164.75
+      },
+      "allocated_bytes": {
+        "median": 7338284.0,
+        "min_run": 7338136.0,
+        "max_run": 7339848.0,
+        "p95": 8052524.0
+      },
+      "native_ns": {
+        "median": 10391307.5,
+        "min_run": 10315758.5,
+        "max_run": 10854694.5,
+        "p95": 12810518.5
+      },
+      "native_alloc_bytes": {
+        "median": 7069976.0,
+        "min_run": 7069976.0,
+        "max_run": 7070776.0,
+        "p95": 7780616.0
+      },
+      "native_calls": {
+        "median": 6.0,
+        "min_run": 6.0,
+        "max_run": 6.0,
+        "p95": 6.0
+      },
+      "cosmetic_calls": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      },
+      "recomputes": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "authored",
+      "kind": "npc",
+      "count": 8,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 39002036.0,
+        "min_run": 38857769.0,
+        "max_run": 40540005.5,
+        "p95": 46255393.25
+      },
+      "render_wall_ns": {
+        "median": 39696858.0,
+        "min_run": 39055029.0,
+        "max_run": 41423168.0,
+        "p95": 51304526.25
+      },
+      "interval_ns": {
+        "median": 45396897.5,
+        "min_run": 44949788.0,
+        "max_run": 46890117.0,
+        "p95": 56318363.25
+      },
+      "allocated_bytes": {
+        "median": 19599648.0,
+        "min_run": 19596720.0,
+        "max_run": 19599648.0,
+        "p95": 20425134.0
+      },
+      "native_ns": {
+        "median": 27098897.5,
+        "min_run": 26803806.0,
+        "max_run": 27875994.0,
+        "p95": 33447263.5
+      },
+      "native_alloc_bytes": {
+        "median": 19005032.0,
+        "min_run": 19005032.0,
+        "max_run": 19006568.0,
+        "p95": 19821504.0
+      },
+      "native_calls": {
+        "median": 16.0,
+        "min_run": 16.0,
+        "max_run": 16.0,
+        "p95": 16.0
+      },
+      "cosmetic_calls": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      },
+      "recomputes": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "authored",
+      "kind": "npc",
+      "count": 24,
+      "repeats": 3,
+      "frames": 120,
+      "render_cpu_ns": {
+        "median": 112708858.5,
+        "min_run": 109521116.0,
+        "max_run": 114208616.0,
+        "p95": 129047730.19999997
+      },
+      "render_wall_ns": {
+        "median": 114905013.5,
+        "min_run": 113260423.5,
+        "max_run": 116171020.5,
+        "p95": 138925712.85
+      },
+      "interval_ns": {
+        "median": 121708458.0,
+        "min_run": 117555074.5,
+        "max_run": 124892139.5,
+        "p95": 144813381.4
+      },
+      "allocated_bytes": {
+        "median": 64299328.0,
+        "min_run": 64290436.0,
+        "max_run": 64302404.0,
+        "p95": 65032472.4
+      },
+      "native_ns": {
+        "median": 81247192.0,
+        "min_run": 79952222.0,
+        "max_run": 83012108.5,
+        "p95": 92585768.15
+      },
+      "native_alloc_bytes": {
+        "median": 62671140.0,
+        "min_run": 62671140.0,
+        "max_run": 62675748.0,
+        "p95": 63388690.0
+      },
+      "native_calls": {
+        "median": 48.0,
+        "min_run": 48.0,
+        "max_run": 48.0,
+        "p95": 48.0
+      },
+      "cosmetic_calls": {
+        "median": 24.0,
+        "min_run": 24.0,
+        "max_run": 24.0,
+        "p95": 24.0
+      },
+      "recomputes": {
+        "median": 24.0,
+        "min_run": 24.0,
+        "max_run": 24.0,
+        "p95": 24.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "authored",
+      "kind": "player",
+      "count": 3,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 17049969.0,
+        "min_run": 16094619.0,
+        "max_run": 18382888.0,
+        "p95": 24200430.5
+      },
+      "render_wall_ns": {
+        "median": 17276630.0,
+        "min_run": 16533972.0,
+        "max_run": 19321325.0,
+        "p95": 26655433.25
+      },
+      "interval_ns": {
+        "median": 33583364.0,
+        "min_run": 33548152.0,
+        "max_run": 33719437.5,
+        "p95": 35248484.25
+      },
+      "allocated_bytes": {
+        "median": 7458932.0,
+        "min_run": 7458880.0,
+        "max_run": 7459392.0,
+        "p95": 8146378.0
+      },
+      "native_ns": {
+        "median": 10555456.5,
+        "min_run": 10281923.5,
+        "max_run": 11510665.0,
+        "p95": 13250672.0
+      },
+      "native_alloc_bytes": {
+        "median": 7106480.0,
+        "min_run": 7106480.0,
+        "max_run": 7107056.0,
+        "p95": 7819170.0
+      },
+      "native_calls": {
+        "median": 6.0,
+        "min_run": 6.0,
+        "max_run": 6.0,
+        "p95": 6.0
+      },
+      "cosmetic_calls": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      },
+      "recomputes": {
+        "median": 3.0,
+        "min_run": 3.0,
+        "max_run": 3.0,
+        "p95": 3.0
+      }
+    },
+    {
+      "family": "candidate",
+      "variant": "authored",
+      "kind": "player",
+      "count": 8,
+      "repeats": 3,
+      "frames": 288,
+      "render_cpu_ns": {
+        "median": 41719894.0,
+        "min_run": 39910061.0,
+        "max_run": 42839764.0,
+        "p95": 55246428.25
+      },
+      "render_wall_ns": {
+        "median": 46792333.0,
+        "min_run": 42669774.0,
+        "max_run": 48123181.0,
+        "p95": 60815609.25
+      },
+      "interval_ns": {
+        "median": 50329525.0,
+        "min_run": 47126710.0,
+        "max_run": 51496118.5,
+        "p95": 65664384.5
+      },
+      "allocated_bytes": {
+        "median": 21700392.0,
+        "min_run": 21698700.0,
+        "max_run": 21700652.0,
+        "p95": 22465158.0
+      },
+      "native_ns": {
+        "median": 27659008.0,
+        "min_run": 26789366.0,
+        "max_run": 28648699.5,
+        "p95": 37026404.0
+      },
+      "native_alloc_bytes": {
+        "median": 20904492.0,
+        "min_run": 20904492.0,
+        "max_run": 20906028.0,
+        "p95": 21701434.0
+      },
+      "native_calls": {
+        "median": 16.0,
+        "min_run": 16.0,
+        "max_run": 16.0,
+        "p95": 16.0
+      },
+      "cosmetic_calls": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      },
+      "recomputes": {
+        "median": 8.0,
+        "min_run": 8.0,
+        "max_run": 8.0,
+        "p95": 8.0
+      }
+    }
+  ],
+  "warm_preparation": [
+    {
+      "run": "arm1-final-candidate-1",
+      "scene": {
+        "variant": "legacy",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 455097,
+      "contact_polygons": 214695,
+      "rigid_ratio": 0.6794601906263437,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-1",
+      "scene": {
+        "variant": "legacy",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 1197521,
+      "contact_polygons": 583567,
+      "rigid_ratio": 0.6723536400222785,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-1",
+      "scene": {
+        "variant": "legacy",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 24,
+        "warm": 20,
+        "samples": 40
+      },
+      "rigid_polygons": 1489130,
+      "contact_polygons": 740950,
+      "rigid_ratio": 0.6677473453867125,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-1",
+      "scene": {
+        "variant": "legacy",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 457389,
+      "contact_polygons": 214131,
+      "rigid_ratio": 0.6811249106504647,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-1",
+      "scene": {
+        "variant": "legacy",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 1203870,
+      "contact_polygons": 582114,
+      "rigid_ratio": 0.6740653891636207,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-1",
+      "scene": {
+        "variant": "authored",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 310631,
+      "contact_polygons": 177433,
+      "rigid_ratio": 0.6364554648570679,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-1",
+      "scene": {
+        "variant": "authored",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 828255,
+      "contact_polygons": 470913,
+      "rigid_ratio": 0.6375272482080839,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-1",
+      "scene": {
+        "variant": "authored",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 24,
+        "warm": 20,
+        "samples": 40
+      },
+      "rigid_polygons": 1037262,
+      "contact_polygons": 592658,
+      "rigid_ratio": 0.6363882889957789,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-1",
+      "scene": {
+        "variant": "authored",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 312964,
+      "contact_polygons": 176828,
+      "rigid_ratio": 0.6389732784528943,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-1",
+      "scene": {
+        "variant": "authored",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 834596,
+      "contact_polygons": 469468,
+      "rigid_ratio": 0.639996196505693,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-2",
+      "scene": {
+        "variant": "legacy",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 455097,
+      "contact_polygons": 214695,
+      "rigid_ratio": 0.6794601906263437,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-2",
+      "scene": {
+        "variant": "legacy",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 1197521,
+      "contact_polygons": 583567,
+      "rigid_ratio": 0.6723536400222785,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-2",
+      "scene": {
+        "variant": "legacy",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 24,
+        "warm": 20,
+        "samples": 40
+      },
+      "rigid_polygons": 1489130,
+      "contact_polygons": 740950,
+      "rigid_ratio": 0.6677473453867125,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-2",
+      "scene": {
+        "variant": "legacy",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 457389,
+      "contact_polygons": 214131,
+      "rigid_ratio": 0.6811249106504647,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-2",
+      "scene": {
+        "variant": "legacy",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 1203870,
+      "contact_polygons": 582114,
+      "rigid_ratio": 0.6740653891636207,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-2",
+      "scene": {
+        "variant": "authored",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 310631,
+      "contact_polygons": 177433,
+      "rigid_ratio": 0.6364554648570679,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-2",
+      "scene": {
+        "variant": "authored",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 828255,
+      "contact_polygons": 470913,
+      "rigid_ratio": 0.6375272482080839,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-2",
+      "scene": {
+        "variant": "authored",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 24,
+        "warm": 20,
+        "samples": 40
+      },
+      "rigid_polygons": 1037262,
+      "contact_polygons": 592658,
+      "rigid_ratio": 0.6363882889957789,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-2",
+      "scene": {
+        "variant": "authored",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 312964,
+      "contact_polygons": 176828,
+      "rigid_ratio": 0.6389732784528943,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-2",
+      "scene": {
+        "variant": "authored",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 834596,
+      "contact_polygons": 469468,
+      "rigid_ratio": 0.639996196505693,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-3",
+      "scene": {
+        "variant": "legacy",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 455097,
+      "contact_polygons": 214695,
+      "rigid_ratio": 0.6794601906263437,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-3",
+      "scene": {
+        "variant": "legacy",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 1197521,
+      "contact_polygons": 583567,
+      "rigid_ratio": 0.6723536400222785,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-3",
+      "scene": {
+        "variant": "legacy",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 24,
+        "warm": 20,
+        "samples": 40
+      },
+      "rigid_polygons": 1489130,
+      "contact_polygons": 740950,
+      "rigid_ratio": 0.6677473453867125,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-3",
+      "scene": {
+        "variant": "legacy",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 457389,
+      "contact_polygons": 214131,
+      "rigid_ratio": 0.6811249106504647,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-3",
+      "scene": {
+        "variant": "legacy",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 1203870,
+      "contact_polygons": 582114,
+      "rigid_ratio": 0.6740653891636207,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-3",
+      "scene": {
+        "variant": "authored",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 310631,
+      "contact_polygons": 177433,
+      "rigid_ratio": 0.6364554648570679,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-3",
+      "scene": {
+        "variant": "authored",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 828255,
+      "contact_polygons": 470913,
+      "rigid_ratio": 0.6375272482080839,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-3",
+      "scene": {
+        "variant": "authored",
+        "kind": "npc",
+        "pose": "animated_orbit",
+        "count": 24,
+        "warm": 20,
+        "samples": 40
+      },
+      "rigid_polygons": 1037262,
+      "contact_polygons": 592658,
+      "rigid_ratio": 0.6363882889957789,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-3",
+      "scene": {
+        "variant": "authored",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 3,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 312964,
+      "contact_polygons": 176828,
+      "rigid_ratio": 0.6389732784528943,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    },
+    {
+      "run": "arm1-final-candidate-3",
+      "scene": {
+        "variant": "authored",
+        "kind": "player",
+        "pose": "animated_orbit",
+        "count": 8,
+        "warm": 36,
+        "samples": 96
+      },
+      "rigid_polygons": 834596,
+      "contact_polygons": 469468,
+      "rigid_ratio": 0.639996196505693,
+      "source_bakes": 0,
+      "occluder_topology_bakes": 0
+    }
+  ],
+  "identical_harness_classes": {
+    "perfqa/PerfMain$Scene.class": "9f1363066e9c4a38f6f742120893434d6fc2e06517cb5c86ec786b3faf41f978",
+    "perfqa/PerfMain.class": "d1ae2361b426229fc0f0c2221495dbff5551942836912ff57815b0d4d1481aa8",
+    "perfqa/mixin/PlayerPose.class": "f64d44ba962c06a495af9cb9ece6bd9c4d4d51b2980aff3e36af3979ff2ea861",
+    "perfqa/mixin/FrameTrace.class": "972ecc60419f3c935ae15aea1c200869c4f44e0b7e23502bcb82415b091300e9",
+    "perfqa/mixin/CosmeticTrace.class": "08a1768fdda465829982489588d08e7df0ea0ce2e8d3eb3b45729df6b8699987",
+    "perfqa/mixin/NativeTrace.class": "3e5bca931699663d7e54a62d3153f005e6a291316f2ae41a3dffcb044f2bf90f",
+    "perfqa/mixin/NpcPose.class": "53225a451bf00852c3b661755c793c973d2b447ecc60477b859fe7f630100afe"
+  },
+  "identical_dependencies": {
+    "Indivis-Nexus-NPC.jar": "cc9cfb403e48c21a22d14e1bcc15152d3ae74dc86d5ab9ddae9a926d35836047",
+    "cloth-config.jar": "8a40c84e5ecde525acfb6c4e13b8002dacfca3ef9534d7faf6e8049656f423c8",
+    "easy-npc-config.jar": "c65b5eff3f9ac46a3de3572d2b32f7f64b00731c6ad22e02a379b8634606b774",
+    "easy-npc-core.jar": "be3531fba0d3b0553e64ac8acae1906a882f41b32ac5e64386c3d6c4cbef6f8b",
+    "easy-npc.jar": "ae0b6aede8fd7457a6e47ed460c4fb2544b9bf4dcc8972cabb80e2a263c663ef",
+    "fabric-api.jar": "bdff7fd7e220085cfad2ff9b1f40dde6534ae0b96cf378f97a374bc54cb9ed0f",
+    "geckolib.jar": "9ce5452528a4934e561bc847bf655a05a1b2c6ba2f161963ba5cb884fe0a0c1a",
+    "hud.jar": "ad50aa33f2767be60ff517d7c7b965961c4392dae29a13c03b3ea5404ee6adab",
+    "immediatelyfast.jar": "eb5d23860c2c853d0afda9cbf686f442afda34a31d8d60b118a21597ccf38888",
+    "iris.jar": "58c55da18189c91a49f847d3cee451633a23b575fb69c0c5b65ddb274436cb19",
+    "owo.jar": "ded21de3e15288baad8a89f00476cf14427a1bbcdc4b184995dc78ff17e6ac40",
+    "pal.jar": "47b3e8b5e17d8501df92730e0a4e1dc9894b78333a1fdebc7341f1524ea283a4",
+    "puffish-skills.jar": "8917799ce0b8084648e2fb06513c60a2d01a2319c949b81e629ade322d82c004",
+    "skinlayers.jar": "736f076b9f45bab1c118166857f46729f782ddd481a0e4e4ee0bc110643f2756",
+    "sodium.jar": "c08fae86b350aaa8a8f37e7347929df38f01cc2348cf31c322615564bdc53983"
+  },
+  "frames": 6240
+}

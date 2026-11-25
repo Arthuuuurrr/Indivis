@@ -1,0 +1,386 @@
+{
+  "label": "arm1-opt1-profile",
+  "jar_sha256": "5017ec3f87d4d72053855341050ada3bd80f262e4238c32d0da1bc982842f5e3",
+  "allocation_leaves": [
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceClipper.clip",
+      "weight": 1517345104,
+      "share_percent": 31.36949838955234
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceClipper.mix",
+      "weight": 519170960,
+      "share_percent": 10.733308164826255
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.ExactTransformSupport.transform",
+      "weight": 453916328,
+      "share_percent": 9.384237957898016
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SurfaceGeometry$Vertex.transform",
+      "weight": 391336008,
+      "share_percent": 8.090456311071236
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Piece.reset",
+      "weight": 376110992,
+      "share_percent": 7.775695276397012
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceOutput.write",
+      "weight": 302056688,
+      "share_percent": 6.244701197368158
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.query",
+      "weight": 279646456,
+      "share_percent": 5.781393453612131
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PosedSurfaceSupport$Grid.add",
+      "weight": 250143840,
+      "share_percent": 5.171458203773555
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceClipper$Buffer.vertex",
+      "weight": 164523488,
+      "share_percent": 3.4013483671276497
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SurfaceGeometry$Box.<init>",
+      "weight": 136066872,
+      "share_percent": 2.8130380562887587
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.<init>",
+      "weight": 93807040,
+      "share_percent": 1.9393609156224436
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Cells.get",
+      "weight": 63214568,
+      "share_percent": 1.3068940505654716
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Cells.<init>",
+      "weight": 55232400,
+      "share_percent": 1.1418712053596942
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.ScratchSurfaceCleaner.clean",
+      "weight": 54205064,
+      "share_percent": 1.1206321247361941
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PartVolumeCache.addPart",
+      "weight": 49077224,
+      "share_percent": 1.0146194792293601
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PartVolumeCache.world",
+      "weight": 36452760,
+      "share_percent": 0.7536220950001746
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PosedSurfaceSupport$Grid.lambda$add$0",
+      "weight": 33860208,
+      "share_percent": 0.7000238360580014
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.ClothingVoxelSurface.boxFaces",
+      "weight": 17678400,
+      "share_percent": 0.36548214303254645
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PartSurfaceReuse$Entry.<init>",
+      "weight": 7214208,
+      "share_percent": 0.1491460878881879
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PartSurfaceReuse.lookup",
+      "weight": 4049808,
+      "share_percent": 0.08372547892967412
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PrimitiveSurfaceWriter.write",
+      "weight": 3603976,
+      "share_percent": 0.07450837586647348
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PartVolumeCache$Entry.<init>",
+      "weight": 3143904,
+      "share_percent": 0.06499687592817195
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PosedSurfaceSupport.applyPRE30",
+      "weight": 3142104,
+      "share_percent": 0.06495966284002717
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.GenericSkinLayerSupport.textureKey",
+      "weight": 2095992,
+      "share_percent": 0.043332408359301355
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.HairVoxelSurface.boxFaces",
+      "weight": 2095976,
+      "share_percent": 0.043332077576295626
+    }
+  ],
+  "cpu_leaves": [
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceClipper.clip",
+      "weight": 154,
+      "share_percent": 21.478382147838214
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.ExactTransformSupport.transform",
+      "weight": 85,
+      "share_percent": 11.854951185495118
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Piece.unchanged",
+      "weight": 83,
+      "share_percent": 11.576011157601116
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.query",
+      "weight": 73,
+      "share_percent": 10.181311018131101
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Piece.reset",
+      "weight": 53,
+      "share_percent": 7.391910739191074
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Cells.get",
+      "weight": 34,
+      "share_percent": 4.741980474198048
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.ScratchSurfaceCleaner.clean",
+      "weight": 30,
+      "share_percent": 4.184100418410042
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$ExteriorScratch.same",
+      "weight": 24,
+      "share_percent": 3.3472803347280333
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceOutput.write",
+      "weight": 21,
+      "share_percent": 2.928870292887029
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PartSurfaceReuse.lookup",
+      "weight": 15,
+      "share_percent": 2.092050209205021
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.<init>",
+      "weight": 14,
+      "share_percent": 1.9525801952580195
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.ScratchSurfaceCleaner$Work.release",
+      "weight": 14,
+      "share_percent": 1.9525801952580195
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PosedSurfaceSupport$Grid.add",
+      "weight": 14,
+      "share_percent": 1.9525801952580195
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceClipper$Buffer.clear",
+      "weight": 12,
+      "share_percent": 1.6736401673640167
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceOutput.valid",
+      "weight": 11,
+      "share_percent": 1.5341701534170153
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceClipper.valid",
+      "weight": 10,
+      "share_percent": 1.394700139470014
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SurfaceGeometry.valid",
+      "weight": 8,
+      "share_percent": 1.1157601115760112
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.ScratchSurfaceCleaner$Work.piece",
+      "weight": 8,
+      "share_percent": 1.1157601115760112
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Index.id",
+      "weight": 7,
+      "share_percent": 0.9762900976290098
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Cells.<init>",
+      "weight": 6,
+      "share_percent": 0.8368200836820083
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceClipper.intersecting",
+      "weight": 6,
+      "share_percent": 0.8368200836820083
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PartSurfaceReuse.estimate",
+      "weight": 5,
+      "share_percent": 0.697350069735007
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PosedSurfaceSupport$Grid.cell",
+      "weight": 4,
+      "share_percent": 0.5578800557880056
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.PackedSurfaceClipper$Buffer.vertex",
+      "weight": 4,
+      "share_percent": 0.5578800557880056
+    },
+    {
+      "method": "net.tompsen.nexuscharacters.SpatialSurfaceCleaner$Piece.<init>",
+      "weight": 4,
+      "share_percent": 0.5578800557880056
+    }
+  ],
+  "allocated_types": [
+    {
+      "method": "[Ljava/lang/Object;",
+      "weight": 1094466088,
+      "share_percent": 22.62692389122814
+    },
+    {
+      "method": "net/tompsen/nexuscharacters/SurfaceGeometry$Vertex",
+      "weight": 1082348696,
+      "share_percent": 22.376409682016593
+    },
+    {
+      "method": "java/util/ArrayList",
+      "weight": 621024912,
+      "share_percent": 12.839030439087168
+    },
+    {
+      "method": "java/util/ArrayList$Itr",
+      "weight": 505541000,
+      "share_percent": 10.451523218776392
+    },
+    {
+      "method": "[F",
+      "weight": 393608400,
+      "share_percent": 8.137435602068726
+    },
+    {
+      "method": "net/tompsen/nexuscharacters/SurfaceGeometry$Polygon",
+      "weight": 285279696,
+      "share_percent": 5.897854707312504
+    },
+    {
+      "method": "[I",
+      "weight": 239213624,
+      "share_percent": 4.945487597412763
+    },
+    {
+      "method": "java/lang/Long",
+      "weight": 118688904,
+      "share_percent": 2.4537670257548294
+    },
+    {
+      "method": "net/tompsen/nexuscharacters/SpatialSurfaceCleaner$Query",
+      "weight": 84856320,
+      "share_percent": 1.754314286556223
+    },
+    {
+      "method": "org/joml/Vector3f",
+      "weight": 75938224,
+      "share_percent": 1.5699421240386886
+    },
+    {
+      "method": "org/joml/Matrix4f",
+      "weight": 64579664,
+      "share_percent": 1.33511596043996
+    },
+    {
+      "method": "java/util/HashMap$Node",
+      "weight": 54449504,
+      "share_percent": 1.1256856621062545
+    },
+    {
+      "method": "[Lnet/tompsen/nexuscharacters/SurfaceGeometry$Box;",
+      "weight": 45251704,
+      "share_percent": 0.9355309164740279
+    },
+    {
+      "method": "net/tompsen/nexuscharacters/SurfaceGeometry$Box",
+      "weight": 43839424,
+      "share_percent": 0.9063335275156377
+    },
+    {
+      "method": "[Ljava/util/HashMap$Node;",
+      "weight": 29034240,
+      "share_percent": 0.6002520735203005
+    },
+    {
+      "method": "[J",
+      "weight": 26445048,
+      "share_percent": 0.5467232790093309
+    },
+    {
+      "method": "java/util/HashMap$TreeNode",
+      "weight": 21803640,
+      "share_percent": 0.45076709844274093
+    },
+    {
+      "method": "[[I",
+      "weight": 18316936,
+      "share_percent": 0.37868319661677524
+    },
+    {
+      "method": "[Ljava/util/List;",
+      "weight": 11518416,
+      "share_percent": 0.23813101660899016
+    },
+    {
+      "method": "java/util/ImmutableCollections$ListItr",
+      "weight": 9431880,
+      "share_percent": 0.194994101006076
+    },
+    {
+      "method": "[B",
+      "weight": 4230072,
+      "share_percent": 0.08745224566374614
+    },
+    {
+      "method": "[Lorg/joml/Matrix4f;",
+      "weight": 2095960,
+      "share_percent": 0.043331746793289896
+    },
+    {
+      "method": "java/util/HashMap",
+      "weight": 2095928,
+      "share_percent": 0.04333108522727843
+    },
+    {
+      "method": "net/tompsen/nexuscharacters/PartSurfaceReuse$Token",
+      "weight": 1047968,
+      "share_percent": 0.02166562530939065
+    },
+    {
+      "method": "sun/net/www/protocol/jar/JarURLConnection",
+      "weight": 1047960,
+      "share_percent": 0.02166545991788778
+    }
+  ],
+  "events_filtered": 4586
+}

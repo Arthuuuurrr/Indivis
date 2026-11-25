@@ -1,0 +1,1 @@
+ARMOR_ORACLE_PASS checks=6266 random_cases=3000 rigid_mesh_pose_changes=128 topology_exact=true uv_bits_exact=true max_position_error=2.980232238769531E-7 max_normal_error=2.1520824589060794E-7 rigid_polygons=145034 contact_polygons=59522
