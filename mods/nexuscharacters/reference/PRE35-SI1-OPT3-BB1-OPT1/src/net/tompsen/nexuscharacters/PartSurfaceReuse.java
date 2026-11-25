@@ -16,6 +16,9 @@ public final class PartSurfaceReuse {
     if(!Float.isFinite(v.x())||!Float.isFinite(v.y())||!Float.isFinite(v.z())||!Float.isFinite(v.u())||!Float.isFinite(v.v())||Math.abs(v.x())>32f||Math.abs(v.y())>32f||Math.abs(v.z())>32f)return null;
     lx=Math.min(lx,grid.cell(v.x()-3e-5f));hx=Math.max(hx,grid.cell(v.x()+3e-5f));ly=Math.min(ly,grid.cell(v.y()-3e-5f));hy=Math.max(hy,grid.cell(v.y()+3e-5f));lz=Math.min(lz,grid.cell(v.z()-3e-5f));hz=Math.max(hz,grid.cell(v.z()+3e-5f));}}
   int mask=0;for(int i=0;i<6;i++){if(i==part||index.partLo[i][0]>hx||index.partHi[i][0]<lx||index.partLo[i][1]>hy||index.partHi[i][1]<ly||index.partLo[i][2]>hz||index.partHi[i][2]<lz)continue;mask|=1<<i;}
+  // Same conservative grid bounds as Index.query: no permitted part can
+  // occupy ANY cell in this complete input. No polygon can be clipped.
+  if(mask==0){hits++;return new Token(null,null,part,0,w,list);}
   Pool pool=w.opt1Reuse;if(pool==null)w.opt1Reuse=pool=new Pool();
   Object[] keys=pool.keys;for(int i=0;i<6;i++)keys[i]=NativeGeometryKeys.key(w.templates[i]);
   Profile profile=null;for(var it=pool.profiles.iterator();it.hasNext();){var p=it.next();if(p.matches(keys)){profile=p;it.remove();break;}}

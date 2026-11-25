@@ -11,7 +11,6 @@ Ne pas reconstruire depuis la PRE17 encore sur main.
   flottantes, normales, UV, winding et triangulation ; moins d’objets intermédiaires.
 - Découpe six plans avec buffers temporaires primitifs, sans matérialiser les
   sommets intérieurs qui seront jetés.
-- Mémoïsation bornée des transformations de listes immuables internes (12 Mio).
 - Identités de géométrie canonique : comparaison complète des bits des positions,
   UV, normales, rangs et boîtes. Une couleur seule ne duplique plus le travail local.
   Aucune texture ni identité de personnage n’est échangée.
@@ -19,20 +18,29 @@ Ne pas reconstruire depuis la PRE17 encore sur main.
   (16 Mio, 32 profils maximum, 4 variantes exactes par partie).
 - Invalidation sur changement des cubes, remplacement des formes et rechargement
   des ressources ; pas de quantification de pose, de LOD ni d’animation figée.
+- Réutilisation des wrappers et listes de découpe temporaires, sans laisser leurs
+  buffers mutables dans les données utilisées plus tard par le rendu.
 - Les assets de la BB1 restent identiques octet pour octet.
 
 ## Construction et contrôles
 
-`build.py` applique une transformation ASM contrôlée à trois classes de la BB1,
+`build.py` applique une transformation ASM contrôlée à cinq classes de la BB1,
 puis compile les helpers Java 21. Les méthodes de référence sont conservées.
 Les ressources de toutes les entrées `assets/` sont comparées au binaire de base.
 
 `kernel_test.py` compare 20 000 polygones et des cas limites : découpe et écriture
-comparées bit pour bit à la BB1 (100 016 comparaisons).
+comparées bit pour bit à la BB1, plus 16 000 nettoyages indexés, des géométries
+dégénérées et l’invalidation des identités de géométrie.
 
 `-Dnexus.opt1.verify=true` active les oracles supplémentaires dans le client réel.
 Cette instrumentation est réservée aux tests ; les performances sont mesurées
 sans ce drapeau et sans figer les poses.
+
+`build.py` produit par défaut la variante `production` : la mémoïsation globale
+des transformations est désactivée, son coût de gestion dépassant son bénéfice
+dans les essais de poses distinctes. `--variant full`, `no-clip`, `no-writer`,
+`no-memo`, `no-scratch` et `canonical-only` servent uniquement à l’ablation ;
+leurs JAR distincts ne sont pas les fichiers à installer.
 
 Le banc A/B est `perf_bb1_20261125/run.py` dans le dossier de travail parent.
 Le candidat doit être fourni explicitement avec `--jar` et `--expected-sha`.
